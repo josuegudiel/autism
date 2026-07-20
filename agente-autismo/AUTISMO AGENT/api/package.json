@@ -1,0 +1,9 @@
+{
+  "name": "brujula-tea-api",
+  "private": true,
+  "description": "Backend serverless del Asistente (proxy de Claude). Solo se necesita al ACTIVAR la IA.",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0"
+  }
+}

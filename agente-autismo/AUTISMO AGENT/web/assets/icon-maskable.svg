@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Brújula TEA">
+  <rect width="512" height="512" fill="#1f8a70"/>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="#e3f1ec" stroke-width="18"/>
+  <polygon points="256,156 294,278 256,259 218,278" fill="#ffd166"/>
+  <polygon points="256,356 218,234 256,253 294,234" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="16" fill="#15604e" stroke="#ffffff" stroke-width="5"/>
+</svg>

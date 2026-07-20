@@ -1,0 +1,36 @@
+{
+  "bienvenida": "Hola 💛 Soy un asistente de orientación basado en evidencia (en modo demostración). Puedo explicarte qué es el autismo, cómo es un diagnóstico real, qué intervenciones tienen respaldo y cuáles conviene evitar. No diagnostico ni sustituyo a un profesional. Prueba escribiendo: «¿cómo se diagnostica?», «¿qué funciona?», «¿la quelación sirve?», «¿las vacunas causan autismo?».",
+  "fallback": "Estoy en modo demostración, así que respondo a un conjunto limitado de temas. Prueba con: diagnóstico, qué intervenciones funcionan, vacunas, quelación/MMS, o pruebas de cabello/bioresonancia. Cuando se active la IA real, podré responder a cualquier pregunta citando fuentes y sin recomendar nada peligroso. Mientras tanto, para cualquier decisión sobre tu hijo, apóyate en un profesional cualificado.",
+  "respuestas": [
+    {
+      "disparadores": ["diagnostic", "evalua", "ados", "mchat", "m-chat", "como se sabe", "cómo se sabe", "como saber", "cómo saber"],
+      "texto": "El autismo se diagnostica de forma clínica: un profesional cualificado (pediatra del desarrollo, neuropediatra, psicólogo o psiquiatra infantil) combina la historia del desarrollo, observación estructurada (ADOS-2) y entrevista a los padres (ADI-R), y descarta audición y visión. Antes hay un cribado (M-CHAT-R/F a los 18 y 24 meses) que señala riesgo pero NO diagnostica. Puede hacerse de forma fiable desde los 18-24 meses. No existe una prueba de sangre o de cabello que lo diagnostique.",
+      "fuentes": [{ "label": "AAP, Pediatrics 2020", "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of" }]
+    },
+    {
+      "disparadores": ["funciona", "intervenc", "terapia", "ayuda", "esdm", "denver", "pact", "temprana", "lenguaje", "logopedia", "ocupacional"],
+      "texto": "A los 4 años, lo que más respaldo tiene es la intervención temprana, del desarrollo, respetuosa y con los padres dentro: modelos como ESDM (basado en el juego), intervención mediada por padres (PACT), terapia de lenguaje y terapia ocupacional. Los efectos son reales aunque modestos y dependen del encaje con tu hijo. Si una terapia previa no avanzó, suele ser cuestión de horas/intensidad o encaje, no de que la intervención no sirva. Lo importante: evaluación formal y empezar pronto.",
+      "fuentes": [{ "label": "Dawson et al., Pediatrics 2010 (ESDM)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/" }]
+    },
+    {
+      "disparadores": ["quelac", "chelation", "metales", "desintox", "mms", "dioxido", "dióxido", "cloro", "cds"],
+      "texto": "Te respondo con franqueza: la quelación y el dióxido de cloro (MMS/CDS) NO funcionan para el autismo y son peligrosos. La quelación ha causado la muerte de un niño autista, y el MMS es esencialmente lejía. El autismo no está causado por 'metales' ni 'toxinas' que haya que desintoxicar. Si alguien te lo ofrece, aléjate y consulta a un profesional.",
+      "fuentes": [{ "label": "FDA — fraude en autismo", "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions" }]
+    },
+    {
+      "disparadores": ["vacuna", "mmr", "timerosal", "triple"],
+      "texto": "La idea de que las vacunas causan autismo está desacreditada. Se ha estudiado en millones de niños (por ejemplo 657.461 en Dinamarca) sin hallar asociación, y el estudio original que lo sugirió fue retractado por fraude. Las vacunas no causan autismo.",
+      "fuentes": [{ "label": "Hviid et al., Annals 2019", "url": "https://www.acpjournals.org/doi/10.7326/M18-2101" }]
+    },
+    {
+      "disparadores": ["cabello", "pelo", "bioresonanc", "biorresonanc", "epigenet", "epigenét", "epicgen", "mech"],
+      "texto": "Las pruebas de cabello o 'bioresonancia' que dicen detectar toxinas o 'desequilibrios' NO sirven para diagnosticar ni orientar el autismo. Un mechón de pelo no puede medir eso, y la Academia Americana de Pediatría recomienda no usar análisis de cabello para autismo. Si te lo ofrecen como base para un tratamiento, es una bandera roja.",
+      "fuentes": [{ "label": "AAP — Choosing Wisely", "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html" }]
+    },
+    {
+      "disparadores": ["causa", "por que", "por qué", "culpa", "geneti", "genét"],
+      "texto": "El autismo es mayormente genético y de origen prenatal (heredabilidad estimada ~83% en grandes estudios de gemelos). No es culpa de la crianza ni algo que el niño 'agarró' por toxinas. Eso también es liberador: no hay nada que 'desintoxicar'; lo que cambia su futuro es el apoyo temprano.",
+      "fuentes": [{ "label": "Sandin et al., JAMA 2017", "url": "https://jamanetwork.com/journals/jama/fullarticle/2654804" }]
+    }
+  ]
+}

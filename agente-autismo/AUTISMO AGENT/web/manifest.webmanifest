@@ -1,0 +1,15 @@
+{
+  "name": "Brújula TEA — Guía confiable para familias",
+  "short_name": "Brújula TEA",
+  "description": "Guía en español basada en evidencia para familias de niños con autismo: información, detector de pseudociencia, seguimiento y asistente.",
+  "lang": "es",
+  "start_url": "./index.html#inicio",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ee",
+  "theme_color": "#1f8a70",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

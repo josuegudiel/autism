@@ -1,0 +1,160 @@
+{
+  "leyenda": {
+    "alta": { "icono": "🟢", "texto": "Evidencia fuerte / hecho establecido" },
+    "media": { "icono": "🟡", "texto": "Evidencia real pero limitada o en debate" },
+    "evitar": { "icono": "🔴", "texto": "Desacreditado, no probado o peligroso" }
+  },
+  "secciones": [
+    {
+      "id": "que-es",
+      "titulo": "Qué es el autismo (TEA)",
+      "intro": "El Trastorno del Espectro Autista es una condición del neurodesarrollo. Hoy se identifica por la conducta y el desarrollo, no por una prueba de laboratorio.",
+      "items": [
+        {
+          "titulo": "Es un diagnóstico clínico-conductual, no biológico",
+          "nivel": "alta",
+          "texto": "No existe hoy una prueba médica —ni de sangre, ni genética, ni de cabello— que diagnostique el autismo por sí sola. Se diagnostica observando la comunicación, la interacción social y los patrones de conducta.",
+          "fuentes": [
+            { "label": "CDC — Diagnóstico del autismo", "url": "https://www.cdc.gov/autism/diagnosis/index.html" },
+            { "label": "Nature, Mol. Psychiatry 2023 (no hay biomarcador)", "url": "https://www.nature.com/articles/s41380-023-02354-y" }
+          ]
+        },
+        {
+          "titulo": "Es mayormente genético y de origen prenatal",
+          "nivel": "alta",
+          "texto": "La mayor cohorte de gemelos y hermanos estima una heredabilidad ~83%, con una contribución de la crianza estadísticamente despreciable. No es culpa de los padres ni algo que se 'agarró'. (Es probabilístico, no determinista a nivel individual.)",
+          "fuentes": [
+            { "label": "Sandin et al., JAMA 2017", "url": "https://jamanetwork.com/journals/jama/fullarticle/2654804" }
+          ]
+        },
+        {
+          "titulo": "Es común: ~1 de cada 31 niños (EE. UU., 2022)",
+          "nivel": "alta",
+          "texto": "La prevalencia identificada subió mucho en las últimas décadas, sobre todo por criterios más amplios y mejor detección (no por una 'epidemia' biológica nueva). No estás solo en esto.",
+          "fuentes": [
+            { "label": "CDC ADDM 2022 (MMWR)", "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diagnostico",
+      "titulo": "Cómo se diagnostica",
+      "intro": "El diagnóstico lo hace un profesional cualificado combinando historia, observación y herramientas estandarizadas. Puede hacerse de forma fiable desde los ~18-24 meses.",
+      "items": [
+        {
+          "titulo": "Los criterios (DSM-5): dos áreas centrales",
+          "nivel": "alta",
+          "texto": "(A) Déficits persistentes en comunicación e interacción social (los 3) + (B) patrones restringidos y repetitivos (al menos 2 de 4: estereotipias, insistencia en rutinas, intereses muy intensos, hiper/hiporreactividad sensorial). Más: inicio temprano, deterioro real, y no explicado mejor por discapacidad intelectual sola. Niveles de severidad 1-2-3.",
+          "fuentes": [
+            { "label": "Criterios DSM-5 (documento oficial)", "url": "https://iacc.hhs.gov/about-iacc/subcommittees/resources/dsm5-diagnostic-criteria.shtml" }
+          ]
+        },
+        {
+          "titulo": "El proceso: cribado → evaluación integral",
+          "nivel": "alta",
+          "texto": "Vigilancia del desarrollo + cribado (M-CHAT-R/F a los 18 y 24 meses) → evaluación diagnóstica integral por pediatra del desarrollo / neuropediatra / psicólogo o psiquiatra infantil, con instrumentos de referencia (ADOS-2, ADI-R), valoración de lenguaje/cognición y descarte de audición y visión.",
+          "fuentes": [
+            { "label": "AAP, Pediatrics 2020", "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of" }
+          ]
+        },
+        {
+          "titulo": "Ningún test aislado es infalible (y eso es honesto)",
+          "nivel": "media",
+          "texto": "El cribado M-CHAT-R/F tiene un valor predictivo de ~58% (un positivo NO es diagnóstico). Hasta el ADOS-2 ronda 0,8-0,9 de exactitud. Por eso el buen diagnóstico combina varias fuentes. Un campo serio publica sus márgenes de error.",
+          "fuentes": [
+            { "label": "Meta-análisis M-CHAT-R/F, Pediatrics 2023", "url": "https://publications.aap.org/pediatrics/article/151/6/e2022059393/191300/Meta-analysis-of-the-Modified-Checklist-for-Autism" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intervenciones",
+      "titulo": "Intervenciones que SÍ tienen evidencia",
+      "intro": "Lo más importante a los 4 años: intervención temprana, del desarrollo, respetuosa y con los padres dentro. Los efectos son reales pero modestos y dependen del encaje con el niño.",
+      "items": [
+        {
+          "titulo": "ESDM (Early Start Denver Model)",
+          "nivel": "media",
+          "texto": "Intervención naturalista del desarrollo basada en el juego. En el primer ensayo aleatorizado en niños de 18-30 meses, mejoró la cognición +17,6 puntos vs +7,0 del grupo comunitario.",
+          "fuentes": [
+            { "label": "Dawson et al., Pediatrics 2010", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/" }
+          ]
+        },
+        {
+          "titulo": "Intervención mediada por padres (p. ej. PACT)",
+          "nivel": "media",
+          "texto": "Te enseñan a comunicarte mejor con tu hijo. Redujo la severidad de síntomas centrales de forma sostenida ~6 años. (Honesto: no mejoró significativamente el lenguaje ni la autonomía.) Tu hijo está en la edad ideal.",
+          "fuentes": [
+            { "label": "Pickles et al., The Lancet 2016", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121131/" }
+          ]
+        },
+        {
+          "titulo": "Intervención conductual temprana intensiva (EIBI)",
+          "nivel": "media",
+          "texto": "Puede mejorar conducta adaptativa (+9,6) e IQ (+15,4) en algunos niños, PERO la certeza de la evidencia es baja/muy baja (pocos estudios aleatorizados). Útil con buen encaje; no es garantía.",
+          "fuentes": [
+            { "label": "Revisión Cochrane (Reichow 2018)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6494600/" }
+          ]
+        },
+        {
+          "titulo": "Terapia de lenguaje y terapia ocupacional",
+          "nivel": "media",
+          "texto": "La terapia del habla/lenguaje tiene apoyo razonable para la comunicación. La terapia ocupacional ayuda con autonomía y motricidad; la 'integración sensorial' como tal tiene evidencia más débil. Útiles como parte del plan.",
+          "fuentes": [
+            { "label": "AAP, Pediatrics 2020", "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evitar",
+      "titulo": "Tratamientos a EVITAR",
+      "intro": "Se venden a familias desesperadas. La evidencia es clara: no funcionan para el autismo y algunos son peligrosos. El detector de banderas rojas te deja consultar casos puntuales.",
+      "items": [
+        {
+          "titulo": "Quelación / 'desintoxicación de metales'",
+          "nivel": "evitar",
+          "texto": "Sin eficacia y peligrosa: un niño autista de 5 años murió en una sesión. La FDA solo aprueba la quelación para intoxicación real por metales, NO para autismo.",
+          "fuentes": [
+            { "label": "Reporte forense (PubMed)", "url": "https://pubmed.ncbi.nlm.nih.gov/18949650/" },
+            { "label": "FDA — fraude en autismo", "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions" }
+          ]
+        },
+        {
+          "titulo": "MMS / dióxido de cloro (CDS)",
+          "nivel": "evitar",
+          "texto": "Es lejía. Se promueve incluso en enemas a niños; causa daño intestinal. La FDA lo ha prohibido. Nunca.",
+          "fuentes": [
+            { "label": "Children's Hospital of Philadelphia", "url": "https://injury.research.chop.edu/blog/posts/dangerous-trend-chlorine-dioxide-and-autism" }
+          ]
+        },
+        {
+          "titulo": "Test de cabello / bioresonancia 'epigenética'",
+          "nivel": "evitar",
+          "texto": "No mide lo que dice medir y no diagnostica ni orienta el autismo. La Academia Americana de Pediatría recomienda NO usar análisis de cabello para autismo; el regulador británico no ha visto ninguna evidencia de que la bioresonancia diagnostique o trate nada.",
+          "fuentes": [
+            { "label": "AAP — Choosing Wisely", "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html" },
+            { "label": "ASA/CAP (Reino Unido)", "url": "https://www.asa.org.uk/advice-online/bioresonance-therapy.html" }
+          ]
+        },
+        {
+          "titulo": "Células madre, oxígeno hiperbárico, ozonoterapia, dieta-cura, secretina",
+          "nivel": "evitar",
+          "texto": "Células madre: sin beneficio frente a placebo; la FDA advierte de tumores/infección/ceguera. Oxígeno hiperbárico, dieta sin gluten/caseína como 'cura', secretina y ozono: sin evidencia convincente para síntomas centrales.",
+          "fuentes": [
+            { "label": "Revisión células madre 2022", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114801/" }
+          ]
+        },
+        {
+          "titulo": "Vacunas (mito desacreditado)",
+          "nivel": "evitar",
+          "texto": "La hipótesis vacunas-autismo está desacreditada en estudios de millones de niños (Hviid 2019, n=657.461; meta-análisis Taylor 2014, ~1,27 millones; revisión Cochrane). El estudio original (Wakefield 1998) fue retractado por fraude.",
+          "fuentes": [
+            { "label": "Hviid et al., Annals of Internal Medicine 2019", "url": "https://www.acpjournals.org/doi/10.7326/M18-2101" }
+          ]
+        }
+      ]
+    }
+  ]
+}

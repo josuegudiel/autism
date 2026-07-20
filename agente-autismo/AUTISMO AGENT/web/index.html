@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f8a70" />
+  <meta name="description" content="Guía confiable en español para familias de niños con autismo: evidencia, detector de pseudociencia, seguimiento y asistente." />
+  <title>Brújula TEA — Guía confiable para familias</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <span class="brand-mark" aria-hidden="true">🧭</span>
+      <span class="brand-name">Brújula <strong>TEA</strong></span>
+    </a>
+    <span class="brand-tag">basado en evidencia · en español</span>
+  </header>
+
+  <main id="view" class="view" tabindex="-1" aria-live="polite"><!-- las vistas se renderizan aquí --></main>
+
+  <footer class="disclaimer">
+    Esta app informa y orienta; <strong>no diagnostica ni sustituye</strong> a un profesional de la salud.
+    Ante dudas, consulta a un pediatra del desarrollo, neuropediatra o psicólogo/psiquiatra infantil.
+  </footer>
+
+  <nav class="tabbar" aria-label="Secciones">
+    <a href="#inicio" data-tab="inicio"><span aria-hidden="true">🏠</span><em>Inicio</em></a>
+    <a href="#evidencia" data-tab="evidencia"><span aria-hidden="true">📚</span><em>Evidencia</em></a>
+    <a href="#detector" data-tab="detector"><span aria-hidden="true">🚩</span><em>Detector</em></a>
+    <a href="#rastreador" data-tab="rastreador"><span aria-hidden="true">📈</span><em>Mi hijo</em></a>
+    <a href="#asistente" data-tab="asistente"><span aria-hidden="true">💬</span><em>Asistente</em></a>
+  </nav>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

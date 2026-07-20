@@ -1,0 +1,173 @@
+{
+  "intro": "Escribe o elige una terapia, producto o afirmación. Te decimos qué dice la evidencia y por qué. Verde = razonable; amarillo = incertidumbre/cautela; rojo = desacreditado o peligroso.",
+  "casos": [
+    {
+      "id": "quelacion",
+      "nombre": "Quelación",
+      "alias": ["quelacion", "quelación", "chelation", "quelar", "desintoxicar metales", "desintoxicación de metales", "sacar metales pesados"],
+      "veredicto": "evitar",
+      "resumen": "Peligrosa y sin eficacia para el autismo.",
+      "porque": "El autismo no está causado por intoxicación por metales. La quelación puede causar deshidratación, fallo renal y muerte: un niño autista de 5 años murió en una sesión. La FDA solo la aprueba para intoxicación real por metales, bajo receta y supervisión médica.",
+      "fuentes": [
+        { "label": "Reporte forense (PubMed)", "url": "https://pubmed.ncbi.nlm.nih.gov/18949650/" },
+        { "label": "FDA — fraude en autismo", "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions" }
+      ]
+    },
+    {
+      "id": "mms",
+      "nombre": "MMS / dióxido de cloro (CDS)",
+      "alias": ["mms", "cds", "dioxido de cloro", "dióxido de cloro", "clorito de sodio", "solución mineral milagrosa", "kalcker"],
+      "veredicto": "evitar",
+      "resumen": "Es lejía. Peligroso. Prohibido por la FDA.",
+      "porque": "El dióxido de cloro es un blanqueador industrial. Se ha promovido para autismo, incluso en enemas a niños, causando daño intestinal y vómitos. No tiene ninguna base científica y la FDA emitió alertas claras.",
+      "fuentes": [
+        { "label": "Children's Hospital of Philadelphia", "url": "https://injury.research.chop.edu/blog/posts/dangerous-trend-chlorine-dioxide-and-autism" }
+      ]
+    },
+    {
+      "id": "bioresonancia",
+      "nombre": "Test de cabello / bioresonancia / 'epigenético'",
+      "alias": ["bioresonancia", "biorresonancia", "test de cabello", "prueba de cabello", "epigenetico", "epigenética", "epicgen", "s-drive", "cell wellbeing", "mechón", "analisis capilar", "análisis capilar"],
+      "veredicto": "evitar",
+      "resumen": "No mide lo que dice; no diagnostica ni trata el autismo.",
+      "porque": "Un mechón de pelo no puede leer vitaminas, 'toxinas' ni 'epigenética' del cuerpo. La Academia Americana de Pediatría recomienda NO usar análisis de cabello para autismo; el regulador británico (ASA) no ha visto ninguna evidencia de que la bioresonancia diagnostique o trate nada. El mismo mechón da resultados distintos en laboratorios distintos.",
+      "fuentes": [
+        { "label": "AAP — Choosing Wisely", "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html" },
+        { "label": "ASA/CAP (Reino Unido)", "url": "https://www.asa.org.uk/advice-online/bioresonance-therapy.html" }
+      ]
+    },
+    {
+      "id": "celulas-madre",
+      "nombre": "Terapia con células madre",
+      "alias": ["celulas madre", "células madre", "stem cells", "stem"],
+      "veredicto": "evitar",
+      "resumen": "Sin beneficio frente a placebo; riesgos graves.",
+      "porque": "La mejor revisión no halló diferencia frente a control en la medida clínica global, y los propios autores piden no inscribir a los niños. La FDA advierte de riesgos serios (tumores, infección, ceguera).",
+      "fuentes": [
+        { "label": "Revisión 2022 (Frontiers in Pediatrics)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114801/" }
+      ]
+    },
+    {
+      "id": "oxigeno-hiperbarico",
+      "nombre": "Oxígeno hiperbárico (cámara)",
+      "alias": ["oxigeno hiperbarico", "oxígeno hiperbárico", "camara hiperbarica", "cámara hiperbárica", "hbot"],
+      "veredicto": "evitar",
+      "resumen": "Sin evidencia convincente para síntomas centrales.",
+      "porque": "No hay evidencia sólida de que mejore los síntomas centrales del autismo. Es caro y no está exento de riesgos. No es un tratamiento recomendado.",
+      "fuentes": [
+        { "label": "Resumen de tratamientos no probados (PMC)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8990762/" }
+      ]
+    },
+    {
+      "id": "dieta-cura",
+      "nombre": "Dieta sin gluten/caseína como 'cura'",
+      "alias": ["dieta sin gluten", "sin caseina", "sin caseína", "gfcf", "dieta cura", "gluten caseina"],
+      "veredicto": "media",
+      "resumen": "No 'cura' el autismo; cuidado con restringir a un niño.",
+      "porque": "No hay evidencia convincente de que mejore los síntomas centrales del autismo. Restringir alimentos a un niño en crecimiento puede afectar su nutrición; hazlo solo si un pediatra o nutriólogo lo indica por una razón médica real (p. ej., una alergia diagnosticada).",
+      "fuentes": [
+        { "label": "AAP, Pediatrics 2020", "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of" }
+      ]
+    },
+    {
+      "id": "ozono",
+      "nombre": "Ozonoterapia",
+      "alias": ["ozono", "ozonoterapia", "ozone"],
+      "veredicto": "evitar",
+      "resumen": "Sin base científica para el autismo.",
+      "porque": "Se promueve como 'desintoxicante'. No tiene evidencia para autismo y conlleva riesgos. Forma parte de las 'falsas curas' documentadas que explotan a las familias.",
+      "fuentes": [
+        { "label": "Análisis de desinformación en LatAm (2025)", "url": "https://arxiv.org/abs/2504.01991" }
+      ]
+    },
+    {
+      "id": "secretina",
+      "nombre": "Secretina",
+      "alias": ["secretina", "secretin"],
+      "veredicto": "evitar",
+      "resumen": "Sin eficacia; no debe usarse para el autismo.",
+      "porque": "Una revisión Cochrane de 16 ensayos con más de 900 niños concluyó que la secretina intravenosa NO es eficaz para el autismo y 'no debe recomendarse ni administrarse' como tratamiento.",
+      "fuentes": [
+        { "label": "Cochrane — secretina", "url": "https://www.cochrane.org/CD003495/BEHAV_intravenous-secretin-for-autism-spectrum-disorders-asd" }
+      ]
+    },
+    {
+      "id": "comunicacion-facilitada",
+      "nombre": "Comunicación Facilitada / RPM / Spelling to Communicate (S2C)",
+      "alias": ["comunicacion facilitada", "comunicación facilitada", "facilitated communication", "fc", "rpm", "rapid prompting", "spelling to communicate", "s2c", "deletrear para comunicar"],
+      "veredicto": "evitar",
+      "resumen": "Pseudociencia de comunicación; no se sabe quién escribe el mensaje.",
+      "porque": "La ASHA no recomienda el RPM/S2C y advierte que son potencialmente dañinos, como la desacreditada Comunicación Facilitada. El problema central es la autoría: no se puede saber si las palabras son del niño o del facilitador. No hay evidencia de que produzcan comunicación independiente. Pueden atribuir falsamente palabras al niño y desplazar la CAA con evidencia (PECS, dispositivos).",
+      "fuentes": [
+        { "label": "ASHA — advertencia RPM/S2C", "url": "https://www.asha.org/slp/asha-warns-against-rapid-prompting-method-or-spelling-to-communicate/" }
+      ]
+    },
+    {
+      "id": "integracion-auditiva",
+      "nombre": "Entrenamiento de integración auditiva (AIT) / terapias de sonido",
+      "alias": ["integracion auditiva", "integración auditiva", "ait", "terapia de sonido", "tomatis", "berard"],
+      "veredicto": "evitar",
+      "resumen": "Sin evidencia de eficacia para el autismo.",
+      "porque": "Una revisión Cochrane (7 estudios) concluyó que no hay evidencia de que el entrenamiento de integración auditiva ni otras terapias de sonido sean eficaces para el autismo.",
+      "fuentes": [
+        { "label": "Cochrane — AIT", "url": "https://www.cochrane.org/CD003681/BEHAV_auditory-integration-therapy-for-autism-spectrum-disorders" }
+      ]
+    },
+    {
+      "id": "cease-homeopatia",
+      "nombre": "CEASE Therapy / homeopatía para 'curar' el autismo",
+      "alias": ["cease", "cease therapy", "homeopatia", "homeopatía", "homeopathy"],
+      "veredicto": "evitar",
+      "resumen": "Desacreditada; el autismo no es una enfermedad que se 'cure'.",
+      "porque": "CEASE combina homeopatía, megadosis de vitaminas y 'eliminar toxinas de vacunas'. El regulador británico (ASA) prohibió sus afirmaciones y recuerda que 'el autismo no es una enfermedad, no se puede curar'. No hay evidencia robusta de que la homeopatía produzca efectos clínicos.",
+      "fuentes": [
+        { "label": "ASA — CEASE", "url": "https://www.asa.org.uk/news/cease-therapy-claims-must-stop.html" }
+      ]
+    },
+    {
+      "id": "craniosacral",
+      "nombre": "Terapia craneosacral",
+      "alias": ["craneosacral", "cráneosacral", "craniosacral", "cráneo-sacral"],
+      "veredicto": "evitar",
+      "resumen": "Sin base científica para el autismo.",
+      "porque": "No tiene fundamento científico ni evidencia de eficacia para el autismo (ASAT, Science-Based Medicine).",
+      "fuentes": [
+        { "label": "ASAT — craneosacral", "url": "https://asatonline.org/for-parents/learn-more-about-specific-treatments/craniosacral-therapy/" }
+      ]
+    },
+    {
+      "id": "trasplante-fecal",
+      "nombre": "Trasplante de microbiota fecal (comercializado para autismo)",
+      "alias": ["trasplante fecal", "microbiota fecal", "fmt", "trasplante de heces"],
+      "veredicto": "evitar",
+      "resumen": "Experimental/no probado para autismo; comercializado sin respaldo.",
+      "porque": "No hay evidencia suficiente que respalde el trasplante fecal como tratamiento del autismo; se ha comercializado de forma cuestionable (investigaciones periodísticas y advertencias de ASAT). No es un tratamiento aprobado.",
+      "fuentes": [
+        { "label": "ASAT — Media Watch", "url": "https://asatonline.org/media_watch/asat-responds-to-cbc-news-investigation-widens-into-b-c-naturopaths-fecal-transplants-for-autism-court-documents-show/" }
+      ]
+    },
+    {
+      "id": "vacunas",
+      "nombre": "Vacunas como causa",
+      "alias": ["vacunas", "vacuna", "mmr", "triple virica", "triple vírica", "timerosal", "wakefield"],
+      "veredicto": "evitar",
+      "resumen": "Mito desacreditado en estudios de millones de niños.",
+      "porque": "El estudio original (Wakefield 1998) fue retractado por fraude. Estudios posteriores en millones de niños (Hviid 2019, n=657.461; meta-análisis Taylor 2014; Cochrane 2020) no hallan asociación. Tras retirar el timerosal, las tasas siguieron subiendo.",
+      "fuentes": [
+        { "label": "Hviid et al., Annals of Internal Medicine 2019", "url": "https://www.acpjournals.org/doi/10.7326/M18-2101" }
+      ]
+    },
+    {
+      "id": "intervencion-temprana",
+      "nombre": "Intervención temprana / terapia del desarrollo",
+      "alias": ["intervencion temprana", "intervención temprana", "esdm", "denver", "pact", "terapia de lenguaje", "logopedia", "terapia ocupacional", "mediada por padres"],
+      "veredicto": "ok",
+      "resumen": "Esto SÍ tiene evidencia. Es por donde empezar.",
+      "porque": "La intervención temprana, del desarrollo, respetuosa y con los padres involucrados es lo que más respaldo tiene a esta edad. Los efectos son reales aunque modestos y dependen del encaje con el niño. Busca una evaluación formal y empieza pronto.",
+      "fuentes": [
+        { "label": "Dawson et al., Pediatrics 2010 (ESDM)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/" },
+        { "label": "Pickles et al., Lancet 2016 (PACT)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121131/" }
+      ]
+    }
+  ]
+}

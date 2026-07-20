@@ -1,0 +1,44 @@
+{
+  "intro": "Toda la información de esta app está anclada a fuentes que puedes abrir y comprobar tú mismo. Aquí está la bibliografía, ordenada por tipo y nivel de fiabilidad.",
+  "grupos": [
+    {
+      "titulo": "Agencias y guías clínicas (fiabilidad alta)",
+      "fuentes": [
+        { "label": "CDC — Diagnóstico del autismo", "url": "https://www.cdc.gov/autism/diagnosis/index.html" },
+        { "label": "CDC — Prevalencia ADDM 2022 (MMWR)", "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm" },
+        { "label": "AAP — Identificación, evaluación y manejo (Pediatrics 2020)", "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of" },
+        { "label": "Criterios diagnósticos DSM-5 (documento oficial)", "url": "https://iacc.hhs.gov/about-iacc/subcommittees/resources/dsm5-diagnostic-criteria.shtml" },
+        { "label": "FDA — Fraude de salud en autismo (quelación, desintoxicación)", "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions" },
+        { "label": "AAP/AAFP — Choosing Wisely (no análisis de cabello)", "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html" },
+        { "label": "ASA/CAP (Reino Unido) — Bioresonancia", "url": "https://www.asa.org.uk/advice-online/bioresonance-therapy.html" }
+      ]
+    },
+    {
+      "titulo": "Estudios revisados por pares (fiabilidad alta)",
+      "fuentes": [
+        { "label": "Sandin et al., JAMA 2017 — heredabilidad", "url": "https://jamanetwork.com/journals/jama/fullarticle/2654804" },
+        { "label": "Dawson et al., Pediatrics 2010 — ESDM", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/" },
+        { "label": "Pickles et al., The Lancet 2016 — PACT", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121131/" },
+        { "label": "Cochrane (Reichow 2018) — EIBI", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6494600/" },
+        { "label": "Meta-análisis M-CHAT-R/F, Pediatrics 2023", "url": "https://publications.aap.org/pediatrics/article/151/6/e2022059393/191300/Meta-analysis-of-the-Modified-Checklist-for-Autism" },
+        { "label": "Hviid et al., Annals 2019 — vacunas/MMR", "url": "https://www.acpjournals.org/doi/10.7326/M18-2101" },
+        { "label": "Revisión 2022 — células madre", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114801/" },
+        { "label": "Nature, Mol. Psychiatry 2023 — sin biomarcador", "url": "https://www.nature.com/articles/s41380-023-02354-y" }
+      ]
+    },
+    {
+      "titulo": "En español / divulgación (fiabilidad media)",
+      "fuentes": [
+        { "label": "Autismo Diario — portal de referencia en español", "url": "https://autismodiario.com/" },
+        { "label": "Children's Hospital of Philadelphia — dióxido de cloro", "url": "https://injury.research.chop.edu/blog/posts/dangerous-trend-chlorine-dioxide-and-autism" }
+      ]
+    }
+  ],
+  "comoVerificar": [
+    "Busca en PubMed (pubmed.ncbi.nlm.nih.gov): si una 'prueba' o terapia no aparece en estudios independientes, es bandera roja.",
+    "Distingue testimonio de evidencia: un caso aislado no controla el placebo ni la mejoría natural.",
+    "Correlación no es causa: dos cosas que suben juntas no prueban relación.",
+    "Mira conflictos de interés: ¿quién gana dinero con la afirmación?",
+    "Fuente primaria > red social: abre el estudio, no el reel."
+  ]
+}
