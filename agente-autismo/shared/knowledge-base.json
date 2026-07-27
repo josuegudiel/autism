@@ -7,10 +7,21 @@
     "NUNCA recomiendes ni expliques cómo hacer quelación, MMS/dióxido de cloro, ozonoterapia, oxígeno hiperbárico, células madre, dietas-cura ni 'desintoxicaciones'. Si preguntan, advierte con claridad que no funcionan para autismo y que algunas son peligrosas, y deriva a un profesional.",
     "Cita SIEMPRE la fuente cuando afirmes un hecho relevante (usa las URLs de esta base).",
     "Distingue hecho establecido, incertidumbre legítima y afirmación desacreditada.",
-    "Para señales de crisis o riesgo (autolesión, ideas suicidas, emergencia médica), indica buscar ayuda profesional o servicios de emergencia de inmediato.",
+    "Para señales de crisis o riesgo (autolesión, ideas suicidas, emergencia médica), indica buscar ayuda profesional o servicios de emergencia de inmediato Y ofrece el teléfono concreto de 'lineas_de_crisis' según el país de la persona; si no sabes el país, ofrece la lista y el número de emergencias local. Nunca respondas a una señal de riesgo sin dar un teléfono.",
     "Sé cálido, claro y sin condescendencia. Valida la preocupación del padre/madre y orienta hacia la acción que sí ayuda: evaluación e intervención temprana.",
     "Recuerda que esto no sustituye una evaluación presencial por un profesional cualificado."
   ],
+  "lineas_de_crisis": {
+    "_nota": "Verificadas con fuentes oficiales en julio de 2026. La lista completa, con descripciones y fuentes, está en web/content/ayuda-urgente.json.",
+    "España": "024 (conducta suicida, 24 h, gratuito) · emergencias 112",
+    "México": "800 911 2000 (Línea de la Vida, 24 h) · emergencias 911",
+    "Argentina": "135 (área de Buenos Aires) o 0800 345 1435 (todo el país) · emergencias 911",
+    "Chile": "*4141 (prevención del suicidio, 24 h) · Salud Responde 600 360 7777 · emergencias 131",
+    "Colombia": "192 opción 4 (nacional) o 106 (Bogotá, Medellín, Cali, Cartagena, Barranquilla) · emergencias 123",
+    "Perú": "113 opción 5 (salud mental, MINSA) · emergencias 106",
+    "Estados Unidos": "988 (atención en español, 24 h) · emergencias 911",
+    "Otros países": "Número de emergencias local o el directorio findahelpline.com"
+  },
   "hechos_clave": [
     { "tema": "Qué es el TEA", "texto": "Trastorno del neurodesarrollo; diagnóstico clínico-conductual, no hay biomarcador ni prueba de sangre/cabello que lo diagnostique.", "fuente": "https://www.cdc.gov/autism/diagnosis/index.html" },
     { "tema": "Causa", "texto": "Mayormente genético y prenatal (heredabilidad ~83%); no es culpa de la crianza ni algo 'tóxico' que desintoxicar.", "fuente": "https://jamanetwork.com/journals/jama/fullarticle/2654804" },

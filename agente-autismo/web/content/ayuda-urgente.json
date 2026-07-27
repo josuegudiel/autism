@@ -1,0 +1,78 @@
+{
+  "_nota": "Líneas de ayuda verificadas con fuentes oficiales (ministerios de salud) en julio de 2026. Revisa periódicamente que sigan vigentes. Si añades un país, comprueba el número en la web del ministerio de salud de ese país, nunca de oídas.",
+  "titulo": "Si necesitas ayuda ahora",
+  "intro": "Si tú o alguien de tu familia está en peligro inmediato, llama al número de emergencias de tu país. Pedir ayuda no es un fracaso: es lo más valiente y lo más útil que puedes hacer.",
+  "avisoCuidador": "Cuidar agota. Si te sientes desbordado, con angustia constante o con pensamientos de hacerte daño, esto también va por ti: mereces apoyo.",
+  "paises": [
+    {
+      "pais": "España",
+      "linea": "024",
+      "descripcion": "Línea de atención a la conducta suicida. Gratuita, confidencial, 24 h todos los días. Atiende también a familiares.",
+      "emergencias": "112",
+      "fuente": "https://www.sanidad.gob.es/linea024/home.htm"
+    },
+    {
+      "pais": "México",
+      "linea": "800 911 2000",
+      "descripcion": "Línea de la Vida (CONASAMA, Secretaría de Salud). Salud mental y adicciones, gratuita, 24 h los 365 días.",
+      "emergencias": "911",
+      "fuente": "https://www.gob.mx/conasama/articulos/linea-de-la-vida-800-911-2000"
+    },
+    {
+      "pais": "Argentina",
+      "linea": "135 (área de Buenos Aires) · 0800 345 1435 (todo el país)",
+      "descripcion": "Centro de Asistencia al Suicida. Gratuita y confidencial, 24 h.",
+      "emergencias": "911",
+      "fuente": "https://www.asistenciaalsuicida.org.ar/"
+    },
+    {
+      "pais": "Chile",
+      "linea": "*4141",
+      "descripcion": "Línea de Prevención del Suicidio (MINSAL). Gratuita desde cualquier celular, 24 h. También Salud Responde: 600 360 7777.",
+      "emergencias": "131 (SAMU)",
+      "fuente": "https://portalsaluddigital.minsal.cl/telemedicina-sincronica/4141-linea-prevencion-del-suicidio/"
+    },
+    {
+      "pais": "Colombia",
+      "linea": "192 opción 4 (todo el país) · 106 (Bogotá, Medellín, Cali, Cartagena y Barranquilla)",
+      "descripcion": "Orientación en salud mental e intervención en crisis del Ministerio de Salud. Gratuita, 24 h.",
+      "emergencias": "123",
+      "fuente": "https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx"
+    },
+    {
+      "pais": "Perú",
+      "linea": "113 opción 5",
+      "descripcion": "Línea de salud mental del MINSA. Gratuita, 24 h.",
+      "emergencias": "106 (SAMU)",
+      "fuente": "https://www.gob.pe/institucion/minsa/campa%C3%B1as/1105-linea-113-salud"
+    },
+    {
+      "pais": "Estados Unidos (en español)",
+      "linea": "988",
+      "descripcion": "Línea de Prevención del Suicidio y Crisis. Atención en español, gratuita, 24 h. También por chat.",
+      "emergencias": "911",
+      "fuente": "https://988lifeline.org/help-yourself/en-espanol/"
+    },
+    {
+      "pais": "Otros países",
+      "linea": "Número de emergencias local",
+      "descripcion": "Si tu país no está en la lista, llama al número de emergencias local o acude al servicio de urgencias más cercano. También puedes buscar la línea de tu país en el directorio internacional findahelpline.com.",
+      "emergencias": "",
+      "fuente": "https://findahelpline.com/es"
+    }
+  ],
+  "senalesDeAlarma": [
+    "Habla de querer morir, desaparecer o de que los demás estarían mejor sin él o ella.",
+    "Se hace daño de forma deliberada, o el daño empeora de repente.",
+    "Cambio brusco y sostenido: deja de hacer lo que le gustaba, se aísla, duerme o come de forma muy distinta.",
+    "Regala sus cosas importantes o se despide de forma extraña.",
+    "En personas que hablan poco: aumento marcado de autolesión, agitación o retraimiento sin causa aparente — puede ser dolor, malestar o crisis, y merece valoración médica."
+  ],
+  "queHacer": [
+    "Toma en serio lo que ves; preguntar directamente por el malestar no lo provoca ni da ideas.",
+    "Acompaña sin juzgar y no dejes sola a la persona si el riesgo es inmediato.",
+    "Retira del alcance medicamentos y objetos peligrosos.",
+    "Llama a la línea de ayuda de tu país o acude a urgencias.",
+    "Busca después seguimiento profesional: hay tratamientos que funcionan."
+  ]
+}

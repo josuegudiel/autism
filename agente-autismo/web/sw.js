@@ -1,5 +1,5 @@
 /* Service worker — caché offline del contenido estático (app shell + JSON) */
-const CACHE = "brujula-tea-v1";
+const CACHE = "brujula-tea-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,8 +11,12 @@ const ASSETS = [
   "./content/evidencia.json",
   "./content/banderas-rojas.json",
   "./content/fuentes.json",
-  "./content/asistente-demo.json"
+  "./content/asistente-demo.json",
+  "./content/ayuda-urgente.json",
+  "./content/biblioteca-indice.json"
 ];
+// El cuerpo completo de la biblioteca (≈1 MB) NO se precachea: se guarda la
+// primera vez que se abre un tema, para no penalizar la primera visita.
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));

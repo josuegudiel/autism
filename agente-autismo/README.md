@@ -7,16 +7,31 @@ Es una **PWA estática** (se instala como app, funciona sin conexión para el co
 
 > ⚠️ Esta app **informa y orienta; no diagnostica ni sustituye** a un profesional de la salud.
 
-**Estado:** MVP funcional (las 4 piezas), respaldado por una **biblioteca de investigación de ~45 temas con fuentes** ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
+**Estado:** app funcional con **buscador sobre 222 temas** (171 verificados) y **1.218 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
 
 ---
 
-## Qué incluye (MVP)
+## Qué incluye
 
-1. **📚 Centro de evidencia** — qué es el TEA, cómo se diagnostica y qué intervenciones funcionan, con etiquetas 🟢/🟡/🔴 (nivel de evidencia) y **fuentes enlazadas**.
-2. **🚩 Detector de pseudociencia** — escribe una terapia o producto (quelación, MMS, test de cabello, dieta-cura…) y te dice si es confiable, dudoso o peligroso, con fuentes.
-3. **📈 Seguimiento de mi hijo** — registra intervenciones y el día a día; gráfica simple de progreso. **Los datos se guardan solo en tu dispositivo** (IndexedDB); sin cuentas ni nube.
-4. **💬 Asistente** — chat que responde con fuentes. Hoy en **modo demostración**; abajo se explica cómo activar la IA real.
+1. **📚 Biblioteca buscable (lo principal)** — escribe lo que te preocupa con tus palabras («mi hijo no duerme», «se pega», «en la escuela») y encuentra el tema que responde, con su nivel de evidencia 🟢/🟡/🔴 y sus fuentes. **222 temas** organizados en 12 categorías. Funciona **sin conexión y sin ningún coste**: no usa IA ni servidores.
+2. **🚩 Detector de pseudociencia** — escribe una terapia o producto (quelación, MMS, test de cabello, dieta-cura…) y te dice si es confiable, dudoso o peligroso, con fuentes. Si la consulta es ambigua, **pregunta antes de dar un veredicto** en vez de arriesgarse a asustar sin motivo.
+3. **🆘 Ayuda urgente** — teléfonos de crisis por país (España, México, Argentina, Chile, Colombia, Perú, EE. UU.), verificados con fuentes oficiales, más señales de alarma y qué hacer.
+4. **📈 Seguimiento de mi hijo** — registra intervenciones y el día a día; gráfica simple de progreso. **Los datos se guardan solo en tu dispositivo** (IndexedDB); sin cuentas ni nube.
+5. **✅ Centro de evidencia** — un resumen corto para empezar, y **💬 Asistente** en modo demostración.
+
+## Cómo actualizar el contenido (sin tocar código)
+
+Todo el conocimiento vive en un solo archivo de texto. Para añadir o corregir un tema:
+
+1. Edita **`research/biblioteca-autismo.md`** (cada tema es una sección `### CÓDIGO. Título — estado`).
+2. Ejecuta el conversor:
+   ```bash
+   python3 scripts/construir-contenido.py
+   ```
+   Regenera los JSON que lee la app y avisa si a algún tema le falta el mensaje clave o las fuentes.
+3. Sube los cambios. Ya está: la app muestra el tema nuevo.
+
+Para mejorar el buscador, edita **`scripts/sinonimos.json`**: traduce cómo habla una familia («no duerme») a los códigos de los temas (`["W", "EN"]`). No hace falta saber programar.
 
 ---
 
@@ -44,9 +59,15 @@ La carpeta `web/` se sube tal cual a cualquier hosting estático:
 
 ---
 
-## "Encender" la IA real (cuando quieras)
+## Sobre la IA: por qué la app NO la necesita
 
-El asistente ya tiene la **interfaz lista** y un **backend stub** en `api/chat.ts` con las reglas de seguridad escritas. Para conectarlo a Claude:
+**Decisión del proyecto: la app funciona sin IA y sin coste alguno.** Las respuestas ya están escritas y verificadas en la biblioteca; el buscador solo las encuentra. Eso tiene tres ventajas para un proyecto de salud:
+
+- **Coste cero y para siempre.** Sin API, sin servidor, sin factura que pueda agotarse.
+- **No puede inventarse nada.** Todo lo que muestra lo escribiste tú, con su fuente. Una IA generativa sí puede alucinar datos clínicos.
+- **Funciona sin internet**, una vez instalada.
+
+El código de `api/chat.ts` se conserva como **opción futura**, no como parte del producto. Si algún día se activara, antes habría que: limitar peticiones por IP (si no, un bot agota el presupuesto), validar el tamaño del historial, restringir el origen, y darle acceso al contenido de la biblioteca (hoy solo ve 5 hechos). Instrucciones históricas:
 
 1. **Crea una API key** en la consola de Anthropic (console.anthropic.com) → guárdala como secreto del servidor. **Nunca** la pongas en el código del navegador.
 2. Despliega `api/chat.ts` como **función serverless** (Vercel/Cloudflare/Netlify). Necesita Node y el SDK:
@@ -85,21 +106,29 @@ Detalles técnicos del agente (ya implementados en `api/chat.ts`):
 ## Estructura
 
 ```
+research/
+  biblioteca-autismo.md   ← EL CORAZÓN: 222 temas con fuentes. Aquí se edita todo.
+scripts/
+  construir-contenido.py  conversor: biblioteca .md -> JSON que lee la app
+  sinonimos.json          "no duerme" -> temas W, EN  (editable sin programar)
 web/                      PWA estática (esto es lo que se publica)
   index.html  styles.css  app.js
   manifest.webmanifest  sw.js
   assets/    icon.svg  icon-maskable.svg
-  content/   evidencia.json  banderas-rojas.json  fuentes.json  asistente-demo.json
-api/
-  chat.ts                 proxy serverless de Claude (stub listo para activar)
-  package.json
+  content/   biblioteca-indice.json   generado: buscador (208 KB)
+             biblioteca-cuerpo.json   generado: contenido de los temas (1 MB)
+             ayuda-urgente.json       teléfonos de crisis por país
+             evidencia.json  banderas-rojas.json  fuentes.json  asistente-demo.json
 shared/
-  knowledge-base.json     evidencia + reglas de seguridad (base del agente)
-research/
-  biblioteca-autismo.md   investigación con fuentes (~45 temas) que alimenta la app
+  knowledge-base.json     hechos y reglas de seguridad (para un bot futuro)
+api/
+  chat.ts                 proxy de IA — OPCIONAL, hoy no se usa
 serve.py                  servidor estático portable para probar en local
 README.md  ESTADO.md  LICENSE
 ```
+
+> Los dos `biblioteca-*.json` son **generados**: no los edites a mano, se sobrescriben
+> cada vez que ejecutas `scripts/construir-contenido.py`.
 
 ## Editar el contenido
 

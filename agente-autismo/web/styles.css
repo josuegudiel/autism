@@ -167,3 +167,47 @@ label { display: block; font-size: .85rem; font-weight: 600; color: var(--muted)
 ul.checks { list-style: none; padding: 0; margin: 8px 0 0; }
 ul.checks li { padding-left: 24px; position: relative; margin: 7px 0; font-size: .92rem; }
 ul.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+/* ---------- Biblioteca (buscador y temas) ---------- */
+.buscador { display: flex; gap: 8px; margin: 4px 0 10px; }
+.buscador input { flex: 1; font-size: 1rem; }
+.suggest-hero button { background: rgba(255,255,255,.75); }
+
+.cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .82rem; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px 12px;
+}
+.chip:hover { border-color: var(--brand); }
+.chip b { color: var(--brand-d); font-size: .78rem; }
+
+.card.tema { display: block; text-decoration: none; color: var(--ink); }
+.card.tema:hover { border-color: var(--brand); }
+.card.tema h4 { margin: 2px 0 6px; font-size: 1.02rem; }
+.card.tema p { margin: 0; font-size: .9rem; color: #3a423d; }
+.tema-cat { font-size: .74rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.tema-cat .ok { color: var(--green); text-transform: none; letter-spacing: 0; }
+.tema-meta { margin-top: 10px; display: flex; gap: 10px; align-items: center; font-size: .82rem; }
+.nf { color: var(--muted); font-size: .82rem; }
+
+.migas { font-size: .85rem; color: var(--muted); margin: 0 0 4px; }
+.migas a { color: var(--brand-d); }
+.estado { font-size: .8rem; color: var(--muted); margin: 0 0 14px; }
+
+/* Cuerpo de un tema (markdown renderizado) */
+.tema-cuerpo p { margin: 0 0 12px; }
+.tema-cuerpo ul.md-list { margin: 0 0 14px; padding-left: 20px; }
+.tema-cuerpo ul.md-list li { margin: 8px 0; }
+.tema-cuerpo blockquote {
+  margin: 0 0 14px; padding: 10px 14px;
+  background: var(--brand-soft); border-left: 3px solid var(--brand);
+  border-radius: 0 10px 10px 0; font-size: .92rem;
+}
+.tema-cuerpo a { color: var(--brand-d); }
+
+/* Ayuda urgente */
+.callout.urgente { background: var(--yellow-soft); border-color: #eddcb4; }
+.callout.urgente a { color: #7d5a10; font-weight: 600; }
+.linea-tel { font-size: 1.35rem; font-weight: 700; color: var(--brand-d); margin: 4px 0 8px; letter-spacing: -.01em; }
