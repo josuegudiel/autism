@@ -13,6 +13,7 @@ No hace falta instalar nada: solo Python 3.
 Si añades o editas un tema en la biblioteca, vuelve a ejecutar este script.
 """
 
+import html
 import json
 import os
 import re
@@ -259,6 +260,9 @@ def main():
         sys.exit(f"No encuentro la biblioteca en {BIBLIOTECA}")
 
     md = open(BIBLIOTECA, encoding="utf-8").read()
+    # Alguna entrada llega con entidades HTML (&amp;, &gt;) desde la investigación.
+    # Se decodifican aquí para que la app no muestre "&amp;" en pantalla.
+    md = html.unescape(md)
     dominios, avisos = parsear(md)
 
     if not dominios:
