@@ -1,0 +1,59 @@
+name: Publicar la app en GitHub Pages
+
+# Publica la carpeta agente-autismo/web cada vez que cambia algo en main.
+# Para activarlo una sola vez:
+#   Settings -> Pages -> Build and deployment -> Source: "GitHub Actions"
+# A partir de ahí, cada push actualiza la web publicada.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agente-autismo/web/**"
+      - "agente-autismo/herramientas/**"
+      - ".github/workflows/publicar.yml"
+  workflow_dispatch: # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Preparar el sitio
+        run: |
+          mkdir -p sitio
+          cp -R agente-autismo/web/. sitio/
+          # El simulador de iPhone, accesible en /simulador/
+          mkdir -p sitio/simulador
+          cp agente-autismo/herramientas/simulador-iphone.html sitio/simulador/index.html
+          # El simulador espera la app en ../web/index.html; aquí cuelga de la raíz
+          sed -i 's|"../web/index.html"|"../index.html"|' sitio/simulador/index.html
+          # Evita que Jekyll ignore archivos que empiezan por guion bajo
+          touch sitio/.nojekyll
+          echo "Archivos publicados:"
+          ls -la sitio
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sitio
+
+  desplegar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
