@@ -156,11 +156,12 @@ struct TemaCuerpo: Codable, Hashable, Identifiable, Sendable {
 
     /// Estado sin los emojis de verificación, para mostrarlo como badge de texto.
     var estadoLimpio: String {
-        let sinIconos = estado.unicodeScalars.filter { escalar in
-            !(escalar.properties.isEmoji && escalar.properties.isEmojiPresentation)
+        var vista = String.UnicodeScalarView()
+        for escalar in estado.unicodeScalars {
+            let esIcono = escalar.properties.isEmoji && escalar.properties.isEmojiPresentation
+            if !esIcono { vista.append(escalar) }
         }
-        return String(String.UnicodeScalarView(sinIconos))
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        return String(vista).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     var estaVerificado: Bool {

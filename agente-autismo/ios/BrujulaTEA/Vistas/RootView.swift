@@ -26,6 +26,7 @@ extension View {
     }
 }
 
+@MainActor
 struct RootView: View {
     enum Pestana: Hashable {
         case inicio, biblioteca, detector, ayuda

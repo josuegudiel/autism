@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 struct BibliotecaView: View {
     @Environment(Biblioteca.self) private var biblioteca
     @State private var consulta = ""
@@ -118,6 +119,7 @@ struct BibliotecaView: View {
 }
 
 /// Temas de una categoría concreta.
+@MainActor
 struct CategoriaTemasView: View {
     let categoria: CategoriaResumen
     @Environment(Biblioteca.self) private var biblioteca

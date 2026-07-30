@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 struct AyudaView: View {
     var body: some View {
         NavigationStack {
@@ -11,6 +12,7 @@ struct AyudaView: View {
 }
 
 /// Contenido reutilizable: se usa como pestaña y también empujado desde Inicio.
+@MainActor
 struct AyudaContenidoView: View {
     @Environment(Biblioteca.self) private var biblioteca
     @Environment(\.openURL) private var abrirURL

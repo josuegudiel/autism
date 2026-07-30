@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 struct TemaDetalleView: View {
     let tema: TemaResumen
 

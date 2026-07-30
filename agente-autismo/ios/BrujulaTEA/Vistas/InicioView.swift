@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 struct InicioView: View {
     @Environment(Biblioteca.self) private var biblioteca
     @State private var consulta = ""
@@ -64,15 +65,17 @@ struct InicioView: View {
         }
     }
 
+    private var subtituloResultados: String? {
+        let total = resultados.count
+        guard total > 0 else { return nil }
+        return total == 1 ? "1 tema encontrado" : "\(total) temas encontrados"
+    }
+
     @ViewBuilder
     private var listaResultados: some View {
         VStack(alignment: .leading, spacing: Tema.espacioTarjeta) {
-            EncabezadoSeccion(
-                titulo: resultados.isEmpty ? "Sin coincidencias" : "Resultados",
-                subtitulo: resultados.isEmpty
-                    ? nil
-                    : (resultados.count == 1 ? "1 tema encontrado" : "\(resultados.count) temas encontrados")
-            )
+            EncabezadoSeccion(titulo: resultados.isEmpty ? "Sin coincidencias" : "Resultados",
+                              subtitulo: subtituloResultados)
 
             if resultados.isEmpty {
                 EstadoVacio(icono: "magnifyingglass",

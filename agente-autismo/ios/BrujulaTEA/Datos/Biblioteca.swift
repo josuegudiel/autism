@@ -242,7 +242,7 @@ final class Biblioteca {
     ]
 
     /// Minúsculas, sin acentos y sin signos: "¿Por qué NO duerme?" -> "por que no duerme".
-    static func normalizar(_ texto: String) -> String {
+    nonisolated static func normalizar(_ texto: String) -> String {
         let plegado = texto.folding(options: [.diacriticInsensitive, .caseInsensitive, .widthInsensitive],
                                     locale: Locale(identifier: "es_ES"))
         let caracteres = plegado.map { caracter -> Character in

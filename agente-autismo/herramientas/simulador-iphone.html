@@ -2,98 +2,195 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brújula TEA — simulador de iPhone</title>
 <!--
-  Simulador de iPhone 15 Pro para revisar la app sin un dispositivo real.
-  Uso: levanta la web  (cd web && python3 -m http.server 8099)
-       y abre este archivo con  ?rutas=#inicio,#biblioteca&oscuro=0
+  Simulador de iPhone para revisar la app sin un dispositivo real.
+
+  Cómo usarlo:
+    1. Abre la Terminal en la carpeta "agente-autismo"
+    2. Ejecuta:  python3 -m http.server 8099
+    3. Abre:     http://localhost:8099/herramientas/simulador-iphone.html
+
+  Más fácil todavía: doble clic en herramientas/ver-en-iphone.command
 -->
 <style>
-  :root { --w: 393px; --h: 852px; }
+  :root { --w: 393px; --h: 852px; --radio: 47px; --marco: 12px; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #16181c;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; padding: 40px 20px;
+    background: #101216; color: #e7e9ec; min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 26px 20px 40px;
   }
-  .wrap { display: flex; gap: 40px; align-items: flex-start; }
-  .col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .caption { color: #8b9099; font-size: 13px; letter-spacing: .02em; }
 
-  /* ------- carcasa del iPhone ------- */
+  /* ---------------- controles ---------------- */
+  .barra {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center;
+    background: #1b1e24; border: 1px solid #2a2f37; border-radius: 14px; padding: 10px 12px;
+  }
+  .barra label { font-size: 12px; color: #8e959f; margin-right: 2px; }
+  .barra select, .barra button {
+    font: inherit; font-size: 13px; color: #e7e9ec;
+    background: #262b33; border: 1px solid #343a44; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer;
+  }
+  .barra button:hover, .barra select:hover { border-color: #4a525e; }
+  .barra button.on { background: #0f7a62; border-color: #0f7a62; color: #fff; }
+  .sep { width: 1px; height: 22px; background: #343a44; margin: 0 4px; }
+
+  /* ---------------- carcasa ---------------- */
   .iphone {
     position: relative;
-    width: calc(var(--w) + 22px);
-    height: calc(var(--h) + 22px);
-    background: linear-gradient(160deg, #3a3f47, #22262c 40%, #33383f);
-    border-radius: 56px;
-    padding: 11px;
-    box-shadow: 0 0 0 1.5px #55595f, 0 30px 70px rgba(0,0,0,.55);
+    width: calc(var(--w) + var(--marco) * 2);
+    height: calc(var(--h) + var(--marco) * 2);
+    background: linear-gradient(150deg, #4a505a, #23272d 38%, #383e46 72%, #22262c);
+    border-radius: calc(var(--radio) + var(--marco));
+    padding: var(--marco);
+    box-shadow: 0 0 0 1.5px #565c65, 0 26px 60px rgba(0,0,0,.6);
+    flex: none;
   }
-  /* botones laterales */
-  .iphone::before, .iphone::after {
-    content: ""; position: absolute; background: #2a2e34; border-radius: 2px;
-  }
-  .iphone::before { left: -2.5px; top: 168px; width: 3px; height: 62px;
-    box-shadow: 0 82px 0 #2a2e34, 0 -108px 0 0 #2a2e34; }
-  .iphone::after { right: -2.5px; top: 200px; width: 3px; height: 96px; }
+  /* botones físicos */
+  .iphone::before, .iphone::after { content: ""; position: absolute; background: #2b3037; border-radius: 3px; }
+  .iphone::before { left: -3px; top: 150px; width: 3px; height: 34px;
+    box-shadow: 0 68px 0 #2b3037, 0 122px 0 #2b3037; }
+  .iphone::after  { right: -3px; top: 196px; width: 3px; height: 100px; }
 
-  .screen {
+  .pantalla {
     position: relative; width: var(--w); height: var(--h);
-    border-radius: 46px; overflow: hidden; background: #fff;
+    border-radius: var(--radio); overflow: hidden; background: #fff;
   }
-  iframe { width: 100%; height: 100%; border: 0; display: block; }
+  iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
 
-  /* ------- barra de estado ------- */
-  .status {
-    position: absolute; inset: 0 0 auto 0; height: 54px; z-index: 5;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 30px 0; pointer-events: none;
-    font-size: 15px; font-weight: 600; color: #000;
-    letter-spacing: -.01em;
-  }
-  .status.oscuro { color: #fff; }
-  .status .der { display: flex; align-items: center; gap: 5px; }
   .isla {
     position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
-    width: 125px; height: 36px; background: #000; border-radius: 20px; z-index: 6;
+    width: 125px; height: 36px; background: #000; border-radius: 20px; z-index: 6; pointer-events: none;
   }
-  /* barra de gestos */
+  .estado {
+    position: absolute; inset: 0 0 auto 0; height: 54px; z-index: 5; pointer-events: none;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 30px 0; font-size: 15px; font-weight: 600; letter-spacing: -.01em; color: #000;
+  }
+  .oscuro .estado { color: #fff; }
+  .estado .der { display: flex; align-items: center; gap: 5px; }
   .gesto {
     position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
-    width: 140px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.35); z-index: 6;
+    width: 140px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.32); z-index: 6; pointer-events: none;
   }
-  .oscuro-gesto { background: rgba(255,255,255,.4); }
+  .oscuro .gesto { background: rgba(255,255,255,.45); }
+
+  .pie { font-size: 12px; color: #6d747e; text-align: center; max-width: 470px; line-height: 1.6; }
+  .pie code { background: #1b1e24; padding: 2px 6px; border-radius: 5px; color: #9fb8b0; }
 </style>
 </head>
 <body>
-  <div class="wrap" id="wrap"></div>
+
+<div class="barra">
+  <label for="ruta">Pantalla</label>
+  <select id="ruta">
+    <option value="#inicio">Inicio</option>
+    <option value="#biblioteca">Biblioteca</option>
+    <option value="#biblioteca/mi hijo no duerme">Búsqueda: «mi hijo no duerme»</option>
+    <option value="#biblioteca/se pega">Búsqueda: «se pega»</option>
+    <option value="#tema/W">Tema: Sueño</option>
+    <option value="#tema/BC">Tema: Vacunas</option>
+    <option value="#detector">Detector</option>
+    <option value="#rastreador">Mi hijo</option>
+    <option value="#ayuda">Ayuda urgente</option>
+  </select>
+  <div class="sep"></div>
+  <label for="modelo">Modelo</label>
+  <select id="modelo">
+    <option value="393,852,47">iPhone 15 / 16 Pro</option>
+    <option value="430,932,50">iPhone 15 / 16 Pro Max</option>
+    <option value="375,812,42">iPhone 13 mini / SE</option>
+  </select>
+  <div class="sep"></div>
+  <button id="tema-btn">Modo oscuro</button>
+  <button id="recargar">Recargar</button>
+</div>
+
+<div class="iphone" id="iphone">
+  <div class="pantalla">
+    <div class="isla"></div>
+    <div class="estado">
+      <span>9:41</span>
+      <span class="der">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect y="7.5" width="3" height="3.5" rx="1"/><rect x="4.5" y="5.5" width="3" height="5.5" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/><rect x="13.5" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 10.5 5.6 8a3.4 3.4 0 0 1 4.8 0zM3.4 5.8 1.9 4.3a8.6 8.6 0 0 1 12.2 0l-1.5 1.5a6.5 6.5 0 0 0-9.2 0z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3.2" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" opacity=".5"/></svg>
+      </span>
+    </div>
+    <iframe id="marco" title="Brújula TEA"></iframe>
+    <div class="gesto"></div>
+  </div>
+</div>
+
+<p class="pie">
+  Puedes tocar, escribir y navegar dentro del iPhone igual que en el móvil real.<br>
+  Si la pantalla sale en blanco: arranca el servidor con
+  <code>python3 -m http.server 8099</code> dentro de la carpeta <code>agente-autismo</code>
+  y abre esta página desde <code>localhost</code>, no con doble clic en el archivo.
+</p>
+
 <script>
   const params = new URLSearchParams(location.search);
-  const rutas = (params.get("rutas") || "#inicio").split(",");
-  const oscuro = params.get("oscuro") === "1";
-  const base = params.get("base") || "http://localhost:8099/index.html";
+  // Por defecto la app está en ../web/ respecto a esta carpeta.
+  const BASE = params.get("base") || "../web/index.html";
+  const marco = document.getElementById("marco");
+  const iphone = document.getElementById("iphone");
+  const selRuta = document.getElementById("ruta");
+  const selModelo = document.getElementById("modelo");
+  const btnTema = document.getElementById("tema-btn");
 
-  document.getElementById("wrap").innerHTML = rutas.map((r, i) => `
-    <div class="col">
-      <div class="iphone">
-        <div class="screen">
-          <div class="isla"></div>
-          <div class="status ${oscuro ? "oscuro" : ""}">
-            <span>9:41</span>
-            <span class="der">
-              <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7.5" width="3" height="3.5" rx="1"/><rect x="4.5" y="5.5" width="3" height="5.5" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
-              <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 10.5 5.6 8a3.4 3.4 0 0 1 4.8 0zM3.4 5.8 1.9 4.3a8.6 8.6 0 0 1 12.2 0l-1.5 1.5a6.5 6.5 0 0 0-9.2 0z"/></svg>
-              <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3.2" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" opacity=".5"/></svg>
-            </span>
-          </div>
-          <iframe src="${base}${r}" title="Brújula TEA"></iframe>
-          <div class="gesto ${oscuro ? "oscuro-gesto" : ""}"></div>
-        </div>
-      </div>
-      <div class="caption">${r.replace("#", "")}</div>
-    </div>`).join("");
+  let oscuro = params.get("oscuro") === "1";
+
+  // Un iPhone real informa del área segura con env(); dentro de un iframe vale 0,
+  // así que la inyectamos para que la simulación sea fiel.
+  function aplicarEntorno() {
+    try {
+      const doc = marco.contentDocument;
+      if (!doc) return;
+      const alto = Number(selModelo.value.split(",")[1]);
+      const conIsla = alto >= 852;
+      doc.documentElement.style.setProperty("--safe-t", (conIsla ? 59 : 47) + "px");
+      doc.documentElement.style.setProperty("--safe-b", (conIsla ? 34 : 34) + "px");
+      doc.documentElement.style.colorScheme = oscuro ? "dark" : "light";
+    } catch (_) { /* otro origen: se ignora */ }
+  }
+  marco.addEventListener("load", () => { aplicarEntorno(); setTimeout(aplicarEntorno, 500); });
+
+  const cargar = () => { marco.src = BASE + selRuta.value; };
+
+  function aplicarModelo() {
+    const [w, h, r] = selModelo.value.split(",");
+    document.documentElement.style.setProperty("--w", w + "px");
+    document.documentElement.style.setProperty("--h", h + "px");
+    document.documentElement.style.setProperty("--radio", r + "px");
+    aplicarEntorno();
+  }
+  function aplicarTema() {
+    iphone.classList.toggle("oscuro", oscuro);
+    btnTema.classList.toggle("on", oscuro);
+    btnTema.textContent = oscuro ? "Modo claro" : "Modo oscuro";
+    aplicarEntorno();
+  }
+
+  selRuta.onchange = cargar;
+  selModelo.onchange = aplicarModelo;
+  btnTema.onclick = () => { oscuro = !oscuro; aplicarTema(); cargar(); };
+  document.getElementById("recargar").onclick = cargar;
+
+  // Mantiene el selector sincronizado si navegas dentro del iPhone.
+  setInterval(() => {
+    try {
+      const h = marco.contentWindow.location.hash;
+      if (h && h !== selRuta.value && [...selRuta.options].some((o) => o.value === h)) {
+        selRuta.value = h;
+      }
+    } catch (_) {}
+  }, 700);
+
+  aplicarModelo(); aplicarTema(); cargar();
 </script>
 </body>
 </html>

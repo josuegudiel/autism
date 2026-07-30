@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Comprueba terapias y productos. Si la coincidencia es débil no da veredicto:
 /// pregunta a cuál se refiere. Un falso "Evítalo" asustaría a una familia sin motivo.
+@MainActor
 struct DetectorView: View {
     @Environment(Biblioteca.self) private var biblioteca
     @State private var consulta = ""
