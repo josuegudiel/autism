@@ -26,6 +26,14 @@ function sourcesHTML(fuentes) {
   ).join("")}</div>`;
 }
 
+/* Pinta los iconos de la barra de pestañas (declarados con data-ico en el HTML). */
+function pintarTabbar() {
+  document.querySelectorAll(".tabbar a[data-ico]").forEach((a) => {
+    if (a.querySelector("svg")) return;
+    a.insertAdjacentHTML("afterbegin", ICONOS[a.dataset.ico] || "");
+  });
+}
+
 function setActiveTab(tab) {
   document.querySelectorAll(".tabbar a").forEach((a) =>
     a.classList.toggle("active", a.dataset.tab === tab));
@@ -47,6 +55,64 @@ function tokenizar(q) {
   return normalize(q).split(/[^a-z0-9ñ]+/).filter((t) => t.length >= 3 && !VACIAS.has(t));
 }
 
+/* ---------- Iconografía (trazo fino, estilo SF Symbols) ---------- */
+const SVG = (d, extra = "") =>
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
+
+const ICONOS = {
+  buscar: SVG('<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>'),
+  inicio: SVG('<path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/>'),
+  biblioteca: SVG('<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M10 4h4.5A1.5 1.5 0 0 1 16 5.5v13a1.5 1.5 0 0 1-1.5 1.5H10z"/><path d="m17.5 5 2.6 12.6"/>'),
+  detector: SVG('<path d="M12 3.5 20 6v6.2c0 4.2-3.2 7-8 8.3-4.8-1.3-8-4.1-8-8.3V6z"/><path d="M12 8.5v4"/><path d="M12 15.6h.01"/>'),
+  seguimiento: SVG('<path d="M4 19V5"/><path d="M4 19h16"/><path d="m7.5 15 3.5-4 3 2.5 4.5-6"/>'),
+  ayuda: SVG('<path d="M12 20.5s-7.5-4.4-7.5-9.6A4.4 4.4 0 0 1 12 8a4.4 4.4 0 0 1 7.5 2.9c0 5.2-7.5 9.6-7.5 9.6z"/>'),
+  chevron: SVG('<path d="m9 5 7 7-7 7"/>'),
+  externo: SVG('<path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5.5A1.5 1.5 0 0 1 16.5 21h-12A1.5 1.5 0 0 1 3 19.5v-12A1.5 1.5 0 0 1 4.5 6H10"/>'),
+  telefono: SVG('<path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/>'),
+  // categorías
+  diagnostico: SVG('<path d="M9 3.5h6v3H9z"/><path d="M6 6.5h12v14H6z"/><path d="M9.5 12.5h5"/><path d="M12 10v5"/>'),
+  pseudociencia: SVG('<path d="M12 4 3.5 19h17z"/><path d="M12 10v4"/><path d="M12 17h.01"/>'),
+  terapias: SVG('<path d="M6.5 3.5v6a5.5 5.5 0 0 0 11 0v-6"/><path d="M4.5 3.5h4"/><path d="M15.5 3.5h4"/><path d="M12 15v2.5a3 3 0 0 0 6 0v-1"/><circle cx="19" cy="15" r="2"/>'),
+  comunicacion: SVG('<path d="M4 5.5h16v10H9l-5 4z"/><path d="M8.5 10.5h7"/>'),
+  conducta: SVG('<path d="M12 20.5s-7.5-4.4-7.5-9.6A4.4 4.4 0 0 1 12 8a4.4 4.4 0 0 1 7.5 2.9c0 5.2-7.5 9.6-7.5 9.6z"/>'),
+  sensorial: SVG('<path d="M4 12a8 8 0 0 1 16 0"/><path d="M7.5 12a4.5 4.5 0 0 1 9 0v5a2.5 2.5 0 0 1-5 0v-4"/>'),
+  salud: SVG('<path d="M3.5 12h4l2-4 3 8 2-4h6"/>'),
+  escuela: SVG('<path d="m12 4 9 4.5-9 4.5-9-4.5z"/><path d="M6.5 10.5V16c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-5.5"/>'),
+  familia: SVG('<circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="9" r="2.2"/><path d="M3.5 19.5c0-2.8 2-4.8 4.5-4.8s4.5 2 4.5 4.8"/><path d="M14 19.5c0-2.3 1.2-4 3-4s3 1.7 3 4"/>'),
+  adultez: SVG('<circle cx="12" cy="7" r="3"/><path d="M5.5 20.5c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/>'),
+  derechos: SVG('<path d="M12 3.5v17"/><path d="M5 7h14"/><path d="M7.5 7 5 13h5z"/><path d="M16.5 7 14 13h5z"/>'),
+  comprender: SVG('<circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.5A2.6 2.6 0 0 1 12 7.5a2.5 2.5 0 0 1 .6 4.9c-.6.2-.6.8-.6 1.4"/><path d="M12 16.5h.01"/>'),
+};
+const ICONO_CAT = {
+  diagnostico: "diagnostico", pseudociencia: "pseudociencia", terapias: "terapias",
+  comunicacion: "comunicacion", conducta: "conducta", sensorial: "sensorial",
+  salud: "salud", escuela: "escuela", familia: "familia", adultez: "adultez",
+  derechos: "derechos", comprender: "comprender",
+};
+
+/* ---------- Niveles de evidencia: del marcador del texto a un badge ---------- */
+const NIVELES = {
+  "🟢": { clase: "alta", texto: "Evidencia sólida" },
+  "🟡": { clase: "media", texto: "Evidencia limitada" },
+  "🔴": { clase: "evitar", texto: "Desaconsejado" },
+  "⚪": { clase: "vivida", texto: "Experiencia vivida" },
+};
+const badge = (clase, texto) => `<span class="badge ${clase}">${esc(texto)}</span>`;
+
+/* Emojis de estado que la biblioteca usa en su texto y que no deben verse en la app. */
+const EMOJI_ESTADO = /[\u2705\u26A0\uFE0F\u25FD\u2714\u2B50\u274C\u23F3\u2B1C]/g;
+
+/** Separa el marcador de nivel y limpia los emojis de estado del texto. */
+function extraerNivel(texto) {
+  let t = texto, nivel = null;
+  for (const marca of Object.keys(NIVELES)) {
+    if (t.includes(marca)) { nivel = NIVELES[marca]; t = t.split(marca).join(""); }
+  }
+  t = t.replace(EMOJI_ESTADO, "").replace(/\s{2,}/g, " ");
+  return { texto: t.replace(/\s+([.,;:])/g, "$1").trim(), nivel };
+}
+
 /* ---------- Mini-render de markdown (negritas, enlaces, listas, citas) ---------- */
 function mdInline(t) {
   return esc(t)
@@ -55,24 +121,25 @@ function mdInline(t) {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
 }
+
+/** Cada viñeta se convierte en una tarjeta con su badge de evidencia. */
 function mdRender(md) {
   const out = [];
-  let lista = null;
-  const cerrar = () => { if (lista) { out.push(`<ul class="md-list">${lista.join("")}</ul>`); lista = null; } };
   for (const linea of String(md || "").split("\n")) {
     const l = linea.trim();
-    if (!l) { cerrar(); continue; }
+    if (!l) continue;
     if (l.startsWith("- ")) {
-      (lista = lista || []).push(`<li>${mdInline(l.slice(2))}</li>`);
+      const { texto, nivel } = extraerNivel(l.slice(2));
+      out.push(`<div class="punto"><p>${mdInline(texto)}</p>${
+        nivel ? badge(nivel.clase, nivel.texto) : ""}</div>`);
     } else if (l.startsWith(">")) {
-      cerrar();
-      out.push(`<blockquote>${mdInline(l.replace(/^>\s*/, ""))}</blockquote>`);
+      const { texto } = extraerNivel(l.replace(/^>\s*/, ""));
+      out.push(`<blockquote>${mdInline(texto)}</blockquote>`);
     } else {
-      cerrar();
-      out.push(`<p>${mdInline(l)}</p>`);
+      const { texto, nivel } = extraerNivel(l);
+      out.push(`<p>${mdInline(texto)}${nivel ? " " + badge(nivel.clase, nivel.texto) : ""}</p>`);
     }
   }
-  cerrar();
   return out.join("");
 }
 
@@ -146,7 +213,7 @@ async function route() {
   }
 
   const tab = TABS.includes(hash) ? hash : "inicio";
-  setActiveTab(["fuentes", "ayuda"].includes(tab) ? "inicio" : tab);
+  setActiveTab(tab === "fuentes" ? "inicio" : tab);
   view.scrollIntoView({ block: "start" });
   try {
     if (tab === "inicio") return renderInicio();
@@ -163,66 +230,91 @@ async function route() {
   view.focus({ preventScroll: true });
 }
 window.addEventListener("hashchange", route);
-window.addEventListener("DOMContentLoaded", route);
+window.addEventListener("DOMContentLoaded", () => { pintarTabbar(); route(); });
 
 /* ---------- Inicio ---------- */
-const EJEMPLOS = ["no duerme", "no habla", "se pega", "berrinches", "quelación", "en la escuela"];
+const EJEMPLOS = ["no duerme", "no habla", "se pega", "berrinches", "en la escuela", "no come"];
+
+function campoBusqueda(id, valor, marcador) {
+  return `<form class="buscador" id="f-${id}" autocomplete="off" role="search">
+      <div class="campo">
+        ${ICONOS.buscar}
+        <input id="q-${id}" type="search" enterkeyhint="search"
+          aria-label="Buscar en la biblioteca" placeholder="${esc(marcador)}" value="${esc(valor || "")}" />
+      </div>
+      <button class="btn" type="submit">Buscar</button>
+    </form>`;
+}
 
 async function renderInicio() {
-  let n = 222, nf = 1218;
-  try { const i = await cargarIndice(); n = i.totalTemas; nf = i.totalFuentes; } catch (_) {}
+  const idx = await cargarIndice();
   view.innerHTML = `
-    <div class="hero">
-      <h1>Información en la que puedes confiar</h1>
-      <p>Escribe lo que te preocupa, con tus palabras. Buscamos entre <strong>${n} temas</strong>
-      sobre autismo respaldados por <strong>${nf} fuentes</strong>.</p>
-      <form class="buscador" id="f-inicio" autocomplete="off" role="search">
-        <input id="q-inicio" type="search" aria-label="Buscar en la biblioteca"
-          placeholder="p. ej. mi hijo no duerme" />
-        <button class="btn" type="submit">Buscar</button>
-      </form>
-      <div class="suggest suggest-hero">${EJEMPLOS.map(
-        (e) => `<button type="button" data-q="${esc(e)}">${esc(e)}</button>`).join("")}</div>
+    <h1 class="page">¿Qué te preocupa?</h1>
+    <h2 class="page-sub">Escríbelo con tus palabras. ${idx.totalTemas} temas sobre autismo,
+      con ${idx.totalFuentes} fuentes que puedes comprobar.</h2>
+    ${campoBusqueda("inicio", "", "mi hijo no duerme")}
+    <div class="chips">${EJEMPLOS.map(
+      (e) => `<button type="button" data-q="${esc(e)}">${esc(e)}</button>`).join("")}</div>
+
+    <h3 class="sec">Explorar por tema</h3>
+    <div class="grid-cat">${(idx.categorias || []).map((c) => `
+      <a class="cat-card" href="#biblioteca/${esc(c.clave)}">
+        <span class="ico">${ICONOS[ICONO_CAT[c.clave]] || ICONOS.comprender}</span>
+        <div class="nombre">${esc(c.nombre)}</div>
+        <div class="n">${c.n} temas</div>
+      </a>`).join("")}</div>
+
+    <h3 class="sec">Herramientas</h3>
+    <div class="lista">
+      <a class="fila" href="#detector">
+        <span class="lead">${ICONOS.detector}</span>
+        <span class="txt"><span class="titulo">Detector de pseudociencia</span>
+          <span class="sub">Comprueba si una terapia o producto tiene respaldo</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
+      <a class="fila" href="#rastreador">
+        <span class="lead">${ICONOS.seguimiento}</span>
+        <span class="txt"><span class="titulo">Seguimiento de mi hijo</span>
+          <span class="sub">Registra el día a día. Se guarda solo en este dispositivo</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
+      <a class="fila" href="#tema/BA">
+        <span class="lead">${ICONOS.diagnostico}</span>
+        <span class="txt"><span class="titulo">Cómo es el diagnóstico</span>
+          <span class="sub">El proceso real, paso a paso</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
+      <a class="fila" href="#fuentes">
+        <span class="lead">${ICONOS.biblioteca}</span>
+        <span class="txt"><span class="titulo">Fuentes y cómo verificar</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
     </div>
-    <div class="tiles">
-      <a class="tile" href="#biblioteca"><div class="ico">📚</div><h4>Biblioteca</h4><p>Los ${n} temas, ordenados por categorías: diagnóstico, terapias, escuela, salud, día a día, derechos…</p></a>
-      <a class="tile" href="#detector"><div class="ico">🚩</div><h4>Detector de pseudociencia</h4><p>Consulta si una terapia o producto es confiable, dudoso o peligroso.</p></a>
-      <a class="tile" href="#rastreador"><div class="ico">📈</div><h4>Seguimiento de mi hijo</h4><p>Registra intervenciones y avances. Los datos se quedan en tu dispositivo.</p></a>
-      <a class="tile" href="#evidencia"><div class="ico">✅</div><h4>Lo esencial</h4><p>Un resumen corto para empezar: qué es el TEA, cómo se diagnostica y qué funciona.</p></a>
-    </div>
-    <div class="spacer"></div>
-    <div class="callout">
-      ¿Sospechas autismo en tu hijo? Lo más valioso a edades tempranas es una <strong>evaluación formal</strong> y
-      empezar pronto la <strong>intervención</strong>. <a href="#tema/BA">Así es el proceso real de diagnóstico.</a>
-    </div>
-    <div class="callout urgente">
-      <strong>¿Necesitas ayuda urgente?</strong> Si tú o tu hijo estáis en peligro o hay pensamientos de hacerse daño,
-      <a href="#ayuda">aquí tienes teléfonos de ayuda por país</a>.
-    </div>
-    <p style="text-align:center;margin-top:18px"><a class="btn ghost" href="#fuentes">Ver todas las fuentes</a></p>
+
+    <a class="fila lista" href="#ayuda" style="color:var(--ev-evitar)">
+      <span class="lead" style="color:inherit">${ICONOS.ayuda}</span>
+      <span class="txt"><span class="titulo" style="font-weight:600">Ayuda urgente</span>
+        <span class="sub">Teléfonos por país si hay riesgo o crisis</span></span>
+      <span class="chevron">${ICONOS.chevron}</span></a>
   `;
   const ir = (q) => { if (q.trim()) location.hash = "#biblioteca/" + encodeURIComponent(q.trim()); };
   document.getElementById("f-inicio").addEventListener("submit", (e) => {
     e.preventDefault(); ir(document.getElementById("q-inicio").value);
   });
-  view.querySelectorAll(".suggest-hero button").forEach((b) => b.onclick = () => ir(b.dataset.q));
+  view.querySelectorAll(".chips button").forEach((b) => b.onclick = () => ir(b.dataset.q));
 }
 
 /* ---------- Biblioteca (buscar y explorar los temas) ---------- */
 function tarjetaTema(tema) {
   const s = tema.semaforos || {};
-  const puntos = [
-    s.verde ? `<span title="afirmaciones con evidencia sólida">🟢 ${s.verde}</span>` : "",
-    s.amarillo ? `<span title="evidencia limitada o en debate">🟡 ${s.amarillo}</span>` : "",
-    s.rojo ? `<span title="desaconsejado o desacreditado">🔴 ${s.rojo}</span>` : "",
-  ].filter(Boolean).join(" ");
+  const marcas = [
+    s.verde ? badge("alta", `${s.verde} sólida${s.verde > 1 ? "s" : ""}`) : "",
+    s.amarillo ? badge("media", `${s.amarillo} con matiz`) : "",
+    s.rojo ? badge("evitar", `${s.rojo} a evitar`) : "",
+  ].filter(Boolean).join("");
+  const m = tema.mensaje || "";
   return `
-    <a class="card tema" href="#tema/${esc(tema.codigo)}">
-      <div class="tema-cat">${esc(tema.categoriaNombre)}${
-        tema.verificado ? ` · <span class="ok" title="fuentes comprobadas">✔ verificado</span>` : ""}</div>
+    <a class="tema-card" href="#tema/${esc(tema.codigo)}">
+      <div class="cat">${esc(tema.categoriaNombre)}</div>
       <h4>${esc(tema.titulo)}</h4>
-      <p>${esc((tema.mensaje || "").slice(0, 190))}${(tema.mensaje || "").length > 190 ? "…" : ""}</p>
-      <div class="tema-meta">${puntos} <span class="nf">${tema.nFuentes} fuentes</span></div>
+      <p>${esc(m.slice(0, 175))}${m.length > 175 ? "…" : ""}</p>
+      <div class="tema-meta">${marcas}<span class="nf">${tema.nFuentes} fuentes</span></div>
     </a>`;
 }
 
@@ -232,23 +324,21 @@ async function renderBiblioteca(param) {
   const cat = (idx.categorias || []).find((c) => c.clave === normalize(param || ""));
   const consulta = cat ? "" : (param || "");
 
-  const chipsCat = (idx.categorias || []).map(
-    (c) => `<a class="chip" href="#biblioteca/${esc(c.clave)}">${esc(c.nombre)} <b>${c.n}</b></a>`
-  ).join("");
-
   view.innerHTML = `
-    <h1 class="page">Biblioteca</h1>
-    <h2 class="page-sub">${idx.totalTemas} temas sobre autismo, con ${idx.totalFuentes} fuentes que puedes abrir y comprobar.</h2>
-    <div class="card">
-      <label for="q-bib">¿Qué te preocupa? Escríbelo con tus palabras</label>
-      <form class="chat-form" id="f-bib" autocomplete="off" role="search">
-        <input id="q-bib" type="search" placeholder="p. ej. se despierta de noche" value="${esc(consulta)}" />
-        <button class="btn" type="submit">Buscar</button>
-      </form>
-    </div>
-    <div class="cats">${chipsCat}</div>
+    <h1 class="page">${cat ? esc(cat.nombre) : "Biblioteca"}</h1>
+    <h2 class="page-sub">${cat
+      ? `${cat.n} temas en esta categoría.`
+      : `${idx.totalTemas} temas con ${idx.totalFuentes} fuentes que puedes abrir y comprobar.`}</h2>
+    ${campoBusqueda("bib", consulta, "p. ej. se despierta de noche")}
+    ${cat ? `<p class="migas"><a href="#biblioteca">Ver todas las categorías</a></p>` : ""}
     <div id="res-bib"></div>
   `;
+
+  // Las categorías solo aparecen cuando NO hay búsqueda activa: si hay resultados,
+  // deben verse de inmediato y no empujados debajo de una lista de chips.
+  const chipsCat = cat ? "" : `<h3 class="sec" style="margin-top:8px">Explorar por tema</h3>
+    <div class="chips" style="margin-top:0">${(idx.categorias || []).map(
+      (c) => `<a href="#biblioteca/${esc(c.clave)}">${esc(c.nombre)}</a>`).join("")}</div>`;
 
   const caja = document.getElementById("res-bib");
   const input = document.getElementById("q-bib");
@@ -256,19 +346,21 @@ async function renderBiblioteca(param) {
   const pintar = (q) => {
     if (!q.trim()) {
       const lista = cat ? idx.temas.filter((t) => t.categoria === cat.clave) : idx.temas;
-      const titulo = cat ? cat.nombre : "Todos los temas";
-      caja.innerHTML = `<h3 class="sec">${esc(titulo)} <span class="nf">(${lista.length})</span></h3>` +
+      caja.innerHTML = chipsCat +
+        `<h3 class="sec">${cat ? "Temas" : "Todos los temas"} · ${lista.length}</h3>` +
         lista.map(tarjetaTema).join("");
       return;
     }
     const res = buscarTemas(q, idx);
     if (!res.length) {
-      caja.innerHTML = `<div class="card"><h4>🔎 Sin resultados para «${esc(q)}»</h4>
-        <p>Prueba con otras palabras (por ejemplo, «duerme» en vez de «insomnio»), o explora por
-        categorías arriba. Si crees que falta un tema, se puede añadir a la biblioteca.</p></div>`;
+      caja.innerHTML = `<h3 class="sec">Sin resultados</h3><div class="card">
+        <h4>No encontré nada para «${esc(q)}»</h4>
+        <p>Prueba con otras palabras —por ejemplo «duerme» en vez de «insomnio»—
+        o explora por categorías.</p></div>` + chipsCat;
       return;
     }
-    caja.innerHTML = `<h3 class="sec">${res.length} resultado${res.length > 1 ? "s" : ""} para «${esc(q)}»</h3>` +
+    caja.innerHTML = `<h3 class="sec" style="margin-top:8px">${res.length} resultado${
+      res.length > 1 ? "s" : ""} para «${esc(q)}»</h3>` +
       res.slice(0, 25).map((r) => tarjetaTema(r.tema)).join("") +
       (res.length > 25 ? `<p class="nf" style="text-align:center">Mostrando los 25 más relacionados.</p>` : "");
   };
@@ -299,26 +391,26 @@ async function renderTema(codigo) {
   const relacionados = (idx.temas || [])
     .filter((t) => t.categoria === meta.categoria && t.codigo !== cod).slice(0, 4);
 
+  const verificado = /VERIFICADO/.test(tema.estado || "");
   view.innerHTML = `
-    <p class="migas"><a href="#biblioteca">← Biblioteca</a> ·
-      <a href="#biblioteca/${esc(meta.categoria || "")}">${esc(tema.categoriaNombre || "")}</a></p>
+    <p class="migas"><a href="#biblioteca/${esc(meta.categoria || "")}">${
+      esc(tema.categoriaNombre || "Biblioteca")}</a></p>
     <h1 class="page">${esc(tema.titulo)}</h1>
-    ${tema.estado ? `<p class="estado">${esc(tema.estado)}</p>` : ""}
-    <article class="card tema-cuerpo">${mdRender(tema.cuerpo)}</article>
+    <p class="estado">${verificado
+      ? badge("verificado", "Fuentes comprobadas")
+      : badge("vivida", "Síntesis con fuentes")}</p>
+    <article class="tema-cuerpo">${mdRender(tema.cuerpo)}</article>
     ${tema.fuentes && tema.fuentes.length ? `
-      <section>
-        <h3 class="sec">Fuentes (${tema.fuentes.length})</h3>
-        <div class="card">${sourcesHTML(tema.fuentes)}</div>
-      </section>` : ""}
+      <h3 class="sec">Fuentes · ${tema.fuentes.length}</h3>
+      <div class="lista fuentes">${tema.fuentes.map((f) => `
+        <a class="fila" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="txt"><span class="titulo">${esc(f.label)}</span></span>
+          <span class="ext">${ICONOS.externo}</span></a>`).join("")}</div>` : ""}
     ${relacionados.length ? `
-      <section>
-        <h3 class="sec">También te puede servir</h3>
-        ${relacionados.map(tarjetaTema).join("")}
-      </section>` : ""}
-    <div class="callout">
-      Esta información orienta; <strong>no diagnostica ni sustituye</strong> a un profesional.
-      ¿Necesitas ayuda urgente? <a href="#ayuda">Teléfonos por país</a>.
-    </div>
+      <h3 class="sec">También te puede servir</h3>
+      ${relacionados.map(tarjetaTema).join("")}` : ""}
+    <div class="nota">Esta información orienta; <strong>no diagnostica ni sustituye</strong>
+      a un profesional. ¿Hay riesgo ahora? <a href="#ayuda">Teléfonos de ayuda</a>.</div>
   `;
 }
 
@@ -326,26 +418,31 @@ async function renderTema(codigo) {
 async function renderAyuda() {
   loading();
   const d = await getJSON("content/ayuda-urgente.json");
+  // El número principal se convierte en enlace de llamada cuando es marcable.
+  const tel = (linea) => {
+    const m = String(linea).match(/[\d*][\d\s*]{2,}/);
+    return m ? m[0].replace(/\s/g, "") : null;
+  };
   view.innerHTML = `
     <h1 class="page">${esc(d.titulo)}</h1>
-    <div class="callout urgente"><p>${esc(d.intro)}</p></div>
-    ${d.paises.map((p) => `
-      <article class="card">
-        <h4>${esc(p.pais)}</h4>
-        <p class="linea-tel">${esc(p.linea)}</p>
-        <p>${esc(p.descripcion)}</p>
-        ${p.emergencias ? `<p class="nf">Emergencias: <strong>${esc(p.emergencias)}</strong></p>` : ""}
-        ${p.fuente ? `<div class="sources"><a href="${esc(p.fuente)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div>` : ""}
-      </article>`).join("")}
-    <section>
-      <h3 class="sec">Señales de alarma</h3>
-      <div class="card"><ul class="checks">${d.senalesDeAlarma.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>
-    </section>
-    <section>
-      <h3 class="sec">Qué puedes hacer</h3>
-      <div class="card"><ul class="checks">${d.queHacer.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>
-    </section>
-    <div class="callout"><strong>Y tú también cuentas.</strong> ${esc(d.avisoCuidador)}</div>
+    <div class="aviso">${esc(d.intro)}</div>
+    ${d.paises.map((p) => {
+      const num = tel(p.linea);
+      return `<article class="pais">
+        <div class="nombre">${esc(p.pais)}</div>
+        ${num
+          ? `<a class="tel" href="tel:${esc(num)}">${ICONOS.telefono}<span>${esc(p.linea)}</span></a>`
+          : `<div class="tel">${ICONOS.telefono}<span>${esc(p.linea)}</span></div>`}
+        <p class="desc">${esc(p.descripcion)}</p>
+        ${p.emergencias ? `<p class="emg">Emergencias: <strong>${esc(p.emergencias)}</strong></p>` : ""}
+      </article>`;
+    }).join("")}
+    <h3 class="sec">Señales de alarma</h3>
+    <ul class="checks">${d.senalesDeAlarma.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+    <h3 class="sec">Qué puedes hacer</h3>
+    <ul class="checks">${d.queHacer.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+    <div class="nota" style="margin-top:16px"><strong>Y tú también cuentas.</strong>
+      ${esc(d.avisoCuidador)}</div>
   `;
 }
 
@@ -355,7 +452,7 @@ async function renderEvidencia() {
   const data = await getJSON("content/evidencia.json");
   const lg = data.leyenda;
   const legend = ["alta", "media", "evitar"].map(
-    (k) => `<span class="lvl ${k}">${lg[k].icono} ${esc(lg[k].texto)}</span>`
+    (k) => badge(k, lg[k].texto)
   ).join(" ");
   const secciones = data.secciones.map((s) => `
     <section id="${esc(s.id)}">
@@ -367,20 +464,19 @@ async function renderEvidencia() {
   view.innerHTML = `
     <h1 class="page">Centro de evidencia</h1>
     <h2 class="page-sub">Cada afirmación está anclada a una fuente que puedes abrir y comprobar.</h2>
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">${legend}</div>
+    <div class="tema-meta" style="margin-bottom:16px">${legend}</div>
     <div class="spacer"></div>
     ${secciones}
   `;
 }
 
 function card(it) {
-  const lvl = it.nivel;
-  const dot = lvl === "evitar" ? "🔴" : lvl === "media" ? "🟡" : "🟢";
+  const clase = it.nivel === "evitar" ? "evitar" : it.nivel === "media" ? "media" : "alta";
   return `
-    <article class="card ${lvl === "evitar" ? "evitar" : ""}">
-      <h4><span class="dot" aria-hidden="true">${dot}</span><span>${esc(it.titulo)}</span>
-        <span class="lvl ${esc(lvl)}" style="margin-left:auto">${lvlLabel(lvl)}</span></h4>
+    <article class="card">
+      <h4>${esc(it.titulo)}</h4>
       <p>${esc(it.texto)}</p>
+      <div class="tema-meta">${badge(clase, lvlLabel(it.nivel))}</div>
       ${sourcesHTML(it.fuentes)}
     </article>`;
 }
@@ -395,27 +491,45 @@ async function renderDetector() {
   loading();
   _detector = _detector || await getJSON("content/banderas-rojas.json");
   try { await cargarIndice(); } catch (_) {}   // para poder sugerir temas relacionados
-  const chips = _detector.casos.map(
+  // Solo unas pocas sugerencias: un muro de 15 chips abruma en un móvil.
+  const _todos = _detector.casos;
+  const chips = _todos.slice(0, 6).map(
     (c) => `<button type="button" data-id="${esc(c.id)}">${esc(c.nombre)}</button>`
-  ).join("");
+  ).join("") + (_todos.length > 6
+    ? `<button type="button" id="ver-todas">Ver las ${_todos.length}</button>` : "");
   view.innerHTML = `
-    <h1 class="page">Detector de pseudociencia</h1>
+    <h1 class="page">Detector</h1>
     <h2 class="page-sub">${esc(_detector.intro)}</h2>
-    <div class="card">
-      <label for="q">Escribe una terapia, producto o afirmación</label>
-      <div class="chat-form">
-        <input id="q" type="text" placeholder="p. ej. quelación, test de cabello, dieta…" autocomplete="off" />
-        <button class="btn" id="go">Revisar</button>
-      </div>
-      <div class="suggest">${chips}</div>
-    </div>
+    <form class="buscador" id="f-det" autocomplete="off" role="search">
+      <div class="campo">${ICONOS.buscar}
+        <input id="q" type="search" enterkeyhint="search"
+          placeholder="p. ej. quelación, test de cabello" /></div>
+      <button class="btn" id="go" type="submit">Revisar</button>
+    </form>
+    <div class="chips">${chips}</div>
     <div id="result"></div>
   `;
   const input = document.getElementById("q");
   const result = document.getElementById("result");
   const run = (text) => { result.innerHTML = detectorResult(text); result.scrollIntoView({ block: "nearest" }); };
-  document.getElementById("go").onclick = () => run(input.value);
-  input.addEventListener("keydown", (e) => { if (e.key === "Enter") run(input.value); });
+  document.getElementById("f-det").addEventListener("submit", (e) => {
+    e.preventDefault(); run(input.value);
+  });
+  const verTodas = document.getElementById("ver-todas");
+  if (verTodas) verTodas.onclick = () => {
+    result.innerHTML = `<h3 class="sec">Todas las fichas · ${_todos.length}</h3>
+      <div class="lista">${_todos.map((c) => `
+        <a class="fila" href="#" data-ficha="${esc(c.id)}">
+          <span class="txt"><span class="titulo">${esc(c.nombre)}</span></span>
+          <span class="chevron">${ICONOS.chevron}</span></a>`).join("")}</div>`;
+  };
+  view.addEventListener("click", (e) => {
+    const f = e.target.closest("[data-ficha]");
+    if (!f) return;
+    e.preventDefault();
+    const c = _detector.casos.find((x) => x.id === f.dataset.ficha);
+    if (c) { input.value = c.nombre; run(c.nombre); }
+  });
   // Los chips sugeridos y los de "¿buscabas otra cosa?" (que se crean después).
   view.addEventListener("click", (e) => {
     const b = e.target.closest(".suggest button[data-id]");
@@ -463,15 +577,13 @@ function buscarFichas(text) {
 
 function fichaHTML(hit) {
   const v = hit.veredicto;
-  const head = v === "ok"
-    ? `🟢 <span style="color:#1c6c47">Tiene evidencia</span>`
-    : v === "media"
-      ? `🟡 <span style="color:#8a5d10">Cautela / incertidumbre</span>`
-      : `🔴 <span style="color:#9b2f22">Evítalo</span>`;
+  const clase = v === "ok" ? "alta" : v === "media" ? "media" : "evitar";
+  const titulo = v === "ok" ? "Tiene evidencia"
+    : v === "media" ? "Cautela: evidencia incierta" : "Evítalo";
   return `
-    <article class="card ${v === "evitar" ? "evitar" : ""}">
-      <div class="verdict">${head}</div>
-      <h4 style="margin-top:8px"><span>${esc(hit.nombre)}</span></h4>
+    <article class="card">
+      <div class="verdict ${clase}"><span class="dot"></span>${esc(titulo)}</div>
+      <h4>${esc(hit.nombre)}</h4>
       <p><strong>${esc(hit.resumen)}</strong></p>
       <p>${esc(hit.porque)}</p>
       ${sourcesHTML(hit.fuentes)}
@@ -499,7 +611,7 @@ function detectorResult(text) {
           rel.map((r) => tarjetaTema(r.tema)).join("");
       }
     }
-    return `<div class="card"><h4><span aria-hidden="true">🔎</span> No tengo una ficha de «${esc(bruto)}»</h4>
+    return `<div class="card"><h4>No tengo una ficha de «${esc(bruto)}»</h4>
       <p>Eso <strong>no</strong> quiere decir que sea bueno ni malo: simplemente aún no está en el detector.
       Regla general: si una terapia o prueba no aparece en estudios independientes, promete una
       «cura», o te piden dinero por desintoxicar, quelación o MMS, trátala como bandera roja
@@ -669,7 +781,7 @@ async function renderAsistente() {
   _demo = _demo || await getJSON("content/asistente-demo.json");
   view.innerHTML = `
     <h1 class="page">Asistente</h1>
-    <div class="demo-note">⚙️ <strong>Modo demostración.</strong> Responde a temas frecuentes con fuentes.
+    <div class="demo-note"><strong>Modo demostración.</strong> Responde a temas frecuentes con fuentes.
       Cuando se conecte la IA (Claude), podrá responder a cualquier pregunta, citando fuentes y sin recomendar nada peligroso. Ver el README.</div>
     <div class="chat-wrap">
       <div class="chat-log" id="log"></div>
