@@ -155,26 +155,37 @@ enum MarkdownLigero {
 
         for (marcador, candidato) in NivelEvidencia.marcadores {
             guard let rango = limpio.range(of: String(marcador), options: .backwards) else { continue }
-            if ultimaPosicion == nil || rango.lowerBound > ultimaPosicion! {
-                ultimaPosicion = rango.lowerBound
-                nivel = candidato
+            if let previa = ultimaPosicion, rango.lowerBound <= previa { continue }
+            ultimaPosicion = rango.lowerBound
+            nivel = candidato
+        }
+
+        if nivel != nil {
+            for marcador in NivelEvidencia.marcadores.keys {
+                limpio = limpio.replacingOccurrences(of: String(marcador), with: "")
             }
         }
 
-        guard nivel != nil else {
-            return (limpio.trimmingCharacters(in: .whitespacesAndNewlines), nil)
+        // El cuerpo también trae adornos que NO son marcadores de evidencia
+        // (✅ ◽ ⚠️ ⭐). La app nunca muestra emojis, así que fuera.
+        let sinAdornos = limpio.sinIconos
+        if sinAdornos.unicodeScalars.count != limpio.unicodeScalars.count {
+            limpio = sinAdornos.espaciosCompactos
         }
 
-        for marcador in NivelEvidencia.marcadores.keys {
-            limpio = limpio.replacingOccurrences(of: String(marcador), with: "")
-        }
-
-        let sobrantes = CharacterSet(charactersIn: " \t—–-·:;,")
         limpio = limpio.trimmingCharacters(in: .whitespacesAndNewlines)
-        while let ultimo = limpio.unicodeScalars.last, sobrantes.contains(ultimo) {
-            limpio.unicodeScalars.removeLast()
+
+        // Solo si se quitó un marcador limpiamos la puntuación que lo unía al
+        // texto ("… mejora el sueño — 🟢"); si no, respetamos el texto tal cual.
+        if nivel != nil {
+            let sobrantes = CharacterSet(charactersIn: " \t—–-·:;,")
+            while let ultimo = limpio.unicodeScalars.last, sobrantes.contains(ultimo) {
+                limpio.unicodeScalars.removeLast()
+            }
+            limpio = limpio.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        return (limpio.trimmingCharacters(in: .whitespacesAndNewlines), nivel)
+
+        return (limpio, nivel)
     }
 
     // MARK: - Prefijos de línea

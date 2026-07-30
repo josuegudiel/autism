@@ -26,17 +26,20 @@ struct IndiceBiblioteca: Codable, Sendable {
         self.temas = temas
     }
 
-    // Decodificación tolerante: si falta un campo la app no se cae.
+    // Decodificación tolerante: ni un campo que falte ni un registro corrupto
+    // pueden tumbar el índice entero (sin índice, la app no tiene contenido).
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        let listaTemas = try c.decodeIfPresent([TemaResumen].self, forKey: .temas) ?? []
+
+        let listaTemas = (try? c.decode(ListaTolerante<TemaResumen>.self, forKey: .temas))?.elementos ?? []
         temas = listaTemas
-        categorias = try c.decodeIfPresent([CategoriaResumen].self, forKey: .categorias) ?? []
-        sinonimos = try c.decodeIfPresent([String: [String]].self, forKey: .sinonimos) ?? [:]
-        totalTemas = try c.decodeIfPresent(Int.self, forKey: .totalTemas) ?? listaTemas.count
-        verificados = try c.decodeIfPresent(Int.self, forKey: .verificados)
+        categorias = (try? c.decode(ListaTolerante<CategoriaResumen>.self, forKey: .categorias))?.elementos ?? []
+        sinonimos = (try? c.decode(MapaSinonimos.self, forKey: .sinonimos))?.valores ?? [:]
+
+        totalTemas = (try? c.decode(Int.self, forKey: .totalTemas)) ?? listaTemas.count
+        verificados = (try? c.decode(Int.self, forKey: .verificados))
             ?? listaTemas.filter { $0.verificado }.count
-        totalFuentes = try c.decodeIfPresent(Int.self, forKey: .totalFuentes)
+        totalFuentes = (try? c.decode(Int.self, forKey: .totalFuentes))
             ?? listaTemas.reduce(0) { $0 + $1.nFuentes }
     }
 }
@@ -154,14 +157,12 @@ struct TemaCuerpo: Codable, Hashable, Identifiable, Sendable {
 
     var id: String { codigo }
 
-    /// Estado sin los emojis de verificación, para mostrarlo como badge de texto.
+    /// Estado sin emojis, para mostrarlo como badge de texto.
+    /// Ojo: `estado` trae tanto "✅✅ VERIFICADO (…)" como "… ⚠️ tema sensible";
+    /// el aviso ⚠️ es U+26A0 + selector de variación y NO tiene presentación
+    /// emoji por defecto, por eso `sinIconos` lo trata aparte.
     var estadoLimpio: String {
-        var vista = String.UnicodeScalarView()
-        for escalar in estado.unicodeScalars {
-            let esIcono = escalar.properties.isEmoji && escalar.properties.isEmojiPresentation
-            if !esIcono { vista.append(escalar) }
-        }
-        return String(vista).trimmingCharacters(in: .whitespacesAndNewlines)
+        estado.sinIconos.espaciosCompactos.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     var estaVerificado: Bool {
@@ -306,6 +307,76 @@ struct ClaveLibre: CodingKey {
 
     init?(stringValue: String) { self.stringValue = stringValue }
     init?(intValue: Int) { return nil }
+}
+
+// MARK: - Ayudas de decodificación tolerante
+
+/// Decodifica una lista descartando los elementos corruptos, en vez de hacer
+/// fallar el archivo completo por un único registro mal formado.
+struct ListaTolerante<Elemento: Decodable>: Decodable {
+    let elementos: [Elemento]
+
+    private struct Casilla: Decodable {
+        let valor: Elemento?
+        init(from decoder: Decoder) throws { valor = try? Elemento(from: decoder) }
+    }
+
+    init(from decoder: Decoder) throws {
+        elementos = try [Casilla](from: decoder).compactMap(\.valor)
+    }
+}
+
+/// `biblioteca-indice.json` mezcla en `sinonimos` frases reales con claves de
+/// documentación (`_ayuda`) cuyo valor es una **cadena**, no una lista.
+/// Decodificar de golpe a `[String: [String]]` lanza `typeMismatch` y tumba
+/// TODO el índice, así que aquí se ignora lo que no encaje y las claves que
+/// empiezan por `_`.
+struct MapaSinonimos: Decodable {
+    let valores: [String: [String]]
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: ClaveLibre.self)
+        var acumulado: [String: [String]] = [:]
+        for clave in c.allKeys where !clave.stringValue.hasPrefix("_") {
+            guard let codigos = try? c.decode([String].self, forKey: clave) else { continue }
+            let limpios = codigos.filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+            if !limpios.isEmpty { acumulado[clave.stringValue] = limpios }
+        }
+        valores = acumulado
+    }
+}
+
+// MARK: - Limpieza de iconos
+
+extension String {
+    /// Emojis de presentación *textual* que el contenido usa como adorno.
+    /// No los detecta `isEmojiPresentation`, así que van a mano.
+    private static let iconosDecorativos: Set<Unicode.Scalar> = [
+        "\u{26A0}",  // ⚠ aviso
+        "\u{2757}",  // ❗
+        "\u{2714}",  // ✔
+        "\u{2716}",  // ✖
+        "\u{2611}"   // ☑
+    ]
+
+    /// Copia sin emojis: quita los escalares con presentación emoji por defecto
+    /// (✅ ◽ ⭐ 🟢 …), los adornos de arriba y los selectores de variación.
+    /// Respeta signos tipográficos y matemáticos (— – → ≈ ≥ ≠ ™ …).
+    var sinIconos: String {
+        var salida = String.UnicodeScalarView()
+        for escalar in unicodeScalars {
+            if escalar == "\u{FE0F}" || escalar == "\u{FE0E}" { continue }
+            if escalar.properties.isEmojiPresentation { continue }
+            if String.iconosDecorativos.contains(escalar) { continue }
+            salida.append(escalar)
+        }
+        return String(salida)
+    }
+
+    /// Colapsa los espacios repetidos que deja quitar un icono intercalado.
+    var espaciosCompactos: String {
+        split(separator: " ", omittingEmptySubsequences: true).joined(separator: " ")
+    }
 }
 
 // MARK: - Nivel de evidencia

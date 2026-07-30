@@ -269,9 +269,13 @@ def main():
         sys.exit("No se encontró ningún tema. ¿Cambió el formato de la biblioteca?")
 
     # Sinónimos: lo que escribe una familia -> códigos de tema.
+    # Se descartan las claves que empiezan por "_" (son notas de documentación,
+    # no listas de códigos: dejarlas rompe la carga en clientes con tipos estrictos).
     sinonimos = {}
     if os.path.exists(SINONIMOS):
-        sinonimos = json.load(open(SINONIMOS, encoding="utf-8"))
+        crudo = json.load(open(SINONIMOS, encoding="utf-8"))
+        sinonimos = {k: v for k, v in crudo.items()
+                     if not k.startswith("_") and isinstance(v, list)}
 
     indice = []
     cuerpos = {}
