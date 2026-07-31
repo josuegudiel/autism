@@ -1,0 +1,1058 @@
+{
+ "lote": 3,
+ "dominios": {
+  "CS": {
+   "codigo": "CS",
+   "titulo": "Más pseudociencias para el Detector",
+   "veredicto": "errores_graves",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "grave",
+     "tipo": "riesgo_seguridad",
+     "cita": "No es dañina en sí como alimento, pero venderla como tratamiento es engañoso.",
+     "problema": "La ficha declara la leche de camella inocua sin advertir que el producto que se promueve para autismo es leche CRUDA (sin pasteurizar). La propia lista de la FDA que la ficha cita en el punto anterior habla de \"leche de camella cruda\", y la FDA/CDC advierten que la leche sin pasteurizar puede transportar E. coli, Campylobacter, Listeria, Salmonella y (en camélidos) MERS, con riesgo especialmente alto en niños. Un padre que lea \"no es dañina\" puede darle leche de camella cruda a su hijo.",
+     "correccion": "La leche de camella pasteurizada no es dañina como alimento, pero la que se promociona como \"tratamiento\" para el autismo suele ser CRUDA (sin pasteurizar), y la FDA desaconseja consumir cualquier lácteo sin pasteurizar: puede transmitir E. coli, Salmonella, Listeria, Campylobacter o MERS, con riesgo especialmente grave en niños. Venderla como tratamiento es engañoso y, en su versión cruda, peligroso.",
+     "fuente": "https://www.fda.gov/food/buy-store-serve-safe-food/dangers-raw-milk-unpasteurized-milk-can-pose-serious-health-risk",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "mal usados (ingeridos, sin diluir, en piel) pueden causar irritación, convulsiones o reacciones alérgicas. La FDA los había listado junto a otras \"terapias\" sin base científica para autismo (quelación, oxígeno hiperbárico, leche de camella cruda, MMS), aunque retiró esa página de advertencia a fines de 2025 — una decisión criticada por organizaciones de autismo, que sostienen que las advertencias siguen siendo necesarias. 🟡",
+     "problema": "El semáforo amarillo (\"evidencia limitada o preliminar\") contradice el propio texto de la ficha, que dice que no existe evidencia de que traten síntomas nucleares y que pueden causar convulsiones. La FDA los incluía en la misma lista que la quelación y el MMS, todas marcadas 🔴 en esta biblioteca. Un amarillo sugiere a la familia que es una vía prometedora pendiente de más estudio.",
+     "correccion": "Mismo texto, pero con semáforo 🔴 para el uso como \"tratamiento\" (la FDA los listaba junto a quelación, oxígeno hiperbárico, leche de camella cruda y MMS), aclarando aparte que el uso aromático puntual y diluido, como experiencia sensorial, es otra cosa.",
+     "fuente": "https://www.propublica.org/article/rfk-jr-fda-removes-autism-treatments-warning",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "dato_incorrecto",
+     "cita": "pero hasta la fecha no existe ningún ensayo clínico en personas con autismo que confirme un beneficio real",
+     "problema": "La afirmación absoluta \"no existe ningún ensayo clínico\" es inexacta: sí hay ensayos clínicos pequeños y registrados en personas autistas (por ejemplo el ensayo ISRCTN13881401 sobre irritabilidad, y trabajos aleatorizados pequeños sobre síntomas gastrointestinales/inflamación). Lo que falta es evidencia robusta y replicada, no cualquier ensayo. Si una familia encuentra uno de esos estudios, la ficha pierde credibilidad.",
+     "correccion": "pero hasta la fecha solo hay ensayos clínicos muy pequeños y preliminares en personas autistas, sin replicación ni controles suficientes para confirmar un beneficio real",
+     "fuente": "https://www.isrctn.com/pdf/13881401",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Verifiqué con WebSearch los cuatro puntos con mayor carga fáctica y salieron correctos: (1) GcMAF — la FDA sí allanó en junio de 2015 la clínica del Dr. Jeff Bradstreet en Georgia, que lo aplicaba a más de 11.000 niños con autismo, y David Noakes (Immuno Biotech, Reino Unido) fue condenado y encarcelado 15 meses por fabricar y vender medicamento sin licencia; (2) la muerte por exorcismo corresponde a Terrance Cottrell Jr., de 8 años, Milwaukee 2003, por asfixia posicional mientras Ray Hemphill se acostaba sobre su pecho — la ficha lo describe con precisión razonable; (3) la FDA sí retiró a finales de 2025 la página que advertía sobre quelación, oxígeno hiperbárico, leche de camella cruda, MMS y aceites esenciales, y la decisión fue criticada; (4) el mecanismo del cambio de color en los baños iónicos (corrosión de electrodos) está bien documentado. Tres problemas: un vacío de seguridad grave sobre la leche de camella cruda, un semáforo amarillo demasiado benévolo para los aceites esenciales presentados como tratamiento, y una afirmación absoluta inexacta sobre la ausencia total de ensayos de curcumina. No verificado (no lo doy por bueno ni por malo): las cifras y matices sobre sales de Epsom/absorción cutánea de magnesio, los suplementos de metilación y los estudios de fotobiomodulación; tampoco pude comprobar que cada URL de la línea de fuentes responda, porque en este entorno solo dispongo de WebSearch."
+  },
+  "CT": {
+   "codigo": "CT",
+   "titulo": "Ser madre/padre autista y el diagnóstico en la adultez",
+   "veredicto": "errores_graves",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "grave",
+     "tipo": "atribucion_erronea",
+     "cita": "aunque también deja necesidades emocionales y de apoyo postdiagnóstico sin cubrir (Sinclair-Palm y cols., PMC9889483)",
+     "problema": "La autoría es falsa. PMC9889483 corresponde a \"Exploring the Experiences of Parents Whose Child has Received a Diagnosis of Autistic Spectrum Disorder in Adulthood\", de Hannah Legg, Anna Tickle, Alinda Gillott y Sarah Wilde (Journal of Autism and Developmental Disorders, 2023; 53:205-215; estudio cualitativo con 11 progenitores). Sinclair-Palm no firma ese trabajo. El contenido descrito sí coincide con el estudio, pero la cita atribuye el hallazgo a autores que no lo hicieron, lo que impide a una familia (o a un profesional) rastrear la fuente.",
+     "correccion": "aunque también deja necesidades emocionales y de apoyo postdiagnóstico sin cubrir (Legg, Tickle, Gillott y Wilde, 2023, J Autism Dev Disord; PMC9889483)",
+     "fuente": "https://link.springer.com/article/10.1007/s10803-021-05296-y",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "un estudio de 2025 (Heyworth y cols.) que comparó a progenitores autistas y no autistas de hijos autistas encontró que ambos grupos describen experiencias de crianza positivas, gratificantes y llenas de sentido, valorando el humor, la creatividad y la compañía de sus hijos de forma muy similar. Ser autista no predice peor crianza. 🟢",
+     "problema": "Se marca 🟢 (evidencia sólida: metanálisis, guías, ensayos replicados) una afirmación basada en un único estudio cualitativo de entrevistas con 80 progenitores (Heyworth, McMahon, Tan y Pellicano, 2025, Autism & Developmental Language Impairments, DOI 10.1177/23969415251357222). Un diseño cualitativo no permite concluir que algo \"no predice\" un resultado; describe experiencias, no establece ausencia de asociación. El semáforo es demasiado optimista para el diseño del estudio y la conclusión está sobreformulada.",
+     "correccion": "un estudio cualitativo de 2025 (Heyworth y cols., Autism & Developmental Language Impairments) que entrevistó a 80 progenitores de hijos autistas, la mitad de ellos autistas, encontró que ambos grupos describen experiencias de crianza positivas, gratificantes y llenas de sentido. No hay evidencia de que ser autista implique peor crianza, aunque este estudio por sí solo no permite afirmarlo de forma concluyente. 🟡",
+     "fuente": "https://journals.sagepub.com/doi/10.1177/23969415251357222",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Comprobé una a una las citas verificables. Correctas: el dato de Jones y cols. 2014 —encuesta a 128 adultos autistas del Reino Unido, y efectivamente solo el 21% se declaró satisfecho con la ayuda ofrecida tras el diagnóstico (además, el 41,9% no recibió ningún apoyo postdiagnóstico)— y Rabba y cols. 2025, \"'I'm sick of being the problem': Autistic mothers' experiences of interacting with schools for their autistic children\", publicado en Autism con el DOI 10.1177/13623613241297223 (31 madres autistas, Australia). También existe la revisión sistemática de 2024 en Autism in Adulthood con DOI 10.1089/aut.2024.0181 (\"Experiences of Autistic Parents, from Conception to Raising Adult Children\"). Dos problemas: la atribución falsa de PMC9889483 a \"Sinclair-Palm y cols.\" (son Legg, Tickle, Gillott y Wilde, 2023) y el semáforo verde sobre un único estudio cualitativo. NO VERIFICADO: que esa revisión sistemática de 2024 describa concretamente el \"efecto cascada\" (primero el hijo, después el progenitor) como \"uno de los caminos más frecuentes\" hacia el diagnóstico adulto — no pude acceder al texto completo, así que el 🟢 de ese punto queda sin confirmar ni desmentir; tampoco pude comprobar que el identificador PMC12284749 corresponda al artículo de Heyworth 2025, cuya publicación real es Autism & Developmental Language Impairments."
+  },
+  "CU": {
+   "codigo": "CU",
+   "titulo": "Síndrome de X frágil y autismo",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "los padres varones portadores de la \"premutación\" (55-200 repeticiones) la transmiten de forma estable a todas sus hijas, pero nunca a sus hijos varones (el espermatozoide solo porta la premutación)",
+     "problema": "La conclusión es correcta, pero la explicación entre paréntesis está equivocada y mezcla dos hechos distintos. Un varón no transmite el X frágil a sus hijos varones porque a ellos les pasa el cromosoma Y, no porque \"el espermatozoide solo porte la premutación\". El dato de que el espermatozoide porta solo la premutación se refiere a otra situación: los varones con MUTACIÓN COMPLETA producen espermatozoides que llevan únicamente premutación. Tal como está, puede confundir a una familia que intente entender el riesgo real.",
+     "correccion": "los padres varones portadores de la \"premutación\" (55-200 repeticiones) la transmiten a todas sus hijas y a ninguno de sus hijos varones (a ellos les pasan el cromosoma Y), y al transmitirla no se expande a mutación completa",
+     "fuente": "https://medlineplus.gov/genetics/condition/fragile-x-syndrome/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Es la ficha más sólida de las tres. Comprobé los datos centrales y coinciden con las fuentes de referencia: el X frágil es la causa hereditaria más frecuente de discapacidad intelectual y la causa genética de gen único más común de autismo; la mutación completa se define por más de 200 repeticiones CGG en FMR1 con metilación del promotor y pérdida de FMRP; aproximadamente un tercio de las personas con X frágil cumple criterios de TEA, con cifras mayores en varones (en torno al 50%) que en mujeres (alrededor del 16%); y las convulsiones aparecen en cerca del 15% de varones y el 5% de mujeres. El rango \"entre el 2% y el 6% de los casos de autismo\" está dentro de lo que publican las fuentes de referencia (que citan de 1% a 6%, y \"hasta el 5%\"), así que no lo considero un error, aunque conviene saber que el límite inferior más citado es 1%. Los rasgos físicos descritos (cara alargada, orejas grandes, hiperlaxitud, macroorquidismo pospuberal) y la recomendación de consejo genético y vigilancia médica son correctos, y el texto remite explícitamente a profesionales, sin dosis ni instrucciones de tratamiento. Único hallazgo: una explicación genética mal formulada sobre la transmisión paterna. NO VERIFICADO: no pude comprobar que las URLs concretas de la línea de fuentes (CDC, GARD, GeneReviews, MedlinePlus en español, NICHD) respondan, porque en este entorno solo dispongo de WebSearch."
+  },
+  "CV": {
+   "codigo": "CV",
+   "titulo": "Síndrome de Rett",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "**No tiene cura, pero sí manejo eficaz:** el abordaje es sintomático y de apoyo, coordinado por un equipo multidisciplinar (neurología, gastroenterología, ortopedia por la escoliosis, nutrición, terapia física/ocupacional y del habla, manejo de convulsiones), siguiendo guías de consenso internacionales (BMJ Paediatrics Open, 2020)",
+     "problema": "La ficha describe el manejo del Rett como exclusivamente 'sintomático y de apoyo' y omite por completo que desde el 10 de marzo de 2023 existe un fármaco aprobado por la FDA específicamente para el síndrome de Rett: trofinetide (DAYBUE), indicado en adultos y niños desde los 2 años, con base en el ensayo fase 3 LAVENDER (187 pacientes). Una familia que lea esta ficha en 2026 concluirá que no hay ninguna opción farmacológica aprobada y puede no plantearla a su neurólogo. La afirmación posterior de que 'no existe hoy un tratamiento que revierta la condición' sigue siendo cierta (trofinetide mejora síntomas, no revierte el trastorno), pero no sustituye a esta información.",
+     "correccion": "**No tiene cura, pero sí manejo eficaz:** el abordaje combina tratamiento sintomático y de apoyo con un equipo multidisciplinar (neurología, gastroenterología, ortopedia por la escoliosis, nutrición, terapia física/ocupacional y del habla, manejo de convulsiones), siguiendo guías de consenso internacionales (Fu et al., BMJ Paediatrics Open, 2020). Desde marzo de 2023 existe además el primer fármaco aprobado por la FDA para el síndrome de Rett, trofinetide (DAYBUE), para personas de 2 años en adelante: no es una cura ni revierte la condición, mejora parcialmente algunos síntomas y solo debe valorarlo y prescribirlo el equipo médico tratante.",
+     "fuente": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-first-treatment-rett-syndrome",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha en general sólida y bien atribuida. Comprobado con búsqueda: la causa genética MECP2 y el rango 90-95% en Rett clásico son correctos (las fuentes van del 90-95% a 'más del 95%' en Rett típico); el descubrimiento en 1999 (Amir et al., Nature Genetics) es correcto; las cuatro fases y sus edades (inicio 6-18 meses, regresión 1-4 años, meseta que empieza entre los 2 y 10 años, deterioro motor tardío tras los 10) coinciden con NINDS/NICHD; los signos característicos son correctos; la retirada del DSM-5 en 2013 es correcta; y la guía de consenso citada existe y está bien atribuida (Fu C, Armstrong D, Marsh E, et al., 'Consensus guidelines on managing Rett syndrome across the lifespan', BMJ Paediatrics Open 2020;4:e000717, DOI 10.1136/bmjpo-2020-000717), incluido el método Delphi modificado. El único fallo real es la omisión de trofinetide. NO VERIFICADO (no comprobable sin abrir enlaces): que el identificador PMC7488790 corresponda efectivamente a esa guía de la BMJ. Matiz no verificado y por eso no contado como hallazgo: la frase 'muchas niñas reciben primero un diagnóstico de autismo hasta que se identifica la mutación de MECP2 y se revisa el diagnóstico' puede dar a entender que el diagnóstico de autismo siempre se retira, cuando el DSM-5 permite mantener un diagnóstico de TEA con el especificador 'asociado a una condición genética conocida' si la persona cumple criterios; convendría que un clínico revise esa redacción. El semáforo 🔴 sobre promesas de curación está bien puesto y la ficha remite siempre al equipo médico: sin problemas de seguridad."
+  },
+  "CW": {
+   "codigo": "CW",
+   "titulo": "Esclerosis tuberosa y otros síndromes (Angelman, Phelan-McDermid, 22q)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "por eso guías como las del Colegio Americano de Genética Médica (ACMG) recomiendan ofrecer evaluación genética (microarray cromosómico, X frágil en varones, PTEN si hay macrocefalia) a las personas con diagnóstico de autismo",
+     "problema": "Esa es la recomendación de la guía ACMG de 2013 (microarray cromosómico como prueba de primer nivel), pero está superada: en 2021 el ACMG publicó su primera guía basada en evidencia sobre secuenciación ('Exome and genome sequencing for pediatric patients with congenital anomalies or intellectual disability', Genetics in Medicine 2021) en la que recomienda firmemente la secuenciación de exoma o genoma como prueba de primer o segundo nivel, incluidos niños con diagnóstico de autismo sin otros retrasos, sustituyendo el abordaje escalonado que empezaba por microarray. Un padre que lea la ficha puede pedir solo un microarray y quedarse sin la prueba que hoy tiene mayor rendimiento diagnóstico.",
+     "correccion": "por eso las guías de genética médica recomiendan ofrecer evaluación genética a las personas con diagnóstico de autismo: el ACMG recomendaba en 2013 microarray cromosómico, X frágil y PTEN si hay macrocefalia, y desde su guía de 2021 recomienda firmemente la secuenciación de exoma o genoma como prueba de primer o segundo nivel (también en autismo sin otros retrasos); qué prueba corresponde en cada caso lo decide el servicio de genética médica",
+     "fuente": "https://www.gimjournal.org/article/S1098-3600(21)05168-6/fulltext",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha con cifras notablemente bien verificadas. Comprobado con búsqueda: la prevalencia de TEA en esclerosis tuberosa del 40-50% y el rango amplio de la literatura están respaldados (un estudio reporta 40,5%; otras fuentes 21-50%), igual que el mayor riesgo con TSC2 (85,6% de los pacientes TSC con autismo portan variante TSC2) y con espasmos infantiles; el ~34% de personas con TSC que tienen a la vez epilepsia y autismo coincide con el 33,7% del estudio citado (Specchio et al., 'Autism and Epilepsy in Patients With Tuberous Sclerosis Complex', 2020, PMC7431762); la deleción 22q11.2 con riesgo de esquizofrenia en torno al 25% y autismo en un rango amplio (10-50% según estudio) es correcta; el gen UBE3A en Angelman es correcto; y la cifra de Phelan-McDermid está bien atribuida y bien calculada: el estudio de Mount Sinai (Levy et al., 'Prevalence of Phelan McDermid Syndrome Estimated To Be ~1:7300 Using a Multisource Model', Autism Research, 2026, sobre ~180.000 personas autistas con estudio genético) reporta exactamente 13,7 por 100.000 = 1 de cada 7.300, y el semáforo 🟡 es apropiado por ser una estimación reciente pendiente de replicación. El 17% de mutaciones PTEN en niños con autismo y macrocefalia extrema es real (Butler et al., 2005) aunque procede de una serie pequeña (3 de 18 niños); las fuentes indican que ese porcentaje se ha mantenido cerca de la media ponderada de estudios posteriores, por lo que no lo cuento como error, pero convendría explicitar en la ficha que el dato nace de una serie pequeña. NO VERIFICADO: que SHANK3 explique 'hasta un 1%' de los casos de autismo (cifra plausible y dentro de lo que suele citarse, 0,5-2%, pero no la confirmé con una fuente concreta). El bloque 🔴 sobre quelación, dietas milagro y suplementos está correctamente marcado y la ficha remite a especialistas: sin problemas de seguridad."
+  },
+  "CX": {
+   "codigo": "CX",
+   "titulo": "Autismo y síndrome de Down (co-ocurrencia)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "esto representa unas 17-20 veces la tasa de autismo en la población general",
+     "problema": "La comparación 17-20 veces procede del estudio de DiGuiseppi et al. (2010) y está calculada contra la prevalencia general de autismo estimada EN AQUEL MOMENTO (cercana al 1%). Con los datos actuales de la red ADDM de los CDC (año de vigilancia 2022: 1 de cada 31 niños de 8 años, ~3,2%), una prevalencia del 16-18% en síndrome de Down equivale a unas 5-6 veces la tasa general, no 17-20. Presentada como dato actual, la cifra infla el contraste en un factor de tres. Además contradice la propia biblioteca: la ficha CW dice '~2-3% en población general', valor con el que el múltiplo de 17-20 es aritméticamente imposible.",
+     "correccion": "esto representa unas 5-6 veces la tasa actual de autismo en la población general (1 de cada 31 niños de 8 años, ~3,2%, red ADDM de los CDC, año de vigilancia 2022); la comparación de 17-20 veces que aparece en el estudio de 2010 se calculó frente a la prevalencia general estimada entonces, cercana al 1%",
+     "fuente": "https://www.cdc.gov/mmwr/volumes/74/ss/pdfs/ss7402a1-H.pdf",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha bien construida y con buenas fuentes; el único fallo es una comparación numérica desactualizada. Comprobado con búsqueda: la prevalencia de autismo en síndrome de Down del 16-18% es la cifra habitual y el rango '12% a 41%' coincide exactamente con el que reporta la revisión sistemática citada (PMC9387185, 'Autism and Down syndrome: early identification and diagnosis', 2022, 15 artículos seleccionados de 1.729); el paréntesis sobre el estudio de 2010 es correcto y está bien contado: DiGuiseppi et al. (J Dev Behav Pediatr 2010;31:181-191, PubMed 20375732) estimó inicialmente ~42% con cuestionarios (SCQ) y lo rebajó a 18,2% (IC95% 9,7-26,8) al reevaluar con pruebas presenciales rigurosas; la brecha de ~4,6 años entre la primera sospecha familiar y el diagnóstico coincide con el estudio de cuidadores citado (Spinazzi et al., 'Autism Spectrum Disorder in Down Syndrome: Experiences from Caregivers', PMC10907487), que reporta una media de 4,65 años. NO VERIFICADO: las cifras concretas de ~3,9 años (edad al notar diferencias) y ~8,5 años (edad al diagnóstico) por separado — son coherentes entre sí y con la brecha de 4,6 años confirmada, pero no las localicé de forma explícita; tampoco pude comprobar el texto exacto de la guía del DSMIG sobre cuándo sospechar autismo en preescolares con síndrome de Down. Los semáforos son razonables (🟡 para eclipsamiento diagnóstico, retraso diagnóstico y limitaciones de los instrumentos; 🟢 para prevalencia y recomendación DSMIG). El bloque 🔴 sobre 'curas' y la remisión a un equipo con experiencia en ambas condiciones son correctos: sin problemas de seguridad."
+  },
+  "CY": {
+   "codigo": "CY",
+   "titulo": "Autismo, dolor y su expresión",
+   "veredicto": "correcto",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [],
+   "resumen": "Ficha sólida. Verificado por búsqueda: (1) Allely (2013), 'Pain Sensitivity and Observer Perception of Pain in Individuals with Autistic Spectrum Disorder', The Scientific World Journal, PMC3697411 — autor, año y revista correctos, y la conclusión citada es literalmente la del trabajo (los estudios de caso reportan insensibilidad, pero la mayoría de los estudios experimentales cuestiona esa idea); también es del propio artículo la observación sobre que no todos los niños autistas expresan el malestar 'llorando, quejándose o buscando consuelo', por lo que la segunda viñeta está bien atribuida a 'los mismos autores'. (2) El perfil 'pro-nociceptivo' descrito en la tercera viñeta corresponde a Hoffman et al. (2022, PAIN, 'Indifference or hypersensitivity? Solving the riddle of the pain profile in individuals with autism'): umbrales de detección térmicos y de dolor similares, puntuaciones de dolor más altas por encima del umbral y menor inhibición del dolor continuo. La ficha lo marca 🟡 y advierte de heterogeneidad, lo cual es correcto y prudente. (3) La página de CHOP (car-autism-roadmap, Self-Injurious Behavior) sí recomienda consultar al médico para descartar desencadenantes médicos (otitis, dolor dental, cefalea, estreñimiento, crisis epilépticas), sobre todo si la conducta es nueva o repentina: la quinta viñeta está bien respaldada. Semáforos proporcionados (🟢 solo donde hay revisión o recomendación institucional; 🟡 en lo heterogéneo). No da dosis ni maneja el dolor por su cuenta y remite siempre a evaluación médica. NO VERIFICADO: no puedo comprobar si las URLs responden ni el contenido exacto de las páginas de Frontiers, Wolters Kluwer y Autism Research Institute más allá de que existen con esos títulos; el matiz de llamar 'revisión sistemática' a Allely (2013) —descrita habitualmente como revisión de 15 estudios, 10 experimentales— no se considera error porque la ficha ya distingue estudios de caso de experimentales."
+  },
+  "CZ": {
+   "codigo": "CZ",
+   "titulo": "Hospitalización, cirugía y anestesia (preparación)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Reducir estímulos innecesarios en el entorno ayuda de verdad:** salas de espera sensoriales, luces tenues, evitar ruidos de monitores o alarmas cuando sea posible, y recuperación en habitación tranquila son ajustes razonables que varios hospitales pediátricos ya implementan (por ejemplo, salas sensoriales previas a quirófano; en un hospital pediátrico el programa sensorial redujo el uso de sedación preoperatoria del 90% al 20% de los pacientes). 🟢",
+     "problema": "El semáforo verde (evidencia sólida: metanálisis, guías, ensayos replicados) no corresponde. La cifra del 90% al 20% es un dato autoinformado y no controlado del Dayton Children's Hospital sobre su propio programa desde 2017 (la cifra en sí está bien copiada de la fuente), no el resultado de un estudio. El único ensayo aleatorizado publicado sobre entorno sensorial adaptado en el perioperatorio de niños autistas (n=60, The Lancet Regional Health – Americas, 2024) NO encontró diferencias significativas en ansiedad preoperatoria (mYPAS: 43,5 vs 42, p=0,88; 47,8 vs 48,4, p=0,76; 36,4 vs 43,8, p=0,15) y concluye que el entorno sensorial adaptado no redujo significativamente la ansiedad. Afirmar 'ayuda de verdad' en verde es más optimista que la evidencia y contradice el propio criterio de la ficha, que marca 🟡 los relatos sociales por evidencia mixta.",
+     "correccion": "**Reducir estímulos innecesarios en el entorno parece ayudar, aunque la evidencia controlada aún es débil:** salas de espera sensoriales, luces tenues, evitar ruidos de monitores o alarmas cuando sea posible, y recuperación en habitación tranquila son ajustes razonables que varios hospitales pediátricos ya implementan. Un hospital pediátrico (Dayton Children's) informa que desde 2017 su programa sensorial redujo el uso de medicación calmante previa a cirugía del 90% al 20% de los pacientes, pero es un dato propio del hospital, sin grupo de comparación; el único ensayo aleatorizado publicado (60 niños autistas, The Lancet Regional Health – Americas, 2024) no halló diferencias significativas en ansiedad preoperatoria frente al cuidado habitual. 🟡",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11031801/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "atribucion_erronea",
+     "cita": "El \"My Health Passport\" de la National Autistic Society (Reino Unido) está avalado por el Department of Health, promovido por NHS England y recomendado como buena práctica por NICE",
+     "problema": "El aval del Department of Health y la promoción por NHS England sí figuran en la propia National Autistic Society, pero NICE no recomienda ese documento concreto: la guía NICE CG142 (autismo en adultos) recomienda de forma genérica facilitar un 'health passport' (por ejemplo, una tarjeta plastificada) con las necesidades de atención de la persona. Atribuir a NICE el respaldo del documento de la NAS es una imprecisión de atribución.",
+     "correccion": "El \"My Health Passport\" de la National Autistic Society (Reino Unido) está avalado por el Department of Health y promovido por NHS England; además, la guía NICE CG142 recomienda con carácter general que las personas autistas adultas dispongan de un \"pasaporte de salud\" con sus necesidades de atención",
+     "fuente": "https://www.nice.org.uk/guidance/cg142/chapter/recommendations",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha correcta en lo esencial, con dos ajustes. Verificado: el artículo de BJA Education 'Autism and anaesthesia: a simple framework for everyday practice' (Brown, Rabenstein y Doherty, 2024, BJA Education 24(4):129-137, marco Autistic SPACE) existe y es lo que dice ser; 'A realist review of health passports for Autistic adults' (PLOS ONE 2023, PMC10490970) respalda exactamente el matiz que da la ficha: 13 fuentes de calidad variable, pocas con resultados cuantitativos, mejoras en comunicación y autoeficacia pero impacto clínico poco establecido — y la ficha lo marca 🟡, lo cual es apropiado; la cifra del 90% al 20% está bien copiada de la fuente de Dayton Children's, aunque su semáforo verde es excesivo (ver hallazgo). Contenido de seguridad correcto: no da dosis ni medicación, remite el plan anestésico a la valoración individual del anestesiólogo y advierte en rojo contra los supuestos 'protocolos anestésicos para autistas', que es un uso adecuado del semáforo. NO VERIFICADO: no puedo comprobar respuesta de URLs (política de red) ni el contenido concreto de las páginas del Royal College of Anaesthetists, Stony Brook Medicine y NAS; la recomendación de presencia familiar en la inducción y de programar primera cita del día se atribuye genéricamente a 'guías de anestesiología', coherente con el marco Autistic SPACE, pero no he podido confirmar cada recomendación literal dentro del texto de esas guías."
+  },
+  "DA": {
+   "codigo": "DA",
+   "titulo": "Pubertad y menstruación: manejo práctico",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "riesgo_seguridad",
+     "cita": "probar distintas opciones (toallas de tela, ropa interior menstrual, copa) con calma, sin prisa y en un ambiente tranquilo suele mejorar la tolerancia",
+     "problema": "La ficha propone productos internos (tampones se mencionan antes, copa se propone como opción a probar) sin ninguna advertencia sobre el tiempo máximo de uso ni sobre el síndrome de shock tóxico, en una ficha que en la viñeta siguiente reconoce precisamente dificultades de función ejecutiva y 'dependencia de recordatorios verbales'. Los materiales específicos para adolescentes autistas sí incluyen esa advertencia (riesgo raro pero potencialmente mortal si el tampón no se cambia con la frecuencia debida; las compresas, en cambio, son seguras para toda la noche). Omitirlo en una guía dirigida a familias de adolescentes con dificultades de planificación y de percepción interoceptiva es un vacío de seguridad.",
+     "correccion": "probar distintas opciones (toallas de tela, ropa interior menstrual, copa) con calma, sin prisa y en un ambiente tranquilo suele mejorar la tolerancia. Si se opta por productos internos (tampón o copa), hay que enseñar y apoyar con alarmas o recordatorios visuales el cambio dentro del tiempo indicado por el fabricante: no cambiarlos a tiempo se asocia al síndrome de shock tóxico, raro pero grave. Las compresas y la ropa interior menstrual no tienen ese riesgo y son la opción más segura cuando cuesta llevar el control del tiempo",
+     "fuente": "https://kentresiliencehub.org.uk/wp-content/uploads/2023/11/Autistic-young-people-menstruation-leaflet-293.58.pdf",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Anticipar antes de que ocurra, con apoyos visuales:** historias sociales, calendarios con fotos reales y videos-modelado ayudan a que la niña o adolescente autista entienda qué pasará, cuándo y qué hacer, evitando que el primer sangrado sea una sorpresa alarmante; se recomienda empezar la conversación antes del inicio típico de los cambios puberales, no después. 🟢",
+     "problema": "El verde implica metanálisis, guías clínicas o ensayos replicados. La base real es un puñado de estudios muy pequeños: un estudio piloto de historia social con análisis de tareas en TRES niñas autistas (Sexuality and Disability, 2011) y unos pocos trabajos de videomodelado (una revisión sistemática 2012-2017 localizó solo dos estudios de videomodelado sobre salud menstrual; el ensayo de videomodelado con simulación concluye que hacen falta más ensayos clínicos). Además es incoherente con la propia biblioteca: en la ficha CZ las historias sociales se marcan 🟡 por evidencia mixta.",
+     "correccion": "**Anticipar antes de que ocurra, con apoyos visuales:** historias sociales, calendarios con fotos reales y videos-modelado ayudan a que la niña o adolescente autista entienda qué pasará, cuándo y qué hacer, evitando que el primer sangrado sea una sorpresa alarmante; se recomienda empezar la conversación antes del inicio típico de los cambios puberales, no después. La investigación existente son estudios pequeños (un piloto de historia social con tres niñas y unos pocos trabajos de videomodelado), prometedores pero aún sin replicación amplia. 🟡",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11260660/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Elegir el producto según la sensibilidad sensorial, no por \"lo normal\":** el adhesivo de las toallas, la sensación de humedad, el olor o la textura de tampones/copa pueden generar malestar intenso o rechazo; probar distintas opciones (toallas de tela, ropa interior menstrual, copa) con calma, sin prisa y en un ambiente tranquilo suele mejorar la tolerancia. 🟢",
+     "problema": "El malestar sensorial con los productos está bien documentado, pero solo en estudios cualitativos y de encuesta (la revisión sistemática cualitativa 'Menstruation and Autism', Autism in Adulthood, PMC7617708, y el estudio de experiencias de Steward et al., PMC6223765). Que probar distintas opciones 'suele mejorar la tolerancia' es una recomendación práctica sin ensayos que la respalden: no hay estudios comparativos de productos menstruales en personas autistas. Verde (evidencia sólida) es demasiado optimista para una recomendación basada en experiencia y evidencia cualitativa.",
+     "correccion": "**Elegir el producto según la sensibilidad sensorial, no por \"lo normal\":** el adhesivo de las toallas, la sensación de humedad, el olor o la textura de tampones/copa pueden generar malestar intenso o rechazo (bien descrito en estudios cualitativos con personas autistas que menstrúan); probar distintas opciones con calma, sin prisa y en un ambiente tranquilo suele ayudar, aunque no hay estudios comparativos que midan qué producto tolera mejor cada perfil sensorial. 🟡",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617708/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Un plan concreto de higiene y \"kit de emergencia\":** paso a paso visual para colocar/cambiar el producto, una bolsita con recambios en la mochila y una rutina fija para desechar el material reduce la ansiedad y la dependencia de recordatorios verbales en el momento. 🟢",
+     "problema": "Mismo problema de semáforo: la enseñanza de higiene menstrual con análisis de tareas y apoyos visuales solo se ha estudiado en diseños de caso único y muestras muy pequeñas, y esos estudios miden adquisición de la habilidad, no reducción de la ansiedad, que es lo que afirma la viñeta. Es una recomendación razonable, pero no evidencia sólida.",
+     "correccion": "**Un plan concreto de higiene y \"kit de emergencia\":** paso a paso visual para colocar/cambiar el producto, una bolsita con recambios en la mochila y una rutina fija para desechar el material ayudan a ganar autonomía y a depender menos de recordatorios verbales en el momento; los estudios disponibles (diseños de caso único, muestras muy pequeñas) miden la adquisición de la habilidad, no la reducción de la ansiedad. 🟡",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11260660/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "desactualizado",
+     "cita": "**El síndrome premenstrual disfórico (PMDD) merece atención, no minimización:**",
+     "problema": "El nombre correcto en español y en la clasificación vigente (DSM-5/DSM-5-TR) es 'trastorno disfórico premenstrual' (TDPM), no 'síndrome premenstrual disfórico'. Importa porque es el término con el que una familia debe buscar información y plantearlo al profesional.",
+     "correccion": "**El trastorno disfórico premenstrual (TDPM, o PMDD por sus siglas en inglés) merece atención, no minimización:**",
+     "fuente": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9344571/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Contenido bien orientado y bien atribuido en lo bibliográfico, pero con semáforos sistemáticamente demasiado optimistas y una omisión de seguridad. Verificado: PMC7617708 es efectivamente 'Menstruation and Autism: a qualitative systematic review' (Autism in Adulthood) y PMC5026176 es 'Autistic traits in women with primary dysmenorrhea: a case-control study' — ambas etiquetas de la línea de Fuentes coinciden con el trabajo real, no hay atribución cruzada. La afirmación de asociación entre rasgos autistas y dolor menstrual está correctamente descrita y correctamente matizada: en ese estudio (70 mujeres con dismenorrea primaria y 70 controles) las puntuaciones AQ total y de la subescala Atención-Cambio fueron más altas en el grupo con dismenorrea y correlacionaron con el dolor medido por EVA, aunque en regresión solo la subescala predijo el dolor; la ficha acierta al marcarlo 🟡 y al advertir de muestras pequeñas. La viñeta sobre PMDD también está bien calibrada en 🟡: las cifras publicadas son muy dispares (desde 14,3% frente a 9,5% en no autistas hasta el 92% de un estudio de 2008 muy pequeño), lo que justifica hablar de 'indicios' y no de prevalencia establecida. La viñeta roja sobre no suprimir la regla ni 'equilibrar hormonas' sin médico es correcta y necesaria. Los tres problemas de fondo son: (1) tres viñetas prácticas en verde cuya base real son estudios de caso único y muestras diminutas; (2) la falta de advertencia sobre tiempo de cambio y shock tóxico al proponer productos internos a adolescentes con dificultades de función ejecutiva; (3) el nombre desactualizado del trastorno disfórico premenstrual. NO VERIFICADO: no puedo comprobar si las URLs responden ni el contenido de las páginas de National Autistic Society, Raising Children Network, Autism Research Institute y Autistic Girls Network; en concreto, la búsqueda muestra que la NAS aloja su material sobre menstruación en /learn/knowledge-hub/professional-practice/menstruation, pero no puedo determinar si la ruta citada en la ficha (/advice-and-guidance/physical-health/menstruation) sigue activa, así que no la doy ni por buena ni por rota."
+  },
+  "DB": {
+   "codigo": "DB",
+   "titulo": "Higiene sensorial: cortes de pelo, uñas, dientes y baño",
+   "veredicto": "errores_graves",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "grave",
+     "tipo": "riesgo_seguridad",
+     "cita": "aunque a veces una sujeción breve y acordada puede ser necesaria por seguridad puntual (p. ej. una emergencia dental), convertirla en la estrategia habitual aumenta el miedo y la evitación futura",
+     "problema": "En una ficha dirigida a padres sobre rutinas de higiene EN CASA (cortar uñas, pelo, cepillado), validar que 'una sujeción breve puede ser necesaria' abre la puerta a que una familia sujete físicamente a su hijo durante estas tareas. La sujeción física con fines clínicos (estabilización protectora) es un procedimiento sanitario que solo puede indicar y aplicar un profesional formado, con consentimiento informado previo, documentado y nunca como método rutinario ni punitivo; la ficha no dice nada de esto ni remite a un profesional antes de plantearla. Además, no existe ninguna 'emergencia' en el corte de pelo o de uñas que justifique una sujeción.",
+     "correccion": "Nunca forzar ni sujetar: si una tarea de higiene no se puede completar sin sujetar al niño, hay que parar y consultar con el odontopediatra, el pediatra o el terapeuta ocupacional. La sujeción física ('estabilización protectora') es un procedimiento clínico que solo un profesional formado puede valorar y aplicar, en consulta, con consentimiento informado previo de la familia y nunca como rutina ni en casa. En casa la vía es siempre la desensibilización gradual, los apoyos visuales y posponer la tarea antes que forzarla.",
+     "gravedad_nota": null,
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Elegir bien la herramienta y el momento:** un cepillo de dientes de cerdas suaves y tamaño adecuado (o un cepillo vibrador), cortaúñas silenciosos o limas, y agendar citas de peluquería en horarios de poca afluencia (menos ruido y espera) marcan una diferencia real; llevar un objeto reconfortante (peluche, auriculares con cancelación de ruido) también ayuda. 🟢",
+     "problema": "Se marca 🟢 (evidencia sólida: metanálisis, guías clínicas o ensayos replicados) una recomendación práctica cuyo único respaldo en la lista de fuentes son kits divulgativos de asociaciones (Autism Speaks, National Autistic Society). No hay en la ficha ninguna guía clínica, metanálisis ni ensayo que sostenga estas elecciones concretas de herramienta u horario. El problema es sistemático: cinco de las siete viñetas están en 🟢 con el mismo tipo de fuente.",
+     "correccion": "Misma redacción pero con semáforo 🟡 (práctica recomendada por guías divulgativas de asociaciones de autismo, sin ensayos que la hayan evaluado), o bien mantener 🟢 solo si se añade una fuente de nivel guía clínica o revisión sistemática.",
+     "fuente": "https://www.autismspeaks.org/tool-kit/haircutting-training-guide",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Verifiqué por búsqueda las atribuciones a Autism Speaks: el 'Haircutting Training Guide' existe y efectivamente incluye un cronograma visual y material para estilistas (correcto lo que dice la viñeta 2), y el 'ATN/AIR-P Tool Kit for Dental Professionals' también existe y va dirigido a profesionales dentales (correcto lo de la viñeta 6). La ficha no da cifras, dosis ni porcentajes, así que no hay datos numéricos que contrastar. El problema serio es la viñeta roja: admite la sujeción física 'breve y acordada' sin exigir profesional ni consentimiento informado, en un texto pensado para padres que hacen estas tareas en casa. Segundo problema: uso demasiado optimista del 🟢 en recomendaciones prácticas respaldadas solo por kits divulgativos. NO he podido comprobar si los enlaces responden (WebFetch no disponible en este entorno), por lo que enlaces_comprobados va a 0 y enlaces_rotos vacío; tampoco he verificado el contenido concreto de las páginas de la National Autistic Society citadas ni de las fichas 'tool-kit-excerpt/autism-brushing-teeth' y 'worksheet/tooth-brushing-task-analysis': quedan como no verificadas, ni buenas ni malas."
+  },
+  "DC": {
+   "codigo": "DC",
+   "titulo": "Ropa y vestirse (sensibilidad táctil)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "en un estudio con 86 adultos autistas, la sensibilidad táctil a la ropa (etiquetas, costuras, tejidos sintéticos o rasposos, prendas ajustadas) apareció en torno al 49–73 % de los ítems",
+     "problema": "El estudio existe y el tamaño muestral es correcto (Ferrer Knight y Birtles, 'I feel trapped in my safe clothes', revista Autism, 2025; encuesta online a 86 adultos autistas del Reino Unido). Pero lo que el trabajo reporta como resultado cuantitativo es una relación predictiva entre hipersensibilidad táctil, insatisfacción con la apariencia y menor autoestima, más un análisis cualitativo de estrategias; no he encontrado en ninguna descripción del estudio ese rango '49–73 % de los ítems'. La expresión 'porcentaje de los ítems' además no significa nada para un padre: no es prevalencia de personas afectadas. Cifra no verificable en la fuente citada.",
+     "correccion": "Sustituir por una formulación sin cifra inventada: 'en un estudio con 86 adultos autistas del Reino Unido, la hipersensibilidad táctil a la ropa (etiquetas, costuras, tejidos rasposos, prendas ajustadas) fue una experiencia habitual y se asoció con mayor insatisfacción con la apariencia y menor autoestima'. Si se quiere dar un porcentaje, hay que tomarlo textualmente del artículo y decir de qué es porcentaje (de participantes, no 'de ítems').",
+     "fuente": "https://journals.sagepub.com/doi/10.1177/13623613251366882",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "estudios con adultos autistas describen la hipersensibilidad táctil a la ropa como una experiencia sensorial genuina que puede generar ansiedad, evitación de ciertas prendas (\"ropa segura\") e interferir en la vida diaria (incluso vinculándose con menor satisfacción con la apariencia y menor autoestima); no se trata de un gusto caprichoso. 🟢",
+     "problema": "La parte final (vínculo con satisfacción con la apariencia y autoestima) descansa en un único estudio transversal por encuesta de 2025 (n=86, Reino Unido, autoselección online), no en metanálisis ni en estudios replicados. Marcarlo 🟢 da a los padres la impresión de que esa asociación está firmemente establecida.",
+     "correccion": "Separar las dos afirmaciones: mantener 🟢 para 'la hipersensibilidad táctil a la ropa es una diferencia sensorial real, no un capricho' (respaldada por literatura amplia y por las guías de la National Autistic Society), y marcar 🟡 la asociación con menor satisfacción con la apariencia y menor autoestima, señalando que procede de un solo estudio transversal con 86 adultos.",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/41055462/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "un estudio pequeño con niños autistas (17 completaron el protocolo, 2 rechazaron la prenda) encontró mejoras moderadas a grandes en la participación tras usar ropa con presión/compresión",
+     "problema": "Los datos son correctos (Mische Lawson y cols., Occupational Therapy International, 2022: se reclutaron 21 niños, 17 completaron el estudio de 14 semanas, 2 rechazaron las prendas, diferencias moderadas a grandes en COPM y GAS). Faltan dos matices que cambian cómo debe leerlo un padre: el diseño era pretest-postest sin grupo control (no permite atribuir la mejora a la prenda) y los 17 participantes que completaron eran todos varones.",
+     "correccion": "Añadir el matiz: 'un estudio pequeño y sin grupo control (21 niños reclutados, 17 varones completaron las 14 semanas, 2 rechazaron la prenda) encontró mejoras moderadas a grandes en los objetivos de participación tras 8 semanas usando ropa de compresión; al no haber grupo de comparación no puede saberse cuánto se debe a la prenda'.",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/35800976/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Comprobé por búsqueda las dos referencias científicas y ambas existen y están bien atribuidas: 'I feel trapped in my safe clothes' (Ferrer Knight y Birtles, revista Autism, 2025, encuesta a 86 adultos autistas del Reino Unido) y el estudio de prendas sensoriales (Mische Lawson y cols., Occupational Therapy International, 2022; 21 reclutados, 17 completaron, 2 rechazaron la prenda, efectos moderados a grandes en COPM y GAS). El semáforo 🟡 de la viñeta de prendas de compresión está bien puesto y la advertencia final contra forzar la prenda es correcta. El fallo principal es la cifra '49–73 % de los ítems', que no aparece en ninguna descripción del estudio citado y que además está mal expresada para el público lector. NO pude comprobar si los enlaces responden ni el contenido de las dos páginas de la National Autistic Society citadas (WebFetch no disponible): en particular la URL etiquetada 'Autism and sensory processing' queda como no verificada, ni correcta ni incorrecta. Tampoco está respaldada por ninguna de las cuatro fuentes listadas la afirmación 🟢 sobre encadenamiento hacia atrás/adelante en terapia ocupacional (es práctica habitual, pero la ficha no cita literatura de terapia ocupacional): queda pendiente de fuente."
+  },
+  "DD": {
+   "codigo": "DD",
+   "titulo": "Salir: supermercado, restaurantes y espacios públicos",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "la National Autistic Society (Reino Unido) impulsó la campaña \"Autism Hour\" en la que miles de comercios (Tesco, Asda, Lidl, entre otros) reducen música, avisos por megafonía y luces durante un tramo horario concreto; pregunta en tiendas y centros comerciales locales si tienen algo similar. 🟡",
+     "problema": "La campaña Autism Hour está en pausa desde octubre de 2020 y la National Autistic Society la sustituyó por sus programas de acreditación (Autism Friendly Award y, más recientemente, Neuroinclusive Access Award). El presente ('reducen música, avisos por megafonía y luces') hace creer a una familia que existe hoy un programa nacional al que acogerse, cuando lo que hay son horas tranquilas por iniciativa de cada cadena y establecimientos con el sello Autism Friendly Award.",
+     "correccion": "'La National Autistic Society impulsó entre 2017 y 2020 la campaña Autism Hour, hoy en pausa: ahora reconoce a los establecimientos que reducen ruido, luces y megafonía mediante su Autism Friendly Award y su Neuroinclusive Access Award, y muchas cadenas mantienen su propia hora tranquila. Pregunta en tus tiendas y centros comerciales locales si tienen hora tranquila o el sello Autism Friendly.'",
+     "fuente": "https://www.autism.org.uk/what-we-do/news/pausing-autism-hour",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "no interpreten un cierre o meltdown como un capricho: es una respuesta involuntaria del sistema nervioso a la sobrecarga, y la investigación sobre sensibilidad sensorial y ansiedad en autismo respalda que retirarse a un espacio más tranquilo ayuda a regular, no \"premia\" la conducta. 🟢",
+     "problema": "Las dos fuentes de investigación listadas para esto son un capítulo de revisión sobre procesamiento sensorial, interocepción y ansiedad (PMID 39671066, con datos de 38 no autistas y 43 autistas) y una revisión narrativa publicada en Cureus (PMC7290113). Ambas tratan la relación entre diferencias sensoriales y ansiedad; ninguna evalúa si retirarse a un espacio tranquilo regula el meltdown ni si eso refuerza o no la conducta. La afirmación es razonable y coherente con la práctica, pero el 🟢 la presenta como conclusión demostrada por esas fuentes, y no lo es.",
+     "correccion": "Reformular como: 'un meltdown es una respuesta involuntaria del sistema nervioso a la sobrecarga, no un capricho; la investigación documenta la relación entre sensibilidad sensorial y ansiedad en autismo, y las guías prácticas recomiendan reducir estímulos y ofrecer un espacio tranquilo. No se conoce evidencia de que retirarse refuerce el meltdown.' Semáforo 🟡 para la parte de 'retirarse ayuda a regular, no premia la conducta', reservando el 🟢 para la relación sensorialidad-ansiedad.",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/39671066/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "atribucion_erronea",
+     "cita": "miles de comercios (Tesco, Asda, Lidl, entre otros)",
+     "problema": "Los comercios documentados como participantes de la campaña Autism Hour de la National Autistic Society son cadenas como Sainsbury's, Co-op y Marks & Spencer (además de The Entertainer, la propia noticia que enlaza la ficha). Tesco y Asda desarrollaron sus propias 'quiet hours' (Asda en Manchester en 2016, Tesco en su tienda de Crawley), y Lidl y Morrisons tienen igualmente iniciativas propias de hora tranquila; la ficha los presenta a todos como participantes de Autism Hour, mezclando dos cosas distintas.",
+     "correccion": "'…campaña Autism Hour, a la que se sumaron cadenas como Sainsbury's, Co-op o Marks & Spencer; por su parte Asda, Tesco, Morrisons o Lidl han desarrollado sus propias horas tranquilas.'",
+     "fuente": "https://www.thegrocer.co.uk/news/sainsburys-co-op-and-mands-to-participate-in-autism-hour/558274.article",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Comprobé los datos duros de la ficha. El de Walmart es correcto: horario sensorial de 8:00 a 10:00 hora local todos los días en todas sus tiendas de Estados Unidos (y Puerto Rico) desde noviembre de 2023, con luces atenuadas, música apagada e imagen estática en las pantallas. La investigación de la Universidad de Reading de 2024 existe y dice lo que la ficha le atribuye: las horas tranquilas no bastan, hacen falta formación del personal, señalización y mapas, espacios de calma y otras adaptaciones permanentes. Las dos referencias científicas están bien identificadas: PMID 39671066 corresponde efectivamente a 'Sensory Processing and Anxiety: Within and Beyond the Autism Spectrum' y PMC7290113 a 'The Sensory Abnormalities and Neuropsychopathology of Autism and Anxiety' (revisión narrativa en Cureus, revista de calidad baja para sostener un 🟢). Los fallos son: la campaña Autism Hour se presenta como vigente cuando está en pausa desde octubre de 2020, la lista de cadenas participantes mezcla Autism Hour con horas tranquilas propias, y una afirmación 🟢 sobre retirarse durante el meltdown que las fuentes citadas no evalúan. Ninguna cuestión de seguridad: la ficha no da dosis, no describe tratamientos y desaconseja correctamente castigar o reprimir el meltdown. NO pude comprobar si los enlaces responden (WebFetch no disponible), así que enlaces_comprobados queda a 0 y enlaces_rotos vacío; tampoco verifiqué el contenido de la página de Autism Speaks 'Going Out to Eat' ni de la noticia de la NAS sobre The Entertainer: quedan como no verificadas."
+  },
+  "DE": {
+   "codigo": "DE",
+   "titulo": "Acoso escolar (bullying): prevención y actuación",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "atribucion_erronea",
+     "cita": "los metaanálisis distinguen acoso verbal (el más frecuente: ~50% en Trundle et al. y ~58% en Park et al.), relacional o exclusión social (~36%), físico (~30%) y cibernético (~15%)",
+     "problema": "El desglose por tipo de acoso (verbal 58%, relacional 36%, físico 30%) procede de Park et al. (2020), no de Trundle et al. (2023). Trundle et al. NO reporta un subtipo 'acoso verbal': su análisis por subgrupos da acoso escolar 47%, victimización sexual 40%, maltrato infantil 16%, ciberacoso 13% y formas múltiples 84%. Atribuirle un '~50% de acoso verbal' convierte su 47% de acoso escolar global en algo que el estudio no dice. Además, el ~15% de ciberacoso no coincide con el 13% que reporta Trundle et al., y ninguna fuente citada respalda esa cifra tal cual.",
+     "correccion": "el metaanálisis intercultural de Park et al. (2020) distingue acoso verbal (el más frecuente, 58%), relacional o de exclusión social (36%) y físico (30%); Trundle et al. (2023) no desglosa el acoso verbal, sino tipos de victimización: acoso escolar 47%, victimización sexual 40%, maltrato infantil 16% y ciberacoso 13%",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10486169/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "programas que fomentan comidas o actividades compartidas entre alumnos autistas y no autistas (mentoría entre pares, círculos de amigos) pueden reducir el aislamiento y, con ello, el riesgo de acoso. 🟢",
+     "problema": "El propio texto se formula en condicional ('pueden reducir') y ninguna de las fuentes citadas aporta metaanálisis ni ensayos replicados que demuestren que los programas de mentoría entre pares reduzcan la victimización en alumnado autista; son recomendaciones de buena práctica de StopBullying.gov, NAS y ASAT. Un 🟢 sugiere a las familias un nivel de certeza que la evidencia no tiene, sobre todo porque en la misma ficha se usa 🟡 para recomendaciones del mismo nivel probatorio.",
+     "correccion": "Mantener el texto pero marcarlo 🟡, indicando explícitamente que la supervisión en momentos sin estructura y los programas de amistad/mentoría entre pares son recomendaciones de buena práctica (StopBullying.gov, National Autistic Society, ASAT) y que su efecto sobre la reducción del acoso todavía no está demostrado en ensayos amplios.",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha en general sólida y bien anclada. Verificado con búsqueda: Trundle et al. (2023, PMC10486169) sí reporta una prevalencia global de victimización del 44%; Park et al. (2020, Yonsei Med J, PMC7593096) sí reporta 67% de victimización general y el desglose verbal 58% / relacional 36% / físico 30%; el estudio del NSCH 2016-2020 sobre acoso, ansiedad y depresión en jóvenes autistas y con TDAH existe (PMC12476435) y sostiene lo que la ficha afirma; StopBullying.gov sí recoge que los niños con TEA tienen más de tres veces la probabilidad de ser acosados. Los dos identificadores PMC citados corresponden efectivamente a los trabajos que la ficha nombra. Dos problemas: la mezcla de cifras de Park atribuidas también a Trundle (con un '~50% verbal' y un '~15% de ciberacoso' que Trundle no reporta), y un semáforo verde demasiado optimista en el bullet de supervisión/amistades. NO VERIFICADO (no comprobable solo con búsqueda): el contenido concreto de las páginas de la National Autistic Society y de ASAT enlazadas, y si el bullet sobre objetivos antiacoso en el IEP/PEI (🟢) tiene respaldo investigador más allá de la recomendación administrativa; ese verde también me parece optimista, pero no lo emito como hallazgo por no haber podido comprobar las fuentes. No se detectó ningún riesgo de seguridad: la ficha no da dosis ni desaconseja acudir a profesionales, y remite a salud mental ante señales de alerta. Enlaces no comprobados por la limitación de red de la sesión."
+  },
+  "DF": {
+   "codigo": "DF",
+   "titulo": "Transiciones escolares (de curso, etapa o colegio)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "es una práctica recomendada mencionada explícitamente por la National Autistic Society (Reino Unido). 🟢",
+     "problema": "El traspaso de información entre docentes se marca 🟢 apoyándose únicamente en que una organización lo recomienda, sin metaanálisis, guía clínica ni ensayos. Es exactamente el mismo nivel de evidencia que el bullet del sistema 'buddy', que la propia ficha marca 🟡 reconociendo que 'la evidencia aquí es más de buena práctica clínica que de ensayos controlados amplios'. La incoherencia interna hace que el semáforo deje de ser informativo para las familias; lo mismo ocurre con los tres primeros bullets (planificar con antelación, visitas previas, conocer al profesorado), todos 🟢 y todos basados solo en la guía de la NAS.",
+     "correccion": "Marcar 🟡 el traspaso de información entre docentes (y revisar con el mismo criterio los bullets de planificación anticipada, visitas previas y presentación del profesorado), aclarando que son recomendaciones de buena práctica de la National Autistic Society y no conclusiones de ensayos controlados. Reservar el 🟢 para los apoyos visuales, que sí cuentan con la revisión sistemática del NCAEP 2020.",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "se aplican en edades desde el nacimiento hasta los 22 años (de preescolar a joven adulto)",
+     "problema": "El rango que se afirma ('desde el nacimiento') y el paréntesis que lo explica ('de preescolar a joven adulto') no coinciden: preescolar no empieza en el nacimiento. Además, no he podido confirmar mediante búsqueda cuál es el rango de edad exacto que recoge la revisión NCAEP 2020 para los apoyos visuales (existe un paquete AFIRM específico y separado para 'toddlers', lo que sugiere que el paquete general puede no cubrir 0-2 años).",
+     "correccion": "se aplican en un rango amplio de edades, de la primera infancia a la juventud adulta (el paquete AFIRM de apoyos visuales indica el rango de edad concreto en su ficha)",
+     "fuente": "https://afirm.fpg.unc.edu/wp-content/uploads/Visual-Supports-Brief-Packet.pdf",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha práctica, prudente y sin riesgos de seguridad (no da dosis, no describe tratamientos médicos, no desaconseja acudir a profesionales). Verificado con búsqueda: los apoyos visuales sí son práctica basada en evidencia según la revisión sistemática del NCAEP 2020 y el dato de '104 estudios de caso único y 2 de diseño de grupo' es correcto; el identificador PMC7161970 corresponde efectivamente a 'Transition preparation activities among families of youth on the autism spectrum' (PLOS ONE, 2020), y la ficha etiqueta con honestidad que se refiere a la transición a la vida adulta (conviene recordar que es un estudio preliminar de solo 15 familias, por lo que no puede sostener por sí solo ninguna afirmación fuerte). Los dos problemas detectados son de calibración del semáforo y de redacción del rango de edad, ninguno grave. NO VERIFICADO: el contenido concreto de las páginas de la National Autistic Society sobre transiciones y del blog de la Fundación ConecTEA, y si la NAS menciona literalmente el 'handover' y el sistema 'buddy' como la ficha afirma; no lo doy ni por bueno ni por malo. Enlaces no comprobados por la limitación de red de la sesión."
+  },
+  "DG": {
+   "codigo": "DG",
+   "titulo": "Deberes y aprendizaje en casa",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Descansos breves y frecuentes:** intercalar pausas cortas (estirar, moverse, tomar agua) entre bloques de trabajo ayuda a sostener la atención y a prevenir el colapso o \"meltdown\" antes de que ocurra. 🟢",
+     "problema": "Es el único bullet 🟢 de la ficha que no está atribuido a ninguna fuente ni se corresponde con nada de las cuatro fuentes listadas (NAS deberes, NAS organización, ASHA función ejecutiva, Autism Speaks función ejecutiva). Afirmar en verde que las pausas cortas 'previenen el meltdown' es un salto: es consejo práctico razonable, no evidencia sólida, y prometer a una familia que las pausas evitan las crisis puede llevarla a culparse cuando ocurran igualmente.",
+     "correccion": "Marcar 🟡 y matizar: 'intercalar pausas cortas (estirar, moverse, tomar agua) entre bloques de trabajo puede ayudar a sostener la atención y a reducir la acumulación de tensión; es una recomendación práctica ampliamente usada, no una intervención con evidencia experimental sólida'. Añadir la fuente concreta que la respalde.",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "dato_incorrecto",
+     "cita": "apoyando a niños y niñas que suelen ser fuertes pensadores visuales",
+     "problema": "Generaliza un estereotipo: no todas las personas autistas son pensadoras visuales. El perfil cognitivo es muy heterogéneo (hay perfiles verbales, y la afantasía es más frecuente en población autista), por lo que 'suelen ser fuertes pensadores visuales' puede llevar a una familia a insistir en apoyos visuales cuando su hijo o hija se beneficiaría más de instrucciones verbales o escritas. Además, la utilidad de los apoyos visuales no depende de que el niño sea 'pensador visual', sino de que hacen predecible y externa la información.",
+     "correccion": "apoyando la memoria de trabajo y la anticipación al dejar la información a la vista, sin depender de que el niño o niña recuerde los pasos (conviene comprobar qué formato le funciona mejor a cada uno: imágenes, texto escrito o instrucciones verbales, porque el perfil cognitivo varía mucho entre personas autistas)",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "Es una de las prácticas con más respaldo en autismo. 🟢",
+     "problema": "La afirmación es cierta (los apoyos visuales cumplen criterios de práctica basada en evidencia en la revisión NCAEP 2020, con 104 estudios de caso único y 2 de diseño de grupo), pero ninguna de las cuatro fuentes listadas en la ficha es la que lo demuestra: no se cita ni NCAEP ni AFIRM. Una afirmación en 🟢 debe apuntar a la fuente que la sostiene.",
+     "correccion": "Mantener la afirmación y añadir a la lista de fuentes el paquete AFIRM/NCAEP de apoyos visuales, que es lo que la respalda.",
+     "fuente": "https://afirm.fpg.unc.edu/wp-content/uploads/Visual-Supports-Brief-Packet.pdf",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha útil y sin riesgos de seguridad: no da dosis, no describe tratamientos médicos ni desaconseja acudir a profesionales, y el bullet 🔴 sobre 'más repetición y presión' está bien calificado. Verificado con búsqueda: la página del ASHA Practice Portal sobre 'Executive Function Deficits' existe y trata lo que la ficha le atribuye; la página de la National Autistic Society 'Homework - a guide for parents and carers' existe en la ruta citada; la página de Autism Speaks sobre función ejecutiva sí recomienda un registro semanal de deberes y la comunicación casa-escuela mediante cuaderno o correo, por lo que esa atribución es correcta. NO VERIFICADO: el ejemplo concreto atribuido a la NAS de anclar el estudio a un día fijo ('jueves por la tarde es noche de deberes') no aparece en los resultados de búsqueda sobre esa página; no lo doy ni por bueno ni por malo, pero conviene comprobarlo, y ese bullet en 🟢 descansa igualmente solo en el consejo de una organización, no en evidencia experimental, igual que el bullet de hablar con la escuela. Tres hallazgos, ninguno grave. Enlaces no comprobados por la limitación de red de la sesión."
+  },
+  "DH": {
+   "codigo": "DH",
+   "titulo": "Deporte, ejercicio inclusivo y ocio",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "el problema no es el deporte de equipo en sí, sino la falta de adaptación o el exceso de presión competitiva. 🟢",
+     "problema": "La afirmación sobre deporte de equipo adaptado / Unified Sports está marcada en verde (evidencia sólida: metaanálisis, guías clínicas o ensayos replicados), pero las únicas fuentes que la acompañan son la página institucional del propio Special Olympics (no es investigación) y un estudio cualitativo de percepciones de 23 padres (Rodriquez et al., 2022, Int J Environ Res Public Health 19(17):10889), sin grupo control, sin medidas objetivas y con muestra de jóvenes con discapacidad intelectual/del desarrollo en general, no autistas específicamente. Con esa base el semáforo debe ser amarillo.",
+     "correccion": "Mismo texto del apartado, pero con semáforo 🟡 en lugar de 🟢: la evidencia sobre deporte de equipo adaptado y Unified Sports procede de estudios pequeños, cualitativos o de percepción de familias, no de ensayos replicados ni metaanálisis.",
+     "fuente": "https://www.mdpi.com/1660-4601/19/17/10889",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "mejora la inclusión social, reduce conductas problema y cambia positivamente las actitudes de compañeros sin discapacidad",
+     "problema": "El estudio citado para este punto (When the Normative Is Formative, Rodriquez et al., 2022) es un análisis temático de 23 entrevistas semiestructuradas a padres de jóvenes con discapacidad intelectual y del desarrollo participantes en Unified Sports. Reporta mejoras PERCIBIDAS por los padres en habilidades sociales y emocionales, sentido de pertenencia y nuevas amistades. No mide ni reporta reducción de conductas problema, ni evalúa el cambio de actitudes de los compañeros sin discapacidad. La ficha atribuye a esa fuente dos resultados que la fuente no contiene.",
+     "correccion": "cuando se practica en entornos estructurados, recreativos o \"unificados\" (como Unified Sports de Special Olympics), los padres entrevistados perciben mejoras en habilidades sociales y emocionales, sentido de pertenencia y nuevas amistades de sus hijos; son percepciones familiares recogidas en un estudio cualitativo pequeño, no medidas objetivas de conducta ni de actitudes de los compañeros",
+     "fuente": "https://www.mdpi.com/1660-4601/19/17/10889",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "atribucion_erronea",
+     "cita": "encuestas a gran escala con personas autistas europeas encuentran que muchas prefieren actividades predecibles y auto-marcadas por ellas mismas (natación, ciclismo, atletismo) frente a deportes de equipo dinámicos e imprevisibles, porque reducen la sobrecarga sensorial y la incertidumbre social",
+     "problema": "Se generaliza a \"encuestas\" (plural) lo que es una única encuesta (SACREE, Frontiers in Sports and Active Living 2025, 540 respuestas). Además, solo el 25,5% de las respuestas provienen de personas autistas: el 64,3% las contestaron padres o cuidadores, de modo que no es un dato de preferencia auto-informada. Y lo que reporta la encuesta es la práctica declarada (los deportes individuales suponen el 79% de las actividades, sobre todo acuáticas), no una comparación de preferencias entre individual y equipo ni la atribución causal a la sobrecarga sensorial (la carga sensorial aparece en el estudio como facilitador cuando se adapta, no como explicación medida de la elección).",
+     "correccion": "una encuesta europea a gran escala (SACREE, 540 respuestas, la mayoría contestadas por padres o cuidadores y un 25,5% por personas autistas) encontró que las actividades individuales concentran el 79% de la práctica deportiva declarada, sobre todo las acuáticas; las adaptaciones sensoriales y el entrenamiento del personal figuran entre los principales facilitadores. Es un dato de práctica declarada, en buena parte por terceros, no una medida directa de preferencia ni una explicación causal",
+     "fuente": "https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1580462/full",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "La ficha no contiene errores de seguridad: no da dosis, no describe tratamientos médicos ni desaconseja acudir a profesionales, y el punto rojo sobre forzar una actividad odiada está bien usado. Verifiqué la existencia y el contenido de dos fuentes clave: el metaanálisis de ejercicio (Wang et al., Front Pediatr 2025, PMC11903732) existe y respalda razonablemente el punto 1 marcado en amarillo, y la encuesta SACREE (Front Sports Act Living 2025) existe pero la ficha la describe de forma imprecisa (64,3% de respuestas de padres/cuidadores; dato de práctica, no de preferencia). El problema principal es el apartado sobre deporte de equipo unificado: está en verde apoyado únicamente en una página institucional y en un estudio cualitativo de 23 entrevistas a padres, y le atribuye dos resultados (reducción de conductas problema y cambio de actitudes de los compañeros) que ese estudio no mide. NO VERIFICADO: la revisión integrativa 'Exercise Interventions for Autistic People' (PMC12003570) y el contenido concreto de la página de la National Autistic Society sobre ocio; no pude comprobarlos y no los doy ni por buenos ni por malos."
+  },
+  "DI": {
+   "codigo": "DI",
+   "titulo": "Arte, música y teatro: expresión y bienestar",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "una revisión Cochrane (26 ensayos, 1.165 participantes) encontró que probablemente aumenta la probabilidad de mejoría global y mejora ligeramente la calidad de vida al final de la terapia, con certeza de la evidencia de baja a moderada; no está claro que mejore la interacción social o la comunicación verbal/no verbal, y no parece aumentar eventos adversos.",
+     "problema": "Los datos de muestra (26 ensayos, 1.165 participantes) y lo dicho sobre mejoría global, calidad de vida e interacción social son correctos, pero la ficha omite el resultado principal de esa misma revisión Cochrane: la musicoterapia probablemente produce una reducción GRANDE de la gravedad total de los síntomas de autismo (DME −0,83; IC 95% −1,41 a −0,24; 9 estudios, 575 participantes; certeza MODERADA). Al omitirlo y presentar la evidencia como \"modesta\" y, en el mensaje clave, como \"limitada\" respecto a los síntomas nucleares, la ficha describe la fuente de forma más pesimista de lo que la fuente sostiene y puede llevar a una familia a descartar una opción con evidencia de certeza moderada.",
+     "correccion": "una revisión Cochrane (26 ensayos, 1.165 participantes) encontró que probablemente aumenta la probabilidad de mejoría global, que probablemente reduce de forma importante la gravedad total de los síntomas del autismo (DME −0,83; 9 estudios, 575 participantes; certeza moderada) y que mejora ligeramente la calidad de vida (DME 0,28; 3 ECA, 340 participantes; certeza moderada); en cambio no hay evidencia clara de efecto sobre la interacción social ni la comunicación verbal/no verbal medidas justo al terminar la terapia (certeza baja o muy baja), y no parece aumentar los eventos adversos.",
+     "fuente": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004381.pub4/full",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "elegir talleres de arte, música o teatro inclusivos por el placer y la conexión que ofrecen es una decisión razonable y de bajo riesgo; ser escéptico ante quien promete que \"curan\" el autismo o sustituyen evaluación profesional, y buscar musicoterapeutas/arteterapeutas certificados si se busca un objetivo terapéutico específico. 🟢",
+     "problema": "El verde está definido en la biblioteca como \"evidencia sólida (metaanálisis, guías clínicas, ensayos replicados)\", pero este apartado es un consejo práctico y de sentido común, no una afirmación empírica respaldada por metaanálisis o guías. Ninguna de las fuentes listadas evalúa la seguridad o el riesgo de asistir a talleres inclusivos.",
+     "correccion": "Mismo texto, pero con semáforo ⚪ (recomendación práctica y de consenso, sin respaldo de investigación específica) o 🟡, en lugar de 🟢.",
+     "fuente": "https://asatonline.org/for-parents/becoming-a-savvy-consumer/is-there-science-behind-that-art-therapy/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Comprobé tres fuentes centrales y todas existen y sostienen en general lo que la ficha dice: la Cochrane 2022 de Geretsegger et al. (26 ensayos, 1.165 participantes: cifras exactas), la revisión sistemática de ECA de arteterapia (Wei, Lai y Ho, Healthcare/MDPI 2025: 12 ECA, muestras pequeñas, alto riesgo de sesgo, piden estudios más rigurosos — coincide con el apartado en amarillo) y la revisión sistemática de intervenciones teatrales (Sustainability 2023, 15(23):16480, 29 artículos). Los semáforos amarillos de arte y teatro son adecuados y prudentes. No hay riesgos de seguridad: la ficha no da dosis ni tratamientos, y advierte explícitamente contra promesas de cura. El fallo relevante es de fidelidad a la fuente: la ficha omite el hallazgo Cochrane de reducción grande de la gravedad total de síntomas con certeza moderada, lo que hace que su descripción de la musicoterapia sea más pesimista que la revisión que cita. NO VERIFICADO: el contenido concreto de la página de ASAT sobre arteterapia y la revisión de ScienceDirect sobre creative arts therapy; no pude comprobarlos y no los doy ni por buenos ni por malos."
+  },
+  "DJ": {
+   "codigo": "DJ",
+   "titulo": "Humor, lenguaje figurado e ironía",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "dato_incorrecto",
+     "cita": "mostraron mayor disfrute de los chistes de \"sinsentido\" y juegos de palabras con doble sentido (homófonos)",
+     "problema": "El estudio citado (Do individuals with autism lack a sense of humor? A study of humor comprehension, appreciation, and styles among high school students with autism; 177 autistas y 177 controles — esas dos cifras sí son correctas) usó dos tipos de chiste: de sinsentido (nonsense) y de incongruencia-resolución. No evaluó juegos de palabras con homófonos ni dobles sentidos fonológicos, y el mayor disfrute se observó solo en los chistes de sinsentido. Además, los estudiantes autistas comprendieron PEOR ambos tipos de chiste que los controles, matiz que la ficha reduce a \"la comprensión de ciertos chistes puede ser menor\".",
+     "correccion": "mostraron peor comprensión tanto de los chistes de sinsentido como de los de incongruencia-resolución que sus compañeros, pero declararon mayor disfrute con los chistes de sinsentido",
+     "fuente": "https://www.sciencedirect.com/science/article/abs/pii/S1750946714001561",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "mientras que algunos estilos de humor (afiliativo, de automejora, autodestructivo) aparecían menos marcados que en sus pares",
+     "problema": "El resultado que el estudio destaca sobre estilos de humor (medidos con el Humor Styles Questionnaire) es que los estudiantes autistas tienden a usar un estilo de humor HOSTIL o agresivo. La ficha no menciona ese hallazgo y lo sustituye por una formulación en negativo sobre otros tres estilos que la fuente no presenta así. Para padres y docentes es un dato relevante y accionable (ayuda a entender conflictos con iguales) que queda borrado.",
+     "correccion": "mientras que en el cuestionario de estilos de humor tendieron a puntuar más alto en el estilo hostil o agresivo que sus compañeros, un dato útil para acompañar y explicar el efecto que ciertos chistes tienen en los demás",
+     "fuente": "https://www.sciencedirect.com/science/article/abs/pii/S1750946714001561",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "la mejora se transfiere mejor a material nuevo en metáfora y sarcasmo (cuando la enseñanza resalta relaciones semánticas o señales pragmáticas) que en modismos aprendidos uno por uno. 🟢",
+     "problema": "El apartado está en verde (evidencia sólida) pero se apoya en una revisión de alcance (Opening New Worlds of Meaning, Behavioral Sciences 2025, 15(11):1556) que incluyó solo SIETE estudios —cinco de metáforas, uno de modismos y uno de sarcasmo/ironía—, mayoritariamente intervenciones individuales o en grupo muy pequeño. Una revisión de alcance de siete estudios pequeños no es un metaanálisis, ni una guía clínica, ni un conjunto de ensayos replicados; además, la afirmación sobre transferencia al sarcasmo descansa en un único estudio.",
+     "correccion": "Mismo contenido, con semáforo 🟡: una revisión de alcance de 2025 identificó solo siete estudios de intervención (cinco sobre metáforas, uno sobre modismos y uno sobre sarcasmo/ironía); en ellos los participantes mejoraron claramente en los ítems entrenados y la generalización a material nuevo se observó sobre todo en metáfora y sarcasmo cuando la enseñanza resaltaba relaciones semánticas o señales pragmáticas. Evidencia preliminar y escasa, no consolidada.",
+     "fuente": "https://www.mdpi.com/2076-328X/15/11/1556",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "El apartado más cuantitativo de la ficha es correcto y lo confirmé dato por dato: el metaanálisis de Kalandadze, Norbury, Nærland y Næss (Autism, 2018) incluyó 41 estudios y 45 tamaños del efecto independientes, con Hedges' g = −0,57 global, g = 0,72 para metáforas y g = 0,48 para ironía y sarcasmo, y la estrategia de emparejamiento de grupos resultó predictor significativo (las diferencias se vuelven pequeñas y no significativas al emparejar por nivel de lenguaje). El semáforo verde de ese punto está justificado. También confirmé que existen y están bien identificados el artículo de Vulchanova y Vulchanov en Frontiers in Communication (2022) y la revisión de alcance de 2025, y que el estudio de humor tiene efectivamente 177 participantes autistas y 177 controles. Los fallos se concentran en cómo se resume ese estudio de humor (se inventa un tipo de chiste que no se evaluó y se omite el hallazgo del estilo de humor hostil) y en un semáforo verde excesivo para una revisión de alcance de siete estudios. No hay riesgos de seguridad: la ficha no da dosis ni tratamientos y el punto rojo sobre la burla y la corrección constante está bien usado. NO VERIFICADO: la revisión sistemática de PubMed 38176977 sobre humor y la página de la National Autistic Society sobre comunicación; no los doy ni por buenos ni por malos."
+  },
+  "DK": {
+   "codigo": "DK",
+   "titulo": "Teorías cognitivas del autismo (con honestidad y crítica)",
+   "veredicto": "correcto",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [],
+   "resumen": "Comprobé con WebSearch las seis fuentes citadas y todas existen y corresponden a la etiqueta con la que se citan: PMC1351137 = 'Neuropsychological frameworks for understanding autism' (PMID 16467917), una revisión crítica de disfunción ejecutiva, coherencia central débil e hipótesis límbica; PMID 16478553 = Pellicano, Maybery, Durkin & Maley (2006), Development and Psychopathology; PMC3687595 = Romero-Munguía (2013), 'Theory of Mind Deficit versus Faulty Procedural Memory in ASD'; PMID 21094892 = Baron-Cohen (2010), 'Empathizing, systemizing, and the extreme male brain theory of autism' (Prog Brain Res); PMID 23180205 = Krahn & Fenton, 'The extreme male brain theory of autism and the potential adverse effects for boys and girls with autism' (J Bioeth Inq); y el artículo de The Transmitter/Spectrum con las críticas. Los contenidos concretos también encajan: Pellicano et al. (2006) reportan que el procesamiento local fue 'generalizado' (widespread) en el grupo TEA mientras que las dificultades de falsa creencia y de función ejecutiva aparecieron en menos niños, que es exactamente lo que dice la ficha (coherencia central extendida; falsa creencia solo en una parte); las críticas atribuidas a David Skuse (que la idea de que las personas autistas 'carecen de empatía' es incorrecta, que pueden sentir el dolor ajeno aunque lo procesen más despacio, y que gran parte de los análisis se basan en percepciones de las madres) están literalmente en la pieza de The Transmitter. No encontré ningún dato falso, atribución errónea ni riesgo de seguridad. Observación menor que no elevo a hallazgo por coherencia interna de la biblioteca: el 🔴 del bullet de 'cerebro masculino extremo' se usa con el sentido de 'no usar / potencialmente dañino' (que es justo lo que argumenta Krahn & Fenton), no como nivel de evidencia; leído según la leyenda de semáforos podría confundirse con 'desaconsejado', cuando la ficha misma reconoce que la teoría tiene apoyo parcial. No verificado: no pude comprobar el estado HTTP de ninguna URL (WebFetch bloqueado), solo la existencia y correspondencia de los trabajos."
+  },
+  "DL": {
+   "codigo": "DL",
+   "titulo": "Prevalencia mundial y datos globales",
+   "veredicto": "correcto",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [],
+   "resumen": "Todas las cifras concretas resisten la comprobación. OMS: la hoja informativa sostiene 'alrededor de 1 de cada 100 niños', con la aclaración de que es un promedio, que la prevalencia varía sustancialmente entre estudios y que algunos estudios bien realizados reportan cifras bastante más altas: la ficha lo refleja con precisión. GBD 2021 ('The global epidemiology and health burden of the autism spectrum', The Lancet Psychiatry, diciembre de 2024, PMID 39709974): 61,8 millones de personas autistas en 2021, 788,3 por 100.000 = 1 de cada 127 personas de todas las edades; y 1.065 por 100.000 en varones frente a 508 por 100.000 en mujeres, es decir 'casi el doble', tal como dice la ficha. ADDM/CDC (año de vigilancia 2022, MMWR 2025, 16 sitios): 32,2 por 1.000 niños de 8 años = 1 de cada 31, con rango de 9,7 por 1.000 en Texas-Laredo (=1 de cada 103) a 53,1 por 1.000 en California (=1 de cada 19); las tres conversiones de la ficha son correctas y es el informe ADDM más reciente disponible (el siguiente ciclo aún no se ha publicado), así que la cifra no está desactualizada. La atribución a la CDC de que las diferencias entre comunidades responden sobre todo a prácticas de evaluación y disponibilidad de servicios es la lectura estándar de ese informe. Los semáforos me parecen bien calibrados: 🟢 para OMS, GBD y CDC (análisis sistemáticos y vigilancia poblacional) y 🟡 para la brecha de datos en países de ingresos bajos y medios, que es la afirmación más blanda. No verificado: no pude confirmar el contenido concreto de la fuente PMC9775866 (servicios de TEA en países de ingresos bajos y medios) ni respaldar con una cita exacta el 'solo una fracción' de niños diagnosticados en esos países ni el 'la gran mayoría de los niños con discapacidades del desarrollo viven en esos países'; no los doy ni por buenos ni por malos, aunque la ficha ya los marca como evidencia limitada. Tampoco pude comprobar si alguna URL responde (WebFetch bloqueado en este entorno)."
+  },
+  "DM": {
+   "codigo": "DM",
+   "titulo": "Impacto en la pareja y la relación de los padres",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "[National Autistic Society: Family relationships — a guide for partners of autistic people](https://www.autism.org.uk/advice-and-guidance/family-life-and-relationships/family-life/partners)",
+     "problema": "Esa guía de la National Autistic Society está dirigida a personas cuya PAREJA es autista (cómo comunicarse con un compañero sentimental autista, qué aporta su diagnóstico, etc.), no a la relación entre los dos progenitores de un hijo autista, que es el tema de la ficha. Es la única fuente 'de guía clínica' que respalda el bullet '**Lo que ayuda...**' y no sostiene esa afirmación: se está citando un recurso real para algo que ese recurso no dice.",
+     "correccion": "[National Autistic Society: Family relationships — a guide for parents and carers](https://www.autism.org.uk/advice-and-guidance/topics/family-life-and-relationships/family-life/parents-and-carers)",
+     "fuente": "https://www.autism.org.uk/advice-and-guidance/topics/family-life-and-relationships/family-life/parents-and-carers",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "- **Lo que ayuda, según guías clínicas y de familias:** comunicación abierta y regular sobre necesidades y sentimientos, repartir explícitamente las tareas de cuidado y las decisiones (no solo \"quien puede más\"), proteger tiempo de pareja aunque sea breve, pedir ayuda externa (respiro, terapia familiar o de pareja, grupos de otros padres) y ser flexible con las expectativas de cada uno. 🟢",
+     "problema": "Es la única afirmación de la ficha en verde y ninguna de las fuentes listadas es un metanálisis, un ensayo replicado ni una guía clínica sobre apoyo a la pareja de progenitores: las únicas fuentes no empíricas son una página divulgativa de la National Autistic Society (además dirigida a otro público, ver hallazgo anterior) y un post de Psychology Today. El verde promete a los padres un respaldo de evidencia que la ficha no aporta.",
+     "correccion": "- **Lo que ayuda, según guías clínicas y de familias:** comunicación abierta y regular sobre necesidades y sentimientos, repartir explícitamente las tareas de cuidado y las decisiones (no solo \"quien puede más\"), proteger tiempo de pareja aunque sea breve, pedir ayuda externa (respiro, terapia familiar o de pareja, grupos de otros padres) y ser flexible con las expectativas de cada uno. 🟡",
+     "fuente": "https://www.autism.org.uk/advice-and-guidance/topics/family-life-and-relationships/family-life/parents-and-carers",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "atribucion_erronea",
+     "cita": "investigadores del Kennedy Krieger Institute y Johns Hopkins (a través del Interactive Autism Network) analizaron datos de casi 78.000 padres —913 con un hijo autista—",
+     "problema": "Las cifras son correctas (77.911 entrevistas a progenitores sobre niños de 3 a 17 años, 913 con diagnóstico de TEA; 64% frente a 65% viviendo con ambos padres), pero el paréntesis sugiere que los datos proceden del registro Interactive Autism Network. No es así: el estudio (Freedman et al., 'Relationship status among parents of children with autism spectrum disorders: a population-based study', Journal of Autism and Developmental Disorders, 2012) analizó la National Survey of Children's Health de 2007. La diferencia importa, porque una encuesta poblacional representativa es una base más sólida que un registro de voluntarios y es justo lo que hace fuerte al desmentido.",
+     "correccion": "investigadores del Kennedy Krieger Institute y Johns Hopkins (Freedman et al., 2012) analizaron la Encuesta Nacional de Salud Infantil de EE. UU. de 2007, con 77.911 entrevistas a progenitores —913 sobre un hijo con TEA—",
+     "fuente": "https://eric.ed.gov/?id=EJ959072",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "atribucion_erronea",
+     "cita": "un estudio longitudinal de padres de personas con autismo y otras discapacidades del desarrollo (publicado en PMC)",
+     "problema": "PMC no es una revista, es el repositorio donde está depositado el texto; citar así impide al lector juzgar la fuente. El trabajo es 'Marital status over 28 years of parents of individuals with autism and other developmental disabilities', publicado en Journal of Family Psychology en 2023 (PMID 37126032). Sus datos sí coinciden con la ficha: alrededor del 36% de divorcio parental acumulado hacia los 30 años del hijo, asociado a menor educación materna, menor edad materna al nacer el hijo, orden de nacimiento más tardío, severidad de los síntomas y diagnóstico de TEA.",
+     "correccion": "un estudio longitudinal de padres de personas con autismo y otras discapacidades del desarrollo (Journal of Family Psychology, 2023)",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/37126032/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "- **Muchas parejas se fortalecen, no solo se desgastan:** distintas fuentes clínicas y relatos de familias documentan que afrontar juntos el diagnóstico y las decisiones de apoyo puede generar mayor cohesión, propósito compartido y comunicación más profunda; no es un destino garantizado, pero tampoco es la excepción rara. 🟡",
+     "problema": "La propia ficha declara que la base son 'fuentes clínicas y relatos de familias', es decir experiencia vivida sin respaldo de investigación, que según la leyenda de la biblioteca corresponde a ⚪ y no a 🟡 (evidencia limitada o preliminar). Además, la afirmación 'tampoco es la excepción rara' cuantifica de forma implícita algo que ninguna de las fuentes listadas mide.",
+     "correccion": "- **Muchas parejas se fortalecen, no solo se desgastan:** distintas fuentes clínicas y relatos de familias documentan que afrontar juntos el diagnóstico y las decisiones de apoyo puede generar mayor cohesión, propósito compartido y comunicación más profunda; no es un destino garantizado. ⚪",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10524399/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Los dos datos numéricos más importantes son correctos y están bien atribuidos. Hartley et al. (2010), Journal of Family Psychology: 391 familias, 23,5% de divorcio frente a 13,8% en el grupo de comparación, y el riesgo se mantiene alto durante la infancia, adolescencia y adultez temprana en las familias con TEA mientras que en el grupo de comparación baja después de los ~8 años del hijo: coincide palabra por palabra con el estudio. El desmentido del mito del 80% también es correcto en sus cifras (64% frente a 65% viviendo con ambos padres casados; 77.911 entrevistas, 913 con TEA). El estudio de 28 años (Journal of Family Psychology, 2023) reporta efectivamente ~36% de divorcio parental acumulado y los factores de riesgo que enumera la ficha. No hay dosis, ni tratamientos aplicados sin profesional, ni nada que desaconseje acudir a un profesional; al contrario, la nota final remite explícitamente a ayuda profesional. Los problemas son de atribución y de calibración de semáforos, no de datos: la guía de la National Autistic Society citada es para parejas de personas autistas, no para progenitores de un niño autista, y es la única 'guía' que sostiene el único bullet en verde; el desmentido del 80% se atribuye al registro Interactive Autism Network cuando la base fue la National Survey of Children's Health de 2007; y el estudio de 28 años se cita como 'publicado en PMC' en vez de en Journal of Family Psychology. No verificado: no pude comprobar el contenido de la entrada de Psychology Today ni de la página de Kennedy Krieger, solo su existencia y sus cifras a través de otras fuentes; tampoco pude comprobar si alguna URL responde, porque WebFetch está bloqueado en este entorno."
+  },
+  "DN": {
+   "codigo": "DN",
+   "titulo": "El papel de abuelos y familia extensa",
+   "veredicto": "correcto",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [],
+   "resumen": "Verificado con WebSearch: (1) la cifra de ~30% de abuelos que fueron los primeros en notar algo distinto y la de casi el 90% que sintió que la experiencia los acercó a sus hijos adultos corresponden a la encuesta del Interactive Autism Network / Autism Speaks a unos 2.600 abuelos (2009-2010), y la ficha ya advierte con honestidad que es una encuesta de una organización, no un estudio revisado por pares; (2) el estudio sueco existe y coincide en todo lo comprobable: Zakirova Engstrand et al., 'Needs of Grandparents of Preschool-Aged Children with ASD in Sweden', J Autism Dev Disord 2020 (PMID 30825081, PMC7261267), con exactamente 120 abuelos de Estocolmo, necesidades mayoritariamente de información y cuidado, y necesidades predichas por la carga percibida. Los semáforos son adecuados: todas las afirmaciones basadas en encuesta u observación están en amarillo, ninguna se presenta como evidencia sólida, y el bloque rojo (curas por disciplina, dietas o 'cariño duro') está correctamente desaconsejado. No hay dosis, ni tratamientos aplicables sin profesional, ni desincentivo a consultar. NO VERIFICADO (no doy por bueno ni por malo): el matiz de la ficha de que la carga predice la necesidad 'no la edad ni el parentesco' —el resumen del estudio confirma que la carga percibida predice las necesidades, pero no pude comprobar que se descartaran explícitamente edad y parentesco—; y la frase 'con información y tiempo, la mayoría avanza hacia la aceptación', que es un cuantificador optimista sin fuente concreta citada. Los enlaces no se pudieron comprobar (WebFetch bloqueado en este entorno), por eso enlaces_comprobados=0."
+  },
+  "DO": {
+   "codigo": "DO",
+   "titulo": "Catatonia en el autismo",
+   "veredicto": "correcto",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [],
+   "resumen": "Todas las atribuciones y cifras comprobables resultaron correctas. Wing & Shah (2000, Br J Psychiatry 176:357-362, PMID 10827884): 17% de los derivados de 15 años o más presentaba exacerbación grave de rasgos catatónicos —coincide con la ficha, incluida la población (servicio de diagnóstico/evaluación). Vaquerizo-Serrano et al. (2022, European Psychiatry 65(1):e4): prevalencia agrupada 10,4% (IC 95% 5,8-18,0), exactamente lo que dice la ficha. Los dos identificadores de PubMed corresponden a los trabajos que la ficha les asigna: 16697303 = Dhossche, Shah & Wing, 'Blueprints for the assessment, treatment, and future study of catatonia in ASD' (Int Rev Neurobiol 2006), y 16697301 = Fink, Taylor & Ghaziuddin, 'Catatonia in autistic spectrum disorders: a medical treatment algorithm' (Int Rev Neurobiol 2006); PMC4222130 corresponde efectivamente a Dhossche, 'Decalogue of Catatonia in Autism Spectrum Disorders', Frontiers in Psychiatry 2014;5:157. La descripción del tratamiento (benzodiacepinas/lorazepam de primera línea, prueba de lorazepam con valor diagnóstico, TEC reservada para casos refractarios, evidencia mayoritariamente de series y casos) coincide con esas fuentes y con la página de la National Autistic Society. SEGURIDAD: correcta —no se dan dosis, se insiste dos veces en supervisión médica/psiquiátrica especializada y se desaconseja explícitamente la automedicación. Los semáforos son honestos: todo en amarillo pese a que algunas afirmaciones son de consenso clínico, lo que peca de conservador, no de optimista. NO VERIFICADO: la cifra concreta de 'alrededor del 12%' atribuida a Billstedt et al. (2005); el estudio existe (seguimiento poblacional de 120 personas con autismo) y la literatura secundaria, incluida la NAS, cita un rango de 12-18% con Wing & Shah, Billstedt y Ghaziuddin, pero no pude confirmar el 12% en el resumen original. Tampoco pude confirmar el límite inferior del '4%' del rango. Enlaces no comprobables (WebFetch bloqueado), por eso enlaces_comprobados=0."
+  },
+  "DP": {
+   "codigo": "DP",
+   "titulo": "Autismo, hipermovilidad y disautonomía",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "un estudio de 2022 con 109 adultos con autismo, TDAH o tics (Csecs et al., *Frontiers in Psychiatry*) encontró que alrededor del 51% tenía hipermovilidad articular generalizada, frente a cerca del 20% en la población general de comparación (unas 4,5 veces más probable).",
+     "problema": "Mezcla dos referencias distintas del estudio en una sola expresión ('la población general de comparación'): el 20% es la tasa estimada en población general, mientras que el grupo de comparación reclutado por el propio estudio tuvo 17,5%. Además omite que ese 51% surge del punto de corte estándar de Beighton; con el criterio más estricto ajustado por edad que el propio artículo aplica, las cifras bajan a 28,4% en el grupo neurodivergente frente a 12,5% en el de comparación. Un padre puede quedarse con la idea de que 'la mitad de los autistas tiene hipermovilidad' como dato cerrado.",
+     "correccion": "un estudio de 2022 con 109 adultos con autismo, TDAH o tics (Csecs et al., Frontiers in Psychiatry) encontró que el 51% tenía hipermovilidad articular generalizada con el punto de corte estándar, frente al 17,5% del grupo de comparación del propio estudio y al 20% estimado en población general (unas 4,5 veces más probable: OR 4,51; IC 95% 2,17-9,37); con un criterio más estricto ajustado por edad las cifras bajan a 28,4% frente a 12,5%.",
+     "fuente": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8847158/"
+    }
+   ],
+   "resumen": "La ficha es sólida y sus cifras principales resisten la comprobación. Csecs et al. 2022 (Frontiers in Psychiatry, PMC8847158, DOI 10.3389/fpsyt.2021.786916): 109 adultos neurodivergentes, 51% con hipermovilidad articular generalizada frente al 20% de población general, OR 4,51 (IC 95% 2,17-9,37) —coincide con la ficha, con el matiz recogido en el hallazgo leve. Kindgren et al. 2021 (Neuropsychiatr Dis Treat, PMID 33603376): en 201 niños con HSD o hEDS, 16% tenía diagnóstico verificado de TDAH y 6% de TEA, y los autores recomiendan cribado neuropsiquiátrico rutinario —las dos cifras y la recomendación son exactamente las que da la ficha, y el enlace de PubMed corresponde a ese trabajo. El 'estudio sueco de 2016' aludido existe y va en la dirección que se afirma: Cederlöf et al., BMC Psychiatry 2016;16:207, con riesgo de TEA claramente elevado en personas con Ehlers-Danlos (RR 7,4; IC 95% 5,2-10,7). Los semáforos son adecuados y prudentes (todo amarillo, correlación explícitamente separada de causalidad, ausencia de mecanismo causal reconocida), y el bloque rojo sobre 'curas' de hipermovilidad remite a valoración médica real (fisioterapia, manejo del dolor, cardiología si se sospecha POTS), sin dosis ni automanejo. NO VERIFICADO: el contenido concreto de la página de la Ehlers-Danlos Society citada (no pude abrirla; WebFetch está bloqueado), aunque la afirmación que se le atribuye es coherente con la literatura comprobada. Enlaces no comprobables, por eso enlaces_comprobados=0 y enlaces_rotos vacío."
+  },
+  "DQ": {
+   "codigo": "DQ",
+   "titulo": "Autismo, alergias, asma y atopia",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "mejora el bienestar y el sueño del niño, lo cual puede reducir la irritabilidad y mejorar la calidad de vida, sin pretender \"tratar\" el autismo. 🟢",
+     "problema": "Es la unica afirmacion marcada en verde de la ficha, pero ninguna de las seis fuentes listadas estudia si tratar el asma/eczema/alergia mejora el sueno, la irritabilidad o la calidad de vida de ninos autistas: las seis son estudios de asociacion epidemiologica (Tsai 2020, CHARGE/Lyall 2015, Gong 2023, Miyazaki 2015, Pediatric Research 2024 y una pagina divulgativa). El manejo estandar de asma y dermatitis atopica si esta respaldado por guias clinicas, pero el eslabon 'mejor sueno -> menos irritabilidad' en poblacion autista es una extrapolacion clinica razonable, no evidencia citada.",
+     "correccion": "Mantener el consejo pero apoyarlo en una guia clinica explicita y matizar el semaforo: 'Lo que si ayuda: el manejo medico normal de asma, eczema y alergias alimentarias segun las guias de alergologia/neumologia pediatrica; controlar el picor nocturno o el asma suele mejorar el sueno y el bienestar, y eso puede reflejarse en menos irritabilidad diurna (extrapolacion clinica, no medida en los estudios de esta ficha). 🟡' o bien anadir a Fuentes la guia clinica correspondiente y dejarlo en 🟢.",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha solida. Verifique por busqueda las cinco atribuciones cuantitativas y todas resultaron exactas: Tsai et al. 2020 (Acta Dermato-Venereologica) OR 1.485 (IC 1.203-1.834), que la ficha redondea correctamente a 1.49 (1.20-1.83); el estudio CHARGE (Lyall et al. 2015, Autism Research) con 560 ninos con TEA y 391 controles y alergia alimentaria referida aOR 2.23 (1.28-3.89), y ademas es cierto que en ese mismo estudio asma y alergia global no difirieron entre grupos; el metaanalisis de Pediatric Research 2024 con 30 estudios; Miyazaki et al. 2015 (Review Journal of Autism and Developmental Disorders), que efectivamente hallo mas asma (OR 1.69) y rinitis alergica (OR 1.66) pero no mas dermatitis atopica; y el estudio sueco de familias y gemelos (Gong et al., Psychological Medicine 2023), cuya co-agregacion familiar decrece con el grado de parentesco (hermanos completos OR 1.44, medios hermanos maternos 1.28, primos 1.06), tal como describe la ficha. Las etiquetas de los seis enlaces coinciden con el trabajo real que identifican (no hay atribucion cruzada). Los semaforos amarillos son conservadores y adecuados, el rojo sobre 'dietas antialergicas' es correcto y la ficha remite siempre a alergologia/pediatria: no detecte ningun riesgo de seguridad. NO VERIFICADO: la frase atribuida a Allergy & Asthma Network ('algunas investigaciones no encuentran ninguna asociacion'), porque en este entorno no puedo abrir paginas; queda como no comprobada, ni buena ni mala. Tampoco pude comprobar el estado de los enlaces (WebFetch inhabilitado), por lo que enlaces_comprobados es 0."
+  },
+  "DR": {
+   "codigo": "DR",
+   "titulo": "Autismo y salud visual / oftalmologica",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "atribucion_erronea",
+     "cita": "en ese mismo metaanálisis, de los errores de refracción solo el **astigmatismo** mostró un riesgo significativamente mayor en autismo; la miopía y la hipermetropía **no** alcanzaron una asociación estadísticamente significativa. Las prevalencias combinadas fueron aproximadamente astigmatismo 16.5%, miopía 14.1% e hipermetropía 9.8%.",
+     "problema": "'Ese mismo metaanalisis' remite al de Perna et al. 2023 en Molecular Psychiatry (el citado en la vineta anterior), pero esas tres cifras y el hallazgo de que solo el astigmatismo alcanza significacion proceden de OTRO metaanalisis: 'Refractive Errors Linked to Autism Spectrum Disorders in the Pediatric Population and Young Adults' (Review Journal of Autism and Developmental Disorders, 2024, 28 articulos), que reporta exactamente 14.1% de miopia, 9.8% de hipermetropia y 16.5% de astigmatismo, sin asociacion significativa con miopia ni hipermetropia. Ese trabajo no figura en la linea de Fuentes, asi que tal como esta redactada la ficha ninguna fuente listada respalda las tres cifras. Ademas, las coberturas divulgativas de Perna 2023 destacan aumento de errores de refraccion en general y de ambliopia, lo que hace la atribucion aun mas confusa.",
+     "correccion": "Reatribuir explicitamente: 'Un metaanalisis de 2024 en Review Journal of Autism and Developmental Disorders (28 estudios) encontro que, de los errores de refraccion, solo el astigmatismo mostro un riesgo significativamente mayor en autismo; miopia e hipermetropia no alcanzaron significacion estadistica. Las prevalencias combinadas fueron 16.5% de astigmatismo, 14.1% de miopia y 9.8% de hipermetropia.' Y anadir ese articulo a la linea de Fuentes.",
+     "fuente": "https://link.springer.com/article/10.1007/s40489-024-00468-9",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "clínicas y guías especializadas (recomendaciones basadas en las experiencias de adultos autistas, Parmar et al. 2022) sugieren citas más largas u horarios más tranquilos",
+     "problema": "La vineta termina en 🟢 (evidencia solida: metaanalisis, guias clinicas o ensayos replicados), pero la fuente es Parmar et al. 2022 (Ophthalmic and Physiological Optics), dos estudios cualitativos pequenos: grupos focales con 18 adultos autistas y entrevistas de retroalimentacion con 24 adultos tras probar un protocolo adaptado. No hay ensayo controlado ni guia clinica formal detras, y la propia ficha reconoce que son 'recomendaciones basadas en las experiencias de adultos autistas', que en el codigo de esta biblioteca corresponde a experiencia vivida (⚪) o evidencia preliminar (🟡).",
+     "correccion": "Cambiar el semaforo de esa vineta a 🟡 (o ⚪) y precisar la base: 'recomendaciones desarrolladas a partir de dos estudios cualitativos con adultos autistas (18 en grupos focales y 24 que probaron un protocolo adaptado; Parmar et al. 2022)'. Son ajustes sensatos y de bajo riesgo, pero no evidencia de nivel 🟢.",
+     "fuente": "https://onlinelibrary.wiley.com/doi/10.1111/opo.12975",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "Estudios y análisis centrados en estrabismo sitúan su prevalencia en autismo en torno al 15%. 🟢",
+     "problema": "Ninguna de las cinco fuentes listadas es un trabajo centrado en la prevalencia de estrabismo. El metaanalisis especifico sobre el tema ('Prevalence of Strabismus in Individuals on the Autism Spectrum: A Meta-analysis') estima una prevalencia combinada del 13.4% (intervalo de credibilidad 95%: 8.3-19.4), con estimaciones individuales muy dispersas (2.5-84.3%, mediana 10.6%). El 15% no es falso, pero esta en el extremo alto y se presenta sin la enorme heterogeneidad ni la fuente que lo sostiene.",
+     "correccion": "'El metaanalisis especifico sobre estrabismo en autismo estima una prevalencia combinada del 13.4% (IC 95%: 8.3-19.4%), frente al 2-3% de la poblacion general, aunque las cifras de los estudios individuales varian mucho (2.5-84.3%).' Anadir esa referencia a Fuentes.",
+     "fuente": "https://www.medrxiv.org/content/10.1101/2021.07.13.21260452v1",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Contenido en general correcto y con un mensaje de seguridad adecuado (deriva a oftalmologia, no da dosis ni protocolos caseros, y marca en 🔴 los lentes de colores y las 'terapias visuales' curativas, lo cual es acertado). Verifique que el metaanalisis de Perna et al. 2023 en Molecular Psychiatry existe con esos datos de tamano (49 estudios en la sintesis narrativa, 46 en el metaanalisis, 15.629.159 individuos) y que reporta OR de estrabismo 4.72, tal como dice la ficha; tambien confirme el rango 27-71% de hallazgos oculares descrito en la literatura clinica y que la fuente PMC9421935 ('Ophthalmologic Manifestations in Autism Spectrum Disorder') y la PMC9313607 (Parmar et al. 2022, cuidado oftalmologico amigable con el autismo) son lo que sus etiquetas dicen. El fallo principal es de atribucion: las prevalencias 16.5/14.1/9.8% y el hallazgo 'solo el astigmatismo' pertenecen a un metaanalisis de 2024 distinto que ni siquiera esta en la lista de Fuentes. NO VERIFICADO: el intervalo de confianza exacto 'IC 95%: 4.60-4.85' del OR de estrabismo (no aparecio en ningun resultado de busqueda; es llamativamente estrecho para un OR de 4.72, aunque podria explicarse por registros poblacionales muy grandes, asi que lo dejo como no comprobado, no como error), y el matiz de que la AAP recomiende derivar directamente a examen oftalmologico completo a los ninos con trastornos del neurodesarrollo: la politica de la AAP de 2016 existe y si indica derivar a especialista a quien no pueda ser tamizado adecuadamente, pero no pude confirmar que mencione el autismo de forma expresa. Enlaces: no comprobables en este entorno (WebFetch inhabilitado)."
+  },
+  "DS": {
+   "codigo": "DS",
+   "titulo": "Autismo y procesamiento auditivo",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "revisiones estiman que entre el 50% y el 70% de las personas autistas presentan hiperreactividad a sonidos cotidianos (aspiradoras, timbres, voces superpuestas) en algún momento de su vida",
+     "problema": "La cifra va marcada 🟢 pero ninguna de las cinco fuentes listadas la contiene: la de ASHA trata del trastorno del procesamiento auditivo central en general, Cochrane y ASAT tratan de la terapia de integracion auditiva, y las dos PMC son sobre discriminacion auditiva y sobre auriculares. El dato existe pero en un trabajo no citado: el metaanalisis de Williams et al. (2021, Ear and Hearing, 67 estudios) estima hiperacusia actual en torno al 40% (41.4% por cuestionario/entrevista, 27.3% con medidas objetivas) y prevalencia a lo largo de la vida en torno al 60%. El rango 50-70% solo es defendible para la prevalencia vital y puede llevar a un padre a sobreestimar la cifra actual.",
+     "correccion": "'Un metaanalisis de 67 estudios (Williams et al., 2021, Ear and Hearing) estima que alrededor del 40% de las personas autistas presenta hiperacusia en un momento dado y cerca del 60% la ha presentado en algun momento de su vida, con mucha variacion entre estudios.' Anadir esa referencia a la linea de Fuentes.",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/33577214/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "desactualizado",
+     "cita": "[Cochrane – Auditory integration therapy for ASD (Sinha et al.)](https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003681.pub2/full)",
+     "problema": "El identificador '.pub2' corresponde a la version de 2004 de la revision Cochrane, que quedo superada por la actualizacion de Sinha, Silove, Hayen y Williams (2011), la que realmente incluye los siete ensayos y la conclusion que cita la ficha. No es un enlace roto (la pagina de la version antigua existe), pero se esta citando una version retirada de circulacion como referencia vigente.",
+     "correccion": "Citar la actualizacion de 2011 de la revision Cochrane 'Auditory integration training and other sound therapies for autism spectrum disorders (ASD)' (Sinha Y, Silove N, Hayen A, Williams K), o enlazar la pagina de la revision en cochrane.org, que apunta siempre a la version vigente.",
+     "fuente": "https://www.cochrane.org/evidence/CD003681_auditory-integration-therapy-autism-spectrum-disorders",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha correcta en lo esencial y bien orientada a la seguridad: manda descartar primero una perdida auditiva real con un audiologo antes de atribuirlo todo al procesamiento sensorial, no da dosis ni protocolos, y marca en 🔴 las terapias de integracion auditiva. Comprobe que la conclusion Cochrane atribuida a Sinha et al. es fiel ('no hay evidencia que apoye el uso de la terapia de integracion auditiva ni de otras terapias de sonido'; siete estudios pequenos, beneficios solo en dos con 35 participantes, advertencia sobre riesgo de perdida auditiva y sobre el coste) y que la Academia Americana de Pediatria concluyo efectivamente que su uso 'no esta justificado' salvo dentro de protocolos de investigacion (declaracion de 1998 sobre AIT y comunicacion facilitada). El semaforo 🟡 de la vineta sobre auriculares y protectores auditivos es adecuado a la evidencia preliminar disponible. Los dos fallos detectados son de citacion, no de contenido clinico. NO VERIFICADO: la correspondencia entre las etiquetas y el contenido real de dos enlaces PMC (PMC8239241, 'Auditory Discrimination in Autism Spectrum Disorder', y PMC6091992, sobre orejeras y auriculares con cancelacion de ruido) no pude confirmarla por busqueda; quedan como no comprobados. Enlaces: no comprobables en este entorno (WebFetch inhabilitado), de ahi enlaces_comprobados 0 y enlaces_rotos vacio."
+  },
+  "DT": {
+   "codigo": "DT",
+   "titulo": "Autismo, uso de sustancias y adicciones",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "un estudio poblacional sueco (Butwicka et al., 2017, con 26.986 personas autistas y 96.557 familiares no autistas) halló que el autismo sin TDAH ni discapacidad intelectual se asoció a un riesgo aproximadamente doble de problemas relacionados con el consumo, y que el riesgo fue más alto todavía cuando el autismo coexistía con TDAH. 🟢",
+     "problema": "Los datos del estudio son CORRECTOS (comprobado por busqueda: 26.986 personas con TEA diagnosticadas 1973-2009 y sus 96.557 familiares sin TEA; TEA sin TDAH ni discapacidad intelectual = riesgo doble; riesgo maximo con TDAH). El problema es el semaforo verde: se apoya en un unico estudio de registro y la evidencia esta en disputa. La propia lista de fuentes de la ficha incluye un trabajo cuyo titulo afirma justo lo contrario para el mismo subgrupo: 'Decreased risk for substance use disorders in individuals with high-functioning autism spectrum disorder' (Eur Child Adolesc Psychiatry). Marcar en verde (= evidencia solida, metanalisis o guias) una afirmacion contradicha por una fuente de la propia ficha da al padre una falsa sensacion de certeza.",
+     "correccion": "Mantener el texto y las cifras, cambiar el semaforo a 🟡 y anadir el matiz: 'Otros estudios de registro no encuentran ese aumento en autismo sin discapacidad intelectual (Eur Child Adolesc Psychiatry, 2021), asi que la evidencia sobre este subgrupo concreto todavia no es concluyente.'",
+     "fuente": "https://link.springer.com/article/10.1007/s00787-021-01852-0",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "En promedio, las personas autistas consumen alcohol y otras sustancias con algo menos de frecuencia que la población general, así que esto no es un riesgo generalizado para todas las familias.",
+     "problema": "El mensaje clave presenta como dato poblacional general lo que procede de una unica encuesta online autoseleccionada (Weir 2021), cuya muestra la propia ficha describe despues como mayoritariamente femenina, blanca, britanica y sin discapacidad intelectual. No es una estimacion representativa de 'la poblacion general' autista, y el mensaje clave es lo primero (a veces lo unico) que lee un padre.",
+     "correccion": "En una encuesta amplia de adultos y adolescentes autistas del Reino Unido, el consumo regular de alcohol fue algo menor que en personas no autistas, aunque esa muestra no representa a toda la poblacion autista (era voluntaria, mayoritariamente femenina y sin discapacidad intelectual).",
+     "fuente": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8310943/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha solida en lo factual. VERIFICADO por busqueda: (1) Weir, Allison y Baron-Cohen, Lancet Psychiatry 2021 — 1.183 autistas y 1.203 no autistas en el analisis cuantitativo; consumo regular de alcohol 16,0% frente a 22,2% y atracones 3,8% frente a 8,2%: las cuatro cifras y el tamano muestral coinciden exactamente. (2) Butwicka et al. 2017, J Autism Dev Disord — 26.986 personas con TEA y 96.557 familiares sin TEA, riesgo doble en TEA sin TDAH ni discapacidad intelectual y riesgo maximo con TDAH: coincide. (3) Huang et al., JAMA Pediatrics 2021 (Taiwan) — 6.599 personas con TEA y 26.396 controles, HR ajustado 2,33 para trastorno por consumo de sustancias (2,07 alcohol, 3,00 drogas), y riesgo MENOR en quienes recibian psicotropos (HR 0,60 con un farmaco y 0,37 con varios): coincide con lo que dice la ficha, incluido el efecto protector del tratamiento. No hay dosis, ni instrucciones de tratamiento, ni desaconsejo de acudir a profesionales; el uso del 🔴 para marcar una idea equivocada que evitar es coherente con el resto de la biblioteca. NO VERIFICADO (no evaluado ni a favor ni en contra): el contenido de la revision sistematica sobre tratamiento de adicciones en TEA (Springer 2023) que respalda el ultimo punto, la fuente divulgativa InfoAdicciones, y las afirmaciones cualitativas sobre automedicacion y diagnostico tardio (puntos 4 y 5), que son plausibles y estan bien marcadas en amarillo pero no las he contrastado una a una. No he podido comprobar el estado de ninguna URL (WebFetch inhabilitado), por eso enlaces_comprobados=0."
+  },
+  "DU": {
+   "codigo": "DU",
+   "titulo": "Autismo y uso problemático de videojuegos e internet",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "como punto de partida orientativo, para medios de entretenimiento en niños en edad escolar se suele hablar de 1 a 2 horas al día, con menos tiempo en días de escuela, a adaptar con cada familia y profesional. 🟢",
+     "problema": "La frase se contradice con la primera mitad de su propio punto y atribuye a las guias pediatricas actuales una cifra que ya no existe. La AAP retiro la regla de '2 horas o menos' en 2016 y no fija ningun limite horario para ninos en edad escolar: su recomendacion actual es el Family Media Plan (calidad del contenido, contexto, sueno, actividad fisica), y el unico limite numerico que mantiene es 1 hora al dia de contenido de calidad para 2-5 anos. Dar una cifra concreta con semaforo verde y una fuente de la AAP hace que un padre la lea como 'lo que recomienda la AAP', que es justo lo que la ficha acaba de decir que ya no se hace.",
+     "correccion": "las guías pediátricas actuales no fijan un número de horas para niños en edad escolar: la AAP recomienda construir un plan familiar de medios (Family Media Plan) que proteja el sueño, la actividad física, las comidas y los deberes, y revisar la calidad del contenido. El único límite horario que mantiene es de 1 hora al día de contenido de calidad entre los 2 y los 5 años.",
+     "fuente": "https://www.aap.org/en/patient-care/media-and-children/center-of-excellence-on-social-media-and-youth-mental-health/qa-portal/qa-portal-library/qa-portal-library-questions/screen-time-limits-for-young-children/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "jugar junto con el hijo o hija (mediación social) es uno de los factores protectores más señalados en las guías de seguridad en línea para jóvenes autistas. 🟢",
+     "problema": "El verde exige evidencia solida (metanalisis, guias clinicas, ensayos replicados). El unico respaldo listado para los beneficios de los videojuegos y para la mediacion parental es una entrada de blog divulgativo de un hospital (Children's National), no una guia clinica ni un metanalisis. La evidencia sobre beneficios del juego digital en autismo es preliminar y heterogenea. Ademas resulta incoherente que este punto este en verde mientras el metanalisis de 46 estudios del primer punto esta en amarillo.",
+     "correccion": "Mismo texto con semáforo 🟡, precisando: 'la mediación parental (jugar y comentar juntos) aparece como factor protector recomendado en materiales divulgativos y de seguridad en línea, aunque todavía sin ensayos que lo cuantifiquen en población autista.'",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "dato_incorrecto",
+     "cita": "con tamaños del efecto de moderados a fuertes en varios estudios",
+     "problema": "El metanalisis que la propia frase cita a continuacion da r = 0,26, que por convencion es un efecto pequeno-moderado, no 'de moderado a fuerte'. La frase exagera la magnitud del riesgo justo antes de dar la cifra que la desmiente.",
+     "correccion": "con tamaños del efecto pequeños a moderados",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/40266409/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "en un estudio de Mazurek y colaboradores (Pediatrics, 2013), los niños con TEA jugaban en promedio más horas al día que sus pares con desarrollo típico (alrededor de 2.1 frente a 1.2 horas)",
+     "problema": "Las cifras son exactas (2,1 frente a 1,2 h/dia, comprobado), pero la ficha omite dos limitaciones que cambian como debe leerse: el estudio incluyo SOLO varones de 8 a 18 anos (56 con TEA, 44 con TDAH, 41 con desarrollo tipico) y los datos eran de informe parental. Una madre de una nina autista no puede aplicarse directamente ese dato.",
+     "correccion": "en un estudio de Mazurek y Engelhardt (Pediatrics, 2013), realizado solo con varones de 8 a 18 años (56 con TEA, 44 con TDAH y 41 con desarrollo típico) y con datos aportados por los padres, los chicos con TEA jugaban en promedio más horas al día que sus pares con desarrollo típico (2,1 frente a 1,2 horas)",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/23897915/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "desactualizado",
+     "cita": "las guías de seguridad describen tres categorías de riesgo para jóvenes autistas en internet: de conducta (uso compulsivo, publicaciones o gastos inapropiados), de contenido (exposición a material inapropiado) y de contacto (ciberacoso, grooming, contacto con desconocidos)",
+     "problema": "La clasificacion vigente (CO:RE, usada por la investigacion reciente sobre amenazas online en adolescentes autistas) tiene CUATRO categorias: contenido, contacto, conducta y 'contrato' o riesgo comercial. Precisamente la cuarta —cajas de botin, microtransacciones, publicidad inadecuada para la edad, explotacion de datos— es la mas relevante en una ficha sobre videojuegos, y aqui queda diluida como 'gastos inapropiados' dentro de conducta.",
+     "correccion": "las guías de seguridad describen cuatro categorías de riesgo (clasificación CO:RE): de contenido (material inapropiado), de contacto (ciberacoso, grooming, desconocidos), de conducta (uso compulsivo, publicaciones inadecuadas) y de contrato o comerciales (cajas de botín, compras dentro del juego, publicidad y recogida de datos inadecuadas para la edad)",
+     "fuente": "https://link.springer.com/article/10.1007/s10566-026-09939-y",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "El nucleo empirico es correcto, el problema esta en el consejo practico final. VERIFICADO por busqueda: (1) el metanalisis 'Caught in the Web of the Net? Part I' (Muris et al., 2025) — 46 estudios, 42.274 participantes, r = 0,26 (IC 95% 0,21-0,31) para uso problematico de internet: las tres cifras coinciden exactamente con la ficha. (2) Mazurek y Engelhardt, Pediatrics 2013 — 2,1 frente a 1,2 h/dia y mayor uso problematico en TEA y TDAH que en desarrollo tipico: coincide, pero la muestra fueron solo varones (n=141 en total). El error de mas peso practico es la cifra de '1 a 2 horas al dia' presentada en verde como orientacion pediatrica actual: la AAP abandono los limites horarios para escolares en 2016 y hoy solo mantiene 1 hora/dia para 2-5 anos, asi que la fuente de la AAP que la ficha cita no sostiene esa cifra. NO VERIFICADO: el contenido de las dos revisiones sistematicas de ScienceDirect y de la revision de Springer 2021, y el material de Children's National que respalda los puntos de beneficios y de riesgos online; existen como referencias plausibles pero no he comprobado que digan lo que la ficha les atribuye. No hay dosis ni indicaciones medicas y la ficha remite a 'cada familia y profesional'. Sin comprobacion de URLs (WebFetch inhabilitado)."
+  },
+  "DV": {
+   "codigo": "DV",
+   "titulo": "Autismo y vida online: redes sociales, beneficios y seguridad",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "muchas personas autistas describen sentir más control, menos ansiedad y mayor autenticidad al comunicarse por texto o plataformas online que cara a cara, porque desaparecen la exigencia de contacto visual y la lectura instantánea de señales no verbales. 🟢",
+     "problema": "La afirmacion es explicitamente de experiencia vivida ('muchas personas autistas describen sentir'), que segun el propio codigo de la biblioteca corresponde a ⚪ (experiencia vivida) o como mucho 🟡. Esta marcada en 🟢, que reserva la ficha para metanalisis, guias clinicas o ensayos replicados. Ninguna de las fuentes listadas es de ese tipo para esta afirmacion: son una pagina de la National Autistic Society, un articulo de revision de 2015 y una entrada del Autism Research Institute.",
+     "correccion": "Mismo texto con semáforo ⚪ (o 🟡), indicando que procede de relatos y estudios cualitativos de personas autistas, no de evidencia experimental.",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "el beneficio más citado por personas autistas es la conexión social —especialmente con quienes comparten un interés específico o viven lejos— y estudios describen mayor calidad de amistad y satisfacción con la vida social online. 🟢",
+     "problema": "Afirmacion empirica concreta ('mayor calidad de amistad y satisfaccion') en verde, pero sin ningun estudio identificado: no se nombra autor, ano ni revista, y de las fuentes listadas solo hay paginas divulgativas (NAS, Autism Research Institute) y una revision de 2015 sobre vulnerabilidad, no sobre calidad de amistad. Un padre no puede rastrear de donde sale. Ademas la evidencia agregada mas reciente es mas matizada: el metanalisis de Muris et al. (2025) encuentra que las personas autistas participan MENOS en redes sociales que sus pares (r = -0,28).",
+     "correccion": "Nombrar el estudio concreto que sostiene la afirmación (autor, año, revista) y bajar a 🟡, anadiendo: 'la participación en redes sociales es en promedio menor entre personas autistas que entre no autistas, aunque quienes las usan describen beneficios claros de conexión con pares de intereses afines.'",
+     "fuente": "https://pubmed.ncbi.nlm.nih.gov/40266409/",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "desactualizado",
+     "cita": "revisiones académicas describen un mayor riesgo en jóvenes autistas frente a \"riesgos de conducta\" (uso compulsivo), \"de contenido\" (material inapropiado) y \"de contacto\" (ciberacoso, grooming, estafas)",
+     "problema": "La ficha cita como fuente el estudio de Child & Youth Care Forum sobre percepcion de amenazas de internet en adolescentes autistas, que —comprobado por busqueda— usa la clasificacion CO:RE de CUATRO riesgos: contenido, contacto, conducta y 'contrato' (comerciales). La ficha reduce el marco a tres y elimina precisamente la categoria de riesgos comerciales (publicidad inadecuada para la edad, compras, explotacion de datos y privacidad), que ese estudio documenta como experiencia real de los adolescentes autistas entrevistados.",
+     "correccion": "revisiones académicas y la clasificación CO:RE describen cuatro tipos de riesgo en jóvenes autistas: de contenido (material inapropiado), de contacto (ciberacoso, grooming, estafas), de conducta (uso compulsivo, publicaciones inadecuadas) y de contrato o comerciales (publicidad inadecuada para la edad, compras, uso de sus datos personales)",
+     "fuente": "https://link.springer.com/article/10.1007/s10566-026-09939-y",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "riesgo_seguridad",
+     "cita": "sí subraya por qué la seguridad digital y la educación sobre consentimiento son prioritarias, sobre todo en la adolescencia. 🟡",
+     "problema": "La ficha da a un padre el dato mas duro de todo el dominio —que cerca de 9 de cada 10 mujeres autistas encuestadas informaron de alguna forma de agresion sexual— y no ofrece ninguna ruta de accion: ni a quien acudir si sospecha que su hija o hijo ha sufrido algo, ni recomendacion de consultar con un profesional de salud mental o con servicios de atencion a victimas, ni telefonos o recursos de ayuda. Es el unico de los tres dominios revisados cuya nota 'Para la app' no enlaza con 'cuando consultar a un profesional'. Un padre alarmado por esa cifra se queda sin siguiente paso.",
+     "correccion": "Añadir un punto de cierre del tipo: 'Si sospechas que tu hijo o hija ha sufrido acoso, grooming o una agresión sexual —online o presencial—, busca ayuda profesional: pediatra o médico de familia, servicios de salud mental infanto-juvenil y los servicios especializados de atención a víctimas de tu país. No es algo que deba gestionarse solo dentro de casa.'",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "cifra muy superior al ~1 de cada 3 de las mujeres no autistas",
+     "problema": "La comparacion mezcla dos medidas distintas: el 88,4% de las mujeres autistas procede del cuestionario estandarizado SES-SF-V, que cubre un abanico amplio de experiencias de victimizacion sexual, mientras que el '~1 de cada 3' es la cifra general de la OMS sobre violencia fisica o sexual, medida con otros instrumentos y otra definicion. El contraste real es menor de lo que sugiere la frase. Ademas, en el mismo estudio la pregunta abierta (no el cuestionario) dio 68,9%, dato que la ficha omite y que ilustra cuanto depende la cifra del instrumento.",
+     "correccion": "cifra muy superior a la estimación general de alrededor de un 30% en mujeres no autistas, aunque la comparación no es directa porque se miden con cuestionarios distintos; en el mismo estudio, cuando se preguntaba de forma abierta en vez de con el cuestionario estandarizado, la cifra bajaba al 68,9%",
+     "fuente": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9087551/",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "Ficha con buen fondo y un problema sistematico de semaforos demasiado optimistas, mas una laguna de derivacion profesional. VERIFICADO por busqueda: (1) Cazalis et al., Frontiers in Behavioral Neuroscience 2022 — n = 225 mujeres autistas (encuesta online a la comunidad autista francesa), 88,4% de victimizacion con el cuestionario SES-SF-V frente a 68,9% con pregunta abierta: la cifra del 88% y el instrumento que cita la ficha son correctos, y la ficha acierta al advertir que es una muestra autoseleccionada. (2) Lough, Flynn y Riby, 'Mapping Real-World to Online Vulnerability in Young People with Developmental Disorders: Illustrations from Autism and Williams Syndrome', Review Journal of Autism and Developmental Disorders, 2015: autoria, ano, revista y DOI (10.1007/s40489-014-0029-2) correctos. (3) 'Autistic Adolescent Perspectives on Internet Threats: Findings from an Exploratory Pilot Study', Child & Youth Care Forum (DOI s10566-026-09939-y): existe y esta bien atribuido, pero es un estudio piloto cualitativo con SEIS adolescentes de 16 a 19 anos, y usa la clasificacion CO:RE de cuatro riesgos, no tres. NO VERIFICADO: el contenido de la pagina de la National Autistic Society y de la entrada del Autism Research Institute; en particular no he podido confirmar de donde sale la afirmacion sobre 'mayor calidad de amistad y satisfaccion con la vida social online', que ninguna fuente identificable de la lista parece sostener. No hay dosis ni instrucciones medicas, y el punto en 🔴 sobre no prohibir internet esta bien usado. Sin comprobacion de URLs (WebFetch inhabilitado)."
+  },
+  "DW": {
+   "codigo": "DW",
+   "titulo": "Habilidades de vida diaria e independencia",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "en personas con CI promedio o alto, las habilidades de participación comunitaria (como manejar dinero o hacer un trabajo) fueron especialmente predictivas, mientras que en personas con discapacidad intelectual, el cuidado personal (bañarse, salud) fue lo más relevante. 🟢",
+     "problema": "Es un resultado empírico muy concreto (interacción entre nivel de CI y qué subdominio adaptativo predice el resultado adulto) presentado con semáforo verde pero atribuido solo a \"estudios longitudinales\" en plural, sin autor, año ni muestra. Con cinco fuentes en la lista, el lector no puede saber cuál lo sostiene, y la formulación en plural sugiere replicación que no se documenta. NO VERIFICADO: no pude comprobar el contenido del estudio citado (PMC12279000) porque el límite de búsquedas estaba agotado.",
+     "correccion": "Atribuir el hallazgo al estudio concreto con autor, año y muestra, p. ej.: \"un estudio longitudinal (Identifying Daily Living Skills From Childhood and Adolescence Predictive of Adult Outcomes) encontró que en personas con CI promedio o alto las habilidades de participación comunitaria fueron especialmente predictivas, mientras que en personas con discapacidad intelectual lo fue el cuidado personal 🟡\"; mantener 🟢 solo si se añade una revisión o metanálisis que replique esa interacción.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "es una estrategia con buen respaldo práctico en educación especial y análisis de conducta. 🟢",
+     "problema": "El propio texto califica la evidencia como \"respaldo práctico\", que es un nivel inferior al que el código verde exige en esta biblioteca (metanálisis, guías clínicas o ensayos replicados). Además, ninguna de las cinco fuentes listadas es una revisión de evidencia sobre task analysis: ASAT cubre horarios visuales de actividades, y OAR/Autism Speaks son páginas divulgativas. El semáforo verde no está sostenido por las fuentes que acompañan la ficha.",
+     "correccion": "O bien citar la fuente que sí clasifica task analysis como práctica basada en evidencia (informe NCAEP/NPDC de prácticas basadas en evidencia para autismo) y mantener 🟢, o bien reformular como \"es una estrategia recomendada de forma consistente en educación especial y análisis de conducta 🟡\".",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AUDITORÍA INCOMPLETA: el límite compartido de WebSearch estaba agotado en mi primer intento, así que NO pude verificar externamente ninguna fuente, cifra ni atribución. enlaces_comprobados=0 y enlaces_rotos vacío por instrucción. Lo que sí revisé (consistencia interna, correspondencia afirmación-fuente-semáforo y seguridad) no muestra problemas graves: la ficha no da dosis, no describe tratamientos médicos, no desaconseja acudir a profesionales y el bullet 🔴 advierte correctamente contra programas que prometen independencia rápida. Los dos hallazgos son leves y ambos afectan al respaldo de afirmaciones marcadas en verde. QUEDA SIN VERIFICAR (no \"correcto\"): que los PMCID enlazados correspondan a los títulos que se les atribuyen; que el estudio longitudinal citado reporte realmente la disociación CI alto/discapacidad intelectual; que ASAT clasifique los horarios visuales de actividades como práctica con apoyo de investigación; y la afirmación de que la brecha CI-conducta adaptativa esté solo en 🟡 cuando podría estar mejor replicada de lo que sugiere ese semáforo. Nota menor: la ficha no remite explícitamente a ningún profesional (terapeuta ocupacional, especialista en transición) para diseñar los objetivos, algo recomendable dado el público."
+  },
+  "DX": {
+   "codigo": "DX",
+   "titulo": "Autismo y reconocimiento de caras (prosopagnosia)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "La cifra del 36% procede de un único estudio de muestra moderada, pero el hallazgo de dificultades faciales elevadas en autismo está corroborado por trabajos posteriores. 🟢",
+     "problema": "Contradicción interna directa: el propio texto reconoce que la cifra central del bullet (≈36% de 80 adultos autistas) sale de un único estudio de muestra moderada, y aun así el bullet lleva semáforo verde. Según el criterio de la biblioteca, una afirmación basada en un solo estudio pequeño no puede ir en verde. El riesgo para el lector es que un padre tome el 36% como una prevalencia establecida cuando es una estimación única, sensible al umbral de corte usado en el CFMT/PI20.",
+     "correccion": "Cambiar el semáforo del bullet a 🟡 y dejar el texto como: \"La cifra del 36% procede de un único estudio de muestra moderada, pero el hallazgo de dificultades faciales elevadas en autismo está corroborado por trabajos posteriores. 🟡\". Alternativamente, separar en dos afirmaciones: \"hay más dificultades de reconocimiento facial en autismo que en población general 🟢\" y \"la proporción concreta ronda el tercio según un único estudio 🟡\".",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "no hay evidencia de que ejercicios de \"reconocimiento facial\" curen la prosopagnosia",
+     "problema": "Formulación absoluta bajo semáforo rojo. Existen estudios de entrenamiento perceptivo/holístico en prosopagnosia del desarrollo con mejoras modestas y poco duraderas; lo correcto es que no hay evidencia de curación ni de generalización robusta, no que no exista ninguna evidencia. Tal como está, un 🔴 sobre \"entrenar la cara\" puede llevar a una familia a rechazar de plano un programa de apoyo perceptivo que un profesional le proponga. NO VERIFICADO externamente (sin búsquedas disponibles); lo señalo como matiz de redacción, no como dato refutado.",
+     "correccion": "\"no hay evidencia de que ejercicios de \"reconocimiento facial\" curen la prosopagnosia: los programas de entrenamiento estudiados producen, como mucho, mejoras modestas y poco generalizables\"",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AUDITORÍA INCOMPLETA: sin WebSearch (límite de sesión agotado en el primer intento) y con WebFetch prohibido, no pude comprobar ninguna cita. enlaces_comprobados=0 y enlaces_rotos vacío por instrucción. El hallazgo principal es interno y no necesita red: el bullet del 36% se autodescalifica como \"único estudio de muestra moderada\" y aun así va en 🟢. El resto de la ficha está bien construida en cuanto a matiz (reconoce explícitamente la disputa sobre el \"insight limitado\", marca como 🟡 lo que procede de prosopagnosia del desarrollo y no de autismo, y no da consejo médico ni dosis). QUEDA SIN VERIFICAR, y por tanto NO puede darse por bueno: (1) que Minio-Paluello, Porciello, Pascual-Leone y Baron-Cohen 2020 en Molecular Autism use N=80 y reporte ≈36%; (2) que el 2-3% atribuido a población general sea la cifra que da esa fuente y no una estimación traída de otro trabajo; (3) la autoría, año y revista de Kamensek/Susilo 2023 en Autism Research y de Portch, Wignall y Bate 2023 en PeerJ; (4) que el estudio de Scientific Reports 2024 tenga N≈77 adultos autistas; (5) que cada URL apunte al trabajo que su etiqueta afirma. También queda sin comprobar si el 🟢 del bullet \"No confundir con desinterés social o mala memoria en general\" está respaldado por alguna fuente listada: la especificidad del déficit para identidad facial (frente a memoria general) en autismo es una afirmación fuerte que ninguna de las fuentes se presenta explícitamente como sosteniendo."
+  },
+  "DY": {
+   "codigo": "DY",
+   "titulo": "Autismo y percepción del tiempo",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "sea genuinamente más difícil, independientemente de si el \"reloj interno\" funciona distinto. 🟢",
+     "problema": "Es el único bullet en verde con contenido causal —que las dificultades de función ejecutiva explican los problemas prácticos de gestión del tiempo— y ninguna de las cinco fuentes de la ficha lo sostiene: dos son revisiones sobre percepción temporal, una es un estudio nulo, y dos son páginas divulgativas de NAS y Autism Speaks. La propia ficha remite el respaldo a otro dominio (\"enlaza con función ejecutiva\"), es decir, el verde descansa en evidencia que no se cita aquí. Es además la afirmación que más orienta la actuación de los padres (intervenir en organización en lugar de en \"percepción del tiempo\").",
+     "correccion": "Añadir a la línea de Fuentes una referencia que sostenga la afirmación (p. ej. un metanálisis de función ejecutiva en autismo) y, mientras no se añada, bajar el semáforo a 🟡: \"...sea genuinamente más difícil, independientemente de si el \"reloj interno\" funciona distinto. 🟡 (enlaza con función ejecutiva, dominio relacionado)\".",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "el estudio de 2022 (Poole et al., *Journal of Experimental Psychology: General*) —el más grande hasta la fecha sobre tiempo y autismo—",
+     "problema": "Superlativo comparativo (\"el más grande hasta la fecha\") sin tamaño muestral ni fuente que lo acredite; ninguna de las revisiones citadas es posterior al estudio, de modo que nada en la ficha puede sostener esa comparación. Añade peso retórico a un resultado nulo que el lector no puede calibrar sin saber la N. NO VERIFICADO: no pude comprobar autoría, revista ni muestra del trabajo.",
+     "correccion": "Sustituir por la muestra real del estudio, p. ej.: \"el estudio de 2022 (Poole et al., *Journal of Experimental Psychology: General*), con una muestra amplia de adultos autistas y no autistas,\" y eliminar el superlativo mientras no haya fuente que lo respalde.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "**Los apoyos visuales para el tiempo tienen buen respaldo práctico:** organizaciones como la National Autistic Society recomiendan agendas visuales con pictogramas, temporizadores visuales (de arena o de disco) y avisos anticipados de transición",
+     "problema": "El bullet va en 🟢 pero su único respaldo citado son recomendaciones de dos organizaciones divulgativas (National Autistic Society y Autism Speaks), no metanálisis, guías clínicas ni ensayos replicados. Las agendas visuales sí están reconocidas como práctica basada en evidencia en la literatura de autismo, pero los temporizadores visuales específicamente para percepción del tiempo tienen mucha menos base; el bullet las agrupa bajo el mismo verde.",
+     "correccion": "Citar el informe de prácticas basadas en evidencia (NCAEP/NPDC) para la parte de apoyos visuales y mantener 🟢 solo para esa parte, marcando los temporizadores visuales como recomendación práctica 🟡; o reformular todo el bullet como \"tienen buen respaldo práctico y son la recomendación estándar de las principales organizaciones 🟡\".",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AUDITORÍA INCOMPLETA: el límite compartido de WebSearch se agotó antes de mi primera búsqueda y WebFetch está prohibido, así que no verifiqué ninguna fuente. enlaces_comprobados=0 y enlaces_rotos vacío por instrucción. Los tres hallazgos salen de consistencia interna: dos semáforos verdes cuyo respaldo no está en las fuentes de la ficha y un superlativo sin sustento. En positivo, y sin necesidad de red: esta es la ficha mejor calibrada de las tres en cuanto a incertidumbre —dice explícitamente que la evidencia es mixta, recoge un estudio nulo que contradice la narrativa popular, y aclara con acierto que \"ceguera temporal\" es una descripción coloquial y no un diagnóstico. No hay riesgos de seguridad: ninguna dosis, ninguna intervención médica, ninguna recomendación de evitar profesionales. QUEDA SIN VERIFICAR (no \"correcto\"): la cita textual atribuida a Casassus et al. 2019 en Autism Research; que Jurek et al. 2019 en Behavioural Brain Research pidan efectivamente evaluación sistemática antes de intervenir; la revista, autoría y resultado de Poole et al. 2022; y que cada URL/PMID corresponda al trabajo que su etiqueta indica. La afirmación \"el procesamiento del tiempo no forma parte de los criterios diagnósticos del autismo\" es correcta respecto al DSM-5-TR y no requiere corrección."
+  },
+  "DZ": {
+   "codigo": "DZ",
+   "titulo": "Autismo y memoria (perfil y fortalezas)",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "medio",
+     "tipo": "semaforo_incorrecto",
+     "cita": "varias revisiones describen que muchas personas autistas muestran memoria semántica sólida —hechos, patrones, secuencias— con recuerdo detallado en áreas de interés (fechas, clasificaciones, horarios, estadísticas). 🟢",
+     "problema": "Semáforo verde (definido en la biblioteca como metaanálisis, guías clínicas o ensayos replicados) para una afirmación que la propia ficha atribuye a \"varias revisiones\" sin identificar ninguna, y ninguna de las fuentes listadas es un metaanálisis de memoria semántica: las dos únicas fuentes cuantitativas citadas (Habib 2019, Wang 2017) son de memoria de trabajo, y el respaldo restante es una web divulgativa para familias (Raising Children Network). Además, \"punto fuerte\" es más fuerte que lo que suele describir la literatura, que habla de memoria semántica relativamente preservada respecto a la episódica, no superior a la de no autistas.",
+     "correccion": "\"Memoria semántica y de hechos, a menudo relativamente preservada: la investigación describe que la memoria de hechos, patrones y secuencias suele estar mejor conservada que la memoria episódica/autobiográfica, y que el recuerdo puede ser muy detallado en áreas de interés. 🟡\" — y, si se quiere mantener el verde, citar en Fuentes un metaanálisis o revisión sistemática específica de memoria semántica en autismo en lugar de la web divulgativa.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "fuente_no_respalda",
+     "cita": "están reconocidos como estrategia con buena base de evidencia para el aprendizaje en autismo. 🟢",
+     "problema": "Se marca en verde que los apoyos visuales son una práctica con \"buena base de evidencia\", pero ninguna de las seis fuentes listadas es una revisión de prácticas basadas en evidencia ni una guía clínica: las cuantitativas son de memoria de trabajo y memoria autobiográfica, y la única que trata de aprendizaje es una página divulgativa (Raising Children Network). La afirmación puede ser cierta, pero en esta ficha no está sostenida por las fuentes que la acompañan.",
+     "correccion": "Mantener la afirmación solo si se añade a Fuentes la revisión que la respalda —por ejemplo el informe del National Clearinghouse on Autism Evidence and Practice (NCAEP, 2020), que clasifica los apoyos visuales como práctica basada en evidencia— o bajar el semáforo a 🟡 mientras esa fuente no esté citada.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "redaccion_confusa",
+     "cita": "**Mito a evitar:** \"todas las personas autistas tienen memoria fotográfica o superdotada\" es una generalización falsa y estigmatizante; la memoria excepcional para detalles existe en muchos casos pero coexiste con dificultades reales en otras áreas, y no aplica a todo el espectro. 🔴",
+     "problema": "El código de semáforos de la biblioteca define el rojo como \"desaconsejado o dañino\" referido a intervenciones. Aquí se usa para marcar un mito, no una intervención, lo que rompe la convención y puede leerse al vuelo como si lo descrito en la viñeta fuera una práctica desaconsejada. Un padre que ojee solo los emojis no distingue \"intervención dañina\" de \"creencia falsa\".",
+     "correccion": "Usar una marca distinta y explícita para mitos (por ejemplo \"❌ Mito\") o añadir la aclaración en la leyenda de semáforos de que el rojo también señala creencias falsas, no solo intervenciones.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AVISO METODOLOGICO: no pude verificar nada externamente. El limite de busquedas de la sesion estaba agotado antes de mi primera consulta (\"You've hit your session limit\") y WebFetch esta bloqueado, asi que ninguna cifra, autoria ni enlace de esta ficha ha sido comprobado contra la fuente original; enlaces_comprobados=0 y enlaces_rotos vacio por esa razon, no porque los enlaces esten bien. QUEDA SIN VERIFICAR (no darlo por bueno ni por malo): Wang et al. 2017, Neuropsychology Review — los N declarados (28 estudios, 819 autistas, 875 controles) y d≈-0.61; Habib et al. 2019, PLOS ONE — \"34 estudios en 29 articulos\", d≈-0.73 visuoespacial y d≈-0.67 fonologico/verbal; la afirmacion de que la memoria de trabajo espacial esta mas afectada que la verbal en ambos metaanalisis; la identidad del PMID 21975036 atribuido a Crane et al. 2013; y sobre todo la etiqueta \"Correlatos cerebrales de memoria declarativa en autismo\" asignada al DOI 10.1186/s13229-022-00525-2 de Molecular Autism, que es el tipo de enlace que en esta biblioteca suele arrastrar atribuciones erroneas y deberia comprobarse buscando el titulo real de ese DOI. LO QUE SI PUDE EVALUAR: la coherencia interna es buena (las cifras de los dos metaanalisis no se contradicen entre si ni con el texto), no hay ningun riesgo de seguridad —la ficha no da dosis, no describe tratamientos ni desaconseja acudir a profesionales, y remite explicitamente a evaluacion individual con un profesional—, y la terminologia esta actualizada. Los tres hallazgos son de calibracion: dos semaforos verdes cuyo respaldo en la propia lista de fuentes es una web divulgativa para familias, y un uso del rojo fuera de la leyenda. El encabezado \"VERIFICADO (Ronda 7, fuentes comprobadas)\" no debe interpretarse como confirmado por esta revision."
+  },
+  "EA": {
+   "codigo": "EA",
+   "titulo": "Autismo, sinestesia y particularidades perceptivas",
+   "veredicto": "errores_menores",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "leve",
+     "tipo": "semaforo_incorrecto",
+     "cita": "el modelo de \"funcionamiento perceptivo mejorado\" (Enhanced Perceptual Functioning; Mottron, Dawson y cols., revisado y actualizado con años de estudios) describe que muchas personas autistas procesan información sensorial de bajo nivel (formas, sonidos, patrones) con mayor precisión, lo que puede traducirse en detectar detalles, errores o patrones que otros pasan por alto. 🟢 (modelo muy citado y bien documentado, aunque no aplica igual a cada persona)",
+     "problema": "El verde se apoya en un articulo teorico (el paper de principios del modelo EPF, 2006), no en el tipo de evidencia que la leyenda exige para el verde (metaanalisis, guias clinicas o ensayos replicados). Un modelo muy citado no es lo mismo que un efecto con sintesis cuantitativa. La ficha lo reconoce a medias en el parentesis, lo que deja el semaforo y el texto en tension.",
+     "correccion": "O bien bajar a 🟡 con la nota \"modelo teorico muy citado, con apoyo empirico parcial\", o bien mantener el 🟢 anadiendo a Fuentes la sintesis cuantitativa que respalda la ventaja perceptiva (por ejemplo un metaanalisis de tareas de figuras enmascaradas / busqueda visual en autismo) en lugar de sostenerlo solo con el articulo del modelo de 2006.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AVISO METODOLOGICO: revision solo documental. El limite de busquedas de la sesion estaba agotado antes de mi primera consulta y WebFetch esta bloqueado, asi que no comprobe ninguna fuente contra el original; enlaces_comprobados=0 y enlaces_rotos vacio por esa limitacion, no por hallazgo. LO QUE PUDE EVALUAR: la aritmetica interna cuadra (18.9% de 164 = 31 personas; 7.2% de 97 = 7 personas; la razon 18.9/7.2 = 2.6 encaja con \"casi tres veces\"), y la ficha aplica bien las cautelas: senala que el dato de Baron-Cohen 2013 es autorreportado, matiza con Ward 2017 que la asociacion podria concentrarse en un subgrupo con talento prodigioso, y presenta la hiperconectividad como hipotesis y no como mecanismo confirmado. En seguridad no hay problemas: no da dosis ni tratamientos, no presenta la sinestesia como algo a curar, diferencia explicitamente percepcion distinta de alucinacion, y remite a terapia ocupacional o psicologia solo si hay malestar. QUEDA SIN VERIFICAR: los porcentajes y tamanos muestrales de Baron-Cohen et al. 2013 (18.9% de 164 vs 7.2% de 97) frente al articulo original; que grafema-color y sonido-color fueran efectivamente las formas mas reportadas en ese estudio; la conclusion atribuida a Ward et al. 2017 en Multisensory Research; y si el PMID 31287074 corresponde realmente a ese articulo de 2017 (un PMID de rango 2019 para un articulo de 2017 es compatible con la carga retrospectiva de una revista indexada tarde, asi que NO lo cuento como error, pero conviene confirmarlo buscando el titulo). Salvo el semaforo del modelo EPF, no detecte contradicciones ni atribuciones sospechosas en la revision documental; eso no equivale a decir que las cifras sean correctas."
+  },
+  "EB": {
+   "codigo": "EB",
+   "titulo": "Autismo y educación en casa (homeschooling)",
+   "veredicto": "errores_graves",
+   "enlaces_comprobados": 0,
+   "enlaces_rotos": [],
+   "hallazgos": [
+    {
+     "gravedad": "grave",
+     "tipo": "dato_incorrecto",
+     "cita": "**Marco legal (ejemplo Reino Unido):** la National Autistic Society recuerda que en Inglaterra la educación en casa es una opción legal: la educación es obligatoria pero asistir a la escuela no, y la ley no define *cómo* se debe educar en casa; solo exige que sea \"adecuada\" a la edad, capacidad y aptitud del niño (no se exige título docente, horario fijo ni un currículo específico). 🟢",
+     "problema": "Unico bloque legal de una ficha escrita en espanol para familias hispanohablantes, y describe solo Inglaterra, en verde y en tono tranquilizador. La educacion en casa NO es una opcion legal equivalente en buena parte de los paises de habla hispana: en Espana no esta reconocida como forma de cumplir la escolarizacion obligatoria (doctrina del Tribunal Constitucional, sentencia 133/2010) y retirar al nino del centro puede desencadenar expediente de absentismo e intervencion de servicios sociales; en varios paises de America Latina esta restringida o requiere autorizacion. Un padre que lea esta ficha puede sacar a su hijo autista de la escuela creyendo que es una via legal disponible. Ademas, la formula legal inglesa esta incompleta en lo que mas importa a este publico: la Education Act 1996 s.7 exige educacion adecuada a la edad, capacidad, aptitud \"y a cualquier necesidad educativa especial que el nino tenga\", y en Inglaterra, si el nino esta matriculado en un colegio especial, la familia necesita el consentimiento de la autoridad local para darle de baja.",
+     "correccion": "\"**Marco legal: comprueba primero la ley de tu pais.** La legalidad de la educacion en casa cambia radicalmente de un pais a otro: en Espana no se reconoce como forma de cumplir la escolarizacion obligatoria y puede dar lugar a un expediente de absentismo, mientras que en Inglaterra si es una opcion legal. Antes de tomar cualquier decision, consulta la normativa de tu comunidad o pais y, si es posible, asesoramiento legal. Ejemplo de Inglaterra (National Autistic Society): la educacion es obligatoria pero asistir a la escuela no; la ley no define *como* debe educarse en casa, solo exige que sea adecuada a la edad, capacidad, aptitud y a las necesidades educativas especiales del nino; ademas, si el nino esta matriculado en un colegio especial hace falta el permiso de la autoridad local para darle de baja.\" 🟡",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "medio",
+     "tipo": "redaccion_confusa",
+     "cita": "Algunas familias autistas eligen la educación en casa por acoso escolar, sobrecarga sensorial o falta de apoyos adecuados; puede aportar tranquilidad y un ritmo propio, pero también exige planear la socialización y suma carga a quien cuida.",
+     "problema": "El mensaje clave —la parte que mas se lee— presenta la educacion en casa como una decision disponible sin ninguna advertencia de que su legalidad depende del pais, y ademas omite la alternativa que las organizaciones de autismo suelen recomendar agotar primero: reclamar los apoyos y ajustes que la escuela esta obligada a proporcionar (y denunciar el acoso), en lugar de asumir que la salida es sacar al nino del sistema. Tal como esta, normaliza la retirada escolar como respuesta al acoso o a la falta de apoyos.",
+     "correccion": "Anadir al mensaje clave: \"Antes de plantearte esta via, comprueba si es legal en tu pais y agota la reclamacion de apoyos y ajustes en la escuela y el protocolo de acoso: el centro tiene obligaciones que se pueden exigir. Si aun asi decides educar en casa, hazlo con informacion legal y, si es posible, con apoyo profesional.\"",
+     "fuente": "",
+     "estado": "sin_refutar"
+    },
+    {
+     "gravedad": "leve",
+     "tipo": "fuente_no_respalda",
+     "cita": "[NHERI — Effective Homeschool Programming for Students with Autism Spectrum Disorder](https://nheri.org/effective-homeschool-programming-for-students-with-autism-spectrum-disorder/)",
+     "problema": "NHERI (National Home Education Research Institute) es una organizacion de promocion de la educacion en casa, no un organismo de investigacion independiente ni una organizacion de autismo. Aparece sin distincion junto a fuentes academicas y a la National Autistic Society, en una ficha que se presenta como neutral y que afirma que \"ni la evidencia ni las organizaciones de autismo presentan el homeschooling como superior o inferior a la escuela\". Citar una fuente con interes declarado a favor de una de las dos opciones, sin etiquetarla, debilita esa neutralidad.",
+     "correccion": "Etiquetar la fuente como parte interesada —por ejemplo \"NHERI (organizacion de promocion de la educacion en casa; no es una fuente independiente)\"— o sustituirla por literatura revisada por pares o por guias de organizaciones de autismo.",
+     "fuente": "",
+     "estado": "sin_refutar"
+    }
+   ],
+   "resumen": "AVISO METODOLOGICO: revision solo documental. El limite de busquedas de la sesion estaba agotado antes de mi primera consulta y WebFetch esta bloqueado, asi que no abri ni comprobe ninguna fuente; enlaces_comprobados=0 y enlaces_rotos vacio por esa limitacion. QUEDA SIN VERIFICAR (no darlo por bueno ni por malo): la revision sistematica de Richter, 2025, en Journal of Research in Special Educational Needs y sus cifras \"8 estudios de 855 identificados\"; que O'Hagan et al. 2021 sea efectivamente la sintesis tematica que respalda los motivos de eleccion descritos en la primera vinieta; y el contenido exacto de la pagina de la National Autistic Society sobre educacion en casa en Inglaterra. LO QUE SI PUDE EVALUAR Y ES EL PROBLEMA PRINCIPAL: el enfoque legal. La ficha esta escrita en espanol para familias hispanohablantes y su unico bloque legal —el unico marcado en verde de toda la entrada— describe solo Inglaterra en tono tranquilizador, sin advertir en ningun momento que en Espana la educacion en casa no se reconoce como cumplimiento de la escolarizacion obligatoria y que en varios paises de America Latina esta restringida. Eso es exactamente el tipo de omision que puede llevar a un padre a sacar a su hijo autista del colegio creyendo que actua dentro de la ley. A eso se suma que la version inglesa citada omite la clausula de necesidades educativas especiales de la Education Act 1996 s.7 y el requisito de permiso de la autoridad local para dar de baja a un nino matriculado en colegio especial, ambos criticos justamente para ninos autistas (esto lo afirmo desde el texto legal, no verificado en esta sesion). En cuanto a seguridad del nino, la ficha se comporta bien: no da dosis ni tratamientos, no desaconseja acudir a profesionales y recomienda coordinar el manejo conductual con profesionales cualificados y practicas basadas en evidencia en vez de improvisar; el equilibrio entre ventajas y costes (socializacion, carga del cuidador, perdida de ingresos) tambien esta bien planteado y los semaforos amarillos de las viniestas cualitativas estan bien calibrados."
+  }
+ },
+ "pendientes_de_auditar": [
+  "EC",
+  "ED",
+  "EE",
+  "EF",
+  "EG",
+  "EH",
+  "EI",
+  "EJ",
+  "EK",
+  "EL",
+  "EM",
+  "EN"
+ ]
+}
