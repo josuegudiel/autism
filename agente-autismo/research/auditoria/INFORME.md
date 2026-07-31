@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**65** hallazgos que eran falsas alarmas. Sin él se habrían
+**76** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -29,11 +29,11 @@ no *correcto*.
 
 ## Estado
 
-- Tandas hechas: **1, 2, 3**
-- Temas auditados: **132 de 318** (41%)
-- Temas sin ningún fallo confirmado: **62**
-- Fallos confirmados: **102** (graves o medios: **36**)
-- Falsas alarmas descartadas: **65**
+- Tandas hechas: **1, 2, 3, 4**
+- Temas auditados: **180 de 318** (56%)
+- Temas sin ningún fallo confirmado: **90**
+- Fallos confirmados: **125** (graves o medios: **49**)
+- Falsas alarmas descartadas: **76**
 
 ## Fallos confirmados que exigían corrección
 
@@ -70,6 +70,14 @@ La formulación condiciona la prohibición: dice que estas prácticas "no deben 
 > No es dañina en sí como alimento, pero venderla como tratamiento es engañoso.
 
 La ficha declara la leche de camella inocua sin advertir que el producto que se promueve para autismo es leche CRUDA (sin pasteurizar). La propia lista de la FDA que la ficha cita en el punto anterior habla de "leche de camella cruda", y la FDA/CDC advierten que la leche sin pasteurizar puede transportar E. coli, Campylobacter, Listeria, Salmonella y (en camélidos) MERS, con riesgo especialmente alto en niños. Un padre que lea "no es dañina" puede darle leche de camella cruda a su hijo.
+
+### GRAVE · ER. Autismo, migraña y cefaleas
+
+*dato incorrecto*
+
+> en la muestra de encuesta la migraña llegó a rondar el 42-43% frente a ~20% en el grupo de comparación
+
+La cifra no aparece en el estudio al que la ficha se la atribuye y está sobredimensionada en un orden de magnitud. El estudio de 2026 (Grant Tejada et al., Headache, PMID 41459835), que sí es el que usa la NSCH (N = 50.892) y el registro de UCLA (N = 4.334.162), reporta en la muestra de encuesta prevalencias de cefalea frecuente/severa en la cohorte autista del 7,5% (2018), 11,0% (2019), 5,0% (2020) y 7,1% (2021); y en el registro clínico de UCLA una prevalencia de migraña del 3,1% en personas autistas frente al 2,0% en no autistas. El 42,7% frente al 20,5% procede de un trabajo distinto y mucho más pequeño (105 adultos autistas frente a 76 no autistas, 2019), no de la encuesta nacional. Un 
 
 ### Medio · AH. Escuela: inclusión, adaptaciones y derechos
 
@@ -279,6 +287,102 @@ Los datos de muestra (26 ensayos, 1.165 participantes) y lo dicho sobre mejoría
 
 Unico bloque legal de una ficha escrita en espanol para familias hispanohablantes, y describe solo Inglaterra, en verde y en tono tranquilizador. La educacion en casa NO es una opcion legal equivalente en buena parte de los paises de habla hispana: en Espana no esta reconocida como forma de cumplir la escolarizacion obligatoria (doctrina del Tribunal Constitucional, sentencia 133/2010) y retirar al nino del centro puede desencadenar expediente de absentismo e intervencion de servicios sociales; en varios paises de America Latina esta restringida o requiere autorizacion. Un padre que lea esta ficha puede sacar a su hijo autista de la escuela creyendo que es una via legal disponible. Ademas, l
 
+### Medio · EL. Mitos ambientales: wifi, campos electromagnéticos, fluoruro y ecografías
+
+*la fuente no lo sostiene*
+
+> comparaciones poblacionales amplias en EE. UU. no muestran diferencias de prevalencia de autismo entre zonas con y sin fluoración
+
+Ninguna de las cinco fuentes listadas al pie sostiene esta afirmación: la OMS es sobre campos electromagnéticos, los dos enlaces de ecografías son el estudio SEED, MIREC es una cohorte canadiense de fluoruro urinario prenatal (no una comparación de zonas fluoradas en EE. UU.) y la monografía del NTP trata de fluoruro y CI, no de prevalencia de autismo por zonas. Es la afirmación central del apartado de fluoruro y queda sin respaldo citado, justo en el tema más contestado de la ficha, donde además existe literatura reciente en sentido contrario (p. ej. un estudio de 2025 en BMC Pediatrics que sí reporta mayor riesgo de TEA con agua fluorada) que la ficha no menciona ni rebate.
+
+### Medio · EQ. Enuresis (mojar la cama)
+
+*la fuente no lo sostiene*
+
+> estudios sitúan la enuresis nocturna en torno al 30% (y en algunas series hasta ~38%) en niños autistas
+
+Ninguna de las cuatro fuentes listadas respalda esta cifra en poblacion autista. La unica fuente de prevalencia citada es [PMC — Prevalencia de enuresis en TDAH y poblaciones afines](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10977936/), que es 'Prevalence of Enuresis in Children, Adolescents, and Young Adults Diagnosed With Attention Deficit Hyperactivity Disorder' (PMID 38550436): trata de TDAH, no de autismo. Las otras tres fuentes (NICE CG111, Cochrane de alarmas, HealthyChildren) son de poblacion general. El 30% procede en realidad del estudio controlado de von Gontard et al. 2015 en Journal of Pediatric Urology, con solo 40 ninos autistas y 43 controles; el ~38% no lo he podido rastr
+
+### Medio · ES. Programa Hanen (More Than Words) y programas para padres
+
+*semáforo demasiado optimista*
+
+> mostró en su seguimiento a 6 años una reducción sostenida de la gravedad de síntomas autistas en niños tratados —el primer ECA de intervención temprana en autismo que documenta reducción de síntomas a largo plazo—
+
+La viñeta lleva 🟢 ('evidencia sólida: metaanálisis, guías clínicas, ensayos replicados') pero se apoya en un único ensayo (PACT) cuyo resultado a largo plazo no ha sido replicado. Además la ficha omite un dato relevante para un padre: el ensayo original de Green et al. (Lancet 2010) NO alcanzó significación en su desenlace primario (gravedad de síntomas medida con ADOS); el efecto sobre síntomas aparece solo en el seguimiento posterior de Pickles et al. (Lancet 2016). Presentar esto como evidencia sólida y replicada, sin mencionar el resultado nulo inicial, empuja a leer PACT como más establecido de lo que está.
+
+### Medio · EY. Divulgar el diagnóstico (disclosure): a quién y cómo
+
+*semáforo demasiado optimista*
+
+> **Al niño o adolescente, mejor pronto y en positivo:** los recursos clínicos (Kennedy Krieger Institute, Autism Society of NC) coinciden en que explicar el diagnóstico de forma temprana, honesta y afirmativa —presentándolo como una forma de entenderse mejor, no como un defecto— ayuda a la autoestima y evita que el niño se entere de forma confusa o negativa por terceros. 🟢
+
+Semáforo verde (evidencia sólida: metanálisis, guías clínicas o ensayos replicados) apoyado únicamente en dos materiales divulgativos de organizaciones, no en investigación. La evidencia empírica sobre el momento de contarlo es limitada y además está en disputa: el estudio que suele citarse (Oredipe et al., Autism 2023) es transversal, con 78 estudiantes universitarios autistas, y una réplica preregistrada con 300 adultos del Reino Unido (Leung et al., Autism 2024) no encontró que la edad de saberse autista predijera la calidad de vida al controlar por otras variables. Presentarlo como evidencia sólida puede hacer que un padre lea como 'está demostrado' lo que hoy es una recomendación razona
+
+### Medio · FD. DIR/Floortime
+
+*la fuente no lo sostiene*
+
+> La ASAT lo describe como tratamiento "emergente" cuya eficacia debe replicarse de forma independiente antes de considerarlo empíricamente validado.
+
+La propia página de ASAT que la ficha cita como fuente dice lo contrario: que los grupos de trabajo que evalúan tratamientos para el autismo NO avalan DIR/Floortime ni como tratamiento establecido ni como emergente ("Task forces that evaluate treatments for people with autism do not endorse DIRFloortime as an emerging or established treatment for autism"), y que las revisiones concluyen que hace falta investigación de mayor calidad; ASAT añade que los enfoques puramente evolutivos como DIR/Floortime muestran tamaños de efecto pequeños frente a los modelos que combinan principios evolutivos y conductuales. Atribuir a ASAT la etiqueta "emergente" eleva el nivel de evidencia que esa misma fuent
+
+### Medio · FG. Elegir colegio: ordinario, especial o específico
+
+*la fuente no lo sostiene*
+
+> organismos de la ONU sí han señalado preocupación cuando la educación especial se usa por defecto (falta de apoyos en lo ordinario) en vez de como elección informada, pero eso es un problema de recursos y de proceso, no un argumento contra el centro especial en sí cuando responde mejor a las necesidades del niño.
+
+La ficha cita la CDPD como fuente pero suaviza y tergiversa la posición real del órgano de la ONU que la interpreta. El Comité sobre los Derechos de las Personas con Discapacidad, en su Observación General nº 4 (2016) sobre el artículo 24, no limita su objeción a un 'problema de recursos y de proceso': define como segregación la educación de alumnos con discapacidad en entornos separados, sostiene que los sistemas paralelos (educación especial) no son compatibles con el artículo 24 y pide su eliminación progresiva. Añade además, de forma expresa, que crear unidades separadas dentro de un centro ordinario (lo que la ficha llama 'aula específica' o 'aula TEA' y presenta como modalidad intermed
+
+### Medio · FJ. Formación profesional y oficios
+
+*la fuente no lo sostiene*
+
+> **Las habilidades de "preparación laboral" predicen mejor el resultado que el diagnóstico en sí:** un estudio con 281 adultos autistas jóvenes (Journal of Autism and Developmental Disorders, 2024) encontró que las habilidades de adaptabilidad/estilo de trabajo se asociaban con mejores resultados vocacionales
+
+El estudio existe y las cifras son correctas (281 adultos autistas, JADD 2024, 54(2):477-490; el estilo de trabajo/adaptabilidad se asoció a mejores resultados vocacionales), pero TODA la muestra era autista: no hay grupo de comparación no autista ni ningún análisis que enfrente 'habilidades de preparación laboral' contra 'el diagnóstico' como predictores. El titular afirma una comparación que el estudio no hace. Además es un estudio observacional único y transversal (asociación, no predicción causal), lo que no encaja con el semáforo verde definido como metaanálisis/guías/ensayos replicados.
+
+### Medio · FJ. Formación profesional y oficios
+
+*semáforo demasiado optimista*
+
+> Para muchas personas puede suponer, además, menos exigencia de "networking" social continuo que otros entornos, algo que a veces alivia la carga sensorial y social del día a día; esto varía mucho de una persona a otra y de un sector a otro. 🟢
+
+Afirmación marcada como evidencia sólida (verde) que ninguna de las fuentes listadas respalda: no hay metaanálisis, guía clínica ni estudio comparativo que demuestre que los ciclos de FP u oficios exijan menos 'networking' o alivien la carga sensorial. La propia frase reconoce que 'varía mucho de una persona a otra', lo que la sitúa en el terreno de la experiencia vivida o la hipótesis razonable, no de la evidencia sólida.
+
+### Medio · FK. Entrevistas de trabajo y conseguir empleo
+
+*la fuente no lo sostiene*
+
+> Cuando en una segunda entrevista se adaptaron las preguntas a un lenguaje más estructurado, explícito y concreto (menos hipotéticas abstractas, menos dobles sentidos), la diferencia entre grupos se redujo hasta casi desaparecer. 🟢
+
+El estudio citado (Maras et al., Autism 2021, 25(4):1060-1075) NO informa de que la diferencia entre grupos casi desapareciera. Lo que reporta es que las adaptaciones mejoraron las impresiones globales de AMBOS grupos (autistas y no autistas) —principio de diseño universal— y que, aun así, los candidatos autistas siguieron siendo puntuados peor que los no autistas en confianza, habilidades de comunicación, simpatía y facilidad percibida para trabajar con ellos, en las dos fases del estudio. Decirle a un padre que las adaptaciones eliminan la desventaja genera una expectativa que el estudio no sostiene. Además, el semáforo verde no procede: es una 'evaluación inicial' con 50 participantes en 
+
+### Medio · FL. Mantener el empleo y crecer profesionalmente
+
+*atribuido al estudio equivocado*
+
+> En autismo, el ensayo aleatorizado de Wehman y colaboradores (Project SEARCH + apoyos para TEA) obtuvo tasas de empleo muy superiores en el grupo de intervención (≈88% vs. ≈6%) con mejor retención y salario al año de seguimiento.
+
+Las cifras ≈88% vs ≈6% no proceden del ensayo enlazado en Fuentes. El enlace es Wehman et al., Autism 2017, 21(3):276-290 (DOI 10.1177/1362361316635826), que reporta 73,4% del grupo de intervención con empleo competitivo al año de la graduación frente al 17% del grupo control. El 87,5% vs 6,25% corresponde a un trabajo distinto y anterior: Wehman et al. 2014, 'Competitive Employment for Youth with Autism Spectrum Disorders: Early Results from a Randomized Clinical Trial' (JADD, PMID 23893098), resultados preliminares con solo 40 participantes (21/24 frente a 1/16). La ficha mezcla la cifra más espectacular del estudio preliminar pequeño con el seguimiento a un año del estudio grande, y la en
+
+### Medio · FO. Símbolos e identidad: rompecabezas, infinito y orgullo neurodivergente
+
+*dato incorrecto*
+
+> y en la encuesta del Reino Unido de Kenny et al. (2016), con 3.470 participantes, 60% de las personas autistas prefirió "persona autista" frente a 13% que prefirió "persona con autismo"
+
+Las dos cifras no son las que reporta Kenny et al. (2016). Ese estudio no midió una preferencia única y excluyente, sino el respaldo de varios términos a la vez (cada participante podía respaldar más de uno). Lo que reporta es que el término 'autistic' fue respaldado por el 61% de las personas autistas adultas y 'on the autism spectrum' por el 45%; el término compuesto 'autistic person' fue respaldado por menos de la mitad de las personas autistas (más del 50% NO lo respaldó), y 'person with autism' fue respaldado sobre todo por profesionales (casi la mitad de ellos) y por bastantes menos personas autistas. El 13% no procede de Kenny: es la cifra de personas autistas adultas que prefirieron 
+
+### Medio · FX. Autismo en Centroamérica (Guatemala y la región)
+
+*la fuente no lo sostiene*
+
+> Servicios como el Programa PUNTEA del Instituto Neurológico de Guatemala reportan listas de espera de más de 400 niños
+
+Es la única cifra concreta de la ficha y la única fuente que la acompaña es la raíz del sitio del Instituto Neurológico de Guatemala (institutoneurologicodeguatemala.org), una portada institucional sin fecha ni referencia al dato. Una portada no es cita válida para una cifra puntual: cambia de contenido continuamente y no permite comprobar ni el número ni el momento al que corresponde. Tampoco se indica el año de la lista de espera, que es lo que da sentido al dato para una familia que está decidiendo dónde solicitar evaluación.
+
 ### Medio · G. Salud mental y seguridad
 
 *redacción confusa*
@@ -329,5 +433,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, F, H, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, H, M, O, Q, S, T, W, Y
 
