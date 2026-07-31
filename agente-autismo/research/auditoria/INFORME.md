@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**41** hallazgos que eran falsas alarmas. Sin él se habrían
+**65** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -31,9 +31,9 @@ no *correcto*.
 
 - Tandas hechas: **1, 2, 3**
 - Temas auditados: **132 de 318** (41%)
-- Temas sin ningún fallo confirmado: **78**
-- Fallos confirmados: **81** (graves o medios: **28**)
-- Falsas alarmas descartadas: **41**
+- Temas sin ningún fallo confirmado: **62**
+- Fallos confirmados: **102** (graves o medios: **36**)
+- Falsas alarmas descartadas: **65**
 
 ## Fallos confirmados que exigían corrección
 
@@ -62,6 +62,14 @@ La cifra y el estudio no se corresponden. El "2 a 3 veces mayor" frente a la cat
 > sé especialmente cauto con "detox", quelación, células madre o suplementos "milagro" para el autismo — pueden causar daño físico real y no deben intentarse sin supervisión médica rigurosa y evidencia sólida.
 
 La formulación condiciona la prohibición: dice que estas prácticas "no deben intentarse SIN supervisión médica rigurosa", lo que implica que CON un médico que las supervise serían aceptables. Para la quelación, los protocolos de "detox" y las inyecciones de células madre en autismo no existe ninguna indicación legítima: no curan el autismo, no hay evidencia que las respalde y han causado daños graves y muertes. Un padre desesperado puede leer esto como permiso para buscar una clínica que ofrezca quelación "bajo control médico", que es exactamente el modelo de negocio de las clínicas biomédicas. La propia ASAT, citada en la ficha, advierte que los tratamientos de "detox" exponen a las persona
+
+### GRAVE · CS. Más pseudociencias para el Detector
+
+*riesgo para el niño*
+
+> No es dañina en sí como alimento, pero venderla como tratamiento es engañoso.
+
+La ficha declara la leche de camella inocua sin advertir que el producto que se promueve para autismo es leche CRUDA (sin pasteurizar). La propia lista de la FDA que la ficha cita en el punto anterior habla de "leche de camella cruda", y la FDA/CDC advierten que la leche sin pasteurizar puede transportar E. coli, Campylobacter, Listeria, Salmonella y (en camélidos) MERS, con riesgo especialmente alto en niños. Un padre que lea "no es dañina" puede darle leche de camella cruda a su hijo.
 
 ### Medio · AH. Escuela: inclusión, adaptaciones y derechos
 
@@ -215,6 +223,62 @@ Se marca en verde una recomendación práctica para la que no existe evidencia d
 
 Weir, Allison y Baron-Cohen (2021, Autism Research 14(11):2342-2354, doi 10.1002/aur.2604) no mide el interés en relaciones sexuales o románticas: mide actividad sexual declarada, riesgo de ITS y orientación en una encuesta online de 2.386 adultos (1.183 autistas). Su resultado es, además, en dirección contraria a como se resume: las personas autistas fueron MENOS propensas a reportar actividad sexual y heterosexualidad, y MÁS propensas a auto-identificarse como asexuales o de orientación 'otra'. Atribuir a este estudio la conclusión de que "la mayoría está interesada en relaciones sexuales/románticas" es hacerle decir algo que no dice, y de paso invisibiliza a las personas autistas asexuale
 
+### Medio · CT. Ser madre/padre autista y el diagnóstico en la adultez
+
+*atribuido al estudio equivocado*
+
+> aunque también deja necesidades emocionales y de apoyo postdiagnóstico sin cubrir (Sinclair-Palm y cols., PMC9889483)
+
+La autoría es falsa. PMC9889483 corresponde a "Exploring the Experiences of Parents Whose Child has Received a Diagnosis of Autistic Spectrum Disorder in Adulthood", de Hannah Legg, Anna Tickle, Alinda Gillott y Sarah Wilde (Journal of Autism and Developmental Disorders, 2023; 53:205-215; estudio cualitativo con 11 progenitores). Sinclair-Palm no firma ese trabajo. El contenido descrito sí coincide con el estudio, pero la cita atribuye el hallazgo a autores que no lo hicieron, lo que impide a una familia (o a un profesional) rastrear la fuente.
+
+### Medio · CV. Síndrome de Rett
+
+*desactualizado*
+
+> **No tiene cura, pero sí manejo eficaz:** el abordaje es sintomático y de apoyo, coordinado por un equipo multidisciplinar (neurología, gastroenterología, ortopedia por la escoliosis, nutrición, terapia física/ocupacional y del habla, manejo de convulsiones), siguiendo guías de consenso internacionales (BMJ Paediatrics Open, 2020)
+
+La ficha describe el manejo del Rett como exclusivamente 'sintomático y de apoyo' y omite por completo que desde el 10 de marzo de 2023 existe un fármaco aprobado por la FDA específicamente para el síndrome de Rett: trofinetide (DAYBUE), indicado en adultos y niños desde los 2 años, con base en el ensayo fase 3 LAVENDER (187 pacientes). Una familia que lea esta ficha en 2026 concluirá que no hay ninguna opción farmacológica aprobada y puede no plantearla a su neurólogo. La afirmación posterior de que 'no existe hoy un tratamiento que revierta la condición' sigue siendo cierta (trofinetide mejora síntomas, no revierte el trastorno), pero no sustituye a esta información.
+
+### Medio · DH. Deporte, ejercicio inclusivo y ocio
+
+*semáforo demasiado optimista*
+
+> el problema no es el deporte de equipo en sí, sino la falta de adaptación o el exceso de presión competitiva. 🟢
+
+La afirmación sobre deporte de equipo adaptado / Unified Sports está marcada en verde (evidencia sólida: metaanálisis, guías clínicas o ensayos replicados), pero las únicas fuentes que la acompañan son la página institucional del propio Special Olympics (no es investigación) y un estudio cualitativo de percepciones de 23 padres (Rodriquez et al., 2022, Int J Environ Res Public Health 19(17):10889), sin grupo control, sin medidas objetivas y con muestra de jóvenes con discapacidad intelectual/del desarrollo en general, no autistas específicamente. Con esa base el semáforo debe ser amarillo.
+
+### Medio · DH. Deporte, ejercicio inclusivo y ocio
+
+*la fuente no lo sostiene*
+
+> mejora la inclusión social, reduce conductas problema y cambia positivamente las actitudes de compañeros sin discapacidad
+
+El estudio citado para este punto (When the Normative Is Formative, Rodriquez et al., 2022) es un análisis temático de 23 entrevistas semiestructuradas a padres de jóvenes con discapacidad intelectual y del desarrollo participantes en Unified Sports. Reporta mejoras PERCIBIDAS por los padres en habilidades sociales y emocionales, sentido de pertenencia y nuevas amistades. No mide ni reporta reducción de conductas problema, ni evalúa el cambio de actitudes de los compañeros sin discapacidad. La ficha atribuye a esa fuente dos resultados que la fuente no contiene.
+
+### Medio · DI. Arte, música y teatro: expresión y bienestar
+
+*la fuente no lo sostiene*
+
+> una revisión Cochrane (26 ensayos, 1.165 participantes) encontró que probablemente aumenta la probabilidad de mejoría global y mejora ligeramente la calidad de vida al final de la terapia, con certeza de la evidencia de baja a moderada; no está claro que mejore la interacción social o la comunicación verbal/no verbal, y no parece aumentar eventos adversos.
+
+Los datos de muestra (26 ensayos, 1.165 participantes) y lo dicho sobre mejoría global, calidad de vida e interacción social son correctos, pero la ficha omite el resultado principal de esa misma revisión Cochrane: la musicoterapia probablemente produce una reducción GRANDE de la gravedad total de los síntomas de autismo (DME −0,83; IC 95% −1,41 a −0,24; 9 estudios, 575 participantes; certeza MODERADA). Al omitirlo y presentar la evidencia como "modesta" y, en el mensaje clave, como "limitada" respecto a los síntomas nucleares, la ficha describe la fuente de forma más pesimista de lo que la fuente sostiene y puede llevar a una familia a descartar una opción con evidencia de certeza moderada.
+
+### Medio · DR. Autismo y salud visual / oftalmologica
+
+*atribuido al estudio equivocado*
+
+> en ese mismo metaanálisis, de los errores de refracción solo el **astigmatismo** mostró un riesgo significativamente mayor en autismo; la miopía y la hipermetropía **no** alcanzaron una asociación estadísticamente significativa. Las prevalencias combinadas fueron aproximadamente astigmatismo 16.5%, miopía 14.1% e hipermetropía 9.8%.
+
+'Ese mismo metaanalisis' remite al de Perna et al. 2023 en Molecular Psychiatry (el citado en la vineta anterior), pero esas tres cifras y el hallazgo de que solo el astigmatismo alcanza significacion proceden de OTRO metaanalisis: 'Refractive Errors Linked to Autism Spectrum Disorders in the Pediatric Population and Young Adults' (Review Journal of Autism and Developmental Disorders, 2024, 28 articulos), que reporta exactamente 14.1% de miopia, 9.8% de hipermetropia y 16.5% de astigmatismo, sin asociacion significativa con miopia ni hipermetropia. Ese trabajo no figura en la linea de Fuentes, asi que tal como esta redactada la ficha ninguna fuente listada respalda las tres cifras. Ademas, l
+
+### Medio · EB. Autismo y educación en casa (homeschooling)
+
+*dato incorrecto*
+
+> **Marco legal (ejemplo Reino Unido):** la National Autistic Society recuerda que en Inglaterra la educación en casa es una opción legal: la educación es obligatoria pero asistir a la escuela no, y la ley no define *cómo* se debe educar en casa; solo exige que sea "adecuada" a la edad, capacidad y aptitud del niño (no se exige título docente, horario fijo ni un currículo específico). 🟢
+
+Unico bloque legal de una ficha escrita en espanol para familias hispanohablantes, y describe solo Inglaterra, en verde y en tono tranquilizador. La educacion en casa NO es una opcion legal equivalente en buena parte de los paises de habla hispana: en Espana no esta reconocida como forma de cumplir la escolarizacion obligatoria (doctrina del Tribunal Constitucional, sentencia 133/2010) y retirar al nino del centro puede desencadenar expediente de absentismo e intervencion de servicios sociales; en varios paises de America Latina esta restringida o requiere autorizacion. Un padre que lea esta ficha puede sacar a su hijo autista de la escuela creyendo que es una via legal disponible. Ademas, l
+
 ### Medio · G. Salud mental y seguridad
 
 *redacción confusa*
@@ -265,5 +329,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CS, CT, CU, CV, CW, CX, CY, CZ, D, DA, DB, DC, DD, DE, DF, DG, DH, DI, DJ, DK, DL, DM, DN, DO, DP, DQ, DR, DS, DT, DU, DV, DW, DX, DY, DZ, EA, EB, F, H, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, F, H, M, O, Q, S, T, W, Y
 
