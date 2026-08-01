@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**76** hallazgos que eran falsas alarmas. Sin él se habrían
+**93** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -31,9 +31,9 @@ no *correcto*.
 
 - Tandas hechas: **1, 2, 3, 4, 5**
 - Temas auditados: **222 de 318** (69%)
-- Temas sin ningún fallo confirmado: **132**
-- Fallos confirmados: **125** (graves o medios: **49**)
-- Falsas alarmas descartadas: **76**
+- Temas sin ningún fallo confirmado: **117**
+- Fallos confirmados: **141** (graves o medios: **55**)
+- Falsas alarmas descartadas: **93**
 
 ## Fallos confirmados que exigían corrección
 
@@ -78,6 +78,14 @@ La ficha declara la leche de camella inocua sin advertir que el producto que se 
 > en la muestra de encuesta la migraña llegó a rondar el 42-43% frente a ~20% en el grupo de comparación
 
 La cifra no aparece en el estudio al que la ficha se la atribuye y está sobredimensionada en un orden de magnitud. El estudio de 2026 (Grant Tejada et al., Headache, PMID 41459835), que sí es el que usa la NSCH (N = 50.892) y el registro de UCLA (N = 4.334.162), reporta en la muestra de encuesta prevalencias de cefalea frecuente/severa en la cohorte autista del 7,5% (2018), 11,0% (2019), 5,0% (2020) y 7,1% (2021); y en el registro clínico de UCLA una prevalencia de migraña del 3,1% en personas autistas frente al 2,0% en no autistas. El 42,7% frente al 20,5% procede de un trabajo distinto y mucho más pequeño (105 adultos autistas frente a 76 no autistas, 2019), no de la encuesta nacional. Un 
+
+### GRAVE · HE. "Dieta sensorial" y herramientas de regulación (con matiz)
+
+*riesgo para el niño*
+
+> Para mantas de peso, revisiones de 2024 concluyen que son seguras (sin eventos adversos graves) pero con evidencia limitada y no concluyente para el sueño, y solo un beneficio pequeño en ansiedad.
+
+La ficha traslada un "son seguras" sin ninguna condición a un público de padres de niños autistas, y la revisión de la que procede ese dato se hizo en pacientes con trastornos mentales (adultos en contexto psiquiátrico), no en niños. En niños las mantas de peso NO son incondicionalmente seguras: las guías de uso exigen que el niño pueda quitársela por sí mismo, que nunca cubra cabeza ni cuello, que no se use en menores de unos 2-3 años, un peso orientativo de ~10 % del peso corporal, supervisión y no dejarla puesta toda la noche, además de contraindicaciones (problemas respiratorios, cardíacos, epilepsia, hipotonía marcada, problemas circulatorios o de piel). Un padre que lea "son seguras" p
 
 ### Medio · AH. Escuela: inclusión, adaptaciones y derechos
 
@@ -391,6 +399,46 @@ Es la única cifra concreta de la ficha y la única fuente que la acompaña es l
 
 Las cifras 72% y 33% no describen el camuflaje ni las necesidades de apoyo no atendidas. En Cassidy, Bradley, Shaw y Baron-Cohen (2018, Molecular Autism 9:42), el 72% de los adultos autistas puntuó por encima del punto de corte clínico de suicidalidad (SBQ-R) frente al 33% del grupo de comparación no autista de la misma encuesta. Colocadas justo después de los dos factores de riesgo, un padre las leerá como "72% de los que camuflan frente a 33% de los que no", que no es lo que dice el estudio. Además el 33% no es una tasa poblacional: es el grupo comparador de una encuesta online autoseleccionada.
 
+### Medio · GH. Amistad entre personas autistas y comunidad de pares
+
+*desactualizado*
+
+> en cambio, las cadenas mixtas (autista–no autista) mostraron una caída significativamente más marcada en la retención de detalles y puntuaciones de "rapport" (comodidad, disfrute, cercanía) más bajas. 🟢
+
+La descripción del estudio de Crompton et al. (2020) es fiel al original (n = 72, cadenas de 8, mayor pérdida de información y menor rapport en cadenas mixtas), pero el semáforo verde presenta como evidencia sólida un hallazgo que una réplica posterior, mucho mayor y preregistrada (Registered Report), NO confirmó: Crompton et al. (2025, Nature Human Behaviour, n = 311) encontraron que NO hay diferencia en la transmisión de información entre cadenas mixtas y de un solo neurotipo. Sí persistieron diferencias en rapport, aunque con un patrón distinto (las cadenas no autistas informaron mayor rapport, y conocer el diagnóstico del interlocutor lo mejoraba). Presentar el efecto de 2020 en 🟢 sin me
+
+### Medio · GN. Autismo en EE. UU. para familias hispanas (IDEA, IEP)
+
+*dato incorrecto*
+
+> en muchos estados, Medicaid cubre evaluación y terapias relacionadas con autismo (como ABA, terapia del habla u ocupacional) para menores elegibles; la cobertura exacta varía por estado
+
+Subestima un derecho federal y ninguna de las seis fuentes citadas trata de Medicaid. No es cuestion de "muchos estados": bajo el beneficio EPSDT (Early and Periodic Screening, Diagnostic and Treatment), CMS aclaro en su Boletin Informativo de julio de 2014 y en las FAQ de septiembre de 2014 que TODOS los programas estatales de Medicaid deben cubrir los servicios medicamente necesarios para tratar o mejorar los sintomas del autismo en menores de 21 anos inscritos, incluida ABA, aunque el servicio no figure en el plan estatal. Un padre que lea "en muchos estados" puede concluir que en el suyo no hay cobertura y no reclamarla.
+
+### Medio · GQ. Autismo y disgrafía y escritura a mano
+
+*la fuente no lo sostiene*
+
+> trabaja fuerza y tono muscular de la mano, coordinación ojo-mano, planificación motora y adaptaciones (agarres de lápiz, superficies inclinadas, ejercicios de fortalecimiento) para mejorar la legibilidad y la comodidad al escribir; un estudio en *AJOT* (Alaniz et al., 2015) halló que la fuerza de agarre y pinza se asocia con el control del lápiz y la independencia en tareas motoras finas. 🟢
+
+El estudio de Alaniz et al. (2015) se usa para respaldar que trabajar la fuerza de la mano mejora la legibilidad, pero ese estudio encontró justo lo contrario en niños autistas: la fuerza de agarre correlacionó con el control del lápiz en ambos grupos y con la legibilidad SOLO en los niños con desarrollo típico, no en los niños con autismo. Además es un estudio correlacional transversal (51 niños), no un ensayo de intervención, por lo que no demuestra que fortalecer la mano mejore nada; el semáforo verde es demasiado optimista para sostener la eficacia de la terapia ocupacional sobre la escritura en autismo.
+
+### Medio · HL. Autismo e inteligencia artificial como herramienta de apoyo
+
+*riesgo para el niño*
+
+> **Riesgo de privacidad de datos de menores:** análisis y voces pediátricas advierten que muchas apps de IA no garantizan proteger ni excluir del entrenamiento los datos que ingresan niños y niñas, con riesgo de reidentificación, y piden límites de recolección, transparencia y supervisión adulta antes de usarlas. 🔴 si se usa sin control de un adulto ni revisión de privacidad.
+
+La ficha enumera solo dos riesgos (información errónea y privacidad) y omite el riesgo mejor documentado por las propias fuentes pediátricas que cita (AAP): la dependencia emocional del chatbot como sustituto de vínculo social, el uso del chatbot como confidente en crisis de salud mental y la incapacidad de estas herramientas para detectar y derivar ideación autolesiva. Es una omisión relevante para padres, porque el perfil de uso descrito en la propia ficha (adolescente autista practicando conversación, con tendencia a la interpretación literal y menor propensión a cuestionar la respuesta) es exactamente el de mayor riesgo. Sin ese aviso, un padre puede leer la ficha y concluir que basta co
+
+### Medio · HN. Cuando los cuidadores envejecen: planificar el relevo
+
+*desactualizado*
+
+> existen alternativas de "apoyo a la toma de decisiones" (supported decision-making) que preservan la capacidad legal de la persona adulta mientras recibe ayuda para decidir, en contraste con la tutela/curatela, que restringe derechos.
+
+El punto entero está construido sobre el marco jurídico estadounidense (postura de The Arc, guardianship, St. Louis Arc) y se traslada a un texto en español sin advertirlo. Para una familia en España la descripción es engañosa: la Ley 8/2021, de 2 de junio, suprimió la incapacitación judicial y la tutela para personas adultas y sustituyó todo el sistema por medidas de apoyo (guarda de hecho, curatela —asistencial por defecto y representativa solo excepcionalmente—, defensor judicial y autocuratela), precisamente para implantar el modelo de apoyo a la toma de decisiones del artículo 12 de la Convención de la ONU. Es decir: en España la curatela YA ES la medida de apoyo, no su contrario, y "tu
+
 ### Medio · K. Genética y formas sindrómicas
 
 *dato incorrecto*
@@ -433,5 +481,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GA, GB, GC, GD, GE, GF, GG, GH, GI, GJ, GK, GL, GM, GN, GO, GP, GQ, GR, GS, GT, GU, GV, GW, GX, GY, GZ, H, HA, HB, HC, HD, HE, HF, HG, HH, HI, HJ, HK, HL, HM, HN, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, M, O, Q, S, T, W, Y
 
