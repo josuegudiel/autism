@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**93** hallazgos que eran falsas alarmas. Sin él se habrían
+**101** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -29,11 +29,11 @@ no *correcto*.
 
 ## Estado
 
-- Tandas hechas: **1, 2, 3, 4, 5**
-- Temas auditados: **222 de 318** (69%)
-- Temas sin ningún fallo confirmado: **117**
-- Fallos confirmados: **141** (graves o medios: **55**)
-- Falsas alarmas descartadas: **93**
+- Tandas hechas: **1, 2, 3, 4, 5, 6**
+- Temas auditados: **270 de 318** (84%)
+- Temas sin ningún fallo confirmado: **153**
+- Fallos confirmados: **156** (graves o medios: **63**)
+- Falsas alarmas descartadas: **101**
 
 ## Fallos confirmados que exigían corrección
 
@@ -439,6 +439,70 @@ La ficha enumera solo dos riesgos (información errónea y privacidad) y omite e
 
 El punto entero está construido sobre el marco jurídico estadounidense (postura de The Arc, guardianship, St. Louis Arc) y se traslada a un texto en español sin advertirlo. Para una familia en España la descripción es engañosa: la Ley 8/2021, de 2 de junio, suprimió la incapacitación judicial y la tutela para personas adultas y sustituyó todo el sistema por medidas de apoyo (guarda de hecho, curatela —asistencial por defecto y representativa solo excepcionalmente—, defensor judicial y autocuratela), precisamente para implantar el modelo de apoyo a la toma de decisiones del artículo 12 de la Convención de la ONU. Es decir: en España la curatela YA ES la medida de apoyo, no su contrario, y "tu
 
+### Medio · HO. Tras el diagnóstico en un niño pequeño: el primer año
+
+*la fuente no lo sostiene*
+
+> **Entrenar a los cuidadores es tan valioso como la terapia directa al niño:** el programa CST (Caregiver Skills Training) de la OMS, dirigido a familias de niños de 2 a 9 años, muestra que capacitar a padres y cuidadores —incluso con formatos breves y comunitarios— mejora la comunicación social del niño y el bienestar y la confianza de la familia. 🟢
+
+La única fuente citada para esta afirmación (PMC6859468) es 'Development of the WHO Caregiver Skills Training Program for Developmental Disorders or Delays', un artículo que describe cómo se construyó el programa, no un estudio de eficacia: no aporta datos que respalden 'mejora la comunicación social del niño'. El ensayo aleatorizado piloto del CST de la OMS en servicios públicos de Italia (N=86) encontró que los cambios esperados en gravedad autista y en compromiso conjunto del niño NO alcanzaron significación estadística; los efectos significativos fueron en habilidades parentales, estrés parental, autoeficacia y gestos del niño. Además, con esa base de evidencia el semáforo verde (evidenc
+
+### Medio · HS. Desinformación en redes sociales e "influencers" de salud
+
+*dato incorrecto*
+
+> En otro análisis periodístico (CBC Marketplace) de 100 videos sobre "terapias" para autismo, al menos el 80% promovía remedios sin respaldo científico.
+
+La cifra del 80% se atribuye al subconjunto de 100 vídeos sobre autismo, pero CBC Marketplace la reporta para el total de 200 vídeos analizados (100 de cáncer + 100 de autismo): "about 80 per cent of those reviewed featured treatments or cures for autism and cancer that are not supported by science". CBC no publica un porcentaje separado solo para los vídeos de autismo. Es una cifra real reasignada a una muestra distinta de la que la produjo.
+
+### Medio · HV. Manejo del dinero y las compras
+
+*semáforo demasiado optimista*
+
+> Matiz honesto: la base empírica aquí son sobre todo diseños de caso único y recomendación de guías, no ensayos aleatorizados. 🟢
+
+La propia frase describe evidencia limitada (diseños de caso único y recomendación de guías divulgativas, en este caso una página de Autism Speaks), que según el código de la biblioteca corresponde a 🟡 ('evidencia limitada o preliminar'), no a 🟢 ('metanálisis, guías clínicas, ensayos replicados'). El semáforo contradice al propio texto.
+
+### Medio · HW. Organización y tareas del hogar
+
+*desactualizado*
+
+> El *task analysis* está clasificado como práctica basada en evidencia por el National Professional Development Center on ASD / AFIRM, si bien su base es modesta (6 estudios de caso único, con efectos documentados sobre todo en niños de primaria y secundaria temprana).
+
+Esas cifras corresponden al paquete informativo antiguo del NPDC (Sam & AFIRM Team, 2016; ERIC ED595409), que es justamente el enlace que la ficha usa: 6 estudios de caso único y eficacia documentada en primaria (6-11) y secundaria temprana (12-14). La revisión posterior del NCAEP (2020), recogida en el paquete AFIRM actualizado en 2024, eleva la base a 13 estudios de diseño de caso único y documenta efectos desde preescolar (3-5 años) hasta jóvenes adultos (19-22 años), en resultados académicos, adaptativos/autocuidado, comunicación, atención conjunta, motores, de juego, sociales y vocacionales. Presentar la base como 'modesta' y limitada a la infancia infravalora el respaldo real y, en una
+
+### Medio · HX. Citas y relaciones románticas en la adultez
+
+*semáforo demasiado optimista*
+
+> **La satisfacción no depende del neurotipo de la pareja, sino de sentirse comprendido:**
+
+La afirmación se marca 🟢 (evidencia sólida) apoyándose en un único estudio transversal de 106 personas (Khaw y Vernon, 2025), pero ES CONTRADICHA por Strunz et al. (2017), que la propia ficha cita como fuente y usa en el primer punto: el resumen de Strunz dice literalmente que las personas autistas cuya pareja también estaba en el espectro estaban SIGNIFICATIVAMENTE MÁS satisfechas con su relación que quienes tenían pareja neurotípica. La ficha presenta como consenso sólido algo sobre lo que sus propias fuentes discrepan, y no menciona el resultado de Strunz.
+
+### Medio · HX. Citas y relaciones románticas en la adultez
+
+*semáforo demasiado optimista*
+
+> **Lo que quieren las personas autistas jóvenes:** en entrevistas cualitativas con 28 adultos autistas de 19 a 28 años (Kohn et al., 2025, *Autism in Adulthood*)
+
+Marcado 🟢 (evidencia sólida: metanálisis, guías clínicas, ensayos replicados) cuando es un único estudio cualitativo, de entrevistas semiestructuradas, con 28 participantes autoseleccionados, en su mayoría blancos y heterosexuales y ninguno con discapacidad intelectual. Según la propia leyenda de la biblioteca esto es evidencia preliminar (🟡) o experiencia vivida (⚪), no sólida. La incoherencia es llamativa porque el punto de Neu (2025), basado en 42 artículos revisados por pares, sí está marcado 🟡.
+
+### Medio · IC. Depresión en el autismo: señales y apoyo
+
+*semáforo demasiado optimista*
+
+> Ninguna terapia alternativa no probada sustituye una evaluación clínica ante una posible depresión o riesgo de crisis. 🔴
+
+Según la leyenda de la biblioteca, 🔴 significa "desaconsejado o dañino". El punto que lleva ese semáforo es, en su mensaje principal, una recomendación urgente y bien respaldada ("Ante señales de riesgo, no hay que esperar... contactar a un profesional de salud mental o a los servicios de emergencia locales"). Un padre que lea la leyenda literalmente puede entender que lo desaconsejado es acudir a urgencias. En el punto más crítico de la ficha en términos de seguridad del niño, el código de color dice lo contrario de lo que se quiere transmitir.
+
+### Medio · IG. Berrinches en público y las miradas de la gente
+
+*la fuente no lo sostiene*
+
+> La sujeción física es un último recurso reservado a peligro inminente y conlleva riesgo de daño físico y psicológico; nunca inmovilizaciones en el suelo ni presión sobre el tórax.
+
+Es la afirmación con mayor carga de seguridad de toda la ficha (describe cuándo un padre podría sujetar físicamente a su hijo durante una crisis) y se apoya en una atribución vaga y sin nombre: «según guías de organizaciones de autismo y autodefensa». Ninguna de las cuatro fuentes listadas al pie (NAS meltdowns, Edwards 2025, Ryan 2010, Gurba 2024) es una guía sobre sujeción física ni sobre restricción. Además la ficha no dice en ningún momento que la sujeción sea una técnica que requiere formación ni remite a un profesional.
+
 ### Medio · K. Genética y formas sindrómicas
 
 *dato incorrecto*
@@ -481,5 +545,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, M, O, Q, S, T, W, Y
 
