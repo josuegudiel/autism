@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**101** hallazgos que eran falsas alarmas. Sin él se habrían
+**105** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -31,9 +31,9 @@ no *correcto*.
 
 - Tandas hechas: **1, 2, 3, 4, 5, 6, 7**
 - Temas auditados: **309 de 318** (97%)
-- Temas sin ningún fallo confirmado: **192**
-- Fallos confirmados: **156** (graves o medios: **63**)
-- Falsas alarmas descartadas: **101**
+- Temas sin ningún fallo confirmado: **179**
+- Fallos confirmados: **173** (graves o medios: **68**)
+- Falsas alarmas descartadas: **105**
 
 ## Fallos confirmados que exigían corrección
 
@@ -86,6 +86,22 @@ La cifra no aparece en el estudio al que la ficha se la atribuye y está sobredi
 > Para mantas de peso, revisiones de 2024 concluyen que son seguras (sin eventos adversos graves) pero con evidencia limitada y no concluyente para el sueño, y solo un beneficio pequeño en ansiedad.
 
 La ficha traslada un "son seguras" sin ninguna condición a un público de padres de niños autistas, y la revisión de la que procede ese dato se hizo en pacientes con trastornos mentales (adultos en contexto psiquiátrico), no en niños. En niños las mantas de peso NO son incondicionalmente seguras: las guías de uso exigen que el niño pueda quitársela por sí mismo, que nunca cubra cabeza ni cuello, que no se use en menores de unos 2-3 años, un peso orientativo de ~10 % del peso corporal, supervisión y no dejarla puesta toda la noche, además de contraindicaciones (problemas respiratorios, cardíacos, epilepsia, hipotonía marcada, problemas circulatorios o de piel). Un padre que lea "son seguras" p
+
+### GRAVE · JR. Fiebre, dolor y enfermedad en un niño que comunica poco
+
+*dato incorrecto*
+
+> **Consulta el mismo día:** bebé menor de 3 meses con fiebre ≥38 °C (100.4 °F) —siempre, aunque se vea bien, y sin medicarlo por cuenta propia—
+
+La ficha coloca la fiebre del menor de 3 meses en la columna de "consulta el mismo día", cuando las guías que ella misma invoca (NHS/NICE y AAP) la clasifican como signo de alarma urgente. En NICE NG143 la fiebre ≥38 °C en un bebé de menos de 3 meses es una señal ROJA del semáforo, que obliga a valoración presencial urgente (referencia inmediata a pediatría / servicio de urgencias); la orientación de la AAP es llamar al pediatra de inmediato y, si no se le puede localizar, acudir directamente a urgencias. Decirle a un padre que basta con "consultar hoy" puede retrasar horas críticas ante una infección bacteriana grave en un neonato o lactante pequeño. Además es incoherente dentro de la propi
+
+### GRAVE · KG. Cambios de medicación: qué vigilar y cómo informar al médico
+
+*riesgo para el niño*
+
+> **Señales que justifican contacto rápido con el equipo tratante:** fiebre alta con rigidez muscular y confusión, movimientos involuntarios nuevos, erupción extensa, dificultad para tragar o respirar, somnolencia extrema, o aparición/empeoramiento de ideas de hacerse daño. No hay que esperar a la próxima cita para consultarlas. 🟡
+
+La lista mezcla, bajo una única vía de acción no urgente ('contacto rápido con el equipo tratante', 'no esperar a la próxima cita'), signos que son emergencias médicas inmediatas. Fiebre alta con rigidez muscular y confusión es el cuadro clásico de síndrome neuroléptico maligno, potencialmente mortal; erupción extensa puede corresponder a una reacción cutánea grave tipo Stevens-Johnson o DRESS; dificultad para respirar o tragar puede ser una distonía laríngea o una reacción anafiláctica. Un padre que siga esta ficha llamaría a la consulta del especialista (que puede estar cerrada, o tardar días en responder) en lugar de acudir a urgencias o llamar al servicio de emergencias, y ese retraso pu
 
 ### Medio · AH. Escuela: inclusión, adaptaciones y derechos
 
@@ -503,6 +519,22 @@ Según la leyenda de la biblioteca, 🔴 significa "desaconsejado o dañino". El
 
 Es la afirmación con mayor carga de seguridad de toda la ficha (describe cuándo un padre podría sujetar físicamente a su hijo durante una crisis) y se apoya en una atribución vaga y sin nombre: «según guías de organizaciones de autismo y autodefensa». Ninguna de las cuatro fuentes listadas al pie (NAS meltdowns, Edwards 2025, Ryan 2010, Gurba 2024) es una guía sobre sujeción física ni sobre restricción. Además la ficha no dice en ningún momento que la sujeción sea una técnica que requiere formación ni remite a un profesional.
 
+### Medio · JK. Señales de autismo en bebés menores de 12 meses
+
+*la fuente no lo sostiene*
+
+> las diferencias (menos atención conjunta y menos conductas de petición) recién empezaron a verse **hacia los 12 meses**
+
+El estudio de Ozonoff et al. (2010, JAACAP) que se cita NO midió atención conjunta ni conductas de petición. Las variables codificadas fueron exactamente tres: frecuencia de mirada a las caras, sonrisas sociales/compartidas y vocalizaciones dirigidas a otros. El resumen del estudio dice que esas tres conductas eran muy comparables entre grupos a los 6 meses y que las trayectorias descendentes del grupo con diagnóstico posterior se volvían significativas hacia los 12 meses «en la mayoría de las variables». Es decir, la ficha usa las mismas conductas para decir que NO diferían a los 6 meses y luego atribuye al mismo estudio unas diferencias a los 12 meses en constructos que ese trabajo no eval
+
+### Medio · JW. Familias monoparentales y crianza en solitario
+
+*atribuido al estudio equivocado*
+
+> [PubMed — Cidav, Marcus y Mandell (2012), *Pediatrics*: implicaciones del autismo infantil en el empleo y los ingresos parentales](https://pubmed.ncbi.nlm.nih.gov/22430450/)
+
+El PMID 22430450 NO corresponde a Cidav, Marcus y Mandell (2012). Ese identificador es de 'Tight glycemic control with insulin in hyperglycemic preterm babies: a randomized controlled trial', un ensayo de insulina en prematuros sin ninguna relación con autismo ni con empleo parental. El artículo de Cidav es el PMID 22430453. Es la unica fuente que respalda el bullet marcado en verde sobre el impacto economico, asi que un lector que quiera comprobarlo aterriza en un estudio ajeno. La ficha JX del mismo corpus cita correctamente el 22430453, lo que confirma que aqui hay un digito equivocado.
+
 ### Medio · K. Genética y formas sindrómicas
 
 *dato incorrecto*
@@ -510,6 +542,14 @@ Es la afirmación con mayor carga de seguridad de toda la ficha (describe cuánd
 > heredabilidad ~**64-91%** (gemelos idénticos concuerdan ~0,98 vs ~0,53 mellizos)
 
 Confunde correlación con concordancia. Los valores 0,98 y 0,53 de Tick et al. 2016 son correlaciones tetracóricas de responsabilidad (liability correlations), no tasas de concordancia entre gemelos. Un padre que lea 'los gemelos idénticos concuerdan ~0,98' entenderá que en el 98% de los casos ambos gemelos son autistas, lo cual es falso: las tasas de concordancia observadas en gemelos monocigóticos están muy por debajo de eso. Además, el 0,53 en dicigóticos está condicionado a asumir una prevalencia poblacional del 5%; con supuestos de prevalencia más baja la correlación DZ sube y la heredabilidad estimada baja (de ahí el rango 64-91%).
+
+### Medio · KJ. Autismo y servicio militar, policía y profesiones reguladas
+
+*dato incorrecto*
+
+> **En España hay dos cuadros médicos distintos, y ninguno de los dos nombra "autismo" de forma literal:**
+
+La ficha lleva en el título "servicio militar, policía y profesiones reguladas" y afirma que en España hay DOS cuadros médicos (Fuerzas Armadas y Guardia Civil). Son tres: la Policía Nacional tiene su propio cuadro médico de exclusiones, aprobado por el Real Decreto 326/2021, de 11 de mayo (BOE-A-2021-7842), que derogó la Orden de 11 de enero de 1988 y se aplica tanto a la Escala Básica como a la Ejecutiva. Un lector español que prepare una oposición a Policía Nacional se iría a la norma equivocada (la de Guardia Civil), que es un cuerpo distinto con su propia normativa. En una ficha cuyo mensaje central es "consulta la norma oficial exacta de tu convocatoria", omitir el cuerpo policial más 
 
 ### Medio · N. Bienestar de cuidadores y familia
 
@@ -545,5 +585,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, JK, JL, JM, JN, JO, JP, JQ, JR, JS, JT, JU, JV, JW, JX, JY, JZ, KA, KB, KC, KD, KE, KF, KG, KH, KI, KJ, KK, KL, KM, KN, KO, KP, KQ, KR, KS, KT, KU, KV, KW, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, JL, JM, JN, JO, JP, JQ, JS, JT, JX, KA, KB, KD, KE, KF, KH, KI, KK, KL, KN, KO, KP, KR, KS, KT, KU, KW, M, O, Q, S, T, W, Y
 
