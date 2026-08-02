@@ -14,7 +14,7 @@ Cada tema pasa por **dos agentes que no se conocen entre sí**:
    fallo cuenta como real.
 
 Ese segundo paso no es un adorno: hasta ahora ha descartado
-**105** hallazgos que eran falsas alarmas. Sin él se habrían
+**107** hallazgos que eran falsas alarmas. Sin él se habrían
 estropeado temas que estaban bien.
 
 ### Lo que esta auditoría NO puede comprobar
@@ -29,11 +29,11 @@ no *correcto*.
 
 ## Estado
 
-- Tandas hechas: **1, 2, 3, 4, 5, 6, 7**
-- Temas auditados: **309 de 318** (97%)
-- Temas sin ningún fallo confirmado: **179**
-- Fallos confirmados: **173** (graves o medios: **68**)
-- Falsas alarmas descartadas: **105**
+- Tandas hechas: **1, 2, 3, 4, 5, 6, 7, 8**
+- Temas auditados: **318 de 318** (100%)
+- Temas sin ningún fallo confirmado: **184**
+- Fallos confirmados: **179** (graves o medios: **72**)
+- Falsas alarmas descartadas: **107**
 
 ## Fallos confirmados que exigían corrección
 
@@ -551,6 +551,38 @@ Confunde correlación con concordancia. Los valores 0,98 y 0,53 de Tick et al. 2
 
 La ficha lleva en el título "servicio militar, policía y profesiones reguladas" y afirma que en España hay DOS cuadros médicos (Fuerzas Armadas y Guardia Civil). Son tres: la Policía Nacional tiene su propio cuadro médico de exclusiones, aprobado por el Real Decreto 326/2021, de 11 de mayo (BOE-A-2021-7842), que derogó la Orden de 11 de enero de 1988 y se aplica tanto a la Escala Básica como a la Ejecutiva. Un lector español que prepare una oposición a Policía Nacional se iría a la norma equivocada (la de Guardia Civil), que es un cuerpo distinto con su propia normativa. En una ficha cuyo mensaje central es "consulta la norma oficial exacta de tu convocatoria", omitir el cuerpo policial más 
 
+### Medio · KZ. Autismo y toma de decisiones
+
+*atribuido al estudio equivocado*
+
+> El hallazgo se ha replicado en trabajos posteriores (p. ej. Farmer, Baron-Cohen y Skylark, 2017, *Psychological Science*).
+
+Farmer, Baron-Cohen y Skylark (2017, Psychological Science 28(8):1067-1076) es un estudio real y el enlace PMC5548251 le corresponde, pero NO replica el efecto marco (framing). Ese trabajo estudia otro sesgo distinto: el efecto senuelo o de atraccion (attraction/decoy effect), midiendo si la preferencia entre dos productos cambia al anadir una tercera opcion menos deseable. Es un sesgo conceptualmente emparentado pero no el mismo fenomeno, asi que la ficha esta citando un estudio real para una afirmacion que ese estudio no hace. La replicacion directa del menor efecto marco en autismo si existe: Shah, Catmur y Bird (2016), Molecular Autism, que reprodujo el hallazgo de De Martino con un mati
+
+### Medio · LD. Barreras en urgencias hospitalarias
+
+*semáforo demasiado optimista*
+
+> Úsalo si te ayuda a organizar la información, no como garantía. 🔴
+
+El semáforo rojo significa 'desaconsejado o dañino', pero el propio texto del punto describe el pasaporte de salud como 'razonable y de bajo riesgo', avalado por el Department of Health británico, y termina recomendando usarlo si ayuda. Rojo contradice el contenido y puede llevar a una familia a descartar una herramienta inocua y potencialmente útil; lo que la revisión realista de Ellis et al. (2023) dice es que falta evidencia de eficacia, no que sea perjudicial. Eso corresponde a amarillo (evidencia limitada/preliminar).
+
+### Medio · LE. Autismo y COVID/enfermedades: lo aprendido de las mascarillas y confinamientos
+
+*dato incorrecto*
+
+> el estudio de Halbur et al. (2021, *Journal of Applied Behavior Analysis* 54(2):600-617) evaluó un paquete de exposición gradual, ayudas, refuerzo y extinción del escape en 12 niños autistas, logrando tolerancia de hasta 5 minutos, generalización a otro tipo de cobertura (pantalla facial) y una extensión hasta 15 minutos.
+
+La redacción sugiere que los 12 participantes alcanzaron la tolerancia. En el estudio, 9 de los 12 participantes alcanzaron la duración objetivo; 3 no completaron la intervención (2 de ellos mostraron alguna mejora parcial). Presentar un 100% de éxito donde hubo un 75% infla la expectativa de una familia que decide probar exposición gradual con su hijo.
+
+### Medio · LE. Autismo y COVID/enfermedades: lo aprendido de las mascarillas y confinamientos
+
+*semáforo demasiado optimista*
+
+> Es una encuesta autoseleccionada de una entidad que hace incidencia política, no una muestra representativa, pero el tamaño y la dirección del efecto son consistentes con el resto de la literatura. 🟢
+
+El propio texto reconoce que se trata de una encuesta autoseleccionada, no representativa, de una organización de incidencia política, y aun así la marca en verde, que en esta biblioteca significa evidencia sólida (metanálisis, guías clínicas, ensayos replicados). El semáforo contradice la salvedad que el propio punto acaba de hacer.
+
 ### Medio · N. Bienestar de cuidadores y familia
 
 *la fuente no lo sostiene*
@@ -585,5 +617,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, JL, JM, JN, JO, JP, JQ, JS, JT, JX, KA, KB, KD, KE, KF, KH, KI, KK, KL, KN, KO, KP, KR, KS, KT, KU, KW, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, JL, JM, JN, JO, JP, JQ, JS, JT, JX, KA, KB, KD, KE, KF, KH, KI, KK, KL, KN, KO, KP, KR, KS, KT, KU, KW, KX, KY, LA, LC, LF, M, O, Q, S, T, W, Y
 
