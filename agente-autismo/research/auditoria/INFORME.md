@@ -29,9 +29,9 @@ no *correcto*.
 
 ## Estado
 
-- Tandas hechas: **1, 2, 3, 4, 5, 6**
-- Temas auditados: **270 de 318** (84%)
-- Temas sin ningún fallo confirmado: **153**
+- Tandas hechas: **1, 2, 3, 4, 5, 6, 7**
+- Temas auditados: **309 de 318** (97%)
+- Temas sin ningún fallo confirmado: **192**
 - Fallos confirmados: **156** (graves o medios: **63**)
 - Falsas alarmas descartadas: **101**
 
@@ -545,5 +545,5 @@ PMC4951085 NO es el ensayo multisitio de Rogers 2019: es Dawson et al. 2010, «R
 
 ## Temas sin fallos confirmados
 
-A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, M, O, Q, S, T, W, Y
+A, AC, AF, AG, AJ, AL, AM, AO, AR, AT, AV, AX, AZ, B, BJ, BM, BN, BP, BT, BU, BV, BY, BZ, CD, CF, CG, CH, CI, CN, CP, CQ, CR, CU, CW, CY, D, DB, DC, DF, DG, DJ, DK, DL, DN, DO, DP, DQ, DS, DT, DW, DY, DZ, EA, EC, ED, EF, EG, EH, EJ, EK, EM, EN, EO, ET, EU, EW, EX, EZ, F, FA, FC, FE, FF, FI, FM, FP, FQ, FR, FS, FT, FU, FV, FY, FZ, GB, GC, GD, GE, GF, GJ, GK, GL, GM, GO, GP, GR, GT, GU, GW, GX, GY, H, HA, HD, HF, HG, HH, HI, HK, HM, HP, HQ, HT, HU, HY, HZ, IA, IB, ID, IE, IF, IH, IJ, IK, IL, IM, IN, IO, IP, IQ, IR, IS, IT, IV, IW, IX, IY, IZ, JA, JC, JE, JF, JG, JH, JI, JJ, JK, JL, JM, JN, JO, JP, JQ, JR, JS, JT, JU, JV, JW, JX, JY, JZ, KA, KB, KC, KD, KE, KF, KG, KH, KI, KJ, KK, KL, KM, KN, KO, KP, KQ, KR, KS, KT, KU, KV, KW, M, O, Q, S, T, W, Y
 
