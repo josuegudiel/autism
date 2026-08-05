@@ -1,236 +1,934 @@
 {
-  "_ayuda": "Traduce cómo habla una familia a los temas de la biblioteca. Formato: \"lo que escribe la familia\": [\"CÓDIGOS\", \"DE\", \"TEMAS\"]. Puedes añadir todas las frases que quieras y volver a ejecutar scripts/construir-contenido.py.",
-
-  "no duerme": ["W", "EN"],
-  "no quiere dormir": ["W", "EN"],
-  "se despierta de noche": ["W", "EN"],
-  "ronca": ["EN"],
-  "pesadillas terrores nocturnos": ["EN"],
-  "melatonina": ["W", "F"],
-
-  "no habla": ["D", "HB", "CA", "O"],
-  "no dice palabras": ["D", "HQ", "O", "CA"],
-  "habla poco": ["D", "CA", "BG"],
-  "repite lo que digo": ["BG"],
-  "repite frases": ["BG"],
-  "no me mira a los ojos": ["CP", "O"],
-  "no responde a su nombre": ["O", "BW"],
-  "no señala": ["O"],
-  "perdio palabras": ["BJ"],
-  "dejo de hablar": ["BJ", "DO"],
-  "tablet para hablar": ["HB", "CQ"],
-  "pictogramas": ["HB", "AV"],
-  "lengua de senas": ["HC"],
-
-  "se pega": ["Z", "G", "HG"],
-  "se muerde": ["Z", "G", "CY"],
-  "se golpea la cabeza": ["Z", "G", "CY"],
-  "pega a otros ninos": ["HG", "Z"],
-  "muerde a otros": ["HG", "Z"],
-  "berrinches": ["HF", "E", "Z"],
-  "rabietas": ["HF", "E", "Z"],
-  "crisis": ["HF", "FP", "E"],
-  "se tira al suelo": ["HF", "E"],
-  "grita mucho": ["HF", "E", "Z"],
-  "se desconecta": ["HF", "E"],
-  "aletea las manos": ["BH"],
-  "se balancea": ["BH"],
-  "gira objetos": ["BH", "BI"],
-  "hace ruidos": ["BH"],
-
-  "le molesta el ruido": ["E", "HD", "GA", "DS"],
-  "se tapa los oidos": ["E", "GA", "DS"],
-  "no soporta las etiquetas": ["DC", "HD"],
-  "no quiere cortarse el pelo": ["DB"],
-  "no se deja cortar las unas": ["DB"],
-  "no se quiere banar": ["DB", "HD"],
-  "no se lava los dientes": ["DB", "EO"],
-  "rechina los dientes": ["EO"],
-  "manta de peso": ["HE", "Y"],
-  "chaleco de peso": ["HE", "Y"],
-
-  "no come": ["P", "AX"],
-  "come poquito": ["P"],
-  "solo come lo mismo": ["P"],
-  "no come verduras": ["P"],
-  "estrenimiento": ["EP", "AA"],
-  "no hace caca": ["EP", "AA"],
-  "dolor de barriga": ["AA", "CY", "EP"],
-  "diarrea": ["AA"],
-  "se hace pipi": ["EQ", "AT"],
-  "moja la cama": ["EQ"],
-  "no controla esfinteres": ["AT", "EQ"],
-  "quitar el panal": ["AT"],
-
-  "convulsiones": ["Q"],
-  "epilepsia": ["Q"],
-  "se queda ido": ["Q", "DO", "HF"],
-  "dolor de cabeza": ["ER"],
-  "no siente dolor": ["CY", "BF"],
-  "no siente frio": ["FR", "BF"],
-  "tiene alergias": ["DQ"],
-  "asma": ["DQ"],
-  "tics": ["EM"],
-  "no ve bien": ["DR"],
-
-  "medicacion": ["F", "U"],
-  "risperidona": ["F"],
-  "medicamento para calmarlo": ["F", "Z"],
-  "necesita pastillas": ["F"],
-
-  "quelacion": ["B", "CS"],
-  "mms dioxido de cloro": ["B", "CS"],
-  "camara hiperbarica": ["B"],
-  "celulas madre": ["B"],
-  "test de cabello": ["CD", "B"],
-  "prueba epigenetica": ["CD"],
-  "dieta sin gluten": ["CR", "AA", "BL"],
-  "dieta cura": ["CR", "BL", "B"],
-  "suplementos": ["BL", "CS", "EW"],
-  "vitaminas": ["BL"],
-  "desintoxicar": ["B", "CC", "CD"],
-  "las vacunas causan autismo": ["BC"],
-  "vacunas": ["BC", "HH"],
-  "paracetamol embarazo": ["EI"],
-  "leucovorina": ["EJ"],
-  "es por el wifi": ["EL"],
-  "es por las pantallas": ["AI"],
-  "es culpa mia": ["K", "BK", "N"],
-  "que lo causo": ["K", "BD", "BK", "BB"],
-  "se cura": ["L", "J", "BR"],
-  "existe cura": ["L", "BR", "J"],
-
-  "que terapia sirve": ["L", "X", "BR"],
-  "terapia temprana": ["X", "L"],
-  "aba": ["FE", "L"],
-  "es bueno el aba": ["FE"],
-  "terapia de lenguaje": ["CA", "D"],
-  "terapia ocupacional": ["Y", "HD"],
-  "integracion sensorial": ["Y", "HE"],
-  "caballos": ["EV", "AS"],
-  "delfines": ["EV", "AS"],
-  "perro de asistencia": ["AS"],
-  "musicoterapia": ["AQ", "DI"],
-  "cuanto cuesta la terapia": ["CH", "M", "FS"],
-  "no tengo dinero para terapias": ["CH", "M", "BS", "FS"],
-
-  "acaban de diagnosticarlo": ["BT", "HO", "X"],
-  "me dijeron que es autista": ["BT", "X", "BS"],
-  "como se diagnostica": ["BA", "BY", "BW"],
-  "sospecho autismo": ["O", "BA", "HQ"],
-  "senales de autismo": ["O", "HQ", "BW"],
-  "mchat": ["BA", "O"],
-  "lista de espera diagnostico": ["BA", "CH"],
-  "segunda opinion": ["BA", "BR"],
-  "sera autismo o tdah": ["BW", "U"],
-  "es autismo o solo retraso del lenguaje": ["BW", "HQ"],
-
-  "en la escuela": ["AH", "H", "GR", "FG"],
-  "el colegio no lo acepta": ["AH", "IB", "FG"],
-  "maestra no sabe": ["GR", "AH"],
-  "adaptaciones escolares": ["AH", "FH", "GR"],
-  "lo molestan en la escuela": ["DE"],
-  "bullying": ["DE"],
-  "no quiere ir al colegio": ["DE", "DF", "AH"],
-  "cambio de colegio": ["DF", "FG"],
-  "deberes tarea": ["DG", "BE"],
-  "no le sale escribir": ["GQ", "AU"],
-  "le cuesta leer": ["GO"],
-  "le cuestan las matematicas": ["GP"],
-  "es muy inteligente pero": ["BQ", "BE", "BZ"],
-  "universidad": ["FI", "FJ"],
-
-  "hermanos": ["BM", "FA", "AD"],
-  "como le explico a su hermano": ["AD", "BM"],
-  "mi familia no lo entiende": ["HN", "DN", "AK", "FS"],
-  "los abuelos dicen": ["DN", "AK"],
-  "la gente me juzga": ["AK", "N"],
-  "estoy agotada": ["N", "EE", "AN"],
-  "no puedo mas": ["N", "EE", "G"],
-  "necesito ayuda": ["N", "EE", "FS", "G"],
-  "mi pareja y yo discutimos": ["DM"],
-  "nos vamos a separar": ["GE", "DM"],
-  "quien lo cuidara cuando yo no este": ["HN", "CL", "CM"],
-
-  "salir a la calle": ["DD", "CO"],
-  "supermercado": ["DD"],
-  "restaurante": ["DD", "GT"],
-  "viajar en avion": ["CO"],
-  "vacaciones": ["CO", "GV"],
-  "fiesta de cumpleanos": ["CO", "DD"],
-  "cortarle el pelo": ["DB"],
-  "ir al dentista": ["AG", "EO"],
-  "ir al medico": ["AG", "CZ", "HI"],
-  "sacar sangre": ["HI"],
-  "operacion cirugia": ["CZ"],
-
-  "se escapa": ["AE", "GX"],
-  "se pierde": ["AE"],
-  "se traga cosas": ["AE"],
-  "seguridad en casa": ["AE", "GX"],
-  "peligro agua piscina": ["AE"],
-  "abuso": ["EF", "AR"],
-  "protegerlo de abusos": ["EF", "S"],
-
-  "esta triste": ["IC", "G"],
-  "esta ansioso": ["ID", "AY", "R"],
-  "tiene miedo": ["ID", "AY"],
-  "se quiere morir": ["G", "IC", "FP"],
-  "se hace dano": ["G", "Z", "FP"],
-  "depresion": ["IC", "R"],
-  "ansiedad": ["ID", "AY", "R"],
-  "manias obsesiones": ["AY"],
-
-  "adolescente": ["I", "DA", "S"],
-  "pubertad": ["I", "DA", "S"],
-  "menstruacion regla": ["DA"],
-  "sexualidad": ["S", "HY", "CK"],
-  "novia novio": ["HX", "BO"],
-  "amigos": ["BO", "AC", "GH"],
-  "no tiene amigos": ["BO", "AC", "GS"],
-  "trabajo empleo": ["T", "FK", "FL", "FJ"],
-  "vivir solo": ["CM", "DW"],
-  "sacar licencia conducir": ["CN"],
-  "manejar dinero": ["HV", "DW"],
-  "aprender a cocinar": ["HU", "DW"],
-  "pension discapacidad": ["CL", "FS"],
-  "certificado de discapacidad": ["CL", "FS"],
-
-  "en mexico": ["FT"],
-  "en espana": ["FU"],
-  "en argentina": ["FV"],
-  "en colombia": ["FW"],
-  "en chile": ["GI"],
-  "en peru": ["GJ"],
-  "en guatemala": ["FX"],
-  "en brasil": ["GM"],
-  "en estados unidos": ["GN"],
-  "en republica dominicana": ["GY"],
-  "en puerto rico": ["GY"],
-  "en costa rica": ["GZ"],
-  "en panama": ["GZ"],
-  "en venezuela": ["GK"],
-  "en uruguay": ["GK"],
-  "en ecuador": ["GL"],
-  "en bolivia": ["GL"],
-  "en paraguay": ["GL"],
-  "en honduras": ["HA"],
-  "en el salvador": ["HA"],
-  "en nicaragua": ["HA"],
-  "mis derechos": ["FS", "HZ", "IB", "AH"],
-  "donde pido ayuda": ["FS", "CH"],
-  "asociaciones": ["FS", "AK"],
-
-  "es niña": ["C"],
-  "en las ninas": ["C"],
-  "adulto sin diagnostico": ["C", "EX", "CT"],
-  "yo tambien soy autista": ["CT", "FA", "HM"],
-  "identidad autista": ["J", "FO", "AZ", "EG"],
-  "persona con autismo o autista": ["V", "J"],
-  "alto funcionamiento": ["BZ"],
-  "asperger": ["BY", "BX", "BZ"],
-  "sindrome de down y autismo": ["CX"],
-  "x fragil": ["CU"],
-  "sindrome de rett": ["CV"],
-  "estudio genetico": ["K", "CU", "CW"]
+ "_ayuda": "Traduce cómo habla una familia a los temas de la biblioteca. Formato: \"lo que escribe la familia\": [\"CÓDIGOS\", \"DE\", \"TEMAS\"]. Puedes añadir todas las frases que quieras y volver a ejecutar scripts/construir-contenido.py.",
+ "no duerme": [
+  "W",
+  "EN"
+ ],
+ "no quiere dormir": [
+  "W",
+  "EN"
+ ],
+ "se despierta de noche": [
+  "W",
+  "EN"
+ ],
+ "ronca": [
+  "EN"
+ ],
+ "pesadillas terrores nocturnos": [
+  "EN"
+ ],
+ "melatonina": [
+  "W",
+  "F"
+ ],
+ "no habla": [
+  "D",
+  "HB",
+  "CA",
+  "O"
+ ],
+ "no dice palabras": [
+  "D",
+  "HQ",
+  "O",
+  "CA"
+ ],
+ "habla poco": [
+  "D",
+  "CA",
+  "BG"
+ ],
+ "repite lo que digo": [
+  "BG"
+ ],
+ "repite frases": [
+  "BG"
+ ],
+ "no me mira a los ojos": [
+  "CP",
+  "O"
+ ],
+ "no responde a su nombre": [
+  "O",
+  "BW"
+ ],
+ "no señala": [
+  "O"
+ ],
+ "perdio palabras": [
+  "BJ"
+ ],
+ "dejo de hablar": [
+  "BJ",
+  "DO"
+ ],
+ "tablet para hablar": [
+  "HB",
+  "CQ"
+ ],
+ "pictogramas": [
+  "HB",
+  "AV"
+ ],
+ "lengua de senas": [
+  "HC"
+ ],
+ "se pega": [
+  "Z",
+  "G",
+  "HG"
+ ],
+ "se muerde": [
+  "Z",
+  "G",
+  "CY"
+ ],
+ "se golpea la cabeza": [
+  "Z",
+  "G",
+  "CY"
+ ],
+ "pega a otros ninos": [
+  "HG",
+  "Z"
+ ],
+ "muerde a otros": [
+  "HG",
+  "Z"
+ ],
+ "berrinches": [
+  "HF",
+  "E",
+  "Z"
+ ],
+ "rabietas": [
+  "HF",
+  "E",
+  "Z"
+ ],
+ "crisis": [
+  "HF",
+  "FP",
+  "E"
+ ],
+ "se tira al suelo": [
+  "HF",
+  "E"
+ ],
+ "grita mucho": [
+  "HF",
+  "E",
+  "Z"
+ ],
+ "se desconecta": [
+  "HF",
+  "E"
+ ],
+ "aletea las manos": [
+  "BH"
+ ],
+ "se balancea": [
+  "BH"
+ ],
+ "gira objetos": [
+  "BH",
+  "BI"
+ ],
+ "hace ruidos": [
+  "BH"
+ ],
+ "le molesta el ruido": [
+  "E",
+  "HD",
+  "GA",
+  "DS"
+ ],
+ "se tapa los oidos": [
+  "E",
+  "GA",
+  "DS"
+ ],
+ "no soporta las etiquetas": [
+  "DC",
+  "HD"
+ ],
+ "no quiere cortarse el pelo": [
+  "DB"
+ ],
+ "no se deja cortar las unas": [
+  "DB"
+ ],
+ "no se quiere banar": [
+  "DB",
+  "HD"
+ ],
+ "no se lava los dientes": [
+  "DB",
+  "EO"
+ ],
+ "rechina los dientes": [
+  "EO"
+ ],
+ "manta de peso": [
+  "HE",
+  "Y"
+ ],
+ "chaleco de peso": [
+  "HE",
+  "Y"
+ ],
+ "no come": [
+  "P",
+  "AX"
+ ],
+ "come poquito": [
+  "P"
+ ],
+ "solo come lo mismo": [
+  "P"
+ ],
+ "no come verduras": [
+  "P"
+ ],
+ "estrenimiento": [
+  "EP",
+  "AA"
+ ],
+ "no hace caca": [
+  "EP",
+  "AA"
+ ],
+ "dolor de barriga": [
+  "AA",
+  "CY",
+  "EP"
+ ],
+ "diarrea": [
+  "AA"
+ ],
+ "se hace pipi": [
+  "EQ",
+  "AT"
+ ],
+ "moja la cama": [
+  "EQ"
+ ],
+ "no controla esfinteres": [
+  "AT",
+  "EQ"
+ ],
+ "quitar el panal": [
+  "AT"
+ ],
+ "convulsiones": [
+  "Q"
+ ],
+ "epilepsia": [
+  "Q"
+ ],
+ "se queda ido": [
+  "Q",
+  "DO",
+  "HF"
+ ],
+ "dolor de cabeza": [
+  "ER"
+ ],
+ "no siente dolor": [
+  "CY",
+  "BF"
+ ],
+ "no siente frio": [
+  "FR",
+  "BF"
+ ],
+ "tiene alergias": [
+  "DQ"
+ ],
+ "asma": [
+  "DQ"
+ ],
+ "tics": [
+  "EM"
+ ],
+ "no ve bien": [
+  "DR"
+ ],
+ "medicacion": [
+  "F",
+  "U"
+ ],
+ "risperidona": [
+  "F"
+ ],
+ "medicamento para calmarlo": [
+  "F",
+  "Z"
+ ],
+ "necesita pastillas": [
+  "F"
+ ],
+ "quelacion": [
+  "B",
+  "CS"
+ ],
+ "mms dioxido de cloro": [
+  "B",
+  "CS"
+ ],
+ "camara hiperbarica": [
+  "B"
+ ],
+ "celulas madre": [
+  "B"
+ ],
+ "test de cabello": [
+  "CD",
+  "B"
+ ],
+ "prueba epigenetica": [
+  "CD"
+ ],
+ "dieta sin gluten": [
+  "CR",
+  "AA",
+  "BL"
+ ],
+ "dieta cura": [
+  "CR",
+  "BL",
+  "B"
+ ],
+ "suplementos": [
+  "BL",
+  "CS",
+  "EW"
+ ],
+ "vitaminas": [
+  "BL"
+ ],
+ "desintoxicar": [
+  "B",
+  "CC",
+  "CD"
+ ],
+ "las vacunas causan autismo": [
+  "BC"
+ ],
+ "vacunas": [
+  "BC",
+  "HH"
+ ],
+ "paracetamol embarazo": [
+  "EI"
+ ],
+ "leucovorina": [
+  "EJ"
+ ],
+ "es por el wifi": [
+  "EL"
+ ],
+ "es por las pantallas": [
+  "AI"
+ ],
+ "es culpa mia": [
+  "K",
+  "BK",
+  "N"
+ ],
+ "que lo causo": [
+  "K",
+  "BD",
+  "BK",
+  "BB"
+ ],
+ "se cura": [
+  "L",
+  "J",
+  "BR"
+ ],
+ "existe cura": [
+  "L",
+  "BR",
+  "J"
+ ],
+ "que terapia sirve": [
+  "L",
+  "X",
+  "BR"
+ ],
+ "terapia temprana": [
+  "X",
+  "L"
+ ],
+ "aba": [
+  "FE",
+  "L"
+ ],
+ "es bueno el aba": [
+  "FE"
+ ],
+ "terapia de lenguaje": [
+  "CA",
+  "D"
+ ],
+ "terapia ocupacional": [
+  "Y",
+  "HD"
+ ],
+ "integracion sensorial": [
+  "Y",
+  "HE"
+ ],
+ "caballos": [
+  "EV",
+  "AS"
+ ],
+ "delfines": [
+  "EV",
+  "AS"
+ ],
+ "perro de asistencia": [
+  "AS"
+ ],
+ "musicoterapia": [
+  "AQ",
+  "DI"
+ ],
+ "cuanto cuesta la terapia": [
+  "CH",
+  "M",
+  "FS"
+ ],
+ "no tengo dinero para terapias": [
+  "CH",
+  "M",
+  "BS",
+  "FS"
+ ],
+ "acaban de diagnosticarlo": [
+  "BT",
+  "HO",
+  "X"
+ ],
+ "me dijeron que es autista": [
+  "BT",
+  "X",
+  "BS"
+ ],
+ "como se diagnostica": [
+  "BA",
+  "BY",
+  "BW"
+ ],
+ "sospecho autismo": [
+  "O",
+  "BA",
+  "HQ"
+ ],
+ "senales de autismo": [
+  "O",
+  "HQ",
+  "BW"
+ ],
+ "mchat": [
+  "BA",
+  "O"
+ ],
+ "lista de espera diagnostico": [
+  "BA",
+  "CH"
+ ],
+ "segunda opinion": [
+  "BA",
+  "BR"
+ ],
+ "sera autismo o tdah": [
+  "BW",
+  "U"
+ ],
+ "es autismo o solo retraso del lenguaje": [
+  "BW",
+  "HQ"
+ ],
+ "en la escuela": [
+  "AH",
+  "H",
+  "GR",
+  "FG"
+ ],
+ "el colegio no lo acepta": [
+  "AH",
+  "IB",
+  "FG"
+ ],
+ "maestra no sabe": [
+  "GR",
+  "AH"
+ ],
+ "adaptaciones escolares": [
+  "AH",
+  "FH",
+  "GR"
+ ],
+ "lo molestan en la escuela": [
+  "DE"
+ ],
+ "bullying": [
+  "DE"
+ ],
+ "no quiere ir al colegio": [
+  "DE",
+  "DF",
+  "AH"
+ ],
+ "cambio de colegio": [
+  "DF",
+  "FG"
+ ],
+ "deberes tarea": [
+  "DG",
+  "BE"
+ ],
+ "no le sale escribir": [
+  "GQ",
+  "AU"
+ ],
+ "le cuesta leer": [
+  "GO"
+ ],
+ "le cuestan las matematicas": [
+  "GP"
+ ],
+ "es muy inteligente pero": [
+  "BQ",
+  "BE",
+  "BZ"
+ ],
+ "universidad": [
+  "FI",
+  "FJ"
+ ],
+ "hermanos": [
+  "BM",
+  "FA",
+  "AD"
+ ],
+ "como le explico a su hermano": [
+  "AD",
+  "BM"
+ ],
+ "mi familia no lo entiende": [
+  "HN",
+  "DN",
+  "AK",
+  "FS"
+ ],
+ "los abuelos dicen": [
+  "DN",
+  "AK"
+ ],
+ "la gente me juzga": [
+  "AK",
+  "N"
+ ],
+ "estoy agotada": [
+  "N",
+  "EE",
+  "AN"
+ ],
+ "no puedo mas": [
+  "N",
+  "EE",
+  "G"
+ ],
+ "necesito ayuda": [
+  "N",
+  "EE",
+  "FS",
+  "G"
+ ],
+ "mi pareja y yo discutimos": [
+  "DM"
+ ],
+ "nos vamos a separar": [
+  "GE",
+  "DM"
+ ],
+ "quien lo cuidara cuando yo no este": [
+  "HN",
+  "CL",
+  "CM"
+ ],
+ "salir a la calle": [
+  "DD",
+  "CO"
+ ],
+ "supermercado": [
+  "DD"
+ ],
+ "restaurante": [
+  "DD",
+  "GT"
+ ],
+ "viajar en avion": [
+  "CO"
+ ],
+ "vacaciones": [
+  "CO",
+  "GV"
+ ],
+ "fiesta de cumpleanos": [
+  "CO",
+  "DD"
+ ],
+ "cortarle el pelo": [
+  "DB"
+ ],
+ "ir al dentista": [
+  "AG",
+  "EO"
+ ],
+ "ir al medico": [
+  "AG",
+  "CZ",
+  "HI"
+ ],
+ "sacar sangre": [
+  "HI"
+ ],
+ "operacion cirugia": [
+  "CZ"
+ ],
+ "se escapa": [
+  "AE",
+  "GX"
+ ],
+ "se pierde": [
+  "AE"
+ ],
+ "se traga cosas": [
+  "LH"
+ ],
+ "seguridad en casa": [
+  "AE",
+  "GX"
+ ],
+ "peligro agua piscina": [
+  "AE"
+ ],
+ "abuso": [
+  "EF",
+  "AR"
+ ],
+ "protegerlo de abusos": [
+  "EF",
+  "S"
+ ],
+ "esta triste": [
+  "IC",
+  "G"
+ ],
+ "esta ansioso": [
+  "ID",
+  "AY",
+  "R"
+ ],
+ "tiene miedo": [
+  "ID",
+  "AY"
+ ],
+ "se quiere morir": [
+  "G",
+  "IC",
+  "FP"
+ ],
+ "se hace dano": [
+  "G",
+  "Z",
+  "FP"
+ ],
+ "depresion": [
+  "IC",
+  "R"
+ ],
+ "ansiedad": [
+  "ID",
+  "AY",
+  "R"
+ ],
+ "manias obsesiones": [
+  "AY"
+ ],
+ "adolescente": [
+  "I",
+  "DA",
+  "S"
+ ],
+ "pubertad": [
+  "I",
+  "DA",
+  "S"
+ ],
+ "menstruacion regla": [
+  "DA"
+ ],
+ "sexualidad": [
+  "S",
+  "HY",
+  "CK"
+ ],
+ "novia novio": [
+  "HX",
+  "BO"
+ ],
+ "amigos": [
+  "BO",
+  "AC",
+  "GH"
+ ],
+ "no tiene amigos": [
+  "BO",
+  "AC",
+  "GS"
+ ],
+ "trabajo empleo": [
+  "T",
+  "FK",
+  "FL",
+  "FJ"
+ ],
+ "vivir solo": [
+  "CM",
+  "DW"
+ ],
+ "sacar licencia conducir": [
+  "CN"
+ ],
+ "manejar dinero": [
+  "HV",
+  "DW"
+ ],
+ "aprender a cocinar": [
+  "HU",
+  "DW"
+ ],
+ "pension discapacidad": [
+  "CL",
+  "FS"
+ ],
+ "certificado de discapacidad": [
+  "CL",
+  "FS"
+ ],
+ "en mexico": [
+  "FT"
+ ],
+ "en espana": [
+  "FU"
+ ],
+ "en argentina": [
+  "FV"
+ ],
+ "en colombia": [
+  "FW"
+ ],
+ "en chile": [
+  "GI"
+ ],
+ "en peru": [
+  "GJ"
+ ],
+ "en guatemala": [
+  "FX"
+ ],
+ "en brasil": [
+  "GM"
+ ],
+ "en estados unidos": [
+  "GN"
+ ],
+ "en republica dominicana": [
+  "GY"
+ ],
+ "en puerto rico": [
+  "GY"
+ ],
+ "en costa rica": [
+  "GZ"
+ ],
+ "en panama": [
+  "GZ"
+ ],
+ "en venezuela": [
+  "GK"
+ ],
+ "en uruguay": [
+  "GK"
+ ],
+ "en ecuador": [
+  "GL"
+ ],
+ "en bolivia": [
+  "GL"
+ ],
+ "en paraguay": [
+  "GL"
+ ],
+ "en honduras": [
+  "HA"
+ ],
+ "en el salvador": [
+  "HA"
+ ],
+ "en nicaragua": [
+  "HA"
+ ],
+ "mis derechos": [
+  "FS",
+  "HZ",
+  "IB",
+  "AH"
+ ],
+ "donde pido ayuda": [
+  "FS",
+  "CH"
+ ],
+ "asociaciones": [
+  "FS",
+  "AK"
+ ],
+ "es niña": [
+  "C"
+ ],
+ "en las ninas": [
+  "C"
+ ],
+ "adulto sin diagnostico": [
+  "C",
+  "EX",
+  "CT"
+ ],
+ "yo tambien soy autista": [
+  "CT",
+  "FA",
+  "HM"
+ ],
+ "identidad autista": [
+  "J",
+  "FO",
+  "AZ",
+  "EG"
+ ],
+ "persona con autismo o autista": [
+  "V",
+  "J"
+ ],
+ "alto funcionamiento": [
+  "BZ"
+ ],
+ "asperger": [
+  "BY",
+  "BX",
+  "BZ"
+ ],
+ "sindrome de down y autismo": [
+  "CX"
+ ],
+ "x fragil": [
+  "CU"
+ ],
+ "sindrome de rett": [
+  "CV"
+ ],
+ "estudio genetico": [
+  "K",
+  "CU",
+  "CW"
+ ],
+ "se atraganta": [
+  "LG"
+ ],
+ "se atraganto": [
+  "LG"
+ ],
+ "atragantarse": [
+  "LG"
+ ],
+ "no mastica": [
+  "LG"
+ ],
+ "traga sin masticar": [
+  "LG"
+ ],
+ "hace bola": [
+  "LG"
+ ],
+ "se ahoga comiendo": [
+  "LG"
+ ],
+ "primeros auxilios": [
+  "LG"
+ ],
+ "asegurar la casa": [
+  "LH"
+ ],
+ "casa segura": [
+  "LH"
+ ],
+ "se escapa por la ventana": [
+  "LH"
+ ],
+ "se quema": [
+  "LH"
+ ],
+ "toma productos de limpieza": [
+  "LH"
+ ],
+ "pilas de boton": [
+  "LH"
+ ],
+ "ahogarse en la bañera": [
+  "LH"
+ ],
+ "no oye bien": [
+  "LK"
+ ],
+ "no oye": [
+  "LK"
+ ],
+ "sordera": [
+  "LK"
+ ],
+ "audicion": [
+  "LK"
+ ],
+ "otitis": [
+  "LK"
+ ],
+ "le duele el oido": [
+  "LK"
+ ],
+ "no responde cuando le llamo": [
+  "LK"
+ ],
+ "prueba de audicion": [
+  "LK"
+ ],
+ "ingresarlo": [
+  "LM"
+ ],
+ "ingreso psiquiatrico": [
+  "LM"
+ ],
+ "hospital psiquiatrico": [
+  "LM"
+ ],
+ "internarlo": [
+  "LM"
+ ],
+ "unidad de salud mental": [
+  "LM"
+ ]
 }
