@@ -260,7 +260,7 @@
   "U"
  ],
  "risperidona": [
-  "F"
+  "LJ"
  ],
  "medicamento para calmarlo": [
   "F",
@@ -619,8 +619,7 @@
   "AE"
  ],
  "abuso": [
-  "EF",
-  "AR"
+  "LL"
  ],
  "protegerlo de abusos": [
   "EF",
@@ -930,5 +929,71 @@
  ],
  "unidad de salud mental": [
   "LM"
+ ],
+ "se suelta el cinturon": [
+  "LI"
+ ],
+ "se quita el cinturon": [
+  "LI"
+ ],
+ "abre la puerta del coche": [
+  "LI"
+ ],
+ "silla del coche": [
+  "LI"
+ ],
+ "viajar en coche": [
+  "LI"
+ ],
+ "arnes": [
+  "LI"
+ ],
+ "aripiprazol": [
+  "LJ"
+ ],
+ "antipsicotico": [
+  "LJ"
+ ],
+ "analiticas del medicamento": [
+  "LJ"
+ ],
+ "engorda con la medicacion": [
+  "LJ"
+ ],
+ "controles de la medicacion": [
+  "LJ"
+ ],
+ "prolactina": [
+  "LJ"
+ ],
+ "le hacen daño en el colegio": [
+  "LL"
+ ],
+ "sospecho maltrato": [
+  "LL"
+ ],
+ "moratones": [
+  "LL"
+ ],
+ "no me lo puede contar": [
+  "LL"
+ ],
+ "cambio de golpe": [
+  "LN"
+ ],
+ "psicosis": [
+  "LN"
+ ],
+ "bipolar": [
+  "LN"
+ ],
+ "alucinaciones": [
+  "LN"
+ ],
+ "oye voces": [
+  "LN"
+ ],
+ "no duerme y esta eufórico": [
+  "LN"
  ]
 }
