@@ -19,11 +19,18 @@ async function getJSON(path) {
   return data;
 }
 
+/* Una fuente puede estar citada sin enlace: el verificador confirmó que el
+   trabajo existe pero no llegó a ver su dirección, y aquí no se inventan URLs.
+   Esas se muestran como texto, no como un enlace que no lleva a ninguna parte. */
+function fuenteHTML(f) {
+  return f.url
+    ? `<a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.label)}</a>`
+    : `<span class="sin-enlace">${esc(f.label)}</span>`;
+}
+
 function sourcesHTML(fuentes) {
   if (!fuentes || !fuentes.length) return "";
-  return `<div class="sources">${fuentes.map(
-    (f) => `<a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.label)}</a>`
-  ).join("")}</div>`;
+  return `<div class="sources">${fuentes.map(fuenteHTML).join("")}</div>`;
 }
 
 /* Pinta los iconos de la barra de pestañas (declarados con data-ico en el HTML). */
@@ -402,10 +409,12 @@ async function renderTema(codigo) {
     <article class="tema-cuerpo">${mdRender(tema.cuerpo)}</article>
     ${tema.fuentes && tema.fuentes.length ? `
       <h3 class="sec">Fuentes · ${tema.fuentes.length}</h3>
-      <div class="lista fuentes">${tema.fuentes.map((f) => `
+      <div class="lista fuentes">${tema.fuentes.map((f) => f.url ? `
         <a class="fila" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">
           <span class="txt"><span class="titulo">${esc(f.label)}</span></span>
-          <span class="ext">${ICONOS.externo}</span></a>`).join("")}</div>` : ""}
+          <span class="ext">${ICONOS.externo}</span></a>` : `
+        <div class="fila sin-enlace">
+          <span class="txt"><span class="titulo">${esc(f.label)}</span></span></div>`).join("")}</div>` : ""}
     ${relacionados.length ? `
       <h3 class="sec">También te puede servir</h3>
       ${relacionados.map(tarjetaTema).join("")}` : ""}
@@ -830,9 +839,7 @@ async function renderFuentes() {
   const grupos = data.grupos.map((g) => `
     <section>
       <h3 class="sec">${esc(g.titulo)}</h3>
-      <div class="card"><div class="sources">${g.fuentes.map(
-        (f) => `<a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.label)}</a>`
-      ).join("")}</div></div>
+      <div class="card"><div class="sources">${g.fuentes.map(fuenteHTML).join("")}</div></div>
     </section>`).join("");
   view.innerHTML = `
     <h1 class="page">Fuentes y cómo verificar</h1>

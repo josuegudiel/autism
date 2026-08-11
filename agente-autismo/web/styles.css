@@ -358,3 +358,9 @@ ul.checks li:last-child { border-bottom: 0; border-radius: 0 0 var(--r-card) var
   .view { animation: aparece 0.22s ease-out; }
   @keyframes aparece { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 }
+
+/* Fuente citada sin enlace: el trabajo está confirmado pero no se publica una
+   URL que nadie ha visto. Se muestra como texto, con el mismo aire que un
+   enlace pero sin el color ni el cursor que prometen que se puede pulsar. */
+.sources .sin-enlace { color: var(--txt-2); text-decoration: none; }
+.lista .fila.sin-enlace { color: var(--txt-2); cursor: default; }

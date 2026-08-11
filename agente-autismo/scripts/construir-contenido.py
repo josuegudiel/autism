@@ -142,14 +142,34 @@ def ronda_de(estado, codigo):
 
 
 def extraer_enlaces(texto):
-    """Devuelve [{'label':..., 'url':...}] de los enlaces markdown de un texto."""
+    """Devuelve [{'label':..., 'url':...}] de las fuentes de un tema.
+
+    Los enlaces markdown salen con su URL. Pero una fuente puede estar citada
+    solo en texto, sin enlace: pasa cuando el verificador confirmó que el
+    trabajo existe pero no llegó a ver su dirección, y la regla del proyecto es
+    no inventarla nunca. Esas fuentes también cuentan y también se muestran,
+    simplemente sin ser clicables ('url' vacío).
+    """
     fuentes = []
     vistos = set()
     for m in re.finditer(r"\[([^\]]+)\]\((https?://[^\s)]+)\)", texto):
         label, url = m.group(1).strip(), m.group(2).strip()
         if url not in vistos:
             vistos.add(url)
+            # El texto de la etiqueta también se marca como visto, para que la
+            # pasada siguiente no vuelva a añadir la misma fuente sin enlace.
+            vistos.add(re.sub(r"[*_`]", "", label).strip(" .;"))
             fuentes.append({"label": label, "url": url})
+
+    # Citas en texto de la línea "**Fuentes:**", separadas por " · "
+    m = re.search(r"^\*\*Fuentes\*?\*?[^:\n]*:?\*?\*?\s*(.+)$", texto, flags=re.M)
+    if m:
+        for trozo in m.group(1).split(" · "):
+            plano = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", trozo)
+            plano = re.sub(r"[*_`]", "", plano).strip(" .;")
+            if len(plano) > 15 and not plano.startswith("http") and plano not in vistos:
+                vistos.add(plano)
+                fuentes.append({"label": plano, "url": ""})
     return fuentes
 
 

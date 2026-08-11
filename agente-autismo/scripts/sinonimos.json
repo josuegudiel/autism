@@ -479,9 +479,7 @@
   "DE"
  ],
  "no quiere ir al colegio": [
-  "DE",
-  "DF",
-  "AH"
+  "LO"
  ],
  "cambio de colegio": [
   "DF",
@@ -718,8 +716,7 @@
   "FS"
  ],
  "certificado de discapacidad": [
-  "CL",
-  "FS"
+  "LP"
  ],
  "en mexico": [
   "FT"
@@ -995,5 +992,72 @@
  ],
  "no duerme y esta eufórico": [
   "LN"
+ ],
+ "rechazo escolar": [
+  "LO"
+ ],
+ "falta mucho al colegio": [
+  "LO"
+ ],
+ "absentismo": [
+  "LO"
+ ],
+ "jornada reducida": [
+  "LO"
+ ],
+ "llora al entrar al colegio": [
+  "LO"
+ ],
+ "grado de discapacidad": [
+  "LP"
+ ],
+ "valoracion de discapacidad": [
+  "LP"
+ ],
+ "como pedir el certificado": [
+  "LP"
+ ],
+ "me denegaron el certificado": [
+  "LP"
+ ],
+ "recurrir el grado": [
+  "LP"
+ ],
+ "cumple 18": [
+  "LQ"
+ ],
+ "mayoria de edad": [
+  "LQ"
+ ],
+ "incapacitar": [
+  "LQ"
+ ],
+ "incapacitacion": [
+  "LQ"
+ ],
+ "curatela": [
+  "LQ"
+ ],
+ "tutela": [
+  "LQ",
+  "HN"
+ ],
+ "quien decide por el": [
+  "LQ"
+ ],
+ "terapia online": [
+  "LR"
+ ],
+ "por videollamada": [
+  "LR"
+ ],
+ "telemedicina": [
+  "LR"
+ ],
+ "consulta a distancia": [
+  "LR"
+ ],
+ "teleterapia": [
+  "LR"
  ]
 }
