@@ -692,22 +692,6 @@
  ],
  "reserva": [
   {
-   "titulo": "¿Le hacemos un estudio genético? Qué prueba pedir y qué riesgo hay si tenemos otro hijo",
-   "porque": "Las dos preguntas que toda familia se hace tras el diagnóstico, y son decisión, no descripción. K, CU, CV, CW y CX describen síndromes ya diagnosticados; HP es vigilancia del desarrollo del hermano, no asesoramiento genético; CD y CE desmontan pruebas falsas pero no explican la legítima. Falta el proceso: qué prueba y en qué orden, qué es una variante de significado incierto, qué hacer con un resultado negativo y cómo se calcula el riesgo de recurrencia. NOTA: no verifiqué las cifras concretas de recurrencia en hermanos ni la vigencia de la guía ACMG de 2013 (puede estar actualizada), así que quien redacte debe comprobarlas antes de escribir ningún porcentaje. Queda fuera del top 12 solo por su solapamiento parcial con K."
-  },
-  {
-   "titulo": "Estamos en lista de espera: qué hacer mientras llega el diagnóstico o la terapia",
-   "porque": "Es donde están hoy la mayoría de las familias y donde más dinero y desesperación se pierden. BA es el proceso diagnóstico, HO el año siguiente, X la intervención temprana y M/CH el acceso: nadie cubre la espera en sí. Contenido útil y de bajo riesgo: qué apoyos no exigen diagnóstico cerrado, qué programas mediados por padres se pueden empezar ya, cómo pedir revisión de prioridad y cómo no caer en terapias sin evidencia. Las medianas de espera citadas en la propuesta no están verificadas: dar rangos o no darlos."
-  },
-  {
-   "titulo": "Come poquísimas cosas: cuándo la selectividad es ARFID y hay que tratarla",
-   "porque": "Es la frontera práctica que toda familia necesita, y cae justo en el hueco entre P (manejo cotidiano de la selectividad) y AX (anorexia, restricción por imagen corporal, mecanismo distinto); KE cubre la consecuencia analítica pero no el cuadro. Aporta criterios de alarma reales (pérdida o estancamiento de peso, déficits nutricionales, dependencia de suplementos, interferencia psicosocial) y a quién acudir. Cifras de solapamiento sin verificar; el rango que da la propuesta (8,2-54,8%) es tan amplio que conviene no citarlo."
-  },
-  {
-   "titulo": "Toma varios medicamentos a la vez: cómo revisar la lista y cómo se retira uno",
-   "porque": "La polifarmacia es la norma y la retirada por cuenta propia es frecuente y peligrosa. F evalúa fármaco por fármaco y KG mira un cambio concreto; falta la pila entera, las interacciones acumuladas y la retirada escalonada. Va en reserva y no en el top por su solapamiento con KG. Mensaje central sin riesgo de error: nunca retirar de golpe, no cambiar dos cosas a la vez, preguntar en cada revisión si cada fármaco sigue haciendo falta, y advertir que los marcos de desprescripción están validados en geriatría y no en niños. Las cifras de la cohorte de 33.565 niños no están verificadas."
-  },
-  {
    "titulo": "Aguanta todo el día en el colegio y explota al llegar a casa",
    "porque": "Una de las quejas más frecuentes y la que más enfrenta a la familia con el centro ('aquí nunca hace eso'). Sirve para no castigar la descarga, reorganizar la tarde y pedir apoyos en el aula con argumentos. No está en el top 12 porque AN (burnout autista) y HF (rabieta, meltdown y shutdown) juntos cubren buena parte del mecanismo; lo genuinamente nuevo es el patrón diario colegio-casa y la brecha entre lo que ve la familia y lo que ve el colegio, que es lo que debe ocupar la ficha."
   },
@@ -743,5 +727,6 @@
    "titulo": "Planificación centrada en la persona: cómo pedir un plan de apoyos que los servicios respeten",
    "porque": "Método concreto que ninguna ficha enseña (JT son objetivos terapéuticos, JS calidad de vida, IA la reunión escolar), útil cuando el padre pasa de elegir terapias a planificar una vida. Último de la lista porque es el más abstracto para un padre sin formación técnica y porque su evidencia es modesta: efectos positivos pero moderados en participación y capacidad de elección, con calidad de evidencia limitada, matiz que debe aparecer en la ficha."
   }
- ]
+ ],
+ "nota": "Reserva restante tras la ronda 20. Los 4 primeros temas se publicaron como LS, LT, LU y LV."
 }

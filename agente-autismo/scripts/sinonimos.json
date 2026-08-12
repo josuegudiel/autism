@@ -839,9 +839,7 @@
   "CV"
  ],
  "estudio genetico": [
-  "K",
-  "CU",
-  "CW"
+  "LS"
  ],
  "se atraganta": [
   "LG"
@@ -1059,5 +1057,72 @@
  ],
  "teleterapia": [
   "LR"
+ ],
+ "prueba genetica": [
+  "LS"
+ ],
+ "exoma": [
+  "LS"
+ ],
+ "cariotipo": [
+  "LS"
+ ],
+ "tener otro hijo": [
+  "LS"
+ ],
+ "riesgo para el hermano": [
+  "LS"
+ ],
+ "es hereditario": [
+  "LS",
+  "K"
+ ],
+ "lista de espera": [
+  "LT"
+ ],
+ "estamos esperando": [
+  "LT"
+ ],
+ "tarda mucho el diagnostico": [
+  "LT"
+ ],
+ "que hago mientras": [
+  "LT"
+ ],
+ "sin diagnostico todavia": [
+  "LT"
+ ],
+ "come poquisimas cosas": [
+  "LU"
+ ],
+ "arfid": [
+  "LU"
+ ],
+ "solo come tres cosas": [
+  "LU"
+ ],
+ "no come nada": [
+  "LU"
+ ],
+ "come muy poco": [
+  "LU"
+ ],
+ "rechaza la comida": [
+  "LU"
+ ],
+ "varios medicamentos": [
+  "LV"
+ ],
+ "polifarmacia": [
+  "LV"
+ ],
+ "retirar un medicamento": [
+  "LV"
+ ],
+ "quitar la medicacion": [
+  "LV"
+ ],
+ "interacciones": [
+  "LV"
  ]
 }
