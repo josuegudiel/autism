@@ -692,22 +692,6 @@
  ],
  "reserva": [
   {
-   "titulo": "Aguanta todo el día en el colegio y explota al llegar a casa",
-   "porque": "Una de las quejas más frecuentes y la que más enfrenta a la familia con el centro ('aquí nunca hace eso'). Sirve para no castigar la descarga, reorganizar la tarde y pedir apoyos en el aula con argumentos. No está en el top 12 porque AN (burnout autista) y HF (rabieta, meltdown y shutdown) juntos cubren buena parte del mecanismo; lo genuinamente nuevo es el patrón diario colegio-casa y la brecha entre lo que ve la familia y lo que ve el colegio, que es lo que debe ocupar la ficha."
-  },
-  {
-   "titulo": "Cuando la sospecha cae sobre los padres: acusaciones de negligencia, de sobreproteger o de exagerar los síntomas",
-   "porque": "Tema real, grave y totalmente descubierto (HT, KL, KM, IB y las fichas de cuidadores no lo rozan): familias derivadas a protección de menores por pedir ayuda, sobre todo con niños no hablantes, absentismo o madres y padres autistas. Baja en el orden por frecuencia menor que los anteriores, no por importancia. Contenido seguro: que esto existe, cómo documentar cada gestión y a quién acudir; las cifras sobre desenlaces de esos expedientes no están verificadas y no deberían escribirse sin comprobar."
-  },
-  {
-   "titulo": "Camina de puntillas: cuándo preocuparse y qué pensar antes de aceptar una operación",
-   "porque": "Motivo de consulta constante que nadie explica: AU es coordinación motora general e Y el marco sensorial; ninguna ficha aborda el acortamiento del tendón de Aquiles, la valoración traumatológica ni la escalera de opciones (fisioterapia, ortesis, yesos seriados, toxina, cirugía). El punto de mayor valor es el dato honesto sobre mayor recurrencia tras cirugía en niños con TEA, que debe verificarse antes de citarlo, igual que las prevalencias."
-  },
-  {
-   "titulo": "¿Hace falta un electroencefalograma si nunca ha tenido convulsiones?",
-   "porque": "Pregunta concreta en la que un padre gasta dinero y angustia sin necesidad, y con una respuesta defendible: el EEG rutinario en todo niño con TEA no está justificado y se reserva para sospecha clínica de epilepsia. Va en reserva porque Q (epilepsia) es la ficha natural donde podría caber. Si se escribe, lo importante es el cuándo SÍ (episodios de desconexión, movimientos estereotipados nuevos, regresión del lenguaje, empeoramiento nocturno) y no el rango de hallazgos epileptiformes subclínicos, que es enorme y poco informativo para un padre."
-  },
-  {
    "titulo": "Miedo a los perros, a los globos o a los secadores de manos: cómo se trabaja una fobia",
    "porque": "Condiciona la vida entera de la familia (no se puede ir al parque, al baño público, a un cumpleaños) y los padres lo dan por irresoluble. En reserva porque R (TCC adaptada), ID y AY cubren el marco terapéutico y la ansiedad general; lo distintivo es la fobia específica con evitación aprendida (que no es hipersensibilidad sensorial, IN/GA) y la exposición graduada adaptada. Verificar las referencias concretas antes de citarlas."
   },
@@ -728,5 +712,5 @@
    "porque": "Método concreto que ninguna ficha enseña (JT son objetivos terapéuticos, JS calidad de vida, IA la reunión escolar), útil cuando el padre pasa de elegir terapias a planificar una vida. Último de la lista porque es el más abstracto para un padre sin formación técnica y porque su evidencia es modesta: efectos positivos pero moderados en participación y capacidad de elección, con calidad de evidencia limitada, matiz que debe aparecer en la ficha."
   }
  ],
- "nota": "Reserva restante tras la ronda 20. Los 4 primeros temas se publicaron como LS, LT, LU y LV."
+ "nota": "Reserva restante tras la ronda 21."
 }

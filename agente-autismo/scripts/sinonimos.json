@@ -122,8 +122,7 @@
   "Z"
  ],
  "se desconecta": [
-  "HF",
-  "E"
+  "LZ"
  ],
  "aletea las manos": [
   "BH"
@@ -1124,5 +1123,65 @@
  ],
  "interacciones": [
   "LV"
+ ],
+ "explota al llegar a casa": [
+  "LW"
+ ],
+ "en el colegio no hace eso": [
+  "LW"
+ ],
+ "aguanta en el colegio": [
+  "LW"
+ ],
+ "llega mal del colegio": [
+  "LW"
+ ],
+ "se descarga conmigo": [
+  "LW"
+ ],
+ "me acusan de negligencia": [
+  "LX"
+ ],
+ "servicios sociales": [
+  "LX"
+ ],
+ "proteccion de menores": [
+  "LX"
+ ],
+ "dicen que exagero": [
+  "LX"
+ ],
+ "me culpan a mi": [
+  "LX"
+ ],
+ "sobreprotectora": [
+  "LX"
+ ],
+ "camina de puntillas": [
+  "LY"
+ ],
+ "anda de puntillas": [
+  "LY"
+ ],
+ "tendon de aquiles": [
+  "LY"
+ ],
+ "le quieren operar el pie": [
+  "LY"
+ ],
+ "yesos": [
+  "LY"
+ ],
+ "electroencefalograma": [
+  "LZ"
+ ],
+ "eeg": [
+  "LZ"
+ ],
+ "hace falta un eeg": [
+  "LZ"
+ ],
+ "se queda ausente": [
+  "LZ"
  ]
 }
