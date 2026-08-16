@@ -1183,5 +1183,68 @@
  ],
  "se queda ausente": [
   "LZ"
+ ],
+ "miedo a los perros": [
+  "MA"
+ ],
+ "fobia": [
+  "MA"
+ ],
+ "le da miedo el secador": [
+  "MA"
+ ],
+ "miedo a los globos": [
+  "MA"
+ ],
+ "no entra al baño": [
+  "MA"
+ ],
+ "tiene mucho miedo": [
+  "MA"
+ ],
+ "cuaderno de ida y vuelta": [
+  "MB"
+ ],
+ "hablar con la maestra": [
+  "MB"
+ ],
+ "agenda del colegio": [
+  "MB"
+ ],
+ "comunicacion con el colegio": [
+  "MB"
+ ],
+ "reunion con el tutor": [
+  "MB"
+ ],
+ "centro ocupacional": [
+  "MC"
+ ],
+ "centro de dia": [
+  "MC"
+ ],
+ "taller protegido": [
+  "MC"
+ ],
+ "empleo protegido": [
+  "MC"
+ ],
+ "que hace al salir del colegio": [
+  "MC"
+ ],
+ "publicar fotos": [
+  "MD"
+ ],
+ "subir fotos de mi hijo": [
+  "MD"
+ ],
+ "privacidad": [
+  "MD"
+ ],
+ "grupos de facebook": [
+  "MD"
+ ],
+ "compartir su diagnostico": [
+  "MD"
  ]
 }
