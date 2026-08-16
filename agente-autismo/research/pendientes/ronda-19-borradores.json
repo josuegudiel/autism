@@ -692,22 +692,6 @@
  ],
  "reserva": [
   {
-   "titulo": "Planificación centrada en la persona: cómo pedir un plan de apoyos que los servicios respeten",
-   "porque": "Método concreto que ninguna ficha enseña (JT son objetivos terapéuticos, JS calidad de vida, IA la reunión escolar), útil cuando el padre pasa de elegir terapias a planificar una vida. Último de la lista porque es el más abstracto para un padre sin formación técnica y porque su evidencia es modesta: efectos positivos pero moderados en participación y capacidad de elección, con calidad de evidencia limitada, matiz que debe aparecer en la ficha."
-  },
-  {
-   "titulo": "Mi hijo autista además tiene diabetes (o asma, o alergia grave): el tratamiento que no se puede negociar",
-   "porque": "Para el padre que tiene que pinchar glucemias, poner inhaladores, retirar alimentos o llevar adrenalina en un niño con selectividad alimentaria, hipersensibilidad táctil, interocepción atípica y rigidez de rutinas. Contenido: encajar la adherencia en la rutina, enseñar el autocuidado por pasos, detectar una hipoglucemia o una crisis asmática en quien no la describe, y quién coordina a los especialistas. Hay literatura específica (series de autismo + diabetes tipo 1, cualitativos con padres, guías de diabetes en discapacidad). Hueco real: DQ trata la co-ocurrencia y el diagnóstico de alergia/asma, GC las enfermedades metabólicas raras, AL es panorámica; ninguna aborda la convivencia diaria con un tratamiento obligatorio."
-  },
-  {
-   "titulo": "Le tienen que hacer una resonancia y no se queda quieto: ¿sedarlo o prepararlo?",
-   "porque": "Cruce de caminos frecuente y con riesgo real: sin preparación la prueba se repite, sale mal o acaba en sedación de urgencia; y si se seda, hay que saber qué tipo, quién la supervisa, el ayuno y el despertar. Aplica a resonancia, TAC, ecocardiograma y EEG. Alternativas con evidencia: ensayo con mock-scanner, desensibilización, cascos y vídeo, resonancias rápidas, EEG de sueño natural en lugar de sedado, más las preguntas al equipo. FRONTERA IMPORTANTE PARA EL REDACTOR: HI se titula \"Análisis de sangre y procedimientos médicos (preparación)\" y CZ es quirófano y anestesia; esta ficha solo se sostiene si su eje es la decisión de sedar y su logística. Si acaba siendo \"cómo preparar una prueba médica\", hay que fusionarla con HI. LZ cubre la indicación del EEG, no la logística."
-  },
-  {
-   "titulo": "¿Puedo dejarlo solo en casa o que baje solo a la calle?",
-   "porque": "Decisión de seguridad que todo padre afronta (diez minutos mientras baja a por el pan, una tarde entera, ir solo al parque, tener llaves, quedarse al cuidado de un hermano mayor) y que hoy no tiene dónde consultarse. Debe enseñar a dejar de razonar por edad y razonar por función: ¿sabe qué hacer si llaman a la puerta, si suena la alarma, si se corta la luz, si se quema algo?, ¿pide ayuda?, ¿sabe volver?, ¿tiene fugas, pica, impulsividad? Más un método de prueba por pasos con supervisión decreciente y qué dejar escrito. Hueco real: AE es fugas y pica, JB datos personales y perderse, JC seguridad vial, LH peligros físicos de la casa, DW habilidades de vida diaria, CN conducir (adulto), GW transporte. AVISO AL REDACTOR: no existe umbral de edad autista y la edad legal para dejar solo a un menor cambia por país, así que la ficha no puede ser de un país; y las cifras de mortalidad por ahogamiento y accidente en autismo (Guan y Li) circulan muy exageradas y mal citadas: verificarlas en la fuente antes de usarlas."
-  },
-  {
    "titulo": "Se le rompen los huesos con poco: densidad ósea baja, calcio y vitamina D",
    "porque": "Prevención de algo evitable y clave para leer bien una fractura tras un golpe pequeño. Los factores se acumulan: dieta muy restringida sin lácteos, poca actividad de carga, poco sol, antiepilépticos, ISRS y, en algunos casos, amenorrea o bajo peso; y hay medidas concretas. Hueco real: BL es nutrición y suplementos en general, KE anemia y déficits con foco en analíticas y ferropenia, HJ peso y actividad con foco en sobrepeso, AL panorámica. AVISO DE CIFRAS: las estimaciones bailan mucho: un estudio de bases de datos da un riesgo de fractura de cadera del orden de x3 en 3-22 años, frente a estudios de densitometría con muestras de decenas de chicos y Z-scores solo algo más bajos. Citar el metaanálisis de salud ósea en TEA, no el titular del riesgo triplicado."
   },

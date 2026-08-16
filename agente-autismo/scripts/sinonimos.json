@@ -1296,5 +1296,68 @@
  ],
  "esta mas agitado con la medicacion": [
   "MH"
+ ],
+ "tiene diabetes": [
+  "MI"
+ ],
+ "tiene asma": [
+  "MI"
+ ],
+ "alergia grave": [
+  "MI"
+ ],
+ "anafilaxia": [
+  "MI"
+ ],
+ "adrenalina": [
+  "MI"
+ ],
+ "inhalador": [
+  "MI"
+ ],
+ "insulina": [
+  "MI"
+ ],
+ "no me dice que se encuentra mal": [
+  "MI"
+ ],
+ "dejarlo solo en casa": [
+  "MJ"
+ ],
+ "puede quedarse solo": [
+  "MJ"
+ ],
+ "bajar solo a la calle": [
+  "MJ"
+ ],
+ "ir solo al parque": [
+  "MJ"
+ ],
+ "tener llaves": [
+  "MJ"
+ ],
+ "resonancia": [
+  "MK"
+ ],
+ "sedarlo": [
+  "MK"
+ ],
+ "anestesia para una prueba": [
+  "MK"
+ ],
+ "no se queda quieto en la prueba": [
+  "MK"
+ ],
+ "tac": [
+  "MK"
+ ],
+ "plan de apoyos": [
+  "ML"
+ ],
+ "planificacion centrada en la persona": [
+  "ML"
+ ],
+ "planificar su vida": [
+  "ML"
  ]
 }
