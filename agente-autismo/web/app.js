@@ -165,22 +165,28 @@ function buscarTemas(consulta, indice) {
   const q = normalize(consulta).trim();
   if (q.length < 3) return [];
   const tokens = tokenizar(q);
-  if (!tokens.length) return [];
 
   // 1) Sinónimos: lo que escribe una familia -> temas concretos.
+  //    Se miran ANTES de exigir palabras útiles, porque hay frases que un padre
+  //    escribe entera con palabras vacías ("es por el autismo", "no come nada")
+  //    y que sin esto no encontrarían nada.
   const impulso = {};
   for (const [frase, codigos] of Object.entries(indice.sinonimos || {})) {
     if (frase.startsWith("_")) continue;
     const nf = normalize(frase);
     const tf = tokenizar(nf);
-    if (!tf.length) continue;
-    const comunes = tf.filter((t) => tokens.includes(t)).length;
     let peso = 0;
     if (q.includes(nf) || nf.includes(q)) peso = 30;          // la frase completa aparece
-    else if (comunes === tf.length) peso = 24;                // están todas sus palabras
-    else if (comunes >= 2) peso = 14;                         // coinciden dos o más
+    else if (tf.length) {
+      const comunes = tf.filter((t) => tokens.includes(t)).length;
+      if (comunes === tf.length) peso = 24;                   // están todas sus palabras
+      else if (comunes >= 2) peso = 14;                       // coinciden dos o más
+    }
     if (peso) for (const c of codigos) impulso[c] = Math.max(impulso[c] || 0, peso);
   }
+
+  // Sin palabras útiles y sin sinónimo que encaje, no hay nada que buscar.
+  if (!tokens.length && !Object.keys(impulso).length) return [];
 
   const resultados = [];
   for (const tema of indice.temas) {

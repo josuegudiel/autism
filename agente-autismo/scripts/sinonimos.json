@@ -122,7 +122,7 @@
   "Z"
  ],
  "se desconecta": [
-  "LZ"
+  "MF"
  ],
  "aletea las manos": [
   "BH"
@@ -440,8 +440,7 @@
   "CH"
  ],
  "segunda opinion": [
-  "BA",
-  "BR"
+  "ME"
  ],
  "sera autismo o tdah": [
   "BW",
@@ -1182,7 +1181,7 @@
   "LZ"
  ],
  "se queda ausente": [
-  "LZ"
+  "MF"
  ],
  "miedo a los perros": [
   "MA"
@@ -1246,5 +1245,56 @@
  ],
  "compartir su diagnostico": [
   "MD"
+ ],
+ "es por el autismo": [
+  "ME"
+ ],
+ "el medico no me hace caso": [
+  "ME"
+ ],
+ "no le miran nada": [
+  "ME"
+ ],
+ "le duele algo y no lo dicen": [
+  "ME"
+ ],
+ "mirada fija": [
+  "MF"
+ ],
+ "ausencias": [
+  "MF"
+ ],
+ "no responde cuando le hablo": [
+  "MF"
+ ],
+ "no se traga las pastillas": [
+  "MG"
+ ],
+ "triturar la pastilla": [
+  "MG"
+ ],
+ "partir la pastilla": [
+  "MG"
+ ],
+ "no quiere tomar la medicacion": [
+  "MG"
+ ],
+ "esconder la medicina en la comida": [
+  "MG"
+ ],
+ "antidepresivo": [
+  "MH"
+ ],
+ "isrs": [
+  "MH"
+ ],
+ "fluoxetina": [
+  "MH"
+ ],
+ "sertralina": [
+  "MH"
+ ],
+ "esta mas agitado con la medicacion": [
+  "MH"
  ]
 }

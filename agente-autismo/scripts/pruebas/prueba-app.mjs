@@ -58,6 +58,11 @@ const buscar = async (q) => {
 };
 
 const casos = [
+  // Frase hecha solo de palabras vacías: sin el rescate por sinónimo, el
+  // buscador se quedaba sin tokens y no devolvía nada. Es lo que escribe
+  // un padre de verdad.
+  ['es por el autismo', /causa médica/i, 'encuentra la ficha del sesgo médico'],
+  ['no come nada', /ARFID|selectividad|come/i, 'encuentra alimentación'],
   ['mi hijo no duerme', /Sueño/i, 'encuentra Sueño'],
   ['no habla', /Comunicaci|CAA|logopedia/i, 'encuentra Comunicación/CAA'],
   ['se pega', /Conductas|Agresi|Salud mental|autolesi/i, 'encuentra conductas/autolesión'],
@@ -69,7 +74,11 @@ const casos = [
 ];
 for (const [q, re, desc] of casos) {
   const r = await buscar(q);
-  check(`"${q}" → ${desc}`, re.test(r), r.slice(0, 160));
+  // La app repite la consulta en el mensaje de "sin resultados", así que hay
+  // que exigir además que haya resultados: si no, una prueba puede pasar
+  // reconociendo su propia pregunta.
+  const hay = !/Sin resultados|No encontré nada/i.test(r);
+  check(`"${q}" → ${desc}`, hay && re.test(r), r.slice(0, 160));
 }
 
 let r = await buscar('asdfghjkl');
