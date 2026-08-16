@@ -1,0 +1,338 @@
+A. Condiciones co-ocurrentes 
+B. Catálogo ampliado de pseudociencia 
+C. Autismo en niñas/mujeres y en adultos 
+D. Comunicación (no/poco verbal, CAA/AAC) 
+E. Procesamiento sensorial, autorregulación, "meltdowns" 
+F. Medicación basada en evidencia 
+G. Salud mental y seguridad 
+H. Educación e inclusión escolar 
+I. Adolescencia, pubertad y transición a la adultez 
+J. Neurodiversidad y perspectiva autista 
+K. Genética y formas sindrómicas 
+L. Intervenciones comparadas 
+M. Acceso global / Latinoamérica 
+N. Bienestar de cuidadores y familia 
+O. Señales tempranas detalladas por edad 
+P. Alimentación selectiva / problemas de alimentación 
+Q. Epilepsia / convulsiones 
+R. TCC adaptada para ansiedad/depresión 
+S. Educación sexual y de privacidad adaptada 
+T. Empleo con apoyo 
+U. Manejo del TDAH co-ocurrente 
+V. Preferencias de lenguaje + NCAEP 2020 
+W. Sueño 
+X. Intervención temprana 
+Y. Terapia ocupacional e integración sensorial 
+Z. Conductas desafiantes / apoyo conductual positivo (PBS) 
+AA. Problemas digestivos (GI) 
+AB. Regulación emocional / alexitimia 
+AC. Habilidades sociales con evidencia 
+AD. Cómo explicar el autismo 
+AE. Seguridad: *wandering*/fugas y pica 
+AF. Discapacidad intelectual co-ocurrente 
+AG. Visitas médicas y dentales adaptadas 
+AH. Escuela: inclusión, adaptaciones y derechos 
+AK. Estigma y apoyo entre padres 
+AI. Tecnología y pantallas 
+AJ. Cannabis / CBD para el autismo 
+AL. Salud física y esperanza de vida 
+AM. Bilingüismo y autismo 
+AN. Burnout autista (*autistic burnout*) 
+AO. Autismo y diversidad de género 
+AP. Ejercicio físico 
+AQ. Musicoterapia 
+AR. Trauma y TEPT en autismo 
+AS. Animales de apoyo / terapia 
+AT. Aprendizaje del baño / control de esfínteres 
+AU. Motricidad y dispraxia 
+AV. Transiciones y apoyos visuales 
+AW. Envejecimiento y adultez mayor 
+AX. Trastornos de la conducta alimentaria (anorexia) y autismo 
+AY. TOC y ansiedad en autismo 
+AZ. Autodefensa autista y voz de las personas autistas 
+BA. El proceso de diagnóstico a fondo 
+BB. Prevalencia y el "aumento" de casos (¿hay una epidemia?) 
+BC. Vacunas y autismo 
+BD. Neurobiología: cómo se desarrolla el cerebro autista 
+BE. Funciones ejecutivas 
+BF. Interocepción (percibir las señales del cuerpo) 
+BG. Ecolalia y procesamiento del lenguaje en gestalt 
+BH. Stimming (conductas autoestimulatorias) 
+BI. Intereses intensos como fortaleza 
+BJ. Regresión autista (pérdida de habilidades) 
+BK. Factores prenatales y perinatales asociados (con matices) 
+BL. Nutrición y suplementos basados en evidencia 
+BM. Hermanos de niños autistas 
+BN. El juego: desarrollo y cómo acompañarlo 
+BO. Amistades y relaciones 
+BP. PDA: evitación patológica de demandas (perfil debatido) 
+BQ. Doble excepcionalidad (autismo + altas capacidades) 
+BR. Elegir profesionales y terapias con criterio 
+BS. Estrategias de crianza en el día a día 
+BT. Primeros pasos tras el diagnóstico (y afrontarlo) 
+BU. Comunicación social y "doble empatía" 
+BV. Voces y experiencias de familias (evidencia cualitativa/vivencial) 
+BW. Diagnóstico diferencial: qué se confunde con autismo 
+BX. Historia del concepto de autismo 
+BY. Criterios diagnósticos: DSM-5 y CIE-11 
+BZ. "Alto/bajo funcionamiento" y niveles de apoyo 
+CA. Terapia del habla y lenguaje (logopedia/fonoaudiología) 
+CB. Microbioma intestinal y autismo 
+CC. Sistema inmune, inflamación y la teoría del "intestino permeable" 
+CD. Epigenética y las "pruebas epigenéticas / de cabello" 
+CE. Biomarcadores y pruebas emergentes 
+CF. Oxitocina y fármacos en investigación 
+CG. Disparidades raciales y étnicas en el diagnóstico 
+CH. Nivel socioeconómico, idioma y acceso 
+CI. Diferencias culturales en la concepción del autismo 
+CJ. Autismo y el sistema de justicia 
+CK. Autismo, orientación sexual e identidad (LGBTQ+) 
+CL. Planificación financiera y legal del futuro 
+CM. Vivienda y vida independiente con apoyo 
+CN. Conducir y movilidad autónoma 
+CO. Viajes, vacaciones y eventos sociales 
+CP. Contacto visual y lenguaje corporal (mito de "forzar") 
+CQ. Tecnología de apoyo y apps 
+CR. Dieta cetogénica y otras dietas 
+CS. Más pseudociencias para el Detector 
+CT. Ser madre/padre autista y el diagnóstico en la adultez 
+CU. Síndrome de X frágil y autismo 
+CV. Síndrome de Rett 
+CW. Esclerosis tuberosa y otros síndromes (Angelman, Phelan-McDermid, 22q) 
+CX. Autismo y síndrome de Down (co-ocurrencia) 
+CY. Autismo, dolor y su expresión 
+CZ. Hospitalización, cirugía y anestesia (preparación) 
+DA. Pubertad y menstruación: manejo práctico 
+DB. Higiene sensorial: cortes de pelo, uñas, dientes y baño 
+DC. Ropa y vestirse (sensibilidad táctil) 
+DD. Salir: supermercado, restaurantes y espacios públicos 
+DE. Acoso escolar (bullying): prevención y actuación 
+DF. Transiciones escolares (de curso, etapa o colegio) 
+DG. Deberes y aprendizaje en casa 
+DH. Deporte, ejercicio inclusivo y ocio 
+DI. Arte, música y teatro: expresión y bienestar 
+DJ. Humor, lenguaje figurado e ironía 
+DK. Teorías cognitivas del autismo (con honestidad y crítica) 
+DL. Prevalencia mundial y datos globales 
+DM. Impacto en la pareja y la relación de los padres 
+DN. El papel de abuelos y familia extensa 
+DO. Catatonia en el autismo 
+DP. Autismo, hipermovilidad y disautonomía 
+DQ. Autismo, alergias, asma y atopia 
+DR. Autismo y salud visual / oftalmológica 
+DS. Autismo y procesamiento auditivo 
+DT. Autismo, uso de sustancias y adicciones 
+DU. Autismo y uso problemático de videojuegos e internet 
+DV. Autismo y vida online: redes sociales, beneficios y seguridad 
+DW. Habilidades de vida diaria e independencia 
+DX. Autismo y reconocimiento de caras (prosopagnosia) 
+DY. Autismo y percepción del tiempo 
+DZ. Autismo y memoria (perfil y fortalezas) 
+EA. Autismo, sinestesia y particularidades perceptivas 
+EB. Autismo y educación en casa (homeschooling) 
+EC. Métodos y enfoques educativos (TEACCH y panorama) 
+ED. Tecnología emergente: robots sociales y realidad virtual 
+EE. Cuidados de respiro (respite) y apoyo a la familia 
+EF. Seguridad personal y prevención del abuso 
+EG. Representación en medios y cultura autista 
+EH. Autismo y envejecimiento: menopausia y cognición 
+EI. Paracetamol/acetaminofén en el embarazo: ¿causa autismo? 
+EJ. Leucovorina / ácido folínico 
+EK. Factores ambientales y contaminación del aire 
+EL. Mitos ambientales: wifi, campos electromagnéticos, fluoruro y ecografías 
+EM. Autismo y tics / síndrome de Tourette 
+EN. Trastornos del sueño específicos (apnea, piernas inquietas, parasomnias) 
+EO. Salud dental y bruxismo 
+EP. Estreñimiento y encopresis (a fondo) 
+EQ. Enuresis (mojar la cama) 
+ER. Autismo, migraña y cefaleas 
+ES. Programa Hanen (More Than Words) y programas para padres 
+ET. Video modeling e historias sociales 
+EU. Refuerzo positivo y economía de fichas (usos y críticas) 
+EV. Equinoterapia, hidroterapia y terapias asistidas 
+EW. Sulforafano y otras terapias en investigación 
+EX. Autodiagnóstico vs diagnóstico formal (debate) 
+EY. Divulgar el diagnóstico (disclosure): a quién y cómo 
+EZ. Acceso a la atención médica adulta 
+FA. Familias con varios miembros autistas 
+FB. Coaching, mentoría y apoyo entre adultos autistas 
+FC. PRT (Pivotal Response Treatment) 
+FD. DIR/Floortime 
+FE. El debate sobre el ABA (ético, a fondo) 
+FF. Modelo SCERTS 
+FG. Elegir colegio: ordinario, especial o específico 
+FH. Adaptaciones y ajustes en exámenes y evaluación 
+FI. Universidad y educación superior 
+FJ. Formación profesional y oficios 
+FK. Entrevistas de trabajo y conseguir empleo 
+FL. Mantener el empleo y crecer profesionalmente 
+FM. Conversación social y "small talk" 
+FN. Comunicación no verbal: gestos, prosodia y tono 
+FO. Símbolos e identidad: rompecabezas, infinito y orgullo neurodivergente 
+FP. Plan de crisis y desregulación severa 
+FQ. Contención y restricción: por qué evitarlas 
+FR. Termorregulación y señales corporales atípicas 
+FS. Cómo encontrar recursos y asociaciones en tu país 
+FT. Autismo en México: derechos y recursos 
+FU. Autismo en España: derechos y recursos 
+FV. Autismo en Argentina: derechos y recursos 
+FW. Autismo en Colombia: derechos y recursos 
+FX. Autismo en Centroamérica (Guatemala y la región) 
+FY. Cómo leer una noticia o estudio sobre autismo (alfabetización científica) 
+FZ. Modelo social vs médico de la discapacidad 
+GA. Misofonía y sensibilidades sonoras específicas 
+GB. PANS/PANDAS y autismo (con honestidad sobre la controversia) 
+GC. Autismo y trastornos metabólicos y mitocondriales 
+GD. Autismo y duelo: comprender y vivir la muerte 
+GE. Autismo y separación o divorcio: co-crianza 
+GF. Naturaleza y actividades al aire libre 
+GG. Espacios sensory-friendly y diseño inclusivo 
+GH. Amistad entre personas autistas y comunidad de pares 
+GI. Autismo en Chile: derechos y recursos 
+GJ. Autismo en Perú: derechos y recursos 
+GK. Autismo en Uruguay y Venezuela: panorama 
+GL. Autismo en Ecuador, Bolivia y Paraguay: panorama 
+GM. Autismo en Brasil: derechos y recursos 
+GN. Autismo en EE. UU. para familias hispanas (IDEA, IEP) 
+GO. Autismo y dislexia (lectura) 
+GP. Autismo y discalculia (matemáticas) 
+GQ. Autismo y disgrafía y escritura a mano 
+GR. Apoyar en el aula al alumno autista (con TDAH frecuente) 
+GS. El recreo y los tiempos no estructurados 
+GT. El comedor escolar 
+GU. Excursiones y actividades fuera del aula 
+GV. Campamentos y ocio inclusivo 
+GW. Transporte escolar y público adaptado 
+GX. Planes ante emergencias y desastres 
+GY. Autismo en República Dominicana y Puerto Rico 
+GZ. Autismo en Costa Rica, Panamá y el Caribe hispano 
+HA. Autismo en Honduras, El Salvador y Nicaragua 
+HB. Elegir un sistema de CAA (PECS, dispositivos, apps) 
+HC. Lengua de señas y signos con niños autistas 
+HD. Perfiles sensoriales: buscadores y evitadores 
+HE. "Dieta sensorial" y herramientas de regulación (con matiz) 
+HF. Distinguir rabieta, meltdown y shutdown (guía práctica) 
+HG. Agresión hacia otros: entender la función y prevenir 
+HH. Lograr una visita de vacunación sin trauma 
+HI. Análisis de sangre y procedimientos médicos (preparación) 
+HJ. Autismo, peso y actividad física saludable 
+HK. Evaluación psicopedagógica y neuropsicológica 
+HL. Autismo e inteligencia artificial como herramienta de apoyo 
+HM. Embarazo y maternidad/paternidad siendo autista 
+HN. Cuando los cuidadores envejecen: planificar el relevo 
+HO. Tras el diagnóstico en un niño pequeño: el primer año 
+HP. Hermanos menores de alto riesgo: vigilancia temprana 
+HQ. Desarrollo del lenguaje: hitos y señales de alarma por edad 
+HR. Fomentar el juego y la interacción con otros niños 
+HS. Desinformación en redes sociales e "influencers" de salud 
+HT. Responder a familiares que niegan el diagnóstico o proponen curas 
+HU. Enseñar a cocinar paso a paso (autonomía) 
+HV. Manejo del dinero y las compras 
+HW. Organización y tareas del hogar 
+HX. Citas y relaciones románticas en la adultez 
+HY. Sexualidad adulta, consentimiento y límites 
+HZ. Cómo abogar por los derechos de tu hijo 
+IA. Reuniones escolares (IEP/PEI): prepararlas y participar 
+IB. Qué hacer si no se respetan los derechos (reclamaciones) 
+IC. Depresión en el autismo: señales y apoyo 
+ID. Ansiedad: estrategias prácticas del día a día 
+IE. La rutina de la mañana: salir de casa sin pelear 
+IF. La hora de dormir: rutina y ambiente 
+IG. Berrinches en público y las miradas de la gente 
+IH. Cómo dar instrucciones que el niño entienda 
+II. Elogio, motivación y autoestima 
+IJ. Elegir juguetes y materiales 
+IK. El primer día de guardería o escuela infantil 
+IL. Cuando el niño no juega con otros niños 
+IM. Hiperactividad, correr y no parar quieto 
+IN. Cuando el niño se tapa los oídos o huye del ruido 
+IO. Cortar las uñas, lavarse el pelo y otras batallas de higiene 
+IP. Ir al parque y a espacios de juego 
+IQ. Hablar con el pediatra: cómo preparar la consulta 
+IR. Entender un informe diagnóstico o psicopedagógico 
+IS. Vacaciones escolares y cambios de rutina largos 
+IT. Cuando la familia se muda de casa o de ciudad 
+IU. Cómo hacer una agenda visual paso a paso 
+IV. Cómo escribir una historia social 
+IW. Crear un rincón de calma en casa 
+IX. Pasaporte de comunicación y ficha de necesidades 
+IY. Enseñar a esperar 
+IZ. Apagar la tablet o la tele sin crisis 
+JA. Enseñar a elegir y a decidir 
+JB. Enseñar datos personales y qué hacer si se pierde 
+JC. Seguridad vial y normas de la calle 
+JD. Natación y seguridad en el agua 
+JE. Explicar el autismo a los compañeros de clase 
+JF. Qué hacer si una terapia no está funcionando 
+JG. Bodas, comuniones y celebraciones familiares 
+JH. Vulnerabilidad económica y estafas en la adultez 
+JI. Regular tus propias emociones como madre o padre 
+JJ. Construir tu red de apoyo 
+JK. Señales de autismo en bebés menores de 12 meses 
+JL. Autismo en la etapa preescolar (3 a 6 años) 
+JM. Autismo en la edad escolar (7 a 12 años) 
+JN. Cuándo y cómo decirle a tu hijo que es autista 
+JO. Repetir curso, adelantar o adaptar: decisiones escolares 
+JP. Auxiliares y apoyos personales en el aula 
+JQ. Convulsiones: qué hacer en el momento 
+JR. Fiebre, dolor y enfermedad en un niño que comunica poco 
+JS. Autismo y calidad de vida: qué medir de verdad 
+JT. Objetivos terapéuticos: cómo saber si son buenos 
+JU. Ruido, luces y olores en casa: adaptar el hogar 
+JV. Hermanos: repartir el tiempo y la atención 
+JW. Familias monoparentales y crianza en solitario 
+JX. Conciliar el trabajo con las terapias y citas 
+JY. Autismo y familias migrantes o refugiadas 
+JZ. Autismo y comunidades religiosas o espirituales 
+KA. Cuando el habla llega tarde: expectativas honestas 
+KB. Modelar la CAA: cómo enseñar usándola tú 
+KC. Comunicación total: gestos, habla y CAA a la vez 
+KD. Autismo y trastornos del procesamiento sensorial: qué es un diagnóstico y qué no 
+KE. Autismo y anemia, déficits nutricionales y analíticas 
+KF. Autismo e higiene bucal en casa: rutina realista 
+KG. Cambios de medicación: qué vigilar y cómo informar al médico 
+KH. Preparar la transición del colegio al instituto 
+KI. Trabajo por cuenta propia y emprendimiento 
+KJ. Autismo y servicio militar, policía y profesiones reguladas 
+KK. Duelo por el diagnóstico: el "duelo del hijo imaginado" 
+KL. Cuando los padres no están de acuerdo sobre el diagnóstico o las terapias 
+KM. Autismo y adopción o acogimiento 
+KN. Autismo y pobreza: el coste económico real 
+KO. Cómo hablar del autismo sin capacitismo 
+KP. Participar en investigación: ensayos, registros y consentimiento 
+KQ. Evaluación funcional de la conducta: entender el porqué 
+KR. Entrenamiento en comunicación funcional (FCT) 
+KS. Autolesión: entender y prevenir sin castigar 
+KT. Aprendizaje sin errores y ayudas graduadas 
+KU. Generalizar lo aprendido: que sirva fuera de la terapia 
+KV. Autismo y videojuegos como fortaleza 
+KW. Autismo y música: intereses, talento y regulación 
+KX. Savantismo: separar el mito de los datos 
+KY. Autismo y memoria autobiográfica 
+KZ. Autismo y toma de decisiones 
+LA. Autismo y percepción del riesgo 
+LB. Cuando el hijo adulto vive en casa 
+LC. Autismo y salud de la mujer autista adulta 
+LD. Barreras en urgencias hospitalarias 
+LE. Autismo y COVID/enfermedades: lo aprendido de las mascarillas y confinamientos 
+LF. Cómo saber si una app o material educativo es bueno 
+LG. Se atraganta al comer: masticación, tragar y seguridad en la mesa 
+LH. Asegurar la casa: asfixia, ventanas, quemaduras, bañera y armario de medicamentos 
+LK. ¿Oye bien? Otitis serosa y cómo evaluar la audición de un niño que no colabora 
+LM. ¿Hay que ingresarlo en psiquiatría? Qué preguntar antes y qué esperar dentro 
+LI. Se suelta el cinturón o abre la puerta en marcha: seguridad en el coche 
+LJ. Toma risperidona o aripiprazol: qué controles y analíticas hay que pedir 
+LL. Sospecho que le hacen daño en el colegio y mi hijo no puede contármelo 
+LN. Cambió de golpe en la adolescencia: psicosis y trastorno bipolar en el autismo 
+LO. No quiere ir al colegio: rechazo escolar, faltas y jornada reducida 
+LP. El certificado o valoración de discapacidad: cómo se valora, qué llevar y qué hacer si lo deniegan 
+LQ. Cumple 18 años: ¿hay que incapacitarlo? Apoyos para decidir frente a la tutela 
+LR. Terapia y seguimiento por videollamada: cuándo sirve de verdad y cómo prepararla 
+LS. ¿Le hacemos un estudio genético? Qué prueba pedir y qué riesgo hay si tenemos otro hijo 
+LT. Estamos en lista de espera: qué hacer mientras llega el diagnóstico o la terapia 
+LU. Come poquísimas cosas: cuándo la selectividad es ARFID y hay que tratarla 
+LV. Toma varios medicamentos a la vez: cómo revisar la lista y cómo se retira uno 
+LW. Aguanta todo el día en el colegio y explota al llegar a casa 
+LX. Cuando la sospecha cae sobre los padres: acusaciones de negligencia, de sobreproteger o de exagerar los síntomas 
+LY. Camina de puntillas: cuándo preocuparse y qué pensar antes de aceptar una operación 
+LZ. ¿Hace falta un electroencefalograma si nunca ha tenido convulsiones? 
