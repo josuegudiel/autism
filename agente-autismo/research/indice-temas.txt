@@ -348,3 +348,6 @@ MI. Mi hijo autista además tiene diabetes, asma o alergia grave: el tratamiento
 MJ. ¿Puedo dejarlo solo en casa o que baje solo a la calle? 
 MK. Le tienen que hacer una resonancia y no se queda quieto: ¿sedarlo o prepararlo? 
 ML. Planificación centrada en la persona: cómo pedir un plan de apoyos que los servicios respeten 
+MM. Se le rompen los huesos con poco: densidad ósea baja, calcio y vitamina D 
+MN. Se arranca el pelo, se pellizca la piel o se muerde las uñas 
+MP. Le han recetado algo "fuera de indicación" (off-label): qué preguntar antes de aceptar 

@@ -692,16 +692,16 @@
  ],
  "reserva": [
   {
+   "titulo": "La regla le hace sufrir: la DECISION medica de cortar o espaciar (rehacer, borrador en pendientes/MO.md)",
+   "porque": "Escrita y verificada en la ronda 25 pero NO publicada: los criticos encontraron dos fallos de fondo. (1) SOLAPAMIENTO: repite en tres puntos lo que ya dice DA (pubertad y menstruacion, manejo practico). Al rehacerla, quitar todo lo cotidiano (productos, calendario, higiene) y dejar SOLO la decision medica y quien decide. (2) SESGO DE PAIS: en el punto rojo de esterilizacion solo da salida legal para España (Ley Organica 2/2020); la mayoria del publico es de Hispanoamerica. Hay que dar el criterio general de derechos (consentimiento, asentimiento de la chica, opcion menos restrictiva, segunda opinion) sin depender de una ley concreta. Ademas: el dolor pelvico agudo estaba en cita programada y debe subir a urgencias, y las señales de shock por sangrado no pueden ir en el escalon \"hoy\". El borrador verificado esta en research/pendientes/MO.md: reutilizar sus fuentes, no repetir la investigacion."
+  },
+  {
    "titulo": "Se le rompen los huesos con poco: densidad ósea baja, calcio y vitamina D",
    "porque": "Prevención de algo evitable y clave para leer bien una fractura tras un golpe pequeño. Los factores se acumulan: dieta muy restringida sin lácteos, poca actividad de carga, poco sol, antiepilépticos, ISRS y, en algunos casos, amenorrea o bajo peso; y hay medidas concretas. Hueco real: BL es nutrición y suplementos en general, KE anemia y déficits con foco en analíticas y ferropenia, HJ peso y actividad con foco en sobrepeso, AL panorámica. AVISO DE CIFRAS: las estimaciones bailan mucho: un estudio de bases de datos da un riesgo de fractura de cadera del orden de x3 en 3-22 años, frente a estudios de densitometría con muestras de decenas de chicos y Z-scores solo algo más bajos. Citar el metaanálisis de salud ósea en TEA, no el titular del riesgo triplicado."
   },
   {
    "titulo": "Se arranca el pelo, se pellizca la piel hasta hacerse heridas o se come las uñas",
    "porque": "El padre ve heridas, calvas o infecciones y no sabe si es autolesión, un tic, un stim o un TOC, y cada respuesta lleva a un tratamiento distinto. Las conductas repetitivas centradas en el cuerpo (tricotilomanía, dermatilomanía, onicofagia) tienen entidad propia y tratamiento con evidencia clara: reversión de hábitos, decoupling, barreras físicas, y tratar el eczema o la sequedad de base. Hueco real: KS es golpearse y morderse en desregulación, BH defiende el stim y no habla de daño cutáneo, AY son compulsiones y rituales, EM es Tourette, DQ la atopia. AVISO DE CIFRAS: la prevalencia en autismo está poco establecida y procede de muestras clínicas sesgadas; no dar porcentajes."
-  },
-  {
-   "titulo": "La regla le hace sufrir: ¿se puede cortar o espaciar? Píldora continua, DIU, implante y quién decide",
-   "porque": "Decisión concreta de la adolescencia cuando la menstruación provoca dolor, desregulación severa, rechazo de compresas o problemas de higiene. Hay guías específicas (ACOG y pediatría del desarrollo sobre manejo menstrual en adolescentes con discapacidad) y un debate ético serio sobre consentimiento y sobre las prácticas de supresión o esterilización impuestas, que la ficha debe abordar de frente. FRONTERA: DA (pubertad y menstruación: manejo práctico) es la gestión cotidiana -productos, calendario, autonomía- y no debe hablar de anticonceptivos; LC mira a la mujer adulta; S y HY son educación sexual y consentimiento relacional. AVISO DE CIFRAS: los datos de dismenorrea y de empeoramiento conductual premenstrual en autismo vienen casi todos de encuestas pequeñas y autoinforme de madres; no dar porcentajes como firmes."
   },
   {
    "titulo": "Le han recetado algo \"fuera de indicación\" (off-label): qué preguntar antes de aceptar",
