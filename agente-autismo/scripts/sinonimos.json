@@ -1743,5 +1743,90 @@
  ],
  "un imprevisto le arruina el dia": [
   "ND"
+ ],
+ "no se que hacer con el el fin de semana": [
+  "NE"
+ ],
+ "el sabado por la tarde": [
+  "NE"
+ ],
+ "se aburre y acaba en crisis": [
+  "NE"
+ ],
+ "todo el dia con la tablet": [
+  "NE",
+  "IZ"
+ ],
+ "no sabe jugar solo": [
+  "NE"
+ ],
+ "el domingo es el peor dia": [
+  "NE"
+ ],
+ "que hacemos en casa toda la tarde": [
+  "NE"
+ ],
+ "dejarlo con una canguro": [
+  "NF"
+ ],
+ "dejarlo con los abuelos": [
+  "NF"
+ ],
+ "primera noche fuera de casa": [
+  "NF"
+ ],
+ "no me fio de dejarlo con nadie": [
+  "NF"
+ ],
+ "que le dejo escrito a quien lo cuida": [
+  "NF"
+ ],
+ "quiero salir una noche": [
+  "NF",
+  "EE"
+ ],
+ "se queda a dormir en otra casa": [
+  "NF"
+ ],
+ "va a nacer un hermano": [
+  "NG"
+ ],
+ "estoy embarazada y no se como contarselo": [
+  "NG"
+ ],
+ "como le digo que va a tener un hermanito": [
+  "NG"
+ ],
+ "el bebe llora y el no lo soporta": [
+  "NG"
+ ],
+ "el segundo hijo tambien sera autista": [
+  "NG"
+ ],
+ "quien lo cuida mientras estoy en el parto": [
+  "NG"
+ ],
+ "cumpleanos": [
+  "NH"
+ ],
+ "no aguanta los cumpleanos": [
+  "NH"
+ ],
+ "no lo invitan a los cumpleanos": [
+  "NH",
+  "DQ"
+ ],
+ "a su cumple no viene nadie": [
+  "NH"
+ ],
+ "no soporta que le canten cumpleanos feliz": [
+  "NH"
+ ],
+ "la fiesta de otro nino": [
+  "NH"
+ ],
+ "que hago con los globos": [
+  "NH",
+  "LG"
  ]
 }
