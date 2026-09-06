@@ -1530,5 +1530,114 @@
  ],
  "no quieren que vaya": [
   "MV"
+ ],
+ "lleva meses sin ir al colegio": [
+  "MW",
+  "LO"
+ ],
+ "no puede ir a clase": [
+  "MW",
+  "LO"
+ ],
+ "esta ingresado y pierde el curso": [
+  "MW"
+ ],
+ "profesor en casa": [
+  "MW"
+ ],
+ "atencion educativa domiciliaria": [
+  "MW"
+ ],
+ "aula hospitalaria": [
+  "MW"
+ ],
+ "escuela hospitalaria": [
+  "MW"
+ ],
+ "lleva semanas sin salir de la habitacion": [
+  "MW",
+  "AN",
+  "IC"
+ ],
+ "le van a abrir expediente por faltas": [
+  "MW",
+  "LX",
+  "LO"
+ ],
+ "si trabaja pierde la pension": [
+  "MX"
+ ],
+ "le ofrecen un trabajo y cobra pension": [
+  "MX"
+ ],
+ "pierde el seguro si trabaja": [
+  "MX"
+ ],
+ "pension del bienestar y trabajo": [
+  "MX",
+  "FT"
+ ],
+ "pension de orfandad y trabajo": [
+  "MX"
+ ],
+ "seguro del imss si empieza a trabajar": [
+  "MX",
+  "FT"
+ ],
+ "lo dan de alta en el imss": [
+  "MX"
+ ],
+ "me quieren despedir por faltar a las terapias": [
+  "MY"
+ ],
+ "reducir jornada para cuidar a mi hijo": [
+  "MY"
+ ],
+ "permiso en el trabajo para llevarlo al medico": [
+  "MY"
+ ],
+ "me presionan para firmar la baja": [
+  "MY"
+ ],
+ "me despiden por cuidar a mi hijo": [
+  "MY"
+ ],
+ "adaptar mi horario de trabajo": [
+  "MY"
+ ],
+ "excedencia por cuidado de hijo": [
+  "MY"
+ ],
+ "no puedo con el trabajo y las terapias": [
+  "MY",
+  "JX",
+  "KN"
+ ],
+ "discriminacion por cuidar a un hijo con discapacidad": [
+  "MY"
+ ],
+ "y cuando termine el colegio que": [
+  "MZ"
+ ],
+ "que pasa cuando acabe el instituto": [
+  "MZ"
+ ],
+ "se acaba el colegio y no hay nada": [
+  "MZ",
+  "MC"
+ ],
+ "reunion de transicion a la vida adulta": [
+  "MZ"
+ ],
+ "plan de vida adulta": [
+  "MZ",
+  "ML"
+ ],
+ "que va a hacer con su vida": [
+  "MZ"
+ ],
+ "se le acaban los apoyos al cumplir los años": [
+  "MZ",
+  "MC"
  ]
 }
