@@ -351,3 +351,6 @@ ML. Planificación centrada en la persona: cómo pedir un plan de apoyos que los
 MM. Se le rompen los huesos con poco: densidad ósea baja, calcio y vitamina D 
 MN. Se arranca el pelo, se pellizca la piel o se muerde las uñas 
 MP. Le han recetado algo "fuera de indicación" (off-label): qué preguntar antes de aceptar 
+MO. La regla le hace sufrir: la decisión médica de cortar o espaciar, y quién decide 
+MQ. Un test genético para acertar con el psicofármaco: ¿sirve de algo? 
+MS. ¿Cuántas horas de terapia son demasiadas? La agenda semanal de la familia 
