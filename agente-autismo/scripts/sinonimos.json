@@ -1035,8 +1035,8 @@
   "LQ"
  ],
  "tutela": [
-  "LQ",
-  "HN"
+  "MR",
+  "LQ"
  ],
  "quien decide por el": [
   "LQ"
@@ -1467,5 +1467,68 @@
  ],
  "no puedo pagar mas horas": [
   "MS"
+ ],
+ "me han denegado la terapia": [
+  "MR"
+ ],
+ "no me cubren la terapia": [
+  "MR"
+ ],
+ "reclamar al seguro": [
+  "MR"
+ ],
+ "no lo cubre el seguro": [
+  "MR"
+ ],
+ "recurso": [
+  "MR"
+ ],
+ "amparo": [
+  "MR"
+ ],
+ "toda la casa gira": [
+  "MT"
+ ],
+ "acomodacion familiar": [
+  "MT"
+ ],
+ "cedemos en todo": [
+  "MT"
+ ],
+ "evitar la crisis": [
+  "MT"
+ ],
+ "duermo en su cuarto": [
+  "MT"
+ ],
+ "adaptacion curricular": [
+  "MU"
+ ],
+ "adaptacion significativa": [
+  "MU"
+ ],
+ "me piden firmar": [
+  "MU"
+ ],
+ "le cierra puertas": [
+  "MU"
+ ],
+ "titulacion": [
+  "MU"
+ ],
+ "me llaman para que lo recoja": [
+  "MV"
+ ],
+ "expulsion": [
+  "MV"
+ ],
+ "parte de disciplina": [
+  "MV"
+ ],
+ "lo sancionan en el colegio": [
+  "MV"
+ ],
+ "no quieren que vaya": [
+  "MV"
  ]
 }
