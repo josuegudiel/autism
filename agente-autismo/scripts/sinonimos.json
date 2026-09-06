@@ -1639,5 +1639,109 @@
  "se le acaban los apoyos al cumplir los años": [
   "MZ",
   "MC"
+ ],
+ "necesito ayuda en casa": [
+  "NA",
+  "EE"
+ ],
+ "no puedo mas sola": [
+  "NA",
+  "N",
+  "JI"
+ ],
+ "quien me ayuda a cuidarlo": [
+  "NA",
+  "EE"
+ ],
+ "asistente personal": [
+  "NA"
+ ],
+ "ayuda a domicilio": [
+  "NA"
+ ],
+ "respiro familiar": [
+  "NA",
+  "EE"
+ ],
+ "cuidador a domicilio": [
+  "NA"
+ ],
+ "prestacion por cuidar a mi hijo": [
+  "NA"
+ ],
+ "ley de dependencia": [
+  "NA",
+  "FU"
+ ],
+ "que alguien venga a casa a ayudarnos": [
+  "NA"
+ ],
+ "nos vamos a otro pais": [
+  "NB"
+ ],
+ "emigrar con un hijo autista": [
+  "NB"
+ ],
+ "vale el diagnostico en otro pais": [
+  "NB"
+ ],
+ "nos pueden negar la residencia": [
+  "NB"
+ ],
+ "visado y discapacidad": [
+  "NB"
+ ],
+ "mudarnos al extranjero": [
+  "NB"
+ ],
+ "el certificado de discapacidad sirve fuera": [
+  "NB"
+ ],
+ "tengo que dar el informe al colegio": [
+  "NC"
+ ],
+ "quien puede ver el diagnostico de mi hijo": [
+  "NC",
+  "EY"
+ ],
+ "el colegio ha contado el diagnostico": [
+  "NC"
+ ],
+ "pedir la historia clinica": [
+  "NC"
+ ],
+ "copia del expediente escolar": [
+  "NC"
+ ],
+ "proteccion de datos de mi hijo": [
+  "NC",
+  "JB"
+ ],
+ "no quiero que todo el mundo lo sepa": [
+  "NC",
+  "EY"
+ ],
+ "se cancela el plan y se hunde": [
+  "ND"
+ ],
+ "no soporta los cambios de ultima hora": [
+  "ND",
+  "AV"
+ ],
+ "se derrumba si algo no sale como esperaba": [
+  "ND"
+ ],
+ "llueve y se cancela la excursion": [
+  "ND"
+ ],
+ "no tolera la incertidumbre": [
+  "ND"
+ ],
+ "todo tiene que salir como el espera": [
+  "ND",
+  "AV"
+ ],
+ "un imprevisto le arruina el dia": [
+  "ND"
  ]
 }
