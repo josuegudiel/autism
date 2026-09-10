@@ -692,18 +692,6 @@
  ],
  "reserva": [
   {
-   "titulo": "\"Un perro le vendría bien\": decidir si tener mascota y quién va a cuidarla",
-   "porque": "Decisión doméstica real, cara y difícil de deshacer, que muchas familias toman por consejo de internet. Contenido: separar mascota familiar de perro de asistencia; qué animal encaja con el perfil sensorial (ruido, pelo, lametones, imprevisibilidad, y por qué a veces un gato, un conejo o unos peces funcionan mejor que un perro); quién va a hacer el trabajo de verdad; cómo enseñar al niño a tocar al animal y al animal a tener espacio propio; qué hacer si el niño le hace daño o le tiene miedo; y qué pasa cuando el animal muera. Hueco real: AS son animales de apoyo y terapia (perro entrenado, otro producto y otro coste) y la ficha debe abrir separándose de ella; EV equinoterapia e hidroterapia; MA el miedo a los perros como fobia; GD el duelo. AVISO: los beneficios que se citan vienen de estudios pequeños, sin control y con familias autoseleccionadas (O'Haire, Carlisle, Wright/PAWS), y hay estudios que también registran aumento de carga en el cuidador. No vender el efecto como demostrado."
-  },
-  {
-   "titulo": "No tira nada: colecciones, el objeto que lleva siempre encima y la habitación llena",
-   "porque": "Para el padre que ya no puede entrar en la habitación, que guarda bolsas de envoltorios, palos, tapones o folletos, o que no puede salir de casa sin el objeto de turno y monta una crisis si se pierde o se rompe. Debe distinguir tres cosas que se confunden: interés intenso y colección organizada; objeto de regulación o apego (que hay que respetar y duplicar, no retirar); y acumulación problemática que ya afecta a la higiene, la seguridad o el paso por la casa. Y enseñar a negociar el descarte: fotografiar antes de tirar, cajas con límite, y nunca tirar a escondidas, porque eso rompe la confianza durante meses. Hueco real: BI son los intereses intensos como fortaleza, AY el TOC y la ansiedad, HW la organización y las tareas del hogar, JU adaptar el hogar al ruido y las luces, IJ elegir juguetes. AVISO DE CIFRAS: la prevalencia de acumulación en autismo baila muchísimo entre estudios (de cifras bajas a más del 30-40%) según se mida síntoma o trastorno y según quién informe; no dar un número sin matizar."
-  },
-  {
-   "titulo": "Le ofrecen un trabajo: ¿pierde la pensión? (España y otros países)",
-   "porque": "Complemento obligado de MX, que solo pudo verificarse para México (IMSS y pensión del Bienestar). Un padre en España, Argentina, Chile o Colombia sigue sin respuesta a la misma pregunta. En España el caso está bien documentado: la pensión no contributiva de invalidez es compatible con el trabajo dentro de unos límites de ingresos, y existe la figura de reanudación si el empleo termina. AVISO CRÍTICO: verifica país por país y NO afirmes nada de un país que no hayas comprobado en esta sesión; di explícitamente cuáles quedan sin verificar. No repitas México: eso ya está en MX; enlaza a ella."
-  },
-  {
    "titulo": "Está peor desde que le subieron la medicación: acatisia, distonía y otros efectos del fármaco que parecen empeoramiento",
    "porque": "Hueco real y de máxima gravedad: LJ es qué analíticas y controles pedir (vigilancia metabólica programada), MH se limita a las primeras semanas con ISRS, KG y LV son logística de cambio y retirada, DO es catatonia y EM tics propios. Nadie enseña a reconocer en casa un efecto neurológico agudo en un chico que no describe lo que siente, justo cuando la respuesta habitual (subir dosis, añadir otro fármaco) empeora el cuadro. Incluye síndrome neuroléptico maligno y síndrome serotoninérgico: raros pero letales. AVISO AL REDACTOR: las cifras de acatisia varían enormemente (del 5% a más del 30% según la escala usada) y está sistemáticamente infradiagnosticada en personas con discapacidad intelectual; dar rango y explicar por qué esa horquilla, nunca un número único."
   },
@@ -820,5 +808,5 @@
    "porque": "Es el eje rural-urbano, presente en todos los países, y las cercanas cubren otras barreras: CH nivel socioeconómico e idioma, M acceso global y Latinoamérica, KN pobreza, FS cómo encontrar asociaciones y LR la videollamada como formato terapéutico, no como respuesta a la distancia. Falta el especialista a tres horas de coche, la escuela única sin apoyos: cómo se retrasa el diagnóstico y cómo acortarlo, cómo aprovechar la teleconsulta y los programas mediados por padres, cómo formar a los profesionales que sí hay cerca y el coste real en tiempo, gasolina y días de trabajo perdidos. AVISO: las cifras de retraso diagnóstico rural varían por sistema sanitario y casi todas vienen de EE. UU. y Australia; presentarlas como tendencia, no como número."
   }
  ],
- "nota": "Reserva tras el cuarto analisis de huecos, sobre los 372 temas."
+ "nota": "Reserva tras la ronda 31."
 }

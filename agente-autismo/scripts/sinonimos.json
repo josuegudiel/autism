@@ -1828,5 +1828,71 @@
  "que hago con los globos": [
   "NH",
   "LG"
+ ],
+ "un perro le vendria bien": [
+  "NI",
+  "AS"
+ ],
+ "le compramos un perro": [
+  "NI",
+  "AS"
+ ],
+ "quiero un perro para mi hijo": [
+  "NI"
+ ],
+ "le ha mordido el perro": [
+  "NI"
+ ],
+ "tener mascota en casa": [
+  "NI"
+ ],
+ "el perro evita que se escape": [
+  "NI",
+  "AE"
+ ],
+ "es alergico al perro": [
+  "NI",
+  "DQ"
+ ],
+ "no tira nada": [
+  "NJ"
+ ],
+ "guarda todo tipo de cosas": [
+  "NJ"
+ ],
+ "la habitacion llena de trastos": [
+  "NJ"
+ ],
+ "no puedo tirar sus cosas": [
+  "NJ"
+ ],
+ "colecciona tapones y envoltorios": [
+  "NJ"
+ ],
+ "lleva siempre el mismo objeto": [
+  "NJ"
+ ],
+ "se le ha roto su objeto favorito": [
+  "NJ"
+ ],
+ "acumula basura en el cuarto": [
+  "NJ"
+ ],
+ "si empieza a trabajar pierde la pension": [
+  "NK",
+  "MX"
+ ],
+ "pension no contributiva y trabajo": [
+  "NK"
+ ],
+ "puede trabajar y cobrar la pension": [
+  "NK",
+  "MX"
+ ],
+ "le sale un trabajo de pocas horas": [
+  "NK"
+ ],
+ "reanudar la pension si pierde el trabajo": [
+  "NK"
  ]
 }
