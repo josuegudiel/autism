@@ -692,22 +692,6 @@
  ],
  "reserva": [
   {
-   "titulo": "Está peor desde que le subieron la medicación: acatisia, distonía y otros efectos del fármaco que parecen empeoramiento",
-   "porque": "Hueco real y de máxima gravedad: LJ es qué analíticas y controles pedir (vigilancia metabólica programada), MH se limita a las primeras semanas con ISRS, KG y LV son logística de cambio y retirada, DO es catatonia y EM tics propios. Nadie enseña a reconocer en casa un efecto neurológico agudo en un chico que no describe lo que siente, justo cuando la respuesta habitual (subir dosis, añadir otro fármaco) empeora el cuadro. Incluye síndrome neuroléptico maligno y síndrome serotoninérgico: raros pero letales. AVISO AL REDACTOR: las cifras de acatisia varían enormemente (del 5% a más del 30% según la escala usada) y está sistemáticamente infradiagnosticada en personas con discapacidad intelectual; dar rango y explicar por qué esa horquilla, nunca un número único."
-  },
-  {
-   "titulo": "En el colegio dicen que nadie puede darle la medicación: plan de salud escrito, quién administra y qué pasa en excursiones",
-   "porque": "Seguridad pura y hoy no está en ninguna parte: JQ y MI son el manejo clínico de la crisis o de la diabetes/asma/alergia, KG, LJ y LV son seguimiento farmacológico, GU (excursiones) y GW (transporte escolar) no entran en medicación, y GX es emergencias por desastres. Falta la pieza organizativa del centro: qué contiene el plan individualizado de salud, qué autoriza la familia por escrito, quién queda formado, qué ocurre fuera del aula y qué hacer si el centro se niega."
-  },
-  {
-   "titulo": "Le han recetado valproato a mi hija: embarazo, anticonceptivos e interacciones que casi nadie explica",
-   "porque": "Ninguna ficha lo toca: Q y JQ van de convulsiones, MO es la decisión de cortar o espaciar la regla y quién decide, LC, S y HY no entran en farmacología, y F y MP no son específicas de mujeres. Los dos momentos son concretos (pubertad e inicio de vida sexual) y hay programas formales de prevención del embarazo con revisión anual y consentimiento escrito, además de la doble interacción: inductores enzimáticos que bajan la eficacia del anticonceptivo hormonal y estrógenos que bajan los niveles de lamotrigina. AVISO: las cifras bailan según la fuente (malformaciones mayores en torno al 10%, afectación del neurodesarrollo citada entre el 30% y el 40%); dar rangos y aclarar que dependen de dosis y politerapia."
-  },
-  {
-   "titulo": "Le dan crisis pero el electroencefalograma sale normal: síntomas funcionales, desmayos y pérdidas de fuerza",
-   "porque": "Nadie lo cubre: MF contrapone ausencia epiléptica y desconexión atencional, LZ decide si hace falta un electroencefalograma, Q y JQ son epilepsia real, EM son tics de curso clásico y DO es catatonia. Además ME (conseguir que descarten causa médica) empuja en dirección contraria y necesita este contrapeso. Lo que decide el pronóstico es que el diagnóstico se dé bien y pronto, no como diagnóstico de exclusión ni como 'es psicológico'. AVISO IMPORTANTE: las cifras de solapamiento entre autismo y trastorno neurológico funcional son recientes, de muestras clínicas pequeñas y muy variables; presentarlas como señal, no como tasa."
-  },
-  {
    "titulo": "Ha engordado quince kilos con la medicación: qué se hace cuando ya hay síndrome metabólico",
    "porque": "LJ es detectar (qué controles y analíticas pedir), HJ es prevención y estilo de vida sin el componente yatrogénico, KG y LV son cambio y retirada en abstracto y MM es otro efecto distinto. Falta el paso siguiente: cambiar a un antipsicótico de menor riesgo, metformina (hay ensayos aleatorizados en menores con autismo tratados con antipsicóticos), intervención dietética estructurada y replantear si el fármaco sigue haciendo falta. AVISO: la ganancia de peso con risperidona y aripiprazol se cita con cifras muy dispares según duración y edad; usar rangos y separar corto de largo plazo."
   },
@@ -808,5 +792,5 @@
    "porque": "Es el eje rural-urbano, presente en todos los países, y las cercanas cubren otras barreras: CH nivel socioeconómico e idioma, M acceso global y Latinoamérica, KN pobreza, FS cómo encontrar asociaciones y LR la videollamada como formato terapéutico, no como respuesta a la distancia. Falta el especialista a tres horas de coche, la escuela única sin apoyos: cómo se retrasa el diagnóstico y cómo acortarlo, cómo aprovechar la teleconsulta y los programas mediados por padres, cómo formar a los profesionales que sí hay cerca y el coste real en tiempo, gasolina y días de trabajo perdidos. AVISO: las cifras de retraso diagnóstico rural varían por sistema sanitario y casi todas vienen de EE. UU. y Australia; presentarlas como tendencia, no como número."
   }
  ],
- "nota": "Reserva tras la ronda 31."
+ "nota": "Reserva tras la ronda 32."
 }
