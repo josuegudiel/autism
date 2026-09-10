@@ -702,7 +702,123 @@
   {
    "titulo": "Le ofrecen un trabajo: ¿pierde la pensión? (España y otros países)",
    "porque": "Complemento obligado de MX, que solo pudo verificarse para México (IMSS y pensión del Bienestar). Un padre en España, Argentina, Chile o Colombia sigue sin respuesta a la misma pregunta. En España el caso está bien documentado: la pensión no contributiva de invalidez es compatible con el trabajo dentro de unos límites de ingresos, y existe la figura de reanudación si el empleo termina. AVISO CRÍTICO: verifica país por país y NO afirmes nada de un país que no hayas comprobado en esta sesión; di explícitamente cuáles quedan sin verificar. No repitas México: eso ya está en MX; enlaza a ella."
+  },
+  {
+   "titulo": "Está peor desde que le subieron la medicación: acatisia, distonía y otros efectos del fármaco que parecen empeoramiento",
+   "porque": "Hueco real y de máxima gravedad: LJ es qué analíticas y controles pedir (vigilancia metabólica programada), MH se limita a las primeras semanas con ISRS, KG y LV son logística de cambio y retirada, DO es catatonia y EM tics propios. Nadie enseña a reconocer en casa un efecto neurológico agudo en un chico que no describe lo que siente, justo cuando la respuesta habitual (subir dosis, añadir otro fármaco) empeora el cuadro. Incluye síndrome neuroléptico maligno y síndrome serotoninérgico: raros pero letales. AVISO AL REDACTOR: las cifras de acatisia varían enormemente (del 5% a más del 30% según la escala usada) y está sistemáticamente infradiagnosticada en personas con discapacidad intelectual; dar rango y explicar por qué esa horquilla, nunca un número único."
+  },
+  {
+   "titulo": "En el colegio dicen que nadie puede darle la medicación: plan de salud escrito, quién administra y qué pasa en excursiones",
+   "porque": "Seguridad pura y hoy no está en ninguna parte: JQ y MI son el manejo clínico de la crisis o de la diabetes/asma/alergia, KG, LJ y LV son seguimiento farmacológico, GU (excursiones) y GW (transporte escolar) no entran en medicación, y GX es emergencias por desastres. Falta la pieza organizativa del centro: qué contiene el plan individualizado de salud, qué autoriza la familia por escrito, quién queda formado, qué ocurre fuera del aula y qué hacer si el centro se niega."
+  },
+  {
+   "titulo": "Le han recetado valproato a mi hija: embarazo, anticonceptivos e interacciones que casi nadie explica",
+   "porque": "Ninguna ficha lo toca: Q y JQ van de convulsiones, MO es la decisión de cortar o espaciar la regla y quién decide, LC, S y HY no entran en farmacología, y F y MP no son específicas de mujeres. Los dos momentos son concretos (pubertad e inicio de vida sexual) y hay programas formales de prevención del embarazo con revisión anual y consentimiento escrito, además de la doble interacción: inductores enzimáticos que bajan la eficacia del anticonceptivo hormonal y estrógenos que bajan los niveles de lamotrigina. AVISO: las cifras bailan según la fuente (malformaciones mayores en torno al 10%, afectación del neurodesarrollo citada entre el 30% y el 40%); dar rangos y aclarar que dependen de dosis y politerapia."
+  },
+  {
+   "titulo": "Le dan crisis pero el electroencefalograma sale normal: síntomas funcionales, desmayos y pérdidas de fuerza",
+   "porque": "Nadie lo cubre: MF contrapone ausencia epiléptica y desconexión atencional, LZ decide si hace falta un electroencefalograma, Q y JQ son epilepsia real, EM son tics de curso clásico y DO es catatonia. Además ME (conseguir que descarten causa médica) empuja en dirección contraria y necesita este contrapeso. Lo que decide el pronóstico es que el diagnóstico se dé bien y pronto, no como diagnóstico de exclusión ni como 'es psicológico'. AVISO IMPORTANTE: las cifras de solapamiento entre autismo y trastorno neurológico funcional son recientes, de muestras clínicas pequeñas y muy variables; presentarlas como señal, no como tasa."
+  },
+  {
+   "titulo": "Ha engordado quince kilos con la medicación: qué se hace cuando ya hay síndrome metabólico",
+   "porque": "LJ es detectar (qué controles y analíticas pedir), HJ es prevención y estilo de vida sin el componente yatrogénico, KG y LV son cambio y retirada en abstracto y MM es otro efecto distinto. Falta el paso siguiente: cambiar a un antipsicótico de menor riesgo, metformina (hay ensayos aleatorizados en menores con autismo tratados con antipsicóticos), intervención dietética estructurada y replantear si el fármaco sigue haciendo falta. AVISO: la ganancia de peso con risperidona y aripiprazol se cita con cifras muy dispares según duración y edad; usar rangos y separar corto de largo plazo."
+  },
+  {
+   "titulo": "Cumple 14 y le va a dar el alta el pediatra: pasar a los médicos de adultos sin perderse por el camino",
+   "porque": "Hueco clásico de continuidad asistencial con guías propias: EZ arranca cuando el adulto ya está fuera del circuito infantil y va de barreras, I y MZ son transición en clave educativa y laboral, LQ es jurídica y KH es escolar. La ventana de los 14 a los 18 exige preparación concreta: resumen médico portátil, lista de fármacos con historial de qué falló y por qué, quién receta ahora, quién sigue la epilepsia y qué cambia con el consentimiento a los 18. NOTA: la evidencia fuerte viene de modelos de transición sanitaria en enfermedad crónica y discapacidad, con poco específico de autismo; decirlo en vez de fingir especificidad."
+  },
+  {
+   "titulo": "Mi hijo adulto lleva años sin una revisión que no sea de salud mental: citología, mamografía, colon, tensión y colesterol",
+   "porque": "Es de las causas más documentadas de mortalidad evitable y lo cercano no llega: EZ va de barreras de acceso y de encontrar médico, AL da el panorama epidemiológico pero no el calendario ni el cómo, LC dejaría fuera a los hombres y el cribado no ginecológico, y AG y HI son niños. Hace falta lo concreto: qué toca a cada edad, cómo se adapta una citología o una mamografía, cómo pedir tiempo doble y sedación consciente y qué hacer si la persona rechaza la exploración. AVISO: las tasas de participación en cribado proceden sobre todo de registros del Reino Unido y de población con discapacidad intelectual; no extrapolar sin decirlo."
+  },
+  {
+   "titulo": "No quiere salir de casa ni de su cuarto: reclusión y aislamiento extremo en el adolescente y el adulto joven",
+   "porque": "Ninguna ficha aborda la reclusión prolongada cuando ya no hay colegio del que faltar: LO es rechazo escolar de un niño escolarizado, AN es el burnout como episodio de agotamiento, IC es depresión, BO y GH son amistades y LB es el hijo adulto que vive en casa, no encerrado en ella. Debe distinguir la necesidad legítima de soledad del retraimiento patológico, mirar qué hay debajo (depresión, ansiedad social, burnout, sobrecarga sensorial) y explicar cómo abrir puertas sin forzar y cuándo pedir salud mental a domicilio. AVISO: las cifras varían muchísimo entre estudios y culturas (prevalencia sobre todo japonesa; solapamiento con autismo desde ~10% hasta más de un tercio según muestra e instrumento, y el ~10x de riesgo procede de muestras clínicas pequeñas)."
+  },
+  {
+   "titulo": "Sigue usando pañal a los 8, a los 12 o a los 16: cómo se organiza la vida cuando la continencia no llega",
+   "porque": "AT es aprender a ir al baño, EQ enuresis nocturna, EP estreñimiento y encopresis, DB e IO higiene sensorial: ninguna asume el escenario de que el control no llegue nunca. Aquí importa lo material y lo digno: qué productos existen y cuánto cuestan, piel, infecciones urinarias y dermatitis, dónde cambiar a un hijo de 40 kilos fuera de casa (baños accesibles con camilla, el coche, los viajes), la espalda del cuidador, la privacidad del hijo y qué financiación pedir. AVISO: los porcentajes de niños autistas sin control de esfínteres a determinada edad varían enormemente según si la muestra incluye discapacidad intelectual; no dar una cifra única."
+  },
+  {
+   "titulo": "¿Le pongo un GPS o una cámara? Localizadores y alarmas de puerta sin convertir la casa en una vigilancia",
+   "porque": "Es el punto donde chocan seguridad y autonomía y no lo decide nadie: AE cubre las fugas y el wandering como fenómeno, JB enseñar los datos personales y qué hacer si se pierde, MD es privacidad al publicar en internet, LQ la capacidad jurídica a los 18 y MJ dejarlo solo en casa. Falta qué opciones hay, qué probar antes de la tecnología y cómo cambia la decisión ética y legal según la edad y la capacidad de decidir (no es lo mismo un niño de 5 años que un adulto de 22); las personas autistas adultas han escrito en contra y hay que recogerlo. AVISO: la cifra de wandering más citada (~49%) sale de una encuesta a familias voluntarias de un registro, no de una muestra representativa."
+  },
+  {
+   "titulo": "Ya no cabe en el carrito pero se tira al suelo o se escapa: sillas de paseo grandes, arneses y camas de seguridad",
+   "porque": "LH asegura la casa frente a peligros, LI es el coche, FQ es contención y restricción en crisis conductuales (no equipamiento de vida diaria), AU es motricidad y NA es ayuda a domicilio: el producto de apoyo en casa no está. Lo útil es qué existe, qué es seguro y qué no (atrapamiento en camas cerradas, arneses mal usados, barandillas), la frontera entre apoyo y restricción, quién lo prescribe y quién lo paga, y cómo proteger la espalda del cuidador en transferencias y porteo. AVISO: la evidencia sobre camas de seguridad cerradas es escasa, de series de casos y avisos de seguridad, no de ensayos; las lesiones musculoesqueléticas del cuidador están documentadas en discapacidad en general, no en autismo."
+  },
+  {
+   "titulo": "Se duerme a las tres de la madrugada y no hay quien lo levante: el reloj cambiado del adolescente",
+   "porque": "No es insomnio y el manejo es otro: luz por la mañana, oscuridad y pantallas por la noche, melatonina en dosis baja y temprana como cronobiótico (no como hipnótico) y avance gradual del horario. EN nombra explícitamente apnea, piernas inquietas y parasomnias, que son otra cosa; W e IF son sueño general y rutina de acostar en niños pequeños; IE es la mañana en clave conductual y LO trata las faltas pero no la causa circadiana. AVISO: las cifras de prevalencia del retraso de fase en adolescentes autistas varían mucho y muchos estudios mezclan insomnio de inicio con retraso de fase; explicar cómo se distinguen antes de dar números."
+  },
+  {
+   "titulo": "Come sin parar, esconde comida y se levanta de noche a la nevera: el otro extremo de la alimentación",
+   "porque": "Toda la biblioteca de alimentación está volcada en el extremo contrario: P selectividad, LU ARFID, LG atragantamiento, KE déficits nutricionales, AX anorexia y restricción, HJ actividad física y peso saludable. Nadie cubre la ingesta sin control ni la búsqueda de comida, que se agrava con psicofármacos y baja interocepción y acaba en obesidad y en conflicto diario (cerrar la despensa y la culpa que genera). AVISO: las cifras de atracón y de 'pérdida de control al comer' en autismo varían muchísimo según instrumento y edad, y buena parte de la literatura viene de discapacidad intelectual y de síndromes genéticos con hiperfagia; separar esos grupos y no fundirlos en un porcentaje único."
+  },
+  {
+   "titulo": "Sigue babeando a los ocho años: cuándo dejar de esperar y qué se puede hacer",
+   "porque": "Ninguna ficha lo aborda: AU es motricidad gruesa y fina, DB e IO higiene sensorial y batallas de aseo, LG masticación y seguridad al tragar y CA lenguaje. Hay manejo escalonado y documentado: valorar postura, cierre labial, obstrucción nasal y deglución, terapia orofacial, anticolinérgicos, toxina botulínica en glándulas salivales, cirugía en casos extremos, y también el efecto contrario de boca seca por medicación. El impacto social en el colegio justifica la ficha. AVISO: la prevalencia en autismo está mal cuantificada y casi toda la evidencia de tratamiento procede de parálisis cerebral y otras discapacidades neurológicas; decirlo abiertamente en vez de fingir datos propios del autismo."
+  },
+  {
+   "titulo": "Dolor y cansancio todos los días siendo adulto: fibromialgia, fatiga persistente y consultas donde todo sale normal",
+   "porque": "Lo cercano no llega: CY trata cómo comunica el dolor un niño, no un síndrome de dolor crónico adulto; DP es una vía concreta (hipermovilidad y disautonomía) y deja fuera el dolor crónico sin ella; AN es un agotamiento distinto que conviene diferenciar explícitamente aquí; AL y EZ son salud física general y acceso. Sirve al hijo o hija adulta y a muchos adultos diagnosticados tarde que acaban etiquetados de ansiedad. AVISO: casi todos los datos vienen de muestras autoseleccionadas de adultos diagnosticados tarde, con prevalencias infladas respecto a población general; matizarlo."
+  },
+  {
+   "titulo": "Mi hijo de 15 años se niega al tratamiento: quién firma, qué es el asentimiento y qué pasa si él dice que no",
+   "porque": "LQ arranca en la mayoría de edad, MO toca el dilema solo para la menstruación, KP es consentimiento en ensayos y HY es consentimiento sexual, otro concepto. Falta el terreno intermedio: asentimiento frente a consentimiento, edades de decisión sanitaria, confidencialidad, el profesional que quiere hablar a solas con el adolescente, y cómo dar información accesible para que la decisión sea real. AVISO: las edades legales varían por país y por tipo de acto médico; redactar por principios y remitir a las fichas de país."
+  },
+  {
+   "titulo": "Informe del neuropediatra, certificado de discapacidad, dependencia y dictamen escolar: cuatro papeles distintos",
+   "porque": "Sirve para dejar de dar vueltas: el informe clínico no da plaza de apoyo, el certificado no da horas de terapia y el dictamen educativo no da prestaciones. LP trata solo ese trámite concreto (cómo se valora, qué llevar, cómo recurrir), HK es la prueba, IR es leer un documento y NC es a quién entregarlo. Falta el mapa: qué evalúa cada procedimiento (clínico, administrativo, educativo, sociosanitario), quién lo emite, qué abre cada uno y en qué orden pedirlos, con el esquema común a los países hispanohablantes aunque cambien los nombres (certificado/credencial/carné, dependencia/apoyos, dictamen/PIAR/PEI). AVISO: no hay equivalencia limpia de porcentajes o grados entre países y conviven baremos antiguos y nuevos; explicar la lógica y no inventar tablas de equivalencia."
+  },
+  {
+   "titulo": "Habla bien y aprueba, pero no se vale solo: el Vineland y las escalas que deciden qué apoyos te dan",
+   "porque": "HK se centra en el perfil cognitivo y de aprendizaje, BZ discute la etiqueta del DSM-5 y AF es la condición, no el instrumento que abre la puerta a las ayudas. Sirve para entender por qué deniegan apoyos a un hijo 'que habla y va bien en mates', para preparar la entrevista (la puntúa el evaluador con lo que cuenta la familia, y contar el mejor día en vez del día real cuesta recursos) y para pedir la prueba adecuada cuando el informe solo trae CI. AVISO: la brecha entre CI y conducta adaptativa en autismo sin discapacidad intelectual está bien documentada, pero su tamaño varía mucho entre muestras y versiones del Vineland; no dar una cifra fija de puntos de diferencia y advertir que las medias publicadas dependen de edad y muestra."
+  },
+  {
+   "titulo": "Me dan a firmar un plan educativo con objetivos vagos: cómo leerlo, negociarlo y comprobar que avanza",
+   "porque": "IA prepara la reunión y la participación pero no enseña a auditar el contenido del documento, JT es de objetivos terapéuticos y no del papel escolar con valor legal, MU es una decisión concreta y sus consecuencias a los 18 y AH/H son inclusión y derechos generales. Lo que falta es técnico y accionable: cómo se escribe un objetivo observable y medible frente a 'mejorar la socialización', cómo se especifican los apoyos (quién, cuántas horas, dónde), qué datos deben traer a la revisión y cómo pedir cambios a mitad de curso. Hay literatura sólida sobre calidad de objetivos en planes individualizados y sobre seguimiento de progreso."
+  },
+  {
+   "titulo": "'Aquí no lo podemos atender': cuando el colegio le cierra la puerta en la matrícula",
+   "porque": "El momento de entrada al centro no está en ninguna ficha: FG es una decisión voluntaria de la familia, MV cubre expulsiones y exclusión cuando ya está escolarizado, LO es rechazo escolar del niño e IB es la reclamación genérica. Cubre el mes de matrícula: 'estará mejor en otro sitio', la plaza condicionada a contratar un acompañante privado, la jornada recortada antes de empezar o el 'sin certificado no hay plaza'; qué se puede exigir, cómo pedir la negativa por escrito y qué documentar."
+  },
+  {
+   "titulo": "Ya tengo el certificado de discapacidad: ¿para qué sirve de verdad, qué no da y cuándo hay que renovarlo?",
+   "porque": "LP cubre cómo obtener la valoración y cómo recurrir la denegación, no el catálogo de lo que abre; KN cuantifica el gasto y MX es el caso de un país. Sirve justo después de conseguir el papel: cupo de empleo, exenciones y deducciones fiscales, transporte y estacionamiento, prioridad de admisión, ocio, apoyos técnicos, y también lo que NO garantiza (terapias, plaza en un centro, ayudas económicas), más la revisión/caducidad y qué cambia a los 18. AVISO: casi todo el contenido concreto es nacional; organizar por categorías de derecho y remitir a las fichas de país para las cifras."
+  },
+  {
+   "titulo": "Pedir derechos en vez de favores: la Convención de la ONU y el 'ajuste razonable' que sirven en cualquier país",
+   "porque": "Es la pieza transversal que falta: HZ es actitud y estrategia, IB es el circuito de reclamación, FZ es el marco conceptual y las 15 fichas de país dan la norma local. La Convención está ratificada en toda Hispanoamérica y España y da base para exigir educación inclusiva, apoyos para decidir frente a la tutela y vida en la comunidad; la ficha explicaría qué es un ajuste razonable, cómo se pide por escrito, qué es la 'carga desproporcionada' que suelen alegar y por qué negar un ajuste es discriminación, no discrepancia de criterio. AVISO: no confundir el texto de la Convención con las Observaciones del Comité (interpretación, no norma directamente exigible) y no prometer efectos jurídicos automáticos."
+  },
+  {
+   "titulo": "Nos echaron del restaurante y el dentista no quiso atenderle: discriminación y cómo denunciarla",
+   "porque": "DD e IG preparan la salida y gestionan la mirada ajena, CO y GG van de adaptación y CJ se centra en la persona autista ante la ley (víctima, testigo, acusado), no en la familia como denunciante. Falta lo que se hace el día que los echan por una crisis, la aseguradora excluye el diagnóstico, una academia no admite al niño 'por seguridad' o la aerolínea les baja del avión: qué es una denegación discriminatoria, qué pedir en el momento (identificación, hoja de reclamación, testigos) y por dónde va la vía administrativa frente a la judicial."
+  },
+  {
+   "titulo": "Guardar correos, informes y fechas: sin papeles no prospera ninguna reclamación",
+   "porque": "Es el instrumento que dan por supuesto IB, MR y LL, y que MB trata solo como comunicación cotidiana, no como prueba. Sirve antes de necesitarlo: qué guardar y en qué orden, cómo convertir una conversación de pasillo en un correo con constancia, cómo pedir copia del expediente del niño, qué es el silencio administrativo y cómo llevar un registro de crisis o incidentes que sirva de prueba. DELIMITAR con la ficha de coordinación: allí el archivo clínico para que los profesionales se entiendan, aquí la prueba y los plazos para reclamar. AVISO: incluir la nota sobre grabar reuniones, legalmente distinto en cada país; no recomendarlo en bloque."
+  },
+  {
+   "titulo": "Nadie habla con nadie: coordinar colegio, terapeutas y médicos, y montar el archivo del hijo",
+   "porque": "FUSIÓN de dos propuestas casi idénticas (coordinación entre servicios + montar el archivo y sobrevivir al papeleo): mismo padre, mismo problema, se redactan juntas. Las cercanas resuelven trozos: NC dice a quién entregar el informe, MB la comunicación diaria con el colegio, IA las reuniones escolares, IX es el pasaporte de comunicación (herramienta del niño, no archivo clínico), BR es escoger profesionales, FS localizarlos, HZ la defensa de derechos y JX la conciliación laboral. Falta el hilo: qué figura de coordinación existe (gestor de caso, referente, 'medical home'), cómo pedir por escrito que dos servicios se comuniquen, cómo convocar una reunión conjunta, qué archivo se entrega en cinco minutos y cómo bajar la carga administrativa invisible que recae siempre sobre la misma persona de la casa. AVISO: las cifras de 'necesidades de coordinación no cubiertas' proceden sobre todo de encuestas estadounidenses y oscilan mucho según muestra; no extrapolarlas a España ni a Latinoamérica."
+  },
+  {
+   "titulo": "Su hermano hace de cuidador: cuánto le estamos cargando hoy y quién se hará cargo mañana",
+   "porque": "BM cubre a los hermanos en general, JV el reparto de tiempo y atención, HP la vigilancia temprana del hermano menor, HN el relevo desde la óptica de los padres y la planificación legal y NG la llegada de un hermano. Nadie mira el rol de cuidador del propio hermano ni la conversación sobre el futuro desde su lado: cómo detectar que asume un papel por encima de su edad, qué efectos se han descrito, cómo hablar del relevo de forma explícita en vez de darlo por hecho y qué hacer con la culpa de ambos lados. AVISO: la literatura sobre efectos en hermanos es contradictoria (metaanálisis con efectos pequeños y en ambas direcciones); no pintarla en un solo sentido."
+  },
+  {
+   "titulo": "Mi hijo no quiere abrazos ni besos: el afecto físico dentro de la familia",
+   "porque": "Las cercanas van por otro lado: HD y DC son perfiles sensoriales y sensibilidad táctil con la ropa, DB higiene sensorial, CP el mito de forzar el contacto visual, EF y S abuso y privacidad y DN el papel de los abuelos. Ninguna aborda el afecto físico como asunto emocional de la familia: la madre que vive como rechazo personal que su hijo se aparte, cómo encontrar las formas de afecto que sí funcionan (presión profunda, juego físico, proximidad sin contacto, rituales propios), cómo explicárselo a la familia extensa y por qué obligar a dar un beso a la abuela choca de frente con lo que luego le enseñamos sobre consentimiento y límites corporales."
+  },
+  {
+   "titulo": "Duerme en nuestra cama y despierta a su hermano: colecho prolongado y cuarto compartido",
+   "porque": "W trata el sueño en general, IF la rutina y el ambiente de acostarse, EN los trastornos específicos (apnea, parasomnias), JV el reparto de atención entre hermanos y JU la adaptación de la casa: ninguna se mete en dónde duerme cada uno, que es la pregunta que el padre hace de verdad. Debe ayudar a decidir si el colecho es un problema o una solución que a esta familia le sirve, cómo hacer un cambio gradual si se quiere cambiar (retirada progresiva de la presencia del adulto, pase de cama), cómo proteger el sueño del hermano y qué hacer si se levanta de noche y deambula. AVISO: la prevalencia de colecho está muy condicionada por la cultura y los datos de familias hispanohablantes son escasos; no presentarlo como problema por defecto."
+  },
+  {
+   "titulo": "Vivimos lejos de todo: autismo en pueblos y zonas rurales",
+   "porque": "Es el eje rural-urbano, presente en todos los países, y las cercanas cubren otras barreras: CH nivel socioeconómico e idioma, M acceso global y Latinoamérica, KN pobreza, FS cómo encontrar asociaciones y LR la videollamada como formato terapéutico, no como respuesta a la distancia. Falta el especialista a tres horas de coche, la escuela única sin apoyos: cómo se retrasa el diagnóstico y cómo acortarlo, cómo aprovechar la teleconsulta y los programas mediados por padres, cómo formar a los profesionales que sí hay cerca y el coste real en tiempo, gasolina y días de trabajo perdidos. AVISO: las cifras de retraso diagnóstico rural varían por sistema sanitario y casi todas vienen de EE. UU. y Australia; presentarlas como tendencia, no como número."
   }
  ],
- "nota": "Reserva tras la ronda 30."
+ "nota": "Reserva tras el cuarto analisis de huecos, sobre los 372 temas."
 }
