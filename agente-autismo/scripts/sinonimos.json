@@ -2075,5 +2075,95 @@
  "mi hijo adulto no sale nunca": [
   "NS",
   "LB"
+ ],
+ "sigue usando pañal a los 8": [
+  "NT"
+ ],
+ "con 12 anos y sigue con panal": [
+  "NT"
+ ],
+ "no controla el pipi": [
+  "NT",
+  "AT"
+ ],
+ "donde lo cambio fuera de casa": [
+  "NT"
+ ],
+ "mi hijo grande lleva panal": [
+  "NT"
+ ],
+ "me duele la espalda de cambiarlo": [
+  "NT",
+  "N"
+ ],
+ "nunca va a controlar": [
+  "NT"
+ ],
+ "le pongo un gps": [
+  "NU"
+ ],
+ "localizador para mi hijo": [
+  "NU"
+ ],
+ "camara en su habitacion": [
+  "NU"
+ ],
+ "alarma en la puerta": [
+  "NU",
+  "AE"
+ ],
+ "reloj con gps": [
+  "NU"
+ ],
+ "como saber donde esta": [
+  "NU",
+  "AE"
+ ],
+ "vigilar a mi hijo autista": [
+  "NU"
+ ],
+ "ya no cabe en el carrito": [
+  "NV"
+ ],
+ "silla de paseo para nino grande": [
+  "NV"
+ ],
+ "arnes para pasear": [
+  "NV"
+ ],
+ "cama de seguridad": [
+  "NV"
+ ],
+ "cama cerrada": [
+  "NV"
+ ],
+ "se me escapa por la calle": [
+  "NV",
+  "AE"
+ ],
+ "se tira al suelo en la calle": [
+  "NV"
+ ],
+ "se duerme a las tres de la madrugada": [
+  "NW"
+ ],
+ "no hay quien lo levante": [
+  "NW",
+  "IE"
+ ],
+ "tiene el horario cambiado": [
+  "NW"
+ ],
+ "duerme de dia y esta despierto de noche": [
+  "NW"
+ ],
+ "retraso de fase": [
+  "NW"
+ ],
+ "melatonina a que hora": [
+  "NW"
+ ],
+ "el adolescente no se duerme": [
+  "NW"
  ]
 }
