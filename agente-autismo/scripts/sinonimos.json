@@ -1985,5 +1985,95 @@
  "el aripiprazol le ha hecho engordar": [
   "NO",
   "LJ"
+ ],
+ "el electroencefalograma sale normal": [
+  "NP",
+  "LZ"
+ ],
+ "me dijeron que era psicologico": [
+  "NP",
+  "ME"
+ ],
+ "le dan crisis pero no es epilepsia": [
+  "NP"
+ ],
+ "se desmaya": [
+  "NP"
+ ],
+ "se le doblan las piernas": [
+  "NP"
+ ],
+ "crisis no epilepticas": [
+  "NP"
+ ],
+ "sindrome funcional": [
+  "NP"
+ ],
+ "dicen que finge las crisis": [
+  "NP"
+ ],
+ "le van a dar el alta en pediatria": [
+  "NQ"
+ ],
+ "pasar al medico de adultos": [
+  "NQ",
+  "EZ"
+ ],
+ "se queda sin pediatra": [
+  "NQ"
+ ],
+ "quien le receta ahora": [
+  "NQ"
+ ],
+ "cumple 14 y cambia de medico": [
+  "NQ"
+ ],
+ "traspaso a medicina de adultos": [
+  "NQ"
+ ],
+ "solo lo ve el psiquiatra": [
+  "NR"
+ ],
+ "nadie le hace una revision fisica": [
+  "NR"
+ ],
+ "citologia": [
+  "NR",
+  "LC"
+ ],
+ "mamografia": [
+  "NR",
+  "LC"
+ ],
+ "cribado de colon": [
+  "NR"
+ ],
+ "no se deja explorar": [
+  "NR"
+ ],
+ "autotoma de vph": [
+  "NR"
+ ],
+ "revision medica de mi hijo adulto": [
+  "NR"
+ ],
+ "no sale de su cuarto": [
+  "NS"
+ ],
+ "lleva meses sin salir de casa": [
+  "NS"
+ ],
+ "se ha encerrado en su habitacion": [
+  "NS"
+ ],
+ "no quiere ver a nadie": [
+  "NS"
+ ],
+ "hikikomori": [
+  "NS"
+ ],
+ "mi hijo adulto no sale nunca": [
+  "NS",
+  "LB"
  ]
 }
