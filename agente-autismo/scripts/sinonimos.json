@@ -1530,5 +1530,640 @@
  ],
  "no quieren que vaya": [
   "MV"
+ ],
+ "lleva meses sin ir al colegio": [
+  "MW",
+  "LO"
+ ],
+ "no puede ir a clase": [
+  "MW",
+  "LO"
+ ],
+ "esta ingresado y pierde el curso": [
+  "MW"
+ ],
+ "profesor en casa": [
+  "MW"
+ ],
+ "atencion educativa domiciliaria": [
+  "MW"
+ ],
+ "aula hospitalaria": [
+  "MW"
+ ],
+ "escuela hospitalaria": [
+  "MW"
+ ],
+ "lleva semanas sin salir de la habitacion": [
+  "MW",
+  "AN",
+  "IC"
+ ],
+ "le van a abrir expediente por faltas": [
+  "MW",
+  "LX",
+  "LO"
+ ],
+ "si trabaja pierde la pension": [
+  "MX"
+ ],
+ "le ofrecen un trabajo y cobra pension": [
+  "MX"
+ ],
+ "pierde el seguro si trabaja": [
+  "MX"
+ ],
+ "pension del bienestar y trabajo": [
+  "MX",
+  "FT"
+ ],
+ "pension de orfandad y trabajo": [
+  "MX"
+ ],
+ "seguro del imss si empieza a trabajar": [
+  "MX",
+  "FT"
+ ],
+ "lo dan de alta en el imss": [
+  "MX"
+ ],
+ "me quieren despedir por faltar a las terapias": [
+  "MY"
+ ],
+ "reducir jornada para cuidar a mi hijo": [
+  "MY"
+ ],
+ "permiso en el trabajo para llevarlo al medico": [
+  "MY"
+ ],
+ "me presionan para firmar la baja": [
+  "MY"
+ ],
+ "me despiden por cuidar a mi hijo": [
+  "MY"
+ ],
+ "adaptar mi horario de trabajo": [
+  "MY"
+ ],
+ "excedencia por cuidado de hijo": [
+  "MY"
+ ],
+ "no puedo con el trabajo y las terapias": [
+  "MY",
+  "JX",
+  "KN"
+ ],
+ "discriminacion por cuidar a un hijo con discapacidad": [
+  "MY"
+ ],
+ "y cuando termine el colegio que": [
+  "MZ"
+ ],
+ "que pasa cuando acabe el instituto": [
+  "MZ"
+ ],
+ "se acaba el colegio y no hay nada": [
+  "MZ",
+  "MC"
+ ],
+ "reunion de transicion a la vida adulta": [
+  "MZ"
+ ],
+ "plan de vida adulta": [
+  "MZ",
+  "ML"
+ ],
+ "que va a hacer con su vida": [
+  "MZ"
+ ],
+ "se le acaban los apoyos al cumplir los años": [
+  "MZ",
+  "MC"
+ ],
+ "necesito ayuda en casa": [
+  "NA",
+  "EE"
+ ],
+ "no puedo mas sola": [
+  "NA",
+  "N",
+  "JI"
+ ],
+ "quien me ayuda a cuidarlo": [
+  "NA",
+  "EE"
+ ],
+ "asistente personal": [
+  "NA"
+ ],
+ "ayuda a domicilio": [
+  "NA"
+ ],
+ "respiro familiar": [
+  "NA",
+  "EE"
+ ],
+ "cuidador a domicilio": [
+  "NA"
+ ],
+ "prestacion por cuidar a mi hijo": [
+  "NA"
+ ],
+ "ley de dependencia": [
+  "NA",
+  "FU"
+ ],
+ "que alguien venga a casa a ayudarnos": [
+  "NA"
+ ],
+ "nos vamos a otro pais": [
+  "NB"
+ ],
+ "emigrar con un hijo autista": [
+  "NB"
+ ],
+ "vale el diagnostico en otro pais": [
+  "NB"
+ ],
+ "nos pueden negar la residencia": [
+  "NB"
+ ],
+ "visado y discapacidad": [
+  "NB"
+ ],
+ "mudarnos al extranjero": [
+  "NB"
+ ],
+ "el certificado de discapacidad sirve fuera": [
+  "NB"
+ ],
+ "tengo que dar el informe al colegio": [
+  "NC"
+ ],
+ "quien puede ver el diagnostico de mi hijo": [
+  "NC",
+  "EY"
+ ],
+ "el colegio ha contado el diagnostico": [
+  "NC"
+ ],
+ "pedir la historia clinica": [
+  "NC"
+ ],
+ "copia del expediente escolar": [
+  "NC"
+ ],
+ "proteccion de datos de mi hijo": [
+  "NC",
+  "JB"
+ ],
+ "no quiero que todo el mundo lo sepa": [
+  "NC",
+  "EY"
+ ],
+ "se cancela el plan y se hunde": [
+  "ND"
+ ],
+ "no soporta los cambios de ultima hora": [
+  "ND",
+  "AV"
+ ],
+ "se derrumba si algo no sale como esperaba": [
+  "ND"
+ ],
+ "llueve y se cancela la excursion": [
+  "ND"
+ ],
+ "no tolera la incertidumbre": [
+  "ND"
+ ],
+ "todo tiene que salir como el espera": [
+  "ND",
+  "AV"
+ ],
+ "un imprevisto le arruina el dia": [
+  "ND"
+ ],
+ "no se que hacer con el el fin de semana": [
+  "NE"
+ ],
+ "el sabado por la tarde": [
+  "NE"
+ ],
+ "se aburre y acaba en crisis": [
+  "NE"
+ ],
+ "todo el dia con la tablet": [
+  "NE",
+  "IZ"
+ ],
+ "no sabe jugar solo": [
+  "NE"
+ ],
+ "el domingo es el peor dia": [
+  "NE"
+ ],
+ "que hacemos en casa toda la tarde": [
+  "NE"
+ ],
+ "dejarlo con una canguro": [
+  "NF"
+ ],
+ "dejarlo con los abuelos": [
+  "NF"
+ ],
+ "primera noche fuera de casa": [
+  "NF"
+ ],
+ "no me fio de dejarlo con nadie": [
+  "NF"
+ ],
+ "que le dejo escrito a quien lo cuida": [
+  "NF"
+ ],
+ "quiero salir una noche": [
+  "NF",
+  "EE"
+ ],
+ "se queda a dormir en otra casa": [
+  "NF"
+ ],
+ "va a nacer un hermano": [
+  "NG"
+ ],
+ "estoy embarazada y no se como contarselo": [
+  "NG"
+ ],
+ "como le digo que va a tener un hermanito": [
+  "NG"
+ ],
+ "el bebe llora y el no lo soporta": [
+  "NG"
+ ],
+ "el segundo hijo tambien sera autista": [
+  "NG"
+ ],
+ "quien lo cuida mientras estoy en el parto": [
+  "NG"
+ ],
+ "cumpleanos": [
+  "NH"
+ ],
+ "no aguanta los cumpleanos": [
+  "NH"
+ ],
+ "no lo invitan a los cumpleanos": [
+  "NH",
+  "DQ"
+ ],
+ "a su cumple no viene nadie": [
+  "NH"
+ ],
+ "no soporta que le canten cumpleanos feliz": [
+  "NH"
+ ],
+ "la fiesta de otro nino": [
+  "NH"
+ ],
+ "que hago con los globos": [
+  "NH",
+  "LG"
+ ],
+ "un perro le vendria bien": [
+  "NI",
+  "AS"
+ ],
+ "le compramos un perro": [
+  "NI",
+  "AS"
+ ],
+ "quiero un perro para mi hijo": [
+  "NI"
+ ],
+ "le ha mordido el perro": [
+  "NI"
+ ],
+ "tener mascota en casa": [
+  "NI"
+ ],
+ "el perro evita que se escape": [
+  "NI",
+  "AE"
+ ],
+ "es alergico al perro": [
+  "NI",
+  "DQ"
+ ],
+ "no tira nada": [
+  "NJ"
+ ],
+ "guarda todo tipo de cosas": [
+  "NJ"
+ ],
+ "la habitacion llena de trastos": [
+  "NJ"
+ ],
+ "no puedo tirar sus cosas": [
+  "NJ"
+ ],
+ "colecciona tapones y envoltorios": [
+  "NJ"
+ ],
+ "lleva siempre el mismo objeto": [
+  "NJ"
+ ],
+ "se le ha roto su objeto favorito": [
+  "NJ"
+ ],
+ "acumula basura en el cuarto": [
+  "NJ"
+ ],
+ "si empieza a trabajar pierde la pension": [
+  "NK",
+  "MX"
+ ],
+ "pension no contributiva y trabajo": [
+  "NK"
+ ],
+ "puede trabajar y cobrar la pension": [
+  "NK",
+  "MX"
+ ],
+ "le sale un trabajo de pocas horas": [
+  "NK"
+ ],
+ "reanudar la pension si pierde el trabajo": [
+  "NK"
+ ],
+ "esta peor desde que le subieron la medicacion": [
+  "NL"
+ ],
+ "desde la pastilla nueva esta agresivo": [
+  "NL"
+ ],
+ "no para quieto desde que toma el medicamento": [
+  "NL"
+ ],
+ "acatisia": [
+  "NL"
+ ],
+ "distonia": [
+  "NL"
+ ],
+ "se le van los ojos hacia arriba": [
+  "NL"
+ ],
+ "fiebre y el cuerpo rigido": [
+  "NL"
+ ],
+ "sindrome neuroleptico maligno": [
+  "NL"
+ ],
+ "se autolesiona desde que cambiaron la dosis": [
+  "NL",
+  "KS"
+ ],
+ "sera la medicacion o va a peor": [
+  "NL"
+ ],
+ "en el colegio no le dan la medicacion": [
+  "NM"
+ ],
+ "quien le da la pastilla en el colegio": [
+  "NM"
+ ],
+ "plan de salud del colegio": [
+  "NM"
+ ],
+ "medicacion en la excursion": [
+  "NM",
+  "GU"
+ ],
+ "el colegio se niega a medicarlo": [
+  "NM"
+ ],
+ "quien pone el inyectable en el colegio": [
+  "NM"
+ ],
+ "valproato": [
+  "NN"
+ ],
+ "depakine": [
+  "NN"
+ ],
+ "acido valproico y embarazo": [
+  "NN"
+ ],
+ "mi hija toma valproato": [
+  "NN"
+ ],
+ "antiepileptico y anticonceptivo": [
+  "NN"
+ ],
+ "puede quedarse embarazada tomando eso": [
+  "NN"
+ ],
+ "lamotrigina y pastillas anticonceptivas": [
+  "NN"
+ ],
+ "ha engordado mucho con la medicacion": [
+  "NO"
+ ],
+ "la risperidona le engorda": [
+  "NO",
+  "LJ"
+ ],
+ "sindrome metabolico": [
+  "NO"
+ ],
+ "le ha subido el azucar con la pastilla": [
+  "NO"
+ ],
+ "metformina": [
+  "NO"
+ ],
+ "el aripiprazol le ha hecho engordar": [
+  "NO",
+  "LJ"
+ ],
+ "el electroencefalograma sale normal": [
+  "NP",
+  "LZ"
+ ],
+ "me dijeron que era psicologico": [
+  "NP",
+  "ME"
+ ],
+ "le dan crisis pero no es epilepsia": [
+  "NP"
+ ],
+ "se desmaya": [
+  "NP"
+ ],
+ "se le doblan las piernas": [
+  "NP"
+ ],
+ "crisis no epilepticas": [
+  "NP"
+ ],
+ "sindrome funcional": [
+  "NP"
+ ],
+ "dicen que finge las crisis": [
+  "NP"
+ ],
+ "le van a dar el alta en pediatria": [
+  "NQ"
+ ],
+ "pasar al medico de adultos": [
+  "NQ",
+  "EZ"
+ ],
+ "se queda sin pediatra": [
+  "NQ"
+ ],
+ "quien le receta ahora": [
+  "NQ"
+ ],
+ "cumple 14 y cambia de medico": [
+  "NQ"
+ ],
+ "traspaso a medicina de adultos": [
+  "NQ"
+ ],
+ "solo lo ve el psiquiatra": [
+  "NR"
+ ],
+ "nadie le hace una revision fisica": [
+  "NR"
+ ],
+ "citologia": [
+  "NR",
+  "LC"
+ ],
+ "mamografia": [
+  "NR",
+  "LC"
+ ],
+ "cribado de colon": [
+  "NR"
+ ],
+ "no se deja explorar": [
+  "NR"
+ ],
+ "autotoma de vph": [
+  "NR"
+ ],
+ "revision medica de mi hijo adulto": [
+  "NR"
+ ],
+ "no sale de su cuarto": [
+  "NS"
+ ],
+ "lleva meses sin salir de casa": [
+  "NS"
+ ],
+ "se ha encerrado en su habitacion": [
+  "NS"
+ ],
+ "no quiere ver a nadie": [
+  "NS"
+ ],
+ "hikikomori": [
+  "NS"
+ ],
+ "mi hijo adulto no sale nunca": [
+  "NS",
+  "LB"
+ ],
+ "sigue usando pañal a los 8": [
+  "NT"
+ ],
+ "con 12 anos y sigue con panal": [
+  "NT"
+ ],
+ "no controla el pipi": [
+  "NT",
+  "AT"
+ ],
+ "donde lo cambio fuera de casa": [
+  "NT"
+ ],
+ "mi hijo grande lleva panal": [
+  "NT"
+ ],
+ "me duele la espalda de cambiarlo": [
+  "NT",
+  "N"
+ ],
+ "nunca va a controlar": [
+  "NT"
+ ],
+ "le pongo un gps": [
+  "NU"
+ ],
+ "localizador para mi hijo": [
+  "NU"
+ ],
+ "camara en su habitacion": [
+  "NU"
+ ],
+ "alarma en la puerta": [
+  "NU",
+  "AE"
+ ],
+ "reloj con gps": [
+  "NU"
+ ],
+ "como saber donde esta": [
+  "NU",
+  "AE"
+ ],
+ "vigilar a mi hijo autista": [
+  "NU"
+ ],
+ "ya no cabe en el carrito": [
+  "NV"
+ ],
+ "silla de paseo para nino grande": [
+  "NV"
+ ],
+ "arnes para pasear": [
+  "NV"
+ ],
+ "cama de seguridad": [
+  "NV"
+ ],
+ "cama cerrada": [
+  "NV"
+ ],
+ "se me escapa por la calle": [
+  "NV",
+  "AE"
+ ],
+ "se tira al suelo en la calle": [
+  "NV"
+ ],
+ "se duerme a las tres de la madrugada": [
+  "NW"
+ ],
+ "no hay quien lo levante": [
+  "NW",
+  "IE"
+ ],
+ "tiene el horario cambiado": [
+  "NW"
+ ],
+ "duerme de dia y esta despierto de noche": [
+  "NW"
+ ],
+ "retraso de fase": [
+  "NW"
+ ],
+ "melatonina a que hora": [
+  "NW"
+ ],
+ "el adolescente no se duerme": [
+  "NW"
  ]
 }
