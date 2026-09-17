@@ -16,7 +16,13 @@
         "metales pesados",
         "edta",
         "dmsa",
-        "sacar metales"
+        "sacar metales",
+        "quelante",
+        "quelantes",
+        "terapia de quelacion",
+        "dmps",
+        "sacar el mercurio",
+        "desintoxicacion de metales pesados"
       ],
       "veredicto": "evitar",
       "resumen": "Peligrosa y sin eficacia para el autismo.",
@@ -47,7 +53,18 @@
         "lejía",
         "blanqueador",
         "protocolo parasitos",
-        "protocolo parásitos"
+        "protocolo parásitos",
+        "enema de cds",
+        "enemas de cds",
+        "enema de mms",
+        "enemas de mms",
+        "enema de dioxido de cloro",
+        "mms1",
+        "mms2",
+        "cdh",
+        "jim humble",
+        "protocolo cd",
+        "agua clorada para autismo"
       ],
       "veredicto": "evitar",
       "resumen": "Es lejía. Peligroso. Prohibido por la FDA.",
@@ -74,7 +91,13 @@
         "cell wellbeing",
         "mechón",
         "analisis capilar",
-        "análisis capilar"
+        "análisis capilar",
+        "test de pelo",
+        "prueba de pelo",
+        "analisis de cabello",
+        "analisis de pelo",
+        "mineralograma",
+        "epigenetica del cabello"
       ],
       "veredicto": "evitar",
       "resumen": "No mide lo que dice; no diagnostica ni trata el autismo.",
@@ -138,7 +161,9 @@
         "sin caseína",
         "gfcf",
         "dieta cura",
-        "gluten caseina"
+        "gluten caseina",
+        "dieta libre de gluten",
+        "dieta gfcf"
       ],
       "veredicto": "media",
       "resumen": "No 'cura' el autismo; cuidado con restringir a un niño.",
@@ -156,7 +181,9 @@
       "alias": [
         "ozono",
         "ozonoterapia",
-        "ozone"
+        "ozone",
+        "ozonoterapia rectal",
+        "insuflacion de ozono"
       ],
       "veredicto": "evitar",
       "resumen": "Sin base científica para el autismo.",
@@ -238,7 +265,9 @@
         "cease therapy",
         "homeopatia",
         "homeopatía",
-        "homeopathy"
+        "homeopathy",
+        "ceasetherapy",
+        "homeopatia para autismo"
       ],
       "veredicto": "evitar",
       "resumen": "Desacreditada; el autismo no es una enfermedad que se 'cure'.",
@@ -290,7 +319,7 @@
     },
     {
       "id": "vacunas",
-      "nombre": "Vacunas como causa",
+      "nombre": "\u00abLas vacunas causan autismo\u00bb \u2014 mito",
       "alias": [
         "vacunas",
         "vacuna",

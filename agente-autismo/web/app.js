@@ -62,6 +62,21 @@ function tokenizar(q) {
   return normalize(q).split(/[^a-z0-9ñ]+/).filter((t) => t.length >= 3 && !VACIAS.has(t));
 }
 
+/* Normaliza y deja solo palabras: fuera signos («¿mms?», «MMS/CDS», guiones) y
+   espacios de más, para que la misma pregunta escrita de cinco maneras sea una. */
+function limpiaConsulta(s) {
+  return normalize(s).replace(/[^a-z0-9ñ]+/g, " ").trim();
+}
+
+const escapaRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/* ¿Aparece `palabra` dentro de `texto` como palabra completa? Los dos límites
+   importan: sin el de la derecha, "stem" saltaría dentro de "sistema". */
+function palabraDentro(texto, palabra) {
+  if (!texto || !palabra) return false;
+  return new RegExp("(^|[^a-z0-9ñ])" + escapaRegex(palabra) + "([^a-z0-9ñ]|$)").test(texto);
+}
+
 /* ---------- Iconografía (trazo fino, estilo SF Symbols) ---------- */
 const SVG = (d, extra = "") =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
@@ -559,30 +574,36 @@ async function renderDetector() {
 /**
  * Puntúa las fichas del detector. Importante: NUNCA devolvemos un veredicto
  * "adivinado" por una coincidencia de letras sueltas — un falso 🔴 asusta a una
- * familia sin motivo. Exigimos 3 caracteres y coincidencia real de palabra.
+ * familia sin motivo. Toda coincidencia es de palabra completa.
+ *
+ * Se mira en las dos direcciones, porque una familia no escribe fichas, escribe
+ * frases: el alias dentro de la consulta («quieren darle MMS a mi hijo») y la
+ * consulta dentro del nombre de la ficha («cabello» → «test de cabello»).
  */
 function buscarFichas(text) {
-  const q = normalize(text || "").trim();
+  const q = limpiaConsulta(text);
   if (q.length < 3) return [];
   const tokens = tokenizar(q);
   const salida = [];
   for (const c of _detector.casos) {
-    const nombre = normalize(c.nombre);
-    const objetivos = [nombre, ...(c.alias || []).map(normalize)];
+    const objetivos = [c.nombre, ...(c.alias || [])].map(limpiaConsulta).filter(Boolean);
     let p = 0;
-    // La coincidencia debe empezar en un límite de palabra: así "terapia" no
-    // coincide dentro de "ozonoterapia", y solo es fuerte si la consulta cubre
-    // buena parte del nombre (para que "terapia" tampoco resuelva por sí sola
-    // a "terapia con células madre").
-    const patron = new RegExp("(^|[^a-z0-9ñ])" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
     for (const o of objetivos) {
-      if (!o) continue;
       if (o === q) { p = 100; break; }
-      if (patron.test(o)) p = Math.max(p, q.length >= o.length * 0.5 ? 55 : 35);
+      // El alias completo aparece dentro de la frase. Aquí la coincidencia es
+      // fuerte aunque el alias sea corto: "mms" y "cds" son justo los nombres
+      // que más importa reconocer, y exigir palabra completa ya evita que
+      // "stem" salte dentro de "sistema".
+      if (palabraDentro(q, o)) { p = Math.max(p, 90); continue; }
+      // La consulta es parte del nombre de la ficha. Solo es fuerte si cubre
+      // buena parte de él, para que "terapia" no resuelva por sí sola a
+      // "terapia con células madre".
+      if (palabraDentro(o, q)) p = Math.max(p, q.length >= o.length * 0.5 ? 55 : 35);
     }
     if (p === 0) {
-      const heno = objetivos.join(" ");
-      const aciertos = tokens.filter((t) => t.length >= 4 && heno.includes(t)).length;
+      const aciertos = tokens.filter(
+        (t) => t.length >= 4 && objetivos.some((o) => palabraDentro(o, t))
+      ).length;
       if (aciertos) p = 15 * aciertos;
     }
     if (p > 0) salida.push({ caso: c, puntos: p });
@@ -608,7 +629,7 @@ function fichaHTML(hit) {
 function detectorResult(text) {
   const bruto = String(text || "").trim();
   if (!bruto) return "";
-  if (normalize(bruto).length < 3) {
+  if (limpiaConsulta(bruto).length < 3) {
     return `<div class="card"><h4>Escribe un poco más</h4>
       <p>Necesito al menos tres letras para buscar sin confundirme. Prueba con el nombre
       completo de la terapia o el producto.</p></div>`;
@@ -640,12 +661,22 @@ function detectorResult(text) {
   // a una familia sin motivo, que es justo lo contrario de lo que queremos.
   if (res[0].puntos < 50) {
     const varias = res.length > 1;
+    // Si entre las candidatas hay algo que conviene evitar, se dice ya, sin
+    // esperar a que la familia adivine cuál abrir. Callarlo es el fallo caro.
+    const rojas = res.filter((o) => o.caso.veredicto === "evitar").slice(0, 4);
+    const aviso = rojas.length
+      ? `<div class="callout warn" style="margin-top:12px"><strong>Ojo.</strong> Entre las
+          coincidencias hay ${rojas.length > 1
+            ? "tratamientos que conviene evitar"
+            : "un tratamiento que conviene evitar"}:
+          ${rojas.map((o) => esc(o.caso.nombre)).join(" · ")}. Ábrelo y verás por qué.</div>`
+      : "";
     return `<div class="card"><h4>¿A cuál te refieres?</h4>
       <p>«${esc(bruto)}» ${varias ? "coincide con varias fichas" : "coincide en parte con esta ficha"}.
       Elige para ver el veredicto con sus fuentes:</p>
       <div class="suggest">${res.slice(0, 6).map(
         (o) => `<button type="button" data-id="${esc(o.caso.id)}">${esc(o.caso.nombre)}</button>`
-      ).join("")}</div></div>`;
+      ).join("")}</div>${aviso}</div>`;
   }
 
   // Coincidencia clara: mostramos la ficha. Si hay más candidatas, se listan debajo.

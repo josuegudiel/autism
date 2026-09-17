@@ -64,8 +64,14 @@ _(Los temas sin ✅✅ están redactados desde fuentes canónicas y marcados par
 
 ## 🔒 Privacidad — qué NO se sube al repo
 
-Protegido por `.gitignore`:
-- **El informe PDF del niño** (`Report-*.pdf`) — nunca se publica.
+El `.gitignore` está en la **raíz** del repositorio (no dentro de `agente-autismo/`) y cubre:
+- **Todos los PDF**, incluido el informe del niño (`Report-*.pdf`). Si algún día hace falta publicar un PDF legítimo, hay que forzarlo a mano con `git add -f`.
 - **`.claude/`** (config local de la herramienta, con rutas del equipo).
 - **`PROYECTO.md`** (notas internas de estrategia/contexto personal). _Para hacerlo público, borra su línea en `.gitignore`._
-- Claves y `.env` (la `ANTHROPIC_API_KEY` va **solo** como variable de entorno del servidor, nunca en el código).
+- Claves, `.env`, `*.key` y `*.pem` (la `ANTHROPIC_API_KEY` va **solo** como variable de entorno del servidor, nunca en el código).
+
+Antes de subir cualquier archivo dudoso: `git check-ignore -v <ruta>`.
+
+**Dos límites que conviene tener presentes:**
+1. `PROYECTO.md` **sigue rastreado por git** y publicado en el historial. El `.gitignore` no se aplica a un archivo ya rastreado: hasta que se ejecute `git rm --cached agente-autismo/PROYECTO.md`, sigue subiéndose. Y aunque se quite, lo ya publicado permanece en el historial: borrarlo de verdad exige reescribir el historial o poner el repositorio en privado.
+2. El `.gitignore` **solo actúa cuando subes con `git`**. La subida por la web de GitHub que explica el `README.md` de la raíz se lo salta por completo: ahí el filtro eres tú.

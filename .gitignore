@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------------------
+# Privacidad — lo que nunca debe salir del ordenador
+# ---------------------------------------------------------------------------
+# El informe médico del niño y cualquier otro PDF clínico. Se ignoran todos los
+# PDF a propósito: es más seguro tener que forzar uno legítimo con
+# `git add -f archivo.pdf` que dejar escapar un informe por descuido.
+Report-*.pdf
+*.pdf
+
+# Notas internas: estrategia, contexto familiar, rutas del ordenador de casa.
+PROYECTO.md
+
+# Configuración local de las herramientas de IA (incluye rutas del equipo).
+.claude/
+.cursor/
+
+# ---------------------------------------------------------------------------
+# Credenciales
+# ---------------------------------------------------------------------------
+# La ANTHROPIC_API_KEY va como variable de entorno del servidor, nunca aquí.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+
+# ---------------------------------------------------------------------------
+# Python (scripts/)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ---------------------------------------------------------------------------
+# Node (scripts/workflows/, api/)
+# ---------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+.npm/
+
+# ---------------------------------------------------------------------------
+# iOS / Xcode (ios/)
+# ---------------------------------------------------------------------------
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+
+# ---------------------------------------------------------------------------
+# Sistema operativo y editores
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ---------------------------------------------------------------------------
+# Salidas temporales
+# ---------------------------------------------------------------------------
+*.log
+.tmp/

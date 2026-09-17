@@ -11,7 +11,7 @@
 3. **Seguimiento personalizado** del niño ("¿qué le funciona a mi hijo?"), datos **solo en el dispositivo**.
 4. **Asistente de IA** que cita fuentes y **nunca** recomienda algo peligroso.
 
-**Contexto/origen:** el creador es padre/madre de un niño de ~4 años con sospecha de autismo. Llegó aquí tras investigar un informe de pseudociencia (EpicGen Labs / test de cabello "epigenético") que casi compra; al descubrir el fraude, decidió construir la herramienta de confianza que le hubiera gustado tener. **No piensa cobrar**; busca ONG/donantes/filantropía para sostenerlo.
+**Contexto/origen:** el creador es padre/madre de un niño pequeño en proceso de valoración. Llegó aquí tras investigar un informe de pseudociencia (EpicGen Labs / test de cabello "epigenético") que casi compra; al descubrir el fraude, decidió construir la herramienta de confianza que le hubiera gustado tener. **No piensa cobrar**; busca ONG/donantes/filantropía para sostenerlo.
 
 ---
 
@@ -41,13 +41,13 @@ api/package.json
 shared/knowledge-base.json   evidencia + reglas de seguridad (base del agente)
 serve.py              servidor local (python3 serve.py → :8099)
 README.md             cómo correr/publicar/activar IA
-PROYECTO.md           este documento de estado
+PROYECTO.md           este documento de estado (local, no se publica)
 ```
-**Privacidad:** `Report-*.pdf` (informe del niño) y `.claude/settings.local.json` están en `.gitignore` (no se publican). Git inicializado; **aún sin commit** (esperando al usuario).
+**Privacidad:** el `.gitignore` de la raíz ignora los PDF (incluido el informe del niño), `.claude/`, las claves y este mismo `PROYECTO.md`. Comprueba cualquier archivo con `git check-ignore -v <ruta>` antes de subirlo. Ojo: el `.gitignore` **no** filtra lo que se sube por la web de GitHub.
 
 ## 5. Cómo correr
 ```bash
-cd "/Users/macbookpro/Desktop/DIEGO ALVARADO"
+cd "<carpeta local del proyecto>"
 python3 serve.py      # → http://127.0.0.1:8099
 ```
 (El preview de Claude Code NO puede servirlo: macOS bloquea el acceso del sandbox a la carpeta Escritorio; se verificó copiando a /tmp.)
