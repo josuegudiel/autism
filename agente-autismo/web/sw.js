@@ -1,5 +1,9 @@
 /* Service worker — caché offline del contenido estático (app shell + JSON) */
-const CACHE = "brujula-tea-v2";
+// Sube este número en CADA despliegue: la caché es cache-first, así que si el
+// nombre no cambia, `install` no vuelve a ejecutarse y quien ya tiene la app
+// abierta se queda con la versión vieja para siempre. Versionarlo desde el
+// propio despliegue, en vez de a mano, está pendiente (tanda 2 de la auditoría).
+const CACHE = "brujula-tea-v3";
 const ASSETS = [
   "./",
   "./index.html",

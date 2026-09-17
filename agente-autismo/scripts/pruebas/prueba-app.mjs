@@ -118,6 +118,40 @@ d = await detectar('vitamina c');
 check('Detector: algo sin ficha no inventa veredicto',
   !/Evítalo/.test(d) && /No tengo una ficha/.test(d), d.slice(0, 140));
 
+// 4bis. Nadie escribe fichas: escribe frases. El detector tiene que reconocer
+// el nombre del producto dentro de la frase, con signos y con alias cortos.
+for (const frase of ['quieren darle MMS a mi hijo', 'gotas de mms',
+                     '¿mms?', 'me ofrecen enemas de cds', 'protocolo de dióxido de cloro']) {
+  d = await detectar(frase);
+  check(`Detector: «${frase}» reconoce el MMS`,
+    /Evítalo/.test(d) && /lej[ií]a|MMS/i.test(d), d.slice(0, 140));
+}
+d = await detectar('sistema');
+check('Detector: "sistema" NO dispara "stem" (células madre)',
+  !/Evítalo/.test(d) && !/c[ée]lulas madre/i.test(d), d.slice(0, 140));
+d = await detectar('terapia');
+check('Detector: en una coincidencia ambigua sí avisa de lo que hay que evitar',
+  /conviene evitar/i.test(d), d.slice(0, 200));
+
+// 4ter. Asistente en modo demostración: el orden de las respuestas es la
+// política de seguridad. Lo peligroso y la crisis van antes que lo general.
+const preguntar = async (q) => {
+  await ir('#asistente');
+  await pag.fill('#chati', q);
+  await pag.press('#chati', 'Enter');
+  await pag.waitForTimeout(600);
+  return await pag.textContent('#log');
+};
+let a = await preguntar('¿funciona la quelación?');
+check('Asistente: "¿funciona la quelación?" advierte, no lista terapias',
+  /NO funcionan|peligros/i.test(a) && !/intervención temprana/i.test(a), a.slice(-200));
+a = await preguntar('no puedo más, estoy desbordada');
+check('Asistente: la angustia del cuidador saca los teléfonos de ayuda',
+  /024/.test(a) && /Ayuda urgente/i.test(a), a.slice(-200));
+a = await preguntar('¿qué terapias funcionan?');
+check('Asistente: la pregunta general sigue respondiendo lo que funciona',
+  /intervención temprana/i.test(a), a.slice(-200));
+
 // 5. Ayuda urgente
 await ir('#ayuda');
 t = await texto();

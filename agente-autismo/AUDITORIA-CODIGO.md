@@ -6,6 +6,26 @@ Este documento **no cambia ni una línea de código**. Solo dice qué encontró 
 pruebas, y en qué orden conviene arreglarlo. Está escrito para el autor del proyecto, no para un
 equipo de ingeniería.
 
+> ### Qué se ha arreglado ya (tandas 0 y 1)
+>
+> El informe se conserva tal como quedó el día de la auditoría. Lo que ya está corregido en esta
+> misma rama, con pruebas de regresión que fallan contra el código anterior:
+>
+> - **Bloqueante 1 — el detector no entendía frases.** Ahora la coincidencia se busca en las dos
+>   direcciones y por palabra completa, se limpian los signos de puntuación y los alias cortos
+>   («mms», «cds») cuentan dentro de una frase. Se añadieron alias que faltaban, entre ellos los
+>   de enemas.
+> - **Bloqueante 2 — el asistente callaba la advertencia.** Reordenadas las respuestas: primero la
+>   crisis, después lo que hay que evitar, y solo al final lo general. Se añadió una respuesta de
+>   crisis con los teléfonos por país.
+> - **Bloqueante 5 — no existía el `.gitignore`.** Creado en la raíz del repositorio y comprobado
+>   con `git check-ignore -v`. Ojo: `PROYECTO.md` sigue rastreado; ver la sección 3.
+> - Además: en una coincidencia ambigua el detector ya nombra la bandera roja en vez de callarla,
+>   y la ficha de vacunas se renombró para que «Evítalo» no se lea como «evita las vacunas».
+>
+> **Sigue pendiente** todo lo demás, empezando por la tanda 2 (que lo publicado llegue de verdad) y
+> por decidir qué pasa con `PROYECTO.md`.
+
 ---
 
 ## 1. Resumen ejecutivo
