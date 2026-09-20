@@ -6,7 +6,7 @@ Este documento **no cambia ni una línea de código**. Solo dice qué encontró 
 pruebas, y en qué orden conviene arreglarlo. Está escrito para el autor del proyecto, no para un
 equipo de ingeniería.
 
-> ### Qué se ha arreglado ya (tandas 0 y 1)
+> ### Qué se ha arreglado ya (tandas 0, 1, 2, 3 y 5)
 >
 > El informe se conserva tal como quedó el día de la auditoría. Lo que ya está corregido en esta
 > misma rama, con pruebas de regresión que fallan contra el código anterior:
@@ -23,8 +23,29 @@ equipo de ingeniería.
 > - Además: en una coincidencia ambigua el detector ya nombra la bandera roja en vez de callarla,
 >   y la ficha de vacunas se renombró para que «Evítalo» no se lea como «evita las vacunas».
 >
-> **Sigue pendiente** todo lo demás, empezando por la tanda 2 (que lo publicado llegue de verdad) y
-> por decidir qué pasa con `PROYECTO.md`.
+> - **Bloqueante 3 — lo publicado no llegaba a quien ya tenía la app.** El nombre de la caché lo
+>   estampa ahora el despliegue con el SHA del commit, y si la línea ancla desaparece el despliegue
+>   falla en vez de publicar en silencio algo que nadie recibiría. El service worker pasa a
+>   *stale-while-revalidate* y comprueba la respuesta antes de guardarla, así que un 404 del hosting
+>   deja de quedarse dentro para siempre.
+> - **El despliegue no publica sin pasar antes la suite**, y ahora también corre en los pull
+>   requests, donde antes no corría nada.
+> - **Tanda 3.** Un fallo de IndexedDB se ve, en lectura, escritura y borrado, con mensaje distinto
+>   según lo que la familia pueda hacer al respecto; las escrituras esperan a que la transacción se
+>   confirme, no a que la petición diga que sí. Hay exportación local de los registros en CSV y se
+>   pide almacenamiento persistente. Y el buscador mira ya dentro del cuerpo de los temas: «ozono»,
+>   «secretina» o «mercurio» devolvían cero resultados.
+> - **Tanda 5.** El Centro de evidencia y el Asistente ya se pueden alcanzar desde la interfaz: con
+>   ellos, las cinco tarjetas de «Tratamientos a EVITAR». Pase de accesibilidad completo, con los
+>   contrastes medidos en navegador. Y la documentación dice lo que el repositorio hace de verdad,
+>   con una prueba que ata sus cifras al JSON que las genera.
+>
+> **Sigue pendiente**, y por qué: la **tanda 4 (iOS)** es una decisión del autor —restaurar las dos
+> vistas perdidas o retirar la app del repositorio— y aquí no hay Xcode con el que comprobar que
+> compila lo que se escriba. Y `PROYECTO.md` **sigue rastreado por git**: está redactado, pero el
+> `.gitignore` no se aplica a un archivo ya rastreado.
+>
+> La suite pasó de 29 comprobaciones a 79.
 
 ---
 
