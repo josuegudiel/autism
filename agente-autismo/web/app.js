@@ -241,7 +241,10 @@ async function route() {
   }
 
   const tab = TABS.includes(hash) ? hash : "inicio";
-  setActiveTab(tab === "fuentes" ? "inicio" : tab);
+  /* Evidencia, asistente y fuentes cuelgan de Inicio: no tienen botón propio
+     en la barra, y si no se marcara ninguno la barra quedaría entera apagada,
+     que es como decirle a un padre que se ha salido de la app. */
+  setActiveTab(["evidencia", "asistente", "fuentes"].includes(tab) ? "inicio" : tab);
   view.scrollIntoView({ block: "start" });
   try {
     if (tab === "inicio") return renderInicio();
@@ -299,6 +302,11 @@ async function renderInicio() {
         <span class="txt"><span class="titulo">Detector de pseudociencia</span>
           <span class="sub">Comprueba si una terapia o producto tiene respaldo</span></span>
         <span class="chevron">${ICONOS.chevron}</span></a>
+      <a class="fila" href="#evidencia">
+        <span class="lead">${ICONOS.derechos}</span>
+        <span class="txt"><span class="titulo">Centro de evidencia</span>
+          <span class="sub">Qué funciona, qué no y qué conviene evitar</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
       <a class="fila" href="#rastreador">
         <span class="lead">${ICONOS.seguimiento}</span>
         <span class="txt"><span class="titulo">Seguimiento de mi hijo</span>
@@ -308,6 +316,11 @@ async function renderInicio() {
         <span class="lead">${ICONOS.diagnostico}</span>
         <span class="txt"><span class="titulo">Cómo es el diagnóstico</span>
           <span class="sub">El proceso real, paso a paso</span></span>
+        <span class="chevron">${ICONOS.chevron}</span></a>
+      <a class="fila" href="#asistente">
+        <span class="lead">${ICONOS.comunicacion}</span>
+        <span class="txt"><span class="titulo">Asistente</span>
+          <span class="sub">Pregunta con tus palabras. Hoy en modo demostración</span></span>
         <span class="chevron">${ICONOS.chevron}</span></a>
       <a class="fila" href="#fuentes">
         <span class="lead">${ICONOS.biblioteca}</span>
@@ -695,6 +708,15 @@ const DB_NAME = "brujula-tea";
 const STORE = "registros";
 function openDB() {
   return new Promise((resolve, reject) => {
+    /* Cuando el navegador bloquea el almacenamiento ni siquiera existe
+       indexedDB, y el fallo llegaría como un «no se puede leer open de
+       undefined» que no le dice nada a nadie. Le ponemos aquí el nombre que el
+       rastreador sabe traducir a un mensaje para la familia. */
+    if (!window.indexedDB) {
+      const bloqueado = new Error("El navegador no deja usar el almacenamiento");
+      bloqueado.name = "SecurityError";
+      return reject(bloqueado);
+    }
     const req = indexedDB.open(DB_NAME, 1);
     req.onupgradeneeded = () => {
       const db = req.result;
@@ -716,29 +738,71 @@ async function dbAll() {
 async function dbAdd(entry) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite").objectStore(STORE).add(entry);
-    tx.onsuccess = () => resolve(tx.result);
-    tx.onerror = () => reject(tx.error);
+    /* Se espera a que la TRANSACCIÓN se confirme, no a que la petición diga que
+       sí: onsuccess dispara con el dato todavía en memoria, y una escritura que
+       luego aborta por falta de espacio se daría por guardada. La familia vería
+       su registro en pantalla y mañana no estaría. */
+    const tx = db.transaction(STORE, "readwrite");
+    const req = tx.objectStore(STORE).add(entry);
+    tx.oncomplete = () => resolve(req.result);
+    tx.onabort = tx.onerror = () => reject(tx.error || req.error);
   });
 }
 async function dbDelete(id) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite").objectStore(STORE).delete(id);
-    tx.onsuccess = () => resolve();
-    tx.onerror = () => reject(tx.error);
+    // Igual que en dbAdd: manda la confirmación de la transacción, no la de la
+    // petición. Un borrado que aborta no puede darse por hecho.
+    const tx = db.transaction(STORE, "readwrite");
+    const req = tx.objectStore(STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onabort = tx.onerror = () => reject(tx.error || req.error);
   });
+}
+
+/* Que la base falle no es un detalle técnico: la familia cree que ha guardado
+   el día de su hijo y no ha guardado nada. Separamos el navegador que bloquea el
+   almacenamiento (modo privado: la salida es abrir la app en una ventana normal,
+   y no es un fallo nuestro) del dispositivo sin espacio, porque lo que la
+   familia puede hacer es distinto en cada caso. */
+function motivoDB(err) {
+  const nombre = String((err && err.name) || "");
+  if (/^(SecurityError|InvalidStateError|NotAllowedError|UnknownError)$/.test(nombre))
+    return "Tu navegador no está dejando guardar nada en este dispositivo. " +
+      "Suele pasar en una ventana privada o de incógnito: abre la app en una ventana normal " +
+      "y vuelve a intentarlo. No es un fallo de la app, y tus datos no han salido a ningún sitio.";
+  if (nombre === "QuotaExceededError")
+    return "Este dispositivo se ha quedado sin espacio libre. Libera espacio o borra algún " +
+      "registro antiguo y vuelve a intentarlo.";
+  return "Algo ha ido mal con el almacenamiento de este dispositivo. Cierra la app y vuelve a " +
+    "abrirla; si sigue igual, prueba desde otro navegador.";
+}
+
+/* Todos los avisos del rastreador salen por el mismo hueco, arriba del
+   formulario: la familia no tiene que buscar dónde está el problema. No se usa
+   errorBox porque ese borra la vista entera, y aquí hay que dejar el formulario
+   en pie con lo que la familia acaba de escribir. */
+function avisoDB(titulo, err) {
+  const el = document.getElementById("aviso-track");
+  if (!el) return;
+  el.innerHTML = `<div class="callout warn"><strong>${esc(titulo)}</strong><br>${esc(motivoDB(err))}</div>`;
+  el.scrollIntoView({ block: "nearest" });
 }
 
 const MOODS = ["😟", "😐", "🙂", "😀", "🤩"];
 async function renderRastreador() {
   loading();
   let entries = [];
-  try { entries = await dbAll(); } catch (_) {}
+  /* Un error de lectura no es una lista vacía: si nos lo tragamos, la familia
+     con meses de registros lee «Sin registros todavía» y cree que los ha
+     perdido. Lo guardamos para poder decirle la verdad más abajo. */
+  let fallo = null;
+  try { entries = await dbAll(); } catch (e) { fallo = e; }
   const today = new Date().toISOString().slice(0, 10);
   view.innerHTML = `
     <h1 class="page">Seguimiento de mi hijo</h1>
     <h2 class="page-sub">Registra qué intervención hiciste y cómo estuvo el día. <strong>Todo se guarda solo en este dispositivo.</strong></h2>
+    <div id="aviso-track"></div>
 
     <div class="card">
       <form id="f-track">
@@ -779,21 +843,30 @@ async function renderRastreador() {
       creado: Date.now()
     };
     if (!entry.fecha) return;
-    await dbAdd(entry);
+    /* Si la escritura falla no repintamos: el formulario se queda con lo que la
+       familia escribió, para que pueda reintentarlo sin volver a teclearlo, y el
+       aviso dice sin rodeos que ese registro NO está guardado. */
+    try { await dbAdd(entry); }
+    catch (err) { return avisoDB("Este registro no se ha guardado.", err); }
     renderRastreador();
   });
   const wipe = document.getElementById("wipe");
   if (wipe) wipe.onclick = async () => {
     if (!confirm("¿Borrar TODOS los registros de este dispositivo? No se puede deshacer.")) return;
-    for (const en of entries) await dbDelete(en.id);
+    /* Si el borrado se queda a medias repintamos antes de avisar, para que el
+       historial muestre lo que de verdad sigue en el dispositivo. */
+    try { for (const en of entries) await dbDelete(en.id); }
+    catch (err) { await renderRastreador(); return avisoDB("No hemos podido borrar todos tus registros.", err); }
     renderRastreador();
   };
-  paintChart(entries);
-  paintList(entries);
+  if (fallo) avisoDB("No hemos podido leer tus registros guardados.", fallo);
+  paintChart(entries, fallo);
+  paintList(entries, fallo);
 }
 
-function paintChart(entries) {
+function paintChart(entries, fallo) {
   const el = document.getElementById("chart");
+  if (fallo) { el.innerHTML = `<div class="empty">No hemos podido leer el historial.</div>`; return; }
   if (!entries.length) { el.innerHTML = `<div class="empty">Aún no hay registros. Agrega el primero arriba.</div>`; return; }
   const last = entries.slice(0, 14).reverse();
   el.innerHTML = `<div class="bars">${last.map((e) => {
@@ -802,8 +875,9 @@ function paintChart(entries) {
   }).join("")}</div><div class="spacer"></div>`;
 }
 
-function paintList(entries) {
+function paintList(entries, fallo) {
   const el = document.getElementById("list");
+  if (fallo) { el.innerHTML = `<div class="empty">No hemos podido leer el historial. Esto no significa que no tengas registros.</div>`; return; }
   if (!entries.length) { el.innerHTML = `<div class="empty">Sin registros todavía.</div>`; return; }
   el.innerHTML = entries.map((e) => `
     <article class="card">
@@ -817,7 +891,11 @@ function paintList(entries) {
       </div>
     </article>`).join("");
   el.querySelectorAll("[data-del]").forEach((b) =>
-    b.onclick = async () => { await dbDelete(Number(b.dataset.del)); renderRastreador(); });
+    b.onclick = async () => {
+      try { await dbDelete(Number(b.dataset.del)); }
+      catch (err) { await renderRastreador(); return avisoDB("No hemos podido borrar ese registro.", err); }
+      renderRastreador();
+    });
 }
 
 /* ---------- Asistente (modo demo; listo para conectar Claude) ---------- */

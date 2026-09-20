@@ -179,6 +179,27 @@ await ir('#fuentes');
 t = await texto();
 check('Fuentes sigue funcionando', t.length > 300);
 
+// 6bis. Evidencia y Asistente estaban declarados en TABS y los pintaba el
+// router, pero sin ninguna puerta desde Inicio: en la práctica no existían, y
+// con ellos las cinco tarjetas de «Tratamientos a EVITAR». Se lee TABS de la
+// propia app para que esto valga también para la sección que venga mañana.
+await ir('#inicio');
+const tabs = await pag.evaluate(() => TABS);
+const rutas = await pag.$$eval('#view a[href^="#"]', (el) => el.map((x) => x.getAttribute('href')));
+const huerfanas = tabs.filter((s) => s !== 'inicio' &&
+  !rutas.some((h) => h === '#' + s || h.startsWith('#' + s + '/')));
+check('Desde Inicio se llega a todas las secciones de TABS', huerfanas.length === 0,
+  'sin puerta desde Inicio: ' + huerfanas.join(', '));
+
+// Las secciones que cuelgan de Inicio dejan Inicio encendido: una barra entera
+// apagada le dice al padre que se ha salido de la app.
+for (const h of ['#evidencia', '#asistente', '#fuentes']) {
+  await ir(h);
+  const activas = await pag.$$eval('.tabbar a.active', (el) => el.map((x) => x.dataset.tab));
+  check(`En ${h} la barra de abajo marca Inicio`,
+    activas.length === 1 && activas[0] === 'inicio', 'activas=' + JSON.stringify(activas));
+}
+
 // 7. Service worker: lo publicado tiene que llegar a quien ya abrió la app.
 // Va al final a propósito: en cuanto el service worker toma el control, sirve
 // desde su caché, y eso enturbiaría cualquier comprobación posterior.
@@ -251,6 +272,33 @@ await pag.waitForTimeout(900);
 t = await texto();
 check('sin conexión la app sigue abriendo desde la caché', /\b\d{3} temas\b/.test(t), t.slice(0, 100));
 await pag.context().setOffline(false);
+
+// 8. Un fallo de almacenamiento tiene que VERSE. La familia no puede creer que
+// ha guardado el día de su hijo y no haberlo guardado. Se comprueba en una
+// pestaña aparte, con IndexedDB anulado: borrar la base de verdad colgaría la
+// suite, porque openDB abre una conexión en cada llamada y no cierra ninguna.
+const pagSinDB = await nav.newPage({ viewport: { width: 393, height: 852 } });
+await pagSinDB.addInitScript(() => {
+  Object.defineProperty(window, 'indexedDB', { value: undefined, configurable: true });
+});
+await pagSinDB.goto(B + '#rastreador', { waitUntil: 'load' });
+await pagSinDB.waitForTimeout(900);
+let sinDB = (await pagSinDB.textContent('#view')) || '';
+check('Sin almacenamiento, el rastreador avisa en vez de fingir una lista vacía',
+  /No hemos podido leer tus registros/.test(sinDB), sinDB.slice(0, 220));
+check('Y explica la salida en lenguaje llano, no con el nombre del error',
+  /ventana privada|incógnito/i.test(sinDB) && !/SecurityError/.test(sinDB), sinDB.slice(0, 220));
+check('Y no miente con «Sin registros todavía»', !/Sin registros todav/.test(sinDB), sinDB.slice(0, 220));
+
+await pagSinDB.fill('#interv', 'terapia de lenguaje');
+await pagSinDB.click('#f-track button[type="submit"]');
+await pagSinDB.waitForTimeout(700);
+sinDB = (await pagSinDB.textContent('#view')) || '';
+check('Un registro que no se pudo guardar se dice, no se da por bueno',
+  /no se ha guardado/i.test(sinDB), sinDB.slice(0, 220));
+check('Y lo escrito sigue en el formulario para poder reintentarlo',
+  (await pagSinDB.inputValue('#interv')) === 'terapia de lenguaje');
+await pagSinDB.close();
 
 await nav.close();
 console.log('\n' + (errores.length
