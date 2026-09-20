@@ -451,6 +451,27 @@ for (const rel of ['../../README.md', '../../ESTADO.md', '../../ios/README-iOS.m
 check(`La documentación no arrastra cifras de temas que el índice ya no sostiene`,
   viejas.length === 0, viejas.join(' · '));
 
+// 12. Ronda 28. Las tres fichas nuevas tienen que abrirse y encontrarse con las
+// palabras que escribiría un padre, no con su código.
+for (const [codigo, marca] of [['MW', /domiciliaria|hospitalaria/i], ['MX', /pensi[óo]n/i], ['MZ', /planificaci[óo]n/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 28: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['no puede ir a clase', /domiciliaria|hospitalaria|clase/i],
+                       ['si trabaja pierde la pensión', /pensi[óo]n/i],
+                       ['qué pasa cuando termine el colegio', /planificar|adulta|colegio/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 28: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+// MY se rechazó por solapamiento con JX, que ya explica el artículo 34.8. No
+// puede estar en la app: dos fichas contando lo mismo con números distintos es
+// peor que una sola.
+const sinMY = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+check('Ronda 28: la ficha MY, rechazada por duplicar a JX, NO está publicada',
+  !sinMY.temas.some((t) => t.codigo === 'MY'));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
