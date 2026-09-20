@@ -12,6 +12,7 @@
 // NODE_PATH. Lo resolvemos a mano para no depender de un node_modules local.
 import { createRequire } from 'node:module';
 import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
 let chromium;
@@ -23,12 +24,20 @@ try {
 }
 
 const B = process.env.BASE || 'http://localhost:8098/web/index.html';
+// En este entorno el Chromium vive fuera de donde Playwright lo busca, así que
+// hay que señalárselo. En un runner de CI, en cambio, Playwright ya sabe dónde
+// está el suyo: si la ruta no existe, es mejor dejar que la resuelva él que
+// fallar al arrancar con una ruta que sólo vale en una máquina.
 const CHROME = process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
 const errores = [];
-const nav = await chromium.launch({ executablePath: CHROME });
+const nav = await chromium.launch(existsSync(CHROME) ? { executablePath: CHROME } : {});
 const pag = await nav.newPage({ viewport: { width: 393, height: 852 }, deviceScaleFactor: 3 });
-pag.on('console', (m) => { if (m.type() === 'error') errores.push('CONSOLA: ' + m.text()); });
+// Se guarda la referencia del anotador para poder desengancharlo un momento:
+// hay comprobaciones que piden a propósito un fichero que no existe, y ese 404
+// no es un fallo de la app.
+const anotaConsola = (m) => { if (m.type() === 'error') errores.push('CONSOLA: ' + m.text()); };
+pag.on('console', anotaConsola);
 pag.on('pageerror', (e) => errores.push('JS: ' + e.message));
 
 const ir = async (hash) => {
@@ -169,6 +178,79 @@ check('Rastreador sigue funcionando', t.includes('Seguimiento de mi hijo'));
 await ir('#fuentes');
 t = await texto();
 check('Fuentes sigue funcionando', t.length > 300);
+
+// 7. Service worker: lo publicado tiene que llegar a quien ya abrió la app.
+// Va al final a propósito: en cuanto el service worker toma el control, sirve
+// desde su caché, y eso enturbiaría cualquier comprobación posterior.
+const fs = require('node:fs');
+const swSrc = await (await fetch(new URL('sw.js', B))).text();
+check('sw.js declara la versión en la línea exacta que sustituye el despliegue',
+  /^const VERSION = "[^"]+";$/m.test(swSrc), swSrc.slice(0, 200));
+check('el nombre de la caché sale de esa versión, no de un número a mano',
+  /^const CACHE = "brujula-tea-" \+ VERSION;$/m.test(swSrc) && !/brujula-tea-v\d/.test(swSrc),
+  swSrc.slice(0, 400));
+
+const rutaWf = new URL('../../../.github/workflows/publicar.yml', import.meta.url);
+const wf = fs.existsSync(rutaWf) ? fs.readFileSync(rutaWf, 'utf8') : '';
+check('el despliegue estampa el SHA en la copia publicada de sw.js',
+  /sed -i .*VERSION.*GITHUB_SHA.*sitio\/sw\.js/.test(wf), 'publicar.yml');
+check('el despliegue falla si no encuentra esa línea, en vez de publicar sin versionar',
+  /grep -q .*GITHUB_SHA.*sitio\/sw\.js/.test(wf) && /exit 1/.test(wf), 'publicar.yml');
+check('el despliegue no publica sin haber pasado antes la suite',
+  /needs:\s*pruebas/.test(wf) && /prueba-app\.mjs/.test(wf), 'publicar.yml');
+
+// El SW lo registra la propia app, pero hasta que no controla la página estas
+// comprobaciones no medirían nada.
+await ir('#inicio');
+const controla = await pag.evaluate(async () => {
+  await navigator.serviceWorker.register('sw.js');
+  await navigator.serviceWorker.ready;
+  if (!navigator.serviceWorker.controller) {
+    await new Promise((ok) => {
+      navigator.serviceWorker.addEventListener('controllerchange', ok, { once: true });
+      setTimeout(ok, 3000);
+    });
+  }
+  return !!navigator.serviceWorker.controller;
+});
+check('el service worker controla la página', controla);
+
+// Un 404 del hosting en mitad de un despliegue no puede quedarse guardado. El
+// 404 de aquí es a propósito, así que se desengancha un momento el anotador de
+// la consola para que no cuente como error de la app.
+pag.off('console', anotaConsola);
+const basura = await pag.evaluate(async () => {
+  const url = new URL('content/no-existe-en-el-repo.json', location.href).href;
+  const res = await fetch(url);
+  await new Promise((ok) => setTimeout(ok, 600));
+  return { estado: res.status, guardado: !!(await caches.match(url)) };
+});
+pag.on('console', anotaConsola);
+check('el service worker no guarda en caché un 404 del hosting',
+  basura.estado === 404 && basura.guardado === false, JSON.stringify(basura));
+
+// Copia vieja fabricada a mano: es lo que tiene una familia que abrió la app
+// antes de que se corrigiera el contenido. Tiene que reemplazarse sola.
+const swr = await pag.evaluate(async () => {
+  const url = new URL('content/fuentes.json', location.href).href;
+  const nombre = (await caches.keys()).find((k) => k.startsWith('brujula-tea-'));
+  if (!nombre) return { primera: '', segunda: '', error: 'no hay caché de la app' };
+  await (await caches.open(nombre)).put(url, new Response('{"intro":"COPIA VIEJA"}'));
+  const primera = (await (await fetch(url)).text()).slice(0, 40);
+  await new Promise((ok) => setTimeout(ok, 1000));
+  const segunda = (await (await fetch(url)).text()).slice(0, 40);
+  return { nombre, primera, segunda };
+});
+check('el service worker revalida por detrás: la copia vieja se reemplaza sola',
+  swr.primera.includes('COPIA VIEJA') && !swr.segunda.includes('COPIA VIEJA'), JSON.stringify(swr));
+
+// Y con todo eso, sin conexión la app tiene que seguir abriendo.
+await pag.context().setOffline(true);
+await pag.reload({ waitUntil: 'load' });
+await pag.waitForTimeout(900);
+t = await texto();
+check('sin conexión la app sigue abriendo desde la caché', /\b\d{3} temas\b/.test(t), t.slice(0, 100));
+await pag.context().setOffline(false);
 
 await nav.close();
 console.log('\n' + (errores.length
