@@ -42,12 +42,27 @@ function pintarTabbar() {
 }
 
 function setActiveTab(tab) {
-  document.querySelectorAll(".tabbar a").forEach((a) =>
-    a.classList.toggle("active", a.dataset.tab === tab));
+  document.querySelectorAll(".tabbar a").forEach((a) => {
+    const activo = a.dataset.tab === tab;
+    a.classList.toggle("active", activo);
+    // La clase solo pinta color. aria-current es lo que le dice al lector de
+    // pantalla en qué sección está parado quien no distingue ese verde.
+    if (activo) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
 }
 
 function loading() { view.innerHTML = `<div class="empty">Cargando…</div>`; }
 function errorBox(msg) { view.innerHTML = `<div class="callout warn">${esc(msg)}</div>`; }
+
+/* Escribe en la región viva del HTML (#anuncio). Solo el resumen de lo que ha
+   cambiado dentro de una pantalla —«25 resultados para no duerme»—, porque el
+   <main> ya no es región viva: lo era, y con él cada render le soltaba al lector
+   de pantalla la página entera, 91.000 caracteres al entrar en la biblioteca. */
+function anunciar(texto) {
+  const el = document.getElementById("anuncio");
+  if (el) el.textContent = texto || "";
+}
 
 function normalize(s) {
   return String(s == null ? "" : s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -246,15 +261,20 @@ async function route() {
      que es como decirle a un padre que se ha salido de la app. */
   setActiveTab(["evidencia", "asistente", "fuentes"].includes(tab) ? "inicio" : tab);
   view.scrollIntoView({ block: "start" });
+  anunciar("");   // el resumen de la pantalla anterior ya no vale
+  // Una sola salida. Cada `return` se saltaba el focus() de abajo, que es la
+  // única señal de «ya estás en otra pantalla» para quien usa lector de
+  // pantalla; y el `return renderInicio()` sin await se llevaba también el
+  // catch, así que un fallo del índice dejaba el inicio en blanco y sin aviso.
   try {
-    if (tab === "inicio") return renderInicio();
-    if (tab === "biblioteca") return await renderBiblioteca(param ? decodeURIComponent(param) : "");
-    if (tab === "evidencia") return await renderEvidencia();
-    if (tab === "detector") return await renderDetector();
-    if (tab === "rastreador") return await renderRastreador();
-    if (tab === "asistente") return await renderAsistente();
-    if (tab === "fuentes") return await renderFuentes();
-    if (tab === "ayuda") return await renderAyuda();
+    if (tab === "inicio") await renderInicio();
+    else if (tab === "biblioteca") await renderBiblioteca(param ? decodeURIComponent(param) : "");
+    else if (tab === "evidencia") await renderEvidencia();
+    else if (tab === "detector") await renderDetector();
+    else if (tab === "rastreador") await renderRastreador();
+    else if (tab === "asistente") await renderAsistente();
+    else if (tab === "fuentes") await renderFuentes();
+    else if (tab === "ayuda") await renderAyuda();
   } catch (e) {
     errorBox("Ocurrió un error: " + e.message);
   }
@@ -278,6 +298,7 @@ function campoBusqueda(id, valor, marcador) {
 }
 
 async function renderInicio() {
+  loading();
   const idx = await cargarIndice();
   view.innerHTML = `
     <h1 class="page">¿Qué te preocupa?</h1>
@@ -390,7 +411,7 @@ async function renderBiblioteca(param) {
       caja.innerHTML = chipsCat +
         `<h3 class="sec">${cat ? "Temas" : "Todos los temas"} · ${lista.length}</h3>` +
         lista.map(tarjetaTema).join("");
-      return;
+      return `${lista.length} temas`;
     }
     const res = buscarTemas(q, idx);
     if (!res.length) {
@@ -398,19 +419,22 @@ async function renderBiblioteca(param) {
         <h4>No encontré nada para «${esc(q)}»</h4>
         <p>Prueba con otras palabras —por ejemplo «duerme» en vez de «insomnio»—
         o explora por categorías.</p></div>` + chipsCat;
-      return;
+      return `Sin resultados para ${q}`;
     }
     caja.innerHTML = `<h3 class="sec" style="margin-top:8px">${res.length} resultado${
       res.length > 1 ? "s" : ""} para «${esc(q)}»</h3>` +
       res.slice(0, 25).map((r) => tarjetaTema(r.tema)).join("") +
       (res.length > 25 ? `<p class="nf" style="text-align:center">Mostrando los 25 más relacionados.</p>` : "");
+    return `${res.length} resultado${res.length > 1 ? "s" : ""} para ${q}`;
   };
 
   document.getElementById("f-bib").addEventListener("submit", (e) => {
     e.preventDefault();
     const q = input.value.trim();
     history.replaceState(null, "", q ? "#biblioteca/" + encodeURIComponent(q) : "#biblioteca");
-    pintar(q);
+    // Buscar no cambia de pantalla, solo la caja de resultados: si el resumen no
+    // se anuncia aquí, quien no ve la pantalla no se entera de que hay respuesta.
+    anunciar(pintar(q));
   });
   pintar(consulta);
 }
@@ -546,6 +570,7 @@ async function renderDetector() {
     <form class="buscador" id="f-det" autocomplete="off" role="search">
       <div class="campo">${ICONOS.buscar}
         <input id="q" type="search" enterkeyhint="search"
+          aria-label="Comprobar una terapia, producto o prueba"
           placeholder="p. ej. quelación, test de cabello" /></div>
       <button class="btn" id="go" type="submit">Revisar</button>
     </form>
@@ -554,7 +579,15 @@ async function renderDetector() {
   `;
   const input = document.getElementById("q");
   const result = document.getElementById("result");
-  const run = (text) => { result.innerHTML = detectorResult(text); result.scrollIntoView({ block: "nearest" }); };
+  const run = (text) => {
+    result.innerHTML = detectorResult(text);
+    result.scrollIntoView({ block: "nearest" });
+    // Aquí tampoco cambia la pantalla, solo la ficha. Se anuncia el veredicto y
+    // el nombre, que es lo que la familia ha venido a saber, y nada más.
+    const v = result.querySelector(".verdict");
+    const h = result.querySelector("h4");
+    anunciar([v, h].filter(Boolean).map((n) => n.textContent.trim()).join(": "));
+  };
   document.getElementById("f-det").addEventListener("submit", (e) => {
     e.preventDefault(); run(input.value);
   });
@@ -869,7 +902,11 @@ function paintChart(entries, fallo) {
   if (fallo) { el.innerHTML = `<div class="empty">No hemos podido leer el historial.</div>`; return; }
   if (!entries.length) { el.innerHTML = `<div class="empty">Aún no hay registros. Agrega el primero arriba.</div>`; return; }
   const last = entries.slice(0, 14).reverse();
-  el.innerHTML = `<div class="bars">${last.map((e) => {
+  // La gráfica es altura y nada más: el ánimo no está escrito en ninguna parte.
+  // Se resume en una frase, del registro más antiguo al más reciente.
+  const resumen = last.map((e) => `${e.fecha}, ${e.animo} de 5`).join("; ");
+  el.innerHTML = `<div class="bars" role="img" aria-label="Ánimo de ${last.length} registro${
+    last.length > 1 ? "s" : ""}, del más antiguo al más reciente: ${esc(resumen)}">${last.map((e) => {
     const h = (e.animo / 5) * 100;
     return `<div class="bar" style="height:${h}%" title="${esc(e.fecha)}: ${MOODS[e.animo - 1]}"><span>${esc(e.fecha.slice(5))}</span></div>`;
   }).join("")}</div><div class="spacer"></div>`;
@@ -887,7 +924,7 @@ function paintList(entries, fallo) {
           ${e.interv ? `<div>${esc(e.interv)}</div>` : ""}
           ${e.nota ? `<small>${esc(e.nota)}</small>` : ""}
         </div>
-        <button class="btn ghost" data-del="${e.id}" aria-label="Borrar">✕</button>
+        <button class="btn ghost" data-del="${e.id}" aria-label="Borrar el registro del ${esc(e.fecha)}">✕</button>
       </div>
     </article>`).join("");
   el.querySelectorAll("[data-del]").forEach((b) =>
@@ -908,7 +945,12 @@ async function renderAsistente() {
     <div class="demo-note"><strong>Modo demostración.</strong> Responde a temas frecuentes con fuentes.
       Cuando se conecte la IA (Claude), podrá responder a cualquier pregunta, citando fuentes y sin recomendar nada peligroso. Ver el README.</div>
     <div class="chat-wrap">
-      <div class="chat-log" id="log"></div>
+      <!-- El chat es el único sitio donde el contenido crece sin cambiar de
+           pantalla y sin pasar por anunciar(): las respuestas llegan solas, 250 ms
+           después. role="log" con aria-live hace que se lea cada respuesta nueva y
+           solo esa. Sin esto, quitar el aria-live del <main> dejaría mudo justo al
+           asistente, que es donde está la respuesta de crisis con los teléfonos. -->
+      <div class="chat-log" id="log" role="log" aria-live="polite" aria-label="Conversación"></div>
       <form class="chat-form" id="chatf" autocomplete="off">
         <input id="chati" type="text" placeholder="Escribe tu pregunta…" aria-label="Tu mensaje" />
         <button class="btn" type="submit">Enviar</button>

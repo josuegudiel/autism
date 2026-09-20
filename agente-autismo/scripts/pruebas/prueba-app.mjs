@@ -300,6 +300,78 @@ check('Y lo escrito sigue en el formulario para poder reintentarlo',
   (await pagSinDB.inputValue('#interv')) === 'terapia de lenguaje');
 await pagSinDB.close();
 
+// 9. Accesibilidad. Esta app la usa una madre o un padre agotado, de noche, en
+// un móvil y a veces con una mano: que el texto se lea no es cumplimiento
+// formal, es la diferencia entre servir y no servir.
+await ir('#inicio');
+const regiones = await pag.evaluate(() => ({
+  mainVivo: document.querySelector('main#view')?.hasAttribute('aria-live'),
+  anuncio: !!document.querySelector('#anuncio[aria-live]'),
+}));
+check('El <main> ya no es región viva: no relee la pantalla entera en cada navegación',
+  regiones.mainVivo === false, JSON.stringify(regiones));
+check('Hay una región viva pequeña donde anunciar solo lo que cambia', regiones.anuncio);
+
+check('La pestaña activa se marca con aria-current, no solo con color',
+  (await pag.$$eval('.tabbar a[aria-current="page"]', (el) => el.length)) === 1);
+
+// Se lee con $eval y no con textContent: si la región no existiera, textContent
+// se quedaría 30 segundos esperándola y la suite moriría de timeout en vez de
+// decir qué falla. Una prueba que cuelga el arnés no informa de nada.
+const anuncio = async () => pag.$eval('#anuncio', (el) => el.textContent).catch(() => '');
+
+// Buscar y revisar no cambian de pantalla: si no se anuncian, quien no ve la
+// pantalla no se entera de que ha habido respuesta.
+await ir('#biblioteca');
+await pag.fill('#q-bib', 'no duerme');
+await pag.press('#q-bib', 'Enter');
+await pag.waitForTimeout(800);
+check('Buscar en la biblioteca anuncia cuántos resultados hay',
+  /\d+ resultados? para/.test(await anuncio()), await anuncio());
+
+await ir('#detector');
+check('El campo del detector tiene nombre accesible',
+  !!(await pag.getAttribute('#q', 'aria-label')));
+await pag.fill('#q', 'quelación');
+await pag.click('#go');
+await pag.waitForTimeout(600);
+check('El detector dice en voz alta su veredicto, que es a lo que se venía',
+  /Evítalo.*Quelaci/i.test(await anuncio()), await anuncio());
+
+await ir('#asistente');
+check('El chat del asistente es región viva: ahí está la respuesta de crisis',
+  !!(await pag.$('#log[aria-live]')));
+
+// Contraste medido en el navegador, no deducido de los tokens.
+const razon = async () => pag.evaluate(() => {
+  const lum = (c) => {
+    const [r, g, b] = c.map((v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const rgba = (s) => s.match(/[\d.]+/g).map(Number);
+  const sobre = (fg, bg) => { const a = fg.length > 3 ? fg[3] : 1; return [0, 1, 2].map((i) => fg[i] * a + bg[i] * (1 - a)); };
+  const ratio = (a, b) => { const l1 = lum(a), l2 = lum(b); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); };
+  const fondo = rgba(getComputedStyle(document.body).backgroundColor).slice(0, 3);
+  const mide = (sel, bg) => {
+    const el = document.querySelector(sel);
+    if (!el) return null;
+    const base = bg ? rgba(getComputedStyle(el).backgroundColor).slice(0, 3) : fondo;
+    return Math.round(ratio(sobre(rgba(getComputedStyle(el).color), base), base) * 100) / 100;
+  };
+  return { aviso: mide('.disclaimer'), boton: mide('.btn', true) };
+});
+const claro = await razon();
+check('El aviso sanitario se lee en modo claro', claro.aviso >= 4.5, 'razón ' + claro.aviso);
+check('El rótulo de los botones se lee en modo claro', claro.boton >= 4.5, 'razón ' + claro.boton);
+await pag.emulateMedia({ colorScheme: 'dark' });
+await pag.reload({ waitUntil: 'load' });
+await pag.waitForTimeout(700);
+const oscuro = await razon();
+check('El aviso sanitario se lee también de noche', oscuro.aviso >= 4.5, 'razón ' + oscuro.aviso);
+check('Y el rótulo de los botones también: era 2,29:1 y no se leía',
+  oscuro.boton >= 4.5, 'razón ' + oscuro.boton);
+await pag.emulateMedia({ colorScheme: 'light' });
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
