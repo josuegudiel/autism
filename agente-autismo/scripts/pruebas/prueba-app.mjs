@@ -372,6 +372,35 @@ check('Y el rótulo de los botones también: era 2,29:1 y no se leía',
   oscuro.boton >= 4.5, 'razón ' + oscuro.boton);
 await pag.emulateMedia({ colorScheme: 'light' });
 
+// 10. Exportar. Los registros del niño viven solo en este navegador y el
+// navegador puede vaciarlos cuando le falte espacio: meses de seguimiento se
+// pierden sin que la familia haya hecho nada mal. Tiene que haber una salida, y
+// el dato no puede pasar por ningún servidor para salir.
+// Va en una pestaña aparte para no dejar registros en la base que usan las
+// otras comprobaciones.
+const pagExp = await nav.newPage({ viewport: { width: 393, height: 852 } });
+await pagExp.goto(B + '#rastreador', { waitUntil: 'load' });
+await pagExp.waitForTimeout(800);
+check('Sin registros no hay nada que exportar, y el botón no está', !(await pagExp.$('#export')));
+await pagExp.fill('#interv', 'logopedia; con "comillas"');
+await pagExp.fill('#nota', 'buen día\nsegunda línea');
+await pagExp.click('#f-track button[type="submit"]');
+await pagExp.waitForTimeout(900);
+check('Con registros guardados aparece el botón de exportar', !!(await pagExp.$('#export')));
+const [descarga] = await Promise.all([
+  pagExp.waitForEvent('download'),
+  pagExp.click('#export'),
+]);
+const csv = fs.readFileSync(await descarga.path(), 'utf8');
+check('El fichero es un CSV que Excel abre sin romper los acentos',
+  csv.startsWith('﻿') && /"Fecha";"Ánimo/.test(csv), JSON.stringify(csv.slice(0, 90)));
+check('Una nota con comillas, punto y coma y saltos de línea sobrevive entera',
+  csv.includes('""comillas""') && /buen día\r?\nsegunda línea/.test(csv), JSON.stringify(csv.slice(-160)));
+check('El nombre del fichero no lleva datos del niño',
+  /^brujula-tea-registros-\d{4}-\d{2}-\d{2}\.csv$/.test(descarga.suggestedFilename()),
+  descarga.suggestedFilename());
+await pagExp.close();
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

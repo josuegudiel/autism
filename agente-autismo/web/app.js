@@ -793,6 +793,54 @@ async function dbDelete(id) {
   });
 }
 
+/* El fichero de salida es un CSV y no un JSON a propósito: quien lo va a abrir
+   es la propia familia o el profesional que lleva al niño, y un CSV se abre en
+   Excel, en Numbers y en Hojas de cálculo sin instalar nada. Lleva BOM porque
+   sin él Excel se come los acentos, y separa con punto y coma porque es lo que
+   espera un Excel en español: con comas, la hoja entera cae en una columna. */
+function registrosCSV(entries) {
+  const campo = (v) => '"' + String(v == null ? "" : v).replaceAll('"', '""') + '"';
+  const fila = (celdas) => celdas.map(campo).join(";");
+  // Del más antiguo al más reciente, al revés que en pantalla: así se lee una
+  // evolución, que es para lo que se lleva esto a la consulta.
+  const filas = entries.slice().reverse().map((e) => fila([e.fecha, e.animo, e.interv, e.nota]));
+  const cabecera = fila(["Fecha", "Ánimo del día (1 = peor, 5 = mejor)", "Intervención o actividad", "Observación"]);
+  return "\ufeff" + [cabecera].concat(filas).join("\r\n") + "\r\n";
+}
+
+/* La descarga se prepara y se consume dentro del navegador: no hay ninguna
+   petición de red, los registros no salen del dispositivo ni para exportarse.
+   El nombre del fichero no lleva el del niño porque acaba en la carpeta de
+   descargas, que es un sitio que ve cualquiera que coja el teléfono. */
+function descargar(texto, nombre, tipo) {
+  const url = URL.createObjectURL(new Blob([texto], { type: tipo }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nombre;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  // Revocar en el mismo tic deja a algunos navegadores sin fichero que guardar.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/* IndexedDB es "best effort": el navegador puede vaciarlo cuando le falte
+   espacio. persist() pide que no lo haga. Se pide al guardar un registro y no
+   al abrir la app porque el permiso solo se entiende cuando ya hay algo que
+   perder: en los navegadores que preguntan, la pregunta llega justo después de
+   que la familia haya escrito algo que quiere conservar, y quien solo viene a
+   leer la biblioteca no la ve nunca. Una vez por carga de página, para no
+   convertir cada registro en una pregunta. Si el navegador lo niega no se
+   insiste ni se bloquea nada: la pestaña ya avisa de que conviene exportar. */
+let _persistPedida = false;
+async function pedirPersistencia() {
+  if (_persistPedida || !navigator.storage || !navigator.storage.persist) return;
+  _persistPedida = true;
+  try {
+    if (!(await navigator.storage.persisted())) await navigator.storage.persist();
+  } catch (_) {}
+}
+
 /* Que la base falle no es un detalle técnico: la familia cree que ha guardado
    el día de su hijo y no ha guardado nada. Separamos el navegador que bloquea el
    almacenamiento (modo privado: la salida es abrir la app en una ventana normal,
@@ -831,6 +879,10 @@ async function renderRastreador() {
      perdido. Lo guardamos para poder decirle la verdad más abajo. */
   let fallo = null;
   try { entries = await dbAll(); } catch (e) { fallo = e; }
+  // persisted() no pregunta nada: solo dice si el navegador ya se comprometió a
+  // conservar el almacén. Sirve para avisar a la familia, no para decidir.
+  let persistente = null;
+  try { persistente = await navigator.storage.persisted(); } catch (_) {}
   const today = new Date().toISOString().slice(0, 10);
   view.innerHTML = `
     <h1 class="page">Seguimiento de mi hijo</h1>
@@ -861,6 +913,14 @@ async function renderRastreador() {
 
     <section>
       <h3 class="sec">Historial</h3>
+      ${entries.length ? `<p class="sec-intro">Estos registros están solo en este teléfono: no viajan si cambias
+        de móvil y se pierden si borras los datos de navegación. Exporta una copia de vez en cuando; el fichero se
+        abre con Excel u Hojas de cálculo y sirve para enseñárselo a quien lleva a tu hijo.</p>
+      <button class="btn ghost" id="export">Exportar mis registros</button>
+      <div class="spacer"></div>` : ""}
+      ${entries.length && persistente === false ? `<div class="callout">Este navegador no se ha comprometido a
+        conservar los datos de la app, así que puede vaciarlos si se queda sin espacio. Añadir Brújula TEA a la
+        pantalla de inicio suele evitarlo; mientras tanto, exporta una copia.</div>` : ""}
       <div id="list"></div>
       <div class="spacer"></div>
       <button class="btn danger" id="wipe" ${entries.length ? "" : "hidden"}>Borrar todos mis datos</button>
@@ -881,8 +941,14 @@ async function renderRastreador() {
        aviso dice sin rodeos que ese registro NO está guardado. */
     try { await dbAdd(entry); }
     catch (err) { return avisoDB("Este registro no se ha guardado.", err); }
+    // Guardar es el momento de pedir que el navegador no desaloje el almacén:
+    // ahora sí hay algo que perder.
+    await pedirPersistencia();
     renderRastreador();
   });
+  const exportar = document.getElementById("export");
+  if (exportar) exportar.onclick = () => descargar(
+    registrosCSV(entries), `brujula-tea-registros-${today}.csv`, "text/csv;charset=utf-8");
   const wipe = document.getElementById("wipe");
   if (wipe) wipe.onclick = async () => {
     if (!confirm("¿Borrar TODOS los registros de este dispositivo? No se puede deshacer.")) return;
