@@ -24,8 +24,11 @@ const ASSETS = [
   "./content/ayuda-urgente.json",
   "./content/biblioteca-indice.json"
 ];
-// El cuerpo completo de la biblioteca (≈1 MB) NO se precachea: se guarda la
-// primera vez que se abre un tema, para no penalizar la primera visita.
+// Ni el cuerpo completo de la biblioteca (≈2,4 MB) ni las palabras del cuerpo
+// para buscar (biblioteca-busqueda.json, ≈350 KB) se precachean: los guarda el
+// `fetch` de aquí abajo la primera vez que se abre un tema o se busca, para no
+// cobrarle la primera visita a quien entra con datos móviles. No los añadas a
+// ASSETS sin medir antes lo que tarda esa primera pantalla.
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));

@@ -93,6 +93,37 @@ for (const [q, re, desc] of casos) {
 let r = await buscar('asdfghjkl');
 check('consulta sin sentido → dice que no hay resultados', /Sin resultados/i.test(r), r.slice(0, 160));
 
+// 2bis. El buscador solo miraba título, mensaje y claves, así que un nombre que
+// vive dentro del texto no lo encontraba nadie: a una familia a la que le
+// ofrecen ozonoterapia, escribir «ozono» le devolvía cero resultados.
+const buscarHondo = async (q) => {
+  await ir('#biblioteca');
+  await pag.fill('#q-bib', q);
+  await pag.click('#f-bib button[type=submit]');
+  // Las palabras del cuerpo se bajan al buscar, no al entrar: hay que darle
+  // tiempo a esa petición y al repintado que viene detrás.
+  await pag.waitForTimeout(1800);
+  return await pag.textContent('#res-bib');
+};
+for (const q of ['ozono', 'secretina', 'mercurio']) {
+  const rr = await buscarHondo(q);
+  check(`«${q}» encuentra su tema, que solo aparece dentro del cuerpo`,
+    !/Sin resultados/i.test(rr), rr.slice(0, 160));
+}
+
+// Las palabras del cuerpo se consultan por la palabra que escribe la familia, y
+// «constructor» es una palabra española corriente que todo objeto de JavaScript
+// trae ya puesta. Tiene que decir que no hay nada, no tirar la biblioteca.
+const rc = await buscarHondo('constructor');
+check('«constructor» no rompe la biblioteca', /Sin resultados/i.test(rc), rc.slice(0, 160));
+
+// El cuerpo sirve para APARECER, nunca para adelantar: un tema que menciona una
+// palabra de pasada no puede ponerse por delante del que se llama así.
+await buscarHondo('sueño');
+const primeros = await pag.$$eval('#res-bib .tema-card h4', (el) => el.slice(0, 3).map((x) => x.textContent));
+check('Un acierto en el título sigue mandando sobre una mención en el cuerpo',
+  /Sueño/i.test(primeros[0] || ''), JSON.stringify(primeros));
+
 // 3. Abrir un tema
 await ir('#tema/W');
 t = await texto();

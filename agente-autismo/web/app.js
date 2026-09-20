@@ -187,6 +187,20 @@ async function cargarIndice() {
   return _indice;
 }
 
+/* Las palabras del cuerpo de los temas viven en un fichero aparte que NO se
+   precachea: son unos 350 KB y solo hacen falta cuando alguien busca de verdad.
+   Hacer que la primera visita los pague, con datos móviles y el móvil de la
+   familia a la que servimos, sería cobrar por adelantado algo que la mitad de
+   quien entra no va a usar. Si no llega —sin cobertura, por ejemplo— la búsqueda
+   sigue funcionando contra el índice, que es exactamente lo de antes. */
+let _busqueda = null, _pideBusqueda = null;
+function cargarBusqueda() {
+  _pideBusqueda = _pideBusqueda || getJSON("content/biblioteca-busqueda.json")
+    .then((d) => { _busqueda = d.palabras || {}; })
+    .catch(() => { _pideBusqueda = null; });   // se reintenta en la siguiente búsqueda
+  return _pideBusqueda;
+}
+
 /**
  * Busca temas y devuelve [{tema, puntos}] ordenados. Nunca devuelve un único
  * resultado "adivinado": si la consulta es muy corta o vaga, devuelve [].
@@ -218,6 +232,17 @@ function buscarTemas(consulta, indice) {
   // Sin palabras útiles y sin sinónimo que encaje, no hay nada que buscar.
   if (!tokens.length && !Object.keys(impulso).length) return [];
 
+  // Los temas cuyo cuerpo contiene cada palabra. Se resuelve una sola vez, antes
+  // del bucle, porque si no habría que partir la misma lista 360 veces. El mapa
+  // va sin prototipo y solo se acepta texto: la clave es lo que escribe una
+  // familia, y «constructor» es una palabra española corriente que todo objeto
+  // trae ya puesta. Con un objeto normal, buscarla reventaba la biblioteca.
+  const enCuerpo = Object.create(null);
+  for (const t of tokens) {
+    const codigos = _busqueda && _busqueda[t];
+    if (typeof codigos === "string") enCuerpo[t] = new Set(codigos.split(" "));
+  }
+
   const resultados = [];
   for (const tema of indice.temas) {
     const titulo = normalize(tema.titulo);
@@ -233,6 +258,12 @@ function buscarTemas(consulta, indice) {
       else if ((tema.claves || []).includes(t)) puntos += 5;
       else if (mensaje.includes(t)) puntos += 2;
     }
+    // El cuerpo solo sirve para APARECER, nunca para adelantar. Se mira después
+    // del bucle y vale un punto fijo: si sumara por palabra, dos palabras sueltas
+    // en mitad de 5.000 caracteres (4 puntos) adelantarían a un tema que sí sale
+    // en el resumen (2) o en las claves (5), y la familia perdería de vista el
+    // que buscaba. Un tema que ya puntuó por arriba se queda donde estaba.
+    if (!puntos && tokens.some((t) => enCuerpo[t] && enCuerpo[t].has(tema.codigo))) puntos = 1;
     if (puntos > 0) resultados.push({ tema, puntos });
   }
   return resultados.sort((a, b) =>
@@ -405,7 +436,7 @@ async function renderBiblioteca(param) {
   const caja = document.getElementById("res-bib");
   const input = document.getElementById("q-bib");
 
-  const pintar = (q) => {
+  const pintar = (q, esperando) => {
     if (!q.trim()) {
       const lista = cat ? idx.temas.filter((t) => t.categoria === cat.clave) : idx.temas;
       caja.innerHTML = chipsCat +
@@ -415,6 +446,9 @@ async function renderBiblioteca(param) {
     }
     const res = buscarTemas(q, idx);
     if (!res.length) {
+      // Mientras las palabras del cuerpo vienen de camino no se puede decir que
+      // no hay nada: decirlo y desdecirse medio segundo después asusta para nada.
+      if (esperando) { caja.innerHTML = `<div class="empty">Buscando…</div>`; return ""; }
       caja.innerHTML = `<h3 class="sec">Sin resultados</h3><div class="card">
         <h4>No encontré nada para «${esc(q)}»</h4>
         <p>Prueba con otras palabras —por ejemplo «duerme» en vez de «insomnio»—
@@ -428,15 +462,29 @@ async function renderBiblioteca(param) {
     return `${res.length} resultado${res.length > 1 ? "s" : ""} para ${q}`;
   };
 
+  // Se pinta ya con lo que hay en el índice y, si hace falta, se repinta cuando
+  // llegan las palabras del cuerpo: nadie ve una rueda girando por una búsqueda
+  // que el índice ya sabía contestar, y los resultados solo pueden mejorar.
+  // Buscar no cambia de pantalla, solo la caja de resultados: si el resumen no
+  // se anuncia, quien no ve la pantalla no se entera de que hay respuesta.
+  const buscar = (q) => {
+    const esperando = !!q.trim() && !_busqueda;
+    anunciar(pintar(q, esperando));
+    if (!esperando) return;
+    cargarBusqueda().then(() => { if (input.value.trim() === q) anunciar(pintar(q)); });
+  };
+
+  // En cuanto alguien escribe se empieza a bajar, para que al pulsar "Buscar"
+  // ya esté aquí. Quien solo mira categorías no lo baja nunca.
+  input.addEventListener("input", cargarBusqueda);
+
   document.getElementById("f-bib").addEventListener("submit", (e) => {
     e.preventDefault();
     const q = input.value.trim();
     history.replaceState(null, "", q ? "#biblioteca/" + encodeURIComponent(q) : "#biblioteca");
-    // Buscar no cambia de pantalla, solo la caja de resultados: si el resumen no
-    // se anuncia aquí, quien no ve la pantalla no se entera de que hay respuesta.
-    anunciar(pintar(q));
+    buscar(q);
   });
-  pintar(consulta);
+  buscar(consulta);
 }
 
 /* ---------- Un tema de la biblioteca ---------- */

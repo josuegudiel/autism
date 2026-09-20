@@ -8,6 +8,7 @@ Uso:
 Genera:
     web/content/biblioteca-indice.json    índice ligero para buscar (títulos, resumen, palabras clave)
     web/content/biblioteca-cuerpo.json    contenido completo de cada tema (se carga al abrir uno)
+    web/content/biblioteca-busqueda.json  palabra del cuerpo -> temas (se carga solo al buscar)
 
 No hace falta instalar nada: solo Python 3.
 Si añades o editas un tema en la biblioteca, vuelve a ejecutar este script.
@@ -190,6 +191,33 @@ def palabras_clave(*textos):
     return sorted(palabras)
 
 
+# Una palabra que sale en muchos temas ya no dice a cuál ir: solo alarga la lista
+# de resultados. Las que de verdad faltaban ("ozono", "secretina", "mercurio")
+# aparecen en uno o dos temas, así que el tope no se lleva por delante nada útil.
+TOPE_TEMAS = 24
+
+
+def indice_del_cuerpo(dominios, indice):
+    """Palabra del cuerpo -> códigos de los temas donde aparece.
+
+    El buscador solo veía título, mensaje y claves, así que un nombre que vive
+    dentro del texto no lo encontraba nadie: a una familia a la que le ofrecen
+    ozonoterapia, escribir "ozono" le devolvía cero resultados. Esto va en un
+    fichero aparte, y no en el índice, porque el índice se precachea en la primera
+    visita y estas palabras solo hacen falta cuando alguien busca de verdad.
+    """
+    ya_puntuan = {t["codigo"]: set(t["claves"]) for t in indice}
+    postings = {}
+    for d in dominios:
+        for p in set(re.findall(r"[a-z0-9]{3,}", normalizar(d["_texto"]))):
+            # Lo que ya puntúa por título, mensaje o sinónimos no se repite aquí.
+            if p in VACIAS or p.isdigit() or p in ya_puntuan.get(d["codigo"], ()):
+                continue
+            postings.setdefault(p, []).append(d["codigo"])
+    return {p: " ".join(sorted(codigos)) for p, codigos in sorted(postings.items())
+            if len(codigos) <= TOPE_TEMAS}
+
+
 def parsear(md):
     """Corta el markdown en dominios y extrae los campos de cada uno."""
     # Cada dominio empieza por '### CÓDIGO. ' al principio de una línea.
@@ -339,17 +367,25 @@ def main():
         "temas": indice,
     }
 
+    palabras = indice_del_cuerpo(dominios, indice)
+
     ruta_indice = os.path.join(SALIDA, "biblioteca-indice.json")
     ruta_cuerpo = os.path.join(SALIDA, "biblioteca-cuerpo.json")
+    ruta_busqueda = os.path.join(SALIDA, "biblioteca-busqueda.json")
     with open(ruta_indice, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, separators=(",", ":"))
     with open(ruta_cuerpo, "w", encoding="utf-8") as f:
         json.dump(cuerpos, f, ensure_ascii=False, separators=(",", ":"))
+    with open(ruta_busqueda, "w", encoding="utf-8") as f:
+        json.dump({"generado": "scripts/construir-contenido.py", "palabras": palabras},
+                  f, ensure_ascii=False, separators=(",", ":"))
 
     print(f"✅ {len(indice)} temas ({meta['verificados']} verificados), "
           f"{meta['totalFuentes']} fuentes, {len(categorias)} categorías.")
     print(f"   {ruta_indice}  ({os.path.getsize(ruta_indice)//1024} KB)")
     print(f"   {ruta_cuerpo}  ({os.path.getsize(ruta_cuerpo)//1024} KB)")
+    print(f"   {ruta_busqueda}  ({os.path.getsize(ruta_busqueda)//1024} KB, "
+          f"{len(palabras)} palabras del cuerpo)")
     for c in categorias:
         print(f"     · {c['nombre']}: {c['n']}")
     if avisos:
