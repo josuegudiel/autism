@@ -432,6 +432,25 @@ check('El nombre del fichero no lleva datos del niño',
   descarga.suggestedFilename());
 await pagExp.close();
 
+// 11. Las cifras escritas a mano en la documentación caducan solas: así fue como
+// README-iOS.md acabó prometiendo 308 temas mientras el índice traía 360. Se
+// atan aquí al JSON que las genera, para que la próxima vez lo diga una prueba y
+// no una auditoría. Se aceptan las tres cifras que el índice sí sostiene —el
+// total, los verificados y los que quedan por verificar—; cualquier otra es una
+// cifra vieja que alguien copió y nadie volvió a mirar.
+const idxJson = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const legitimas = new Set([idxJson.totalTemas, idxJson.verificados, idxJson.totalTemas - idxJson.verificados]);
+const viejas = [];
+for (const rel of ['../../README.md', '../../ESTADO.md', '../../ios/README-iOS.md', '../../ios/README.md']) {
+  const txt = fs.readFileSync(new URL(rel, import.meta.url), 'utf8');
+  for (const m of txt.matchAll(/(\d[\d.]*)\s+temas/g)) {
+    const n = Number(m[1].replaceAll('.', ''));
+    if (!legitimas.has(n)) viejas.push(`${rel.split('/').pop()}: «${m[0].trim()}»`);
+  }
+}
+check(`La documentación no arrastra cifras de temas que el índice ya no sostiene`,
+  viejas.length === 0, viejas.join(' · '));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

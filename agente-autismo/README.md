@@ -7,16 +7,21 @@ Es una **PWA estática** (se instala como app, funciona sin conexión para el co
 
 > ⚠️ Esta app **informa y orienta; no diagnostica ni sustituye** a un profesional de la salud.
 
-**Estado:** app funcional con **buscador sobre 222 temas** (171 verificados) y **1.218 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
+**Estado:** app funcional con **buscador sobre 360 temas** (226 verificados) y **2.573 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
+
+<!-- Las tres cifras de arriba son las que sirve `web/content/biblioteca-indice.json`
+     (`totalTemas`, `verificados`, `totalFuentes`). Si vuelves a ejecutar el conversor,
+     míralas ahí y corrígelas aquí: un README que promete menos temas de los que hay
+     hace dudar de todo lo demás que dice. -->
 
 ---
 
 ## Qué incluye
 
-1. **📚 Biblioteca buscable (lo principal)** — escribe lo que te preocupa con tus palabras («mi hijo no duerme», «se pega», «en la escuela») y encuentra el tema que responde, con su nivel de evidencia 🟢/🟡/🔴 y sus fuentes. **222 temas** organizados en 12 categorías. Funciona **sin conexión y sin ningún coste**: no usa IA ni servidores.
+1. **📚 Biblioteca buscable (lo principal)** — escribe lo que te preocupa con tus palabras («mi hijo no duerme», «se pega», «en la escuela») y encuentra el tema que responde, con su nivel de evidencia 🟢/🟡/🔴 y sus fuentes. **360 temas** (226 verificados) organizados en 12 categorías. Funciona **sin conexión y sin ningún coste**: no usa IA ni servidores.
 2. **🚩 Detector de pseudociencia** — escribe una terapia o producto (quelación, MMS, test de cabello, dieta-cura…) y te dice si es confiable, dudoso o peligroso, con fuentes. Si la consulta es ambigua, **pregunta antes de dar un veredicto** en vez de arriesgarse a asustar sin motivo.
 3. **🆘 Ayuda urgente** — teléfonos de crisis por país (España, México, Argentina, Chile, Colombia, Perú, EE. UU.), verificados con fuentes oficiales, más señales de alarma y qué hacer.
-4. **📈 Seguimiento de mi hijo** — registra intervenciones y el día a día; gráfica simple de progreso. **Los datos se guardan solo en tu dispositivo** (IndexedDB); sin cuentas ni nube.
+4. **📈 Seguimiento de mi hijo** — registra intervenciones y el día a día; gráfica simple de progreso. **Los datos se guardan solo en tu dispositivo** (IndexedDB); sin cuentas ni nube. **Solo en la web:** la app nativa de iPhone (`ios/`) no lleva rastreador.
 5. **✅ Centro de evidencia** — un resumen corto para empezar, y **💬 Asistente** en modo demostración.
 
 ## Cómo actualizar el contenido (sin tocar código)
@@ -107,7 +112,7 @@ Detalles técnicos del agente (ya implementados en `api/chat.ts`):
 
 ```
 research/
-  biblioteca-autismo.md   ← EL CORAZÓN: 222 temas con fuentes. Aquí se edita todo.
+  biblioteca-autismo.md   ← EL CORAZÓN: los 360 temas de la app salen de aquí.
 scripts/
   construir-contenido.py  conversor: biblioteca .md -> JSON que lee la app
   sinonimos.json          "no duerme" -> temas W, EN  (editable sin programar)
@@ -115,14 +120,15 @@ web/                      PWA estática (esto es lo que se publica)
   index.html  styles.css  app.js
   manifest.webmanifest  sw.js
   assets/    icon.svg  icon-maskable.svg
-  content/   biblioteca-indice.json   generado: buscador (208 KB)
-             biblioteca-cuerpo.json   generado: contenido de los temas (1 MB)
+  content/   biblioteca-indice.json   generado: buscador (362 KB)
+             biblioteca-cuerpo.json   generado: contenido de los temas (2,3 MB)
              ayuda-urgente.json       teléfonos de crisis por país
              evidencia.json  banderas-rojas.json  fuentes.json  asistente-demo.json
 shared/
   knowledge-base.json     hechos y reglas de seguridad (para un bot futuro)
 api/
   chat.ts                 proxy de IA — OPCIONAL, hoy no se usa
+ios/                      app nativa de iPhone (SwiftUI) — HOY NO COMPILA, ver ios/README.md
 serve.py                  servidor estático portable para probar en local
 README.md  ESTADO.md  LICENSE
 ```

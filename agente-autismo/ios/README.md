@@ -4,9 +4,16 @@ Proyecto nativo en SwiftUI de la misma biblioteca que usa la web. Todo el
 contenido va **dentro de la app**: funciona sin conexión y sin ningún coste
 de servidor.
 
-> ⚠️ **Estado: código escrito, sin compilar todavía.** Se redactó en un
-> entorno Linux, donde no hay Xcode. Antes de darlo por bueno hay que
-> abrirlo en un Mac y corregir lo que el compilador señale.
+> ⚠️ **Estado: el target de iOS NO compila.** No es «falta probarlo»:
+> `Vistas/DetectorView.swift` se quedó en cuatro líneas sueltas y
+> `Vistas/AyudaView.swift` solo conserva el `enum Telefono`, así que las dos
+> vistas que `RootView` monta en las pestañas «Detector» y «Ayuda» no existen
+> como tipos. Hay que reescribirlas antes de abrir Xcode. El resto del código
+> se redactó en Linux, sin compilador delante, así que espera más avisos.
+>
+> ⚠️ **Aquí no hay rastreador.** El «Seguimiento de mi hijo» del proyecto
+> existe **solo en la web**: en `ios/` no hay IndexedDB, ni SwiftData, ni
+> Core Data.
 
 ## Qué necesitas
 
@@ -40,12 +47,12 @@ BrujulaTEA/
   Modelos/Modelos.swift        tipos Codable de los JSON
   Datos/Biblioteca.swift       carga, caché y motor de búsqueda
   Diseno/Tema.swift            colores, tipografía y espaciado
-  Vistas/RootView.swift        las cinco pestañas
+  Vistas/RootView.swift        las cuatro pestañas: Inicio, Biblioteca, Detector, Ayuda
   Vistas/InicioView.swift      buscador y categorías
   Vistas/BibliotecaView.swift  lista y filtros
   Vistas/TemaDetalleView.swift ficha de un tema
-  Vistas/DetectorView.swift    detector de pseudociencia
-  Vistas/AyudaView.swift       teléfonos de crisis
+  Vistas/DetectorView.swift    INCOMPLETO: perdió la declaración de la vista
+  Vistas/AyudaView.swift       INCOMPLETO: solo conserva el enum Telefono
   Vistas/Componentes.swift     tarjetas y badges reutilizables
   Utilidades/MarkdownLigero.swift  convierte el texto de la biblioteca
   Info.plist
