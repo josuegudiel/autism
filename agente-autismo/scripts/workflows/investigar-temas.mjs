@@ -1,11 +1,11 @@
 export const meta = {
   name: 'investigar-temas-tea',
-  description: 'Investiga temas nuevos para la biblioteca de autismo, los verifica en fuente y los somete a tres críticas adversariales',
+  description: 'Investiga temas nuevos para la biblioteca de autismo, los verifica en fuente y los somete a cuatro críticas adversariales',
   whenToUse: 'Rondas de ampliación de la biblioteca, 4 temas como máximo por ronda',
   phases: [
     { title: 'Investigar', detail: 'un investigador por tema' },
     { title: 'Verificar', detail: 'comprueba cada fuente y borra lo que no se sostiene' },
-    { title: 'Criticar', detail: 'tres lentes por ficha: seguridad, semáforos y solapamiento' },
+    { title: 'Criticar', detail: 'cuatro lentes por ficha: seguridad, semáforos, solapamiento y contradicciones' },
     { title: 'Corregir', detail: 'aplica lo que las críticas confirman' },
   ],
 }
@@ -18,8 +18,9 @@ export const meta = {
 //
 // LIMITE DURO: 4 temas por ronda. El presupuesto de WebSearch de la sesion son
 // 200 llamadas COMPARTIDAS. 4 investigadores x 15 + 4 verificadores x 15 = 120.
-// Las tres criticas NO gastan busquedas a proposito: revisan coherencia interna,
-// seguridad y solapamiento, que se comprueban leyendo, no buscando.
+// Las cuatro criticas NO gastan busquedas a proposito: revisan coherencia interna,
+// seguridad, solapamiento y contradicciones con lo ya publicado, que se comprueban
+// leyendo la biblioteca, no buscando en la web.
 
 const E = typeof args === 'string' ? JSON.parse(args) : args
 const TEMAS = (E.temas || []).slice(0, 4)
@@ -166,6 +167,46 @@ que ojea la lista ve el color antes que la frase.
 - ¿Enlaza con las fichas hermanas que le corresponden?
 - ¿Falta algo importante que un padre buscaria en este tema y no esta?`,
   },
+  {
+    // Esta lente nacio de un fallo real de la ronda 28: la ficha MY daba 30 dias
+    // donde JX, ya publicada, daba 15, y el verificador de fuentes se puso del
+    // lado equivocado porque trabajaba con normativa anterior a 2023. La lente
+    // de encaje caza que dos fichas hablen DE LO MISMO; ninguna cazaba que
+    // dijeran COSAS DISTINTAS. Para una familia, eso es peor que el duplicado:
+    // dos numeros contrarios en la misma app no dejan ninguno en pie.
+    clave: 'contradiccion',
+    prompt: `Tu lente: CONTRADICCIONES CON LO QUE YA ESTA PUBLICADO.
+
+No buscas duplicados (de eso se encarga otro critico). Buscas que esta ficha
+diga algo DISTINTO de lo que la biblioteca ya afirma en otra ficha: otro plazo,
+otra cifra, otra edad, otro umbral, otro criterio de urgencia, otro nombre para
+la misma figura legal o clinica.
+
+COMO TRABAJAR (esto SI exige abrir archivos, y no gasta ninguna busqueda web):
+1. Lista las 3-6 fichas ya publicadas mas cercanas a este tema. El indice de
+   temas te da los titulos y sus codigos.
+2. Abrelas de verdad: usa Grep sobre research/biblioteca-autismo.md con el
+   codigo ("### JX." por ejemplo) y lee el bloque entero, no el titulo.
+3. Compara afirmacion por afirmacion las que un padre usaria para decidir:
+   plazos, edades, porcentajes, "cuantos dias", "a partir de que edad", "cuando
+   es urgencia".
+
+QUE REPORTAR:
+- Cada choque concreto, citando LAS DOS versiones y su codigo de ficha. Formato:
+  "esta ficha dice X; la ficha AB ya publicada dice Y".
+- Di cual de las dos crees que esta bien y por que, si tienes base para
+  saberlo. Si no la tienes, dilo: "no se cual es correcta" es una respuesta
+  util, y marca el problema como grave para que lo resuelva un humano.
+- IMPORTANTE: no des por hecho que la ficha nueva tiene razon porque es mas
+  reciente. Tampoco que la publicada la tiene por estar publicada. Lo que
+  decide es la norma o el estudio, no el orden de llegada.
+- Un matiz no es una contradiccion: que una ficha de el caso general y otra una
+  excepcion nombrada como tal esta bien. Reportalo solo si un padre que lea las
+  dos se quedaria sin saber a cual hacer caso.
+
+Si no hay ningun choque, devuelve la lista vacia. No inventes contradicciones
+para parecer riguroso.`,
+  },
 ]
 
 log(`Ronda ${RONDA}: ${TEMAS.length} temas · ${BUSQUEDAS} busquedas por agente de investigacion`)
@@ -234,7 +275,7 @@ la ficha sigue siendo util.`, {
                       informe: 'SIN VERIFICAR: el verificador fallo.' }))
   },
 
-  // --- 3. tres criticas adversariales, sin gastar busquedas ---
+  // --- 3. cuatro criticas adversariales, sin gastar busquedas ---
   (verif, t) => {
     if (!verif || !verif.markdown_final) return null
     return parallel(LENTES.map((l) => () =>
@@ -244,7 +285,8 @@ esta mal ANTES de que se publique.
 
 ${l.prompt}
 
-NO USES BUSQUEDAS WEB. Todo lo que tienes que revisar se comprueba leyendo.
+NO USES BUSQUEDAS WEB. Todo lo que tienes que revisar se comprueba leyendo
+archivos del repositorio, que SI puedes abrir con Read y Grep.
 Otro agente ya ha verificado las fuentes; no repitas ese trabajo.
 ${INDICE ? `\nINDICE DE LOS TEMAS QUE YA EXISTEN: ${INDICE}\n(leelo con Read si tu lente lo necesita)` : ''}
 
@@ -279,9 +321,9 @@ inventes problemas para parecer riguroso.`, {
                fuentes_confirmadas: verif.fuentes_confirmadas || 0,
                fuentes_eliminadas: verif.fuentes_eliminadas || 0,
                afirmaciones_eliminadas: verif.afirmaciones_eliminadas || 0,
-               criticas_total: 0, criticas_aplicadas: 'ninguna: las tres lentes no encontraron nada' }
+               criticas_total: 0, criticas_aplicadas: 'ninguna: las cuatro lentes no encontraron nada' }
     }
-    return agent(`Eres el editor final. Tres criticos han revisado esta ficha con
+    return agent(`Eres el editor final. Cuatro criticos han revisado esta ficha con
 lentes distintas. Aplica lo que sea correcto y rechaza lo que no.
 
 FICHA ACTUAL (tema: ${t.titulo}):
@@ -304,6 +346,13 @@ REGLAS PARA EDITAR:
   cuales rechazaste y por que.
 - Si un critico dice que la ficha se solapa con otra existente y tiene razon,
   ponlo en "cambios" y marca publicable=false: mejor no publicar un duplicado.
+- Si la lente de contradiccion señala un choque con una ficha YA PUBLICADA y no
+  puedes resolver cual de las dos es correcta sin buscar (y no puedes buscar),
+  marca publicable=false y explica el choque en "cambios" citando las dos
+  versiones y el codigo de la otra ficha. Publicar dos cifras contrarias es
+  peor que publicar una sola: la familia se queda sin saber a cual hacer caso.
+  Si SI puedes resolverlo con lo que ya esta escrito en las dos fichas, corrige
+  la que este mal —puede ser esta— y digalo en "cambios".
 
 Devuelve la ficha entera y ya corregida en "markdown_final", con el mismo
 formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /
