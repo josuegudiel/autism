@@ -375,3 +375,8 @@ NM. Me han dado algo «para cuando se ponga muy mal»: el calmante de rescate, c
 NN. Desde que toma Keppra (levetiracetam) u otro antiepiléptico está irritable o más lento: ¿es el fármaco o es el autismo?
 NP. Ya pesa más que tú y a ti te duele la espalda: ducharlo, moverlo y subirlo al coche sin lesionarte
 NQ. Habla en casa y no dice ni una palabra en el colegio: mutismo selectivo
+NT. ¿Hace falta una resonancia cerebral tras el diagnóstico de autismo?
+NR. En el colegio dicen que "aquí nadie puede medicar": la dosis diaria, el rescate y el plan de urgencia del centro
+NS. Ha engordado mucho con la risperidona o el aripiprazol: qué se puede hacer además de pesarlo cada mes
+NT. ¿Hace falta una resonancia cerebral tras el diagnóstico de autismo?
+NU. ¿En qué se diferencian el informe del médico, el certificado de discapacidad y el dictamen del colegio? Cada papel abre una ventanilla distinta

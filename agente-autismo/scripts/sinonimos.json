@@ -1530,5 +1530,47 @@
  ],
  "no quieren que vaya": [
   "MV"
+ ],
+ "que papel necesito": [
+  "NU"
+ ],
+ "que documento necesito": [
+  "NU"
+ ],
+ "el informe no me sirve en el colegio": [
+  "NU",
+  "HK"
+ ],
+ "el informe del psicologo no vale": [
+  "NU"
+ ],
+ "diferencia entre certificado y dictamen": [
+  "NU",
+  "LP",
+  "HK"
+ ],
+ "para que sirve cada papel": [
+  "NU"
+ ],
+ "no se que papel pedir": [
+  "NU"
+ ],
+ "me piden un papel que no tengo": [
+  "NU"
+ ],
+ "el certificado no me sirve para el colegio": [
+  "NU",
+  "LP",
+  "HK"
+ ],
+ "que papeles hay que tener": [
+  "NU"
+ ],
+ "papeles del diagnostico": [
+  "NU",
+  "NF"
+ ],
+ "orden en que pedir los papeles": [
+  "NU"
  ]
 }

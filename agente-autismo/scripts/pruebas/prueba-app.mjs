@@ -611,6 +611,39 @@ const perdidos = [...codsLibro].filter((c) => !enApp.has(c));
 check('Ningún tema de la biblioteca se queda fuera de la app al convertir',
   perdidos.length === 0, perdidos.join(' '));
 
+// 17. Ronda 33. Las cuatro publicadas; NU salió bloqueada por tres cosas que el
+// editor no podía tocar desde dentro de su ficha, y que se arreglaron aquí.
+for (const [codigo, marca] of [['NR', /colegio|rescate|adrenalina|plan de/i],
+                               ['NS', /risperidona|aripiprazol|peso|metformina/i],
+                               ['NT', /resonancia/i],
+                               ['NU', /certificado|dictamen|informe/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 33: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['en el colegio dicen que no pueden medicar', /colegio|medicar|rescate/i],
+                       ['ha engordado mucho con la medicación', /peso|engord|risperidona|metformina/i],
+                       ['le quieren hacer una resonancia', /resonancia/i],
+                       ['no sé qué papel necesito', /certificado|dictamen|informe|papel/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 33: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const lib33 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bloque = (cod) => lib33.slice(lib33.indexOf('### ' + cod + '.'), lib33.indexOf('### ', lib33.indexOf('### ' + cod + '.') + 6));
+// LP mandaba a una familia mexicana o colombiana a buscarse la vida («esta ficha
+// no te sirve») cuando la biblioteca sí tiene su ruta, ahora en NU.
+check('LP ya no deja sin salida a quien vive en México o Colombia',
+  !/Si vives en México, Colombia u otro país, esta ficha \*\*no te sirve\*\*/.test(bloque('LP'))
+  && /NU\./.test(bloque('LP')));
+// Una ficha sin entradas propias en el buscador no la encuentra nadie: las
+// consultas de certificado ya iban todas a LP.
+const sin = JSON.parse(fs.readFileSync(new URL('../../scripts/sinonimos.json', import.meta.url), 'utf8'));
+const haciaNU = Object.entries(sin).filter(([, v]) => Array.isArray(v) && v.includes('NU'));
+check('NU tiene consultas propias en el buscador, no solo las de LP', haciaNU.length >= 5,
+  haciaNU.length + ' entradas');
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
