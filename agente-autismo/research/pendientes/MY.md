@@ -1,4 +1,10 @@
-<!-- Borrador NO publicado. Ronda 28. -->
+<!-- Borrador NO publicado. Ronda 28. CERRADO en la ronda 29. -->
+
+> **CERRADO — no hace falta rehacer nada.** En la ronda 29 se reescribió acotado a su
+> núcleo propio y se publicó como **NA. Me castigan en el trabajo por cuidar a mi hijo:
+> represalias, despido y discriminación por asociación**. Este archivo se conserva solo
+> como registro de por qué el primer intento no salió y de las fuentes que se reutilizaron.
+> Si buscas el contenido vivo, está en research/biblioteca-autismo.md bajo el código NA.
 
 > **Por qué no está en la app.** MY se rechazó por solaparse con **JX. Conciliar el
 > trabajo con las terapias y citas**, que ya publica el núcleo laboral español:

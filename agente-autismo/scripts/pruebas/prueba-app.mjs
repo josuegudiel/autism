@@ -472,6 +472,44 @@ const sinMY = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-i
 check('Ronda 28: la ficha MY, rechazada por duplicar a JX, NO está publicada',
   !sinMY.temas.some((t) => t.codigo === 'MY'));
 
+// 13. Ronda 29. Los cuatro temas nuevos, y las dos cosas que esta ronda arregló
+// y que una prueba tiene que sostener para que no vuelvan a romperse.
+for (const [codigo, marca] of [['NA', /discriminaci[óo]n por asociaci[óo]n/i],
+                               ['NB', /asistente personal|ayuda a domicilio/i],
+                               ['NC', /incertidumbre|imprevisto/i],
+                               ['ND', /herman/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 29: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['me quieren echar del trabajo por cuidar a mi hijo', /despido|discriminaci[óo]n|trabajo/i],
+                       ['necesito ayuda en casa', /asistente|domicilio|cuidador/i],
+                       ['se cancela un plan y se hunde', /imprevisto|incertidumbre|plan/i],
+                       ['va a nacer un hermanito', /herman/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 29: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+// El editor de NB encabezó su ficha como «### NA.»: dos temas con el mismo
+// código habrían dejado uno de los dos inalcanzable por URL. Se corrigió a mano,
+// pero el fallo es del tipo que no se ve leyendo, así que se vigila para todos.
+const ind = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const vistos = new Set(), repes = new Set();
+for (const t of ind.temas) { if (vistos.has(t.codigo)) repes.add(t.codigo); vistos.add(t.codigo); }
+check('Ningún código de tema está repetido en el índice', repes.size === 0, [...repes].join(' '));
+// MY se rechazó en la ronda 28 y se reescribió acotada; se publicó como NA. El
+// borrador viejo sigue en research/pendientes/ y no puede colarse en la app.
+check('Ronda 29: MY sigue sin publicarse; su reescritura vive como NA',
+  !ind.temas.some((t) => t.codigo === 'MY') && ind.temas.some((t) => t.codigo === 'NA'));
+// La lente de contradicción paró NA porque chocaba con GL en qué ley rige en
+// Ecuador. Se resolvió: la de 2025 derogó la de 2012. Si alguien vuelve a meter
+// la ley derogada como marco vigente, esto lo caza.
+const cuerpo = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const gl = cuerpo.slice(cuerpo.indexOf('### GL.'), cuerpo.indexOf('### ', cuerpo.indexOf('### GL.') + 6));
+check('GL cita la ley ecuatoriana vigente (2025), no la derogada de 2012',
+  /Ley Orgánica de las Personas con Discapacidad \(2025\)/.test(gl) && /derog/i.test(gl));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
