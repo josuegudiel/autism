@@ -510,6 +510,37 @@ check('GL cita la ley ecuatoriana vigente (2025), no la derogada de 2012',
   /Ley Orgánica de las Personas con Discapacidad \(2025\)/.test(gl) && /derog/i.test(gl));
 
 
+// 14. Ronda 30. Tres publicadas, una rechazada, y una ficha vieja corregida
+// porque la lente de contradicción destapó que decía algo que no se sostenía.
+for (const [codigo, marca] of [['NE', /residencia|inadmisibilidad|visado|pa[íi]s/i],
+                               ['NF', /expediente|historia cl[íi]nica|datos/i],
+                               ['NH', /canguro|ni[ñn]era|abuelos|noche fuera/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 30: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['nos mudamos a otro país con mi hijo autista', /residencia|visado|pa[íi]s|mudan/i],
+                       ['tengo que dar el informe del diagnóstico al colegio', /informe|expediente|datos|colegio/i],
+                       ['dejar al niño a dormir en casa de los abuelos', /abuelos|noche|canguro|ni[ñn]era/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 30: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const ind30 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+// NG repetía el mensaje clave de IS con otra franja horaria. Su borrador vive en
+// research/pendientes/NG.md; en la app no puede estar.
+check('Ronda 30: NG, rechazada por repetir a IS, NO está publicada',
+  !ind30.temas.some((t) => t.codigo === 'NG') && ind30.temas.some((t) => t.codigo === 'IS'));
+// NG afirmaba que el ejercicio mejora sobre todo lo social; DH, publicada y
+// verificada, que es lo que menos mejora. Ninguna lo tenía bien: el metaanálisis
+// de 2025 ordena motor > social > ejecutiva > comunicación, y la comunicación ni
+// siquiera alcanza significación. DH quedó corregida; esto vigila que siga así.
+const lib30 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const dh = lib30.slice(lib30.indexOf('### DH.'), lib30.indexOf('### ', lib30.indexOf('### DH.') + 6));
+check('DH separa habilidades sociales de comunicación y no las da por igual',
+  /habilidades sociales/i.test(dh) && /no alcanz/i.test(dh) && !/en menor medida, comunicación\/interacción social/.test(dh));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

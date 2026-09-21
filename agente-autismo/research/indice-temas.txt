@@ -365,3 +365,6 @@ NA. Me castigan en el trabajo por cuidar a mi hijo: represalias, despido y discr
 NB. Necesitamos ayuda en casa: cuidadora, ayuda a domicilio o asistente personal
 NC. Se cancela el plan y se hunde: enseñarle a llevar lo imprevisto
 ND. Va a tener un hermanito: cómo contárselo y preparar la casa para el bebé
+NE. Nos vamos a vivir a otro país: ¿vale el diagnóstico allí y nos pueden denegar la residencia?
+NF. ¿A quién tengo que dar el informe del diagnóstico? Expediente escolar, historia clínica y los datos de tu hijo
+NH. Dejar a tu hijo con otra persona: la niñera o canguro, los abuelos y la primera noche fuera de casa
