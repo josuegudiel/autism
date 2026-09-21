@@ -644,6 +644,44 @@ check('NU tiene consultas propias en el buscador, no solo las de LP', haciaNU.le
   haciaNU.length + ' entradas');
 
 
+// 18. Ronda 34. Las cuatro publicadas tras resolver cuatro choques con fichas
+// que ya estaban en la app. Dos de ellos eran errores de las publicadas.
+for (const [codigo, marca] of [['NV', /funcional|epilepsia|tics|desmayo/i],
+                               ['NW', /ginec[óo]log|anticoncep/i],
+                               ['NX', /atenci[óo]n temprana|colegio/i],
+                               ['NY', /pediatra|adultos|seguimiento/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 34: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['me dicen que no es epilepsia', /funcional|epilepsia/i],
+                       ['llevarla al ginecólogo', /ginec[óo]log|anticoncep/i],
+                       ['se acaba la atención temprana', /temprana|colegio/i],
+                       ['ya no le corresponde el pediatra', /pediatra|adultos/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 34: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const lib34 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bl = (cod) => lib34.slice(lib34.indexOf('### ' + cod + '. '), lib34.indexOf('### ', lib34.indexOf('### ' + cod + '. ') + 6));
+// S y NW citaban el MISMO trabajo (Ragaglia 2023) con lecturas opuestas, las dos
+// en verde. La revisión dice que ninguna intervención logró ambas cosas a la vez:
+// mejorar el conocimiento Y cambiar la conducta. S prometía el salto a la conducta.
+check('S ya no promete que enseñar educación sexual cambie la conducta',
+  !/añadir práctica produce cambios conductuales/.test(bl('S'))
+  && /ninguna intervención demostró a la vez/.test(bl('S')));
+// MO citaba la 5.ª edición de los criterios de la OMS; la 6.ª (2025) la sustituyó.
+check('MO cita la edición vigente de los criterios de la OMS, no la superada',
+  /6\.ª edición, de 2025/.test(bl('MO')));
+// MZ repetía casi literalmente lo que ahora desarrolla NY.
+check('MZ ya no duplica el traspaso a adultos: remite a NY',
+  /NY\./.test(bl('MZ')) && !/averigua a qué edad exacta termina\s+la pediatría/.test(bl('MZ')));
+// Tres fichas daban tres edades para empezar a planificar la transición sin decir
+// de dónde salían. Ahora cada una nombra su fuente.
+check('I y MZ explican de dónde sale su edad para planificar la transición',
+  /AAP \(estadounidense\)/.test(bl('I')) && /la AAP\s+estadounidense dice ~12/.test(bl('MZ')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
