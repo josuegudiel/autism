@@ -22,9 +22,9 @@ Este documento explica **qué está hecho** y **qué falta**, para quien retome 
 - **README** con cómo correr, publicar y "encender" la IA real.
 
 ### La biblioteca de investigación (`research/biblioteca-autismo.md`)
-Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **389 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (3.215 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
+Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **393 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (3.311 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
 - **226 temas verificados** con verificación adversarial de 3 votos (marcados ✅✅).
-- **163 temas en "síntesis desde fuentes canónicas"** (marcados ⚠️) — redactados desde fuentes establecidas cuando el motor de verificación estaba limitado; **pendientes de re-verificar**.
+- **167 temas en "síntesis desde fuentes canónicas"** (marcados ⚠️) — redactados desde fuentes establecidas cuando el motor de verificación estaba limitado; **pendientes de re-verificar**.
 
 _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor las imprime al terminar.)_
 
@@ -34,10 +34,10 @@ _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor la
 
 | Prioridad | Tarea | Notas |
 |---|---|---|
-| 🟠 **Alta** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 389 temas en 12 categorías. Lo que sigue corto es la puerta de entrada: 15 tarjetas de evidencia y 15 fichas de detector para 389 temas. |
+| 🟠 **Alta** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 393 temas en 12 categorías. Lo que sigue corto es la puerta de entrada: 15 tarjetas de evidencia y 15 fichas de detector para 393 temas. |
 | 🔴 **Alta** | **Arreglar el target de iOS** | `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift` perdieron la declaración de su vista, así que la app nativa no compila. Ver `ios/README.md`. |
 | 🟠 **Alta** | **Activar la IA real de Claude** | El asistente está en modo demo. Ver README → "Encender la IA real" (poner `ANTHROPIC_API_KEY` en el servidor + cambiar el stub por la llamada real). |
-| 🟡 **Media** | **Re-verificar los 163 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 389 − 226 = 163, y ese número lo da el propio índice. |
+| 🟡 **Media** | **Re-verificar los 167 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 393 − 226 = 167, y ese número lo da el propio índice. |
 | 🟢 **Hecho** | **Publicar la app** | `.github/workflows/publicar.yml` pasa la suite de pruebas y, solo si está en verde, publica `web/` en GitHub Pages. Ojo al disparador: únicamente salta cuando el push toca `web/`, `herramientas/`, `scripts/pruebas/` o el propio workflow, así que un cambio solo de documentación **no** redespliega. La versión de la caché la estampa el despliegue, para que una corrección llegue también a quien ya tiene la app abierta. |
 | 🟢 **Baja** | **Pulido**: iconos/branding definitivos, revisión de textos | Los iconos actuales son SVG de marcador de posición. El pase de accesibilidad ya se hizo: contrastes medidos en navegador, región viva acotada, foco al navegar y nombres accesibles en campos, gráfica y botones de borrado. |
 | 🟢 **Baja** | **Materiales para ONG/donantes** | Pitch + datos de impacto (empleo, seguridad, acceso en LatAm) que ya están en la biblioteca. |

@@ -1572,5 +1572,57 @@
  ],
  "orden en que pedir los papeles": [
   "NU"
+ ],
+ "le pongo un gps": [
+  "PF",
+  "AE"
+ ],
+ "localizador gps para mi hijo": [
+  "PF"
+ ],
+ "reloj localizador": [
+  "PF"
+ ],
+ "como saber donde esta": [
+  "PF",
+  "AE"
+ ],
+ "camaras en casa": [
+  "PF"
+ ],
+ "me niegan el seguro": [
+  "PE"
+ ],
+ "no me aseguran a mi hijo": [
+  "PE"
+ ],
+ "seguro de vida discapacidad": [
+  "PE",
+  "CL"
+ ],
+ "ha roto algo quien paga": [
+  "PE"
+ ],
+ "responsabilidad civil": [
+  "PE"
+ ],
+ "nos han dado un colegio que no queremos": [
+  "PD"
+ ],
+ "plazo de matricula": [
+  "PD"
+ ],
+ "reserva de plazas": [
+  "PD"
+ ],
+ "ir solo en autobus": [
+  "PG"
+ ],
+ "que coja el bus solo": [
+  "PG"
+ ],
+ "ensenarle a ir solo": [
+  "PG",
+  "MJ"
  ]
 }

@@ -717,9 +717,46 @@ check('NU distingue el CEDis del certificado que pide la pensión mexicana',
 // Ninguna cabecera publicada puede arrastrar la marca de estado que los editores
 // se inventan al dejar algo a un humano: ⏳, ⏸ EN ESPERA, retenida, NO PUBLICABLE.
 const cabeceras = [...lib35.matchAll(/^### [A-Z]{1,2}\. .*$/gm)].map((m) => m[0]);
-const sucias = cabeceras.filter((h) => /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|pendiente de decisi|bloquead/i.test(h));
+const BLOQUEO = /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|no publicar hasta|pendiente de decisi|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
+const sucias = cabeceras.filter((h) => BLOQUEO.test(h));
 check('Ninguna ficha publicada arrastra una marca de estado sin resolver',
   sucias.length === 0, sucias.slice(0, 2).join(' | ').slice(0, 150));
+
+
+// 20. Ronda 36. Cuatro publicadas tras corregir tres fichas vivas.
+for (const [codigo, marca] of [['PD', /matr[íi]cula|admisi[óo]n|plaza/i],
+                               ['PE', /seguro|asegurador|responsabilidad civil/i],
+                               ['PF', /GPS|localizador/i],
+                               ['PG', /autob[úu]s|trayecto/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 36: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['nos han dado un colegio que no puede atenderle', /matr[íi]cula|admisi[óo]n|colegio/i],
+                       ['me niegan el seguro por su discapacidad', /seguro|asegurador/i],
+                       ['le pongo un gps', /GPS|localizador/i],
+                       ['que coja el autobús solo', /autob[úu]s|trayecto/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 36: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const lib36 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bt = (cod) => lib36.slice(lib36.indexOf('### ' + cod + '. '), lib36.indexOf('### ', lib36.indexOf('### ' + cod + '. ') + 6));
+// AE metía el GPS dentro de «Prevención de bajo riesgo» en verde. Un localizador
+// no impide que salga por la puerta: como mucho acorta la búsqueda, y ni eso
+// está medido. El riesgo real es comprarlo y relajar la cerradura.
+check('AE no vende el GPS como prevención',
+  !/\*\*identificación\*\* \(pulseras\/ID o GPS con consentimiento\)/.test(bt('AE'))
+  && /NO son prevención/.test(bt('AE')));
+// MR le decía a un padre español «no busques uno» sobre un organismo que sí
+// existe cuando quien deniega es un seguro privado.
+check('MR ya no manda a no buscar la vía que sí existe para los seguros privados',
+  !/Aquí no hay un organismo equivalente a las superintendencias del paso 4, así que no busques uno\./.test(bt('MR'))
+  && /DGSFP/.test(bt('MR')) && /CONDUSEF/.test(bt('MR')));
+// Ninguna ficha publicada puede arrastrar el bloque que el editor deja para el
+// humano: describe trabajo ya hecho y le pide a la familia cosas que no existen.
+check('Ninguna ficha publicada conserva un bloque que bloquee su propia publicación',
+  !/bloquea la publicación/.test(lib36));
 
 
 await nav.close();

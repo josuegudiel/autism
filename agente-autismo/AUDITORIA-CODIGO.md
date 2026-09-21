@@ -45,7 +45,7 @@ equipo de ingeniería.
 > compila lo que se escriba. Y `PROYECTO.md` **sigue rastreado por git**: está redactado, pero el
 > `.gitignore` no se aplica a un archivo ya rastreado.
 >
-> La suite pasó de 29 comprobaciones a 158.
+> La suite pasó de 29 comprobaciones a 169.
 
 ---
 
