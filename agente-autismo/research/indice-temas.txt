@@ -384,3 +384,7 @@ NV. Te dicen que «no es epilepsia»: ataques, tics que aparecieron de golpe y d
 NW. ¿Tengo que llevarla al ginecólogo? La primera cita y la anticoncepción, decididas con ella
 NX. Cuando se acaba la atención temprana: el paso al colegio y quién decide si sigue teniendo apoyo
 NY. Se le acaba el pediatra: pasar al médico de adultos sin perder el seguimiento
+NZ. Tiene parálisis cerebral y además autismo: dos diagnósticos que nadie mira juntos
+PA. Se niega a ir al psicólogo: qué puede decidir él y qué decides tú
+PB. Ayudas económicas por un hijo con autismo: prestaciones, becas, deducciones en la renta y descuentos (y en qué mes se piden)
+PC. Lleva meses mandando currículos y no le llaman: el cupo de discapacidad, las plazas reservadas y los exámenes adaptados

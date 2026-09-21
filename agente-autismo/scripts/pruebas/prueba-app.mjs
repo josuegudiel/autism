@@ -682,6 +682,46 @@ check('I y MZ explican de dónde sale su edad para planificar la transición',
   /AAP \(estadounidense\)/.test(bl('I')) && /la AAP\s+estadounidense dice ~12/.test(bl('MZ')));
 
 
+// 19. Ronda 35. Las cuatro publicadas tras resolver tres choques; dos eran
+// errores de fichas publicadas y el tercero, dos papeles que nadie distinguía.
+for (const [codigo, marca] of [['NZ', /par[áa]lisis cerebral/i],
+                               ['PA', /psic[óo]log|decidir|consentimiento/i],
+                               ['PB', /prestaci|beca|deducci|ayuda/i],
+                               ['PC', /cupo|reserva|oposici|empleo/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 35: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['tiene parálisis cerebral y autismo', /par[áa]lisis cerebral/i],
+                       ['se niega a ir al psicólogo', /psic[óo]log|decidir/i],
+                       ['qué ayudas económicas puedo pedir', /prestaci|beca|deducci|ayuda/i],
+                       ['manda currículos y no le llaman', /cupo|reserva|empleo|curr[íi]cul/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 35: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const lib35 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bq = (cod) => lib35.slice(lib35.indexOf('### ' + cod + '. '), lib35.indexOf('### ', lib35.indexOf('### ' + cod + '. ') + 6));
+// FU decía "más de 50", que deja fuera a la empresa de exactamente 50 — justo la
+// que suele decir que no. El art. 42.1 del RDL 1/2013 dice "50 o más".
+check('FU da el umbral correcto de la cuota de reserva (50 o más, no más de 50)',
+  /50 o más\*\* trabajadores/.test(bq('FU')) && !/del 2% en empresas de más de 50 trabajadores/.test(bq('FU')));
+// R presentaba en verde que la TCC adaptada supera a la estándar. Es un solo
+// ensayo; la diferencia que importa está entre hacer terapia y no hacerla.
+check('R ya no vende como zanjada la ventaja de la TCC adaptada sobre la estándar',
+  /Es \*\*un solo\s+ensayo\*\*/.test(bq('R')) && /quién lo\s+midió/.test(bq('R')));
+// CEDis y certificado médico de discapacidad permanente son dos papeles para dos
+// ventanillas: tener uno no da el otro, y confundirlos cuesta un viaje.
+check('NU distingue el CEDis del certificado que pide la pensión mexicana',
+  /CEDis/.test(bq('NU')) && /Pensión para el Bienestar/.test(bq('NU')));
+// Ninguna cabecera publicada puede arrastrar la marca de estado que los editores
+// se inventan al dejar algo a un humano: ⏳, ⏸ EN ESPERA, retenida, NO PUBLICABLE.
+const cabeceras = [...lib35.matchAll(/^### [A-Z]{1,2}\. .*$/gm)].map((m) => m[0]);
+const sucias = cabeceras.filter((h) => /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|pendiente de decisi|bloquead/i.test(h));
+check('Ninguna ficha publicada arrastra una marca de estado sin resolver',
+  sucias.length === 0, sucias.slice(0, 2).join(' | ').slice(0, 150));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
