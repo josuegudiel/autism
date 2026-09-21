@@ -541,6 +541,38 @@ check('DH separa habilidades sociales de comunicación y no las da por igual',
   /habilidades sociales/i.test(dh) && /no alcanz/i.test(dh) && !/en menor medida, comunicación\/interacción social/.test(dh));
 
 
+// 15. Ronda 31. Tres publicadas; NI terminada pero NO publicada, a la espera de
+// una decisión editorial sobre el umbral de riesgo suicida.
+for (const [codigo, marca] of [['NJ', /acatisia|diston[íi]a|discinesia|risperidona/i],
+                               ['NK', /custodia|esta noche|carpeta|quien se quede/i],
+                               ['NL', /herman/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 31: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['no para quieto desde que toma la medicación', /acatisia|inquietud|medicaci[óo]n|risperidona/i],
+                       ['si me ingresan quién se queda con mi hijo', /noche|custodia|carpeta|quede/i],
+                       ['pega a su hermana', /herman/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 31: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+const ind31 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+// Mientras NI no esté, el tema lo sostienen las fichas que ya mandan a urgencias.
+// Si alguien publica NI sin unificar el umbral, esta prueba es el aviso.
+check('Ronda 31: NI no está publicada mientras el umbral de urgencia no se unifique',
+  !ind31.temas.some((t) => t.codigo === 'NI'));
+// NK se publicó recortada porque su entrada es otra; si no enlaza con NH, la
+// familia se queda sin la hoja de traspaso justo la noche que la necesita.
+const lib31 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const trozo = (cod) => lib31.slice(lib31.indexOf('### ' + cod + '.'), lib31.indexOf('### ', lib31.indexOf('### ' + cod + '.') + 6));
+check('NK y NH se enlazan en los dos sentidos', /NK\./.test(trozo('NH')) && /NH\./.test(trozo('NK')));
+// Ninguna ficha publicada puede quedarse con el estado en suspenso que pone el
+// editor cuando deja una decisión a un humano: o se resuelve, o no se publica.
+check('Ninguna ficha publicada arrastra un estado «pendiente de decisión»',
+  !/^### .*⏳/m.test(lib31), (lib31.match(/^### .*⏳.*$/m) || [''])[0].slice(0, 110));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
