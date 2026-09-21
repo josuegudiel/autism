@@ -371,3 +371,7 @@ NH. Dejar a tu hijo con otra persona: la niñera o canguro, los abuelos y la pri
 NJ. Desde que toma risperidona o aripiprazol no para quieto, hace muecas o se le tuerce el cuello
 NK. Si me pasa algo a mí esta noche: qué tiene que saber quien se quede con mi hijo
 NL. Pega o muerde a su hermano o a su hermana: proteger a los dos en la misma casa
+NM. Me han dado algo «para cuando se ponga muy mal»: el calmante de rescate, cuándo se da y cuándo pasa a ser sujeción química
+NN. Desde que toma Keppra (levetiracetam) u otro antiepiléptico está irritable o más lento: ¿es el fármaco o es el autismo?
+NP. Ya pesa más que tú y a ti te duele la espalda: ducharlo, moverlo y subirlo al coche sin lesionarte
+NQ. Habla en casa y no dice ni una palabra en el colegio: mutismo selectivo

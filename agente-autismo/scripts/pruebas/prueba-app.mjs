@@ -573,6 +573,44 @@ check('Ninguna ficha publicada arrastra un estado «pendiente de decisión»',
   !/^### .*⏳/m.test(lib31), (lib31.match(/^### .*⏳.*$/m) || [''])[0].slice(0, 110));
 
 
+// 16. Ronda 32. Las cuatro publicadas. Y una comprobación que nace de que el
+// mismo fallo se ha repetido dos veces: el editor encabeza la ficha con el
+// código de otra (NB en la ronda 29, NN en la 32).
+for (const [codigo, marca] of [['NM', /rescate|si precisa|calmante/i],
+                               ['NN', /levetiracetam|antiepil[ée]ptic/i],
+                               ['NP', /espalda|ducharlo|moverlo|lesion/i],
+                               ['NQ', /mutismo/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 32: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['me han dado algo para cuando se ponga muy mal', /rescate|calmante|precisa/i],
+                       ['está más irritable desde que toma el antiepiléptico', /levetiracetam|antiepil[ée]ptic|irritab/i],
+                       ['me duele la espalda de levantarlo', /espalda|lesion|ducharlo|moverlo/i],
+                       ['no habla en el colegio pero sí en casa', /mutismo/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 32: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+// Publicar una ficha son dos escrituras: el markdown en la biblioteca y la línea
+// en indice-temas.txt. Si una se hace y la otra no, el tema existe a medias y no
+// se nota leyendo. Esto compara los dos ficheros código a código.
+const libro = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const idxTxt = fs.readFileSync(new URL('../../research/indice-temas.txt', import.meta.url), 'utf8');
+const codsLibro = new Set([...libro.matchAll(/^### ([A-Z]{1,2})\. /gm)].map((m) => m[1]));
+const codsIdx = new Set(idxTxt.split('\n').map((l) => (l.match(/^([A-Z]{1,2})\. /) || [])[1]).filter(Boolean));
+const soloLibro = [...codsLibro].filter((c) => !codsIdx.has(c));
+const soloIdx = [...codsIdx].filter((c) => !codsLibro.has(c));
+check('La biblioteca y el índice de temas contienen exactamente los mismos códigos',
+  soloLibro.length === 0 && soloIdx.length === 0,
+  'solo en la biblioteca: ' + (soloLibro.join(' ') || '-') + ' · solo en el índice: ' + (soloIdx.join(' ') || '-'));
+// Y que el índice publicado a la app no pierda ninguno por el camino.
+const ind32 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const enApp = new Set(ind32.temas.map((t) => t.codigo));
+const perdidos = [...codsLibro].filter((c) => !enApp.has(c));
+check('Ningún tema de la biblioteca se queda fuera de la app al convertir',
+  perdidos.length === 0, perdidos.join(' '));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
