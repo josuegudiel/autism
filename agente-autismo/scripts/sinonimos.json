@@ -3,11 +3,13 @@
  "no duerme": [
   "W",
   "EN",
-  "QK"
+  "QK",
+  "QY"
  ],
  "no quiere dormir": [
   "W",
-  "EN"
+  "EN",
+  "QY"
  ],
  "se despierta de noche": [
   "W",
@@ -23,7 +25,8 @@
  "melatonina": [
   "W",
   "F",
-  "QK"
+  "QK",
+  "QY"
  ],
  "no habla": [
   "D",
@@ -4054,5 +4057,98 @@
  ],
  "gastrostomia": [
   "QW"
+ ],
+ "le doy vitaminas": [
+  "QX"
+ ],
+ "se puede mezclar con": [
+  "QX"
+ ],
+ "hierbas y medicacion": [
+  "QX"
+ ],
+ "jugo de toronja": [
+  "QX"
+ ],
+ "pomelo y medicamentos": [
+  "QX"
+ ],
+ "cbd y medicacion": [
+  "QX"
+ ],
+ "hierba de san juan": [
+  "QX"
+ ],
+ "bebidas energeticas ninos": [
+  "QX"
+ ],
+ "lleva anos con melatonina": [
+  "QY"
+ ],
+ "es malo darle melatonina tantos anos": [
+  "QY"
+ ],
+ "dejar la melatonina": [
+  "QY"
+ ],
+ "la melatonina ya no le hace efecto": [
+  "QY"
+ ],
+ "melatonina y pubertad": [
+  "QY"
+ ],
+ "se ha comido las gominolas de melatonina": [
+  "QY",
+  "LH"
+ ],
+ "se ha tomado muchas melatoninas": [
+  "QY",
+  "LH"
+ ],
+ "mi hijo se ha bebido el bote": [
+  "QY",
+  "LH"
+ ],
+ "le sale pecho": [
+  "QZ"
+ ],
+ "le ha bajado la regla muy pronto": [
+  "QZ"
+ ],
+ "le huele el sudor con 8 anos": [
+  "QZ"
+ ],
+ "esta lento y ha engordado": [
+  "QZ"
+ ],
+ "siempre tiene frio": [
+  "QZ"
+ ],
+ "pubertad precoz": [
+  "QZ"
+ ],
+ "tiroides": [
+  "QZ"
+ ],
+ "le duele un testiculo": [
+  "RA"
+ ],
+ "le duele un huevo": [
+  "RA"
+ ],
+ "no le baja la piel del pene": [
+  "RA"
+ ],
+ "fimosis": [
+  "RA"
+ ],
+ "le escuece al hacer pis": [
+  "RA"
+ ],
+ "infeccion de orina": [
+  "RA"
+ ],
+ "un bulto en la ingle": [
+  "RA"
  ]
 }

@@ -184,6 +184,9 @@ CATEGORIA_POR_CODIGO = {
     # la regla) caia en adultez por "la regla", pero es farmacologia: va donde
     # ya esta NW, su ficha hermana.
     "QT": "familia", "QV": "salud",
+    # Ronda 47: QX (lo que compras sin receta y choca con lo recetado) caia en
+    # terapias por la palabra "medicacion"; es la hermana de LV y QP.
+    "QX": "salud",
     # Escuela y aprendizaje.
     "MU": "escuela", "MW": "escuela",
     # Adolescencia y vida adulta.

@@ -1993,6 +1993,94 @@ check('ninguna tarjeta muestra una instrucción para quien construye la app',
   mensajesInternos.length === 0, mensajesInternos.map((t) => t.codigo).join(' '));
 
 
+// 39. Ronda 47: QX (lo que compras sin receta y choca con lo recetado), QY (el
+// niño que lleva años con melatonina), QZ (pubertad precoz y tiroides) y RA
+// (urología del chico, con la torsión testicular y su reloj de horas).
+for (const [codigo, marca] of [['QX', /suplement|hierba|interacc|mezclar/i],
+                               ['QY', /melatonina/i],
+                               ['QZ', /pubertad|tiroides/i],
+                               ['RA', /test[íi]culo|prepucio|orina/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 47: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re47] of [['le doy vitaminas', /vitamin|suplement|mezcl/i],
+                         ['hierba de san juan', /hierba|interacc|medicaci/i],
+                         ['lleva anos con melatonina', /melatonina/i],
+                         ['dejar la melatonina', /melatonina/i],
+                         ['le sale pecho', /pubertad|precoz|pecho/i],
+                         ['tiroides', /tiroides|hipotiroid/i],
+                         ['le duele un testiculo', /test[íi]culo|torsi[óo]n/i],
+                         ['fimosis', /prepucio|fimosis/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 47: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re47.test(rr), rr.slice(0, 160));
+}
+
+const b47 = (cod) => {
+  const i = libC.indexOf('### ' + cod + '. ');
+  const j = libC.indexOf('\n### ', i + 6);
+  return j === -1 ? libC.slice(i) : libC.slice(i, j);
+};
+const cuerpo47 = (cod) => b47(cod).replace(/> \*\*Para la app[\s\S]*/, '');
+
+// RA es de reloj: la torsión se opera en horas y en un chico que comunica poco
+// puede llegar sin una sola queja del testículo.
+const ra47 = cuerpo47('RA');
+check('RA pone la torsión testicular arriba y con su plazo',
+  /torsi[óo]n/i.test(ra47) && /hora/i.test(ra47)
+  && ra47.indexOf('🚨') >= 0 && ra47.indexOf('🚨') < ra47.search(/\n- /));
+// Y lo mismo para las cuatro de la ronda: el bloque de urgencia va antes que
+// cualquier punto de la lista, no enterrado entre ellos.
+for (const cod of ['QX', 'QY', 'QZ', 'RA']) {
+  const s = cuerpo47(cod);
+  check(`${cod}: el bloque 🚨 va antes del primer punto de la lista`,
+    s.indexOf('🚨') >= 0 && s.indexOf('🚨') < s.search(/\n- /), `🚨 en ${s.indexOf('🚨')}`);
+}
+check('RA avisa de que puede presentarse sin queja del testículo',
+  /dolor de (barriga|tripa|abdom)/i.test(ra47) && /v[óo]mito/i.test(ra47));
+check('RA prohíbe forzar la retracción del prepucio', /forzar|retraer/i.test(ra47) && /🔴/.test(ra47));
+
+// QX no receta y su regla de oro es no tocar lo recetado.
+const qx47 = cuerpo47('QX');
+check('QX dice que la interacción se resuelve quitando lo de fuera, no lo recetado',
+  /no se hace al leer esto/i.test(qx47) || /cambiando o separando \*\*lo de fuera\*\*/.test(qx47));
+
+// QY es el uso prolongado, no «probar melatonina», y no da dosis.
+const qy47 = cuerpo47('QY');
+check('QY no da ninguna dosis de melatonina', !/\d+([.,]\d+)?\s?mg de melatonina/i.test(qy47));
+
+// QZ tenía que decir cuándo dejar de aceptar «es por el autismo».
+check('QZ nombra el análisis concreto que hay que pedir',
+  /TSH/.test(cuerpo47('QZ')) && /T4/.test(cuerpo47('QZ')));
+
+// Enlaces inversos.
+check('LV, QA, BL, AJ, MM, KE, QP y MH mandan a QX',
+  ['LV', 'QA', 'BL', 'AJ', 'MM', 'KE', 'QP', 'MH'].every((c) => /\*\*QX\. Le doy vitaminas/.test(b47(c))));
+check('QK y W mandan a QY', ['QK', 'W'].every((c) => /\*\*QY\. Lleva dos años con melatonina/.test(b47(c))));
+check('DA, QW, NS, ME, EF y CX mandan a QZ',
+  ['DA', 'QW', 'NS', 'ME', 'EF', 'CX'].every((c) => /\*\*QZ\. Le está cambiando el cuerpo/.test(b47(c))));
+check('JR, EQ, LD, AG, S e IO mandan a RA',
+  ['JR', 'EQ', 'LD', 'AG', 'S', 'IO'].every((c) => /\*\*RA\. Le duele un testículo/.test(b47(c))));
+
+// Dos correcciones que la ronda dejó señaladas en fichas ya publicadas.
+check('QK ya no dice ser la única ficha con la advertencia de la melatonina',
+  !/QK es la única ficha con la advertencia/.test(b47('QK')) && /QY/.test(b47('QK')));
+check('la biblioteca llama igual al ensombrecimiento diagnóstico',
+  /ensombrecimiento diagnóstico/.test(cuerpo47('CX')) && /ensombrecimiento diagnóstico/.test(cuerpo47('AL'))
+  && /\*\*ME\*\*/.test(cuerpo47('AL')));
+
+// Las cuatro van donde un padre las buscaría; QX cayó en terapias por la
+// palabra «medicación» y es la hermana de LV.
+const idx47 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const cat47 = (cod) => ((idx47.temas || idx47).find((t) => t.codigo === cod) || {}).categoria;
+check('QX, QY, QZ y RA están en salud',
+  ['QX', 'QY', 'QZ', 'RA'].every((c) => cat47(c) === 'salud'));
+// Y el código de RA: su editor la encabezó como QX, que ya estaba tomada.
+check('RA se publicó con su propio código y no con el de QX',
+  /^### RA\. /m.test(libC) && (libC.match(/^### QX\. /gm) || []).length === 1);
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

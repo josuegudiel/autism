@@ -9,49 +9,39 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 47** — runId `wf_35f0b071-1e7` (tarea wnu9ivk56), lanzada el 22/09 a las
-19:55. Códigos **QX, QY, QZ, RA**, acotados por escrito entre sí:
+**Ninguna.** La ronda 47 está entera publicada (QX, QY, QZ, RA). Lanza la 48.
 
-- **QX** — suplementos, plantas y jarabes que chocan con su medicación (lo suyo
-  es si CHOCAN, no si sirven: eso es BL, B y CS; la melatonina en sí es de QY).
-- **QY** — lleva dos años con melatonina: el uso prolongado, no «probar
-  melatonina» (W, EN, IF, QK y PQ ya están y no se reescriben).
-- **QZ** — pubertad precoz y tiroides (la regla es DA, el peso por antipsicóticos
-  NS, la curva plana QW).
-- **RA** — salud genital y urológica del chico, con la torsión testicular arriba
-  y su reloj de horas (la educación sexual es S, la enuresis EQ).
-
-La ronda 46 está entera publicada (QT, QU, QV, QW).
-
-**Lección de la 46, y va al procedimiento:** cuando el editor final (`corregir`)
-muere, el script se queda con la versión **verificada pero sin corregir** y deja
-**`publicable=true`**. No avisa. QV y QW volvieron así, con 37 y 35 críticas sin
-aplicar. **Antes de publicar, lee `criticas_aplicadas`, no `publicable`:** si
-dice «el editor final fallo», reanuda y espera. Al reanudar tras el reset, los
-cuatro editores volvieron a correr y **QT y QU salieron mejor que la primera
-vez** (QU ganó cuatro bloques 🚨 de riesgo que antes solo estaban en prosa), así
-que las dos se reemplazaron por la segunda pasada.
+**Dos tropiezos de la 47, los dos ya anotados en el procedimiento y los dos
+repetidos igual:** (1) el editor de RA encabezó su ficha con **QX**, que ya
+estaba tomada por otra de la misma ronda —van nueve veces—; lo arregló solo el
+`cabecera_limpia()` del script de publicación, que fuerza el código del
+pipeline. (2) El limpiador de cabecera se comió "fuentes verificadas **y
+depuradas**" en QX, QY y QZ, porque `MARCA` lleva "depurad"; las tres se
+quedaron sin "Ronda 47" hasta que se repasó la cabecera entera al final. **Es el
+mismo fallo de la ronda 38.** Si alguna vez toca tocar `MARCA`, que sea para
+que no se lleve por delante el trozo bueno.
 
 ## Ya publicado
 
-Rondas 29 a 46.
-Biblioteca en **433 temas / 226 verificados / 207 síntesis / 4.169 fuentes**.
-Suite **500/500**. Reserva: **23 entradas**.
+Rondas 29 a 47.
+Biblioteca en **437 temas / 226 verificados / 211 síntesis / 4.258 fuentes**.
+Suite **530/530**. Reserva: **19 entradas**.
 
-Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
-PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
-plantas que chocan con su medicación** (9), **la melatonina a los dos años** (10,
-con el aviso viejo), **la pubertad precoz y el tiroides** (11) y **la salud
-genital y urológica del chico** (12). **Cuando queden menos de 4 investigables,
-lanza antes `scripts/workflows/detectar-huecos.mjs`.**
+Ronda 48: códigos **RB, RC, RD, RE** (QO sigue libre a propósito, como PO;
+confírmalo con grep). Candidatas por orden de la reserva: **el dolor crónico y
+la fatiga en el adolescente** (5), **se le cae la baba** (6), **pedir plaza en
+residencia o centro de día** (7) y **aprueba, así que el colegio dice que no
+necesita apoyos** (16). **Cuando queden menos de 4 investigables, lanza antes
+`scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por
 solaparse con IS) ni "dice que se quiere morir" (terminada, esperando decisión).
 
 **Antes de correr la suite, levanta el servidor** (se cae entre sesiones):
 `(setsid nohup python3 -m http.server 8098 --bind 127.0.0.1 >/dev/null 2>&1 &)`
-desde `agente-autismo/`. Si no, muere con `ERR_CONNECTION_REFUSED` antes de la
-primera comprobación y parece un fallo del código.
+desde `agente-autismo/`. Y **no uses `pkill -f prueba-app`** para parar una
+suite: el patrón casa también con tu propio shell y con el navegador de la que
+está corriendo. Mata por PID.
 
 ## NI está bloqueada a propósito
 
