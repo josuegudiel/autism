@@ -34,7 +34,7 @@ _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor la
 
 | Prioridad | Tarea | Notas |
 |---|---|---|
-| 🟠 **Alta** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 429 temas en 12 categorías. Lo que sigue corto es la puerta de entrada: 15 tarjetas de evidencia y 15 fichas de detector para 429 temas. |
+| 🟠 **Alta** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 429 temas en 12 categorías. El Detector pasó de 15 a **35 fichas** el 22/09, volcando las que la biblioteca ya tenía verificadas (entre ellas las nueve de **CS**, que se escribió justo para esto). Lo que sigue corto es el Centro de evidencia: 15 tarjetas para 429 temas. |
 | 🔴 **Alta** | **Arreglar el target de iOS** | `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift` perdieron la declaración de su vista, así que la app nativa no compila. Ver `ios/README.md`. |
 | 🟠 **Alta** | **Activar la IA real de Claude** | El asistente está en modo demo. Ver README → "Encender la IA real" (poner `ANTHROPIC_API_KEY` en el servidor + cambiar el stub por la llamada real). |
 | 🟡 **Media** | **Re-verificar los 203 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 429 − 226 = 203, y ese número lo da el propio índice. |

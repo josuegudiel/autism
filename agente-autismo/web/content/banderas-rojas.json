@@ -1,371 +1,836 @@
 {
-  "intro": "Escribe o elige una terapia, producto o afirmación. Te decimos qué dice la evidencia y por qué. Verde = razonable; amarillo = incertidumbre/cautela; rojo = desacreditado o peligroso.",
-  "casos": [
+ "intro": "Escribe o elige una terapia, producto o afirmación. Te decimos qué dice la evidencia y por qué. Verde = razonable; amarillo = incertidumbre/cautela; rojo = desacreditado o peligroso.",
+ "casos": [
+  {
+   "id": "quelacion",
+   "nombre": "Quelación",
+   "alias": [
+    "quelacion",
+    "quelación",
+    "chelation",
+    "quelar",
+    "desintoxicar metales",
+    "desintoxicación de metales",
+    "sacar metales pesados",
+    "mercurio",
+    "metales pesados",
+    "edta",
+    "dmsa",
+    "sacar metales",
+    "quelante",
+    "quelantes",
+    "terapia de quelacion",
+    "dmps",
+    "sacar el mercurio",
+    "desintoxicacion de metales pesados"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Peligrosa y sin eficacia para el autismo.",
+   "porque": "El autismo no está causado por intoxicación por metales. La quelación puede causar deshidratación, fallo renal y muerte: un niño autista de 5 años murió en una sesión. La FDA solo la aprueba para intoxicación real por metales, bajo receta y supervisión médica.",
+   "fuentes": [
     {
-      "id": "quelacion",
-      "nombre": "Quelación",
-      "alias": [
-        "quelacion",
-        "quelación",
-        "chelation",
-        "quelar",
-        "desintoxicar metales",
-        "desintoxicación de metales",
-        "sacar metales pesados",
-        "mercurio",
-        "metales pesados",
-        "edta",
-        "dmsa",
-        "sacar metales",
-        "quelante",
-        "quelantes",
-        "terapia de quelacion",
-        "dmps",
-        "sacar el mercurio",
-        "desintoxicacion de metales pesados"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Peligrosa y sin eficacia para el autismo.",
-      "porque": "El autismo no está causado por intoxicación por metales. La quelación puede causar deshidratación, fallo renal y muerte: un niño autista de 5 años murió en una sesión. La FDA solo la aprueba para intoxicación real por metales, bajo receta y supervisión médica.",
-      "fuentes": [
-        {
-          "label": "Reporte forense (PubMed)",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/18949650/"
-        },
-        {
-          "label": "FDA — fraude en autismo",
-          "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions"
-        }
-      ]
+     "label": "Reporte forense (PubMed)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/18949650/"
     },
     {
-      "id": "mms",
-      "nombre": "MMS / dióxido de cloro (CDS)",
-      "alias": [
-        "mms",
-        "cds",
-        "dioxido de cloro",
-        "dióxido de cloro",
-        "clorito de sodio",
-        "solución mineral milagrosa",
-        "kalcker",
-        "lejia",
-        "lejía",
-        "blanqueador",
-        "protocolo parasitos",
-        "protocolo parásitos",
-        "enema de cds",
-        "enemas de cds",
-        "enema de mms",
-        "enemas de mms",
-        "enema de dioxido de cloro",
-        "mms1",
-        "mms2",
-        "cdh",
-        "jim humble",
-        "protocolo cd",
-        "agua clorada para autismo"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Es lejía. Peligroso. Prohibido por la FDA.",
-      "porque": "El dióxido de cloro es un blanqueador industrial. Se ha promovido para autismo, incluso en enemas a niños, causando daño intestinal y vómitos. No tiene ninguna base científica y la FDA emitió alertas claras.",
-      "fuentes": [
-        {
-          "label": "Children's Hospital of Philadelphia",
-          "url": "https://injury.research.chop.edu/blog/posts/dangerous-trend-chlorine-dioxide-and-autism"
-        }
-      ]
-    },
-    {
-      "id": "bioresonancia",
-      "nombre": "Test de cabello / bioresonancia / 'epigenético'",
-      "alias": [
-        "bioresonancia",
-        "biorresonancia",
-        "test de cabello",
-        "prueba de cabello",
-        "epigenetico",
-        "epigenética",
-        "epicgen",
-        "s-drive",
-        "cell wellbeing",
-        "mechón",
-        "analisis capilar",
-        "análisis capilar",
-        "test de pelo",
-        "prueba de pelo",
-        "analisis de cabello",
-        "analisis de pelo",
-        "mineralograma",
-        "epigenetica del cabello"
-      ],
-      "veredicto": "evitar",
-      "resumen": "No mide lo que dice; no diagnostica ni trata el autismo.",
-      "porque": "Un mechón de pelo no puede leer vitaminas, 'toxinas' ni 'epigenética' del cuerpo. La Academia Americana de Pediatría recomienda NO usar análisis de cabello para autismo; el regulador británico (ASA) no ha visto ninguna evidencia de que la bioresonancia diagnostique o trate nada. El mismo mechón da resultados distintos en laboratorios distintos.",
-      "fuentes": [
-        {
-          "label": "AAP — Choosing Wisely",
-          "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html"
-        },
-        {
-          "label": "ASA/CAP (Reino Unido)",
-          "url": "https://www.asa.org.uk/advice-online/bioresonance-therapy.html"
-        }
-      ]
-    },
-    {
-      "id": "celulas-madre",
-      "nombre": "Terapia con células madre",
-      "alias": [
-        "celulas madre",
-        "células madre",
-        "stem cells",
-        "stem"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin beneficio frente a placebo; riesgos graves.",
-      "porque": "La mejor revisión no halló diferencia frente a control en la medida clínica global, y los propios autores piden no inscribir a los niños. La FDA advierte de riesgos serios (tumores, infección, ceguera).",
-      "fuentes": [
-        {
-          "label": "Revisión 2022 (Frontiers in Pediatrics)",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114801/"
-        }
-      ]
-    },
-    {
-      "id": "oxigeno-hiperbarico",
-      "nombre": "Oxígeno hiperbárico (cámara)",
-      "alias": [
-        "oxigeno hiperbarico",
-        "oxígeno hiperbárico",
-        "camara hiperbarica",
-        "cámara hiperbárica",
-        "hbot"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin evidencia convincente para síntomas centrales.",
-      "porque": "No hay evidencia sólida de que mejore los síntomas centrales del autismo. Es caro y no está exento de riesgos. No es un tratamiento recomendado.",
-      "fuentes": [
-        {
-          "label": "Resumen de tratamientos no probados (PMC)",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8990762/"
-        }
-      ]
-    },
-    {
-      "id": "dieta-cura",
-      "nombre": "Dieta sin gluten/caseína como 'cura'",
-      "alias": [
-        "dieta sin gluten",
-        "sin caseina",
-        "sin caseína",
-        "gfcf",
-        "dieta cura",
-        "gluten caseina",
-        "dieta libre de gluten",
-        "dieta gfcf"
-      ],
-      "veredicto": "media",
-      "resumen": "No 'cura' el autismo; cuidado con restringir a un niño.",
-      "porque": "No hay evidencia convincente de que mejore los síntomas centrales del autismo. Restringir alimentos a un niño en crecimiento puede afectar su nutrición; hazlo solo si un pediatra o nutriólogo lo indica por una razón médica real (p. ej., una alergia diagnosticada).",
-      "fuentes": [
-        {
-          "label": "AAP, Pediatrics 2020",
-          "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of"
-        }
-      ]
-    },
-    {
-      "id": "ozono",
-      "nombre": "Ozonoterapia",
-      "alias": [
-        "ozono",
-        "ozonoterapia",
-        "ozone",
-        "ozonoterapia rectal",
-        "insuflacion de ozono"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin base científica para el autismo.",
-      "porque": "Se promueve como 'desintoxicante'. No tiene evidencia para autismo y conlleva riesgos. Forma parte de las 'falsas curas' documentadas que explotan a las familias.",
-      "fuentes": [
-        {
-          "label": "Análisis de desinformación en LatAm (2025)",
-          "url": "https://arxiv.org/abs/2504.01991"
-        }
-      ]
-    },
-    {
-      "id": "secretina",
-      "nombre": "Secretina",
-      "alias": [
-        "secretina",
-        "secretin"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin eficacia; no debe usarse para el autismo.",
-      "porque": "Una revisión Cochrane de 16 ensayos con más de 900 niños concluyó que la secretina intravenosa NO es eficaz para el autismo y 'no debe recomendarse ni administrarse' como tratamiento.",
-      "fuentes": [
-        {
-          "label": "Cochrane — secretina",
-          "url": "https://www.cochrane.org/CD003495/BEHAV_intravenous-secretin-for-autism-spectrum-disorders-asd"
-        }
-      ]
-    },
-    {
-      "id": "comunicacion-facilitada",
-      "nombre": "Comunicación Facilitada / RPM / Spelling to Communicate (S2C)",
-      "alias": [
-        "comunicacion facilitada",
-        "comunicación facilitada",
-        "facilitated communication",
-        "fc",
-        "rpm",
-        "rapid prompting",
-        "spelling to communicate",
-        "s2c",
-        "deletrear para comunicar"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Pseudociencia de comunicación; no se sabe quién escribe el mensaje.",
-      "porque": "La ASHA no recomienda el RPM/S2C y advierte que son potencialmente dañinos, como la desacreditada Comunicación Facilitada. El problema central es la autoría: no se puede saber si las palabras son del niño o del facilitador. No hay evidencia de que produzcan comunicación independiente. Pueden atribuir falsamente palabras al niño y desplazar la CAA con evidencia (PECS, dispositivos).",
-      "fuentes": [
-        {
-          "label": "ASHA — advertencia RPM/S2C",
-          "url": "https://www.asha.org/slp/asha-warns-against-rapid-prompting-method-or-spelling-to-communicate/"
-        }
-      ]
-    },
-    {
-      "id": "integracion-auditiva",
-      "nombre": "Entrenamiento de integración auditiva (AIT) / terapias de sonido",
-      "alias": [
-        "integracion auditiva",
-        "integración auditiva",
-        "ait",
-        "terapia de sonido",
-        "tomatis",
-        "berard"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin evidencia de eficacia para el autismo.",
-      "porque": "Una revisión Cochrane (7 estudios) concluyó que no hay evidencia de que el entrenamiento de integración auditiva ni otras terapias de sonido sean eficaces para el autismo.",
-      "fuentes": [
-        {
-          "label": "Cochrane — AIT",
-          "url": "https://www.cochrane.org/CD003681/BEHAV_auditory-integration-therapy-for-autism-spectrum-disorders"
-        }
-      ]
-    },
-    {
-      "id": "cease-homeopatia",
-      "nombre": "CEASE Therapy / homeopatía para 'curar' el autismo",
-      "alias": [
-        "cease",
-        "cease therapy",
-        "homeopatia",
-        "homeopatía",
-        "homeopathy",
-        "ceasetherapy",
-        "homeopatia para autismo"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Desacreditada; el autismo no es una enfermedad que se 'cure'.",
-      "porque": "CEASE combina homeopatía, megadosis de vitaminas y 'eliminar toxinas de vacunas'. El regulador británico (ASA) prohibió sus afirmaciones y recuerda que 'el autismo no es una enfermedad, no se puede curar'. No hay evidencia robusta de que la homeopatía produzca efectos clínicos.",
-      "fuentes": [
-        {
-          "label": "ASA — CEASE",
-          "url": "https://www.asa.org.uk/news/cease-therapy-claims-must-stop.html"
-        }
-      ]
-    },
-    {
-      "id": "craniosacral",
-      "nombre": "Terapia craneosacral",
-      "alias": [
-        "craneosacral",
-        "cráneosacral",
-        "craniosacral",
-        "cráneo-sacral"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Sin base científica para el autismo.",
-      "porque": "No tiene fundamento científico ni evidencia de eficacia para el autismo (ASAT, Science-Based Medicine).",
-      "fuentes": [
-        {
-          "label": "ASAT — craneosacral",
-          "url": "https://asatonline.org/for-parents/learn-more-about-specific-treatments/craniosacral-therapy/"
-        }
-      ]
-    },
-    {
-      "id": "trasplante-fecal",
-      "nombre": "Trasplante de microbiota fecal (comercializado para autismo)",
-      "alias": [
-        "trasplante fecal",
-        "microbiota fecal",
-        "fmt",
-        "trasplante de heces"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Experimental/no probado para autismo; comercializado sin respaldo.",
-      "porque": "No hay evidencia suficiente que respalde el trasplante fecal como tratamiento del autismo; se ha comercializado de forma cuestionable (investigaciones periodísticas y advertencias de ASAT). No es un tratamiento aprobado.",
-      "fuentes": [
-        {
-          "label": "ASAT — Media Watch",
-          "url": "https://asatonline.org/media_watch/asat-responds-to-cbc-news-investigation-widens-into-b-c-naturopaths-fecal-transplants-for-autism-court-documents-show/"
-        }
-      ]
-    },
-    {
-      "id": "vacunas",
-      "nombre": "\u00abLas vacunas causan autismo\u00bb \u2014 mito",
-      "alias": [
-        "vacunas",
-        "vacuna",
-        "mmr",
-        "triple virica",
-        "triple vírica",
-        "timerosal",
-        "wakefield"
-      ],
-      "veredicto": "evitar",
-      "resumen": "Mito desacreditado en estudios de millones de niños.",
-      "porque": "El estudio original (Wakefield 1998) fue retractado por fraude. Estudios posteriores en millones de niños (Hviid 2019, n=657.461; meta-análisis Taylor 2014; Cochrane 2020) no hallan asociación. Tras retirar el timerosal, las tasas siguieron subiendo.",
-      "fuentes": [
-        {
-          "label": "Hviid et al., Annals of Internal Medicine 2019",
-          "url": "https://www.acpjournals.org/doi/10.7326/M18-2101"
-        }
-      ]
-    },
-    {
-      "id": "intervencion-temprana",
-      "nombre": "Intervención temprana / terapia del desarrollo",
-      "alias": [
-        "intervencion temprana",
-        "intervención temprana",
-        "esdm",
-        "denver",
-        "pact",
-        "terapia de lenguaje",
-        "logopedia",
-        "terapia ocupacional",
-        "mediada por padres"
-      ],
-      "veredicto": "ok",
-      "resumen": "Esto SÍ tiene evidencia. Es por donde empezar.",
-      "porque": "La intervención temprana, del desarrollo, respetuosa y con los padres involucrados es lo que más respaldo tiene a esta edad. Los efectos son reales aunque modestos y dependen del encaje con el niño. Busca una evaluación formal y empieza pronto.",
-      "fuentes": [
-        {
-          "label": "Dawson et al., Pediatrics 2010 (ESDM)",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/"
-        },
-        {
-          "label": "Pickles et al., Lancet 2016 (PACT)",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121131/"
-        }
-      ]
+     "label": "FDA — fraude en autismo",
+     "url": "https://www.fda.gov/drugs/medication-health-fraud/medication-health-fraud-specific-diseases-and-conditions"
     }
-  ]
+   ]
+  },
+  {
+   "id": "mms",
+   "nombre": "MMS / dióxido de cloro (CDS)",
+   "alias": [
+    "mms",
+    "cds",
+    "dioxido de cloro",
+    "dióxido de cloro",
+    "clorito de sodio",
+    "solución mineral milagrosa",
+    "kalcker",
+    "lejia",
+    "lejía",
+    "blanqueador",
+    "protocolo parasitos",
+    "protocolo parásitos",
+    "enema de cds",
+    "enemas de cds",
+    "enema de mms",
+    "enemas de mms",
+    "enema de dioxido de cloro",
+    "mms1",
+    "mms2",
+    "cdh",
+    "jim humble",
+    "protocolo cd",
+    "agua clorada para autismo"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Es lejía. Peligroso. Prohibido por la FDA.",
+   "porque": "El dióxido de cloro es un blanqueador industrial. Se ha promovido para autismo, incluso en enemas a niños, causando daño intestinal y vómitos. No tiene ninguna base científica y la FDA emitió alertas claras.",
+   "fuentes": [
+    {
+     "label": "Children's Hospital of Philadelphia",
+     "url": "https://injury.research.chop.edu/blog/posts/dangerous-trend-chlorine-dioxide-and-autism"
+    }
+   ]
+  },
+  {
+   "id": "bioresonancia",
+   "nombre": "Test de cabello / bioresonancia / 'epigenético'",
+   "alias": [
+    "bioresonancia",
+    "biorresonancia",
+    "test de cabello",
+    "prueba de cabello",
+    "epigenetico",
+    "epigenética",
+    "epicgen",
+    "s-drive",
+    "cell wellbeing",
+    "mechón",
+    "analisis capilar",
+    "análisis capilar",
+    "test de pelo",
+    "prueba de pelo",
+    "analisis de cabello",
+    "analisis de pelo",
+    "mineralograma",
+    "epigenetica del cabello"
+   ],
+   "veredicto": "evitar",
+   "resumen": "No mide lo que dice; no diagnostica ni trata el autismo.",
+   "porque": "Un mechón de pelo no puede leer vitaminas, 'toxinas' ni 'epigenética' del cuerpo. La Academia Americana de Pediatría recomienda NO usar análisis de cabello para autismo; el regulador británico (ASA) no ha visto ninguna evidencia de que la bioresonancia diagnostique o trate nada. El mismo mechón da resultados distintos en laboratorios distintos.",
+   "fuentes": [
+    {
+     "label": "AAP — Choosing Wisely",
+     "url": "https://www.aafp.org/pubs/afp/collections/choosing-wisely/488.html"
+    },
+    {
+     "label": "ASA/CAP (Reino Unido)",
+     "url": "https://www.asa.org.uk/advice-online/bioresonance-therapy.html"
+    }
+   ]
+  },
+  {
+   "id": "celulas-madre",
+   "nombre": "Terapia con células madre",
+   "alias": [
+    "celulas madre",
+    "células madre",
+    "stem cells",
+    "stem"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin beneficio frente a placebo; riesgos graves.",
+   "porque": "La mejor revisión no halló diferencia frente a control en la medida clínica global, y los propios autores piden no inscribir a los niños. La FDA advierte de riesgos serios (tumores, infección, ceguera).",
+   "fuentes": [
+    {
+     "label": "Revisión 2022 (Frontiers in Pediatrics)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114801/"
+    }
+   ]
+  },
+  {
+   "id": "oxigeno-hiperbarico",
+   "nombre": "Oxígeno hiperbárico (cámara)",
+   "alias": [
+    "oxigeno hiperbarico",
+    "oxígeno hiperbárico",
+    "camara hiperbarica",
+    "cámara hiperbárica",
+    "hbot"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin evidencia convincente para síntomas centrales.",
+   "porque": "No hay evidencia sólida de que mejore los síntomas centrales del autismo. Es caro y no está exento de riesgos. No es un tratamiento recomendado.",
+   "fuentes": [
+    {
+     "label": "Resumen de tratamientos no probados (PMC)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8990762/"
+    }
+   ]
+  },
+  {
+   "id": "dieta-cura",
+   "nombre": "Dieta sin gluten/caseína como 'cura'",
+   "alias": [
+    "dieta sin gluten",
+    "sin caseina",
+    "sin caseína",
+    "gfcf",
+    "dieta cura",
+    "gluten caseina",
+    "dieta libre de gluten",
+    "dieta gfcf"
+   ],
+   "veredicto": "media",
+   "resumen": "No 'cura' el autismo; cuidado con restringir a un niño.",
+   "porque": "No hay evidencia convincente de que mejore los síntomas centrales del autismo. Restringir alimentos a un niño en crecimiento puede afectar su nutrición; hazlo solo si un pediatra o nutriólogo lo indica por una razón médica real (p. ej., una alergia diagnosticada).",
+   "fuentes": [
+    {
+     "label": "AAP, Pediatrics 2020",
+     "url": "https://publications.aap.org/pediatrics/article/145/1/e20193447/36917/Identification-Evaluation-and-Management-of"
+    }
+   ]
+  },
+  {
+   "id": "ozono",
+   "nombre": "Ozonoterapia",
+   "alias": [
+    "ozono",
+    "ozonoterapia",
+    "ozone",
+    "ozonoterapia rectal",
+    "insuflacion de ozono"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin base científica para el autismo.",
+   "porque": "Se promueve como 'desintoxicante'. No tiene evidencia para autismo y conlleva riesgos. Forma parte de las 'falsas curas' documentadas que explotan a las familias.",
+   "fuentes": [
+    {
+     "label": "Análisis de desinformación en LatAm (2025)",
+     "url": "https://arxiv.org/abs/2504.01991"
+    }
+   ]
+  },
+  {
+   "id": "secretina",
+   "nombre": "Secretina",
+   "alias": [
+    "secretina",
+    "secretin"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin eficacia; no debe usarse para el autismo.",
+   "porque": "Una revisión Cochrane de 16 ensayos con más de 900 niños concluyó que la secretina intravenosa NO es eficaz para el autismo y 'no debe recomendarse ni administrarse' como tratamiento.",
+   "fuentes": [
+    {
+     "label": "Cochrane — secretina",
+     "url": "https://www.cochrane.org/CD003495/BEHAV_intravenous-secretin-for-autism-spectrum-disorders-asd"
+    }
+   ]
+  },
+  {
+   "id": "comunicacion-facilitada",
+   "nombre": "Comunicación Facilitada / RPM / Spelling to Communicate (S2C)",
+   "alias": [
+    "comunicacion facilitada",
+    "comunicación facilitada",
+    "facilitated communication",
+    "fc",
+    "rpm",
+    "rapid prompting",
+    "spelling to communicate",
+    "s2c",
+    "deletrear para comunicar"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Pseudociencia de comunicación; no se sabe quién escribe el mensaje.",
+   "porque": "La ASHA no recomienda el RPM/S2C y advierte que son potencialmente dañinos, como la desacreditada Comunicación Facilitada. El problema central es la autoría: no se puede saber si las palabras son del niño o del facilitador. No hay evidencia de que produzcan comunicación independiente. Pueden atribuir falsamente palabras al niño y desplazar la CAA con evidencia (PECS, dispositivos).",
+   "fuentes": [
+    {
+     "label": "ASHA — advertencia RPM/S2C",
+     "url": "https://www.asha.org/slp/asha-warns-against-rapid-prompting-method-or-spelling-to-communicate/"
+    }
+   ]
+  },
+  {
+   "id": "integracion-auditiva",
+   "nombre": "Entrenamiento de integración auditiva (AIT) / terapias de sonido",
+   "alias": [
+    "integracion auditiva",
+    "integración auditiva",
+    "ait",
+    "terapia de sonido",
+    "tomatis",
+    "berard"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin evidencia de eficacia para el autismo.",
+   "porque": "Una revisión Cochrane (7 estudios) concluyó que no hay evidencia de que el entrenamiento de integración auditiva ni otras terapias de sonido sean eficaces para el autismo.",
+   "fuentes": [
+    {
+     "label": "Cochrane — AIT",
+     "url": "https://www.cochrane.org/CD003681/BEHAV_auditory-integration-therapy-for-autism-spectrum-disorders"
+    }
+   ]
+  },
+  {
+   "id": "cease-homeopatia",
+   "nombre": "CEASE Therapy / homeopatía para 'curar' el autismo",
+   "alias": [
+    "cease",
+    "cease therapy",
+    "homeopatia",
+    "homeopatía",
+    "homeopathy",
+    "ceasetherapy",
+    "homeopatia para autismo"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Desacreditada; el autismo no es una enfermedad que se 'cure'.",
+   "porque": "CEASE combina homeopatía, megadosis de vitaminas y 'eliminar toxinas de vacunas'. El regulador británico (ASA) prohibió sus afirmaciones y recuerda que 'el autismo no es una enfermedad, no se puede curar'. No hay evidencia robusta de que la homeopatía produzca efectos clínicos.",
+   "fuentes": [
+    {
+     "label": "ASA — CEASE",
+     "url": "https://www.asa.org.uk/news/cease-therapy-claims-must-stop.html"
+    }
+   ]
+  },
+  {
+   "id": "craniosacral",
+   "nombre": "Terapia craneosacral",
+   "alias": [
+    "craneosacral",
+    "cráneosacral",
+    "craniosacral",
+    "cráneo-sacral"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin base científica para el autismo.",
+   "porque": "No tiene fundamento científico ni evidencia de eficacia para el autismo (ASAT, Science-Based Medicine).",
+   "fuentes": [
+    {
+     "label": "ASAT — craneosacral",
+     "url": "https://asatonline.org/for-parents/learn-more-about-specific-treatments/craniosacral-therapy/"
+    }
+   ]
+  },
+  {
+   "id": "trasplante-fecal",
+   "nombre": "Trasplante de microbiota fecal (comercializado para autismo)",
+   "alias": [
+    "trasplante fecal",
+    "microbiota fecal",
+    "fmt",
+    "trasplante de heces"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Experimental/no probado para autismo; comercializado sin respaldo.",
+   "porque": "No hay evidencia suficiente que respalde el trasplante fecal como tratamiento del autismo; se ha comercializado de forma cuestionable (investigaciones periodísticas y advertencias de ASAT). No es un tratamiento aprobado.",
+   "fuentes": [
+    {
+     "label": "ASAT — Media Watch",
+     "url": "https://asatonline.org/media_watch/asat-responds-to-cbc-news-investigation-widens-into-b-c-naturopaths-fecal-transplants-for-autism-court-documents-show/"
+    }
+   ]
+  },
+  {
+   "id": "vacunas",
+   "nombre": "«Las vacunas causan autismo» — mito",
+   "alias": [
+    "vacunas",
+    "vacuna",
+    "mmr",
+    "triple virica",
+    "triple vírica",
+    "timerosal",
+    "wakefield"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Mito desacreditado en estudios de millones de niños.",
+   "porque": "El estudio original (Wakefield 1998) fue retractado por fraude. Estudios posteriores en millones de niños (Hviid 2019, n=657.461; meta-análisis Taylor 2014; Cochrane 2020) no hallan asociación. Tras retirar el timerosal, las tasas siguieron subiendo.",
+   "fuentes": [
+    {
+     "label": "Hviid et al., Annals of Internal Medicine 2019",
+     "url": "https://www.acpjournals.org/doi/10.7326/M18-2101"
+    }
+   ]
+  },
+  {
+   "id": "intervencion-temprana",
+   "nombre": "Intervención temprana / terapia del desarrollo",
+   "alias": [
+    "intervencion temprana",
+    "intervención temprana",
+    "esdm",
+    "denver",
+    "pact",
+    "terapia de lenguaje",
+    "logopedia",
+    "terapia ocupacional",
+    "mediada por padres"
+   ],
+   "veredicto": "ok",
+   "resumen": "Esto SÍ tiene evidencia. Es por donde empezar.",
+   "porque": "La intervención temprana, del desarrollo, respetuosa y con los padres involucrados es lo que más respaldo tiene a esta edad. Los efectos son reales aunque modestos y dependen del encaje con el niño. Busca una evaluación formal y empieza pronto.",
+   "fuentes": [
+    {
+     "label": "Dawson et al., Pediatrics 2010 (ESDM)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4951085/"
+    },
+    {
+     "label": "Pickles et al., Lancet 2016 (PACT)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121131/"
+    }
+   ]
+  },
+  {
+   "id": "gcmaf",
+   "nombre": "GcMAF",
+   "alias": [
+    "gcmaf",
+    "gc-maf",
+    "factor activador de macrofagos",
+    "factor activador de macrófagos"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Fraude con condena penal detrás.",
+   "porque": "Se vende como «cura» del autismo y del cáncer. Los estudios que lo respaldaban fueron retractados, la FDA allanó una clínica que lo aplicaba a más de 11.000 niños autistas y uno de sus principales vendedores en el Reino Unido fue condenado y encarcelado por vender medicamento sin licencia. No está aprobado por ninguna agencia sanitaria.",
+   "fuentes": [
+    {
+     "label": "Anticancer Fund — la historia del GcMAF",
+     "url": "https://www.anticancerfund.org/en/gcmaf-story-exploitation-and-lies"
+    }
+   ]
+  },
+  {
+   "id": "aceites-esenciales",
+   "nombre": "Aceites esenciales como «tratamiento»",
+   "alias": [
+    "aceites esenciales",
+    "aromaterapia",
+    "aceite esencial",
+    "lavanda para el autismo",
+    "difusor"
+   ],
+   "veredicto": "media",
+   "resumen": "Agradables como experiencia sensorial; no tratan el autismo.",
+   "porque": "Oler algo que te gusta puede calmar, y eso ya vale. Lo que no hay es evidencia de que traten los rasgos centrales del autismo. Mal usados —ingeridos, sin diluir o directos sobre la piel— pueden causar irritación, reacciones alérgicas y convulsiones. Nunca por boca y nunca sin diluir.",
+   "fuentes": [
+    {
+     "label": "ProPublica — la FDA retira su advertencia sobre tratamientos para el autismo",
+     "url": "https://www.propublica.org/article/rfk-jr-fda-removes-autism-treatments-warning"
+    }
+   ]
+  },
+  {
+   "id": "exorcismo-sanacion",
+   "nombre": "Exorcismo, «sanación» o rezos como cura",
+   "alias": [
+    "exorcismo",
+    "sanacion",
+    "sanación",
+    "liberacion espiritual",
+    "liberación espiritual",
+    "rezar para curarlo",
+    "posesion",
+    "posesión",
+    "mal de ojo",
+    "limpia espiritual"
+   ],
+   "veredicto": "evitar",
+   "resumen": "No cura nada y ha matado a niños.",
+   "porque": "Presenta el autismo como posesión o castigo en vez de una condición del neurodesarrollo. No hay ni un caso documentado de «cura» por esta vía, y sí muertes registradas: un niño autista de 8 años murió asfixiado, inmovilizado mientras un anciano de su iglesia se le acostaba encima durante una sesión de oración de hasta dos horas. Acompañar espiritualmente a una familia es legítimo; sustituir el tratamiento con ello, no.",
+   "fuentes": [
+    {
+     "label": "CBS News — niño autista muere durante un exorcismo",
+     "url": "https://www.cbsnews.com/news/autistic-boy-dies-during-exorcism/"
+    }
+   ]
+  },
+  {
+   "id": "leche-camella",
+   "nombre": "Leche de camella",
+   "alias": [
+    "leche de camella",
+    "leche de camello",
+    "camel milk"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Sin evidencia fiable, y la que se vende como «tratamiento» suele ir cruda.",
+   "porque": "Los ensayos que reportan mejoras son pequeños y de baja calidad, y los organismos de referencia concluyen que no hay evidencia fiable. Ojo al detalle que más importa: la pasteurizada no es dañina como alimento, pero la que se promociona como tratamiento suele ser cruda, sin pasteurizar. Ningún lácteo sin pasteurizar debería darse a un niño: puede transmitir E. coli, Salmonella, Listeria o Campylobacter.",
+   "fuentes": [
+    {
+     "label": "Raising Children Network — leche de camella y autismo",
+     "url": "https://raisingchildren.net.au/autism/therapies-guide/camel-milk"
+    }
+   ]
+  },
+  {
+   "id": "curcuma",
+   "nombre": "Cúrcuma / curcumina como «cura»",
+   "alias": [
+    "curcuma",
+    "cúrcuma",
+    "curcumina",
+    "turmeric"
+   ],
+   "veredicto": "media",
+   "resumen": "Interesante en el laboratorio; ningún ensayo en personas autistas.",
+   "porque": "Tiene propiedades antioxidantes y antiinflamatorias estudiadas en modelos animales y trabajos exploratorios, pero hasta hoy no existe ningún ensayo clínico en personas autistas que confirme un beneficio real. Presentarla como tratamiento es prematuro.",
+   "fuentes": [
+    {
+     "label": "Curcumina en trastornos neuropsiquiátricos (revisión, PMC)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8868558/"
+    }
+   ]
+  },
+  {
+   "id": "sales-epsom",
+   "nombre": "Sales de Epsom y baños «detox»",
+   "alias": [
+    "sales de epsom",
+    "sal de epsom",
+    "epsom",
+    "bano detox",
+    "baño detox",
+    "sulfato de magnesio en el bano",
+    "magnesio transdermico",
+    "magnesio transdérmico"
+   ],
+   "veredicto": "media",
+   "resumen": "El baño puede calmar; lo de «eliminar toxinas» es marketing.",
+   "porque": "Un baño tibio y su ritual pueden ser calmantes para algunos niños, por motivos puramente sensoriales. La teoría de que el magnesio se absorbe por la piel en cantidades relevantes no tiene respaldo sólido, y venderlo como «detox» es marketing sin base fisiológica. Disfrútalo como baño, no lo compres como terapia.",
+   "fuentes": [
+    {
+     "label": "Quackwatch — el fraude del Aqua Detox",
+     "url": "https://quackwatch.org/device/reports/aquadetox/"
+    }
+   ]
+  },
+  {
+   "id": "banos-ionicos",
+   "nombre": "Baños iónicos y «detox» de pies",
+   "alias": [
+    "bano ionico",
+    "baño iónico",
+    "banos ionicos",
+    "baños iónicos",
+    "detox de pies",
+    "detox foot bath",
+    "ion therapy",
+    "terapia de iones",
+    "aqua detox"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Fraude demostrado: el agua cambia de color aunque no metas el pie.",
+   "porque": "El color del agua viene de la oxidación de los electrodos —el metal se corroe y forma óxido de hierro—, no de «toxinas» saliendo del cuerpo. Está demostrado en pruebas de laboratorio independientes: el agua cambia de color igual si no se sumerge ningún pie. No hay ningún mecanismo biológico detrás.",
+   "fuentes": [
+    {
+     "label": "Quackwatch — el fraude del Aqua Detox",
+     "url": "https://quackwatch.org/device/reports/aquadetox/"
+    }
+   ]
+  },
+  {
+   "id": "suplementos-metilacion",
+   "nombre": "Suplementos «de metilación»",
+   "alias": [
+    "metilacion",
+    "metilación",
+    "metilfolato",
+    "mthfr",
+    "b12 metilcobalamina",
+    "metilcobalamina",
+    "suplementos de metilacion",
+    "ciclo de metilacion"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Se venden contra un «defecto» que las pruebas usadas no demuestran.",
+   "porque": "Se ofrecen combinaciones de folato, B12 y B6 para corregir un «defecto de metilación». Las pruebas de laboratorio con que se justifican tienen utilidad clínica limitada, y no hay consenso ni ensayos robustos que respalden suplementar sin una deficiencia real confirmada. El riesgo no es solo el dinero: dosis altas y descontroladas de vitaminas también hacen daño.",
+   "fuentes": [
+    {
+     "label": "ASAT — terapias con vitaminas y suplementos",
+     "url": "https://asatonline.org/for-parents/learn-more-about-specific-treatments/vitamin-and-supplement-therapy/"
+    }
+   ]
+  },
+  {
+   "id": "terapia-luz-color",
+   "nombre": "Terapia de luz y cromoterapia",
+   "alias": [
+    "cromoterapia",
+    "terapia de luz",
+    "fototerapia para autismo",
+    "photobiomodulation",
+    "fotobiomodulacion",
+    "luz infrarroja",
+    "terapia de color",
+    "lentes de colores"
+   ],
+   "veredicto": "media",
+   "resumen": "Estudios pequeños y preliminares; la cromoterapia no tiene mecanismo.",
+   "porque": "Hay trabajos pequeños, algunos con luz infrarroja, explorando efectos sobre atención o sueño, pero son muestras chicas y sin los controles necesarios para hablar de tratamiento probado. La cromoterapia clásica —colores con supuestos efectos curativos— no tiene ningún mecanismo biológico demostrado.",
+   "fuentes": [
+    {
+     "label": "ASAT — evaluar tratamientos para el autismo",
+     "url": "https://asatonline.org/for-parents/learn-more-about-specific-treatments/"
+    }
+   ]
+  },
+  {
+   "id": "cannabis-cbd",
+   "nombre": "Cannabis y CBD para el autismo",
+   "alias": [
+    "cannabis",
+    "cbd",
+    "aceite de cbd",
+    "canabis",
+    "marihuana medicinal",
+    "cannabidiol",
+    "thc"
+   ],
+   "veredicto": "media",
+   "resumen": "Ensayos pequeños con resultados mezclados; no es un tratamiento aprobado.",
+   "porque": "El ensayo aleatorizado de Aran (2021) no encontró mejoría clara frente a placebo en la medida principal, y los metaanálisis posteriores siguen apoyándose en estudios pequeños y heterogéneos. No es un tratamiento aprobado para el autismo. Además, lo que se vende sin receta a menudo no contiene lo que dice la etiqueta, así que ni la dosis ni el contenido están garantizados.",
+   "fuentes": [
+    {
+     "label": "Aran et al. 2021 — ensayo aleatorizado (Molecular Autism)",
+     "url": "https://molecularautism.biomedcentral.com/articles/10.1186/s13229-021-00420-2"
+    },
+    {
+     "label": "Metaanálisis 2025 (European Psychiatry, PMC)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12438805/"
+    }
+   ]
+  },
+  {
+   "id": "leucovorina",
+   "nombre": "Leucovorina / ácido folínico",
+   "alias": [
+    "leucovorina",
+    "leucovorin",
+    "acido folinico",
+    "ácido folínico",
+    "folinato",
+    "folinato calcico"
+   ],
+   "veredicto": "media",
+   "resumen": "Preliminar y para un subgrupo; no es una cura ni un tratamiento de rutina.",
+   "porque": "Generó muchos titulares en 2025-2026, pero la evidencia real es preliminar: unos pocos estudios pequeños sugieren posible mejora del lenguaje en un subgrupo concreto, no en todos los niños autistas. Ni la Academia Americana de Pediatría ni la Child Neurology Society la respaldan como tratamiento de rutina. Si se usa, es bajo supervisión médica.",
+   "fuentes": [
+    {
+     "label": "AAP — preguntas frecuentes sobre leucovorina en autismo",
+     "url": "https://www.aap.org/en/patient-care/autism/use-of-leucovorin-in-autistic-pediatric-patients/frequently-asked-questions-faqs-for-pediatricians-and-other-prescribing-pediatric-clinicians/"
+    },
+    {
+     "label": "Child Neurology Society — declaración sobre leucovorina",
+     "url": "https://www.childneurologysociety.org/community/advocacy/position-statements/cns-position-statement-on-leucovorin-use-in-autism-and-related-disorders/"
+    }
+   ]
+  },
+  {
+   "id": "mitos-ambientales",
+   "nombre": "«El wifi, las antenas, el flúor o las ecografías lo causaron» — mito",
+   "alias": [
+    "wifi",
+    "wi-fi",
+    "antenas",
+    "campos electromagneticos",
+    "campos electromagnéticos",
+    "5g",
+    "fluoruro",
+    "fluor",
+    "flúor",
+    "ecografias",
+    "ecografías",
+    "ultrasonido en el embarazo",
+    "radiacion del movil",
+    "radiación del móvil"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Los grandes estudios no lo respaldan.",
+   "porque": "Es comprensible buscar una causa, pero no hay evidencia de que el wifi, las antenas, el flúor del agua o las ecografías del embarazo causen autismo. La OMS no encuentra efectos por los campos electromagnéticos a los niveles cotidianos, y el estudio SEED sobre ecografías prenatales no halló asociación con el autismo. Perseguir estos mitos resta tiempo y energía a lo que sí ayuda.",
+   "fuentes": [
+    {
+     "label": "OMS — campos electromagnéticos, preguntas y respuestas",
+     "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-electromagnetic-fields"
+    },
+    {
+     "label": "Ecografía prenatal y riesgo de TEA (SEED, 2023)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37483151/"
+    }
+   ]
+  },
+  {
+   "id": "dieta-cetogenica",
+   "nombre": "Dieta cetogénica para el autismo",
+   "alias": [
+    "dieta cetogenica",
+    "dieta cetogénica",
+    "keto",
+    "cetogenica",
+    "cetosis",
+    "dieta keto"
+   ],
+   "veredicto": "media",
+   "resumen": "Evidencia preliminar y de baja calidad; restringir a un niño tiene coste.",
+   "porque": "Ninguna dieta cura el autismo ni cambia sus rasgos centrales, y en la cetogénica la evidencia es preliminar y de baja calidad. Sí es un tratamiento real, pero para la epilepsia resistente, no para el autismo. Y una dieta restrictiva sin supervisión puede causar déficits nutricionales de verdad, sobre todo en un niño que ya come poca variedad: si se explora, con pediatra o nutricionista.",
+   "fuentes": [
+    {
+     "label": "Revisión — dieta cetogénica en TEA (PMC)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11711257/"
+    },
+    {
+     "label": "AAP — dietas especiales en niños con TEA",
+     "url": "https://publications.aap.org/toolkits/book/338/chapter/5732582/Special-Diets-for-Children-With-Autism-Spectrum"
+    }
+   ]
+  },
+  {
+   "id": "sulforafano",
+   "nombre": "Sulforafano (brócoli)",
+   "alias": [
+    "sulforafano",
+    "sulforaphane",
+    "brotes de brocoli",
+    "brotes de brócoli",
+    "extracto de brocoli"
+   ],
+   "veredicto": "media",
+   "resumen": "Ciencia en construcción: ensayos pequeños, resultados no concluyentes.",
+   "porque": "Se estudia como posible apoyo y hay ensayos pequeños con resultados interesantes, incluido uno aleatorizado en niños, pero no son concluyentes y no es un tratamiento aprobado. No es una cura, y cualquier decisión pasa primero por el equipo médico.",
+   "fuentes": [
+    {
+     "label": "Singh et al. 2014, PNAS",
+     "url": "https://www.pnas.org/doi/10.1073/pnas.1416940111"
+    },
+    {
+     "label": "Revisión sistemática (PMC)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7527484/"
+    }
+   ]
+  },
+  {
+   "id": "equinoterapia",
+   "nombre": "Equinoterapia e hidroterapia",
+   "alias": [
+    "equinoterapia",
+    "hipoterapia",
+    "terapia con caballos",
+    "montar a caballo",
+    "hidroterapia",
+    "terapia con delfines",
+    "delfinoterapia"
+   ],
+   "veredicto": "media",
+   "resumen": "Disfrutable y con valor propio; como «tratamiento», evidencia floja.",
+   "porque": "Montar a caballo o hacer actividades acuáticas puede aportar ejercicio, calma sensorial y momentos de conexión, y eso ya vale por sí mismo. Lo que es limitado y de baja calidad metodológica es la evidencia de que modifiquen de forma duradera los rasgos centrales del autismo. Elígelo como ocio que le gusta, no como terapia que sustituye a otra cosa — y mira el coste.",
+   "fuentes": [
+    {
+     "label": "Revisión sistemática y metaanálisis de intervenciones con caballos (IJERPH)",
+     "url": "https://www.mdpi.com/1660-4601/20/3/2630"
+    }
+   ]
+  },
+  {
+   "id": "animales-apoyo",
+   "nombre": "Perros de asistencia y animales de apoyo",
+   "alias": [
+    "perro de asistencia",
+    "perro de terapia",
+    "animal de apoyo",
+    "mascota para autismo",
+    "perro para nino autista",
+    "perro para niño autista"
+   ],
+   "veredicto": "media",
+   "resumen": "Puede sumar de verdad, pero no es un tratamiento y la evidencia es preliminar.",
+   "porque": "Las mascotas y las intervenciones con animales pueden aportar compañía, conexión y calma, y un perro de asistencia puede aportar seguridad real a una familia con riesgo de fugas. Pero no son un tratamiento ni una cura, la evidencia es preliminar, y hay que contar con lo que el niño prefiere, con el bienestar del animal y con el coste.",
+   "fuentes": [
+    {
+     "label": "O'Haire 2013 — revisión de intervención asistida con animales en TEA",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/23124442/"
+    }
+   ]
+  },
+  {
+   "id": "intestino-permeable",
+   "nombre": "«Intestino permeable» como causa del autismo",
+   "alias": [
+    "intestino permeable",
+    "leaky gut",
+    "permeabilidad intestinal",
+    "disbiosis",
+    "candida",
+    "cándida",
+    "parasitos causan autismo",
+    "parásitos causan autismo"
+   ],
+   "veredicto": "evitar",
+   "resumen": "Investigar el eje intestino-cerebro no es lo mismo que curarlo con dietas.",
+   "porque": "La ciencia sí investiga el sistema inmune y el eje intestino-cerebro como parte del rompecabezas, pero eso es muy distinto de afirmar que un «intestino permeable» causa el autismo o que se cura con dietas y suplementos. Si hay molestias digestivas, merecen tratarse por sí mismas con un pediatra o un gastroenterólogo — no como vía para cambiar el autismo.",
+   "fuentes": [
+    {
+     "label": "Fallas metodológicas en los vínculos microbioma-autismo (Neuron)",
+     "url": "https://www.cell.com/neuron/fulltext/S0896-6273(25)00785-8"
+    }
+   ]
+  },
+  {
+   "id": "paracetamol-embarazo",
+   "nombre": "«El paracetamol en el embarazo lo causó» — mito",
+   "alias": [
+    "paracetamol",
+    "acetaminofen",
+    "acetaminofén",
+    "tylenol",
+    "paracetamol en el embarazo",
+    "tome paracetamol embarazada"
+   ],
+   "veredicto": "evitar",
+   "resumen": "El estudio que comparó hermanos, con 2,5 millones de niños, no lo encontró.",
+   "porque": "Es normal alarmarse con los titulares. La evidencia de mayor calidad —incluido un estudio con casi 2,5 millones de niños que comparó hermanos entre sí, que es como se controla lo que la familia comparte— no encontró que el paracetamol del embarazo cause autismo. Las sociedades médicas lo siguen recomendando como el analgésico más seguro en el embarazo cuando se usa según indicación. Si ya lo tomaste, no hiciste nada malo.",
+   "fuentes": [
+    {
+     "label": "Ahlqvist et al., JAMA 2024",
+     "url": "https://jamanetwork.com/journals/jama/fullarticle/2817406"
+    },
+    {
+     "label": "FDA — respuesta sobre acetaminofén y autismo",
+     "url": "https://www.fda.gov/news-events/press-announcements/fda-responds-evidence-possible-association-between-autism-and-acetaminophen-use-during-pregnancy"
+    }
+   ]
+  },
+  {
+   "id": "pans-pandas",
+   "nombre": "PANS / PANDAS",
+   "alias": [
+    "pandas",
+    "pans",
+    "estreptococo y autismo",
+    "cambio brusco tras una infeccion",
+    "cambio brusco tras una infección"
+   ],
+   "veredicto": "media",
+   "resumen": "Estudiado de verdad, pero controvertido y sin prueba que lo confirme.",
+   "porque": "Describe un cuadro de inicio repentino —obsesiones, tics, restricción alimentaria— que algunos investigadores vinculan a infecciones previas. Es un diagnóstico realmente estudiado, pero todavía controvertido y sin ninguna prueba de laboratorio que lo confirme. Si tu hijo tiene un cambio abrupto y severo de conducta, lo urgente es que lo evalúen, no comprar un protocolo por internet.",
+   "fuentes": [
+    {
+     "label": "NIMH — PANS y PANDAS, preguntas y respuestas",
+     "url": "https://www.nimh.nih.gov/health/publications/pandas"
+    },
+    {
+     "label": "PANDAS/PANS en la infancia: controversias y evidencia",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/30996598/"
+    }
+   ]
+  },
+  {
+   "id": "musicoterapia",
+   "nombre": "Musicoterapia",
+   "alias": [
+    "musicoterapia",
+    "terapia con musica",
+    "terapia con música",
+    "music therapy"
+   ],
+   "veredicto": "media",
+   "resumen": "El ensayo grande no encontró el efecto que los pequeños prometían.",
+   "porque": "La revisión Cochrane de 2014 encontró efectos favorables, pero el ensayo aleatorizado grande que vino después (TIME-A, publicado en JAMA en 2017) no halló mejoría en la medida principal frente al cuidado habitual. Puede ser una actividad valiosa y disfrutable, y para muchos niños la música es un interés que da alegría; lo que no está sostenido es venderla como tratamiento de los rasgos centrales.",
+   "fuentes": [
+    {
+     "label": "Bieleninik et al. 2017 — ensayo TIME-A (JAMA)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28763550/"
+    },
+    {
+     "label": "Geretsegger et al. 2014 — revisión Cochrane",
+     "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004381.pub3/full"
+    }
+   ]
+  }
+ ]
 }

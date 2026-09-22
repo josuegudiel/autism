@@ -50,7 +50,7 @@ Dos cosas que enseñó y que no están escritas en ningún otro sitio:
 
 Rondas 29 a 45. Última: ronda 45 (QP, QQ, QR, QS).
 Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.084 fuentes**.
-Suite **407/407**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
+Suite **439/439**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
 porque la 0 —NI— espera decisión humana y la 28 está rechazada).
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como

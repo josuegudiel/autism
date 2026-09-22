@@ -689,10 +689,18 @@ function buscarFichas(text) {
       // que más importa reconocer, y exigir palabra completa ya evita que
       // "stem" salte dentro de "sistema".
       if (palabraDentro(q, o)) { p = Math.max(p, 90); continue; }
-      // La consulta es parte del nombre de la ficha. Solo es fuerte si cubre
-      // buena parte de él, para que "terapia" no resuelva por sí sola a
-      // "terapia con células madre".
-      if (palabraDentro(o, q)) p = Math.max(p, q.length >= o.length * 0.5 ? 55 : 35);
+      // La consulta es parte del nombre de la ficha. Solo es fuerte si son
+      // VARIAS palabras y cubren buena parte de él. Una palabra suelta nunca
+      // resuelve sola: antes bastaba con que el alias fuese corto, así que
+      // "terapia" caía en "terapia de luz" y "dieta" en "dieta cura" y la
+      // familia recibía un veredicto concreto de una palabra genérica. Con
+      // varias palabras no pasa, y ninguna ficha deja de encontrarse por su
+      // propio nombre: lo que hace esta regla es mandar la palabra suelta al
+      // "¿a cuál te refieres?", que es donde tiene que ir.
+      if (palabraDentro(o, q)) {
+        const fuerte = q.includes(" ") && q.length >= o.length * 0.5;
+        p = Math.max(p, fuerte ? 55 : 35);
+      }
     }
     if (p === 0) {
       const aciertos = tokens.filter(

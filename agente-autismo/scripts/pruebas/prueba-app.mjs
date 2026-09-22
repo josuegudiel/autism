@@ -1594,6 +1594,76 @@ check('lo conceptual se queda en comprender',
   ['J', 'BX', 'BZ', 'FZ', 'KO'].every((c) => cat32(c) === 'comprender'));
 
 
+// 33. El Detector conocía 15 términos para una biblioteca de 429 temas, y la
+// auditoría ya avisó de que la suite solo probaba UNO de los 15. Ahora son 35
+// casos —los 20 nuevos salen de fichas ya publicadas y verificadas, entre ellas
+// CS, que se escribió justo para esto y llevaba rondas sin volcarse— y esta
+// sección los prueba uno a uno contra la app de verdad, no contra el JSON.
+const detSrc = JSON.parse(fs.readFileSync(new URL('../../web/content/banderas-rojas.json', import.meta.url), 'utf8'));
+check('el Detector tiene al menos 35 casos', detSrc.casos.length >= 35, String(detSrc.casos.length));
+
+const idsDet = detSrc.casos.map((c) => c.id);
+check('ningún caso del Detector repite id', new Set(idsDet).size === idsDet.length);
+const sinFuente = detSrc.casos.filter((c) => !Array.isArray(c.fuentes) || c.fuentes.length === 0);
+check('todo veredicto del Detector viene con al menos una fuente',
+  sinFuente.length === 0, sinFuente.map((c) => c.id).join(' '));
+const veredictosRaros = detSrc.casos.filter((c) => !['ok', 'media', 'evitar'].includes(c.veredicto));
+check('todos los veredictos son ok, media o evitar',
+  veredictosRaros.length === 0, veredictosRaros.map((c) => c.id).join(' '));
+// Un alias en dos casos distintos es un empate que el detector resuelve solo, y
+// nadie se entera: la familia recibe el veredicto del otro producto.
+const duenoAlias = new Map();
+const chocan = [];
+for (const c of detSrc.casos) {
+  for (const a of (c.alias || [])) {
+    const k = a.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    if (duenoAlias.has(k) && duenoAlias.get(k) !== c.id) chocan.push(`${a}: ${duenoAlias.get(k)} / ${c.id}`);
+    else duenoAlias.set(k, c.id);
+  }
+}
+check('ningún alias pertenece a dos casos del Detector', chocan.length === 0, chocan.slice(0, 5).join(' | '));
+
+// Lo que escribe una familia, contra la app servida. Se comprueba el veredicto,
+// no solo que salga algo: un rojo que sale verde es peor que no salir.
+for (const [q, esperado] of [['gcmaf', /Evítalo/],
+                             ['leche de camella', /Evítalo/],
+                             ['quieren hacerle un exorcismo', /Evítalo/],
+                             ['bano ionico de pies', /Evítalo/],
+                             ['suplementos de metilacion', /Evítalo/],
+                             ['intestino permeable', /Evítalo/],
+                             ['dicen que el wifi causa autismo', /Evítalo/],
+                             ['tome paracetamol en el embarazo', /Evítalo/],
+                             ['aceites esenciales', /Cautela/],
+                             ['cbd para el autismo', /Cautela/],
+                             ['leucovorina', /Cautela/],
+                             ['dieta cetogenica', /Cautela/],
+                             ['sulforafano', /Cautela/],
+                             ['equinoterapia', /Cautela/],
+                             ['perro de asistencia', /Cautela/],
+                             ['pandas', /Cautela/],
+                             ['musicoterapia', /Cautela/],
+                             ['curcuma', /Cautela/],
+                             ['sales de epsom', /Cautela/],
+                             ['cromoterapia', /Cautela/]]) {
+  const r = await detectar(q);
+  check(`Detector: «${q}» da su veredicto`, esperado.test(r), r.slice(0, 120));
+}
+// Y el pilar de todo esto: que ampliarlo no haya vuelto gritón al Detector.
+for (const q of ['terapia', 'sistema', 'agua', 'musica', 'perro']) {
+  const r = await detectar(q);
+  check(`Detector: «${q}» no dispara un rojo a la ligera`, !/Evítalo/.test(r), r.slice(0, 110));
+}
+// Una palabra suelta no resuelve a una ficha concreta, por corto que sea su
+// alias. Antes bastaba con que el alias midiera el doble que la consulta:
+// "dieta" ya caía en «dieta cura» —un fallo que estaba desde antes—, y al
+// añadir «terapia de luz» también cayó "terapia". Ahora las dos preguntan.
+for (const q of ['terapia', 'dieta']) {
+  const r = await detectar(q);
+  check(`Detector: «${q}» a secas pregunta en vez de dar un veredicto`,
+    /cuál te refieres/i.test(r), r.slice(0, 130));
+}
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
