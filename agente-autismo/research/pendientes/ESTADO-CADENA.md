@@ -9,8 +9,11 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 42** — runId `wf_d8de7468-ea9` (tarea wycpjtl1o), lanzada el 22/09
-hacia las 08:00.
+**Ronda 42** — runId `wf_d8de7468-ea9`, reanudada el 22/09 a las 09:10
+(tarea w9w6qq87z; el primer intento, wycpjtl1o, murió con el límite de sesión
+que resetea a las 9:00 UTC: se llevó doce críticos y dos editores, y conAguante()
+gastó sus cuatro intentos contra un límite que no se pasa esperando cinco minutos).
+Los cuatro investigadores y los cuatro verificadores estaban en caché.
 
 - **QC** — se ha roto un diente o se le ha salido de un golpe (traumatismo dental).
 - **QD** — mayor de edad y no puedo ni moverle la cuenta del banco, sin llegar a la tutela.
