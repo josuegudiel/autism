@@ -7,7 +7,7 @@ Es una **PWA estática** (se instala como app, funciona sin conexión para el co
 
 > ⚠️ Esta app **informa y orienta; no diagnostica ni sustituye** a un profesional de la salud.
 
-**Estado:** app funcional con **buscador sobre 413 temas** (226 verificados) y **3.718 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
+**Estado:** app funcional con **buscador sobre 417 temas** (226 verificados) y **3.816 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
 
 <!-- Las tres cifras de arriba son las que sirve `web/content/biblioteca-indice.json`
      (`totalTemas`, `verificados`, `totalFuentes`). Si vuelves a ejecutar el conversor,
@@ -18,7 +18,7 @@ Es una **PWA estática** (se instala como app, funciona sin conexión para el co
 
 ## Qué incluye
 
-1. **📚 Biblioteca buscable (lo principal)** — escribe lo que te preocupa con tus palabras («mi hijo no duerme», «se pega», «en la escuela») y encuentra el tema que responde, con su nivel de evidencia 🟢/🟡/🔴 y sus fuentes. **413 temas** (226 verificados) organizados en 12 categorías. Funciona **sin conexión y sin ningún coste**: no usa IA ni servidores.
+1. **📚 Biblioteca buscable (lo principal)** — escribe lo que te preocupa con tus palabras («mi hijo no duerme», «se pega», «en la escuela») y encuentra el tema que responde, con su nivel de evidencia 🟢/🟡/🔴 y sus fuentes. **417 temas** (226 verificados) organizados en 12 categorías. Funciona **sin conexión y sin ningún coste**: no usa IA ni servidores.
 2. **🚩 Detector de pseudociencia** — escribe una terapia o producto (quelación, MMS, test de cabello, dieta-cura…) y te dice si es confiable, dudoso o peligroso, con fuentes. Si la consulta es ambigua, **pregunta antes de dar un veredicto** en vez de arriesgarse a asustar sin motivo.
 3. **🆘 Ayuda urgente** — teléfonos de crisis por país (España, México, Argentina, Chile, Colombia, Perú, EE. UU.), verificados con fuentes oficiales, más señales de alarma y qué hacer.
 4. **📈 Seguimiento de mi hijo** — registra intervenciones y el día a día; gráfica simple de progreso. **Los datos se guardan solo en tu dispositivo** (IndexedDB); sin cuentas ni nube. **Solo en la web:** la app nativa de iPhone (`ios/`) no lleva rastreador.
@@ -112,7 +112,7 @@ Detalles técnicos del agente (ya implementados en `api/chat.ts`):
 
 ```
 research/
-  biblioteca-autismo.md   ← EL CORAZÓN: los 413 temas de la app salen de aquí.
+  biblioteca-autismo.md   ← EL CORAZÓN: los 417 temas de la app salen de aquí.
 scripts/
   construir-contenido.py  conversor: biblioteca .md -> JSON que lee la app
   sinonimos.json          "no duerme" -> temas W, EN  (editable sin programar)

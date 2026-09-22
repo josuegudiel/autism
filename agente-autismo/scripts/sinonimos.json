@@ -1029,20 +1029,24 @@
   "PV"
  ],
  "mayoria de edad": [
-  "LQ"
+  "LQ",
+  "QD"
  ],
  "incapacitar": [
-  "LQ"
+  "LQ",
+  "QD"
  ],
  "incapacitacion": [
   "LQ"
  ],
  "curatela": [
-  "LQ"
+  "LQ",
+  "QD"
  ],
  "tutela": [
   "MR",
-  "LQ"
+  "LQ",
+  "QD"
  ],
  "quien decide por el": [
   "LQ"
@@ -2037,5 +2041,76 @@
  "su padre no quiere la terapia": [
   "QB",
   "KL"
+ ],
+ "se ha roto un diente": [
+  "QC"
+ ],
+ "se le ha salido un diente": [
+  "QC"
+ ],
+ "diente roto": [
+  "QC"
+ ],
+ "golpe en la boca": [
+  "QC"
+ ],
+ "se le ha caido un diente de un golpe": [
+  "QC"
+ ],
+ "no puedo mover su cuenta del banco": [
+  "QD"
+ ],
+ "cuenta del banco de mi hijo": [
+  "QD"
+ ],
+ "guarda de hecho": [
+  "QD"
+ ],
+ "apoderamiento": [
+  "QD"
+ ],
+ "poder notarial": [
+  "QD",
+  "CL"
+ ],
+ "certificado digital de mi hijo": [
+  "QD"
+ ],
+ "tramites por mi hijo": [
+  "QD"
+ ],
+ "no me dan su receta": [
+  "QD"
+ ],
+ "cuido tambien a mis padres": [
+  "QE"
+ ],
+ "mis padres ya no pueden con el": [
+  "QE",
+  "DN"
+ ],
+ "estoy cuidando de todos": [
+  "QE"
+ ],
+ "mi madre tiene alzheimer": [
+  "QE"
+ ],
+ "no deja tirar nada": [
+  "QF"
+ ],
+ "la casa llena de cosas": [
+  "QF"
+ ],
+ "acumulacion": [
+  "QF"
+ ],
+ "guarda cajas vacias": [
+  "QF"
+ ],
+ "no puedo cambiar el sofa": [
+  "QF"
+ ],
+ "se enfada si tiro algo": [
+  "QF"
  ]
 }

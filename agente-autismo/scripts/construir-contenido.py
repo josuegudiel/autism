@@ -56,6 +56,7 @@ CATEGORIAS = [
         "conducta", "meltdown", "rabieta", "shutdown", "stimming", "agresión",
         "regulación emocional", "crisis", "contención", "catatonia", "autolesión",
         "transiciones y apoyos", "intereses intensos", "pda", "burnout",
+        "acumulación",
     ]),
     ("sensorial", "Mundo sensorial", [
         "sensorial", "interocepción", "misofonía", "procesamiento auditivo",
@@ -83,12 +84,18 @@ CATEGORIAS = [
         "respiro", "crianza", "explicar el autismo", "estigma", "viajes", "salir:",
         "campamento", "transporte", "emergencias", "baño", "cocinar", "dinero",
         "organización y tareas", "habilidades de vida", "amistades", "amistad",
+        "cuido",
     ]),
     ("adultez", "Adolescencia y vida adulta", [
         "adolescencia", "adultez", "adulto", "empleo", "trabajo", "entrevistas",
         "vivienda", "conducir", "envejecimiento", "sexualidad", "citas y relaciones",
         "maternidad", "embarazo", "planificación financiera", "justicia", "coaching",
         "independencia", "menopausia",
+        # La ficha de la cuenta del banco (QD) caia en "Comprender el autismo", que
+        # es el cajon por defecto, y arrastraba ahi a LQ y a PV. Los patrones van
+        # ajustados a proposito: "tutela" a secas se llevaria PP (piso tutelado) y
+        # "los 18" se llevaria MU y QB, que no son de vida adulta.
+        "mayor de edad", "mayoría de edad", "incapacitar", "antes de los 18",
     ]),
     ("derechos", "Derechos y recursos por país", [
         "derechos y recursos", "panorama", "en méxico", "en españa", "en argentina",

@@ -412,3 +412,7 @@ PY. El chequeo del adulto que no pide nadie: colon, mama, tensión y colesterol
 PZ. El dentista dice que hay que dormirlo: sedación, anestesia general y si puede llevar brackets
 QA. Cada uno va por su lado: el médico, el colegio y los servicios sociales no se hablan entre ellos (y la secretaria acabas siendo tú)
 QB. Nos separamos y mi hijo tiene discapacidad: quién decide las terapias y la pensión que no se acaba a los 18
+QC. Se le ha roto un diente o se le ha salido de un golpe: traumatismo dental
+QD. Ya es mayor de edad y no puedo ni moverle la cuenta del banco: hacer trámites por él sin llegar a la tutela
+QE. Cuido a mi hijo autista y ahora también a mis padres: cómo repartir cuando tienes que cuidar de los dos
+QF. No deja tirar nada: colecciones, cajas vacías y cuándo pasa a ser acumulación

@@ -9,26 +9,14 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 42** — runId `wf_d8de7468-ea9`, reanudada el 22/09 a las 09:10
-(tarea w9w6qq87z; el primer intento, wycpjtl1o, murió con el límite de sesión
-que resetea a las 9:00 UTC: se llevó doce críticos y dos editores, y conAguante()
-gastó sus cuatro intentos contra un límite que no se pasa esperando cinco minutos).
-Los cuatro investigadores y los cuatro verificadores estaban en caché.
-
-- **QC** — se ha roto un diente o se le ha salido de un golpe (traumatismo dental).
-- **QD** — mayor de edad y no puedo ni moverle la cuenta del banco, sin llegar a la tutela.
-- **QE** — cuido a mi hijo y ahora también a mis padres.
-- **QF** — no deja tirar nada: colecciones, cajas vacías y acumulación.
-
-Los cuatro temas son las entradas 15, 6, 10 y 12 (en ese orden) de
-`research/pendientes/ronda-19-borradores.json`, todas acotadas por escrito
-antes de lanzarlas.
+**Ninguna.** La ronda 42 (QC, QD, QE, QF) se publicó el 22/09. Toca elegir los
+cuatro temas de la **ronda 43** de la reserva y lanzarla.
 
 ## Ya publicado
 
-Rondas 29 a 41. Última: ronda 41 (PY, PZ, QA, QB) en `861a83b`, CI verde.
-Biblioteca en **413 temas / 226 verificados / 187 síntesis / 3.718 fuentes**.
-Suite **264/264**. Reserva: 16 entradas.
+Rondas 29 a 42. Última: ronda 42 (QC, QD, QE, QF).
+Biblioteca en **417 temas / 226 verificados / 191 síntesis / 3.816 fuentes**.
+Suite **289/289**. Reserva: 12 entradas.
 
 Ronda 43: códigos **QG, QH, QI, QJ** (confirma con grep; PO sigue libre y se
 evita). Candidatas que no compiten entre sí: las apneas y las amígdalas, nació
@@ -89,7 +77,7 @@ propio resultado.
    **Dos arreglos obligatorios en la cabecera:**
    - (a) **fuerza el código** al del pipeline. OCHO veces ya un editor ha
      encabezado su ficha con el código de otra: NB→NA, NN→NM, PB→NZ, PF→PD,
-     PK→PH, PP→PL, PR→PQ, QA→PY.
+     PK→PH, PP→PL, PR→PQ, QA→PY, QD→QC.
    - (b) **reconstruye la cabecera** descartando los trozos que hablen del
      bloqueo, y **comprueba la cabecera entera al final**: en la ronda 38 se
      tiró el trozo bueno ("fuentes depuradas") y se conservó el malo
@@ -108,7 +96,7 @@ propio resultado.
    mal enlazada en AG. Si el editor pide elegir, elige y explica por qué.
    - **Patrón firme:** cuando una ficha nueva contradice a una publicada, la
      equivocada suele ser LA PUBLICADA. Ya han caído GL, DH, LP, S, MO, FU, R, AE,
-     MR, PC, EO, KF y AG. Pero no siempre: en la 39 la equivocada era la nueva
+     MR, PC, EO, KF, AG y CL. Pero no siempre: en la 39 la equivocada era la nueva
      (PT decía al revés lo de "audífono" y MT lo tenía bien). Comprueba con una o
      dos búsquedas antes de corregir.
    - Bloqueos falsos habituales: "el código no está en indice-temas.txt" (eso lo
@@ -118,7 +106,7 @@ propio resultado.
    reescribe con `indent=1` y salto final.
 4. `python3 scripts/construir-contenido.py`.
 5. Cifras en `README.md` (2 sitios), `ESTADO.md` (varios, incluido el cálculo
-   "413 − 226 = 187") e `ios/README-iOS.md`.
+   "417 − 226 = 191") e `ios/README-iOS.md`.
 6. Sección de ronda en `scripts/pruebas/prueba-app.mjs`, más una prueba por cada
    corrección a una ficha vieja. **Comprueba que la premisa de cada prueba nueva
    es cierta antes de escribirla** (una vez escribí una sobre una premisa falsa

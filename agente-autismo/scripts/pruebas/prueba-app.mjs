@@ -1071,6 +1071,88 @@ check('GE y CL mandan a QB para lo legal de la ruptura',
   /\*\*QB\. Nos separamos/.test(b41('GE')) && /\*\*QB\. Nos separamos/.test(b41('CL')));
 
 
+// 26. Ronda 42. La ronda murió con el límite de sesión y se reanudó desde caché.
+// QD vino bloqueada por CL, que era de la ronda 5 y la única de su grupo sin
+// revisar tras la Ley 8/2021: ofrecía cuentas conjuntas como medida de apoyo y
+// trataba la incapacitación como una opción viva.
+for (const [codigo, marca] of [['QC', /diente|traumatismo|avulsi/i],
+                               ['QD', /banco|guarda de hecho|poder/i],
+                               ['QE', /mis padres|cuidar|abuel/i],
+                               ['QF', /tirar|colecci|acumulaci/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 42: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['se ha roto un diente', /diente|dental|dentista/i],
+                       ['se le ha salido un diente', /diente|reimplant|leche/i],
+                       ['no puedo mover su cuenta del banco', /banco|cuenta|guarda de hecho/i],
+                       ['guarda de hecho', /guarda de hecho|apoyo|banco/i],
+                       ['cuido tambien a mis padres', /padres|cuidar|abuel/i],
+                       ['no deja tirar nada', /tirar|colecci|acumulaci/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 42: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib42 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b42 = (cod) => lib42.slice(lib42.indexOf('### ' + cod + '. '), lib42.indexOf('### ', lib42.indexOf('### ' + cod + '. ') + 6));
+
+// Novena vez que un editor encabeza su ficha con el código de otra: QD venía
+// como «### QC.», la ficha de al lado de esta misma ronda.
+check('QD se publicó con su propio código y QC sigue siendo el diente',
+  /^### QD\. Ya es mayor de edad/m.test(lib42) && /^### QC\. Se le ha roto un diente/m.test(lib42));
+
+// Lo que desbloqueó QD: CL seguía ofreciendo la cuenta conjunta como apoyo y la
+// incapacitación como opción, cinco años después de que la ley la suprimiera.
+const cl = b42('CL');
+check('CL ya no ofrece las cuentas conjuntas como alternativa de apoyo',
+  !/cuentas conjuntas/.test(cl) && /cotitular/.test(cl) && /\*\*QD\./.test(cl));
+check('CL dice que en España la incapacitación de adultos ya no existe',
+  /suprimió la incapacitación judicial/.test(cl) && /curatela/.test(cl));
+
+// En un traumatismo dental la conducta es la CONTRARIA según el diente, y el
+// agua estropea el diente que se quiere salvar.
+const qc = b42('QC');
+check('QC distingue diente de leche de definitivo y no manda guardarlo en agua',
+  /de leche/.test(qc) && /definitivo/.test(qc) && /IADT/.test(qc)
+  && /(El agua NO sirve|el agua lo estropea)/i.test(qc));
+check('QC pone al niño antes que el diente', /[Aa]ntes que el diente está el niño/.test(qc));
+check('EO, LH y PZ mandan a QC',
+  /\*\*QC\. Se le ha roto un diente/.test(b42('EO')) && /\*\*QC\. Se le ha roto un diente/.test(b42('LH'))
+  && /\*\*QC\. Se le ha roto un diente/.test(b42('PZ')));
+
+// QD no puede tapar lo que no pudo verificar sobre el art. 18.2.
+const qd = b42('QD');
+check('QD dice que poner a alguien de cotitular no es una medida de apoyo',
+  /cotitular/.test(qd) && /No es una medida de apoyo/i.test(qd));
+check('QD deja escrito lo que no pudo verificar sobre la historia clínica',
+  /no hemos comprobado si la guarda de hecho/.test(qd));
+check('LQ y PV mandan a QD para el trámite concreto',
+  /\*\*QD\. Ya es mayor de edad/.test(b42('LQ')) && /\*\*QD\. Ya es mayor de edad/.test(b42('PV')));
+
+// QE no puede sonar a elegir entre el hijo y los padres.
+check('QE no plantea elegir entre el hijo y los padres',
+  /no.{0,40}elegir entre/i.test(b42('QE')) && /\*\*PQ/.test(b42('QE')));
+check('DN y HN mandan a QE',
+  /\*\*QE\. Cuido a mi hijo/.test(b42('DN')) && /\*\*QE\. Cuido a mi hijo/.test(b42('HN')));
+
+// QF tenía que desmontar la comparación del 30%, no repetirla ni callarla.
+check('QF desmonta la comparación del 30% en vez de repetirla',
+  /no la repitas/i.test(b42('QF')) && /53\.378/.test(b42('QF')));
+check('BI y HW mandan a QF',
+  /\*\*QF\. No deja tirar nada/.test(b42('BI')) && /\*\*QF\. No deja tirar nada/.test(b42('HW')));
+
+// Las fichas de vida adulta caían en el cajón por defecto del conversor.
+const idx42 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temas42 = idx42.temas || idx42;
+const catDe = (cod) => (temas42.find((t) => t.codigo === cod) || {}).categoria;
+check('LQ, PV y QD ya no caen en el cajón por defecto del conversor',
+  catDe('LQ') === 'adultez' && catDe('PV') === 'adultez' && catDe('QD') === 'adultez');
+// «tutela» a secas se llevaría PP (piso tutelado) y «los 18» se llevaría MU y QB.
+check('Los patrones nuevos no se llevan por delante PP, MU ni QB',
+  catDe('PP') !== 'adultez' && catDe('MU') !== 'adultez' && catDe('QB') !== 'adultez');
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
