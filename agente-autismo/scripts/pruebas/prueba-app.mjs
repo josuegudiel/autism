@@ -2111,6 +2111,91 @@ for (const md of Object.values(temasCuerpo)) {
 check('las viñetas con más de un marcador siguen siendo las contadas', dobles <= 27, String(dobles));
 
 
+// 41. Ayuda urgente, país por país. Es la pantalla donde una errata cuesta más
+// caro: un número mal copiado, un horario inventado o un país que desaparece de
+// la lista los ve alguien que está buscando ayuda a las tres de la mañana. La
+// suite sólo miraba dos de los ocho países, así que aquí se comprueban todos,
+// contra el JSON y contra lo que acaba pintado en la pantalla.
+await ir('#ayuda');
+const ayudaJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/ayuda-urgente.json', import.meta.url), 'utf8'));
+const tAyuda = await texto();
+const PAISES_AYUDA = ['España', 'México', 'Argentina', 'Chile', 'Colombia', 'Perú',
+  'Estados Unidos (en español)', 'Otros países'];
+check('Ayuda urgente conserva los ocho países y en el mismo orden',
+  ayudaJSON.paises.map((p) => p.pais).join(' | ') === PAISES_AYUDA.join(' | '),
+  ayudaJSON.paises.map((p) => p.pais).join(' | '));
+
+for (const p of ayudaJSON.paises) {
+  check('Ayuda pinta ' + p.pais + ' con su número y su explicación',
+    tAyuda.includes(p.pais) && tAyuda.includes(p.linea) && tAyuda.includes(p.descripcion.slice(0, 40)),
+    p.linea);
+}
+
+// Los datos, antes de pintarlos: sin huecos donde importa y con fuente oficial.
+check('Ayuda: ningún país se queda sin país, línea, descripción o fuente',
+  ayudaJSON.paises.every((p) => p.pais && p.linea && p.descripcion && p.fuente),
+  ayudaJSON.paises.filter((p) => !(p.pais && p.linea && p.descripcion && p.fuente)).map((p) => p.pais).join(','));
+check('Ayuda: todas las fuentes van por https',
+  !/"http:\/\//.test(JSON.stringify(ayudaJSON))
+  && ayudaJSON.paises.every((p) => /^https:\/\//.test(p.fuente)
+    && (!p.fuenteSecundaria || /^https:\/\//.test(p.fuenteSecundaria))));
+check('Ayuda: la nota de mantenimiento sigue exigiendo comprobar número y horario',
+  /nunca de oídas/.test(ayudaJSON._nota) && /HORARIO/.test(ayudaJSON._nota));
+
+// El enlace de marcado. `tel()` (web/app.js) se queda con el primer número del
+// texto, así que el número que encabeza cada línea es el que se marca.
+const telsAyuda = await pag.$$eval('.pais a.tel', (as) => as.map((a) => a.getAttribute('href')));
+check('Ayuda: los siete números marcables generan enlace tel: y el octavo bloque no',
+  telsAyuda.length === 7, telsAyuda.join(' '));
+check('Ayuda: ningún tel: arrastra espacios, paréntesis ni letras',
+  telsAyuda.every((h) => /^tel:[0-9*+#]+$/.test(h)), telsAyuda.join(' '));
+check('Ayuda: cada enlace marca el número de su país',
+  telsAyuda.join(' ') === 'tel:024 tel:8009112000 tel:08009990091 tel:*4141 tel:192 tel:113 tel:988',
+  telsAyuda.join(' '));
+
+// Argentina: el 135 del Centro de Asistencia al Suicida atiende de 8 a 24 h, no
+// las 24. La ficha lo anunciaba como «24 h», que es justo la hora a la que no
+// contesta. Encabeza ahora la línea nacional del Ministerio de Salud, que sí lo
+// es, y el horario real del CAS queda escrito.
+const argAyuda = ayudaJSON.paises.find((p) => p.pais === 'Argentina');
+check('Ayuda: Argentina encabeza con la línea nacional de 24 h, no con el 135',
+  /0800\s*999\s*0091/.test(argAyuda.linea) && !/^135/.test(argAyuda.linea.trim()), argAyuda.linea);
+const fraseCAS = argAyuda.descripcion.split(/(?<=\.)\s+/).find((f) => /Asistencia al Suicida/.test(f)) || '';
+check('Ayuda: la frase del Centro de Asistencia al Suicida da su horario real',
+  /de 8 a 24 h/.test(fraseCAS) && /no de madrugada/.test(fraseCAS) && /135/.test(fraseCAS), fraseCAS);
+check('Ayuda: el horario del 135 llega a la pantalla, no sólo al JSON',
+  /de 8 a 24 h/.test(tAyuda) && /no de madrugada/.test(tAyuda));
+
+// Canales por escrito: media biblioteca trata de gente que no puede sostener
+// una llamada. Donde el propio servicio ofrece chat o WhatsApp, se dice.
+check('Ayuda explica por qué hay canales por escrito y para quién',
+  /Por escrito/.test(tAyuda) && /personas autistas/.test(tAyuda));
+const conEscrito = ayudaJSON.paises.filter((p) => p.escrito);
+check('Ayuda: seis de los ocho bloques ofrecen ya un canal por escrito',
+  conEscrito.length === 6, conEscrito.map((p) => p.pais).join(','));
+for (const p of conEscrito) {
+  check('Ayuda pinta el canal por escrito de ' + p.pais,
+    tAyuda.includes(p.escrito.slice(0, 35)), p.escrito.slice(0, 60));
+}
+check('Ayuda: el 024 sale con su chat y con la videointerpretación en lengua de signos',
+  /[Cc]hat en la web del 024/.test(tAyuda) && /linea024\.svisual\.org/.test(tAyuda));
+check('Ayuda: Infosalud sale con sus dos números de WhatsApp y Telegram',
+  /955 557 000/.test(tAyuda) && /952 842 623/.test(tAyuda));
+check('Ayuda: el 988 sale con la palabra que hay que enviar y con el chat en español',
+  /AYUDA al 988/.test(tAyuda) && /988lifeline\.org\/es/.test(tAyuda));
+check('Ayuda: la Línea 106 sale con el WhatsApp de Bogotá y dicho que es de Bogotá',
+  /300 754 8933/.test(tAyuda) && /En Bogotá/.test(tAyuda));
+check('Ayuda: Chile y Argentina no inventan un canal por escrito que no existe',
+  !ayudaJSON.paises.find((p) => p.pais === 'Chile').escrito && !argAyuda.escrito);
+check('Ayuda: «qué puedes hacer» ofrece el camino por escrito a quien no puede llamar',
+  ayudaJSON.queHacer.some((q) => /por escrito/.test(q)) && /atiende el mismo equipo/.test(tAyuda));
+
+// Y lo que ya se comprobaba, que no se pierda: opciones de menú incluidas.
+check('Ayuda: Perú conserva la opción 5 y Colombia la opción 4',
+  /113 opción 5/.test(tAyuda) && /192 opción 4/.test(tAyuda));
+check('Ayuda: los números de emergencias siguen a la vista',
+  ['112', '911', '131 (SAMU)', '123', '106 (SAMU)'].every((n) => tAyuda.includes(n)));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

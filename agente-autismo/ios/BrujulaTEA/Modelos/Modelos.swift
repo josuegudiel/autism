@@ -234,6 +234,8 @@ struct Fuente: Codable, Hashable, Identifiable, Sendable {
 struct AyudaUrgente: Codable, Sendable {
     let titulo: String
     let intro: String
+    /// Por qué hay canales por escrito; vacío si el JSON aún no lo trae.
+    let notaEscrito: String
     let avisoCuidador: String
     let paises: [PaisAyuda]
     let senalesDeAlarma: [TextoFlexible]
@@ -243,6 +245,7 @@ struct AyudaUrgente: Codable, Sendable {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         titulo = try c.decodeIfPresent(String.self, forKey: .titulo) ?? "Ayuda urgente"
         intro = try c.decodeIfPresent(String.self, forKey: .intro) ?? ""
+        notaEscrito = try c.decodeIfPresent(String.self, forKey: .notaEscrito) ?? ""
         avisoCuidador = try c.decodeIfPresent(String.self, forKey: .avisoCuidador) ?? ""
         paises = try c.decodeIfPresent([PaisAyuda].self, forKey: .paises) ?? []
         senalesDeAlarma = try c.decodeIfPresent([TextoFlexible].self, forKey: .senalesDeAlarma) ?? []
@@ -254,6 +257,9 @@ struct PaisAyuda: Codable, Hashable, Identifiable, Sendable {
     let pais: String
     let linea: String
     let descripcion: String
+    /// Chat, WhatsApp o SMS del mismo servicio. Vacío cuando no consta: para
+    /// mucha gente autista es la única vía practicable, así que no se supone.
+    let escrito: String
     let emergencias: String
     let fuente: String
 
@@ -264,6 +270,7 @@ struct PaisAyuda: Codable, Hashable, Identifiable, Sendable {
         pais = try c.decodeIfPresent(String.self, forKey: .pais) ?? ""
         linea = try c.decodeIfPresent(String.self, forKey: .linea) ?? ""
         descripcion = try c.decodeIfPresent(String.self, forKey: .descripcion) ?? ""
+        escrito = try c.decodeIfPresent(String.self, forKey: .escrito) ?? ""
         emergencias = try c.decodeIfPresent(String.self, forKey: .emergencias) ?? ""
         fuente = try c.decodeIfPresent(String.self, forKey: .fuente) ?? ""
     }

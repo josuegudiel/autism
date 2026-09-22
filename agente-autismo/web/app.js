@@ -541,6 +541,7 @@ async function renderAyuda() {
   view.innerHTML = `
     <h1 class="page">${esc(d.titulo)}</h1>
     <div class="aviso">${esc(d.intro)}</div>
+    ${d.notaEscrito ? `<div class="nota">${esc(d.notaEscrito)}</div>` : ""}
     ${d.paises.map((p) => {
       const num = tel(p.linea);
       return `<article class="pais">
@@ -549,6 +550,7 @@ async function renderAyuda() {
           ? `<a class="tel" href="tel:${esc(num)}">${ICONOS.telefono}<span>${esc(p.linea)}</span></a>`
           : `<div class="tel">${ICONOS.telefono}<span>${esc(p.linea)}</span></div>`}
         <p class="desc">${esc(p.descripcion)}</p>
+        ${p.escrito ? `<p class="escrito"><strong>Por escrito:</strong> ${esc(p.escrito)}</p>` : ""}
         ${p.emergencias ? `<p class="emg">Emergencias: <strong>${esc(p.emergencias)}</strong></p>` : ""}
       </article>`;
     }).join("")}
