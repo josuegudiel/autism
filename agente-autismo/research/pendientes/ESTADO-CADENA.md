@@ -9,61 +9,38 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 46** — runId `wf_98f8554f-4cc` (tarea wvn47wrl7), lanzada el 22/09 hacia
-las 15:45. Códigos **QT, QU, QV, QW**. Las cuatro van acotadas por escrito,
-porque los investigadores no se ven unos a otros:
+**Ronda 46, segunda mitad.** QT y QU están **publicados**. QV y QW **no**: el
+límite de sesión mató sus editores finales (`corregir`) con 38 y 30 críticas sin
+aplicar, y el script, cuando el editor muere, **publica la versión verificada sin
+corregir y deja publicable=true** — eso es una ficha a medias y no se publica.
+Reanudado en `wf_98f8554f-4cc` (tarea wop4qy26v) a las 19:12, tras el reset de
+las 19:10; lo demás replica de caché y solo vuelven a correr esos dos editores.
 
-- **QT** — camas de seguridad, sillas de paseo grandes y arneses en casa (el
-  casco es de QS, el colegio de QR, los centros de PP, la doctrina de FQ).
-- **QU** — lleva meses sin salir de su cuarto (el burnout es de AN, la depresión
-  de IC, el rechazo escolar de LO, la catatonía de DO).
-- **QV** — ya tiene la regla y toma valproato: el lado farmacológico (la primera
-  cita de ginecología y la anticoncepción decidida con ella son de NW).
-- **QW** — no gana peso ni crece (el ARFID es de LU y P; NS es el caso contrario).
+**Cuando termine:** comprueba en el resultado que `criticas_aplicadas` de QV y QW
+**ya no diga «el editor final fallo»**; si lo dice, no publiques y vuelve a
+reanudar. Luego el procedimiento de siempre, más la categoría (**QV y QW van a
+`salud`**; mira si el patrón las coloca solas y, si no, mételas en
+`CATEGORIA_POR_CODIGO`).
 
-Las **fichas mudas ya no existen**: las 429 tienen al menos una entrada en
-`scripts/sinonimos.json` (1.211 claves). El workflow que lo iba a hacer
-(`wf_647bd355-5e7`) **no sirve y no hay que relanzarlo**: en dos ejecuciones
-seguidas murieron 13 de 16 y luego 15 de 17 agentes con el mismo error de
-servidor —`safeguards flagged this message … [reasoning_extraction]`—, un falso
-positivo que no depende del contenido (los lotes que pasaron llevaban el prompt
-idéntico). Y al reanudar **no replicó de caché**: la segunda vuelta devolvió
-menos lotes que la primera. Las 120 entradas que sí volvieron están fusionadas;
-las otras 370 las escribí a mano en cuatro tandas, comprobando cada frase con el
-simulador nuevo.
-
-**`scripts/pruebas/simular-busqueda.py`** reimplementa `buscarTemas()` de
-`web/app.js` para probar en seco una entrada ANTES de añadirla. Úsalo siempre.
-Dos cosas que enseñó y que no están escritas en ningún otro sitio:
-
-- **El orden de los códigos dentro de una clave no lo lee nadie.** `app.js` hace
-  `impulso[c] = max(...)` para todos por igual, y si dos fichas empatan gana la
-  de título alfabéticamente menor. Poner una ficha "la primera" en la lista no
-  hace nada: si quieres que mande, déjala sola.
-- **`nf.includes(q)` da 30 puntos a cualquier consulta que sea SUBCADENA de la
-  frase**, incluida una palabra suelta. Eso es lo que hace que "tdah" encuentre a
-  U, y también lo que haría que "tiene tdah y autismo" → A le robase puntos: esa
-  entrada se descartó por eso. No cambies la regla sin simular antes: bajarla a
-  dos palabras rompe "tdah".
+**Ojo con el servidor de pruebas:** se cayó durante el parón y la suite murió
+con `ERR_CONNECTION_REFUSED` antes de la primera comprobación. Levántalo siempre
+antes de correrla.
 
 ## Ya publicado
 
-Rondas 29 a 45. Última: ronda 45 (QP, QQ, QR, QS).
-Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.084 fuentes**.
-Suite **439/439**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
-porque la 0 —NI— espera decisión humana y la 28 está rechazada).
+Rondas 29 a 45, y QT y QU de la 46.
+Biblioteca en **431 temas / 226 verificados / 205 síntesis / 4.126 fuentes**.
+Suite **456/456**. Reserva: **25 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
-PO; confírmalo con grep antes de usar nada). Candidatas por orden de la reserva:
-el chico que no crece ya está en QW, así que siguen **los suplementos y plantas
-que chocan con su medicación** (9), **la melatonina a los dos años** (10, con el
-aviso viejo), **la pubertad precoz y el tiroides** (11) y **la salud genital y
-urológica del chico** (12). **Cuando queden menos de 4 investigables, lanza antes
-`scripts/workflows/detectar-huecos.mjs`.**
+PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
+plantas que chocan con su medicación** (9), **la melatonina a los dos años** (10,
+con el aviso viejo), **la pubertad precoz y el tiroides** (11) y **la salud
+genital y urológica del chico** (12). **Cuando queden menos de 4 investigables,
+lanza antes `scripts/workflows/detectar-huecos.mjs`.**
 
-**NO investigues** "de cinco a ocho pide la tablet" (ya se investigó y se
-rechazó como NG por solaparse con IS) ni "dice que se quiere morir" (terminada y
-esperando decisión humana).
+**NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por
+solaparse con IS) ni "dice que se quiere morir" (terminada, esperando decisión).
 
 ## NI está bloqueada a propósito
 

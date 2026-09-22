@@ -179,6 +179,9 @@ CATEGORIA_POR_CODIGO = {
     "ND": "familia", "NK": "familia", "NL": "familia", "NP": "familia",
     "PF": "familia", "PJ": "familia", "PK": "familia", "PQ": "familia",
     "PX": "familia", "S": "familia",
+    # Ronda 46: QT (camas, alarmas y arneses en casa) caia en el cajon por
+    # defecto; es equipamiento de casa y seguridad nocturna.
+    "QT": "familia",
     # Escuela y aprendizaje.
     "MU": "escuela", "MW": "escuela",
     # Adolescencia y vida adulta.

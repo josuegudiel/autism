@@ -428,3 +428,5 @@ QP. ¿Esta reacción al medicamento es para ir a urgencias hoy? Sarpullido con f
 QQ. Llamar al 112 o al 911 en plena crisis, o cuando ya ha venido la policía: qué decir y qué llevar preparado
 QR. En el colegio lo sujetan o lo encierran solo en un cuarto: contención y aislamiento en el centro educativo
 QS. Se golpea la cabeza: el casco y las revisiones de salud (ojos, oídos, cuello, dientes)
+QT. Se escapa de la cama por la noche o se tira del carro: camas de seguridad, arneses y dónde está la línea con la sujeción
+QU. Lleva meses sin salir de su cuarto: el adolescente o el joven adulto autista que se encierra en casa

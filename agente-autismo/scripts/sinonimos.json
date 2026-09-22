@@ -950,7 +950,8 @@
   "LI"
  ],
  "arnes": [
-  "LI"
+  "LI",
+  "QT"
  ],
  "aripiprazol": [
   "LJ"
@@ -3940,5 +3941,70 @@
  ],
  "tics que aparecieron de golpe": [
   "NV"
+ ],
+ "cama de seguridad": [
+  "QT"
+ ],
+ "cama cerrada": [
+  "QT"
+ ],
+ "cama con dosel": [
+  "QT"
+ ],
+ "barandilla de cama": [
+  "QT"
+ ],
+ "se sale de la cama": [
+  "QT"
+ ],
+ "se escapa de noche": [
+  "QT",
+  "AE"
+ ],
+ "carro adaptado": [
+  "QT"
+ ],
+ "carrito grande": [
+  "QT"
+ ],
+ "silla de paseo grande": [
+  "QT"
+ ],
+ "arnes de paseo": [
+  "QT"
+ ],
+ "correa para ninos": [
+  "QT"
+ ],
+ "alarma de puerta": [
+  "QT",
+  "AE"
+ ],
+ "colchon en el suelo": [
+  "QT"
+ ],
+ "no sale de su cuarto": [
+  "QU"
+ ],
+ "lleva meses encerrado en su habitacion": [
+  "QU"
+ ],
+ "se encierra en su cuarto": [
+  "QU"
+ ],
+ "hikikomori": [
+  "QU"
+ ],
+ "no quiere salir de casa": [
+  "QU"
+ ],
+ "dejo de estudiar y no hace nada": [
+  "QU"
+ ],
+ "solo sale de noche a la cocina": [
+  "QU"
+ ],
+ "solo habla conmigo por la puerta": [
+  "QU"
  ]
 }

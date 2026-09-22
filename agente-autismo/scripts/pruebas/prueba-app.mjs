@@ -1664,6 +1664,82 @@ for (const q of ['terapia', 'dieta']) {
 }
 
 
+// 34. Ronda 46, primera mitad. QT y QU salieron publicables; QV y QW se
+// quedaron a medias porque el límite de sesión mató sus editores finales
+// —38 y 30 críticas sin aplicar— y una ficha sin corregir no se publica.
+for (const [codigo, marca] of [['QT', /cama de seguridad|arn[ée]s|carro/i],
+                               ['QU', /cuarto|habitaci[óo]n|retraimiento|encierr/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 46: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re46] of [['cama de seguridad', /cama|arn[ée]s|sujeci[óo]n/i],
+                         ['se escapa de noche', /noche|cama|fuga|escap/i],
+                         ['silla de paseo grande', /carro|silla|paseo/i],
+                         ['no sale de su cuarto', /cuarto|habitaci[óo]n|encierr/i],
+                         ['hikikomori', /cuarto|retraimiento|encierr/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 46: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re46.test(rr), rr.slice(0, 160));
+}
+
+const lib46 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b46 = (cod) => {
+  const i = lib46.indexOf('### ' + cod + '. ');
+  const j = lib46.indexOf('\n### ', i + 6);
+  return j === -1 ? lib46.slice(i) : lib46.slice(i, j);
+};
+const cuerpo46 = (cod) => b46(cod).replace(/> \*\*Para la app[\s\S]*/, '');
+
+// QT no puede recomendar marcas ni productos: el daño documentado aquí es el
+// atrapamiento, y una cama cerrada mal elegida es justo el riesgo.
+const qt46 = cuerpo46('QT');
+check('QT dice sin rodeos lo que no se hace nunca',
+  /nunca lo ates a la cama/i.test(qt46) && /con llave por fuera/i.test(qt46));
+check('QT da criterios que un padre puede aplicar solo, no una lista de compra',
+  /¿puede salir él solo/i.test(qt46) && /le limite menos/i.test(qt46)
+  && /cinco preguntas/i.test(qt46));
+
+// QU tenía prohibido presentar como medida en autismo lo que se midió en otra
+// población: la mayor parte de la literatura de hikikomori es japonesa y no autista.
+const qu46 = cuerpo46('QU');
+check('QU dice de dónde viene su evidencia en vez de aparentar que es de autismo',
+  /investigación disponible es japonesa/i.test(qu46) && /\*\*no\*\* autist/i.test(qu46)
+  && /serie clínica de Barcelona/i.test(qu46));
+// Y no vende como cifra firme un intervalo que va de 1 de cada 4 a 1 de cada 2.
+check('QU publica el intervalo de confianza del 41 %, no solo el 41 %',
+  /41,0%/.test(qu46) && /26,3%–57,7%/.test(qu46));
+
+// Enlaces inversos: una ficha a la que no apunta nadie no existe para quien no
+// llega por el buscador.
+check('AE, LH, PF, LI, FQ y QS mandan a QT',
+  ['AE', 'LH', 'PF', 'LI', 'FQ', 'QS'].every((c) => /\*\*QT\. Se escapa de la cama/.test(b46(c))));
+check('AN, IC, LO y MW mandan a QU',
+  ['AN', 'IC', 'LO', 'MW'].every((c) => /\*\*QU\. Lleva meses sin salir/.test(b46(c))));
+
+// La deuda que QU dejó escrita, cerrada en el mismo commit: DO era la ficha
+// canónica de la catatonía y no tenía bloque de urgencia, mientras LM publicaba
+// ese criterio exacto. La ficha más específica era la menos protectora.
+const do46 = cuerpo46('DO');
+check('DO ya manda a urgencias ante la pérdida de habilidades, como LM',
+  /🚨 URGENCIAS/.test(do46) && /deja de lavarse o de vestirse solo/.test(do46)
+  && /\*\*LM\. ¿Hay que ingresarlo/.test(do46));
+check('DO distingue la catatonía del encierro de QU y del cuadro de NJ',
+  /\*\*QU\. Lleva meses sin salir/.test(do46) && /\*\*NJ\*\*/.test(do46));
+
+// El conversor: QT caía otra vez en el cajón por defecto.
+const idx46 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temas46 = idx46.temas || idx46;
+const cat46 = (cod) => (temas46.find((t) => t.codigo === cod) || {}).categoria;
+check('QT está en familia y QU en adultez',
+  cat46('QT') === 'familia' && cat46('QU') === 'adultez');
+
+// La clave «arnes» mandaba solo al cinturón del coche.
+const sinon46 = JSON.parse(fs.readFileSync(new URL('../sinonimos.json', import.meta.url), 'utf8'));
+check('«arnes» llega también a QT, no solo a LI',
+  (sinon46['arnes'] || []).includes('QT') && (sinon46['arnes'] || []).includes('LI'));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
