@@ -1937,6 +1937,18 @@ check('O y HQ dicen lo mismo sobre cuándo señalar es señal de alarma',
 check('ninguna de las dos convierte el margen normal en un plazo para esperar',
   /no se espera a ver/.test(bC('O')) && /no un plazo para esperar/.test(bC('HQ')));
 
+// Tres fichas publicaban la prevalencia del estreñimiento con dos cifras
+// distintas —~26% (Wang 2022) en A, ~37% (McElhanon 2014) en AA y ME— sin que
+// ninguna nombrara a la otra. Las dos son ciertas y vienen de metanálisis
+// distintos; lo que faltaba era decirlo.
+check('A, AA y ME dan las dos cifras del estreñimiento y dicen de dónde salen',
+  /McElhanon 2014/.test(bC('A')) && /\*\*AA\*\*/.test(bC('A'))
+  && /Wang 2022/.test(bC('AA')) && /McElhanon 2014\*\* estima/.test(bC('AA'))
+  && /Wang 2022/.test(bC('ME')));
+check('AA explica por qué difieren en vez de elegir una',
+  /revisiones de épocas y criterios de inclusión distintos/.test(bC('AA'))
+  && /48,7%/.test(bC('AA')));
+
 
 await nav.close();
 console.log('\n' + (errores.length
