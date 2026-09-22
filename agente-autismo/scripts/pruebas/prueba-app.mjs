@@ -717,7 +717,11 @@ check('NU distingue el CEDis del certificado que pide la pensión mexicana',
 // Ninguna cabecera publicada puede arrastrar la marca de estado que los editores
 // se inventan al dejar algo a un humano: ⏳, ⏸ EN ESPERA, retenida, NO PUBLICABLE.
 const cabeceras = [...lib35.matchAll(/^### [A-Z]{1,2}\. .*$/gm)].map((m) => m[0]);
-const BLOQUEO = /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|no publicar hasta|pendiente de decisi|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
+// 'pendiente de decisi' se quedaba corto: PC llevaba tres rondas publicada
+// diciendo 'pendiente de resolver una contradicción con FU' que ya se había
+// resuelto en la 35. Y no vale con buscar 'pendiente' a secas: lo lleva dentro
+// 'vida independiente', que es el título de CM.
+const BLOQUEO = /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|no publicar hasta|pendiente de |pendiente:|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
 const sucias = cabeceras.filter((h) => BLOQUEO.test(h));
 check('Ninguna ficha publicada arrastra una marca de estado sin resolver',
   sucias.length === 0, sucias.slice(0, 2).join(' | ').slice(0, 150));
@@ -785,6 +789,81 @@ const lib37 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', im
 const ph = lib37.slice(lib37.indexOf('### PH. '), lib37.indexOf('### ', lib37.indexOf('### PH. ') + 6));
 check('PH se queda en la jubilación y remite a JX y NA para el resto',
   /JX\./.test(ph) && /NA\./.test(ph) && /jubilaci[óo]n/i.test(ph));
+
+
+// 22. Ronda 38. Tres publicables a la primera y una, PP, que venía bloqueada por
+// cosas que solo se pueden cerrar desde fuera de la ficha: el reparto con MC, el
+// alta del código y los enlaces inversos. Se cerraron y se publicó.
+for (const [codigo, marca] of [['PL', /abuelos|piscina|alquiler/i],
+                               ['PM', /farmacorresistente|SUDEP/i],
+                               ['PN', /declarar|denuncia|juicio/i],
+                               ['PP', /centro de d[íi]a|piso tutelado|respiro/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 38: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['casa de los abuelos', /abuelos|piscina|vivienda/i],
+                       ['la piscina no tiene valla', /piscina|valla|ahoga/i],
+                       ['sigue teniendo crisis', /farmacorresistente|epilepsia|crisis/i],
+                       ['sudep', /SUDEP|muerte s[úu]bita/i],
+                       ['tiene que declarar', /declarar|denuncia|juicio/i],
+                       ['le tratan mal en el centro', /centro|maltrato|respiro/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 38: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib38 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b38 = (cod) => lib38.slice(lib38.indexOf('### ' + cod + '. '), lib38.indexOf('### ', lib38.indexOf('### ' + cod + '. ') + 6));
+
+// El editor de PP renombró su ficha a PL, que ya era de otra ficha de esta misma
+// ronda. Sexta vez que un editor encabeza su ficha con el código de otra.
+check('PP se publicó con su propio código y PL sigue siendo la casa ajena',
+  /^### PP\. Sospecho que le tratan mal/m.test(lib38)
+  && /^### PL\. Este fin de semana dormimos/m.test(lib38));
+
+// El bloqueo real de PP: MC ya publicaba las mismas urgencias y las mismas
+// preguntas. El reparto es que MC se queda con la plaza y PP con la supervisión,
+// y eso solo vale si MC lo dice y enlaza.
+const mc = b38('MC');
+check('MC manda a PP para la supervisión y se queda con la plaza',
+  /\*\*PP\. Sospecho que le tratan mal/.test(mc) && /ficha de la supervisi[óo]n/.test(mc));
+check('MC ya no se queda sola con las preguntas de supervisión',
+  /peor turno/.test(mc) && /registro de contenciones/.test(mc));
+
+// Las dos fichas tenían que decir lo mismo de la pérdida de peso: ninguna tiene
+// fuente clínica para el plazo, así que se eligió la versión más protectora y
+// tiene que quedar igual en las dos. Si alguien cambia una, esto salta.
+check('MC y PP dicen lo mismo de la pérdida de peso rápida',
+  /p[ée]rdida de peso r[áa]pida/.test(mc) && /p[ée]rdida de peso r[áa]pida/.test(b38('PP')));
+
+// PL es para la casa que no puedes tocar; LH para la tuya. Si PL deja de decirlo,
+// vuelve a ser un duplicado de LH.
+check('PL se distingue de LH y no repite la casa propia',
+  /LH/.test(b38('PL')) && /no es la vuestra|no es la tuya|ajena/i.test(b38('PL')));
+check('LH manda a PL cuando la casa no es la vuestra', /\*\*PL\. Este fin de semana/.test(b38('LH')));
+
+// Una ficha de epilepsia no puede dar dosis ni pautas de retirada.
+check('PM no da dosis ni pauta de retirada de ningún antiepiléptico',
+  !/\b\d+\s?mg\b/i.test(b38('PM')) && /SUDEP/.test(b38('PM')));
+
+// LL es la gemela escolar y menor de edad: tiene que abrir las dos puertas.
+const ll = b38('LL');
+check('LL manda a PN cuando ya se ha denunciado y a PP si el sitio es de adultos',
+  /\*\*PN\. He denunciado/.test(ll) && /\*\*PP\. Sospecho que le tratan mal/.test(ll));
+
+// PC llevaba desde la ronda 35 publicada anunciando un bloqueo que esa misma
+// ronda resolvió: el umbral de la cuota española. La prueba de cabeceras no lo
+// cazó porque buscaba «pendiente de decisión» y PC decía «pendiente de resolver».
+const pc = b38('PC');
+check('PC ya no anuncia como pendiente el umbral que se resolvió en la ronda 35',
+  !/pendiente de resolver/i.test(pc) && !/sin cerrar en esta biblioteca/i.test(pc));
+check('PC y FU dicen lo mismo del umbral de la cuota: 50 o más',
+  /50 o más/.test(pc) && /42\.1/.test(pc) && /50 o más/.test(b38('FU')));
+
+// CJ es la persona autista investigada; PN es la víctima. Se confundían.
+check('CJ distingue al investigado de la víctima y manda a PN',
+  /\*\*PN\. He denunciado/.test(b38('CJ')));
 
 
 await nav.close();

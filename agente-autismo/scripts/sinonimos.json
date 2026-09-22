@@ -224,7 +224,8 @@
   "Q"
  ],
  "epilepsia": [
-  "Q"
+  "Q",
+  "PM"
  ],
  "se queda ido": [
   "Q",
@@ -615,7 +616,8 @@
   "AE"
  ],
  "abuso": [
-  "LL"
+  "LL",
+  "PP"
  ],
  "protegerlo de abusos": [
   "EF",
@@ -963,7 +965,8 @@
   "LL"
  ],
  "sospecho maltrato": [
-  "LL"
+  "LL",
+  "PP"
  ],
  "moratones": [
   "LL"
@@ -1220,7 +1223,8 @@
   "MC"
  ],
  "centro de dia": [
-  "MC"
+  "MC",
+  "PP"
  ],
  "taller protegido": [
   "MC"
@@ -1676,5 +1680,119 @@
  "nos mudamos para tener terapia": [
   "PK",
   "NE"
+ ],
+ "casa de los abuelos": [
+  "PL"
+ ],
+ "vamos de vacaciones": [
+  "PL",
+  "IS"
+ ],
+ "apartamento de alquiler": [
+  "PL"
+ ],
+ "piscina sin vallar": [
+  "PL",
+  "JD"
+ ],
+ "la piscina no tiene valla": [
+  "PL",
+  "JD"
+ ],
+ "dormir fuera de casa": [
+  "PL",
+  "NH"
+ ],
+ "pastillero de los abuelos": [
+  "PL",
+  "LH"
+ ],
+ "casa que no es la mia": [
+  "PL"
+ ],
+ "sigue teniendo crisis": [
+  "PM"
+ ],
+ "los antiepilepticos no funcionan": [
+  "PM"
+ ],
+ "epilepsia farmacorresistente": [
+  "PM"
+ ],
+ "epilepsia resistente": [
+  "PM"
+ ],
+ "sudep": [
+  "PM"
+ ],
+ "muerte subita epilepsia": [
+  "PM"
+ ],
+ "nervio vago": [
+  "PM"
+ ],
+ "cirugia de la epilepsia": [
+  "PM"
+ ],
+ "dieta cetogenica para la epilepsia": [
+  "PM",
+  "CR"
+ ],
+ "crisis por la noche": [
+  "PM",
+  "JQ"
+ ],
+ "he denunciado": [
+  "PN"
+ ],
+ "tiene que declarar": [
+  "PN"
+ ],
+ "declarar en el juicio": [
+  "PN"
+ ],
+ "camara gesell": [
+  "PN"
+ ],
+ "prueba preconstituida": [
+  "PN"
+ ],
+ "mi hijo es la victima": [
+  "PN"
+ ],
+ "abusaron de mi hijo": [
+  "PN",
+  "LL"
+ ],
+ "juicio": [
+  "PN"
+ ],
+ "le tratan mal en el centro": [
+  "PP"
+ ],
+ "maltrato en el centro de dia": [
+  "PP"
+ ],
+ "piso tutelado": [
+  "PP",
+  "CM"
+ ],
+ "respiro": [
+  "PP",
+  "EE"
+ ],
+ "denunciar un centro": [
+  "PP"
+ ],
+ "vuelve raro del centro": [
+  "PP"
+ ],
+ "moratones sin explicacion": [
+  "PP",
+  "LL"
+ ],
+ "elegir centro de dia": [
+  "PP",
+  "MC"
  ]
 }
