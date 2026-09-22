@@ -995,6 +995,82 @@ check('NH, EE y PQ mandan a PX cuando el niño no acepta a un segundo adulto',
   && /\*\*PX\. Solo quiere a mam[áa]/.test(b40('PQ')));
 
 
+// 25. Ronda 41. PZ vino retenida por tres arreglos que estaban fuera de ella: dos
+// frases sobre caries en EO y KF que la evidencia no sostiene, y una cita de
+// Cermak 2015 que AG enlazaba a un PMID que no es el del ensayo.
+for (const [codigo, marca] of [['PY', /colon|mamograf[íi]a|colesterol|cribado/i],
+                               ['PZ', /dentista|sedaci[óo]n|anestesia|brackets/i],
+                               ['QA', /coordina|gestor de caso|carpeta/i],
+                               ['QB', /separa|convenio|pensi[óo]n/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 41: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['revisiones de adulto', /cribado|colon|revisi[óo]n|chequeo/i],
+                       ['colonoscopia', /colon|sangre oculta|cribado/i],
+                       ['el dentista dice que hay que dormirlo', /dentista|sedaci[óo]n|anestesia/i],
+                       ['brackets', /brackets|ortodoncia|dentista/i],
+                       ['nadie coordina', /coordina|gestor|carpeta/i],
+                       ['convenio regulador', /convenio|separa|pensi[óo]n/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 41: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib41 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b41 = (cod) => lib41.slice(lib41.indexOf('### ' + cod + '. '), lib41.indexOf('### ', lib41.indexOf('### ' + cod + '. ') + 6));
+
+// Octava vez que un editor encabeza su ficha con el código de otra: QA venía
+// como «### PY.», la ficha de al lado de esta misma ronda.
+check('QA se publicó con su propio código y PY sigue siendo el chequeo del adulto',
+  /^### QA\. Cada uno va por su lado/m.test(lib41) && /^### PY\. El chequeo del adulto/m.test(lib41));
+
+// La corrección que desbloqueó PZ: las revisiones no coinciden en caries, sí en
+// necesidad no tratada y acceso. EO lo afirmaba en verde y KF lo daba por hecho.
+const eo = b41('EO');
+check('EO ya no afirma más riesgo de caries y remite a PZ',
+  !/más riesgo de bruxismo, caries/.test(eo) && /las revisiones no coinciden/.test(eo)
+  && /\*\*PZ\. El dentista dice/.test(eo));
+check('KF apoya el argumento del flúor en lo que sí está documentado',
+  /más necesidad dental no tratada/.test(b41('KF')) && !/ya tiene más riesgo de caries/.test(b41('KF')));
+
+// AG enlazaba Cermak 2015 a un PMID que no es el del ensayo, y lo daba en verde
+// siendo un piloto de 44 niños.
+const ag = b41('AG');
+check('AG enlaza el PMID correcto de Cermak 2015 y ya no lo vende como ensayo grande',
+  /25931290/.test(ag) && !/25488121/.test(ag) && /piloto/.test(ag));
+
+// «Ninguna muerte» en un registro de centros con programa no es «ningún riesgo».
+check('MK pone el recuento de Lee junto al registro de Cravero',
+  /Lee y cols\., 2013/.test(b41('MK')) && /\*\*PZ\. El dentista dice/.test(b41('MK')));
+
+// PZ no puede dar dosis de ningún sedante, y tiene que remitir en vez de repetir.
+const pz = b41('PZ');
+check('PZ no da dosis y se apoya en MK y en PT en vez de reescribirlas',
+  !/\b\d+\s?mg\b/i.test(pz) && /\*\*MK/.test(pz) && /\*\*PT/.test(pz));
+
+// PY tenía prohibido reescribir LC y NW, y su regla central es que un síntoma
+// no espera al cribado.
+const py = b41('PY');
+check('PY remite a LC y NW y no repite el cribado de cuello de útero',
+  /\bLC\b/.test(py) && /\bNW\b/.test(py) && /cribado es (solo )?para quien no tiene síntomas/.test(py));
+check('AL, NY y LC mandan a PY',
+  /\*\*PY\. El chequeo del adulto/.test(b41('AL')) && /\*\*PY\. El chequeo del adulto/.test(b41('NY'))
+  && /\*\*PY\. El chequeo del adulto/.test(b41('LC')));
+
+// QA es la costura entre tres sistemas, no un plan dentro de uno.
+check('QA trae el gestor de caso y la carpeta única, que no estaban en ninguna ficha',
+  /gestor de caso/i.test(b41('QA')) && /carpeta/i.test(b41('QA')));
+check('ML y MB mandan a QA',
+  /\*\*QA\. Cada uno va por su lado/.test(b41('ML')) && /\*\*QA\. Cada uno va por su lado/.test(b41('MB')));
+
+// QB: lo que casi nadie sabe es que la pensión puede no acabarse a los 18.
+check('QB dice que la pensión puede no extinguirse a los 18 y enlaza el calendario de PV',
+  /(no se extingue|prórroga|no se acaba a los 18)/.test(b41('QB')) && /\*\*PV/.test(b41('QB')));
+check('GE y CL mandan a QB para lo legal de la ruptura',
+  /\*\*QB\. Nos separamos/.test(b41('GE')) && /\*\*QB\. Nos separamos/.test(b41('CL')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

@@ -1955,5 +1955,87 @@
  "no puedo ni ir al bano": [
   "PX",
   "PQ"
+ ],
+ "revisiones de adulto": [
+  "PY"
+ ],
+ "colonoscopia": [
+  "PY"
+ ],
+ "mamografia": [
+  "PY"
+ ],
+ "colesterol": [
+  "PY"
+ ],
+ "sangre en las heces": [
+  "PY"
+ ],
+ "chequeo": [
+  "PY"
+ ],
+ "nadie le hace revisiones": [
+  "PY"
+ ],
+ "el dentista dice que hay que dormirlo": [
+  "PZ"
+ ],
+ "anestesia general para el dentista": [
+  "PZ"
+ ],
+ "sedacion dental": [
+  "PZ"
+ ],
+ "brackets": [
+  "PZ"
+ ],
+ "ortodoncia": [
+  "PZ"
+ ],
+ "oxido nitroso": [
+  "PZ"
+ ],
+ "no se deja mirar la boca": [
+  "PZ",
+  "EO"
+ ],
+ "nadie coordina": [
+  "QA"
+ ],
+ "no se hablan entre ellos": [
+  "QA"
+ ],
+ "gestor de caso": [
+  "QA"
+ ],
+ "me piden el mismo papel otra vez": [
+  "QA"
+ ],
+ "el colegio no ha leido el informe": [
+  "QA",
+  "MB"
+ ],
+ "reunion conjunta": [
+  "QA"
+ ],
+ "nos separamos": [
+  "QB"
+ ],
+ "divorcio": [
+  "QB"
+ ],
+ "convenio regulador": [
+  "QB"
+ ],
+ "pension de alimentos": [
+  "QB"
+ ],
+ "custodia compartida": [
+  "QB",
+  "GE"
+ ],
+ "su padre no quiere la terapia": [
+  "QB",
+  "KL"
  ]
 }
