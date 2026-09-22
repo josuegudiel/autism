@@ -1740,6 +1740,52 @@ check('«arnes» llega también a QT, no solo a LI',
   (sinon46['arnes'] || []).includes('QT') && (sinon46['arnes'] || []).includes('LI'));
 
 
+// 35. El Centro de evidencia tenía 4 secciones y 15 tarjetas para 431 temas, y
+// ESTADO.md lo llevaba marcado como prioridad alta. Ahora son 7 y 24: lo que
+// faltaba no era relleno, era lo que más cambia lo que una familia hace el
+// mismo día —el sueño, la epilepsia, el ensombrecimiento diagnóstico, que la
+// CAA no retrasa el habla, y las cifras de fuga y ahogamiento—.
+const evi = JSON.parse(fs.readFileSync(new URL('../../web/content/evidencia.json', import.meta.url), 'utf8'));
+const itemsEvi = evi.secciones.flatMap((s) => s.items || []);
+check('el Centro de evidencia tiene al menos 7 secciones y 24 tarjetas',
+  evi.secciones.length >= 7 && itemsEvi.length >= 24,
+  `${evi.secciones.length} secciones, ${itemsEvi.length} tarjetas`);
+const sinFuenteEvi = itemsEvi.filter((i) => !Array.isArray(i.fuentes) || i.fuentes.length === 0);
+check('toda tarjeta de evidencia viene con al menos una fuente',
+  sinFuenteEvi.length === 0, sinFuenteEvi.map((i) => i.titulo).join(' | '));
+const nivelesRaros = itemsEvi.filter((i) => !['alta', 'media', 'evitar'].includes(i.nivel));
+check('todos los niveles del Centro de evidencia son alta, media o evitar',
+  nivelesRaros.length === 0, nivelesRaros.map((i) => i.titulo).join(' | '));
+const idsEvi = evi.secciones.map((s) => s.id);
+check('ninguna sección del Centro de evidencia repite id',
+  new Set(idsEvi).size === idsEvi.length, idsEvi.join(' '));
+check('la sección de lo que hay que evitar cierra la página',
+  /EVITAR/.test(evi.secciones[evi.secciones.length - 1].titulo),
+  evi.secciones[evi.secciones.length - 1].titulo);
+
+// Las cifras nuevas son las que la biblioteca ya publica verificadas: si
+// alguien las cambia en un sitio y no en el otro, esto lo caza.
+const textoEvi = JSON.stringify(itemsEvi);
+check('el Centro de evidencia da el rango de la epilepsia, no una cifra redonda',
+  /6%–27%/.test(textoEvi) && !/\b20-25%\b/.test(textoEvi));
+check('el Centro de evidencia dice que la CAA no retrasa el habla',
+  /no impiden la producción del habla/.test(textoEvi));
+check('las cifras de fuga y ahogamiento coinciden con las de AE',
+  /49%/.test(textoEvi) && /160 veces/.test(textoEvi)
+  && /49%/.test(b46('AE')) && /160 veces/.test(b46('AE')));
+check('la cifra de sujeción en prono coincide con la corregida en QR',
+  /38 —seis de cada diez—/.test(textoEvi) && /38 de esos 63/.test(b46('QR')));
+
+await ir('#evidencia');
+const texEvi = await texto();
+for (const titulo of ['La salud que hay que vigilar', 'Comunicación', 'Seguridad']) {
+  check(`Centro de evidencia: la sección «${titulo}» se ve en la app`,
+    texEvi.includes(titulo), texEvi.slice(0, 120));
+}
+check('Centro de evidencia: la tarjeta del sueño llega a la pantalla',
+  /44%|44-83|44 %/.test(texEvi) || /sue[ñn]o/i.test(texEvi), texEvi.slice(0, 120));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

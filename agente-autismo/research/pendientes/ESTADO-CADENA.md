@@ -30,7 +30,7 @@ antes de correrla.
 
 Rondas 29 a 45, y QT y QU de la 46.
 Biblioteca en **431 temas / 226 verificados / 205 síntesis / 4.126 fuentes**.
-Suite **456/456**. Reserva: **25 entradas**.
+Suite **469/469**. Reserva: **25 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y

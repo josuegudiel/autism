@@ -34,7 +34,7 @@ _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor la
 
 | Prioridad | Tarea | Notas |
 |---|---|---|
-| 🟠 **Alta** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 431 temas en 12 categorías. El Detector pasó de 15 a **35 fichas** el 22/09, volcando las que la biblioteca ya tenía verificadas (entre ellas las nueve de **CS**, que se escribió justo para esto). Lo que sigue corto es el Centro de evidencia: 15 tarjetas para 431 temas. |
+| 🟡 **Media** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 431 temas en 12 categorías. El Detector pasó de 15 a **35 fichas** y el Centro de evidencia de 4 secciones y 15 tarjetas a **7 y 24**, los dos el 22/09 y los dos volcando lo que la biblioteca ya tenía verificado (entre ello las nueve de **CS**, la ficha que se escribió justo para alimentar el Detector). Lo que sigue corto son las fichas de detector frente a los 431 temas, pero ya no es el cuello de botella que era. |
 | 🔴 **Alta** | **Arreglar el target de iOS** | `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift` perdieron la declaración de su vista, así que la app nativa no compila. Ver `ios/README.md`. |
 | 🟠 **Alta** | **Activar la IA real de Claude** | El asistente está en modo demo. Ver README → "Encender la IA real" (poner `ANTHROPIC_API_KEY` en el servidor + cambiar el stub por la llamada real). |
 | 🟡 **Media** | **Re-verificar los 205 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 431 − 226 = 205, y ese número lo da el propio índice. |
