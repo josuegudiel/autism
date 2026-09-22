@@ -1949,6 +1949,27 @@ check('AA explica por qué difieren en vez de elegir una',
   /revisiones de épocas y criterios de inclusión distintos/.test(bC('AA'))
   && /48,7%/.test(bC('AA')));
 
+// Las fichas se citan entre sí por código, y un código que no existe es un
+// callejón: el lector busca «QO» y no hay nada. Ya pasó una vez, con un auditor
+// que citó «la ficha QO (línea 8617)» como prueba de algo. Esto lo vigila.
+// NI es el caso vivo: está terminada pero sin publicar a propósito, así que
+// ninguna ficha publicada puede mandar a ella todavía.
+const ESPANOL = new Set(['NO', 'SI']); // «**NO**» en negrita no es un código
+const refsRotas = [];
+for (const trozo of libC.split(/(?=^### )/m)) {
+  const cod = (trozo.match(/^### ([A-Z]{1,2})\. /) || [])[1];
+  if (!cod) continue;
+  const cuerpo = trozo.split('> **Para la app')[0].replace(/\]\([^)]*\)/g, ']');
+  const refs = new Set([...cuerpo.matchAll(/\*\*([A-Z]{1,2})\.\s/g)].map((m) => m[1])
+    .concat([...cuerpo.matchAll(/\*\*([A-Z]{1,2})\*\*/g)].map((m) => m[1])));
+  for (const r of refs) {
+    if (ESPANOL.has(r)) continue;
+    if (!codsLib.includes(r)) refsRotas.push(`${cod} → ${r}`);
+  }
+}
+check('ninguna ficha remite a un código que no existe',
+  refsRotas.length === 0, refsRotas.slice(0, 8).join(' | '));
+
 
 await nav.close();
 console.log('\n' + (errores.length
