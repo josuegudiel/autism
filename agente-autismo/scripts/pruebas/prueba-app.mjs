@@ -721,7 +721,7 @@ const cabeceras = [...lib35.matchAll(/^### [A-Z]{1,2}\. .*$/gm)].map((m) => m[0]
 // diciendo 'pendiente de resolver una contradicción con FU' que ya se había
 // resuelto en la 35. Y no vale con buscar 'pendiente' a secas: lo lleva dentro
 // 'vida independiente', que es el título de CM.
-const BLOQUEO = /[⏳⏸]|EN ESPERA|retenida|NO PUBLICABLE|no publicar hasta|pendiente de |pendiente:|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
+const BLOQUEO = /[⏳⏸]|\bEN ESPERA\b|retenida|NO PUBLICABLE|no publicar hasta|pendiente de |pendiente:|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
 const sucias = cabeceras.filter((h) => BLOQUEO.test(h));
 check('Ninguna ficha publicada arrastra una marca de estado sin resolver',
   sucias.length === 0, sucias.slice(0, 2).join(' | ').slice(0, 150));
@@ -2335,6 +2335,74 @@ check('ESTADO.md da las tarjetas y secciones del Centro de evidencia que hay hoy
 check('ESTADO.md da el total de fuentes que dice el índice',
   estadoMd.includes('(' + milesEs(idxJson.totalFuentes) + ' en total)'),
   milesEs(idxJson.totalFuentes));
+
+// 45. Ronda 48: RB (dolor crónico y fatiga), RC (babeo), RD (pedir plaza) y RE
+// (le retiran los apoyos porque aprueba). Las cuatro se abren con fuentes y se
+// encuentran con las palabras que escribiría una familia, no con su código.
+for (const [codigo, marca] of [['RB', /fibromialgia|fatiga/i], ['RC', /baba|sialorrea/i],
+                               ['RD', /residencia|plaza/i], ['RE', /apoyos|notas/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 48: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re48] of [['se le cae la baba', /baba/i],
+                         ['le duele todo', /duele todo|dolor crónico/i],
+                         ['pedir plaza residencia', /residencia/i],
+                         ['le han quitado el apoyo', /apoyos|notas/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 48: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re48.test(rr), rr.slice(0, 160));
+}
+
+// Lo que la ronda destapó en fichas ya publicadas, que es lo que de verdad
+// conviene atar:
+const libMd = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const fichaDe = (cod) => {
+  const i = libMd.search(new RegExp('^### ' + cod + '\\. ', 'm'));
+  if (i < 0) return '';
+  const j = libMd.slice(i + 5).search(/^### /m);
+  return j < 0 ? libMd.slice(i) : libMd.slice(i, i + 5 + j);
+};
+
+// (a) LW mandaba a «pedir cita (semanas, no urgencia)» ante la pérdida de
+// habilidades ya adquiridas, que en BJ, DO, NU y NX es señal de valoración sin
+// demora. Dos respuestas contrarias a la misma señal, y la peligrosa era la de LW.
+const lw = fichaDe('LW');
+const lineaSemanas = lw.split('\n').find((l) => /Cuándo pedir cita \(semanas/.test(l)) || '';
+check('LW ya no mete la pérdida de habilidades en «semanas, no urgencia»',
+  !!lineaSemanas && !/pierde habilidades/.test(lineaSemanas), lineaSemanas.slice(0, 180));
+check('LW sí dice, aparte, que esa pérdida se valora sin demora',
+  /pierde habilidades que ya tenía, eso no entra en «semanas»/.test(lw) && /catatonia/i.test(lw));
+
+// (b) CM llamaba a la vivienda tutelada «apoyo 24 horas». El nombre no dice el
+// nivel de apoyo: cambia por comunidad y por entidad, y eso es justo lo que una
+// familia necesita saber antes de elegir.
+const cm = fichaDe('CM');
+check('CM ya no vende la vivienda tutelada como apoyo 24 horas',
+  !/vivienda tutelada con apoyo 24 horas/.test(cm) && /qué personal hay por la noche/.test(cm));
+
+// (c) La reforma de la Ley 39/2006 se aprobó el 16/09/2026 pero no está en el
+// BOE: RD, NB y PH tienen que decir lo mismo, o la biblioteca publica tres
+// respuestas distintas a «¿puedo cobrar esto y tener además el servicio?».
+for (const cod of ['RD', 'NB', 'PH']) {
+  const f = fichaDe(cod);
+  check(`${cod} fecha la reforma de dependencia y dice que aún no está en vigor`,
+    /16 de septiembre de 2026/.test(f) && /no est[áa] publicada en el BOE|todavía no está publicada en el BOE/.test(f),
+    cod);
+}
+check('RD dice expresamente que no hay contradicción, sino una regla vigente y otra que viene',
+  /no hay contradicción entre las tres fichas/.test(fichaDe('RD')));
+
+// (d) Referencias inversas: una ficha a la que no apunta nadie no existe para
+// quien no la busca por su nombre.
+for (const [origen, destino] of [['AP', 'RB'], ['AN', 'RB'], ['CY', 'RB'],
+                                 ['NJ', 'RC'], ['LG', 'RC'], ['KF', 'RC'], ['QG', 'RC'],
+                                 ['CM', 'RD'], ['NB', 'RD'], ['PH', 'RD'],
+                                 ['LW', 'RE'], ['BZ', 'RE'], ['IA', 'RE']]) {
+  check(`${origen} apunta ya a ${destino}`, new RegExp('\\*\\*' + destino + '\\.').test(fichaDe(origen)));
+}
+check('AP avisa de que con malestar posesfuerzo no se aplica el aumento progresivo',
+  /malestar posesfuerzo/.test(fichaDe('AP')) && /no se aplica/.test(fichaDe('AP')));
 
 await nav.close();
 console.log('\n' + (errores.length

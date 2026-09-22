@@ -187,10 +187,19 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 47: QX (lo que compras sin receta y choca con lo recetado) caia en
     # terapias por la palabra "medicacion"; es la hermana de LV y QP.
     "QX": "salud",
+    # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
+    # es un problema medico y su ficha hermana NJ ya esta en salud.
+    "RC": "salud",
+    # PH (dejar el trabajo o reducir jornada para cuidar) caia tambien en
+    # terapias, por "terapia" dentro del texto: es vida familiar, como NB y HN.
+    "PH": "familia",
     # Escuela y aprendizaje.
     "MU": "escuela", "MW": "escuela",
     # Adolescencia y vida adulta.
     "KJ": "adultez", "PG": "adultez", "PU": "adultez",
+    # Ronda 48: RD (pedir plaza) va junto a CM y MC, que describen esos mismos
+    # recursos, y no en familia: quien busca residencia busca en vida adulta.
+    "RD": "adultez",
     # Derechos y recursos por pais.
     "MR": "derechos", "PB": "derechos", "PN": "derechos", "LX": "derechos",
 }

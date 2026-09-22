@@ -9,42 +9,69 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 48** — runId `wf_8b315c23-bac` (tarea wxg44x3a2), lanzada el 22/09 a las
-21:30. Códigos **RB, RC, RD, RE**, acotados por escrito entre sí:
+**Ronda 49** — runId `wf_3bed8ff5-6aa` (tarea wf5qom33q), lanzada el 22/09.
+Códigos **RF, RG, RH, RI**, acotados por escrito entre sí:
 
-- **RB** — dolor crónico y fatiga persistente en el adolescente y el adulto (el
-  dolor agudo que no sabe expresar es CY y JR; el burnout, AN; la hipermovilidad
-  y la disautonomía, DP).
-- **RC** — se le cae la baba (el atragantamiento es LG; el babeo por clozapina y
-  aripiprazol ya está en NJ; las amígdalas, en QG).
-- **RD** — pedir plaza en residencia, piso tutelado o centro de día: el trámite
-  (lo que pasa dentro es PP; el empleo protegido, MC; el relevo, HN).
-- **RE** — aprueba, así que le retiran los apoyos (el otro lado es LW, que
-  aguanta el día y explota en casa).
+- **RF** — un servicio privado (campamento, academia, gimnasio) ya lo ha
+  rechazado (qué ocio inclusivo existe es GV; la guardería antes de los 3, PW;
+  el "no" escolar, MR e IB).
+- **RG** — no coge el teléfono: llamar, pedir cita y la llamada de emergencia
+  (enlaza con los canales por escrito que la app ya publica en la pantalla de
+  ayuda urgente).
+- **RH** — salir de casa con un hijo mayor que usa pañal: cambiadores, mochila
+  y dignidad (enseñar el control de esfínteres es AT).
+- **RI** — enseñarle a ocupar su tiempo y a estar un rato solo (si es seguro
+  dejarlo solo es MJ; el ocio organizado, DH y GV).
 
-La ronda 47 está entera publicada (QX, QY, QZ, RA).
+La ronda 48 está entera publicada (RB, RC, RD, RE).
 
-**Dos tropiezos de la 47, los dos ya anotados en el procedimiento y los dos
-repetidos igual:** (1) el editor de RA encabezó su ficha con **QX**, que ya
-estaba tomada por otra de la misma ronda —van nueve veces—; lo arregló solo el
-`cabecera_limpia()` del script de publicación, que fuerza el código del
-pipeline. (2) El limpiador de cabecera se comió "fuentes verificadas **y
-depuradas**" en QX, QY y QZ, porque `MARCA` lleva "depurad"; las tres se
-quedaron sin "Ronda 47" hasta que se repasó la cabecera entera al final. **Es el
-mismo fallo de la ronda 38.** Si alguna vez toca tocar `MARCA`, que sea para
-que no se lleve por delante el trozo bueno.
+**Lo que enseñó la 48, y no es poco:**
+
+1. **`publicable: false` no siempre significa que la ficha esté mal.** RD y RE
+   volvieron marcadas, y de los cinco motivos solo dos eran reales: en RD, un
+   choque con NB y PH sobre compatibilidad de prestaciones; en RE, un
+   solapamiento con LW y BZ **que el propio editor ya había arreglado** antes de
+   marcarla. Los otros tres eran el mismo malentendido: *"el código RB/RC/RD/RE
+   no existe en el índice"*. Claro que no existe: **se está creando en esta
+   ronda**. Tres de las cuatro fichas se renumeraron solas a RB. **Léete los
+   motivos uno a uno antes de retener nada.**
+2. **El choque de RD con NB y PH no era un choque: era una ley cambiando.** El
+   16/09/2026 el Congreso aprobó la mayor reforma de la Ley 39/2006 en veinte
+   años, que **elimina incompatibilidades entre prestaciones** y baja el plazo
+   de resolución de seis meses a tres. A fecha de hoy **no está publicada en el
+   BOE**, y una ley entra en vigor a los veinte días de publicarse: NB y PH
+   tienen razón sobre lo que rige hoy, RD la tiene sobre lo que viene. Las tres
+   fichas lo dicen ya con esa fecha, y hay prueba que lo vigila. **Cuando se
+   publique en el BOE hay que volver a NB, PH y RD.**
+3. **Una ficha nueva destapó un fallo de seguridad en una vieja.** El editor de
+   RE avisó de que **LW** metía "pierde habilidades que ya tenía" en su bullet
+   de *"pedir cita (semanas, no urgencia)"*, cuando BJ, DO, NU y NX lo tratan
+   como valoración sin demora: dos respuestas contrarias a la misma señal, y la
+   peligrosa era la publicada. Arreglado. **Ese aviso venía dentro del texto de
+   `criticas_aplicadas`, no en ningún campo estructurado: hay que leerlo entero.**
+4. **`EN ESPERA` dentro de `BLOQUEO` no llevaba `\b`**, así que "no admit**en
+   espera**" —una frase de urgencias perfectamente normal— daba positivo. Lo
+   habría hecho saltar la suite en cuanto RB entrara. Corregido en la prueba y
+   en el guion de publicación. **Si un patrón de bloqueo salta, mira primero si
+   es la palabra dentro de otra palabra.**
+5. **CM llamaba "apoyo 24 horas" a la vivienda tutelada.** No es cierto de forma
+   general: el nombre no dice el nivel de apoyo, cambia por comunidad y por
+   entidad, y alguna comunidad ha renombrado el recurso entero. Lo que se
+   pregunta por escrito es **qué personal hay por la noche**.
 
 ## Ya publicado
 
-Rondas 29 a 47.
-Biblioteca en **437 temas / 226 verificados / 211 síntesis / 4.258 fuentes**.
-Suite **532/532**. Reserva: **19 entradas**.
+Rondas 29 a 48.
+Biblioteca en **441 temas / 226 verificados / 215 síntesis / 4.354 fuentes**.
+Suite **626/626**. Reserva: **15 entradas** (la 0, "dice que se quiere morir",
+sigue sin investigarse: terminada como NI y esperando decisión).
 
-Ronda 48: códigos **RB, RC, RD, RE** (QO sigue libre a propósito, como PO;
-confírmalo con grep). Candidatas por orden de la reserva: **el dolor crónico y
-la fatiga en el adolescente** (5), **se le cae la baba** (6), **pedir plaza en
-residencia o centro de día** (7) y **aprueba, así que el colegio dice que no
-necesita apoyos** (16). **Cuando queden menos de 4 investigables, lanza antes
+Ronda 49: códigos **RF, RG, RH, RI** (QO sigue libre a propósito, como PO;
+confírmalo con grep). Para la 50, candidatas por orden de la reserva: **no llega
+al baremo pero no aguanta un trabajo**, **ya es adulto y no quiere certificado
+ni terapia**, **acoso o despido por discapacidad en el trabajo** y **permisos y
+excedencia para cuidar** (ojo: esta última roza PH, acótala por escrito).
+**Cuando queden menos de 4 investigables, lanza antes
 `scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por

@@ -2206,7 +2206,9 @@
   "QK"
  ],
  "no hay quien lo levante": [
-  "QK"
+  "QK",
+  "RB",
+  "W"
  ],
  "retraso de fase": [
   "QK"
@@ -4150,5 +4152,118 @@
  ],
  "un bulto en la ingle": [
   "RA"
+ ],
+ "le duele todo": [
+  "RB"
+ ],
+ "le duele todo el cuerpo": [
+  "RB"
+ ],
+ "lleva meses con dolor": [
+  "RB"
+ ],
+ "dolor cronico": [
+  "RB",
+  "CY"
+ ],
+ "fibromialgia": [
+  "RB"
+ ],
+ "fatiga cronica": [
+  "RB"
+ ],
+ "encefalomielitis mialgica": [
+  "RB"
+ ],
+ "malestar posesfuerzo": [
+  "RB",
+  "AN"
+ ],
+ "siempre esta cansado": [
+  "RB",
+  "W",
+  "AN"
+ ],
+ "cansancio que no se le quita": [
+  "RB",
+  "AN"
+ ],
+ "agotamiento que no se quita": [
+  "RB",
+  "AN"
+ ],
+ "baba": [
+  "RC"
+ ],
+ "se le cae la baba": [
+  "RC"
+ ],
+ "babea": [
+  "RC"
+ ],
+ "babea mucho": [
+  "RC"
+ ],
+ "babeo": [
+  "RC"
+ ],
+ "saliva": [
+  "RC",
+  "LG"
+ ],
+ "se moja la camiseta": [
+  "RC"
+ ],
+ "babero": [
+  "RC"
+ ],
+ "sialorrea": [
+  "RC"
+ ],
+ "pedir plaza residencia": [
+  "RD"
+ ],
+ "lista de espera residencia": [
+  "RD"
+ ],
+ "cuanto cuesta una residencia": [
+  "RD"
+ ],
+ "copago residencia": [
+  "RD"
+ ],
+ "plaza en un piso tutelado": [
+  "RD",
+  "CM"
+ ],
+ "residencia para mi hijo": [
+  "RD",
+  "CM"
+ ],
+ "centro de dia plaza": [
+  "RD",
+  "MC"
+ ],
+ "saca buenas notas pero lo pasa mal": [
+  "RE"
+ ],
+ "aprueba pero sufre": [
+  "RE"
+ ],
+ "le han quitado el apoyo": [
+  "RE"
+ ],
+ "le retiran el pt": [
+  "RE"
+ ],
+ "dicen que no necesita adaptaciones": [
+  "RE"
+ ],
+ "va bien en el colegio pero llora en casa": [
+  "RE",
+  "LW"
+ ],
+ "pasa de año pero esta mal": [
+  "RE"
  ]
 }
