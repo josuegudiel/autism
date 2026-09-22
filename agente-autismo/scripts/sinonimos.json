@@ -293,7 +293,8 @@
  "dieta sin gluten": [
   "CR",
   "AA",
-  "BL"
+  "BL",
+  "PR"
  ],
  "dieta cura": [
   "CR",
@@ -533,7 +534,8 @@
  "estoy agotada": [
   "N",
   "EE",
-  "AN"
+  "AN",
+  "PQ"
  ],
  "no puedo mas": [
   "N",
@@ -1794,5 +1796,85 @@
  "elegir centro de dia": [
   "PP",
   "MC"
+ ],
+ "llevo meses sin dormir": [
+  "PQ"
+ ],
+ "se levanta a las tres": [
+  "PQ",
+  "W"
+ ],
+ "me duermo conduciendo": [
+  "PQ"
+ ],
+ "turnos de noche": [
+  "PQ"
+ ],
+ "no duermo desde hace meses": [
+  "PQ"
+ ],
+ "quitarle el gluten": [
+  "PR"
+ ],
+ "dieta sin caseina": [
+  "PR",
+  "CR"
+ ],
+ "le sienta mal la leche": [
+  "PR"
+ ],
+ "celiaquia": [
+  "PR"
+ ],
+ "intolerancia alimentaria": [
+  "PR"
+ ],
+ "prueba de intolerancias": [
+  "PR",
+  "BL"
+ ],
+ "trastorno limite": [
+  "PS"
+ ],
+ "tlp": [
+  "PS"
+ ],
+ "le dijeron bipolar": [
+  "PS"
+ ],
+ "diagnostico equivocado": [
+  "PS"
+ ],
+ "revisar el diagnostico psiquiatrico": [
+  "PS"
+ ],
+ "le diagnosticaron mal": [
+  "PS"
+ ],
+ "no se deja poner las gafas": [
+  "PT"
+ ],
+ "se quita el audifono": [
+  "PT"
+ ],
+ "protesis auditiva": [
+  "PT"
+ ],
+ "cpap": [
+  "PT"
+ ],
+ "ferula de descarga": [
+  "PT",
+  "EO"
+ ],
+ "parche en el ojo": [
+  "PT"
+ ],
+ "sensor de glucosa": [
+  "PT",
+  "MI"
+ ],
+ "no tolera el aparato": [
+  "PT"
  ]
 }

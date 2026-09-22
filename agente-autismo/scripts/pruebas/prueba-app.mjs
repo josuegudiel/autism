@@ -866,6 +866,70 @@ check('CJ distingue al investigado de la víctima y manda a PN',
   /\*\*PN\. He denunciado/.test(b38('CJ')));
 
 
+// 23. Ronda 39. Las cuatro publicables a la primera. PQ es la segunda prueba de
+// que acotar el tema por escrito funciona: la entrada de la reserva incluía
+// «asegurar la casa de noche», que ya estaba en LH, PL y AE, y se le dijo al
+// investigador que no gastara ni una búsqueda ahí.
+for (const [codigo, marca] of [['PQ', /dormir|sue[ñn]o|noche/i],
+                               ['PR', /gluten|celiaqu[íi]a|leche/i],
+                               ['PS', /l[íi]mite|TLP|bipolar/i],
+                               ['PT', /aud[íi]fono|CPAP|f[ée]rula|parche/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 39: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['llevo meses sin dormir', /dormir|sue[ñn]o|agotamiento/i],
+                       ['me duermo conduciendo', /conduc|sue[ñn]o|volante/i],
+                       ['quitarle el gluten', /gluten|celiaqu[íi]a/i],
+                       ['le dijeron bipolar', /bipolar|l[íi]mite|TLP|diagn[óo]stico/i],
+                       ['se quita el audifono', /aud[íi]fono|pr[óo]tesis|aparato/i],
+                       ['cpap', /CPAP|apnea|mascarilla/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 39: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib39 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b39 = (cod) => lib39.slice(lib39.indexOf('### ' + cod + '. '), lib39.indexOf('### ', lib39.indexOf('### ' + cod + '. ') + 6));
+
+// Séptima vez que un editor encabeza su ficha con el código de otra: PR venía
+// como «### PQ.», que es la ficha de al lado de esta misma ronda.
+check('PR se publicó con su propio código y PQ sigue siendo el sueño del cuidador',
+  /^### PR\. Dieta sin gluten/m.test(lib39) && /^### PQ\. Llevo meses sin dormir/m.test(lib39));
+
+// PQ tenía prohibido reexplicar cómo se asegura la casa: eso es LH, PL y AE.
+const pq = b39('PQ');
+check('PQ se queda en la salud del adulto y remite a LH, PL y AE para la casa',
+  /\*\*LH/.test(pq) && /\*\*PL/.test(pq) && /\*\*AE/.test(pq) && /TCC-I/.test(pq));
+// El riesgo concreto del que no duerme no es el cansancio, es el volante.
+check('PQ dice qué hacer cuando te duermes al volante', /microsue[ñn]o/.test(pq));
+check('W y PJ mandan a PQ, que es el sueño del que cuida',
+  /\*\*PQ\. Llevo meses sin dormir/.test(b39('W')) && /\*\*PQ\. Llevo meses sin dormir/.test(b39('PJ')));
+
+// El error irreversible de PR: quitar el gluten antes de la prueba la inutiliza.
+const pr = b39('PR');
+check('PR avisa de que hay que seguir comiendo gluten para poder diagnosticar la celiaquía',
+  /seguir comiendo gluten|sigue comiendo gluten|sin retirar el gluten/i.test(pr) && /celiaqu[íi]a/i.test(pr));
+check('PR desmonta los paneles de intolerancias por IgG', /IgG/.test(pr));
+check('CR manda a PR antes de retirar ningún alimento', /\*\*PR\. Dieta sin gluten/.test(b39('CR')));
+
+// PS no puede leerse como «toda etiqueta anterior es un error» ni sugerir dejar
+// la medicación por cuenta propia.
+const ps = b39('PS');
+check('PS nombra el TLP y no manda retirar medicación por cuenta propia',
+  /TLP/.test(ps) && /por tu cuenta|sin hablarlo|no la retires/i.test(ps));
+check('C y CT mandan a PS cuando la etiqueta llegó antes que el autismo',
+  /\*\*PS\. Le pusieron trastorno l[íi]mite/.test(b39('C')) && /\*\*PS\. Le pusieron trastorno l[íi]mite/.test(b39('CT')));
+
+// «Audífono» es la prótesis en España y los auriculares en media América Latina:
+// la ficha tiene que fijar el término sin declarar una palabra ganadora.
+const pt = b39('PT');
+check('PT fija el vocabulario de «audífono» sin declarar una palabra ganadora',
+  /pr[óo]tesis/.test(pt) && /auriculares/.test(pt) && /CPAP/.test(pt));
+check('EN y EO mandan a PT para que el aparato se use de verdad',
+  /\*\*PT\. No se deja poner/.test(b39('EN')) && /\*\*PT\. No se deja poner/.test(b39('EO')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
