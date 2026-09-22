@@ -1786,6 +1786,70 @@ check('Centro de evidencia: la tarjeta del sueño llega a la pantalla',
   /44%|44-83|44 %/.test(texEvi) || /sue[ñn]o/i.test(texEvi), texEvi.slice(0, 120));
 
 
+// 36. Ronda 46, segunda mitad. QV y QW se publican ya corregidas: sus editores
+// finales, que el límite de sesión había matado, se recuperaron al reanudar.
+// QT y QU se reemplazan por su versión de la segunda pasada, que trae lo que
+// aquellos editores no habían llegado a aplicar.
+for (const [codigo, marca] of [['QV', /valproato|anticoncep|regla/i],
+                               ['QW', /peso|curva|crecimiento|sonda/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 46: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re46b] of [['valproato', /valproato|epilep|regla/i],
+                          ['puede tomar la pildora', /anticoncep|p[íi]ldora|valproato/i],
+                          ['no engorda', /peso|curva|crece/i],
+                          ['le quieren poner sonda', /sonda|gastrostom|peso/i],
+                          ['gastrostomia', /sonda|gastrostom/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 46: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re46b.test(rr), rr.slice(0, 160));
+}
+
+// QV no receta: dice qué preguntar. Y la regla de oro de la biblioteca sigue ahí.
+const qv46 = cuerpo46('QV');
+check('QV no da dosis ni pautas de antiepiléptico', !/\b\d+([.,]\d+)?\s?mg\b/.test(qv46));
+check('QV mantiene que un antiepiléptico no se retira ni se cambia por cuenta propia',
+  /no se retira|no retires|nunca .{0,30}por (tu |su )?cuenta/i.test(qv46));
+
+// QW tenía prohibido dramatizar la sonda y tenía que decir de dónde sale su evidencia.
+const qw46 = cuerpo46('QW');
+check('QW dice qué parte viene de pediatría general y no de autismo',
+  /pediatr[íi]a general|población general|no.{0,25}en niños autistas/i.test(qw46));
+
+// Las dos ediciones que QV dejó pedidas en fichas ya publicadas, y que eran de
+// seguridad: NW ofrecía el implante sin decir que los antiepilépticos
+// inductores lo desaconsejan, y KG seguía con un criterio de erupción más
+// estrecho que el que publican QP y NN.
+const nw46 = cuerpo46('NW');
+check('NW avisa de que el implante no se recomienda con antiepilépticos inductores',
+  /el implante no se recomienda/.test(nw46) && /DIU de cobre/.test(nw46)
+  && /\*\*QV\. Mi hija toma valproato/.test(nw46));
+const kg46 = cuerpo46('KG');
+check('KG ya usa el criterio ancho de la erupción, como QP y NN',
+  /cualquier erupción en la piel si toma un antiepiléptico/.test(kg46)
+  && !/\*\*erupción extensa, con ampollas o que afecta a labios y ojos\*\*/.test(kg46));
+
+// Enlaces inversos.
+check('QP, NN, MO, DA, BK y NW mandan a QV',
+  ['QP', 'NN', 'MO', 'DA', 'BK', 'NW'].every((c) => /\*\*QV\. Mi hija toma valproato/.test(b46(c))));
+check('LU, P, LG, HJ, NS, KE y U mandan a QW',
+  ['LU', 'P', 'LG', 'HJ', 'NS', 'KE', 'U'].every((c) => /\*\*QW\. No gana peso/.test(b46(c))));
+
+// QV es farmacología, no adolescencia: va donde ya está NW.
+const idx46b = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temas46b = idx46b.temas || idx46b;
+const cat46b = (cod) => (temas46b.find((t) => t.codigo === cod) || {}).categoria;
+check('QV y QW están en salud, con NW', cat46b('QV') === 'salud' && cat46b('QW') === 'salud');
+
+// La segunda pasada de QT y QU trajo cosas que la primera no tenía.
+check('QU trae ya los bloques 🚨 de riesgo, no solo la frase del mensaje clave',
+  (cuerpo46('QU').match(/🚨/g) || []).length >= 4
+  && /preguntar no le mete la idea en la cabeza/.test(cuerpo46('QU')));
+check('QT declara que sus cifras de fugas y atrapamiento son estadounidenses',
+  /Las cifras de fugas y de atrapamiento son de Estados Unidos/.test(cuerpo46('QT')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

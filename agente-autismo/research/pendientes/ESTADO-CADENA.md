@@ -9,28 +9,22 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 46, segunda mitad.** QT y QU están **publicados**. QV y QW **no**: el
-límite de sesión mató sus editores finales (`corregir`) con 38 y 30 críticas sin
-aplicar, y el script, cuando el editor muere, **publica la versión verificada sin
-corregir y deja publicable=true** — eso es una ficha a medias y no se publica.
-Reanudado en `wf_98f8554f-4cc` (tarea wop4qy26v) a las 19:12, tras el reset de
-las 19:10; lo demás replica de caché y solo vuelven a correr esos dos editores.
+**Ninguna.** La ronda 46 está **entera publicada** (QT, QU, QV, QW). Lanza la 47.
 
-**Cuando termine:** comprueba en el resultado que `criticas_aplicadas` de QV y QW
-**ya no diga «el editor final fallo»**; si lo dice, no publiques y vuelve a
-reanudar. Luego el procedimiento de siempre, más la categoría (**QV y QW van a
-`salud`**; mira si el patrón las coloca solas y, si no, mételas en
-`CATEGORIA_POR_CODIGO`).
-
-**Ojo con el servidor de pruebas:** se cayó durante el parón y la suite murió
-con `ERR_CONNECTION_REFUSED` antes de la primera comprobación. Levántalo siempre
-antes de correrla.
+**Lección de la 46, y va al procedimiento:** cuando el editor final (`corregir`)
+muere, el script se queda con la versión **verificada pero sin corregir** y deja
+**`publicable=true`**. No avisa. QV y QW volvieron así, con 37 y 35 críticas sin
+aplicar. **Antes de publicar, lee `criticas_aplicadas`, no `publicable`:** si
+dice «el editor final fallo», reanuda y espera. Al reanudar tras el reset, los
+cuatro editores volvieron a correr y **QT y QU salieron mejor que la primera
+vez** (QU ganó cuatro bloques 🚨 de riesgo que antes solo estaban en prosa), así
+que las dos se reemplazaron por la segunda pasada.
 
 ## Ya publicado
 
-Rondas 29 a 45, y QT y QU de la 46.
-Biblioteca en **431 temas / 226 verificados / 205 síntesis / 4.126 fuentes**.
-Suite **469/469**. Reserva: **25 entradas**.
+Rondas 29 a 46.
+Biblioteca en **433 temas / 226 verificados / 207 síntesis / 4.169 fuentes**.
+Suite **486/486**. Reserva: **23 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
@@ -41,6 +35,11 @@ lanza antes `scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por
 solaparse con IS) ni "dice que se quiere morir" (terminada, esperando decisión).
+
+**Antes de correr la suite, levanta el servidor** (se cae entre sesiones):
+`(setsid nohup python3 -m http.server 8098 --bind 127.0.0.1 >/dev/null 2>&1 &)`
+desde `agente-autismo/`. Si no, muere con `ERR_CONNECTION_REFUSED` antes de la
+primera comprobación y parece un fallo del código.
 
 ## NI está bloqueada a propósito
 

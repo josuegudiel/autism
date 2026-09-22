@@ -180,8 +180,10 @@ CATEGORIA_POR_CODIGO = {
     "PF": "familia", "PJ": "familia", "PK": "familia", "PQ": "familia",
     "PX": "familia", "S": "familia",
     # Ronda 46: QT (camas, alarmas y arneses en casa) caia en el cajon por
-    # defecto; es equipamiento de casa y seguridad nocturna.
-    "QT": "familia",
+    # defecto; es equipamiento de casa y seguridad nocturna. Y QV (valproato y
+    # la regla) caia en adultez por "la regla", pero es farmacologia: va donde
+    # ya esta NW, su ficha hermana.
+    "QT": "familia", "QV": "salud",
     # Escuela y aprendizaje.
     "MU": "escuela", "MW": "escuela",
     # Adolescencia y vida adulta.
