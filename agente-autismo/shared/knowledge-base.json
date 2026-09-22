@@ -12,14 +12,14 @@
     "Recuerda que esto no sustituye una evaluación presencial por un profesional cualificado."
   ],
   "lineas_de_crisis": {
-    "_nota": "Verificadas con fuentes oficiales en julio de 2026. La lista completa, con descripciones y fuentes, está en web/content/ayuda-urgente.json.",
-    "España": "024 (conducta suicida, 24 h, gratuito) · emergencias 112",
+    "_nota": "Verificadas con fuentes oficiales en septiembre de 2026. La lista completa, con descripciones, horarios, canales por escrito y fuentes, está en web/content/ayuda-urgente.json: si cambia una, cambian las dos. Comprueba el HORARIO además del número; no todas son de 24 h.",
+    "España": "024 (conducta suicida, 24 h, gratuito; también por chat en su web) · emergencias 112",
     "México": "800 911 2000 (Línea de la Vida, 24 h) · emergencias 911",
-    "Argentina": "135 (área de Buenos Aires) o 0800 345 1435 (todo el país) · emergencias 911",
+    "Argentina": "0800 999 0091 (Línea Nacional de Urgencia en Salud Mental, Ministerio de Salud, 24 h) · 135 en Buenos Aires o 0800 345 1435 en todo el país, pero el Centro de Asistencia al Suicida atiende de 8 a 24 h, no de madrugada · emergencias 911 o 107 (SAME)",
     "Chile": "*4141 (prevención del suicidio, 24 h) · Salud Responde 600 360 7777 · emergencias 131",
-    "Colombia": "192 opción 4 (nacional) o 106 (Bogotá, Medellín, Cali, Cartagena, Barranquilla) · emergencias 123",
-    "Perú": "113 opción 5 (salud mental, MINSA) · emergencias 106",
-    "Estados Unidos": "988 (atención en español, 24 h) · emergencias 911",
+    "Colombia": "192 opción 4 (nacional) o 106 (Bogotá, Medellín, Cali, Cartagena, Barranquilla; WhatsApp 300 754 8933 en Bogotá) · emergencias 123",
+    "Perú": "113 opción 5 (salud mental, MINSA, 24 h; también WhatsApp y Telegram en 955 557 000 y 952 842 623) · emergencias 106",
+    "Estados Unidos": "988 (marca 988 y pulsa 2 para español, o envía AYUDA al 988, 24 h) · emergencias 911",
     "Otros países": "Número de emergencias local o el directorio findahelpline.com"
   },
   "hechos_clave": [

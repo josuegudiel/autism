@@ -2196,6 +2196,48 @@ check('Ayuda: Perú conserva la opción 5 y Colombia la opción 4',
 check('Ayuda: los números de emergencias siguen a la vista',
   ['112', '911', '131 (SAMU)', '123', '106 (SAMU)'].every((n) => tAyuda.includes(n)));
 
+// 42. Los teléfonos de crisis viven en tres archivos: la pantalla de ayuda
+// (`ayuda-urgente.json`), la base que se le inyecta a la IA real
+// (`shared/knowledge-base.json`) y la respuesta de crisis del asistente en modo
+// demostración (`asistente-demo.json`). El error del 135 argentino estaba en los
+// tres a la vez, porque nadie los comparaba. Aquí se comparan.
+const kbCrisis = JSON.parse(fs.readFileSync(new URL('../../shared/knowledge-base.json', import.meta.url), 'utf8'));
+const demoCrisis = JSON.parse(fs.readFileSync(new URL('../../web/content/asistente-demo.json', import.meta.url), 'utf8'));
+const textoCrisis = (demoCrisis.respuestas.find((r) => r.disparadores.includes('suicid')) || {}).texto || '';
+const clavePais = (n) => n.replace(' (en español)', '');
+
+check('Crisis: la respuesta del asistente en demo sigue siendo la primera, por disparador de suicidio',
+  demoCrisis.respuestas[0].disparadores.includes('suicid') && textoCrisis.length > 300);
+check('Crisis: la base de la IA cubre los mismos países que la pantalla de ayuda',
+  ayudaJSON.paises.map((p) => clavePais(p.pais)).every((n) => n in kbCrisis.lineas_de_crisis),
+  Object.keys(kbCrisis.lineas_de_crisis).join(','));
+
+// El número que marca la app es el que encabeza `linea`; los otros dos archivos
+// tienen que dar ese mismo, no uno antiguo.
+for (const pais of ayudaJSON.paises) {
+  if (pais.pais === 'Otros países') continue;
+  const clave = clavePais(pais.pais);
+  const num = pais.linea.split(/\s+[(·]/)[0].trim();
+  const emg = (pais.emergencias.match(/\d+/) || [''])[0];
+  check('Crisis: los tres archivos dan el mismo número para ' + clave,
+    kbCrisis.lineas_de_crisis[clave].includes(num) && textoCrisis.includes(num),
+    num + ' | ' + kbCrisis.lineas_de_crisis[clave]);
+  check('Crisis: los tres archivos dan las mismas emergencias para ' + clave,
+    kbCrisis.lineas_de_crisis[clave].includes(emg) && textoCrisis.includes(emg), emg);
+}
+
+// Y la regla que se saltaron los tres: el Centro de Asistencia al Suicida no es
+// de 24 h. Donde salgan sus números, tiene que salir su horario.
+const trozosCrisis = [JSON.stringify(ayudaJSON), JSON.stringify(kbCrisis.lineas_de_crisis), textoCrisis];
+check('Crisis: donde aparece el 0800 345 1435 se dice que no atiende de madrugada',
+  trozosCrisis.every((t) => !t.includes('0800 345 1435') || /de 8 a 24 h/.test(t)));
+check('Crisis: ningún archivo llama 24 h al Centro de Asistencia al Suicida',
+  trozosCrisis.every((t) => !/Asistencia al Suicida[^.·]{0,80}24 h(?!, no)/.test(t)));
+check('Crisis: la nota de la base de la IA manda comprobar también el horario',
+  /HORARIO/.test(kbCrisis.lineas_de_crisis._nota) && /ayuda-urgente\.json/.test(kbCrisis.lineas_de_crisis._nota));
+check('Crisis: la respuesta del asistente ofrece también un canal por escrito',
+  /por escrito/.test(textoCrisis) && /AYUDA al 988/.test(textoCrisis) && /955 557 000/.test(textoCrisis));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
