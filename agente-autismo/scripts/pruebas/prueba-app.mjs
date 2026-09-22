@@ -1505,6 +1505,49 @@ check('QR describe bien lo que encontró el GAO sobre los distritos que declarar
   && /solo uno/.test(qr45) && !/nueve de los treinta distritos más grandes/.test(qr45));
 
 
+// 31. Ninguna ficha muda. 155 de 426 fichas no tenían una sola entrada en
+// sinonimos.json: existían, estaban en el índice y se abrían por su enlace,
+// pero el buscador puntúa 8 por palabra del título, 5 por clave y 1 por cuerpo,
+// así que quien escribía con sus palabras no llegaba. Esta prueba impide que
+// vuelva a publicarse una ficha sin una puerta de entrada en lenguaje de familia.
+const sinonMudas = JSON.parse(fs.readFileSync(new URL('../sinonimos.json', import.meta.url), 'utf8'));
+const idxMudas = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temasMudas = idxMudas.temas || idxMudas;
+const alcanzados = new Set();
+for (const [clave, v] of Object.entries(sinonMudas)) {
+  if (clave.startsWith('_') || !Array.isArray(v)) continue;
+  v.forEach((c) => alcanzados.add(c));
+}
+const mudas = temasMudas.map((t) => t.codigo).filter((c) => !alcanzados.has(c));
+check('ninguna ficha se queda sin entrada de búsqueda en sinonimos.json',
+  mudas.length === 0, mudas.slice(0, 12).join(' '));
+
+// Y los códigos que aparecen en sinonimos.json tienen que existir: una entrada
+// hacia una ficha que no está publicada no falla, simplemente no lleva a nadie.
+const codigosVivos = new Set(temasMudas.map((t) => t.codigo));
+const fantasmas = [];
+for (const [clave, v] of Object.entries(sinonMudas)) {
+  if (clave.startsWith('_') || !Array.isArray(v)) continue;
+  for (const c of v) if (!codigosVivos.has(c)) fantasmas.push(`${clave} -> ${c}`);
+}
+check('ninguna entrada de búsqueda apunta a un código que no existe',
+  fantasmas.length === 0, fantasmas.slice(0, 6).join(' | '));
+
+// El orden de los códigos dentro de una clave NO lo lee nadie: buscarTemas()
+// hace impulso[c] = max(...) para todos por igual y, si empatan, gana el título
+// alfabéticamente menor. Por eso las frases de cabezazos apuntan solo a QS: con
+// KS dentro, empataban y ganaba «Autolesión», que no es la que dice qué mirar hoy.
+for (const frase of ['se da cabezazos', 'cabezazos contra la pared', 'se golpea la cabeza contra la pared']) {
+  check(`«${frase}» apunta solo a QS`,
+    Array.isArray(sinonMudas[frase]) && sinonMudas[frase].length === 1 && sinonMudas[frase][0] === 'QS',
+    JSON.stringify(sinonMudas[frase]));
+}
+// Las dos fichas que LLEVAN el título de una frase no estaban dentro de ella.
+check('«se tapa los oídos» y «no se deja cortar las uñas» incluyen su propia ficha',
+  (sinonMudas['se tapa los oidos'] || []).includes('IN')
+  && (sinonMudas['no se deja cortar las unas'] || []).includes('IO'));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

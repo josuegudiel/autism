@@ -148,6 +148,7 @@
   "DS"
  ],
  "se tapa los oidos": [
+  "IN",
   "E",
   "GA",
   "DS"
@@ -160,6 +161,7 @@
   "DB"
  ],
  "no se deja cortar las unas": [
+  "IO",
   "DB"
  ],
  "no se quiere banar": [
@@ -2424,16 +2426,13 @@
   "FQ"
  ],
  "se da cabezazos": [
-  "QS",
-  "KS"
+  "QS"
  ],
  "cabezazos contra la pared": [
-  "QS",
-  "KS"
+  "QS"
  ],
  "se golpea la cabeza contra la pared": [
-  "QS",
-  "KS"
+  "QS"
  ],
  "se golpea la cabeza a diario": [
   "QS",
@@ -2452,5 +2451,1494 @@
  "se abofetea": [
   "QS",
   "KS"
+ ],
+ "cambio de conducta de repente": [
+  "A"
+ ],
+ "se aprieta la barriga": [
+  "AA",
+  "A"
+ ],
+ "tiene discapacidad intelectual tambien": [
+  "A"
+ ],
+ "es muy torpe y se cae mucho": [
+  "A"
+ ],
+ "no sabe decir lo que siente": [
+  "AB"
+ ],
+ "no sabe si esta triste o enfadado": [
+  "AB"
+ ],
+ "pasa de cero a cien": [
+  "AB",
+  "HF"
+ ],
+ "le digo que se calme y es peor": [
+  "AB"
+ ],
+ "llora por cualquier cosa": [
+  "AB"
+ ],
+ "parece que no siente nada": [
+  "AB"
+ ],
+ "cuanto viven las personas autistas": [
+  "AL"
+ ],
+ "he leido que mueren antes": [
+  "AL"
+ ],
+ "se va a morir joven": [
+  "AL"
+ ],
+ "se ahogan mas los ninos autistas": [
+  "AE",
+  "AL"
+ ],
+ "dos idiomas lo confunden": [
+  "AM"
+ ],
+ "me dijeron que le hable solo en un idioma": [
+  "AM"
+ ],
+ "en casa hablamos otro idioma": [
+  "AM"
+ ],
+ "le hablo en ingles y en espanol": [
+  "AM"
+ ],
+ "mi hija dice que es un chico": [
+  "AO"
+ ],
+ "dice que es no binario": [
+  "AO"
+ ],
+ "quiere que le llamen por otro nombre": [
+  "AO"
+ ],
+ "me dicen que es una moda": [
+  "AO"
+ ],
+ "quiere empezar hormonas": [
+  "AO"
+ ],
+ "que deporte le va bien": [
+  "AP"
+ ],
+ "clases de natacion": [
+  "AE",
+  "AP"
+ ],
+ "cama elastica en casa": [
+  "AP"
+ ],
+ "brincolin": [
+  "AP"
+ ],
+ "se pasa el dia sentado": [
+  "AP"
+ ],
+ "desde que paso aquello esta distinto": [
+  "AR"
+ ],
+ "esta peor desde el accidente": [
+  "AR"
+ ],
+ "tiene pesadillas con lo que paso": [
+  "AR"
+ ],
+ "estres postraumatico": [
+  "AR"
+ ],
+ "se le quitara al crecer": [
+  "AW"
+ ],
+ "mi hijo ya tiene cuarenta anos": [
+  "AW"
+ ],
+ "me estoy haciendo vieja y el sigue en casa": [
+  "AW"
+ ],
+ "creo que mi padre tambien es autista": [
+  "AW"
+ ],
+ "no sabe jugar con los juguetes": [
+  "BN"
+ ],
+ "solo pone los coches en fila": [
+  "BN"
+ ],
+ "no hace de mentira con los munecos": [
+  "BN"
+ ],
+ "jasper": [
+  "BN"
+ ],
+ "se queda al lado de los otros ninos sin jugar": [
+  "BN"
+ ],
+ "se niega a todo lo que le pido": [
+  "BP"
+ ],
+ "hasta lo que le gusta lo rechaza": [
+  "BP"
+ ],
+ "me dice que no puede aunque puede": [
+  "BP"
+ ],
+ "bajar las exigencias en casa": [
+  "BP"
+ ],
+ "le dicen que es un nino desafiante": [
+  "BP"
+ ],
+ "mi suegra dice que esta consentido": [
+  "HT",
+  "DN"
+ ],
+ "dicen que ya hablara": [
+  "HT"
+ ],
+ "me dicen que le falta mano dura": [
+  "HT"
+ ],
+ "quieren darle una dieta milagro": [
+  "HT",
+  "B"
+ ],
+ "no se creen que sea autista": [
+  "HT"
+ ],
+ "me culpan de como lo he criado": [
+  "HT"
+ ],
+ "no recoge su cuarto": [
+  "HW"
+ ],
+ "no ayuda en nada en casa": [
+  "HW"
+ ],
+ "no sabe por donde empezar a ordenar": [
+  "HW"
+ ],
+ "que tienda su cama solo": [
+  "HW"
+ ],
+ "empieza y lo deja a medias": [
+  "HW"
+ ],
+ "que llevo a la junta del colegio": [
+  "IA"
+ ],
+ "ehcp": [
+  "IA"
+ ],
+ "que es un piar": [
+  "IA"
+ ],
+ "puedo llevar a alguien conmigo al colegio": [
+  "IA"
+ ],
+ "me hacen firmar el plan sin leerlo": [
+  "IA"
+ ],
+ "llegamos tarde todos los dias": [
+  "IE"
+ ],
+ "no se quiere vestir para el cole": [
+  "IE"
+ ],
+ "tardamos una hora en ponerle los zapatos": [
+  "IE"
+ ],
+ "dejar todo listo la noche anterior": [
+  "IE"
+ ],
+ "tarda dos horas en quedarse en la cama": [
+  "IF"
+ ],
+ "si salgo del cuarto se pone a llorar": [
+  "IF"
+ ],
+ "cortinas blackout": [
+  "IF"
+ ],
+ "se levanta a cada rato a pedir agua": [
+  "IF"
+ ],
+ "le molesta la etiqueta del pijama": [
+  "IF"
+ ],
+ "se tira al suelo en el super": [
+  "IG",
+  "DD"
+ ],
+ "me da verguenza cuando le pasa en la calle": [
+  "IG"
+ ],
+ "me juzgan por como lo educo": [
+  "IG"
+ ],
+ "tarjeta que explica el autismo": [
+  "IG"
+ ],
+ "como lo saco rapido de la tienda": [
+  "IG"
+ ],
+ "no me hace caso cuando le hablo": [
+  "IH"
+ ],
+ "tengo que repetirle todo mil veces": [
+  "IH"
+ ],
+ "se lo toma todo literal": [
+  "IH"
+ ],
+ "no capta el sarcasmo": [
+  "IH"
+ ],
+ "le digo no corras y sigue corriendo": [
+  "IH"
+ ],
+ "todo el dia lo estoy corrigiendo": [
+  "II"
+ ],
+ "dice que todo lo hace mal": [
+  "II"
+ ],
+ "muy bien ya no le hace efecto": [
+  "II"
+ ],
+ "lo comparan con su hermana": [
+  "II"
+ ],
+ "como le subo la confianza": [
+  "II"
+ ],
+ "que le regalo en navidad": [
+  "IJ"
+ ],
+ "que le compro para su cumple": [
+  "IJ"
+ ],
+ "todo lo que dice autismo cuesta el doble": [
+  "IJ"
+ ],
+ "tiene mil cosas y ninguna le dura": [
+  "IJ"
+ ],
+ "se lleva las piezas chiquitas a la boca": [
+  "IJ"
+ ],
+ "sirven de algo los spinner": [
+  "IJ"
+ ],
+ "en el patio se queda solo": [
+  "IL",
+  "GS"
+ ],
+ "se queda mirando de lejos a los demas": [
+  "IL"
+ ],
+ "en el parque no se acerca a nadie": [
+  "IL"
+ ],
+ "se pone al lado de ellos y nada mas": [
+  "IL"
+ ],
+ "lo fuerzo a socializar y se agobia": [
+  "IL"
+ ],
+ "le toca el papanicolaou y no se deja": [
+  "NW",
+  "AG"
+ ],
+ "quiero ponerle la pildora a mi hija": [
+  "NW",
+  "MO"
+ ],
+ "le quieren poner un diu": [
+  "NW",
+  "MO"
+ ],
+ "no soporta que la exploren ahi abajo": [
+  "NW",
+  "AG"
+ ],
+ "me han dicho de esterilizarla": [
+  "NW",
+  "MO"
+ ],
+ "pastilla del dia despues": [
+  "NW"
+ ],
+ "cumple tres anos y le quitan las terapias": [
+  "NX"
+ ],
+ "le dan el alta del cdiat": [
+  "NX"
+ ],
+ "dictamen de escolarizacion": [
+  "NX",
+  "NU"
+ ],
+ "quien le paga la logopedia cuando empiece la escuela": [
+  "NX"
+ ],
+ "me han dicho que ya no cumple criterios": [
+  "NX",
+  "MR"
+ ],
+ "el terapeuta no me cuenta nada de lo que hablan": [
+  "PA"
+ ],
+ "mi hijo de 15 anos no quiere terapia": [
+  "PA"
+ ],
+ "puedo obligarle a la terapia": [
+  "PA"
+ ],
+ "menor maduro": [
+  "PA"
+ ],
+ "puedo leer su historia clinica": [
+  "PA",
+  "NF"
+ ],
+ "quiere presentarse a unas oposiciones": [
+  "PC"
+ ],
+ "que empresas estan obligadas a contratar personas con autismo": [
+  "PC"
+ ],
+ "dictamen tecnico facultativo": [
+  "PC",
+  "LP"
+ ],
+ "que se ahorra la empresa si lo contrata": [
+  "PC"
+ ],
+ "tiene que contar en la empresa que es autista": [
+  "PC",
+  "NF"
+ ],
+ "nadie le da trabajo a mi hijo autista": [
+  "PC",
+  "T"
+ ],
+ "dicen que le falta empatia": [
+  "BU"
+ ],
+ "no es que no sienta nada": [
+  "BU"
+ ],
+ "se entiende mejor con otros autistas": [
+  "BU"
+ ],
+ "por que no nos entendemos": [
+  "BU"
+ ],
+ "quiero leer a otras familias": [
+  "BV"
+ ],
+ "me siento muy sola con esto": [
+  "BV"
+ ],
+ "alguien mas pasa por esto": [
+  "BV"
+ ],
+ "testimonios de otros padres": [
+  "BV"
+ ],
+ "probioticos para el autismo": [
+  "CB"
+ ],
+ "la flora intestinal y el autismo": [
+  "CB"
+ ],
+ "me han dicho que todo viene del intestino": [
+  "CB"
+ ],
+ "microbiota": [
+  "CB"
+ ],
+ "hay algun analisis que diagnostique el autismo": [
+  "CE"
+ ],
+ "una prueba de sangre para el autismo": [
+  "CE"
+ ],
+ "existe alguna prueba objetiva": [
+  "CE"
+ ],
+ "me ofrecen un test de mirada": [
+  "CE"
+ ],
+ "oxitocina para el autismo": [
+  "CF"
+ ],
+ "hay alguna pastilla para el autismo": [
+  "CF"
+ ],
+ "bumetanida": [
+  "CF"
+ ],
+ "algun farmaco nuevo en investigacion": [
+  "CF"
+ ],
+ "diagnostican mas tarde a los ninos negros": [
+  "CG"
+ ],
+ "a los ninos latinos los diagnostican mas tarde": [
+  "CG"
+ ],
+ "diferencias por raza en el diagnostico": [
+  "CG"
+ ],
+ "en mi cultura no se habla de esto": [
+  "CI"
+ ],
+ "en mi pais no lo llaman autismo": [
+  "CI"
+ ],
+ "como se ve el autismo en otras culturas": [
+  "CI"
+ ],
+ "esclerosis tuberosa": [
+  "CW"
+ ],
+ "sindrome de angelman": [
+  "CW"
+ ],
+ "phelan mcdermid": [
+  "CW"
+ ],
+ "le han encontrado una alteracion genetica": [
+  "CW"
+ ],
+ "actividades extraescolares para autistas": [
+  "DH"
+ ],
+ "que puede hacer en su tiempo libre": [
+  "DH"
+ ],
+ "deporte adaptado": [
+  "DH"
+ ],
+ "no le admiten en el club": [
+  "DH"
+ ],
+ "no entiende las bromas": [
+  "DJ"
+ ],
+ "no pilla la ironia": [
+  "DJ"
+ ],
+ "se cree todo lo que le dicen": [
+  "DJ"
+ ],
+ "no entiende los refranes": [
+  "DJ"
+ ],
+ "teoria de la mente": [
+  "DK"
+ ],
+ "funciones ejecutivas que es": [
+  "DK"
+ ],
+ "por que piensa distinto": [
+  "DK"
+ ],
+ "cuantos autistas hay": [
+  "DL"
+ ],
+ "esta aumentando el autismo": [
+  "DL"
+ ],
+ "uno de cada cien": [
+  "DL"
+ ],
+ "tiene las articulaciones muy flexibles": [
+  "DP"
+ ],
+ "se marea al levantarse": [
+  "DP"
+ ],
+ "le duelen las rodillas y se le salen": [
+  "DP"
+ ],
+ "le late muy rapido el corazon al ponerse de pie": [
+  "DP"
+ ],
+ "bebe alcohol": [
+  "DT"
+ ],
+ "creo que esta consumiendo": [
+  "DT"
+ ],
+ "se automedica para soportar el dia": [
+  "DT"
+ ],
+ "no suelta los videojuegos": [
+  "DU"
+ ],
+ "esta enganchado a la consola": [
+  "DU"
+ ],
+ "le quito la tablet y explota": [
+  "DU"
+ ],
+ "cuantas horas de pantalla son demasiadas": [
+  "DU"
+ ],
+ "habla con desconocidos por internet": [
+  "DV"
+ ],
+ "se cree lo que le dicen en las redes": [
+  "DV"
+ ],
+ "le han estafado por internet": [
+  "DV"
+ ],
+ "sus amigos son todos de internet": [
+  "DV"
+ ],
+ "no reconoce a la gente": [
+  "DX"
+ ],
+ "no saluda a los conocidos por la calle": [
+  "DX"
+ ],
+ "confunde a las personas": [
+  "DX"
+ ],
+ "no sabe cuanto tarda en hacer las cosas": [
+  "DY"
+ ],
+ "no tiene nocion del tiempo": [
+  "DY"
+ ],
+ "para el todo es ahora o nunca": [
+  "DY"
+ ],
+ "se acuerda de todo menos de lo que le pido": [
+  "DZ"
+ ],
+ "memoria de elefante para sus cosas": [
+  "DZ"
+ ],
+ "olvida lo que acaba de oir": [
+  "DZ"
+ ],
+ "dice que ve colores en las letras": [
+  "EA"
+ ],
+ "sinestesia": [
+  "EA"
+ ],
+ "nota detalles que nadie ve": [
+  "EA"
+ ],
+ "educar en casa a un nino autista": [
+  "EB"
+ ],
+ "sacarlo del colegio y ensenarle yo": [
+  "EB"
+ ],
+ "homeschooling": [
+  "EB"
+ ],
+ "teacch": [
+  "EC"
+ ],
+ "que metodo educativo es mejor": [
+  "EC"
+ ],
+ "estructurar el aula con apoyos visuales": [
+  "EC"
+ ],
+ "robots para ninos autistas": [
+  "ED"
+ ],
+ "realidad virtual para el autismo": [
+  "ED"
+ ],
+ "apps que prometen mucho": [
+  "ED"
+ ],
+ "la menopausia siendo autista": [
+  "EH"
+ ],
+ "riesgo de demencia en autistas": [
+  "EH"
+ ],
+ "envejecer siendo autista": [
+  "EH",
+  "AW"
+ ],
+ "la contaminacion causa autismo": [
+  "EK"
+ ],
+ "vivimos al lado de una fabrica": [
+  "EK"
+ ],
+ "el aire que respiramos y el autismo": [
+  "EK"
+ ],
+ "more than words": [
+  "ES"
+ ],
+ "hanen": [
+  "ES"
+ ],
+ "curso para padres de ninos autistas": [
+  "ES"
+ ],
+ "como ayudarle yo en casa a comunicarse": [
+  "ES"
+ ],
+ "video modeling": [
+  "ET"
+ ],
+ "ensenarle con un video": [
+  "ET"
+ ],
+ "historias sociales que son": [
+  "ET"
+ ],
+ "economia de fichas": [
+  "EU"
+ ],
+ "tabla de premios": [
+  "EU"
+ ],
+ "funciona premiar o es soborno": [
+  "EU"
+ ],
+ "le pongo pegatinas cuando lo hace bien": [
+  "EU"
+ ],
+ "cuando le digo que es autista": [
+  "EY"
+ ],
+ "se lo cuento en el trabajo": [
+  "EY"
+ ],
+ "a quien hay que contarle el diagnostico": [
+  "EY"
+ ],
+ "decirselo a la familia o callarlo": [
+  "EY"
+ ],
+ "mi hijo adulto no va al medico": [
+  "EZ"
+ ],
+ "el medico no le hace caso porque es autista": [
+  "EZ"
+ ],
+ "atencion medica para adultos autistas": [
+  "EZ"
+ ],
+ "un mentor autista": [
+  "FB"
+ ],
+ "grupos de apoyo de adultos autistas": [
+  "FB"
+ ],
+ "coaching para autonomia": [
+  "FB"
+ ],
+ "prt": [
+  "FC"
+ ],
+ "pivotal response": [
+  "FC"
+ ],
+ "terapia jugando y siguiendo al nino": [
+  "FC",
+  "FD"
+ ],
+ "floortime": [
+  "FD"
+ ],
+ "dir floortime": [
+  "FD"
+ ],
+ "jugar en el suelo con el": [
+  "FD"
+ ],
+ "scerts": [
+  "FF"
+ ],
+ "no sabe de que hablar con la gente": [
+  "FM"
+ ],
+ "no sabe mantener una conversacion": [
+  "FM"
+ ],
+ "solo habla de su tema": [
+  "FM"
+ ],
+ "habla con un tono raro": [
+  "FN"
+ ],
+ "no gesticula": [
+  "FN"
+ ],
+ "parece que habla enfadado sin estarlo": [
+  "FN"
+ ],
+ "no sabe si le creo lo que leo": [
+  "FY"
+ ],
+ "he visto una noticia sobre el autismo": [
+  "FY"
+ ],
+ "como se si un estudio es bueno": [
+  "FY"
+ ],
+ "modelo social de la discapacidad": [
+  "FZ"
+ ],
+ "es una enfermedad o una forma de ser": [
+  "FZ"
+ ],
+ "hay que curarlo o adaptar el entorno": [
+  "FZ"
+ ],
+ "pandas": [
+  "GB"
+ ],
+ "pans": [
+  "GB"
+ ],
+ "le cambio todo de golpe tras una infeccion": [
+  "GB"
+ ],
+ "enfermedad mitocondrial": [
+  "GC"
+ ],
+ "enfermedad metabolica y autismo": [
+  "GC"
+ ],
+ "le baja mucho la energia y retrocede": [
+  "GC"
+ ],
+ "salir al campo le sienta bien": [
+  "GF"
+ ],
+ "actividades al aire libre": [
+  "GF"
+ ],
+ "sesiones sensory friendly": [
+  "GG"
+ ],
+ "cine adaptado para autistas": [
+  "GG"
+ ],
+ "horario tranquilo en el supermercado": [
+  "GG"
+ ],
+ "hay una excursion del colegio": [
+  "GU"
+ ],
+ "se va de viaje con el colegio": [
+  "GU"
+ ],
+ "no quiero que se quede sin ir a la excursion": [
+  "GU"
+ ],
+ "el autobus del colegio": [
+  "GW"
+ ],
+ "no aguanta el transporte escolar": [
+  "GW"
+ ],
+ "ruta escolar adaptada": [
+  "GW"
+ ],
+ "ha engordado mucho": [
+  "HJ"
+ ],
+ "tiene sobrepeso": [
+  "HJ"
+ ],
+ "no se mueve nada en todo el dia": [
+  "HJ"
+ ],
+ "usar chatgpt para ayudarle": [
+  "HL"
+ ],
+ "apps de inteligencia artificial para autismo": [
+  "HL"
+ ],
+ "habla mas con el chatbot que conmigo": [
+  "HL"
+ ],
+ "mi segundo hijo sera autista tambien": [
+  "HP"
+ ],
+ "estoy embarazada y ya tengo un hijo autista": [
+  "HP"
+ ],
+ "a que edad hay que vigilar al hermano pequeno": [
+  "HP"
+ ],
+ "como le ayudo a hacer amigos": [
+  "HR"
+ ],
+ "quedadas con otros ninos": [
+  "HR"
+ ],
+ "lo apunto a algo para que socialice": [
+  "HR"
+ ],
+ "lo he visto en tiktok": [
+  "HS"
+ ],
+ "una influencer dice que lo cura": [
+  "HS"
+ ],
+ "en un grupo de facebook dicen": [
+  "HS"
+ ],
+ "no para quieto": [
+  "IM"
+ ],
+ "corre todo el rato": [
+  "IM"
+ ],
+ "no se esta sentado ni un minuto": [
+  "IM"
+ ],
+ "le molestan los ruidos fuertes": [
+  "IN"
+ ],
+ "sale corriendo cuando suena la alarma": [
+  "IN"
+ ],
+ "lavarle el pelo es una guerra": [
+  "IO"
+ ],
+ "no se deja peinar ni cortar el pelo": [
+  "IO"
+ ],
+ "en el parque lo pasamos mal": [
+  "IP"
+ ],
+ "no espera su turno en el tobogan": [
+  "IP"
+ ],
+ "que llevo a la consulta del pediatra": [
+  "IQ"
+ ],
+ "tengo cita con el pediatra y no me da tiempo a contarle": [
+  "IQ"
+ ],
+ "como preparo la visita al medico": [
+  "IQ"
+ ],
+ "no entiendo el informe del psicologo": [
+  "IR"
+ ],
+ "que significan los percentiles del informe": [
+  "IR"
+ ],
+ "me han dado un informe lleno de siglas": [
+  "IR"
+ ],
+ "nos mudamos de casa": [
+  "IT"
+ ],
+ "cambiamos de ciudad": [
+  "IT"
+ ],
+ "como le explico que nos mudamos": [
+  "IT"
+ ],
+ "hacer una agenda visual": [
+  "IU"
+ ],
+ "pictogramas para la rutina": [
+  "IU"
+ ],
+ "panel de rutinas casero": [
+  "IU"
+ ],
+ "como escribo una historia social": [
+  "IV"
+ ],
+ "prepararle un cuento para una situacion nueva": [
+  "IV"
+ ],
+ "rincon de calma": [
+  "IW"
+ ],
+ "un sitio donde se tranquilice": [
+  "IW"
+ ],
+ "hacer una carpa en casa para que se calme": [
+  "IW"
+ ],
+ "pasaporte de comunicacion": [
+  "IX"
+ ],
+ "una hoja que explique como es mi hijo": [
+  "IX"
+ ],
+ "ficha de necesidades para el hospital": [
+  "IX"
+ ],
+ "no sabe esperar": [
+  "IY"
+ ],
+ "no aguanta una cola": [
+  "IY"
+ ],
+ "lo quiere todo ya": [
+  "IY"
+ ],
+ "apagar la tablet es una guerra": [
+  "IZ"
+ ],
+ "le quito la tele y se tira al suelo": [
+  "IZ"
+ ],
+ "avisos antes de quitar la pantalla": [
+  "IZ"
+ ],
+ "que aprenda a elegir": [
+  "JA"
+ ],
+ "darle a elegir entre dos cosas": [
+  "JA"
+ ],
+ "nunca dice lo que quiere": [
+  "JA"
+ ],
+ "que se sepa su nombre y direccion": [
+  "JB"
+ ],
+ "si se pierde que hace": [
+  "JB"
+ ],
+ "pulsera identificativa": [
+  "JB"
+ ],
+ "no mira antes de cruzar": [
+  "JC"
+ ],
+ "se suelta de la mano en la calle": [
+  "JC"
+ ],
+ "ensenarle a cruzar solo": [
+  "JC"
+ ],
+ "explicar el autismo a su clase": [
+  "JE"
+ ],
+ "los companeros le preguntan que le pasa": [
+  "JE"
+ ],
+ "charla de autismo en el colegio": [
+  "JE"
+ ],
+ "la terapia no esta sirviendo": [
+  "JF"
+ ],
+ "llevamos meses y no veo avances": [
+  "JF"
+ ],
+ "cambio de terapeuta": [
+  "JF"
+ ],
+ "tenemos una boda": [
+  "JG"
+ ],
+ "la comida de navidad con la familia": [
+  "JG"
+ ],
+ "la comunion de su primo": [
+  "JG"
+ ],
+ "le han sacado el dinero": [
+  "JH"
+ ],
+ "se fia de cualquiera y le estafan": [
+  "JH"
+ ],
+ "firma cosas sin entenderlas": [
+  "JH"
+ ],
+ "pierdo los nervios con el": [
+  "JI"
+ ],
+ "le grito y luego me siento fatal": [
+  "JI"
+ ],
+ "como me calmo yo primero": [
+  "JI"
+ ],
+ "no tengo a nadie que me ayude": [
+  "JJ"
+ ],
+ "como encuentro otras familias como la mia": [
+  "JJ"
+ ],
+ "necesito una red de apoyo": [
+  "JJ"
+ ],
+ "senales de autismo en un bebe": [
+  "JK"
+ ],
+ "mi bebe de diez meses no me mira": [
+  "JK"
+ ],
+ "antes del ano se puede saber": [
+  "JK"
+ ],
+ "mi hijo de cuatro anos autista": [
+  "JL"
+ ],
+ "que trabajar en infantil": [
+  "JL"
+ ],
+ "mi hijo de nueve anos se da cuenta de que es distinto": [
+  "JM"
+ ],
+ "en primaria le cuesta mas": [
+  "JM"
+ ],
+ "como le digo que es autista": [
+  "JN"
+ ],
+ "a que edad se lo cuento": [
+  "JN"
+ ],
+ "me pregunta por que es diferente": [
+  "JN"
+ ],
+ "quieren que repita curso": [
+  "JO"
+ ],
+ "le conviene repetir": [
+  "JO"
+ ],
+ "adelantar curso siendo autista": [
+  "JO"
+ ],
+ "necesita un auxiliar en clase": [
+  "JP"
+ ],
+ "le han quitado la ate": [
+  "JP"
+ ],
+ "sombra en el aula": [
+  "JP"
+ ],
+ "no me dice que le duele": [
+  "JR"
+ ],
+ "como se si tiene fiebre o le duele algo": [
+  "JR"
+ ],
+ "esta raro y no se por que": [
+  "JR"
+ ],
+ "que es una buena vida para el": [
+  "JS"
+ ],
+ "calidad de vida en autismo": [
+  "JS"
+ ],
+ "los objetivos de la terapia son raros": [
+  "JT"
+ ],
+ "quieren que parezca normal": [
+  "JT"
+ ],
+ "como se si un objetivo es bueno": [
+  "JT"
+ ],
+ "adaptar la casa al ruido y la luz": [
+  "JU"
+ ],
+ "le molestan las luces de casa": [
+  "JU"
+ ],
+ "el olor del suavizante le molesta": [
+  "JU"
+ ],
+ "lo crio yo sola": [
+  "JW"
+ ],
+ "madre soltera con un hijo autista": [
+  "JW"
+ ],
+ "no tengo con quien repartirlo": [
+  "JW"
+ ],
+ "somos migrantes y no sabemos como pedir ayuda": [
+  "JY"
+ ],
+ "no tengo papeles y mi hijo es autista": [
+  "JY"
+ ],
+ "acabamos de llegar al pais": [
+  "JY"
+ ],
+ "no puede estar en misa": [
+  "JZ"
+ ],
+ "en la iglesia no lo entienden": [
+  "JZ"
+ ],
+ "la comunidad religiosa y el autismo": [
+  "JZ"
+ ],
+ "tiene cuatro anos y no habla": [
+  "KA"
+ ],
+ "hablara algun dia": [
+  "KA"
+ ],
+ "el habla le esta llegando tarde": [
+  "KA"
+ ],
+ "como uso yo los pictogramas delante de el": [
+  "KB"
+ ],
+ "modelar la caa": [
+  "KB"
+ ],
+ "tengo que usar yo tambien el comunicador": [
+  "KB"
+ ],
+ "si usa pictogramas dejara de hablar": [
+  "KC",
+  "KB"
+ ],
+ "combinar gestos y habla": [
+  "KC"
+ ],
+ "existe el trastorno del procesamiento sensorial": [
+  "KD"
+ ],
+ "me han diagnosticado procesamiento sensorial": [
+  "KD"
+ ],
+ "integracion sensorial sirve": [
+  "KD"
+ ],
+ "le falta hierro": [
+  "KE"
+ ],
+ "tiene anemia": [
+  "KE"
+ ],
+ "que analitica le pido si come poquisimo": [
+  "KE"
+ ],
+ "vitamina d baja": [
+  "KE"
+ ],
+ "no se deja cepillar los dientes": [
+  "KF"
+ ],
+ "el cepillado es una pelea": [
+  "KF"
+ ],
+ "que pasta de dientes le pongo": [
+  "KF"
+ ],
+ "pasa al instituto el ano que viene": [
+  "KH"
+ ],
+ "del colegio al instituto": [
+  "KH"
+ ],
+ "secundaria le da panico": [
+  "KH"
+ ],
+ "quiere montar su propio negocio": [
+  "KI"
+ ],
+ "trabajar por su cuenta siendo autista": [
+  "KI"
+ ],
+ "puede entrar en el ejercito": [
+  "KJ"
+ ],
+ "quiere ser policia": [
+  "KJ"
+ ],
+ "le van a hacer un psicotecnico": [
+  "KJ"
+ ],
+ "estoy de duelo desde el diagnostico": [
+  "KK"
+ ],
+ "no era el hijo que imaginaba": [
+  "KK"
+ ],
+ "me siento culpable por estar triste": [
+  "KK"
+ ],
+ "nuestro hijo adoptado es autista": [
+  "KM"
+ ],
+ "acogimiento y autismo": [
+  "KM"
+ ],
+ "no sabemos nada de su historia previa": [
+  "KM"
+ ],
+ "no llegamos a fin de mes con las terapias": [
+  "KN"
+ ],
+ "cuanto cuesta todo esto": [
+  "KN"
+ ],
+ "he tenido que dejar de trabajar por el": [
+  "KN"
+ ],
+ "se dice persona con autismo o persona autista": [
+  "KO"
+ ],
+ "como hablo del autismo sin ofender": [
+  "KO"
+ ],
+ "decir que sufre autismo esta mal": [
+  "KO"
+ ],
+ "nos han ofrecido entrar en un estudio": [
+  "KP"
+ ],
+ "participar en un ensayo clinico": [
+  "KP"
+ ],
+ "ceder sus datos geneticos a una investigacion": [
+  "KP"
+ ],
+ "para que hace lo que hace": [
+  "KQ"
+ ],
+ "evaluacion funcional de la conducta": [
+  "KQ"
+ ],
+ "buscar la causa de la conducta": [
+  "KQ"
+ ],
+ "fct": [
+  "KR"
+ ],
+ "ensenarle a pedir en vez de gritar": [
+  "KR"
+ ],
+ "comunicacion funcional": [
+  "KR"
+ ],
+ "aprendizaje sin errores": [
+  "KT"
+ ],
+ "le ayudo o le dejo equivocarse": [
+  "KT"
+ ],
+ "retirar la ayuda poco a poco": [
+  "KT"
+ ],
+ "lo hace en terapia pero no en casa": [
+  "KU"
+ ],
+ "generalizar lo aprendido": [
+  "KU"
+ ],
+ "solo lo hace con la terapeuta": [
+  "KU"
+ ],
+ "los videojuegos son lo unico que le gusta": [
+  "KV"
+ ],
+ "su mundo son los videojuegos": [
+  "KV"
+ ],
+ "se le da muy bien la musica": [
+  "KW"
+ ],
+ "la musica le calma": [
+  "KW"
+ ],
+ "tiene oido absoluto": [
+  "KW"
+ ],
+ "sera un genio": [
+  "KX"
+ ],
+ "savant": [
+  "KX"
+ ],
+ "tiene memoria fotografica": [
+  "KX"
+ ],
+ "no se acuerda de lo que hicimos ayer": [
+  "KY"
+ ],
+ "no me cuenta nada de su dia": [
+  "KY"
+ ],
+ "no sabe decidir": [
+  "KZ"
+ ],
+ "se bloquea al tener que elegir": [
+  "KZ"
+ ],
+ "tarda muchisimo en decidir cualquier cosa": [
+  "KZ"
+ ],
+ "se fia de todo el mundo": [
+  "LA"
+ ],
+ "no ve el peligro": [
+  "LA"
+ ],
+ "se mete en situaciones de riesgo": [
+  "LA"
+ ],
+ "mi hijo adulto sigue viviendo en casa": [
+  "LB"
+ ],
+ "tiene treinta anos y vive conmigo": [
+  "LB"
+ ],
+ "soy una mujer autista adulta": [
+  "LC"
+ ],
+ "me diagnosticaron de mayor siendo mujer": [
+  "LC"
+ ],
+ "a las mujeres no nos diagnostican": [
+  "LC"
+ ],
+ "la mascarilla no se la pone": [
+  "LE"
+ ],
+ "desde la pandemia esta peor": [
+  "LE"
+ ],
+ "que app es buena para el": [
+  "LF"
+ ],
+ "esta app sirve de algo": [
+  "LF"
+ ],
+ "material educativo para autismo": [
+  "LF"
+ ],
+ "lleva meses sin ir a clase": [
+  "MW"
+ ],
+ "atencion educativa domiciliaria": [
+  "MW"
+ ],
+ "le dan clase en el hospital": [
+  "MW"
+ ],
+ "si trabaja pierde la pension": [
+  "MX"
+ ],
+ "empieza a trabajar y cobra una prestacion": [
+  "MX"
+ ],
+ "que pasa cuando acabe el instituto": [
+  "MZ"
+ ],
+ "planificar su vida adulta": [
+  "MZ"
+ ],
+ "me quieren echar del trabajo por cuidarle": [
+  "NA"
+ ],
+ "represalias en el trabajo por mi hijo": [
+  "NA"
+ ],
+ "me presionan para firmar la baja voluntaria": [
+  "NA"
+ ],
+ "buscar una cuidadora": [
+  "NB"
+ ],
+ "asistente personal": [
+  "NB"
+ ],
+ "ayuda a domicilio para mi hijo": [
+  "NB"
+ ],
+ "se cancela un plan y se hunde": [
+  "NC"
+ ],
+ "si algo no sale como esperaba se viene abajo": [
+  "NC"
+ ],
+ "vamos a tener otro bebe": [
+  "ND"
+ ],
+ "como le digo que va a tener un hermanito": [
+  "ND"
+ ],
+ "pega a su hermano": [
+  "NL"
+ ],
+ "muerde a su hermana": [
+  "NL"
+ ],
+ "me dan miedo cuando estan solos los dos": [
+  "NL"
+ ],
+ "calmante de rescate": [
+  "NM"
+ ],
+ "me han dado algo para cuando se ponga muy mal": [
+  "NM"
+ ],
+ "cuando le doy la pastilla de emergencia": [
+  "NM"
+ ],
+ "habla en casa y en el colegio no": [
+  "NQ"
+ ],
+ "mutismo selectivo": [
+  "NQ"
+ ],
+ "en el colegio no dice ni una palabra": [
+  "NQ"
+ ],
+ "en el colegio no le quieren dar la medicacion": [
+  "NR"
+ ],
+ "quien le da la pastilla en el cole": [
+  "NR"
+ ],
+ "ha engordado con la risperidona": [
+  "NS"
+ ],
+ "el aripiprazol le da hambre": [
+  "NS"
+ ],
+ "hace falta una resonancia": [
+  "NT"
+ ],
+ "le tienen que hacer una resonancia cerebral": [
+  "NT"
+ ],
+ "dicen que no es epilepsia pero sigue teniendo ataques": [
+  "NV"
+ ],
+ "el electroencefalograma sale bien": [
+  "NV"
+ ],
+ "tics que aparecieron de golpe": [
+  "NV"
  ]
 }

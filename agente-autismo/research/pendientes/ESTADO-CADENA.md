@@ -21,20 +21,36 @@ porque los investigadores no se ven unos a otros:
   cita de ginecología y la anticoncepción decidida con ella son de NW).
 - **QW** — no gana peso ni crece (el ARFID es de LU y P; NS es el caso contrario).
 
-En paralelo, el **relleno de `scripts/sinonimos.json`** para las 154 fichas mudas
-(runId `wf_647bd355-5e7`, tarea wvx2y3nw3) está **reanudado**: de 16 lotes solo
-volvieron 3 (1, 7 y 16, 120 entradas ya guardadas en el scratchpad como
-`sinonimos-lotes.json`); los otros 13 murieron todos con el mismo error de
-servidor —`safeguards flagged this message … [reasoning_extraction]`— que es un
-falso positivo, porque los que sí pasaron llevaban el prompt idéntico. Cuando
-termine: fusionar, comprobar que cada frase llega a su ficha con una búsqueda
-real, y commitear.
+Las **fichas mudas ya no existen**: las 429 tienen al menos una entrada en
+`scripts/sinonimos.json` (1.211 claves). El workflow que lo iba a hacer
+(`wf_647bd355-5e7`) **no sirve y no hay que relanzarlo**: en dos ejecuciones
+seguidas murieron 13 de 16 y luego 15 de 17 agentes con el mismo error de
+servidor —`safeguards flagged this message … [reasoning_extraction]`—, un falso
+positivo que no depende del contenido (los lotes que pasaron llevaban el prompt
+idéntico). Y al reanudar **no replicó de caché**: la segunda vuelta devolvió
+menos lotes que la primera. Las 120 entradas que sí volvieron están fusionadas;
+las otras 370 las escribí a mano en cuatro tandas, comprobando cada frase con el
+simulador nuevo.
+
+**`scripts/pruebas/simular-busqueda.py`** reimplementa `buscarTemas()` de
+`web/app.js` para probar en seco una entrada ANTES de añadirla. Úsalo siempre.
+Dos cosas que enseñó y que no están escritas en ningún otro sitio:
+
+- **El orden de los códigos dentro de una clave no lo lee nadie.** `app.js` hace
+  `impulso[c] = max(...)` para todos por igual, y si dos fichas empatan gana la
+  de título alfabéticamente menor. Poner una ficha "la primera" en la lista no
+  hace nada: si quieres que mande, déjala sola.
+- **`nf.includes(q)` da 30 puntos a cualquier consulta que sea SUBCADENA de la
+  frase**, incluida una palabra suelta. Eso es lo que hace que "tdah" encuentre a
+  U, y también lo que haría que "tiene tdah y autismo" → A le robase puntos: esa
+  entrada se descartó por eso. No cambies la regla sin simular antes: bajarla a
+  dos palabras rompe "tdah".
 
 ## Ya publicado
 
 Rondas 29 a 45. Última: ronda 45 (QP, QQ, QR, QS).
-Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.081 fuentes**.
-Suite **392/392**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
+Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.084 fuentes**.
+Suite **398/398**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
 porque la 0 —NI— espera decisión humana y la 28 está rechazada).
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
@@ -164,13 +180,12 @@ LÍMITE DURO: 4 temas por ronda.
   de `scripts/construir-contenido.py`, que solo admite **frases largas del
   título**, nunca palabras sueltas, y que hay que **probar en seco** (a quién
   mueve) antes de añadir nada.
-- **150 de las 429 fichas no tienen ni una entrada en `scripts/sinonimos.json`.**
-  Es el hueco más grande que queda y no se ve desde fuera: la ficha existe, está
-  en el índice y se abre por su enlace, pero el buscador puntúa 8 por palabra del
-  título y 5 por clave —y las claves salen del título, del mensaje clave y de los
-  sinónimos—, así que quien escribe con sus palabras ("no llego a todos mis
-  hijos", "keppra", "pesa más que yo") no llega. Las seis peores (JV, NK, NN, NP,
-  NY, NZ) ya tienen entradas; faltan las demás. Esto merece su propia ronda.
+- ~~Fichas sin entrada de búsqueda~~ **CERRADA el 22/09.** Eran 155 de 426 y hoy
+  son 0 de 429, con 1.211 claves en `scripts/sinonimos.json` y dos pruebas que lo
+  vigilan (ninguna ficha muda, ningún código fantasma). Lo que queda de esto es
+  mantenimiento: **cada ficha nueva entra con sus frases en el mismo commit**, y
+  se comprueban con `scripts/pruebas/simular-busqueda.py` antes de darlas por
+  buenas.
 
 ## El PR #2
 
