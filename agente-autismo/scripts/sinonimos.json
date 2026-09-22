@@ -2,7 +2,8 @@
  "_ayuda": "Traduce cómo habla una familia a los temas de la biblioteca. Formato: \"lo que escribe la familia\": [\"CÓDIGOS\", \"DE\", \"TEMAS\"]. Puedes añadir todas las frases que quieras y volver a ejecutar scripts/construir-contenido.py.",
  "no duerme": [
   "W",
-  "EN"
+  "EN",
+  "QK"
  ],
  "no quiere dormir": [
   "W",
@@ -21,7 +22,8 @@
  ],
  "melatonina": [
   "W",
-  "F"
+  "F",
+  "QK"
  ],
  "no habla": [
   "D",
@@ -2192,5 +2194,82 @@
  ],
  "mi novio va a vivir con nosotros": [
   "QJ"
+ ],
+ "no se duerme hasta las tres": [
+  "QK"
+ ],
+ "no hay quien lo levante": [
+  "QK"
+ ],
+ "retraso de fase": [
+  "QK"
+ ],
+ "duerme de dia y vive de noche": [
+  "QK"
+ ],
+ "llega tarde al instituto": [
+  "QK",
+  "LO"
+ ],
+ "reloj interno": [
+  "QK"
+ ],
+ "mi hijo tiene cancer": [
+  "QL"
+ ],
+ "leucemia": [
+  "QL"
+ ],
+ "quimioterapia": [
+  "QL"
+ ],
+ "esta ingresado": [
+  "QL"
+ ],
+ "cuidados paliativos": [
+  "QL"
+ ],
+ "enfermedad grave": [
+  "QL"
+ ],
+ "se va a morir mi hijo": [
+  "QL",
+  "GD"
+ ],
+ "los vecinos se quejan": [
+  "QM"
+ ],
+ "el vecino golpea el techo": [
+  "QM"
+ ],
+ "nos quieren echar del piso": [
+  "QM"
+ ],
+ "el casero no nos renueva": [
+  "QM"
+ ],
+ "junta de propietarios": [
+  "QM"
+ ],
+ "denuncia por ruido": [
+  "QM"
+ ],
+ "nos mudamos de comunidad": [
+  "QN"
+ ],
+ "me traslada la empresa": [
+  "QN"
+ ],
+ "me vale el certificado en otra comunidad": [
+  "QN"
+ ],
+ "pierdo la lista de espera": [
+  "QN"
+ ],
+ "cambio de provincia": [
+  "QN"
+ ],
+ "traslado de expediente": [
+  "QN"
  ]
 }

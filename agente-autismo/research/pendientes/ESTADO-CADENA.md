@@ -9,25 +9,17 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 44** — runId `wf_721834ca-6a7` (tarea w1gatbe3g), lanzada el 22/09 hacia
-las 13:00.
+**Ninguna.** La ronda 44 (QK, QL, QM, QN) se publicó el 22/09.
 
-- **QK** — el reloj interno del adolescente (retraso de fase). Regla innegociable:
-  se explica el uso **horario** de la melatonina sin dar ni una dosis.
-- **QL** — cuando el enfermo grave es él: ingresos largos y paliativos. Tono con
-  cuidado extremo, y los paliativos no son "el final".
-- **QM** — los vecinos, el ruido y el riesgo de quedarte sin casa.
-- **QN** — nos mudamos de comunidad: el certificado y la lista de espera.
-
-**Cuando termine, la reserva se queda en 4 entradas y solo 2 investigables**
-(melatonina y el perro). Hay que lanzar `scripts/workflows/detectar-huecos.mjs`
-sí o sí antes de la ronda 45.
+**LA RESERVA ESTA AGOTADA: quedan 4 entradas y solo 2 investigables** (la
+melatonina y cuando parar, y el perro). Antes de la ronda 45 hay que lanzar
+`scripts/workflows/detectar-huecos.mjs` — sin eso no hay ronda 45.
 
 ## Ya publicado
 
-Rondas 29 a 43. Última: ronda 43 (QG, QH, QI, QJ).
-Biblioteca en **421 temas / 226 verificados / 195 síntesis / 3.897 fuentes**.
-Suite **313/313**. Reserva: 8 entradas (6 investigables).
+Rondas 29 a 44. Última: ronda 44 (QK, QL, QM, QN).
+Biblioteca en **425 temas / 226 verificados / 199 síntesis / 4.006 fuentes**.
+Suite **335/335**. Reserva: 4 entradas (2 investigables).
 
 Ronda 45: códigos **QP, QQ, QR, QS** (se evita QO, como se evitó PO) (confirma con grep; PO sigue libre y se
 evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
@@ -111,7 +103,7 @@ propio resultado.
    mal enlazada en AG. Si el editor pide elegir, elige y explica por qué.
    - **Patrón firme:** cuando una ficha nueva contradice a una publicada, la
      equivocada suele ser LA PUBLICADA. Ya han caído GL, DH, LP, S, MO, FU, R, AE,
-     MR, PC, EO, KF, AG, CL, EN, FL y MZ. Pero no siempre: en la 39 la equivocada era la nueva
+     MR, PC, EO, KF, AG, CL, EN, FL y MZ. La ronda 44 no corrigió ninguna: salió limpia. Pero no siempre: en la 39 la equivocada era la nueva
      (PT decía al revés lo de "audífono" y MT lo tenía bien). Comprueba con una o
      dos búsquedas antes de corregir.
    - Bloqueos falsos habituales: "el código no está en indice-temas.txt" (eso lo
@@ -126,7 +118,7 @@ propio resultado.
    reescribe con `indent=1` y salto final.
 4. `python3 scripts/construir-contenido.py`.
 5. Cifras en `README.md` (2 sitios), `ESTADO.md` (varios, incluido el cálculo
-   "421 − 226 = 195") e `ios/README-iOS.md`.
+   "425 − 226 = 199") e `ios/README-iOS.md`.
 6. Sección de ronda en `scripts/pruebas/prueba-app.mjs`, más una prueba por cada
    corrección a una ficha vieja. **Comprueba que la premisa de cada prueba nueva
    es cierta antes de escribirla** (una vez escribí una sobre una premisa falsa

@@ -71,6 +71,7 @@ CATEGORIAS = [
         "alimentación", "conducta alimentaria", "pubertad", "menstruación", "esfínteres",
         "motricidad", "neurobiología", "genétic", "x frágil", "rett", "esclerosis tuberosa",
         "síndrome de down", "discapacidad intelectual", "sustancias",
+        "paliativos", "quimioterapia", "enfermedad grave",
     ]),
     ("escuela", "Escuela y aprendizaje", [
         "escuela", "escolar", "colegio", "aula", "recreo", "comedor", "excursion",
@@ -85,6 +86,7 @@ CATEGORIAS = [
         "campamento", "transporte", "emergencias", "baño", "cocinar", "dinero",
         "organización y tareas", "habilidades de vida", "amistades", "amistad",
         "cuido",
+        "vecinos",
     ]),
     ("adultez", "Adolescencia y vida adulta", [
         "adolescencia", "adultez", "adulto", "empleo", "trabajo", "entrevistas",
@@ -98,6 +100,9 @@ CATEGORIAS = [
         "mayor de edad", "mayoría de edad", "incapacitar", "antes de los 18",
     ]),
     ("derechos", "Derechos y recursos por país", [
+        # LP (el certificado) y QN (la mudanza entre comunidades) caian en el cajon
+        # por defecto. "certificado" a secas se llevaria NU, que esta bien en escuela.
+        "valoración de discapacidad", "me vale el certificado",
         "derechos y recursos", "panorama", "en méxico", "en españa", "en argentina",
         "en colombia", "en chile", "en perú", "en brasil", "centroamérica",
         "puerto rico", "costa rica", "honduras", "ee. uu.", "encontrar recursos",

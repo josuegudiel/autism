@@ -1233,6 +1233,81 @@ check('T y FL mandan a QI, y GE y QB mandan a QJ',
   && /\*\*QJ\. Tengo pareja nueva/.test(b43('GE')) && /\*\*QJ\. Tengo pareja nueva/.test(b43('QB')));
 
 
+// 28. Ronda 44. Las cuatro publicables a la primera, con dos arreglos del
+// conversor: QL caía en "Diagnóstico" por la palabra «diagnosticado» de su
+// título, y QN y LP en el cajón por defecto en vez de en "Derechos".
+for (const [codigo, marca] of [['QK', /madrugada|retraso de fase|reloj/i],
+                               ['QL', /c[áa]ncer|paliativos|ingreso/i],
+                               ['QM', /vecin|ruido|casero/i],
+                               ['QN', /mudar|certificado|lista de espera/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 44: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['no se duerme hasta las tres', /madrugada|reloj|fase|sue[ñn]o/i],
+                       ['retraso de fase', /fase|reloj|circadian/i],
+                       ['mi hijo tiene cancer', /c[áa]ncer|enfermedad grave|ingreso/i],
+                       ['cuidados paliativos', /paliativos|s[íi]ntomas|enfermedad/i],
+                       ['los vecinos se quejan', /vecin|ruido|comunidad/i],
+                       ['nos mudamos de comunidad', /mudar|certificado|traslad/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 44: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib44 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b44 = (cod) => lib44.slice(lib44.indexOf('### ' + cod + '. '), lib44.indexOf('### ', lib44.indexOf('### ' + cod + '. ') + 6));
+const cuerpo44 = (cod) => b44(cod).replace(/> \*\*Para la app[\s\S]*/, '');
+
+// La regla más vieja de la biblioteca: aquí no se dan dosis de melatonina. Los
+// únicos miligramos de QK son los del CBD que apareció en una gominola mal
+// etiquetada, que es justo el argumento contrario.
+// La regla es que aquí no se receta: los únicos miligramos que aparecen son los
+// del CBD hallado en una gominola mal etiquetada, que es el argumento contrario.
+check('QK no da ninguna dosis de melatonina y remite a quien la receta',
+  !/\d+([.,]\d+)?\s?mg de melatonina/i.test(cuerpo44('QK'))
+  && !/melatonina[^.]{0,60}(dosis de|tomar)\s*\d/i.test(cuerpo44('QK'))
+  && /quien la receta/.test(cuerpo44('QK')));
+check('QK explica que no es rebeldía sino un reloj desplazado',
+  /retraso de fase/.test(b44('QK')) && /rebeld[íi]a/.test(b44('QK')));
+check('W, LO y KH mandan a QK',
+  /\*\*QK\. No se duerme hasta las tres/.test(b44('W')) && /\*\*QK\. No se duerme hasta las tres/.test(b44('LO'))
+  && /\*\*QK\. No se duerme hasta las tres/.test(b44('KH')));
+
+// QL no puede vender los paliativos como "el final" ni inventar evidencia de
+// autismo donde no la hay.
+const ql44 = b44('QL');
+check('QL dice que los paliativos pueden ir con el tratamiento curativo',
+  /a la vez que el tratamiento|junto al tratamiento|no.{0,40}el final/i.test(ql44));
+check('QL admite que casi nada de esto está estudiado en niños autistas',
+  /esa literatura apenas existe|casi nada de lo anterior viene de estudios/.test(ql44));
+check('CZ, GD y LD mandan a QL',
+  /\*\*QL\. Tiene un c[áa]ncer/.test(b44('CZ')) && /\*\*QL\. Tiene un c[áa]ncer/.test(b44('GD'))
+  && /\*\*QL\. Tiene un c[áa]ncer/.test(b44('LD')));
+
+// QM tenía prohibido inventar prevalencias de un conflicto que nadie ha medido.
+const qm44 = cuerpo44('QM');
+check('QM no inventa porcentajes de familias en conflicto vecinal',
+  !/\d+\s?% de (las )?familias/.test(qm44) && /gui[óo]n/i.test(qm44));
+check('JU y AK mandan a QM',
+  /\*\*QM\. Los vecinos se quejan/.test(b44('JU')) && /\*\*QM\. Los vecinos se quejan/.test(b44('AK')));
+
+// QN y NE son dos mudanzas distintas y tienen que distinguirse.
+check('QN se distingue de NE y enlaza con ella',
+  /\*\*NE/.test(b44('QN')) && /\*\*QN\. Nos mudamos/.test(b44('NE')));
+check('LP e IT mandan a QN',
+  /\*\*QN\. Nos mudamos/.test(b44('LP')) && /\*\*QN\. Nos mudamos/.test(b44('IT')));
+
+// Dos arreglos del conversor, con sus efectos colaterales vigilados.
+const idx44 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temas44 = idx44.temas || idx44;
+const cat44 = (cod) => (temas44.find((t) => t.codigo === cod) || {}).categoria;
+check('QL está en salud y no en diagnóstico, y QM en familia',
+  cat44('QL') === 'salud' && cat44('QM') === 'familia');
+check('QN y LP están en derechos, y NU sigue en escuela',
+  cat44('QN') === 'derechos' && cat44('LP') === 'derechos' && cat44('NU') === 'escuela');
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
