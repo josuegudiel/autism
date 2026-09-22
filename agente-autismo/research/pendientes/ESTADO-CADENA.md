@@ -36,7 +36,7 @@ que las dos se reemplazaron por la segunda pasada.
 
 Rondas 29 a 46.
 Biblioteca en **433 temas / 226 verificados / 207 síntesis / 4.169 fuentes**.
-Suite **486/486**. Reserva: **23 entradas**.
+Suite **489/489**. Reserva: **23 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
@@ -152,6 +152,16 @@ propio resultado.
 LÍMITE DURO: 4 temas por ronda.
 
 ## Deuda conocida, para una ronda de limpieza
+
+- **`scripts/pruebas/coherencia-cifras.py` (nuevo, 22/09).** Busca cifras que la
+  biblioteca publica de dos maneras: agrupa afirmaciones con número por las
+  palabras raras que las rodean y saca los pares que no coinciden. Todas las
+  contradicciones que han ido apareciendo tenían esa forma (la fiebre de LV y
+  QP, el vómito en ocho fichas, el implante de NW, la formación policial de CJ).
+  **Pásalo cuando publiques una ronda**, antes del commit. Da falsos positivos
+  —dos datos distintos del mismo informe, o una cifra redondeada— así que se
+  lee, no se obedece: de los 257 pares que saca hoy, dos eran de verdad.
+
 
 - **Las notas "Antes de publicar"**: auditadas las seis que pedían trabajo en
   OTRA ficha (MT, PJ→DM, PQ→N y EE, PX→cinco fichas, QE→AV, PV). Cuatro seguían

@@ -1850,6 +1850,31 @@ check('QT declara que sus cifras de fugas y atrapamiento son estadounidenses',
   /Las cifras de fugas y de atrapamiento son de Estados Unidos/.test(cuerpo46('QT')));
 
 
+// 37. Coherencia entre fichas. Las contradicciones que han ido apareciendo
+// —la fiebre en LV y QP, el vómito en ocho fichas, el implante de NW, la
+// formación policial de CJ— tenían todas la misma forma: dos fichas hablando
+// de lo mismo con cifras distintas, y nadie mirándolas juntas.
+// `scripts/pruebas/coherencia-cifras.py` las busca; estas prueban las que ya
+// se cerraron, para que no vuelvan.
+const libC = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bC = (cod) => {
+  const i = libC.indexOf('### ' + cod + '. ');
+  const j = libC.indexOf('\n### ', i + 6);
+  return j === -1 ? libC.slice(i) : libC.slice(i, j);
+};
+// El 26% de Anderson es del total de la muestra; el 53% es de los que sí se
+// escaparon. JD daba el 26% pegado al 49% sin decir de qué era, y se leía como
+// si fuera el mismo dato que el 53% de MJ.
+check('JD dice de qué es el 26% de Anderson y lo distingue del 53%',
+  /26% \*\*del total de la muestra\*\*/.test(bC('JD')) && /53%/.test(bC('JD')));
+check('MJ y NH siguen diciendo cada uno su denominador',
+  /de los que se escaparon, el 53%/.test(bC('MJ')) && /26% del total/.test(bC('NH')));
+// O publicaba «1 de cada 4» para la regresión cuando BJ ya publicaba que
+// depende de la definición.
+check('O da el rango de la regresión en vez de una cifra sola',
+  /La frecuencia depende de cómo se defina/.test(bC('O')) && /\*\*BJ\*\*/.test(bC('O')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
