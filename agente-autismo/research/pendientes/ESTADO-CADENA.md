@@ -9,11 +9,15 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna.** La ronda 44 (QK, QL, QM, QN) se publicó el 22/09.
+**Ninguna ronda de investigación.** En marcha el **quinto análisis de huecos**
+sobre los 425 temas: runId `wf_5df6ffc7-b54` (tarea w2rnk8pku), lanzado el 22/09
+hacia las 14:30.
 
-**LA RESERVA ESTA AGOTADA: quedan 4 entradas y solo 2 investigables** (la
-melatonina y cuando parar, y el perro). Antes de la ronda 45 hay que lanzar
-`scripts/workflows/detectar-huecos.mjs` — sin eso no hay ronda 45.
+Cuando termine: fusionar sus propuestas con las 4 entradas que quedan en
+`research/pendientes/ronda-19-borradores.json` **conservando las anotaciones**
+—"de cinco a ocho pide la tablet" está rechazada (NG) y "dice que se quiere
+morir" está terminada esperando decisión—, commitear la reserva y lanzar la
+ronda 45.
 
 ## Ya publicado
 
