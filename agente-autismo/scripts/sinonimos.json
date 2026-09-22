@@ -2271,5 +2271,77 @@
  ],
  "traslado de expediente": [
   "QN"
+ ],
+ "no llego a todos mis hijos": [
+  "JV"
+ ],
+ "mi otro hijo se queda sin tiempo": [
+  "JV"
+ ],
+ "repartir el tiempo entre hermanos": [
+  "JV"
+ ],
+ "el hermano se siente desplazado": [
+  "JV",
+  "AJ"
+ ],
+ "si me pasa algo": [
+  "NK"
+ ],
+ "quien se queda con mi hijo si me pasa algo": [
+  "NK"
+ ],
+ "me tienen que ingresar y no hay nadie": [
+  "NK"
+ ],
+ "carpeta de emergencia": [
+  "NK"
+ ],
+ "keppra": [
+  "NN"
+ ],
+ "levetiracetam": [
+  "NN"
+ ],
+ "esta irritable desde el antiepileptico": [
+  "NN"
+ ],
+ "el farmaco lo ha cambiado": [
+  "NN",
+  "KG"
+ ],
+ "pesa mas que yo": [
+  "NP"
+ ],
+ "me duele la espalda de cogerlo": [
+  "NP"
+ ],
+ "ducharlo siendo grande": [
+  "NP"
+ ],
+ "subirlo al coche": [
+  "NP"
+ ],
+ "no puedo con el fisicamente": [
+  "NP"
+ ],
+ "se le acaba el pediatra": [
+  "NY"
+ ],
+ "pasar al medico de adultos": [
+  "NY"
+ ],
+ "ya no le atiende el pediatra": [
+  "NY"
+ ],
+ "paralisis cerebral y autismo": [
+  "NZ"
+ ],
+ "tiene paralisis cerebral": [
+  "NZ"
+ ],
+ "dos diagnosticos a la vez": [
+  "NZ",
+  "AF"
  ]
 }

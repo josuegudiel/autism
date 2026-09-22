@@ -144,6 +144,13 @@ LÍMITE DURO: 4 temas por ronda.
   describen trabajo que en parte ya está hecho. Merecen una pasada.
 - **116 fichas en "Comprender el autismo"**, que es el cajón por defecto del
   conversor. Algunas están bien ahí; otras no.
+- **155 de las 426 fichas no tienen ni una entrada en `scripts/sinonimos.json`.**
+  Es el hueco más grande que queda y no se ve desde fuera: la ficha existe, está
+  en el índice y se abre por su enlace, pero el buscador puntúa 8 por palabra del
+  título y 5 por clave —y las claves salen del título, del mensaje clave y de los
+  sinónimos—, así que quien escribe con sus palabras ("no llego a todos mis
+  hijos", "keppra", "pesa más que yo") no llega. Las seis peores (JV, NK, NN, NP,
+  NY, NZ) ya tienen entradas; faltan las demás. Esto merece su propia ronda.
 
 ## El PR #2
 
