@@ -1025,7 +1025,8 @@
   "LP"
  ],
  "cumple 18": [
-  "LQ"
+  "LQ",
+  "PV"
  ],
  "mayoria de edad": [
   "LQ"
@@ -1876,5 +1877,83 @@
  ],
  "no tolera el aparato": [
   "PT"
+ ],
+ "la policia lo ha citado": [
+  "PU",
+  "CJ"
+ ],
+ "ha entrado en una cuenta ajena": [
+  "PU"
+ ],
+ "le he encontrado fotos en el movil": [
+  "PU"
+ ],
+ "no para de escribirle a una chica": [
+  "PU"
+ ],
+ "amenaza de broma": [
+  "PU"
+ ],
+ "mi hijo puede ir a la carcel": [
+  "PU",
+  "CJ"
+ ],
+ "que pasa con la ayuda cuando cumple 18": [
+  "PV",
+  "PB"
+ ],
+ "pierde la prestacion por hijo a cargo": [
+  "PV",
+  "PB"
+ ],
+ "pension no contributiva a los 18": [
+  "PV",
+  "PB"
+ ],
+ "me quitan la paga de mi hijo": [
+  "PV",
+  "PB"
+ ],
+ "calendario de tramites antes de los 18": [
+  "PV"
+ ],
+ "revision del grado de discapacidad": [
+  "PV",
+  "LP"
+ ],
+ "la guarderia no puede con el": [
+  "PW"
+ ],
+ "me lo quieren echar de la guarderia": [
+  "PW"
+ ],
+ "no tiene tres años todavia": [
+  "PW"
+ ],
+ "escuela infantil": [
+  "PW",
+  "IK"
+ ],
+ "que me lo recojan antes": [
+  "PW"
+ ],
+ "solo quiere a mama": [
+  "PX"
+ ],
+ "no se queda con nadie": [
+  "PX"
+ ],
+ "no se separa de mi": [
+  "PX"
+ ],
+ "solo me acepta a mi": [
+  "PX"
+ ],
+ "no quiere a su padre": [
+  "PX"
+ ],
+ "no puedo ni ir al bano": [
+  "PX",
+  "PQ"
  ]
 }

@@ -930,6 +930,71 @@ check('EN y EO mandan a PT para que el aparato se use de verdad',
   /\*\*PT\. No se deja poner/.test(b39('EN')) && /\*\*PT\. No se deja poner/.test(b39('EO')));
 
 
+// 24. Ronda 40. PV vino marcada no publicable: el editor pedía elegir entre
+// publicarla como ficha propia o disolverla dentro de PB. Se eligió ficha propia
+// porque el disparador es otro (buscar fechas en el curso de los 17, no el mapa
+// de ayudas) y porque el deslinde ya estaba hecho dentro del texto.
+for (const [codigo, marca] of [['PU', /delito|denuncia|cuenta ajena/i],
+                               ['PV', /18|calendario|revisi[óo]n/i],
+                               ['PW', /guarder[íi]a|tres a[ñn]os/i],
+                               ['PX', /mam[áa]|cuidador|se queda/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 40: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['le he encontrado fotos en el movil', /delito|im[áa]genes|abogado/i],
+                       ['mi hijo puede ir a la carcel', /delito|polic[íi]a|abogado/i],
+                       ['que pasa con la ayuda cuando cumple 18', /18|prestaci[óo]n|calendario/i],
+                       ['la guarderia no puede con el', /guarder[íi]a|escuela infantil|apoyo/i],
+                       ['solo quiere a mama', /mam[áa]|cuidador|se queda/i],
+                       ['no se queda con nadie', /cuidador|se queda|traspaso/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 40: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib40 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b40 = (cod) => lib40.slice(lib40.indexOf('### ' + cod + '. '), lib40.indexOf('### ', lib40.indexOf('### ' + cod + '. ') + 6));
+
+// PU se escribió para un padre asustado, no para un juez: lo primero es el riesgo
+// de suicidio del hijo, y el estereotipo del «autista cibercriminal» se desmonta.
+const pu = b40('PU');
+check('PU antepone el riesgo del hijo al expediente', /024/.test(pu) && /urgencias hoy/i.test(pu));
+check('PU desmonta el estereotipo con el único estudio que lo ha mirado', /Payne/.test(pu));
+check('PU no reescribe CJ: la remite para cuando la policía ya está delante', /\*\*CJ/.test(pu));
+check('CJ, DV y HY mandan a PU',
+  /\*\*PU\. Entró en una cuenta ajena/.test(b40('CJ')) && /\*\*PU\. Entró en una cuenta ajena/.test(b40('DV'))
+  && /\*\*PU\. Entró en una cuenta ajena/.test(b40('HY')));
+
+// El deslinde de PV con PB: PV es el calendario, PB los umbrales y las cuantías.
+const pv = b40('PV');
+check('PV manda a PB los umbrales y las cuantías, y no los repite',
+  /\*\*PB/.test(pv) && /no se repiten aquí/.test(pv));
+check('PV trae lo que no estaba en ninguna parte: los cuatro relojes y el aviso chileno',
+  /Cuatro relojes/.test(pv) && /17 años y 6 meses/.test(pv));
+check('PB, LP y NY enlazan de vuelta a PV',
+  /\*\*PV\. El calendario/.test(b40('PB')) && /\*\*PV\. El calendario/.test(b40('LP'))
+  && /\*\*PV\. El calendario/.test(b40('NY')));
+
+// PW es el limbo del 0-3, donde no hay dictamen que obligue a nadie.
+const pw = b40('PW');
+check('PW dice qué se puede pedir cuando no hay circuito escolar que obligue',
+  /por escrito/.test(pw) && /(tres a[ñn]os|0-3)/.test(pw));
+check('X y NX mandan a PW, que es el otro extremo del tramo',
+  /\*\*PW\. La guardería dice/.test(b40('X')) && /\*\*PW\. La guardería dice/.test(b40('NX')));
+
+// PX separa la preferencia de siempre del rechazo nuevo hacia una persona: eso
+// segundo no se reensaya por escalones, se consulta.
+const px = b40('PX');
+check('PX distingue la preferencia de siempre del rechazo nuevo a una persona',
+  /nuevo, repentino/.test(px) && /no le interrogues/i.test(px));
+check('PX no infla la evidencia: la figura preferida no va en verde',
+  /ansiedad por separación/.test(px) && (px.match(/🟢/g) || []).length <= 1);
+check('NH, EE y PQ mandan a PX cuando el niño no acepta a un segundo adulto',
+  /\*\*PX\. Solo quiere a mam[áa]/.test(b40('NH')) && /\*\*PX\. Solo quiere a mam[áa]/.test(b40('EE'))
+  && /\*\*PX\. Solo quiere a mam[áa]/.test(b40('PQ')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
