@@ -2081,6 +2081,36 @@ check('RA se publicó con su propio código y no con el de QX',
   /^### RA\. /m.test(libC) && (libC.match(/^### QX\. /gm) || []).length === 1);
 
 
+// 40. El badge de evidencia de cada viñeta. `extraerNivel()` (web/app.js) se
+// queda con el último marcador que encuentra recorriendo NIVELES, así que en
+// una viñeta con varios gana el más severo de los presentes. Eso es lo correcto
+// casi siempre, porque la biblioteca usa a propósito «🟢/🟡» para decir «sólida
+// para esto, limitada para aquello» y conviene enseñar el conservador. Lo que
+// NO puede pasar es que un marcador MENCIONADO de pasada dentro del texto
+// decida el badge: en B, «(sobreafirmación 🔴)» hacía que una viñeta que dice
+// que la ASI con objetivos concretos tiene evidencia limitada apareciera como
+// «Desaconsejado», que es lo contrario de lo que el texto sostiene.
+const cuerpoJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-cuerpo.json', import.meta.url), 'utf8'));
+const temasCuerpo = cuerpoJSON.temas || cuerpoJSON;
+const MARCAS = ['🟢', '🟡', '🔴', '⚪'];
+const nivelDe = (l) => { let n = null; for (const m of MARCAS) if (l.includes(m)) n = m; return n; };
+const textoDe = (md) => (typeof md === 'string' ? md : (md.cuerpo || ''));
+const ayres = textoDe(temasCuerpo.B).split('\n').find((l) => l.includes('Ayres'));
+check('la viñeta de la integración sensorial de B no se pinta como «Desaconsejado»',
+  !!ayres && nivelDe(ayres) === '🟡', ayres && ayres.slice(0, 90));
+
+// Y que no crezca el número de viñetas con dos marcadores sin que nadie mire:
+// las que hay son la convención «🟢/🟡» y desgloses por partes, no mezclas.
+let dobles = 0;
+for (const md of Object.values(temasCuerpo)) {
+  for (const l of textoDe(md).split('\n')) {
+    if (!l.startsWith('- ')) continue;
+    if (MARCAS.filter((m) => l.includes(m)).length > 1) dobles++;
+  }
+}
+check('las viñetas con más de un marcador siguen siendo las contadas', dobles <= 27, String(dobles));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

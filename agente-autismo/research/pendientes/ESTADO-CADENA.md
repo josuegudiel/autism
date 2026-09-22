@@ -38,7 +38,7 @@ que no se lleve por delante el trozo bueno.
 
 Rondas 29 a 47.
 Biblioteca en **437 temas / 226 verificados / 211 síntesis / 4.258 fuentes**.
-Suite **530/530**. Reserva: **19 entradas**.
+Suite **532/532**. Reserva: **19 entradas**.
 
 Ronda 48: códigos **RB, RC, RD, RE** (QO sigue libre a propósito, como PO;
 confírmalo con grep). Candidatas por orden de la reserva: **el dolor crónico y
