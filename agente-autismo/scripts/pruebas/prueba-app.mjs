@@ -2238,6 +2238,104 @@ check('Crisis: la nota de la base de la IA manda comprobar también el horario',
 check('Crisis: la respuesta del asistente ofrece también un canal por escrito',
   /por escrito/.test(textoCrisis) && /AYUDA al 988/.test(textoCrisis) && /955 557 000/.test(textoCrisis));
 
+// 43. Las fuentes del Detector tienen que sostener lo que dice la tarjeta. El
+// fallo real que encontramos: la tarjeta del test de cabello citaba "AAP —
+// Choosing Wisely" y enlazaba a aafp.org, que es otra sociedad (los médicos de
+// familia, no los pediatras). Y la de los aceites esenciales citaba un reportaje
+// sobre la FDA retirando una página de advertencia, que no dice nada de lo que
+// la tarjeta afirma. Un enlace que no sostiene la afirmación es peor que ninguno:
+// da la apariencia de estar comprobado.
+const detJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/banderas-rojas.json', import.meta.url), 'utf8'));
+check('Detector: ninguna tarjeta se queda sin fuente, y todas van por https',
+  detJSON.casos.every((c) => c.fuentes.length >= 1 && c.fuentes.every((f) => /^https:\/\//.test(f.url) && f.label)),
+  detJSON.casos.filter((c) => !c.fuentes.length).map((c) => c.id).join(','));
+check('Detector: los identificadores no se repiten',
+  new Set(detJSON.casos.map((c) => c.id)).size === detJSON.casos.length);
+const aliasVistos = new Map();
+for (const c of detJSON.casos) for (const a of c.alias) {
+  const k = a.toLowerCase();
+  if (!aliasVistos.has(k)) aliasVistos.set(k, []);
+  aliasVistos.get(k).push(c.id);
+}
+const aliasChocan = [...aliasVistos].filter(([, ids]) => ids.length > 1);
+check('Detector: ningún alias pertenece a dos tarjetas a la vez',
+  aliasChocan.length === 0, aliasChocan.map(([a, ids]) => a + '→' + ids.join('/')).join(' · '));
+
+// Quién firma la fuente tiene que coincidir con el dominio que la aloja.
+const FIRMAS = [
+  [/\bAAP\b|Academia Americana de Pediatr/i, ['aap.org', 'choosingwisely.org', 'healthychildren.org']],
+  [/\bAAFP\b/i, ['aafp.org']],
+  [/Cochrane/i, ['cochrane.org', 'cochranelibrary.com']],
+  [/\bASHA\b/i, ['asha.org']],
+  [/\bASAT\b/i, ['asatonline.org']],
+  [/\bFDA\b/i, ['fda.gov', 'ecfr.gov', 'law.cornell.edu']],
+  [/\bOMS\b|\bWHO\b/i, ['who.int']],
+  [/Quackwatch/i, ['quackwatch.org']],
+  [/\bNIMH\b/i, ['nimh.nih.gov']],
+  [/ProPublica/i, ['propublica.org']],
+  [/Poison Control/i, ['poison.org']],
+  [/\bASA\b(?!T)|\bCAP\b/, ['asa.org.uk']],
+  [/Child Neurology Society/i, ['childneurologysociety.org']],
+  [/Anticancer Fund/i, ['anticancerfund.org']],
+  [/Raising Children/i, ['raisingchildren.net.au']],
+  [/\bCBS\b/i, ['cbsnews.com']],
+];
+const desajustes = [];
+for (const c of detJSON.casos) {
+  for (const f of c.fuentes) {
+    const host = new URL(f.url).hostname.replace(/^www\./, '');
+    for (const [firma, dominios] of FIRMAS) {
+      if (!firma.test(f.label)) continue;
+      if (!dominios.some((d) => host === d || host.endsWith('.' + d))) {
+        desajustes.push(c.id + ': «' + f.label + '» → ' + host);
+      }
+    }
+  }
+}
+check('Detector: quien firma cada fuente coincide con el dominio que la aloja',
+  desajustes.length === 0, desajustes.join(' · '));
+
+// Y las cuatro tarjetas que se corrigieron, por si alguien las revierte.
+const caso = (id) => detJSON.casos.find((c) => c.id === id);
+check('Detector: el test de cabello cita a los pediatras, no a otra sociedad',
+  /AAP/.test(caso('bioresonancia').fuentes[0].label)
+  && caso('bioresonancia').fuentes[0].url.includes('choosingwisely.org'));
+check('Detector: los aceites esenciales citan a quien documenta el envenenamiento',
+  caso('aceites-esenciales').fuentes.some((f) => f.url.includes('poison.org'))
+  && !caso('aceites-esenciales').fuentes.some((f) => f.url.includes('propublica')));
+check('Detector: la terapia de luz ya no dice que falten controles, habiendo un ensayo simulado',
+  !/sin los controles/.test(caso('terapia-luz-color').porque)
+  && /grupo simulado/.test(caso('terapia-luz-color').porque)
+  && /30 niños/.test(caso('terapia-luz-color').porque));
+check('Detector: el ozono apoya su riesgo en la norma que lo define como gas tóxico',
+  /gas tóxico/.test(caso('ozono').porque)
+  && caso('ozono').fuentes.some((f) => f.url.includes('ecfr.gov')));
+
+// 44. La comprobación 11 ata a la documentación las cifras de TEMAS. Faltaban
+// las otras tres que ESTADO.md publica como estado actual —fuentes, tarjetas del
+// Centro de evidencia y fichas del Detector—, y las tres estaban caducadas: la
+// documentación decía 15 fichas cuando había 35, y 15 tarjetas en 4 secciones
+// cuando eran 24 en 7. Aquí se atan a los JSON que las generan. Las cifras
+// viejas dentro de una frase histórica («pasó de 15 a 35») son legítimas y no se
+// tocan: lo que se comprueba es que la afirmación en presente sea la verdadera.
+const estadoMd = fs.readFileSync(new URL('../../ESTADO.md', import.meta.url), 'utf8');
+const eviJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/evidencia.json', import.meta.url), 'utf8'));
+const nSecciones = eviJSON.secciones.length;
+const nTarjetas = eviJSON.secciones.reduce((a, s2) => a + (s2.items || s2.tarjetas || []).length, 0);
+const nEnlacesEvi = eviJSON.secciones.reduce(
+  (a, s2) => a + (s2.items || s2.tarjetas || []).reduce((b, it) => b + (it.fuentes || []).length, 0), 0);
+const milesEs = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+check('ESTADO.md da el número de fichas del Detector que hay hoy',
+  estadoMd.includes(detJSON.casos.length + ' fichas'), detJSON.casos.length + ' fichas');
+check('ESTADO.md da las tarjetas y secciones del Centro de evidencia que hay hoy',
+  estadoMd.includes(nTarjetas + ' tarjetas en ' + nSecciones + ' secciones')
+  && estadoMd.includes(nEnlacesEvi + ' enlaces a fuentes'),
+  nTarjetas + '/' + nSecciones + '/' + nEnlacesEvi);
+check('ESTADO.md da el total de fuentes que dice el índice',
+  estadoMd.includes('(' + milesEs(idxJson.totalFuentes) + ' en total)'),
+  milesEs(idxJson.totalFuentes));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

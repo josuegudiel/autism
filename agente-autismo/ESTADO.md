@@ -14,15 +14,15 @@ Este documento explica **qué está hecho** y **qué falta**, para quien retome 
 
 ### La app (MVP funcional)
 - **PWA estática** instalable y con contenido offline (service worker + manifest). No requiere build ni Node para probarse (`python3 serve.py`).
-- **Pieza 1 — Centro de evidencia**: 15 tarjetas en 4 secciones, con niveles 🟢/🟡/🔴 y 18 enlaces a fuentes (`web/content/evidencia.json`).
-- **Pieza 2 — Detector de pseudociencia**: 15 fichas (quelación, MMS, test de cabello/bioresonancia, dietas-cura, cámara hiperbárica, secretina, comunicación facilitada, etc.) con veredicto + porqué + fuentes (`web/content/banderas-rojas.json`).
+- **Pieza 1 — Centro de evidencia**: 24 tarjetas en 7 secciones, con niveles 🟢/🟡/🔴 y 33 enlaces a fuentes (`web/content/evidencia.json`).
+- **Pieza 2 — Detector de pseudociencia**: 35 fichas (quelación, MMS, test de cabello/bioresonancia, dietas-cura, cámara hiperbárica, secretina, comunicación facilitada, GcMAF, exorcismo, baños iónicos, leucovorina, PANS/PANDAS, etc.) con veredicto + porqué + fuentes (`web/content/banderas-rojas.json`).
 - **Pieza 3 — Seguimiento de mi hijo**: registro local con **IndexedDB** (los datos **no salen del dispositivo**; sin cuentas ni nube). **Solo en la web**: la app nativa de `ios/` no tiene rastreador.
 - **Pieza 4 — Asistente**: interfaz de chat completa en **modo demostración** + backend **stub** (`api/chat.ts`) con las **reglas de seguridad** ya escritas (no diagnostica, no da dosis, nunca recomienda quelación/MMS/etc., cita fuentes, deriva a profesionales).
 - **Base de conocimiento** del agente (`shared/knowledge-base.json`).
 - **README** con cómo correr, publicar y "encender" la IA real.
 
 ### La biblioteca de investigación (`research/biblioteca-autismo.md`)
-Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **437 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (4.258 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
+Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **437 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (4.261 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
 - **226 temas verificados** con verificación adversarial de 3 votos (marcados ✅✅).
 - **211 temas en "síntesis desde fuentes canónicas"** (marcados ⚠️) — redactados desde fuentes establecidas cuando el motor de verificación estaba limitado; **pendientes de re-verificar**.
 
