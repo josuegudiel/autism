@@ -759,6 +759,34 @@ check('Ninguna ficha publicada conserva un bloque que bloquee su propia publicac
   !/bloquea la publicación/.test(lib36));
 
 
+// 21. Ronda 37. Primera ronda en siete sin ningún bloqueo: las cuatro salieron
+// publicables a la primera. PH es la prueba de que acotar el tema por escrito
+// antes de investigarlo funciona: se le dijo que JX y NA ya cubrían su terreno
+// y que solo investigara la jubilación, y salió sin solaparse.
+for (const [codigo, marca] of [['PH', /jubilaci[óo]n|cotiza/i],
+                               ['PI', /abogad|justicia gratuita|pleito/i],
+                               ['PJ', /carga mental|repartir/i],
+                               ['PK', /pueblo|distancia|kil[óo]metro|lejos/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 37: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['dejar el trabajo para cuidar', /jubilaci[óo]n|cotiza|trabajo/i],
+                       ['necesito un abogado', /abogad|justicia gratuita/i],
+                       ['lo hago todo yo', /carga mental|repartir/i],
+                       ['vivimos en un pueblo', /pueblo|distancia|lejos/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 37: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+// PH tenía que quedarse en la jubilación y no reescribir a JX ni a NA. Si alguien
+// la amplía a los permisos, vuelve el solapamiento que hundió a MY.
+const lib37 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const ph = lib37.slice(lib37.indexOf('### PH. '), lib37.indexOf('### ', lib37.indexOf('### PH. ') + 6));
+check('PH se queda en la jubilación y remite a JX y NA para el resto',
+  /JX\./.test(ph) && /NA\./.test(ph) && /jubilaci[óo]n/i.test(ph));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
