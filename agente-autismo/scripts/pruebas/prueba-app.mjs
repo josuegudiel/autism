@@ -1308,6 +1308,50 @@ check('QN y LP están en derechos, y NU sigue en escuela',
   cat44('QN') === 'derechos' && cat44('LP') === 'derechos' && cat44('NU') === 'escuela');
 
 
+// 29. Auditoría de las notas "Antes de publicar". Seis fichas publicadas habían
+// dejado escrito trabajo que tocaba a OTRA ficha. Cuatro seguían sin hacer, y no
+// eran cosméticas: la biblioteca se contradecía a sí misma en los cuatro casos.
+const libA = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const bA = (cod) => libA.slice(libA.indexOf('### ' + cod + '. '), libA.indexOf('### ', libA.indexOf('### ' + cod + '. ') + 6));
+
+// DM daba en verde el mismo consejo que PJ marca como propuesta nuestra.
+const dm = bA('DM');
+check('DM ya no da en verde un consejo que es consenso, y enlaza a PJ',
+  !/ser flexible con las expectativas de cada uno\. 🟢/.test(dm)
+  && /\*\*PJ\. Lo hago todo yo\*\*/.test(dm));
+
+// N declaraba "sueño del cuidador" como laguna pendiente dos líneas antes de
+// mandar a la ficha que ya lo desarrolla.
+const n = bA('N');
+check('N ya no declara pendiente el sueño del cuidador, que es PQ',
+  !/◽ \*\*Hermanos\/as, sueño del cuidador/.test(n) && /\*\*PQ\*\*/.test(n));
+
+// EE resumía un metanálisis sin decir qué concluyó. PQ sí lo decía.
+const ee = bA('EE');
+check('EE dice lo que concluyó el metanálisis de respiro, no solo que existe',
+  /cinco/.test(ee) && /sigue sin estar clara/.test(ee) && !/metaanálisis reciente evaluó la calidad de vida/.test(ee));
+
+// AV metía las historias sociales en el mismo saco verde que las agendas
+// visuales; IV las tiene en amarillo desde la ronda 15.
+const av = bA('AV');
+check('AV separa las historias sociales de los apoyos visuales y manda a IV',
+  /narrativas sociales/.test(av) && /\*\*IV\. Cómo escribir una historia social\*\*/.test(av)
+  && !/\*\*historias sociales\*\* para preparar situaciones nuevas\. Son \*\*prácticas basadas en evidencia\*\* \(NCAEP\)\. 🟢/.test(av));
+
+// PX decía que sin un segundo adulto aceptado no hay nada que repartir ni a
+// quién contratar: NB y PJ lo daban por hecho.
+check('NB y PJ enlazan a PX antes de dar por hecho que hay un segundo adulto',
+  /\*\*PX\. Solo quiere a mam[áa]/.test(bA('NB')) && /\*\*PX\. Solo quiere a mam[áa]/.test(bA('PJ')));
+
+// Seis fichas publicadas no tenían ni una entrada de búsqueda: existían, pero no
+// las encontraba quien escribe con sus palabras.
+const sinon = JSON.parse(fs.readFileSync(new URL('../sinonimos.json', import.meta.url), 'utf8'));
+const conEntrada = new Set();
+for (const v of Object.values(sinon)) if (Array.isArray(v)) v.forEach((c) => conEntrada.add(c));
+check('JV, NK, NN, NP, NY y NZ ya tienen entradas de búsqueda',
+  ['JV', 'NK', 'NN', 'NP', 'NY', 'NZ'].every((c) => conEntrada.has(c)));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

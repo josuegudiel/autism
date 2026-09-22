@@ -33,7 +33,7 @@ existe**; por eso la fase escéptica no es opcional.
 
 Rondas 29 a 44. Última: ronda 44 (QK, QL, QM, QN).
 Biblioteca en **425 temas / 226 verificados / 199 síntesis / 4.006 fuentes**.
-Suite **335/335**. Reserva: **31 entradas** (quinto análisis de huecos, sobre los 425 temas).
+Suite **341/341**. Reserva: **31 entradas** (quinto análisis de huecos, sobre los 425 temas).
 
 Ronda 45: códigos **QP, QQ, QR, QS** (se evita QO, como se evitó PO) (confirma con grep; PO sigue libre y se
 evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
@@ -148,10 +148,15 @@ LÍMITE DURO: 4 temas por ronda.
 
 ## Deuda conocida, para una ronda de limpieza
 
-- **15 notas "Antes de publicar" vivas** dentro de bloques "Para la app" de fichas
-  ya publicadas. El conversor NO las muestra a las familias (las quita en
-  `scripts/construir-contenido.py`), así que no hay riesgo para nadie que lea la app, pero
-  describen trabajo que en parte ya está hecho. Merecen una pasada.
+- **Las notas "Antes de publicar"**: auditadas las seis que pedían trabajo en
+  OTRA ficha (MT, PJ→DM, PQ→N y EE, PX→cinco fichas, QE→AV, PV). Cuatro seguían
+  sin hacer y **ninguna era cosmética**: en los cuatro casos la biblioteca se
+  contradecía a sí misma. Arregladas. Quedan las notas cuyo encargo era de índice
+  o de sinónimos, que sí estaban hechas; conviene reescribirlas cuando se toque
+  cada ficha, pero no bloquean nada.
+  **Lección del método:** un auditor dio HECHO donde el escéptico encontró que la
+  marca de bloqueo seguía viva, y otro citó como prueba "la ficha QO (línea
+  8617)", que **no existe**. La fase escéptica no es opcional.
 - **116 fichas en "Comprender el autismo"**, que es el cajón por defecto del
   conversor. Algunas están bien ahí; otras no.
 - **155 de las 426 fichas no tienen ni una entrada en `scripts/sinonimos.json`.**
