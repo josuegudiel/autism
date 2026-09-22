@@ -9,8 +9,19 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna.** La ronda 42 (QC, QD, QE, QF) se publicó el 22/09. Toca elegir los
-cuatro temas de la **ronda 43** de la reserva y lanzarla.
+**Ronda 43** — runId `wf_4decedbe-fc1` (tarea wtlr5swyi), lanzada el 22/09 hacia
+las 11:00.
+
+- **QG** — tiene apneas mientras duerme: ¿amígdalas o CPAP? (la decisión quirúrgica;
+  tolerar el aparato es PT, y la sedación PZ y MK).
+- **QH** — nació muy prematuro y ahora sospechamos autismo (edad corregida, por qué
+  el M-CHAT da más positivos en prematuros, y el error contrario de achacarlo todo
+  a la prematuridad).
+- **QI** — quiero que trabaje este verano antes de acabar el instituto.
+- **QJ** — tengo pareja nueva: cómo se la presento y la familia reconstituida.
+
+Los cuatro son las entradas 1, 4, 6 y 10 de `ronda-19-borradores.json`, acotadas
+por escrito antes de lanzarlas.
 
 ## Ya publicado
 
@@ -18,9 +29,13 @@ Rondas 29 a 42. Última: ronda 42 (QC, QD, QE, QF).
 Biblioteca en **417 temas / 226 verificados / 191 síntesis / 3.816 fuentes**.
 Suite **289/289**. Reserva: 12 entradas.
 
-Ronda 43: códigos **QG, QH, QI, QJ** (confirma con grep; PO sigue libre y se
-evita). Candidatas que no compiten entre sí: las apneas y las amígdalas, nació
-muy prematuro, quiero que trabaje este verano, tengo pareja nueva. Cuando
+Ronda 44: códigos **QK, QL, QM, QN** (confirma con grep; PO sigue libre y se
+evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
+ocho pide la tablet" está rechazada). Candidatas: el reloj interno del
+adolescente, la melatonina y cuándo parar, cuando el enfermo grave es él, los
+vecinos y el ruido, la mudanza de comunidad, ¿le compramos un perro? **Con solo
+6 investigables, lanza `scripts/workflows/detectar-huecos.mjs` antes o junto a la
+ronda 44.** Cuando
 queden menos de 4 investigables, lanza antes `scripts/workflows/detectar-huecos.mjs`.
 
 **NO investigues** "de cinco a ocho pide la tablet" (ya se investigó y se
