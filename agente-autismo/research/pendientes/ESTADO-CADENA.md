@@ -9,21 +9,31 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna ronda de investigación.** En marcha el **quinto análisis de huecos**
-sobre los 425 temas: runId `wf_5df6ffc7-b54` (tarea w2rnk8pku), lanzado el 22/09
-hacia las 14:30.
+**Ronda 45** — runId `wf_51fb297c-7f5` (tarea wo9e3utqb), lanzada el 22/09 hacia
+las 14:20. Los cuatro temas son de seguridad y van acotados entre sí, porque
+comparten frontera y no se ven unos a otros:
 
-Cuando termine: fusionar sus propuestas con las 4 entradas que quedan en
-`research/pendientes/ronda-19-borradores.json` **conservando las anotaciones**
-—"de cinco a ocho pide la tablet" está rechazada (NG) y "dice que se quiere
-morir" está terminada esperando decisión—, commitear la reserva y lanzar la
-ronda 45.
+- **QP** — ¿esta reacción al medicamento es para ir a urgencias hoy?
+- **QQ** — ha venido la policía o una ambulancia en plena crisis (la contención
+  escolar NO es suya).
+- **QR** — en el colegio lo sujetan o lo dejan solo en un cuarto (la policía y el
+  casco NO son suyos).
+- **QS** — se golpea la cabeza: qué revisarle y qué hacer con el casco (el casco
+  se queda aquí; no reescribe KS).
+
+En paralelo, la **auditoría de las notas "Antes de publicar"** (runId
+`wf_f0b2d693-fdd`) está reanudada tras el límite de sesión: le faltaban cinco
+verificadores. Ya hay un hallazgo firme: **PJ pidió dos ediciones en DM y no se
+hicieron ninguna de las dos** (bajar de 🟢 a 🟡 el punto "Lo que ayuda, según
+guías clínicas y de familias", cuya propia fuente declarada es consenso, y
+enlazar DM → PJ). Ojo: un auditor citó "la ficha QO (línea 8617)" y **QO no
+existe**; por eso la fase escéptica no es opcional.
 
 ## Ya publicado
 
 Rondas 29 a 44. Última: ronda 44 (QK, QL, QM, QN).
 Biblioteca en **425 temas / 226 verificados / 199 síntesis / 4.006 fuentes**.
-Suite **335/335**. Reserva: 4 entradas (2 investigables).
+Suite **335/335**. Reserva: **31 entradas** (quinto análisis de huecos, sobre los 425 temas).
 
 Ronda 45: códigos **QP, QQ, QR, QS** (se evita QO, como se evitó PO) (confirma con grep; PO sigue libre y se
 evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
