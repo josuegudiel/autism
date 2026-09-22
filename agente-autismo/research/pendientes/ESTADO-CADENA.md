@@ -9,7 +9,20 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna.** La ronda 47 está entera publicada (QX, QY, QZ, RA). Lanza la 48.
+**Ronda 48** — runId `wf_8b315c23-bac` (tarea wxg44x3a2), lanzada el 22/09 a las
+21:30. Códigos **RB, RC, RD, RE**, acotados por escrito entre sí:
+
+- **RB** — dolor crónico y fatiga persistente en el adolescente y el adulto (el
+  dolor agudo que no sabe expresar es CY y JR; el burnout, AN; la hipermovilidad
+  y la disautonomía, DP).
+- **RC** — se le cae la baba (el atragantamiento es LG; el babeo por clozapina y
+  aripiprazol ya está en NJ; las amígdalas, en QG).
+- **RD** — pedir plaza en residencia, piso tutelado o centro de día: el trámite
+  (lo que pasa dentro es PP; el empleo protegido, MC; el relevo, HN).
+- **RE** — aprueba, así que le retiran los apoyos (el otro lado es LW, que
+  aguanta el día y explota en casa).
+
+La ronda 47 está entera publicada (QX, QY, QZ, RA).
 
 **Dos tropiezos de la 47, los dos ya anotados en el procedimiento y los dos
 repetidos igual:** (1) el editor de RA encabezó su ficha con **QX**, que ya
