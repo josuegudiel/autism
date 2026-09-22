@@ -211,6 +211,24 @@ LÍMITE DURO: 4 temas por ronda.
   se comprueban con `scripts/pruebas/simular-busqueda.py` antes de darlas por
   buenas.
 
+- **`web/content/ayuda-urgente.json` se audita país por país, no a ojo (22/09).**
+  Es el archivo donde una errata cuesta más caro, y tenía un error de bulto: la
+  entrada de Argentina anunciaba el 135 como "24 h" cuando el Centro de
+  Asistencia al Suicida atiende **de 8 a 24 h**, o sea que a la hora a la que más
+  falta hace no contesta nadie. Ahora encabeza la Línea Nacional del Ministerio
+  de Salud (0800 999 0091), que sí es de 24 h. Comprobados los ocho países contra
+  la web del ministerio correspondiente y añadidos los canales por escrito que
+  el propio servicio publica (chat del 024 y videointerpretación en lengua de
+  signos, WhatsApp/Telegram de Infosalud en Perú, AYUDA al 988, WhatsApp de la
+  Línea 106 en Bogotá, Chat de Confianza en CDMX). **Chile y Argentina se quedan
+  con `escrito` vacío a propósito**: no hay canal escrito publicado por el
+  servicio y suponerlo aquí sería peor que no ponerlo.
+  Al tocar este archivo: **comprueba el horario, no sólo el número** —es el fallo
+  que se cuela— y pasa la sección 41 de `prueba-app.mjs`, que mira los ocho
+  países, sus opciones de menú y el `tel:` que genera cada línea. La fuente tiene
+  que ser del ministerio de salud del país; `fuenteSecundaria` es para cuando el
+  dato viene de dos sitios (el horario del CAS, el WhatsApp de Bogotá).
+
 ## El PR #2
 
 Head `861a83b` (ronda 41). Borrador, sin comentarios ni reviews; todos los runs
