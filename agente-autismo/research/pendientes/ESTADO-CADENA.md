@@ -134,7 +134,7 @@ LÍMITE DURO: 4 temas por ronda.
 
 - **15 notas "Antes de publicar" vivas** dentro de bloques "Para la app" de fichas
   ya publicadas. El conversor NO las muestra a las familias (las quita en
-  ), así que no hay riesgo para nadie que lea la app, pero
+  `scripts/construir-contenido.py`), así que no hay riesgo para nadie que lea la app, pero
   describen trabajo que en parte ya está hecho. Merecen una pasada.
 - **116 fichas en "Comprender el autismo"**, que es el cajón por defecto del
   conversor. Algunas están bien ahí; otras no.
