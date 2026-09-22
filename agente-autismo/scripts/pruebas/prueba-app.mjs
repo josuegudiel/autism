@@ -1925,6 +1925,18 @@ check('la biblioteca y el índice de temas contienen los mismos códigos',
   soloLib.length === 0 && soloInd.length === 0,
   `solo en la biblioteca: ${soloLib.join(' ')} | solo en el índice: ${soloInd.join(' ')}`);
 
+// El detector de coherencia, ampliado a plazos, encontró que O marcaba como
+// señal de alarma no señalar a los ~14 meses mientras HQ publicaba que señalar
+// aparece entre los 12 y los 18: el mismo padre leía «alarma» o «va en plazo»
+// según por dónde entrara. Lo comprobado es que las señales reconocidas son no
+// hacer NINGÚN gesto a los 12 meses y no señalar a los 18.
+check('O y HQ dicen lo mismo sobre cuándo señalar es señal de alarma',
+  /12 y los 18 meses/.test(bC('O')) && /no señalar nada a los 18/.test(bC('O'))
+  && /\*\*HQ\. Desarrollo del lenguaje/.test(bC('O'))
+  && /ningún gesto a los 12 meses/.test(bC('HQ')) && /como recoge \*\*O\*\*/.test(bC('HQ')));
+check('ninguna de las dos convierte el margen normal en un plazo para esperar',
+  /no se espera a ver/.test(bC('O')) && /no un plazo para esperar/.test(bC('HQ')));
+
 
 await nav.close();
 console.log('\n' + (errores.length
