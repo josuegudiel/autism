@@ -36,7 +36,7 @@ que las dos se reemplazaron por la segunda pasada.
 
 Rondas 29 a 46.
 Biblioteca en **433 temas / 226 verificados / 207 síntesis / 4.169 fuentes**.
-Suite **491/491**. Reserva: **23 entradas**.
+Suite **493/493**. Reserva: **23 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
@@ -152,6 +152,15 @@ propio resultado.
 LÍMITE DURO: 4 temas por ronda.
 
 ## Deuda conocida, para una ronda de limpieza
+
+- **Las notas "Para la app" que encargan integración ya no hay que auditarlas a
+  mano.** Las 15 que piden alta en `sinonimos.json` o en el índice (NV, PD, PF,
+  PJ, PM, PQ, PR, PX, PY, QC, QE, QM, QN, QS, QT) están **todas hechas**; no las
+  rehagas. Y desde el 22/09 hay dos pruebas que lo vigilan solas: ninguna ficha
+  puede pedir una integración que siga sin hacerse, y la biblioteca y
+  `research/indice-temas.txt` tienen que contener exactamente los mismos
+  códigos. Eso cubre el paso del procedimiento que hasta ahora se hacía a ojo.
+
 
 - **`scripts/pruebas/coherencia-cifras.py` (nuevo, 22/09).** Busca cifras que la
   biblioteca publica de dos maneras: agrupa afirmaciones con número por las

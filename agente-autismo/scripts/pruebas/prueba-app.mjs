@@ -1886,6 +1886,46 @@ check('las dos explican por qué las cifras difieren, en vez de elegir una',
   && /Las dos cifras son ciertas/.test(bC('NS')));
 
 
+// 38. Las notas "Para la app" de cada ficha encargan trabajo de integración
+// —darla de alta en sinonimos.json, añadirla al índice— y ese encargo se ha
+// hecho a mano en cada ronda. Esta prueba lo automatiza: si una ficha pide su
+// alta y no la tiene, la suite lo dice antes de que la ronda se dé por cerrada.
+// Hoy pasa porque las 15 que lo piden ya están hechas.
+const indTxt = fs.readFileSync(new URL('../../research/indice-temas.txt', import.meta.url), 'utf8');
+const sinTodos = new Set();
+for (const [k, v] of Object.entries(JSON.parse(fs.readFileSync(new URL('../sinonimos.json', import.meta.url), 'utf8')))) {
+  if (!k.startsWith('_') && Array.isArray(v)) v.forEach((c) => sinTodos.add(c));
+}
+const deudasIntegracion = [];
+for (const trozo of libC.split(/(?=^### )/m)) {
+  const cod = (trozo.match(/^### ([A-Z]{1,2})\. /) || [])[1];
+  if (!cod) continue;
+  const i = trozo.indexOf('> **Para la app');
+  if (i === -1) continue;
+  const nota = trozo.slice(i);
+  if (/(dar de alta|a[ñn]adir)[\s\S]{0,80}sinonimos\.json/i.test(nota) && !sinTodos.has(cod)) {
+    deudasIntegracion.push(`${cod}: pide entradas de búsqueda y no las tiene`);
+  }
+  if (new RegExp(`a[ñn]adir\\s+\\*?\\*?${cod}\\*?\\*?\\s+a\\s+\`?research/indice-temas`, 'i').test(nota)
+      && !new RegExp(`^${cod}\\. `, 'm').test(indTxt)) {
+    deudasIntegracion.push(`${cod}: pide estar en el índice y no está`);
+  }
+}
+check('ninguna ficha pide una integración que siga sin hacerse',
+  deudasIntegracion.length === 0, deudasIntegracion.slice(0, 6).join(' | '));
+
+// Y el índice y la biblioteca tienen que contener exactamente los mismos temas:
+// una ficha fuera del índice existe pero no se lista, y una línea del índice sin
+// ficha es un enlace a la nada.
+const codsLib = [...libC.matchAll(/^### ([A-Z]{1,2})\. /gm)].map((m) => m[1]);
+const codsInd = [...indTxt.matchAll(/^([A-Z]{1,2})\. /gm)].map((m) => m[1]);
+const soloLib = codsLib.filter((c) => !codsInd.includes(c));
+const soloInd = codsInd.filter((c) => !codsLib.includes(c));
+check('la biblioteca y el índice de temas contienen los mismos códigos',
+  soloLib.length === 0 && soloInd.length === 0,
+  `solo en la biblioteca: ${soloLib.join(' ')} | solo en el índice: ${soloInd.join(' ')}`);
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
