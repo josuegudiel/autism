@@ -13,7 +13,8 @@
   "EN"
  ],
  "ronca": [
-  "EN"
+  "EN",
+  "QG"
  ],
  "pesadillas terrores nocturnos": [
   "EN"
@@ -598,7 +599,8 @@
   "HI"
  ],
  "operacion cirugia": [
-  "CZ"
+  "CZ",
+  "QG"
  ],
  "se escapa": [
   "AE",
@@ -1866,7 +1868,8 @@
   "PT"
  ],
  "cpap": [
-  "PT"
+  "PT",
+  "QG"
  ],
  "ferula de descarga": [
   "PT",
@@ -2112,5 +2115,82 @@
  ],
  "se enfada si tiro algo": [
   "QF"
+ ],
+ "amigdalas": [
+  "QG"
+ ],
+ "anginas": [
+  "QG"
+ ],
+ "vegetaciones": [
+  "QG"
+ ],
+ "adenoides": [
+  "QG"
+ ],
+ "apnea": [
+  "QG",
+  "EN"
+ ],
+ "deja de respirar durmiendo": [
+  "QG"
+ ],
+ "se ahoga durmiendo": [
+  "QG"
+ ],
+ "operacion de amigdalas": [
+  "QG"
+ ],
+ "sangra despues de la operacion": [
+  "QG"
+ ],
+ "nacio prematuro": [
+  "QH"
+ ],
+ "edad corregida": [
+  "QH"
+ ],
+ "estuvo en la incubadora": [
+  "QH"
+ ],
+ "es por la prematuridad": [
+  "QH",
+  "ME"
+ ],
+ "seguimiento neonatal": [
+  "QH"
+ ],
+ "que trabaje este verano": [
+  "QI"
+ ],
+ "primer trabajo": [
+  "QI"
+ ],
+ "practicas": [
+  "QI"
+ ],
+ "voluntariado": [
+  "QI"
+ ],
+ "empleo de verano": [
+  "QI"
+ ],
+ "puede trabajar con 16": [
+  "QI"
+ ],
+ "tengo pareja nueva": [
+  "QJ"
+ ],
+ "presentarle a mi pareja": [
+  "QJ"
+ ],
+ "familia reconstituida": [
+  "QJ"
+ ],
+ "los hijos de mi pareja": [
+  "QJ"
+ ],
+ "mi novio va a vivir con nosotros": [
+  "QJ"
  ]
 }

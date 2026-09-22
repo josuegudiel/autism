@@ -9,25 +9,15 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 43** — runId `wf_4decedbe-fc1` (tarea wtlr5swyi), lanzada el 22/09 hacia
-las 11:00.
-
-- **QG** — tiene apneas mientras duerme: ¿amígdalas o CPAP? (la decisión quirúrgica;
-  tolerar el aparato es PT, y la sedación PZ y MK).
-- **QH** — nació muy prematuro y ahora sospechamos autismo (edad corregida, por qué
-  el M-CHAT da más positivos en prematuros, y el error contrario de achacarlo todo
-  a la prematuridad).
-- **QI** — quiero que trabaje este verano antes de acabar el instituto.
-- **QJ** — tengo pareja nueva: cómo se la presento y la familia reconstituida.
-
-Los cuatro son las entradas 1, 4, 6 y 10 de `ronda-19-borradores.json`, acotadas
-por escrito antes de lanzarlas.
+**Ninguna.** La ronda 43 (QG, QH, QI, QJ) se publicó el 22/09. La reserva baja a
+**8 entradas y solo 6 investigables**: toca lanzar
+`scripts/workflows/detectar-huecos.mjs` antes o junto a la ronda 44.
 
 ## Ya publicado
 
-Rondas 29 a 42. Última: ronda 42 (QC, QD, QE, QF).
-Biblioteca en **417 temas / 226 verificados / 191 síntesis / 3.816 fuentes**.
-Suite **289/289**. Reserva: 12 entradas.
+Rondas 29 a 43. Última: ronda 43 (QG, QH, QI, QJ).
+Biblioteca en **421 temas / 226 verificados / 195 síntesis / 3.897 fuentes**.
+Suite **313/313**. Reserva: 8 entradas (6 investigables).
 
 Ronda 44: códigos **QK, QL, QM, QN** (confirma con grep; PO sigue libre y se
 evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
@@ -92,7 +82,7 @@ propio resultado.
    **Dos arreglos obligatorios en la cabecera:**
    - (a) **fuerza el código** al del pipeline. OCHO veces ya un editor ha
      encabezado su ficha con el código de otra: NB→NA, NN→NM, PB→NZ, PF→PD,
-     PK→PH, PP→PL, PR→PQ, QA→PY, QD→QC.
+     PK→PH, PP→PL, PR→PQ, QA→PY, QD→QC, QI→QG.
    - (b) **reconstruye la cabecera** descartando los trozos que hablen del
      bloqueo, y **comprueba la cabecera entera al final**: en la ronda 38 se
      tiró el trozo bueno ("fuentes depuradas") y se conservó el malo
@@ -111,17 +101,22 @@ propio resultado.
    mal enlazada en AG. Si el editor pide elegir, elige y explica por qué.
    - **Patrón firme:** cuando una ficha nueva contradice a una publicada, la
      equivocada suele ser LA PUBLICADA. Ya han caído GL, DH, LP, S, MO, FU, R, AE,
-     MR, PC, EO, KF, AG y CL. Pero no siempre: en la 39 la equivocada era la nueva
+     MR, PC, EO, KF, AG, CL, EN, FL y MZ. Pero no siempre: en la 39 la equivocada era la nueva
      (PT decía al revés lo de "audífono" y MT lo tenía bien). Comprueba con una o
      dos búsquedas antes de corregir.
    - Bloqueos falsos habituales: "el código no está en indice-temas.txt" (eso lo
      hace publicarla) y "no tiene entradas en sinonimos.json" (añádeselas).
+2b. **Cuando un editor diga que una ficha publicada dice X, compruébalo tú antes
+   de darlo por bueno y antes de descartarlo.** En la ronda 43 casi descarto una
+   corrección buena a MZ porque mi propio grep no encontró la frase que el editor
+   citaba: estaba. Y en otras rondas los editores han señalado cosas que no
+   estaban. Se mira el archivo, no la memoria de ninguno de los dos.
 3. Quitar de la reserva los temas publicados, y **añadir los huecos nuevos que
    detecten las lentes** (así entró el traumatismo dental). Todo JSON del repo se
    reescribe con `indent=1` y salto final.
 4. `python3 scripts/construir-contenido.py`.
 5. Cifras en `README.md` (2 sitios), `ESTADO.md` (varios, incluido el cálculo
-   "417 − 226 = 191") e `ios/README-iOS.md`.
+   "421 − 226 = 195") e `ios/README-iOS.md`.
 6. Sección de ronda en `scripts/pruebas/prueba-app.mjs`, más una prueba por cada
    corrección a una ficha vieja. **Comprueba que la premisa de cada prueba nueva
    es cierta antes de escribirla** (una vez escribí una sobre una premisa falsa
@@ -134,6 +129,15 @@ propio resultado.
    `claude/autism-code-audit-m84mky`.
 
 LÍMITE DURO: 4 temas por ronda.
+
+## Deuda conocida, para una ronda de limpieza
+
+- **15 notas "Antes de publicar" vivas** dentro de bloques "Para la app" de fichas
+  ya publicadas. El conversor NO las muestra a las familias (las quita en
+  ), así que no hay riesgo para nadie que lea la app, pero
+  describen trabajo que en parte ya está hecho. Merecen una pasada.
+- **116 fichas en "Comprender el autismo"**, que es el cajón por defecto del
+  conversor. Algunas están bien ahí; otras no.
 
 ## El PR #2
 

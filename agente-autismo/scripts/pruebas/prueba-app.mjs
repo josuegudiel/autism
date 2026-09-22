@@ -1153,6 +1153,86 @@ check('Los patrones nuevos no se llevan por delante PP, MU ni QB',
   catDe('PP') !== 'adultez' && catDe('MU') !== 'adultez' && catDe('QB') !== 'adultez');
 
 
+// 27. Ronda 43. Dos fichas vinieron bloqueadas por choques con fichas publicadas,
+// y las dos veces el bloqueo se resolvió buscando: las dos cifras de adherencia a
+// la CPAP eran ciertas y medían lo mismo con definiciones distintas, y el ensayo
+// de Project SEARCH estaba mal atribuido en FL.
+for (const [codigo, marca] of [['QG', /am[íi]gdalas|apnea|CPAP/i],
+                               ['QH', /prematur|edad corregida/i],
+                               ['QI', /verano|pr[áa]cticas|empleo/i],
+                               ['QJ', /pareja|presentar/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 43: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re] of [['amigdalas', /am[íi]gdalas|apnea|operar/i],
+                       ['deja de respirar durmiendo', /apnea|respir|sue[ñn]o/i],
+                       ['nacio prematuro', /prematur|corregida|seguimiento/i],
+                       ['que trabaje este verano', /verano|empleo|pr[áa]cticas/i],
+                       ['tengo pareja nueva', /pareja|presentar|convivir/i],
+                       ['familia reconstituida', /pareja|hijos|convivir/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 43: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re.test(rr), rr.slice(0, 160));
+}
+
+const lib43 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b43 = (cod) => lib43.slice(lib43.indexOf('### ' + cod + '. '), lib43.indexOf('### ', lib43.indexOf('### ' + cod + '. ') + 6));
+
+// Décima vez que un editor encabeza su ficha con el código de otra: QI venía
+// como «### QG.», que es la ficha de las amígdalas de esta misma ronda.
+check('QI se publicó con su propio código y QG sigue siendo la de las amígdalas',
+  /^### QI\. Quiero que trabaje/m.test(lib43) && /^### QG\. Ronca y deja de respirar/m.test(lib43));
+
+// EN confirmaba la apnea y ofrecía la CPAP como único paso siguiente: invertía
+// por omisión el orden de la guía que las dos fichas comparten.
+const en43 = b43('EN');
+check('EN ya nombra la cirugía como primera línea y enlaza a QG',
+  /adenoamigdalectom[íi]a/.test(en43) && /\*\*QG\. Ronca y deja de respirar/.test(en43));
+
+// Las dos cifras de adherencia eran ciertas: lo que fallaba era publicar una sola.
+const pt43 = b43('PT');
+check('PT publica el rango de adherencia a la CPAP y por qué no hay una cifra única',
+  /56,9/.test(pt43) && /46,6/.test(pt43) && /24 %|24%/.test(pt43) && /definiciones/.test(pt43));
+check('QG no repite la cifra de adherencia y remite a PT',
+  !/46,6|56,9/.test(b43('QG').replace(/> \*\*Para la app.*/s, '')) && /\*\*PT/.test(b43('QG')));
+
+// FL colgaba del artículo de 2017 (49 participantes) las cifras del ensayo
+// multicéntrico de 2020 (156). T ya citaba bien el piloto de 2014.
+const fl43 = b43('FL');
+check('FL atribuye el 73,4% al ensayo multicéntrico de 2020 y no al de 2017',
+  /2020/.test(fl43) && /156/.test(fl43) && /73,4/.test(fl43));
+check('T sigue citando bien el piloto de 40 participantes',
+  /40/.test(b43('T')) && /87,5/.test(b43('T')));
+
+// MZ ofrecía la FCT a los 13-14, y en esta biblioteca esa sigla ya es otra cosa.
+const mz43 = b43('MZ');
+check('MZ ya no ofrece la FCT a los 13-14 y deshace la colisión de siglas',
+  /módulo de los ciclos de FP/.test(mz43) && /\*\*KR\*\*/.test(mz43) && /\*\*QI\. Quiero que trabaje/.test(mz43));
+
+// QG: lo que mata después de operar es el sangrado, y hay dos fármacos prohibidos.
+const qg43 = b43('QG');
+check('QG manda a urgencias ante cualquier sangre y nombra codeína y tramadol',
+  /cualquier sangre/i.test(qg43) && /code[íi]na/.test(qg43) && /tramadol/.test(qg43));
+check('QG cuenta que una parte se resuelve sin operar (ensayo CHAT)', /CHAT/.test(qg43) && /42%/.test(qg43));
+
+// QH tiene que sostener los dos errores simétricos a la vez.
+const qh43 = b43('QH');
+check('QH explica la edad corregida y los dos errores contrarios',
+  /edad corregida/.test(qh43) && /M-CHAT/.test(qh43) && /por la prematuridad/.test(qh43));
+check('BK y ME mandan a QH',
+  /\*\*QH\. Nació muy prematuro/.test(b43('BK')) && /\*\*QH\. Nació muy prematuro/.test(b43('ME')));
+
+// QI y QJ tenían dos cifras míticas prohibidas: el 85% de paro y el 80% de divorcio.
+check('QI desmonta el 85% de desempleo en vez de usarlo para motivar',
+  /85/.test(b43('QI')) && /(no tiene fuente|mito|circula)/i.test(b43('QI')));
+check('QJ no abre con el mito del 80% de divorcios y trae la cautela de EF',
+  /\*\*EF/.test(b43('QJ')) && /(Hartley|Freedman|mito)/i.test(b43('QJ')));
+check('T y FL mandan a QI, y GE y QB mandan a QJ',
+  /\*\*QI\. Quiero que trabaje/.test(b43('T')) && /\*\*QI\. Quiero que trabaje/.test(b43('FL'))
+  && /\*\*QJ\. Tengo pareja nueva/.test(b43('GE')) && /\*\*QJ\. Tengo pareja nueva/.test(b43('QB')));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
