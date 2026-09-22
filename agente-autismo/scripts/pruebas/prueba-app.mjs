@@ -1548,6 +1548,52 @@ check('«se tapa los oídos» y «no se deja cortar las uñas» incluyen su prop
   && (sinonMudas['no se deja cortar las unas'] || []).includes('IO'));
 
 
+// 32. "Comprender el autismo" era el cajón por defecto del conversor y tenía
+// dentro 113 de las 429 fichas: "Convulsiones: qué hacer en el momento" vivía
+// en la misma categoría que "Historia del concepto de autismo". Los títulos de
+// esta biblioteca están escritos como habla una familia, así que ningún patrón
+// de palabras los alcanza; van asignados a mano en CATEGORIA_POR_CODIGO.
+const convSrc = fs.readFileSync(new URL('../construir-contenido.py', import.meta.url), 'utf8');
+const bloqueMapa = convSrc.slice(convSrc.indexOf('CATEGORIA_POR_CODIGO = {'),
+  convSrc.indexOf('}', convSrc.indexOf('CATEGORIA_POR_CODIGO = {')));
+const mapaCat = new Map();
+for (const m of bloqueMapa.matchAll(/"([A-Z]{1,2})":\s*"([a-z]+)"/g)) mapaCat.set(m[1], m[2]);
+check('CATEGORIA_POR_CODIGO se lee y no está vacío', mapaCat.size > 50, String(mapaCat.size));
+
+const porCodigo = new Map(temasMudas.map((t) => [t.codigo, t]));
+const desviadas = [];
+for (const [cod, cat] of mapaCat) {
+  const tema = porCodigo.get(cod);
+  if (!tema) { desviadas.push(`${cod} no existe`); continue; }
+  if (tema.categoria !== cat) desviadas.push(`${cod}: ${tema.categoria} != ${cat}`);
+}
+check('cada ficha asignada a mano acaba en la categoría que declara',
+  desviadas.length === 0, desviadas.slice(0, 6).join(' | '));
+
+// El cajón por defecto deja de ser el más grande de la biblioteca: lo que queda
+// dentro es lo que de verdad es conceptual o de identidad.
+const porCategoria = {};
+for (const t of temasMudas) porCategoria[t.categoria] = (porCategoria[t.categoria] || 0) + 1;
+check('"Comprender el autismo" ya no es un cajón de sastre',
+  porCategoria.comprender <= 25, `comprender=${porCategoria.comprender}`);
+check('el cajón por defecto no es la categoría más grande',
+  Math.max(...Object.values(porCategoria)) > porCategoria.comprender,
+  JSON.stringify(porCategoria));
+check('las 12 categorías siguen teniendo fichas', Object.keys(porCategoria).length === 12,
+  Object.keys(porCategoria).join(' '));
+
+// Las que un padre buscaría explícitamente donde ahora están.
+const cat32 = (c) => (porCodigo.get(c) || {}).categoria;
+check('las fichas médicas están en salud',
+  ['JQ', 'MH', 'NJ', 'NM', 'PZ', 'QG'].every((c) => cat32(c) === 'salud'));
+check('la casa y el día a día están en familia',
+  ['IE', 'IF', 'AE', 'NK', 'PJ'].every((c) => cat32(c) === 'familia'));
+check('los apoyos que se fabrican están en terapias',
+  ['IU', 'IV', 'KT', 'KU'].every((c) => cat32(c) === 'terapias'));
+check('lo conceptual se queda en comprender',
+  ['J', 'BX', 'BZ', 'FZ', 'KO'].every((c) => cat32(c) === 'comprender'));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

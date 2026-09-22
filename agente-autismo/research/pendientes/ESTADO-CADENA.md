@@ -50,7 +50,7 @@ Dos cosas que enseñó y que no están escritas en ningún otro sitio:
 
 Rondas 29 a 45. Última: ronda 45 (QP, QQ, QR, QS).
 Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.084 fuentes**.
-Suite **398/398**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
+Suite **407/407**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
 porque la 0 —NI— espera decisión humana y la 28 está rechazada).
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
@@ -174,12 +174,17 @@ LÍMITE DURO: 4 temas por ronda.
   **Lección del método:** un auditor dio HECHO donde el escéptico encontró que la
   marca de bloqueo seguía viva, y otro citó como prueba "la ficha QO (línea
   8617)", que **no existe**. La fase escéptica no es opcional.
-- **113 fichas en "Comprender el autismo"**, que es el cajón por defecto del
-  conversor. Algunas están bien ahí; otras no. Desde la ronda 45 hay un
-  mecanismo para sacarlas una a una sin romper el orden: la lista `EXCEPCIONES`
-  de `scripts/construir-contenido.py`, que solo admite **frases largas del
-  título**, nunca palabras sueltas, y que hay que **probar en seco** (a quién
-  mueve) antes de añadir nada.
+- ~~El cajón por defecto~~ **CERRADA el 22/09.** "Comprender el autismo" tenía
+  113 de las 429 fichas y ahora tiene **20**, que son las que de verdad son
+  conceptuales o de identidad. Las 93 restantes van asignadas a mano en
+  `CATEGORIA_POR_CODIGO` (`scripts/construir-contenido.py`), porque los títulos
+  de esta biblioteca están escritos como habla una familia —"Se le rompen los
+  huesos con poco"— y ningún patrón de palabras los alcanza. **Al publicar una
+  ficha nueva: mira en qué categoría cae y, si el patrón no la coloca sola,
+  métela en ese diccionario**; hay una prueba que comprueba que cada código del
+  mapa acaba donde dice, que el cajón no vuelve a pasar de 25 y que las 12
+  categorías siguen teniendo fichas.
+
 - ~~Fichas sin entrada de búsqueda~~ **CERRADA el 22/09.** Eran 155 de 426 y hoy
   son 0 de 429, con 1.211 claves en `scripts/sinonimos.json` y dos pruebas que lo
   vigilan (ninguna ficha muda, ningún código fantasma). Lo que queda de esto es

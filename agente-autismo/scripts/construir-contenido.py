@@ -141,6 +141,52 @@ def normalizar(texto):
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
 
 
+# Asignacion a mano, por codigo. "Comprender el autismo" es el cajon por defecto
+# del conversor y habia acabado con 113 de las 429 fichas dentro: "Convulsiones:
+# que hacer en el momento" y "No se traga las pastillas" vivian en la misma
+# categoria que "Historia del concepto de autismo". Los titulos de esta
+# biblioteca estan escritos como habla una familia ("Se le rompen los huesos con
+# poco"), y ningun patron de palabras los alcanza; para esos, la unica opcion
+# honesta es decir a mano donde va cada uno. Lo que se queda en "comprender" es
+# lo que de verdad es conceptual o de identidad.
+# Al anadir una ficha nueva: si el patron no la coloca sola, metela aqui.
+CATEGORIA_POR_CODIGO = {
+    # Salud y condiciones asociadas: la ficha trata un problema medico.
+    "JQ": "salud", "KE": "salud", "KF": "salud", "LG": "salud", "LJ": "salud",
+    "LK": "salud", "LM": "salud", "LU": "salud", "LY": "salud", "LZ": "salud",
+    "ME": "salud", "MG": "salud", "MH": "salud", "MI": "salud", "MK": "salud",
+    "MM": "salud", "MN": "salud", "MO": "salud", "MP": "salud", "NJ": "salud",
+    "NM": "salud", "NN": "salud", "NS": "salud", "NW": "salud", "PT": "salud",
+    "PZ": "salud", "QG": "salud", "QH": "salud", "IQ": "salud", "LE": "salud",
+    "LR": "salud", "U": "salud",
+    # Diagnostico y primeros pasos.
+    "HQ": "diagnostico", "JK": "diagnostico", "JN": "diagnostico", "KA": "diagnostico",
+    # Terapias e intervenciones: el "como se ensena" y el "como se evalua".
+    "IH": "terapias", "II": "terapias", "IU": "terapias", "IV": "terapias",
+    "IY": "terapias", "JA": "terapias", "JF": "terapias", "JT": "terapias",
+    "KT": "terapias", "KU": "terapias", "LF": "terapias", "ML": "terapias",
+    "PA": "terapias",
+    # Conducta y emociones.
+    "IL": "conducta", "IM": "conducta", "NC": "conducta",
+    # Mundo sensorial.
+    "IN": "sensorial", "JU": "sensorial",
+    # Familia y vida diaria: la casa, el dia a dia y la seguridad cotidiana.
+    "AE": "familia", "AI": "familia", "DV": "familia", "EF": "familia",
+    "IE": "familia", "IF": "familia", "IG": "familia", "IJ": "familia",
+    "IO": "familia", "IW": "familia", "JB": "familia", "JC": "familia",
+    "JD": "familia", "JI": "familia", "JJ": "familia", "JZ": "familia",
+    "KM": "familia", "KN": "familia", "LI": "familia", "MJ": "familia",
+    "ND": "familia", "NK": "familia", "NL": "familia", "NP": "familia",
+    "PF": "familia", "PJ": "familia", "PK": "familia", "PQ": "familia",
+    "PX": "familia", "S": "familia",
+    # Escuela y aprendizaje.
+    "MU": "escuela", "MW": "escuela",
+    # Adolescencia y vida adulta.
+    "KJ": "adultez", "PG": "adultez", "PU": "adultez",
+    # Derechos y recursos por pais.
+    "MR": "derechos", "PB": "derechos", "PN": "derechos", "LX": "derechos",
+}
+
 # Excepciones al orden de CATEGORIAS. El "primera que coincide gana" resuelve
 # bien casi todo, pero a veces una palabra generica de una categoria anterior
 # se lleva una ficha que el padre buscaria en otra. Aqui solo van frases largas
@@ -153,7 +199,14 @@ EXCEPCIONES = [
 ]
 
 
-def categoria_de(titulo):
+def categoria_de(titulo, codigo=None):
+    if codigo and codigo in CATEGORIA_POR_CODIGO:
+        clave = CATEGORIA_POR_CODIGO[codigo]
+        for c, nombre, _ in CATEGORIAS:
+            if c == clave:
+                return c, nombre
+        raise SystemExit("CATEGORIA_POR_CODIGO: %s apunta a la categoria "
+                         "inexistente %r" % (codigo, clave))
     t = normalizar(titulo)
     for frase, clave in EXCEPCIONES:
         if normalizar(frase) in t:
@@ -315,7 +368,7 @@ def parsear(md):
             "rojo": cuerpo.count("🔴"),
             "vivencial": cuerpo.count("⚪"),
         }
-        cat_clave, cat_nombre = categoria_de(titulo)
+        cat_clave, cat_nombre = categoria_de(titulo, codigo)
 
         dominios.append({
             "codigo": codigo,
