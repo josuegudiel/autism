@@ -72,6 +72,7 @@ CATEGORIAS = [
         "motricidad", "neurobiología", "genétic", "x frágil", "rett", "esclerosis tuberosa",
         "síndrome de down", "discapacidad intelectual", "sustancias",
         "paliativos", "quimioterapia", "enfermedad grave",
+        "urgencias", "medicamento",
     ]),
     ("escuela", "Escuela y aprendizaje", [
         "escuela", "escolar", "colegio", "aula", "recreo", "comedor", "excursion",
@@ -79,6 +80,9 @@ CATEGORIAS = [
         "discalculia", "disgrafía", "funciones ejecutivas", "memoria", "juego",
         "educación en casa", "doble excepcionalidad", "acoso", "reuniones escolares",
         "percepción del tiempo", "reconocimiento de caras",
+        # MV ("expulsiones, partes y exclusión encubierta") no lleva ninguna
+        # palabra de esta lista y caia en el cajon por defecto.
+        "expulsiones", "exclusión encubierta",
     ]),
     ("familia", "Familia y vida diaria", [
         "familia", "cuidador", "hermanos", "abuelos", "pareja", "divorcio", "duelo",
@@ -137,8 +141,25 @@ def normalizar(texto):
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
 
 
+# Excepciones al orden de CATEGORIAS. El "primera que coincide gana" resuelve
+# bien casi todo, pero a veces una palabra generica de una categoria anterior
+# se lleva una ficha que el padre buscaria en otra. Aqui solo van frases largas
+# del titulo, nunca palabras sueltas, para que no arrastren fichas ajenas.
+# Comprueba siempre en seco a quien mueve una frase antes de anadirla.
+EXCEPCIONES = [
+    # QR es la hermana escolar de LL, pero "contencion" (conducta) va antes que
+    # "colegio" (escuela) y se la llevaba a Conducta y emociones.
+    ("en el colegio lo sujetan", "escuela"),
+]
+
+
 def categoria_de(titulo):
     t = normalizar(titulo)
+    for frase, clave in EXCEPCIONES:
+        if normalizar(frase) in t:
+            for c, nombre, _ in CATEGORIAS:
+                if c == clave:
+                    return c, nombre
     for clave, nombre, patrones in CATEGORIAS:
         for p in patrones:
             if normalizar(p) in t:

@@ -424,3 +424,7 @@ QK. No se duerme hasta las tres y por la mañana no hay quien lo levante: el rel
 QL. Tiene un cáncer o una enfermedad grave: ingresos largos, quimioterapia y cuidados paliativos
 QM. Los vecinos se quejan del ruido y nos quieren echar: la comunidad, el alquiler y el casero
 QN. Nos mudamos de comunidad o de provincia: ¿me vale el certificado de discapacidad y pierdo la lista de espera?
+QP. ¿Esta reacción al medicamento es para ir a urgencias hoy? Sarpullido con fiebre, rigidez y otras señales que no esperan a la próxima cita
+QQ. Llamar al 112 o al 911 en plena crisis, o cuando ya ha venido la policía: qué decir y qué llevar preparado
+QR. En el colegio lo sujetan o lo encierran solo en un cuarto: contención y aislamiento en el centro educativo
+QS. Se golpea la cabeza: el casco y las revisiones de salud (ojos, oídos, cuello, dientes)

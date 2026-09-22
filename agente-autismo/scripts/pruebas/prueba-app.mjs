@@ -1352,6 +1352,159 @@ check('JV, NK, NN, NP, NY y NZ ya tienen entradas de búsqueda',
   ['JV', 'NK', 'NN', 'NP', 'NY', 'NZ'].every((c) => conEntrada.has(c)));
 
 
+
+// 30. Ronda 45. Cuatro fichas de seguridad que se tocan entre sí (medicamento,
+// emergencias, contención escolar, cabezazos). Dos volvieron bloqueadas, y los
+// bloqueos no eran suyos: eran contradicciones con fichas ya publicadas.
+for (const [codigo, marca] of [['QP', /sarpullido|erupci[óo]n|urgencias hoy/i],
+                               ['QQ', /112|911|emergencias/i],
+                               ['QR', /contenci[óo]n|aislamiento|colegio/i],
+                               ['QS', /cabezazos|casco|fondo de ojo/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 45: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re45] of [['le ha salido un sarpullido', /sarpullido|erupci[óo]n|medicament/i],
+                         ['reaccion al medicamento', /medicament|urgencias|reacci[óo]n/i],
+                         ['llamar a emergencias', /112|911|emergencias/i],
+                         ['ha venido la policia', /polic[íi]a|112|911/i],
+                         ['lo encierran en un cuarto', /aislamiento|cuarto|contenci[óo]n/i],
+                         ['contencion en el colegio', /contenci[óo]n|colegio|sujet/i],
+                         ['se da cabezazos', /cabeza|casco|golpe/i],
+                         ['casco protector', /casco/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 45: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re45.test(rr), rr.slice(0, 160));
+}
+
+const lib45 = fs.readFileSync(new URL('../../research/biblioteca-autismo.md', import.meta.url), 'utf8');
+const b45 = (cod) => {
+  const i = lib45.indexOf('### ' + cod + '. ');
+  const j = lib45.indexOf('\n### ', i + 6);
+  return j === -1 ? lib45.slice(i) : lib45.slice(i, j);
+};
+const cuerpo45 = (cod) => b45(cod).replace(/> \*\*Para la app[\s\S]*/, '');
+
+// QP chocaba con LV en el umbral del síndrome serotoninérgico: LV exigía fiebre
+// alta para ir a urgencias, y los criterios clínicos no la exigen. Se corrigió
+// LV, que era la equivocada, no QP.
+const lv45 = cuerpo45('LV');
+check('LV ya no pide esperar a la fiebre para ir a urgencias',
+  /la fiebre puede llegar después o no llegar/.test(lv45) && !/fiebre alta con rigidez/.test(lv45));
+
+// QQ chocaba con CJ, que vendía la formación policial como algo que reduce el
+// riesgo. No hay evidencia de que reduzca detenciones ni uso de la fuerza.
+const cj45 = cuerpo45('CJ');
+check('CJ ya no promete que la formación policial reduzca el riesgo',
+  !/la formación policial en autismo reducen mucho ese riesgo/.test(cj45)
+  && /su efecto no está demostrado/.test(cj45) && /\*\*QQ\./.test(cj45));
+
+// GX daba por universal un trámite que solo hemos podido documentar en dos países.
+const gx45 = cuerpo45('GX');
+check('GX acota el formulario de necesidades especiales a EE. UU. y Canadá',
+  /Estados Unidos y Canadá/.test(gx45) && /No hemos verificado que exista nada equivalente/.test(gx45));
+
+// QP es triaje, no receta: ninguna dosis, ninguna pauta de retirada.
+const qp45 = cuerpo45('QP');
+check('QP no da dosis ni pautas y dice que la retirada la decide quien atiende',
+  !/\b\d+([.,]\d+)?\s?mg\b/.test(qp45) && /La retirada ante una reacción la decide quien atiende/.test(qp45));
+check('QP deja fuera los estimulantes del TDAH y manda a U y NJ',
+  /No cubre los estimulantes del TDAH/.test(qp45) && /\*\*NJ\./.test(qp45));
+
+// La regla de la erupción vale en cualquier mes: si se escribiera solo para el
+// inicio, un padre del mes cuarto se quedaría en casa.
+check('QP mantiene la erupción como urgencia en cualquier momento del tratamiento',
+  /en cualquier momento del tratamiento, no solo al empezar/.test(qp45));
+
+// Los bloques de emergencia no llevan píldora de semáforo: un "Evidencia
+// sólida" verde pegado a un 🚨 se lee como "todo en orden".
+for (const cod of ['QP', 'QQ', 'QR', 'QS']) {
+  const conPildora = cuerpo45(cod).split('\n')
+    .filter((l) => l.startsWith('- ') && l.includes('🚨') && /[🟢🟡🔴⚪]\s*$/.test(l));
+  check(`${cod}: ningún bloque 🚨 lleva píldora de nivel`, conPildora.length === 0, conPildora[0]);
+}
+for (const cod of ['QP', 'QQ', 'QR', 'QS']) {
+  check(`${cod} avisa de que el color es evidencia y no prisa`,
+    /Los colores indican \*\*cuánta evidencia hay detrás de cada punto\*\*/.test(cuerpo45(cod)));
+}
+
+// Enlaces inversos: una ficha a la que no apunta nadie no existe para quien no
+// llega por el buscador.
+check('MQ, NN, MI, NM, NS, NJ y MH mandan a QP',
+  ['MQ', 'NN', 'MI', 'NM', 'NS', 'NJ', 'MH'].every((c) => /\*\*QP\. ¿Esta reacción al medicamento/.test(b45(c))));
+check('AE, JB, FP, CJ y GX mandan a QQ',
+  ['AE', 'JB', 'FP', 'CJ', 'GX'].every((c) => /\*\*QQ\. Llamar al 112/.test(b45(c))));
+check('FQ, LL y MV mandan a QR',
+  ['FQ', 'LL', 'MV'].every((c) => /QR\. En el colegio lo sujetan/.test(b45(c))));
+check('KS, DR, LK, QC, MN y FQ mandan a QS',
+  ['KS', 'DR', 'LK', 'QC', 'MN', 'FQ'].every((c) => /\*\*QS\. Se golpea la cabeza/.test(b45(c))));
+
+// FQ mandaba a PP a cualquiera que buscase el registro de una contención,
+// incluidos los padres de un escolar, que es justo lo que ahora cubre QR.
+check('FQ reparte entre QR (colegio) y PP (centro de adultos)',
+  /si fue en el colegio, en QR/.test(b45('FQ')) && /si fue en un centro de día, un piso tutelado o un respiro, en PP/.test(b45('FQ')));
+
+// «se golpea la cabeza» mandaba a tres temas que no son este.
+const sinon45 = JSON.parse(fs.readFileSync(new URL('../sinonimos.json', import.meta.url), 'utf8'));
+check('«se golpea la cabeza» lleva a QS antes que a Z, G y CY',
+  sinon45['se golpea la cabeza'][0] === 'QS');
+check('las cuatro de la ronda 45 tienen entradas de búsqueda propias',
+  ['QP', 'QQ', 'QR', 'QS'].every((c) => Object.values(sinon45).some((v) => Array.isArray(v) && v.includes(c))));
+
+// El conversor: QP y QS a salud, y QR con LL en escuela (la palabra
+// «contención» se la llevaba a conducta). MV caía en el cajón por defecto.
+const idx45 = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const temas45 = idx45.temas || idx45;
+const cat45 = (cod) => (temas45.find((t) => t.codigo === cod) || {}).categoria;
+check('QP y QS están en salud', cat45('QP') === 'salud' && cat45('QS') === 'salud');
+check('QR está en escuela, con LL, y no en conducta',
+  cat45('QR') === 'escuela' && cat45('LL') === 'escuela');
+check('MV sale del cajón por defecto y se va a escuela', cat45('MV') === 'escuela');
+check('la excepción de QR no arrastró a FQ ni a PP fuera de su sitio',
+  cat45('FQ') === 'conducta' && cat45('PP') === 'familia');
+
+// Las dos deudas que QS dejó escritas en su propia nota, cerradas en la misma
+// ronda. La primera era una contradicción viva: la biblioteca mandaba ir con un
+// vómito en tres fichas y con dos en otras cinco.
+const VOMITO_VIEJO = /vomita más de una vez|Vomita más de una vez/;
+for (const cod of ['QC', 'MT', 'NC', 'PP', 'QF', 'QS']) {
+  check(`${cod} cuenta desde el primer vómito tras un golpe en la cabeza`,
+    !VOMITO_VIEJO.test(cuerpo45(cod)) && /primer vómito|una sola vez|Vomita, \*\*y cuenta desde el primer vómito/.test(cuerpo45(cod)),
+    cuerpo45(cod).slice(0, 80));
+}
+check('QS dice de dónde sale el umbral de la guía y que el suyo es más bajo a propósito',
+  /tres o más episodios de vómito/.test(cuerpo45('QS'))
+  && /precaución declarada nuestra, no un criterio publicado/.test(cuerpo45('QS')));
+check('ND baja el umbral del bebé a un solo vómito',
+  /vomita \*\*aunque sea una sola vez\*\*/.test(cuerpo45('ND')));
+check('QS nombra el retinoblastoma y avisa del antiojos rojos',
+  /retinoblastoma/i.test(cuerpo45('QS')) && /antiojos rojos/.test(cuerpo45('QS')));
+
+// Comprobación por búsqueda de una cifra de QP: las de la lamotrigina salieron
+// exactas, pero la del síndrome neuroléptico maligno estaba publicada como UNA
+// cifra cuando la literatura da un rango de dos órdenes de magnitud. Es el mismo
+// error que ya cayó con la adherencia a la CPAP: las dos cifras eran ciertas.
+for (const cod of ['QP', 'MQ']) {
+  check(`${cod} da el rango del síndrome neuroléptico maligno, no una cifra sola`,
+    /0,01% a más del 2%/.test(cuerpo45(cod)), cuerpo45(cod).slice(0, 60));
+}
+check('QP conserva exactas las cifras de la lamotrigina que se comprobaron en la ficha del fabricante',
+  /0,3%–0,8% de los niños/.test(cuerpo45('QP')) && /0,08%–0,3% de los adultos/.test(cuerpo45('QP'))
+  && /1\.983 niños/.test(cuerpo45('QP')));
+
+// Dos cifras de QR colgaban del denominador equivocado. En el estudio de Nunno
+// las 38 muertes en prono son sobre las 63 sujeciones físicas, no sobre las 79
+// muertes totales; y el GAO habla de nueve distritos de más de 100.000 alumnos,
+// no de "nueve de los treinta más grandes".
+const qr45 = cuerpo45('QR');
+check('QR atribuye las 38 muertes en prono a las 63 sujeciones físicas, no a las 79',
+  /63 fueron sujeciones físicas/.test(qr45) && /38 de esos 63/.test(qr45)
+  && !/79 fallecimientos, de los cuales 38 —casi la mitad—/.test(qr45));
+check('QR describe bien lo que encontró el GAO sobre los distritos que declararon cero',
+  /nueve distritos de más de 100\.000 alumnos declararon cero por error/.test(qr45)
+  && /solo uno/.test(qr45) && !/nueve de los treinta distritos más grandes/.test(qr45));
+
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

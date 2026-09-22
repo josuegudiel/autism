@@ -88,6 +88,7 @@
   "CY"
  ],
  "se golpea la cabeza": [
+  "QS",
   "Z",
   "G",
   "CY"
@@ -2343,5 +2344,113 @@
  "dos diagnosticos a la vez": [
   "NZ",
   "AF"
+ ],
+ "le ha salido un sarpullido": [
+  "QP",
+  "NN"
+ ],
+ "sarpullido por el medicamento": [
+  "QP",
+  "NN",
+  "MQ"
+ ],
+ "erupción por la pastilla": [
+  "QP",
+  "NN"
+ ],
+ "reacción al medicamento": [
+  "QP",
+  "MI"
+ ],
+ "efecto secundario del medicamento": [
+  "QP",
+  "KG",
+  "NJ",
+  "NN"
+ ],
+ "fiebre y rigidez": [
+  "QP",
+  "NJ"
+ ],
+ "vamos a urgencias": [
+  "QP",
+  "LD"
+ ],
+ "le sienta mal la medicación": [
+  "QP",
+  "KG",
+  "NN"
+ ],
+ "112": [
+  "QQ"
+ ],
+ "911": [
+  "QQ"
+ ],
+ "llamar a emergencias": [
+  "QQ"
+ ],
+ "ha venido la policía": [
+  "QQ",
+  "CJ"
+ ],
+ "ambulancia crisis": [
+  "QQ",
+  "FP"
+ ],
+ "lo sujetaron boca abajo": [
+  "QQ",
+  "QR",
+  "PP"
+ ],
+ "lo encierran en un cuarto": [
+  "QR"
+ ],
+ "lo sacan del aula a la fuerza": [
+  "QR"
+ ],
+ "sala de calma": [
+  "QR"
+ ],
+ "cuarto de aislamiento": [
+  "QR"
+ ],
+ "lo sujetaron entre varios": [
+  "QR",
+  "FQ"
+ ],
+ "contención en el colegio": [
+  "QR",
+  "FQ"
+ ],
+ "se da cabezazos": [
+  "QS",
+  "KS"
+ ],
+ "cabezazos contra la pared": [
+  "QS",
+  "KS"
+ ],
+ "se golpea la cabeza contra la pared": [
+  "QS",
+  "KS"
+ ],
+ "se golpea la cabeza a diario": [
+  "QS",
+  "KS"
+ ],
+ "casco protector": [
+  "QS"
+ ],
+ "casco para autismo": [
+  "QS"
+ ],
+ "se pega en la cabeza": [
+  "QS",
+  "KS"
+ ],
+ "se abofetea": [
+  "QS",
+  "KS"
  ]
 }

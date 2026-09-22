@@ -9,44 +9,45 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 45** — runId `wf_51fb297c-7f5` (tarea wo9e3utqb), lanzada el 22/09 hacia
-las 14:20. Los cuatro temas son de seguridad y van acotados entre sí, porque
-comparten frontera y no se ven unos a otros:
+**Ronda 46** — runId `wf_98f8554f-4cc` (tarea wvn47wrl7), lanzada el 22/09 hacia
+las 15:45. Códigos **QT, QU, QV, QW**. Las cuatro van acotadas por escrito,
+porque los investigadores no se ven unos a otros:
 
-- **QP** — ¿esta reacción al medicamento es para ir a urgencias hoy?
-- **QQ** — ha venido la policía o una ambulancia en plena crisis (la contención
-  escolar NO es suya).
-- **QR** — en el colegio lo sujetan o lo dejan solo en un cuarto (la policía y el
-  casco NO son suyos).
-- **QS** — se golpea la cabeza: qué revisarle y qué hacer con el casco (el casco
-  se queda aquí; no reescribe KS).
+- **QT** — camas de seguridad, sillas de paseo grandes y arneses en casa (el
+  casco es de QS, el colegio de QR, los centros de PP, la doctrina de FQ).
+- **QU** — lleva meses sin salir de su cuarto (el burnout es de AN, la depresión
+  de IC, el rechazo escolar de LO, la catatonía de DO).
+- **QV** — ya tiene la regla y toma valproato: el lado farmacológico (la primera
+  cita de ginecología y la anticoncepción decidida con ella son de NW).
+- **QW** — no gana peso ni crece (el ARFID es de LU y P; NS es el caso contrario).
 
-En paralelo, la **auditoría de las notas "Antes de publicar"** (runId
-`wf_f0b2d693-fdd`) está reanudada tras el límite de sesión: le faltaban cinco
-verificadores. Ya hay un hallazgo firme: **PJ pidió dos ediciones en DM y no se
-hicieron ninguna de las dos** (bajar de 🟢 a 🟡 el punto "Lo que ayuda, según
-guías clínicas y de familias", cuya propia fuente declarada es consenso, y
-enlazar DM → PJ). Ojo: un auditor citó "la ficha QO (línea 8617)" y **QO no
-existe**; por eso la fase escéptica no es opcional.
+En paralelo, el **relleno de `scripts/sinonimos.json`** para las 154 fichas mudas
+(runId `wf_647bd355-5e7`, tarea wvx2y3nw3) está **reanudado**: de 16 lotes solo
+volvieron 3 (1, 7 y 16, 120 entradas ya guardadas en el scratchpad como
+`sinonimos-lotes.json`); los otros 13 murieron todos con el mismo error de
+servidor —`safeguards flagged this message … [reasoning_extraction]`— que es un
+falso positivo, porque los que sí pasaron llevaban el prompt idéntico. Cuando
+termine: fusionar, comprobar que cada frase llega a su ficha con una búsqueda
+real, y commitear.
 
 ## Ya publicado
 
-Rondas 29 a 44. Última: ronda 44 (QK, QL, QM, QN).
-Biblioteca en **425 temas / 226 verificados / 199 síntesis / 4.006 fuentes**.
-Suite **341/341**. Reserva: **31 entradas** (quinto análisis de huecos, sobre los 425 temas).
+Rondas 29 a 45. Última: ronda 45 (QP, QQ, QR, QS).
+Biblioteca en **429 temas / 226 verificados / 203 síntesis / 4.081 fuentes**.
+Suite **392/392**. Reserva: **27 entradas** (quinto análisis de huecos; quedan 26 investigables,
+porque la 0 —NI— espera decisión humana y la 28 está rechazada).
 
-Ronda 45: códigos **QP, QQ, QR, QS** (se evita QO, como se evitó PO) (confirma con grep; PO sigue libre y se
-evita). Quedarán 8 entradas y solo 6 investigables (NI espera decisión y "de cinco a
-ocho pide la tablet" está rechazada). Candidatas: el reloj interno del
-adolescente, la melatonina y cuándo parar, cuando el enfermo grave es él, los
-vecinos y el ruido, la mudanza de comunidad, ¿le compramos un perro? **Con solo
-6 investigables, lanza `scripts/workflows/detectar-huecos.mjs` antes o junto a la
-ronda 44.** Cuando
-queden menos de 4 investigables, lanza antes `scripts/workflows/detectar-huecos.mjs`.
+Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
+PO; confírmalo con grep antes de usar nada). Candidatas por orden de la reserva:
+el chico que no crece ya está en QW, así que siguen **los suplementos y plantas
+que chocan con su medicación** (9), **la melatonina a los dos años** (10, con el
+aviso viejo), **la pubertad precoz y el tiroides** (11) y **la salud genital y
+urológica del chico** (12). **Cuando queden menos de 4 investigables, lanza antes
+`scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (ya se investigó y se
-rechazó como NG por solaparse con IS; solo vale rehecho como cadencia semanal)
-ni "dice que se quiere morir" (terminada y esperando decisión humana).
+rechazó como NG por solaparse con IS) ni "dice que se quiere morir" (terminada y
+esperando decisión humana).
 
 ## NI está bloqueada a propósito
 
@@ -157,9 +158,13 @@ LÍMITE DURO: 4 temas por ronda.
   **Lección del método:** un auditor dio HECHO donde el escéptico encontró que la
   marca de bloqueo seguía viva, y otro citó como prueba "la ficha QO (línea
   8617)", que **no existe**. La fase escéptica no es opcional.
-- **116 fichas en "Comprender el autismo"**, que es el cajón por defecto del
-  conversor. Algunas están bien ahí; otras no.
-- **155 de las 426 fichas no tienen ni una entrada en `scripts/sinonimos.json`.**
+- **113 fichas en "Comprender el autismo"**, que es el cajón por defecto del
+  conversor. Algunas están bien ahí; otras no. Desde la ronda 45 hay un
+  mecanismo para sacarlas una a una sin romper el orden: la lista `EXCEPCIONES`
+  de `scripts/construir-contenido.py`, que solo admite **frases largas del
+  título**, nunca palabras sueltas, y que hay que **probar en seco** (a quién
+  mueve) antes de añadir nada.
+- **150 de las 429 fichas no tienen ni una entrada en `scripts/sinonimos.json`.**
   Es el hueco más grande que queda y no se ve desde fuera: la ficha existe, está
   en el índice y se abre por su enlace, pero el buscador puntúa 8 por palabra del
   título y 5 por clave —y las claves salen del título, del mensaje clave y de los
