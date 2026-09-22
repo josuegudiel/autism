@@ -1873,6 +1873,17 @@ check('MJ y NH siguen diciendo cada uno su denominador',
 // depende de la definición.
 check('O da el rango de la regresión en vez de una cifra sola',
   /La frecuencia depende de cómo se defina/.test(bC('O')) && /\*\*BJ\*\*/.test(bC('O')));
+// LJ y NS publicaban dos ensayos de retirada de risperidona con magnitudes muy
+// distintas (62,5 % vs 12,5 % en RUPP; 52,9 % vs 70,7 % en Dinnissen) sin que
+// ninguna mencionara a la otra: el mismo padre sacaba una impresión u otra
+// según por dónde entrara. Las dos son ciertas y describen tiempos de
+// tratamiento y velocidades de retirada distintos, que es lo que faltaba decir.
+check('LJ y NS se citan la una a la otra al hablar de retirar la risperidona',
+  /\*\*NS\*\*/.test(bC('LJ')) && /62,5 %/.test(bC('LJ'))
+  && /lo que publica LJ/.test(bC('NS')) && /52,9 %/.test(bC('NS')));
+check('las dos explican por qué las cifras difieren, en vez de elegir una',
+  /cuánto tiempo llevaba tomándolo y a qué velocidad se bajó/.test(bC('LJ'))
+  && /Las dos cifras son ciertas/.test(bC('NS')));
 
 
 await nav.close();
