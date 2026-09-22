@@ -1970,6 +1970,28 @@ for (const trozo of libC.split(/(?=^### )/m)) {
 check('ninguna ficha remite a un código que no existe',
   refsRotas.length === 0, refsRotas.slice(0, 8).join(' | '));
 
+// El conversor avisaba en CADA build de que B y V no tenían "Mensaje clave", y
+// el aviso llevaba rondas ignorado. No era cosmético: sin esa línea, la tarjeta
+// que ve el padre en los resultados de búsqueda es la primera frase del cuerpo,
+// y en B esa frase estaba escrita para quien construye la app ("Fichas nuevas
+// para ampliar el Detector…"). Ahora las 433 tienen mensaje propio.
+const TITULARES = /(\*\*Mensaje clave|\*\*Resumen|\*\*Encuadre obligatorio para la app)/;
+const sinMensaje = [];
+for (const trozo of libC.split(/(?=^### )/m)) {
+  const cod = (trozo.match(/^### ([A-Z]{1,2})\. /) || [])[1];
+  if (!cod) continue;
+  if (!TITULARES.test(trozo.split('> **Para la app')[0])) sinMensaje.push(cod);
+}
+check('todas las fichas tienen un mensaje escrito para el lector',
+  sinMensaje.length === 0, sinMensaje.join(' '));
+// Y que ese mensaje no sea una instrucción interna.
+const idxMsg = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+const mensajesInternos = (idxMsg.temas || idxMsg).filter((t) =>
+  /Fichas nuevas para ampliar|para la app\b|marcador de posición|en el Centro de evidencia y refuerza/i
+    .test(t.mensaje || ''));
+check('ninguna tarjeta muestra una instrucción para quien construye la app',
+  mensajesInternos.length === 0, mensajesInternos.map((t) => t.codigo).join(' '));
+
 
 await nav.close();
 console.log('\n' + (errores.length

@@ -421,6 +421,8 @@
 > **Para la app:** este dominio da material para una nueva sección "Condiciones que acompañan al autismo" en el Centro de evidencia, y refuerza el Detector (GFCF-cura, dosis de melatonina sin supervisión).
 
 ### B. Catálogo ampliado de pseudociencia — ✅ cubierto (2026-06-21)
+**Mensaje clave:** Aquí están reunidos, uno por uno, los tratamientos que se venden para el autismo y que la evidencia no sostiene —algunos inútiles, algunos caros y algunos peligrosos—, con lo que dice de cada uno la revisión que lo ha mirado. Si te acaban de ofrecer algo y quieres saber qué hay detrás antes de decidir, escríbelo en el **Detector** de la app: sale de esta lista. Y una idea que vale para los que aún no están aquí: lo que promete curar el autismo, lo que exige pagar por adelantado y lo que solo tiene testimonios a favor, desconfía.
+
 Fichas nuevas para ampliar el **Detector** (además de quelación/MMS/bioresonancia/células madre ya incluidas):
 
 - 🔴 **Secretina (intravenosa):** sin eficacia para síntomas centrales; Cochrane (16 ECA, >900 niños): *"no debe recomendarse ni administrarse como tratamiento del TEA"*. [Cochrane](https://www.cochrane.org/CD003495/BEHAV_intravenous-secretin-for-autism-spectrum-disorders-asd)
@@ -701,6 +703,8 @@ Fichas nuevas para ampliar el **Detector** (además de quelación/MMS/bioresonan
 
 ### V. Preferencias de lenguaje + NCAEP 2020 — ✅ cubierto (2026-06-21)
 > ⚠️ **Nota de método:** síntesis desde fuentes canónicas y establecidas (no pasó la verificación automática de 3 votos por el límite de sesión); **re-verificar** cuando se reinicien los créditos. Son hechos muy documentados y poco controvertidos.
+
+**Mensaje clave:** Dos cosas distintas que suelen preguntarse juntas. La primera, cómo nombrarlo: muchas personas autistas prefieren "persona autista" a "persona con autismo", pero no hay un único término correcto y lo que manda es la preferencia de cada persona y de cada familia. La segunda, qué prácticas tienen respaldo: el informe NCAEP de 2020 revisó cuáles están avaladas por la investigación, y conviene saber leerlo sin convertirlo en una lista de la compra.
 
 **A) Preferencias de lenguaje (cómo nombrar).** No hay un único "correcto", pero la evidencia de la comunidad importa:
 - Muchas personas autistas **prefieren el lenguaje de identidad primero** ("persona autista" / "soy autista") en vez de "persona con autismo", porque viven el autismo como **parte de su identidad**, no como una enfermedad separable. 🟢

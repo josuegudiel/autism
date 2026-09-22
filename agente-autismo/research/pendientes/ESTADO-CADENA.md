@@ -36,7 +36,7 @@ que las dos se reemplazaron por la segunda pasada.
 
 Rondas 29 a 46.
 Biblioteca en **433 temas / 226 verificados / 207 síntesis / 4.169 fuentes**.
-Suite **498/498**. Reserva: **23 entradas**.
+Suite **500/500**. Reserva: **23 entradas**.
 
 Ronda 47: códigos **QX, QY, QZ** y luego **RA** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Candidatas por orden de la reserva: **los suplementos y
