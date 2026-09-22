@@ -61,6 +61,10 @@ def main():
             cj,tj,nj,kj,vj = afirm[j]
             if ci==cj: continue
             comun=ri & raras(kj)
+            # Si las DOS ventanas contienen las DOS cifras, las fichas estan de
+            # acuerdo y solo las emparejamos nosotros: 65 % de trafico y 24 % de
+            # agua salian enfrentados en seis pares y en ninguno habia conflicto.
+            if ni in vj and nj in vi: continue
             if len(comun)>=3 and ni!=nj:
                 par=(ci,cj,ti,tj)
                 if par in vistos: continue

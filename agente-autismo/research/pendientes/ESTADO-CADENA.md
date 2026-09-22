@@ -159,8 +159,17 @@ LÍMITE DURO: 4 temas por ronda.
   contradicciones que han ido apareciendo tenían esa forma (la fiebre de LV y
   QP, el vómito en ocho fichas, el implante de NW, la formación policial de CJ).
   **Pásalo cuando publiques una ronda**, antes del commit. Da falsos positivos
-  —dos datos distintos del mismo informe, o una cifra redondeada— así que se
-  lee, no se obedece: de los 257 pares que saca hoy, dos eran de verdad.
+  y se lee, no se obedece. **Revisados ya los ~60 pares con más palabras en
+  común** (22/09): salieron tres arreglos —JD y su denominador, O y la cifra
+  única de la regresión, y LJ/NS con los dos ensayos de retirada de
+  risperidona—. Lo de más abajo en la lista es casi todo ruido de tres clases:
+  dos datos distintos del mismo estudio (AA y ME con McElhanon; IC y ID con
+  Hollocks, que son depresión y ansiedad), una cifra redondeada en una ficha y
+  con decimal en otra (G y LN, LH y MJ), y dos encuestas distintas sobre el
+  mismo tema (JH con el VEQ de Griffiths y LA con la de la NAS). **La clase de
+  ruido más grande ya está filtrada:** si las dos ventanas contienen las dos
+  cifras, las fichas están de acuerdo y el par se descarta (así bajó de 257 a
+  215).
 
 
 - **Las notas "Antes de publicar"**: auditadas las seis que pedían trabajo en
