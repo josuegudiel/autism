@@ -9,7 +9,19 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna.** La ronda 46 está **entera publicada** (QT, QU, QV, QW). Lanza la 47.
+**Ronda 47** — runId `wf_35f0b071-1e7` (tarea wnu9ivk56), lanzada el 22/09 a las
+19:55. Códigos **QX, QY, QZ, RA**, acotados por escrito entre sí:
+
+- **QX** — suplementos, plantas y jarabes que chocan con su medicación (lo suyo
+  es si CHOCAN, no si sirven: eso es BL, B y CS; la melatonina en sí es de QY).
+- **QY** — lleva dos años con melatonina: el uso prolongado, no «probar
+  melatonina» (W, EN, IF, QK y PQ ya están y no se reescriben).
+- **QZ** — pubertad precoz y tiroides (la regla es DA, el peso por antipsicóticos
+  NS, la curva plana QW).
+- **RA** — salud genital y urológica del chico, con la torsión testicular arriba
+  y su reloj de horas (la educación sexual es S, la enuresis EQ).
+
+La ronda 46 está entera publicada (QT, QU, QV, QW).
 
 **Lección de la 46, y va al procedimiento:** cuando el editor final (`corregir`)
 muere, el script se queda con la versión **verificada pero sin corregir** y deja
