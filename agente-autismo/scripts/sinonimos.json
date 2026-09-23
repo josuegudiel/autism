@@ -4726,5 +4726,115 @@
  "mi familia no lo acepta": [
   "DN",
   "N"
+ ],
+ "no hay neurologo en mi ciudad": [
+  "M",
+  "FS",
+  "LT"
+ ],
+ "en mi pais no hay diagnostico publico": [
+  "M",
+  "FS",
+  "LT"
+ ],
+ "tengo que pagar todo privado": [
+  "KN",
+  "M"
+ ],
+ "obra social no cubre": [
+  "MR",
+  "M"
+ ],
+ "eps me niega la terapia": [
+  "MR",
+  "FW"
+ ],
+ "el informe dice cosas que no entiendo": [
+  "IR"
+ ],
+ "no entiendo el informe": [
+  "IR"
+ ],
+ "el pediatra dice que ya hablara": [
+  "O",
+  "X",
+  "LT"
+ ],
+ "el medico no me escucha": [
+  "ME",
+  "LD"
+ ],
+ "le van a poner anestesia": [
+  "PZ",
+  "MK"
+ ],
+ "quiero un comunicador": [
+  "HB",
+  "KB"
+ ],
+ "le entiendo yo pero nadie mas": [
+  "HB",
+  "CA"
+ ],
+ "rompe cosas cuando se enfada": [
+  "HF",
+  "FP",
+  "HG"
+ ],
+ "le sujetan en el cole": [
+  "QR",
+  "FQ"
+ ],
+ "lo sacan de clase al pasillo": [
+  "QR",
+  "IB"
+ ],
+ "lo castigan sin recreo": [
+  "QR",
+  "IA",
+  "IB"
+ ],
+ "no le dejan ir de excursion": [
+  "GU",
+  "IB"
+ ],
+ "no quiere comer en el comedor": [
+  "GT",
+  "LU"
+ ],
+ "vomita en el autobus escolar": [
+  "GW"
+ ],
+ "se hace pis en el cole": [
+  "AT",
+  "EQ"
+ ],
+ "no avisa para ir al bano": [
+  "AT"
+ ],
+ "tiene que llevar panal al cole": [
+  "RH",
+  "AT"
+ ],
+ "llora todas las tardes al llegar": [
+  "LW"
+ ],
+ "grita por la noche": [
+  "W",
+  "IF"
+ ],
+ "se despierta a las cuatro": [
+  "PQ",
+  "QK",
+  "W"
+ ],
+ "se despierta de madrugada": [
+  "PQ",
+  "QK",
+  "W"
+ ],
+ "tiene terrores nocturnos": [
+  "W",
+  "IF"
  ]
 }

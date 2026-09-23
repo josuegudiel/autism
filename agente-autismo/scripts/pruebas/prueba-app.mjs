@@ -2985,6 +2985,19 @@ for (const [q, titulo] of [
   ['soy autista y acabo de enterarme', 'diagnóstico en la adultez'],
   ['mi hijo dice que es chica', 'diversidad de género'],
   ['tiene la piel fatal de rascarse', 'Se arranca el pelo'],
+  // Tercera tanda (23/09): el colegio, los papeles y el acceso en LatAm.
+  ['el informe dice cosas que no entiendo', 'Entender un informe'],
+  ['el medico no me escucha', 'es por el autismo'],
+  ['quiero un comunicador', 'Elegir un sistema de CAA'],
+  ['le sujetan en el cole', 'lo sujetan o lo encierran'],
+  ['lo castigan sin recreo', 'lo sujetan o lo encierran'],
+  ['no avisa para ir al bano', 'Aprendizaje del baño'],
+  ['tiene que llevar panal al cole', 'ya no cabe en el cambiador'],
+  ['se despierta a las cuatro', 'se levanta a las tres'],
+  ['eps me niega la terapia', 'Me han denegado la terapia'],
+  ['tengo que pagar todo privado', 'pobreza'],
+  ['rompe cosas cuando se enfada', 'Agresión hacia otros'],
+  ['vomita en el autobus escolar', 'Transporte escolar'],
 ]) {
   const rr = await buscarHondo(q);
   const cabeza = rr.slice(0, 220);
