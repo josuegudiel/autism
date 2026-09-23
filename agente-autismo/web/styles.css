@@ -38,6 +38,8 @@
   --ev-media-bg: rgba(138, 90, 0, 0.12);
   --ev-evitar: #c02a1b;
   --ev-evitar-bg: rgba(192, 42, 27, 0.1);
+  /* Texto legible ENCIMA de --ev-evitar en relleno (el CTA de urgencia). */
+  --on-evitar: #ffffff;
   --ev-vivida: #5a5a63;
   --ev-vivida-bg: rgba(90, 90, 99, 0.12);
 
@@ -68,6 +70,8 @@
     --ev-media-bg: rgba(234, 179, 85, 0.16);
     --ev-evitar: #ff6b5c;
     --ev-evitar-bg: rgba(255, 107, 92, 0.16);
+    /* En oscuro --ev-evitar es un coral claro: encima va texto oscuro. */
+    --on-evitar: #2a0906;
     --ev-vivida: #a0a0a8;
     --ev-vivida-bg: rgba(160, 160, 168, 0.16);
   }
@@ -260,7 +264,7 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--label-2)
 }
 .tema-cuerpo .cta-ayuda {
   display: flex; align-items: center; gap: 9px; text-decoration: none;
-  background: var(--ev-evitar); color: #ffffff; font-weight: 600; font-size: 15px;
+  background: var(--ev-evitar); color: var(--on-evitar); font-weight: 600; font-size: 15px;
   border-radius: var(--r-card); padding: 13px 16px; margin: 0 0 14px;
 }
 .tema-cuerpo .cta-ayuda svg { width: 18px; height: 18px; flex: none; }

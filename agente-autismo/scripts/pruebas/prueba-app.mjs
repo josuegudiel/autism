@@ -2549,6 +2549,64 @@ const badgesNM = await pag.$$eval('.tema-cuerpo .punto.urgente .badge', (ns) => 
 check('NM también pinta sus urgencias como urgencias y sin píldora',
   urgNM >= 2 && badgesNM === 0, urgNM + ' urgentes, ' + badgesNM + ' badges');
 
+// 48. Contraste, medido en el navegador y en los dos esquemas. El pase de
+// accesibilidad del proyecto se hizo a mano y no dejó prueba, así que el estilo
+// de urgencia que se acaba de añadir se coló con un enlace de 2,8:1 en modo
+// oscuro: --ev-evitar es un coral claro ahí, y el texto blanco encima no se
+// leía. Ahora hay un token propio para el texto que va ENCIMA del relleno, y
+// esta comprobación lo vigila en los dos modos.
+const mideContraste = (sel) => pag.evaluate((s2) => {
+  const el = document.querySelector(s2);
+  if (!el) return null;
+  const nums = (c) => c.match(/[\d.]+/g).map(Number);
+  const lum = (c) => {
+    const [r, g, b] = nums(c).slice(0, 3).map((v) => {
+      v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  // Los fondos con alfa se componen sobre lo que tienen debajo: medir
+  // rgba(192,42,27,0.1) como rojo sólido da un contraste falso.
+  const capas = [];
+  let n = el;
+  while (n) {
+    const [r, g, b, a = 1] = nums(getComputedStyle(n).backgroundColor);
+    if (a > 0) { capas.push([r, g, b, a]); if (a === 1) break; }
+    n = n.parentElement;
+  }
+  capas.push([255, 255, 255, 1]);
+  let [R, G, B] = capas[capas.length - 1];
+  for (let i = capas.length - 2; i >= 0; i--) {
+    const [r, g, b, a] = capas[i];
+    R = r * a + R * (1 - a); G = g * a + G * (1 - a); B = b * a + B * (1 - a);
+  }
+  const a1 = lum(getComputedStyle(el).color), b1 = lum(`rgb(${R},${G},${B})`);
+  return Math.round(((Math.max(a1, b1) + 0.05) / (Math.min(a1, b1) + 0.05)) * 100) / 100;
+}, sel);
+
+for (const esquema of ['light', 'dark']) {
+  await pag.emulateMedia({ colorScheme: esquema });
+  await ir('#tema/RB');
+  for (const [sel, nombre, minimo] of [
+    ['.tema-cuerpo .punto.urgente p', 'el texto de una viñeta de urgencia', 4.5],
+    ['.tema-cuerpo .cta-ayuda span', 'el enlace a los teléfonos de ayuda', 4.5],
+    ['.tema-cuerpo .punto:not(.urgente) p', 'el texto de una viñeta normal', 4.5],
+  ]) {
+    const r = await mideContraste(sel);
+    check(`Contraste (${esquema}): ${nombre} llega a ${minimo}:1`, r !== null && r >= minimo, String(r));
+  }
+  await ir('#ayuda');
+  for (const [sel, nombre, minimo] of [
+    ['.pais .tel', 'el número de teléfono de ayuda', 4.5],
+    ['.pais .desc', 'la descripción de la línea', 4.5],
+    ['.pais .escrito', 'el canal por escrito', 4.5],
+  ]) {
+    const r = await mideContraste(sel);
+    check(`Contraste (${esquema}): ${nombre} llega a ${minimo}:1`, r !== null && r >= minimo, String(r));
+  }
+}
+await pag.emulateMedia({ colorScheme: 'light' });
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
