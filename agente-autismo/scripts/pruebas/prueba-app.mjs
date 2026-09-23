@@ -2473,12 +2473,14 @@ for (const [cod, md] of Object.entries(temasCuerpo)) {
     if (i > 12) remiten.push(cod);
   }
 }
-// 10 desde la ronda 51: RQ suma dos remisiones a su propio bloque de urgencia
-// («eso es el bloque 🚨 de arriba y QG», y la de las crisis epilépticas
-// nocturnas, que manda la cifra a Q). Son referencias cruzadas, no urgencias:
-// comprobadas una a una antes de subir el número.
+// 12 desde la ronda 52. Las diez de antes, más una de RR y otra de RS: las dos
+// son la viñeta del CASO TARDÍO —lo tragado hace semanas—, que se distingue a
+// propósito del bloque de urgencia de arriba («la sospecha *reciente* de pila o
+// imán no es este punto»). Son referencias cruzadas, no urgencias: comprobadas
+// una a una antes de subir el número, que es la única forma de que este límite
+// siga sirviendo para algo.
 check('Las viñetas que solo remiten a otro bloque de urgencia siguen siendo pocas y conocidas',
-  remiten.length <= 10, remiten.join(','));
+  remiten.length <= 12, remiten.join(','));
 await ir('#tema/QB');
 const qbUrg = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
 const qbRef = await pag.$$eval('.tema-cuerpo .punto',
@@ -3184,6 +3186,63 @@ for (const [desde, hacia, re] of [['JV', 'RO', /RO\. Mi hija mayor hace de cuida
                                   ['QG', 'RQ', /RQ\. Duerme en nuestra cama/],
                                   ['LP', 'RP', /RP\. ¿Nos dan la tarjeta de aparcamiento/]]) {
   check(`${desde} enlaza de vuelta a ${hacia}`, re.test(fichaDe(desde)));
+}
+
+// 63. Ronda 52. Dos fichas de urgencia, y otra vez las dos vinieron marcadas
+// como no publicables por chocar con fichas ya publicadas. Lo interesante es el
+// segundo choque: RS y PT parecían leer distinto la MISMA guía sobre cuándo
+// empieza la miel en una pila de botón, y resultó que las dos tenían media
+// razón, porque la miel y el sucralfato no se dan en el mismo sitio.
+for (const [codigo, marca] of [['RR', /barriga|abdomen|apendicitis/i],
+                               ['RS', /pila|imán|iman|moneda/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 52: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+// Comprobadas contra la app antes de asertarlas.
+for (const [q, titulo] of [
+  ['le duele la barriga', 'Le duele la barriga'],
+  ['vomita verde', 'Le duele la barriga'],
+  ['tiene la barriga hinchada y dura', 'Le duele la barriga'],
+  ['apendicitis', 'Le duele la barriga'],
+  ['se ha tragado una pila', 'tragado una pila'],
+  ['falta la pila del mando', 'tragado una pila'],
+  ['se ha tragado un iman', 'tragado una pila'],
+  ['se ha tragado una moneda', 'tragado una pila'],
+  ['se traga el pelo', 'tragado una pila'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 52: buscar «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
+// La resolución que costó dos búsquedas y que no conviene volver a litigar: la
+// miel se puede empezar ANTES de llegar (en casa o de camino, desde los 12
+// meses, sin radiografía) y el sucralfato es hospitalario y empieza CUANDO la
+// radiografía confirma la pila. PT describía la miel y acertaba; el borrador de
+// RS mezclaba las dos y se quedaba con el criterio del sucralfato.
+const rs52 = fichaDe('RS');
+check('RS no confunde la miel con el sucralfato',
+  /la miel\*\* se puede empezar \*\*antes de llegar al hospital\*\*/.test(rs52)
+  && /\*\*el sucralfato\*\* es hospitalario/.test(rs52));
+check('Y no deja el choque con PT abierto para otro',
+  !/Pendiente para un humano/.test(rs52) && /Resuelto en la ronda 52/.test(rs52));
+check('PT sigue diciendo lo suyo de la miel, que era lo correcto',
+  /mientras vais de camino/.test(fichaDe('PT')));
+
+// RA decía literalmente que la hernia inguinal no aparecía en ninguna otra
+// ficha. Publicar RR habría convertido esa frase publicada en mentira.
+check('RA ya no afirma ser la única que habla de la hernia inguinal',
+  !/no aparece en ninguna otra ficha/.test(fichaDe('RA')));
+check('Y PR y RR no publican dos listas de alarma abdominal que se ignoren',
+  /RR\. Le duele la barriga/.test(fichaDe('PR')));
+
+for (const [desde, re] of [['JR', /RR\. Le duele la barriga/], ['EP', /RR\. Le duele la barriga/],
+                           ['AE', /RS\. Se ha tragado una pila/], ['MN', /RS\. Se ha tragado una pila/],
+                           ['RA', /RR\. Le duele la barriga/], ['PT', /RS\. Se ha tragado una pila/],
+                           ['RC', /RS\. Se ha tragado una pila/], ['PL', /RS\. Se ha tragado una pila/],
+                           ['QF', /RS\. Se ha tragado una pila/]]) {
+  check(`${desde} enlaza con la ficha nueva que le toca`, re.test(fichaDe(desde)));
 }
 
 await nav.close();

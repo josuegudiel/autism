@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas, de las que la ronda 51 ya cubrió tres (los números 14, 16 y 28): quedan 27 encargables, o sea unas siete rondas.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28) y la 52 otras dos (2 y 3): quedan 26 encargables, o sea unas seis rondas.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -13,6 +13,8 @@ El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuel
 - **nº 16** — ✅ YA CUBIERTA: se publicó como **RN** en la ronda 51.
 - **nº 24** — OJO: es la tercera vez que asoma la lectura fácil. **RM** se rechazó en la ronda 50 por quedarse en un resumen de IH, IQ, KZ, JA y GO (`research/pendientes/RM.md`). Esta propuesta la acota a hospital, banco y juzgado, que es más concreto: si se encarga, es por esa acotación, y si al terminar vuelve a ser un resumen de esas cinco, tampoco se publica.
 - **nº 28** — ✅ YA CUBIERTA: se publicó como **RQ** en la ronda 51.
+- **nº 2** — ✅ YA CUBIERTA: se publicó como **RR** en la ronda 52.
+- **nº 3** — ✅ YA CUBIERTA: se publicó como **RS** en la ronda 52.
 
 **Y la regla de siempre:** antes de encargar un tema, `grep` su asunto en `research/biblioteca-autismo.md`. "Salir de casa cuando ya usa pañal fuera" parecía un hueco y ya era RH.
 
@@ -24,11 +26,11 @@ El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuel
 
 Lo más grave que puede pasar y la conversación para la que nadie le da un guion. HUECO REAL: 'G. Salud mental y seguridad' es el paraguas del bloque; 'IC. Depresión' trata el cuadro pero no la evaluación del riesgo ni el plan; 'KS. Autolesión' es autolesión estereotipada (golpearse, morderse), un fenómeno distinto que se confunde constantemente con la autolesión con intención suicida; AN (burnout), AR (trauma) y LM (ingreso psiquiátrico) rodean el tema sin entrar. CONTENIDO: preguntar de forma directa y literal (las preguntas indirectas y metafóricas del guion habitual fallan con una persona autista), el riesgo sin la tristeza visible que buscan los protocolos, el papel del camuflaje y el burnout, el plan de seguridad escrito y adaptado, y qué se hace hoy con los medios (medicación, altura, agua). AVISO DE CIFRAS, MUCHO CUIDADO: las prevalencias de ideación suicida en adultos autistas publicadas van de ~11% a ~66% según muestra e instrumento, y el multiplicador de mortalidad por suicidio que se cita (7x a 9x) sale de registros suecos con problemas de comparabilidad. Escribir 'muy elevado y sistemáticamente infradetectado' y no dar ningún número.
 
-### 2. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otras urgencias del abdomen
+### 2. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otras urgencias del abdomen ✅
 
 Patrón que casi nunca se enseña y que acaba en apéndice perforado: el hijo que no localiza el dolor no dice 'me duele aquí', se dobla, deja de comer, vomita, se pone irritable o se apaga. HUECO REAL: 'JR. Fiebre, dolor y enfermedad en un niño que comunica poco' es el marco general de la enfermedad aguda y no entra en el abdomen agudo; 'RA' es el equivalente urológico y testicular (lo que demuestra que este formato de ficha por órgano funciona y que falta la abdominal); 'EP. Estreñimiento y encopresis' y 'AA. Problemas digestivos' son manejo crónico, no urgencia; 'ME. El médico dice que es por el autismo' es el sesgo clínico; 'LD. Barreras en urgencias' es el entorno. CONTENIDO: criterios de cuándo ir hoy, qué pedir (exploración abdominal completa, no 'es su autismo'), y por qué un estreñimiento de años puede enmascarar una urgencia quirúrgica por impactación. AVISO DE CIFRAS: las tasas que circulan (perforación del 24% si se diagnostica en menos de 48 h frente al 71% si se pasa) vienen de población general, no de personas autistas; no hay denominador fiable específico, solo series de casos y revisiones de eventos médicos agudos en autismo profundo. Redactarla sin porcentajes.
 
-### 3. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo
+### 3. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo ✅
 
 Sirve en el minuto exacto en que el padre ve que falta la pila del mando. Es de las pocas fichas donde la diferencia entre leerla y no leerla se mide en horas. HUECO REAL: 'AE. Seguridad: wandering y pica' trata la pica como conducta a prevenir y entender, no el protocolo una vez tragado; 'LH. Asegurar la casa' es prevención y se para antes del hospital; 'LG. Se atraganta al comer' es masticación y deglución, o sea vía aérea, no ingestión de cuerpo extraño; 'QP' son reacciones a medicamentos. CONTENIDO: la pila de botón quema el esófago en 2 horas y dos imanes separados atrapan asas de intestino y lo perforan; qué puede esperar y qué no; por qué nunca se provoca el vómito; el tricobezoar del pelo tragado durante años; y el caso tardío, el niño con pica con semanas de dolor o vómitos al que nadie ha pedido una radiografía. Evidencia sólida disponible: guías de endoscopia pediátrica NASPGHAN/ESPGHAN y series de perforación por cuerpo extraño en adolescentes autistas.
 

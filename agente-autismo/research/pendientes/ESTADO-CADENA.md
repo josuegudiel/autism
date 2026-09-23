@@ -9,83 +9,44 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 52, viva** (23/09, ~07:15 UTC). Códigos **RR** (urgencias del abdomen:
-el hijo que no localiza el dolor) y **RS** (se ha tragado una pila de botón, un
-imán o una moneda). `runId` **`wf_b30a571a-343`**; se reanuda como la 51, **con
-el `args` entero**.
+**Ninguna. La 52 se publicó entera** (RR, RS). Para la 53, encarga desde
+`research/pendientes/RESERVA.md`, **leyendo primero los avisos de su cabecera**,
+y **con dos temas si no sabes cuánto presupuesto de búsqueda queda**.
 
-**Son DOS y no cuatro a propósito.** El presupuesto de WebSearch son 200 por
-sesión, compartidas con todos los subagentes; la 51 se llevó unas 120. Otra
-ronda de cuatro (4×15 investigando + 4×15 verificando = 120) se habría quedado
-sin presupuesto a mitad de la verificación, que es exactamente lo que paró la 51
-la sesión anterior. Dos temas son 60 y caben. **Cuando el presupuesto venga
-fresco, vuelve a cuatro; cuando no sepas cuánto queda, dos.**
+**Lo que enseñó la 52:** otra vez las dos fichas volvieron con
+`publicable=false`, y otra vez ninguna lo estaba de verdad. Pero el segundo
+choque merece leerse entero, porque **no era "la publicada está mal"**:
 
-**Y RS nace con una hipoteca que hay que mirar al depurarla:** **LH ya publica el
-aviso entero** de la pila de botón y el imán (quemadura esofágica en dos horas,
-ir sin esperar aunque parezca estar bien), y **ND lo repite**. El encargo lo dice
-y acota RS a lo que LH no tiene —qué pasa al llegar al hospital, por qué no se
-provoca el vómito, uno contra dos imanes, el objeto romo que sí puede esperar, el
-tricobezoar, y el caso tardío del niño con pica al que nadie ha pedido una
-radiografía—. **Si vuelve siendo el aviso de LH otra vez, no se publica**, como
-RM.
+- **RR ← RA y PR.** RA decía literalmente «(Este cuadro no aparece en ninguna
+  otra ficha de la biblioteca: si buscas hernia inguinal, es aquí.)». Publicar
+  RR habría convertido esa frase **publicada** en mentira. Se dejó RA como dueña
+  del cuadro, RR solo remite, y el paréntesis se reescribió. Y PR publicaba la
+  misma lista de alarma abdominal que RR sin que ninguna citara a la otra: **dos
+  listas paralelas divergen en la revisión siguiente**, así que ahora se enlazan
+  con un «si cambias una, cambia la otra».
+- **RS ↔ PT: las dos tenían media razón, y esa es la moraleja.** Parecían leer
+  distinto la misma guía del National Capital Poison Center sobre cuándo empieza
+  la miel en una pila de botón —PT decía «mientras vais de camino», el borrador
+  de RS decía «desde que la radiografía confirma»—. El corrector no podía buscar
+  y dejó RS sin afirmar ninguna. **Con dos búsquedas se resolvió: no es la misma
+  cosa.** La **miel** se puede empezar **antes de llegar** (en casa o de camino,
+  desde los 12 meses, dentro de las primeras horas, **sin radiografía**); el
+  **sucralfato** es hospitalario y empieza **cuando la radiografía confirma** la
+  pila en el esófago. PT describía la miel y acertaba; RS mezclaba las dos y se
+  quedaba con el criterio del sucralfato. **Ya está separado y no hay que volver
+  a litigarlo.**
+  **La lección general:** cuando dos fichas citan la MISMA fuente y se
+  contradicen, antes de decidir cuál está mal comprueba si están hablando de dos
+  cosas distintas. Aquí ninguna mentía.
 
-Cuando terminen, la 53 se encarga desde `research/pendientes/RESERVA.md`,
-**leyendo primero los avisos de su cabecera**.
-
-**Lo que enseñó la 51, que es lo que conviene llevar a la siguiente:** tres de
-las cuatro fichas volvieron con `publicable=false`, y **ninguna de las tres lo
-estaba de verdad**. En las tres el bloqueo era un choque con una ficha ya
-publicada, y en las tres **la equivocada era la publicada** —el patrón que este
-archivo lleva anotando desde la ronda 38—:
-
-- **RO ← JV.** JV metía «comentarios de desesperanza» de un hermano en la lista
-  de «cambios sostenidos (semanas) → consulta con pediatría». IC (🟢 verificada)
-  y NL ya publicaban que eso es **urgencia hoy**. Una familia que leyera las dos
-  se encontraba dos plazos contrarios para la misma frase de su hija. Corregida
-  JV: la desesperanza sube a un punto 🚨 propio y la lista de semanas se queda
-  con sueño, apetito, notas, aislamiento y agresividad.
-- **RN ← NA.** RN traía una **STS 362/2026, de 14 de abril** (la escolarización
-  en centro ordinario no excluye por sí sola la CUME) y el corrector la retiró
-  por no poder comprobarla. **Existe**: se confirmó con dos notas del CGPJ, y
-  ahora está en el bloque CUME de NA, que hasta hoy daba esa compatibilidad por
-  pendiente de un real decreto que sigue en proyecto.
-- **RP.** El choque de normas (RD 1056/2014 remite al anexo II del RD 1971/1999,
-  derogado por el RD 888/2022) **ya lo había resuelto el propio corrector** en el
-  texto: `publicable=false` era una bandera caduca. Comprobado a mano antes de
-  publicar.
-
-**Y tres trampas que costaron tiempo y conviene no repetir:**
-
-1. **La cabecera de RN salió «limpia» y no lo estaba.** Decía «✅ cubierto
-   (Ronda 51, fuentes verificadas; **ver la nota de edición del final antes de
-   publicar**)» —y esa nota ya la había borrado el propio script—. El `MARCA` del
-   publicador no casa con «antes de publicar» ni con «nota de edición»: **están
-   añadidos ya en `publicar51.py`, cópialo de ahí y no de una ronda anterior.**
-   Es la misma forma del fallo de la ronda 38.
-2. **`BLOQUEO` casa con palabras corrientes.** En RP saltó «se queda
-   **bloqueado** sin poder avanzar», que describe a un niño que se paraliza. La
-   suite solo mira **cabeceras**, así que el cuerpo se revisa a mano: el
-   publicador ahora lo imprime en vez de abortar.
-3. **La urgencia nueva de JV entró en la viñeta 7 de 10, y la suite lo cazó.**
-   No es cosmético: `web/app.js` inyecta el enlace a los teléfonos de crisis
-   **solo si la PRIMERA viñeta es urgente**, así que el aviso que acababa de
-   escribir se quedaba sin los teléfonos justo en la ficha donde hacen falta.
-   **Cuando muevas una urgencia a una ficha vieja, va la primera, siempre.**
-   De paso, otros dos umbrales subieron con su porqué escrito al lado (viñetas
-   con doble marcador 27→28 por la Ley 21.768 de RP, que es 🟡 y explica cuándo
-   subiría a 🟢; remisiones a un bloque de urgencia ajeno 8→10 por las dos de
-   RQ). Los umbrales se suben **después** de mirar una a una las nuevas, nunca
-   para que pase la suite.
-4. **`fichaDe` ya existía en la suite** (sección 50). Declararla otra vez la tira
-   entera con `SyntaxError`. Antes de correrla, pasa el detector de duplicados
-   —y ojo, un `const añosEnConflicto` aparece como duplicado de `a` si el patrón
-   no admite la ñ.
+Y una tercera, de fontanería: **el servidor de pruebas se cae solo** (dio
+`ERR_CONNECTION_REFUSED` a mitad de la ronda). Levántalo antes de cualquier
+comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 51.
-Biblioteca en **452 temas / 226 verificados / 226 síntesis / 4.596 fuentes**.
+Rondas 29 a 52.
+Biblioteca en **454 temas / 226 verificados / 228 síntesis / 4.635 fuentes**.
 Suite **853/853** (23/09). Reserva: **27 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448

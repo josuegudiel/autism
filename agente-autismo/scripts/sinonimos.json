@@ -5410,5 +5410,80 @@
  "ronca y hace pausas al dormir": [
   "RQ",
   "QG"
+ ],
+ "le duele la barriga": [
+  "RR",
+  "JR"
+ ],
+ "le duele mucho la tripa": [
+  "RR",
+  "JR"
+ ],
+ "dolor de barriga fuerte": [
+  "RR",
+  "JR"
+ ],
+ "vomita verde": [
+  "RR"
+ ],
+ "vomito amarillo": [
+  "RR"
+ ],
+ "tiene la barriga hinchada y dura": [
+  "RR"
+ ],
+ "lleva horas sin hacer caca": [
+  "RR",
+  "EP"
+ ],
+ "apendicitis": [
+  "RR"
+ ],
+ "se dobla de dolor": [
+  "RR"
+ ],
+ "no se queja pero esta raro y no come": [
+  "RR",
+  "JR"
+ ],
+ "obstruccion intestinal": [
+  "RR"
+ ],
+ "se encoge y llora a ratos": [
+  "RR"
+ ],
+ "se ha tragado una pila": [
+  "RS",
+  "LH"
+ ],
+ "se trago una pila de boton": [
+  "RS",
+  "LH"
+ ],
+ "se ha tragado un iman": [
+  "RS",
+  "LH"
+ ],
+ "se ha tragado una moneda": [
+  "RS"
+ ],
+ "se trago algo": [
+  "RS",
+  "LH"
+ ],
+ "falta la pila del mando": [
+  "RS",
+  "LH"
+ ],
+ "pila de boton": [
+  "RS",
+  "LH"
+ ],
+ "se traga el pelo": [
+  "RS",
+  "MN"
+ ],
+ "se ha tragado una pieza pequena": [
+  "RS"
  ]
 }

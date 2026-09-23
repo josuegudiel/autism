@@ -451,3 +451,5 @@ RN. Necesito trabajar menos horas o parar un tiempo para cuidarlo: qué escribo,
 RO. Mi hija mayor hace de cuidadora de su hermano autista: qué se le puede pedir y qué se le debe a cambio
 RP. ¿Nos dan la tarjeta de aparcamiento por ser autista? Estacionamiento, atención preferente, entrada del acompañante y el cordón de girasol
 RQ. Duerme en nuestra cama y no quiere dormir solo: qué hay que mirar antes de tratarlo como un hábito (colecho)
+RR. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otras urgencias del abdomen
+RS. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo
