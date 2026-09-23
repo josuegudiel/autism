@@ -157,7 +157,7 @@ comprobación con navegador, como dice el procedimiento.
 
 Rondas 29 a 52.
 Biblioteca en **454 temas / 226 verificados / 228 síntesis / 4.635 fuentes**.
-Suite **936/936** (23/09). Reserva: **27 encargables de 31**, en
+Suite **947/947** (23/09). Reserva: **27 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -497,3 +497,8 @@ en una tanda.
 
 Pendiente y sin respuesta del usuario (**no lo empujes por tu cuenta**):
 `actions/checkout` y `actions/setup-node` de @v4 a @v5 en `publicar.yml`.
+**Ya no es cosmético: desde el 19/09 cada run imprime un aviso de GitHub** —
+«Node.js 20 is deprecated. The following actions target Node.js 20 but are being
+forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4»—. De
+momento solo es un warning y el job pasa en verde, pero el día que dejen de
+forzarlo, la suite deja de correr en CI. Sigue esperando al usuario.
