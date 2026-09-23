@@ -9,17 +9,30 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna. La ronda 51 se lanzó y se PARÓ a propósito: se agotó el presupuesto
-de búsquedas web de la sesión (200/200).** Es la primera vez que el cuello de
-botella no son los tokens —quedaban 14 millones— sino las búsquedas, que se
-gastan entre la sesión y todos los subagentes de los workflows. El investigador
-de RN ya recibía "web search budget 200 of 200" en su primera búsqueda, así que
-la ronda entera habría devuelto cuatro fichas sin verificar, y la regla de la
-casa es clara: **sin verificador no está verificada**. Pararla ahorró unos tres
-millones de tokens de trabajo impublicable.
+**Ronda 51, RELANZADA y viva (23/09, 05:2x UTC).** Códigos **RN, RO, RP, RQ**,
+con los cuatro encargos de abajo ya acotados y metidos en el `args`.
 
-**Lo primero de la sesión siguiente: relanzar la ronda 51 tal cual.** Códigos
-**RN, RO, RP, RQ**, con estos cuatro encargos, ya acotados:
+- `runId` del workflow de investigación: **`wf_33871957-781`**
+  (`scripts/workflows/investigar-temas.mjs`).
+- **Si esta sesión muere, NO la relances a ciegas**: mira primero
+  `/root/.claude/projects/-home-user-autism/8095f1f6-d7c0-5388-99b3-464bfb1e7510/subagents/workflows/wf_33871957-781/journal.jsonl`
+  para ver por qué fase iba, y reanuda con
+  `Workflow({scriptPath: "/home/user/autism/agente-autismo/scripts/workflows/investigar-temas.mjs", resumeFromRunId: "wf_33871957-781", args: {...}})`.
+  **El `args` hay que volver a pasarlo entero**: un `resumeFromRunId` a secas
+  revienta con `TypeError: undefined is not an object (evaluating 'E.temas')`.
+- **En paralelo va `detectar-huecos.mjs`**, runId **`wf_4b127578-5a2`**, para
+  rellenar la reserva. Su índice de entrada es un `.txt` con un título por línea,
+  que se genera así (448 líneas, una por ficha; el `grep -E` quita las cabeceras
+  "Ronda N", que si no cuela 465):
+
+      grep "^### " research/biblioteca-autismo.md | sed 's/^### //; s/ — .*$//' \
+        | grep -E "^[A-Z]{1,2}\. " > indice-titulos.txt
+
+- **El presupuesto de WebSearch estaba fresco otra vez** al empezar este turno
+  (el de la sesión anterior se había agotado a 200/200). La ronda gasta ~120
+  (4 investigadores x 15 + 4 verificadores x 15); las cuatro lentes no gastan.
+
+Los cuatro encargos, tal como se mandaron:
 
 - **RN — permisos, excedencia y reducción de jornada para cuidar**, acotada al
   **TRÁMITE** (qué escrito, con cuánta antelación, a quién, qué plazo tiene la
@@ -37,9 +50,8 @@ millones de tokens de trabajo impublicable.
   problema por sí mismo, y qué descartar en médico antes de tratarlo como hábito
   (W ya publica el sueño en general: no reescribirla).
 
-**Y antes o después de esa ronda, `scripts/workflows/detectar-huecos.mjs`**: la
-reserva baja a 8 entradas, o sea dos rondas. Ese workflow gasta pocas búsquedas
-a propósito, pero gasta algunas: hazlo con el presupuesto fresco.
+**Y la reserva**: `detectar-huecos.mjs` ya está corriendo (arriba el runId), así
+que para la 52 mira lo que devuelva antes de encargar nada.
 
 ## Ya publicado
 
@@ -48,14 +60,15 @@ Biblioteca en **448 temas / 226 verificados / 222 síntesis / 4.516 fuentes**.
 Suite **718/718**. Reserva: **8 entradas** (la 0, "dice que se quiere morir",
 sigue sin investigarse: terminada como NI y esperando decisión).
 
-Ronda 51, parada y por relanzar: códigos **RN, RO, RP, RQ** (QO sigue libre a propósito, como
-PO; confírmalo con grep). Para la **52**, candidatas por orden de la reserva:
+Ronda 51 **ya no está parada: está corriendo** (arriba, con su runId). QO sigue
+libre a propósito, como PO; confírmalo con grep antes de asignar un código.
+
+Para la **52**, mira primero lo que devuelva `detectar-huecos.mjs`, que está
+corriendo ahora mismo para rellenar la reserva. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
-`research/pendientes/RM.md`), **salir de casa cuando ya usa pañal fuera** —no,
-esa ya es RH: mira la reserva antes de encargar—, y lo que quede de las ocho
-entradas. **Con ocho entradas quedan dos rondas: lanza ya
-`scripts/workflows/detectar-huecos.mjs`** antes de la 52 para rellenar la
-reserva, que es la instrucción de abajo y toca ahora. **Cuando queden menos de 4 investigables, lanza antes
+`research/pendientes/RM.md`). Y un aviso que ya costó una equivocación: **"salir
+de casa cuando ya usa pañal fuera" NO es un hueco, es RH** —mira la reserva
+antes de encargar—. **Cuando queden menos de 4 investigables, lanza otra vez
 `scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por
