@@ -9,37 +9,37 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 51** — runId `wf_924a2fac-bfb` (tarea wq8abzbhe), lanzada el 23/09.
-Códigos **RN, RO, RP, RQ**: permisos, excedencia y reducción de jornada para
-cuidar (acotada al TRÁMITE, porque JX, PH y NA ya publican lo de al lado); el
-hermano que hace de cuidador hoy; la tarjeta de aparcamiento y los distintivos
-de discapacidad no visible; y el niño que duerme en la cama de los padres.
+**Ninguna. La ronda 51 se lanzó y se PARÓ a propósito: se agotó el presupuesto
+de búsquedas web de la sesión (200/200).** Es la primera vez que el cuello de
+botella no son los tokens —quedaban 14 millones— sino las búsquedas, que se
+gastan entre la sesión y todos los subagentes de los workflows. El investigador
+de RN ya recibía "web search budget 200 of 200" en su primera búsqueda, así que
+la ronda entera habría devuelto cuatro fichas sin verificar, y la regla de la
+casa es clara: **sin verificador no está verificada**. Pararla ahorró unos tres
+millones de tokens de trabajo impublicable.
 
-Las rondas 48, 49 y 50 están publicadas. De la 50 salieron **RJ, RK y RL**; la
-cuarta, **RM (lectura fácil), no se publicó** y el código queda reservado para
-ella: al depurarla se quedó en un resumen de IH, IQ, KZ, JA y GO, que ya
-publican lo mismo. El borrador corregido y lo que le falta están en
-`research/pendientes/RM.md`. **Es el segundo rechazo por solapamiento de la
-cadena (el primero fue MY en la 28), y los dos se detectaron en el corrector, no
-antes: acota los encargos por escrito y nombra las fichas que NO son suyas.**
+**Lo primero de la sesión siguiente: relanzar la ronda 51 tal cual.** Códigos
+**RN, RO, RP, RQ**, con estos cuatro encargos, ya acotados:
 
-**Lo que enseñó la 50:**
+- **RN — permisos, excedencia y reducción de jornada para cuidar**, acotada al
+  **TRÁMITE** (qué escrito, con cuánta antelación, a quién, qué plazo tiene la
+  empresa para contestar, qué pasa si calla, qué cambia con convenio o con
+  contrato temporal, qué se cobra y qué pasa con la cotización). **JX, PH y NA
+  ya publican lo de al lado**: si al terminar es un resumen de JX y PH, no se
+  publica. Es el mismo riesgo que tumbó a RM.
+- **RO — el hermano que hace de cuidador hoy** (no el relevo de mañana, que es
+  HN): qué está medido, qué es razonable pedirle a cada edad y qué no lo es
+  nunca, cómo se detecta que está pagando un precio, y qué se le debe a cambio.
+- **RP — tarjeta de aparcamiento, acceso preferente, acompañante y distintivos
+  de discapacidad no visible**: con el aviso que más falta hace, que la tarjeta
+  suele exigir movilidad reducida y muchos niños autistas no la tienen.
+- **RQ — duerme en nuestra cama**: empezando por que el colecho no es un
+  problema por sí mismo, y qué descartar en médico antes de tratarlo como hábito
+  (W ya publica el sueño en general: no reescribirla).
 
-1. **El corrector ya edita la biblioteca por su cuenta, y esta vez lo hizo.** El
-   de RL entró en **NA** y sustituyó "no hemos verificado ningún plazo en ningún
-   país" por los tres que sí verificó (España 20 días hábiles, art. 59.3 ET;
-   México dos meses, art. 518 LFT; Chile 60 días, art. 489 del Código del
-   Trabajo), acotando lo que sigue sin saberse. **Mira `git status` antes de
-   publicar una ronda**: puede haber cambios en el árbol que no hiciste tú.
-2. **Y deja referencias a fichas que todavía no existen.** Esa misma edición
-   apuntaba a **RL**, así que la suite se puso roja hasta publicar la ronda. No
-   es un error: es el orden en que pasan las cosas. Publica primero y comprueba
-   después.
-3. **`pendiente de ` sin `\b` casa dentro de "inde-pendiente de".** RJ dice "el
-   TEA se recoge como categoría propia e **independiente de** la discapacidad
-   intelectual" y habría puesto la suite en rojo al publicarla. Es el segundo
-   patrón de bloqueo con el mismo fallo en dos días (el primero fue `EN ESPERA`
-   dentro de "no admit-en espera"). **Si vuelves a tocar `BLOQUEO`, pon `\b`.**
+**Y antes o después de esa ronda, `scripts/workflows/detectar-huecos.mjs`**: la
+reserva baja a 8 entradas, o sea dos rondas. Ese workflow gasta pocas búsquedas
+a propósito, pero gasta algunas: hazlo con el presupuesto fresco.
 
 ## Ya publicado
 
@@ -48,7 +48,7 @@ Biblioteca en **448 temas / 226 verificados / 222 síntesis / 4.516 fuentes**.
 Suite **718/718**. Reserva: **8 entradas** (la 0, "dice que se quiere morir",
 sigue sin investigarse: terminada como NI y esperando decisión).
 
-Ronda 51 en vuelo: códigos **RN, RO, RP, RQ** (QO sigue libre a propósito, como
+Ronda 51, parada y por relanzar: códigos **RN, RO, RP, RQ** (QO sigue libre a propósito, como
 PO; confírmalo con grep). Para la **52**, candidatas por orden de la reserva:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
 `research/pendientes/RM.md`), **salir de casa cuando ya usa pañal fuera** —no,
