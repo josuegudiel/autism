@@ -430,6 +430,23 @@ check('Una nota con comillas, punto y coma y saltos de línea sobrevive entera',
 check('El nombre del fichero no lleva datos del niño',
   /^brujula-tea-registros-\d{4}-\d{2}-\d{2}\.csv$/.test(descarga.suggestedFilename()),
   descarga.suggestedFilename());
+// Una nota que empieza por "=" la hoja de cálculo la lee como fórmula, y la
+// celda que la familia lleva a la consulta acaba mostrando #NAME? en vez de lo
+// que escribió. Se exporta como texto, sin tocar el dato.
+await pagExp.fill('#interv', '+ sesión doble');
+await pagExp.fill('#nota', '=llegó tarde y se durmió');
+await pagExp.click('#f-track button[type="submit"]');
+await pagExp.waitForTimeout(900);
+const [descarga2] = await Promise.all([
+  pagExp.waitForEvent('download'),
+  pagExp.click('#export'),
+]);
+const csv2 = fs.readFileSync(await descarga2.path(), 'utf8');
+check('Una nota que empieza por "=" o "+" no se exporta como fórmula',
+  csv2.includes(`"'=llegó tarde y se durmió"`) && csv2.includes(`"'+ sesión doble"`),
+  JSON.stringify(csv2.slice(-160)));
+check('Y el resto de notas no se toca',
+  csv2.includes('""comillas""') && !csv2.includes(`"'buen día`), JSON.stringify(csv2.slice(-260)));
 await pagExp.close();
 
 // 11. Las cifras escritas a mano en la documentación caducan solas: así fue como

@@ -913,7 +913,17 @@ async function dbDelete(id) {
    sin él Excel se come los acentos, y separa con punto y coma porque es lo que
    espera un Excel en español: con comas, la hoja entera cae en una columna. */
 function registrosCSV(entries) {
-  const campo = (v) => '"' + String(v == null ? "" : v).replaceAll('"', '""') + '"';
+  // Una observación que empieza por "=", "+" o "@" la hoja de cálculo la lee
+  // como fórmula y la celda acaba mostrando #NAME? en vez de lo que escribió la
+  // familia. No es un problema de seguridad aquí —el texto lo escribe quien lo
+  // va a leer— sino de que la nota que se lleva a la consulta llegue entera.
+  // Se le antepone un apóstrofo, que es lo que Excel entiende como "esto es
+  // texto"; el dato no se toca.
+  const texto = (v) => {
+    const t = String(v == null ? "" : v);
+    return /^[=+@\t\r]/.test(t) ? "'" + t : t;
+  };
+  const campo = (v) => '"' + texto(v).replaceAll('"', '""') + '"';
   const fila = (celdas) => celdas.map(campo).join(";");
   // Del más antiguo al más reciente, al revés que en pantalla: así se lee una
   // evolución, que es para lo que se lleva esto a la consulta.
