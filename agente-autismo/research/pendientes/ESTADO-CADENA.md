@@ -111,6 +111,35 @@ Sale basura («número emergencias», «esperes cita», «antes ninguna cosa rie
 porque en muchas fichas ese titular es la ACCIÓN, no el síntoma: 47 de 58
 "fallos" eran ruido. Las frases del pánico hay que escribirlas a mano.
 
+## Lo que hay que decidir sobre el buscador en urgencias
+
+**Medido, no opinado.** Dos tandas de frases de urgencia, la segunda escrita a
+propósito para no parecerse a la primera y lanzada DESPUÉS de arreglar aquélla:
+
+| tanda | frases | fallaban |
+|---|---|---|
+| 1ª (sección 68) | 15 | 9 |
+| 2ª (sección 69), ya con la 1ª arreglada | 16 | 11 |
+
+**Arreglar unas no arregla las otras.** Cada frase nueva de urgencia sigue
+fallando más o menos dos de cada tres veces, y los fallos son del tipo que no
+se puede prever: «se quiere tirar por la ventana» abría *No deja tirar nada:
+colecciones* porque comparte la palabra «tirar»; «se ha tragado un juguete»
+abría *Elegir juguetes y materiales*; «lleva todo el día vomitando» abría
+*Elogio, motivación y autoestima*. No hay lista de sinónimos que cubra eso,
+porque el espacio de frases no tiene fondo y **la que falta es siempre la que
+nadie escribió**.
+
+**Lo que se ha hecho** es arreglar las 31 frases de urgencia medidas y asertarlas
+(secciones 67, 68 y 69). Sirve para esas 31.
+
+**Lo que NO se ha hecho, porque es decisión del usuario y no mía:** poner en la
+pantalla de resultados un acceso fijo y visible a **Ayuda urgente**, que ya
+existe y ya tiene los teléfonos verificados por país. No depende de acertar la
+frase: esté donde esté el resultado, la familia ve el camino a un teléfono. Es
+una línea de interfaz, no un rediseño, y es la única defensa que no se apoya en
+adivinar cómo se escribe el pánico. **Está sin implementar y sin decidir.**
+
 **Fontanería que ha costado tres vueltas de suite:** no lances
 `comprobar-consultas.mjs` mientras la suite está corriendo. Son dos Chromium a
 la vez, y el segundo se lleva por delante al primero —la suite muere a media

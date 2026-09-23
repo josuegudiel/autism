@@ -3392,6 +3392,36 @@ for (const [q, titulo] of [
 // habitual —«no responde cuando le llamo»—; para la otra, «no reacciona» y «se
 // ha quedado inconsciente» sí llevan a NV.
 
+// 69. Segunda tanda de urgencias, con frases que NO se parecen a las de la 68 —
+// para ver si arreglar unas arregla las otras. No las arregla: de dieciséis,
+// once volvían a abrir mal.
+//   «se quiere tirar por la ventana» -> No deja tirar nada: colecciones (por «tirar»)
+//   «lleva todo el día vomitando»    -> Elogio, motivación y autoestima
+//   «no ha orinado en todo el día»   -> Elogio, motivación y autoestima
+//   «se ha tragado un juguete»       -> Elegir juguetes y materiales
+//   «le ha dado un golpe de calor»   -> Cuando los cuidadores envejecen
+//   «se ha escapado de casa»         -> Cuando el hijo adulto vive en casa
+// AE publica las fugas, NL la agresión entre hermanos, RS lo que se traga y FR
+// la termorregulación. Otra vez: las fichas estaban, la frase no.
+for (const [q, titulo] of [
+  ['se ha escapado de casa', 'wandering'],
+  ['no lo encuentro', 'wandering'],
+  ['ha desaparecido', 'wandering'],
+  ['se quiere tirar por la ventana', 'Salud mental y seguridad'],
+  ['dice que se va a tirar', 'Salud mental y seguridad'],
+  ['esta pegando a su hermana y no puedo pararlo', 'Pega o muerde a su hermano'],
+  ['me esta pegando y no puedo con el', 'Plan de crisis'],
+  ['lleva todo el dia vomitando', 'Le duele la barriga'],
+  ['no ha orinado en todo el dia', 'Le duele un testículo'],
+  ['se ha tragado un juguete', 'tragado una pila'],
+  ['le ha dado un golpe de calor', 'Termorregulación'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Urgencia, 2ª tanda: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+// Nota: «lleva todo el día vomitando» abre en RR (abdomen) y no en JR, y se deja
+// así: el vómito que no para apunta a obstrucción, que es lo que corre prisa.
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

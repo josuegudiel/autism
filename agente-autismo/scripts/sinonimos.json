@@ -5937,5 +5937,83 @@
  "ha tragado un producto de limpieza": [
   "LH",
   "QP"
+ ],
+ "se ha escapado de casa": [
+  "AE",
+  "PF"
+ ],
+ "no lo encuentro": [
+  "AE",
+  "PF"
+ ],
+ "ha desaparecido": [
+  "AE",
+  "PF"
+ ],
+ "se ha perdido": [
+  "AE",
+  "PF"
+ ],
+ "se ha ido de casa": [
+  "AE",
+  "PF"
+ ],
+ "se quiere tirar por la ventana": [
+  "G",
+  "FP"
+ ],
+ "dice que se va a tirar": [
+  "G",
+  "FP"
+ ],
+ "se ha subido a la barandilla": [
+  "G",
+  "LH"
+ ],
+ "esta pegando a su hermana y no puedo pararlo": [
+  "NL",
+  "FP"
+ ],
+ "esta pegando a su hermano": [
+  "NL",
+  "FP"
+ ],
+ "me esta pegando y no puedo con el": [
+  "FP",
+  "MT"
+ ],
+ "me pega y no puedo pararlo": [
+  "FP",
+  "MT"
+ ],
+ "lleva todo el dia vomitando": [
+  "JR",
+  "RR"
+ ],
+ "no para de vomitar": [
+  "JR",
+  "RR"
+ ],
+ "no ha orinado en todo el dia": [
+  "RA",
+  "JR"
+ ],
+ "lleva horas sin hacer pis": [
+  "RA",
+  "JR"
+ ],
+ "se ha tragado un juguete": [
+  "RS"
+ ],
+ "se ha tragado una pieza": [
+  "RS"
+ ],
+ "le ha dado un golpe de calor": [
+  "FR",
+  "JR"
+ ],
+ "golpe de calor": [
+  "FR",
+  "JR"
  ]
 }
