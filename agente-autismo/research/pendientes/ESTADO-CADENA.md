@@ -111,7 +111,16 @@ Sale basura («número emergencias», «esperes cita», «antes ninguna cosa rie
 porque en muchas fichas ese titular es la ACCIÓN, no el síntoma: 47 de 58
 "fallos" eran ruido. Las frases del pánico hay que escribirlas a mano.
 
-Y una tercera, de fontanería: **el servidor de pruebas se cae solo** (dio
+**Fontanería que ha costado tres vueltas de suite:** no lances
+`comprobar-consultas.mjs` mientras la suite está corriendo. Son dos Chromium a
+la vez, y el segundo se lleva por delante al primero —la suite muere a media
+lista, sin «TODO CORRECTO» ni «problema(s)», y parece que sigue viva—. Pasó tres
+veces el 23/09 (a los 354 y a los 298 ✅) y es el mismo «Target page, context or
+browser has been closed» del principio de la sesión. **O una cosa o la otra.**
+Si necesitas la comprobación ya, mata la suite por PID primero, o deja que CI la
+corra: CI pasa la misma suite sobre el mismo commit y ahí sí termina.
+
+Y otra, de lo mismo: **el servidor de pruebas se cae solo** (dio
 `ERR_CONNECTION_REFUSED` a mitad de la ronda). Levántalo antes de cualquier
 comprobación con navegador, como dice el procedimiento.
 
