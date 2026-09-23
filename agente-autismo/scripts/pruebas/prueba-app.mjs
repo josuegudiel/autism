@@ -2283,9 +2283,11 @@ const FIRMAS = [
   [/\bCBS\b/i, ['cbsnews.com']],
 ];
 const desajustes = [];
+const fuentesJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/fuentes.json', import.meta.url), 'utf8'));
 const conFuentes = [
   ...detJSON.casos.map((c) => [c.id, c.fuentes]),
   ...tarjetasEvi.map((t) => ['evidencia/' + t.titulo, t.fuentes || []]),
+  ...fuentesJSON.grupos.map((g) => ['fuentes/' + g.titulo, g.fuentes || []]),
 ];
 // Los repositorios que alojan el trabajo de cualquiera —PubMed, PMC, doi.org—
 // no dicen nada sobre quién firma, así que no se les aplica la regla: una
