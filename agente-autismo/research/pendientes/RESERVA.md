@@ -18,6 +18,24 @@ El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuel
 
 **Y la regla de siempre:** antes de encargar un tema, `grep` su asunto en `research/biblioteca-autismo.md`. "Salir de casa cuando ya usa pañal fuera" parecía un hueco y ya era RH.
 
+## Huecos nuevos, encontrados probando consultas (23/09)
+
+No vienen del detector, sino de escribir veinte consultas de síntomas del cuerpo
+con las palabras de una familia y mirar la primera respuesta. Once de las veinte
+abrían en la ficha equivocada; nueve se arreglaron con sinónimos porque la ficha
+ya existía. **Estas dos no tienen ficha:**
+
+- **Ha empezado a cojear, o se queja de una pierna o una cadera.** La consulta
+  aterriza hoy en «se arranca el pelo». No hay ficha de dolor
+  musculoesquelético: ni la cojera que aparece de golpe (que en pediatría tiene
+  su propia lista de descarte), ni la queja crónica de piernas en un niño
+  hipermóvil. **RB** publica el dolor crónico y **EK** la hipermovilidad, pero
+  ninguna entra en la cojera aguda.
+- **Le tiembla la mano.** Hoy se reparte entre la disgrafía y fichas de
+  medicación. El temblor como efecto de un fármaco está en **LJ** y **NN**, pero
+  disperso: no hay un sitio al que llegue un padre que solo ve que le tiembla la
+  mano.
+
 ## Los 31 temas
 
 ### 1. Ha dicho que quiere morirse: cómo preguntárselo y cómo hacer un plan de seguridad esta noche ⛔

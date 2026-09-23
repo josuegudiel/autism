@@ -5485,5 +5485,118 @@
  ],
  "se ha tragado una pieza pequena": [
   "RS"
+ ],
+ "se ha comido un punado de pastillas": [
+  "LH",
+  "QP"
+ ],
+ "se ha tomado pastillas que no debia": [
+  "LH",
+  "QP"
+ ],
+ "se ha bebido lejia": [
+  "LH"
+ ],
+ "ha tomado un medicamento que no era suyo": [
+  "LH",
+  "QP"
+ ],
+ "intoxicacion": [
+  "LH",
+  "QP"
+ ],
+ "le ha picado una avispa y se hincha": [
+  "MI"
+ ],
+ "le ha picado una abeja": [
+  "MI"
+ ],
+ "se le hincha la cara y le cuesta respirar": [
+  "MI"
+ ],
+ "se ha quemado con agua caliente": [
+  "LH"
+ ],
+ "se ha quemado": [
+  "LH"
+ ],
+ "quemadura": [
+  "LH"
+ ],
+ "se le ponen los labios morados": [
+  "JQ",
+  "LG"
+ ],
+ "se pone azul": [
+  "JQ",
+  "LG"
+ ],
+ "le cuesta respirar": [
+  "MI",
+  "QG"
+ ],
+ "lleva tres dias sin cagar": [
+  "EP",
+  "RR"
+ ],
+ "lleva dias sin hacer caca": [
+  "EP",
+  "RR"
+ ],
+ "no puede hacer pis": [
+  "RA"
+ ],
+ "no orina": [
+  "RA",
+  "RR"
+ ],
+ "le duele al hacer pis": [
+  "RA"
+ ],
+ "le sale sangre por el culete": [
+  "EP",
+  "RR"
+ ],
+ "sangre en la caca": [
+  "RR",
+  "EP"
+ ],
+ "no para de parpadear y hacer ruiditos": [
+  "EM"
+ ],
+ "hace ruiditos con la garganta": [
+  "EM"
+ ],
+ "parpadea mucho": [
+  "EM"
+ ],
+ "tourette": [
+  "EM"
+ ],
+ "tiene unas manchas raras en la piel": [
+  "DQ",
+  "QP"
+ ],
+ "tiene mucha caspa y se rasca la cabeza": [
+  "DQ"
+ ],
+ "le pica mucho la piel": [
+  "DQ"
+ ],
+ "tiene la piel muy seca y se rasca": [
+  "DQ"
+ ],
+ "eccema": [
+  "DQ"
+ ],
+ "se muerde las unas hasta sangrar": [
+  "MN"
+ ],
+ "se come las unas": [
+  "MN"
+ ],
+ "le tiembla la mano": [
+  "LJ",
+  "NN"
  ]
 }

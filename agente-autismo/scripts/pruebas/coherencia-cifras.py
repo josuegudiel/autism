@@ -96,6 +96,13 @@ def main():
         # escaparse x 53% de esos = 26% del total; 65% trafico y 24% agua son
         # subcifras de los que estuvieron desaparecidos. Todo cuadra.
         ('MJ','NH'), ('JD','MJ'), ('MJ','PF'), ('LH','MJ'), ('LI','NH'), ('MA','MJ'), ('LH','PF'),
+        # RP (ronda 52) entra en la misma familia: publica el 53 % (desaparecido el
+        # tiempo suficiente para causar alarma) y el 65 % (susto con el trafico) en la
+        # MISMA frase. MA solo da el 65 %. No se contradicen: son medidas distintas, y
+        # el emparejador las junto por compartir 'alarma', 'causar' y 'suficiente'.
+        ('MA','RP'), ('MJ','RP'), ('NH','RP'), ('JD','RP'),
+        # El 26 % de NH y JD es el del TOTAL (49 % que lo intenta x 53 % de esos),
+        # no otra lectura del 53 %: ya esta explicado tres lineas mas arriba.
         # --- Ahogamientos (Guan y Li): 52% estanques, 13% rios, 13% lagos.
         # --- Digestivo: McElhanon 2014 (37% estrenimiento) y Wang 2022 (~26%).
         # A, AA y ME lo dicen las tres, y AA y ME se remiten entre si.

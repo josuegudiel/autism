@@ -3245,6 +3245,33 @@ for (const [desde, re] of [['JR', /RR\. Le duele la barriga/], ['EP', /RR\. Le d
   check(`${desde} enlaza con la ficha nueva que le toca`, re.test(fichaDe(desde)));
 }
 
+// 64. Otra tanda de veinte consultas con las palabras de una familia, esta vez
+// de síntomas del cuerpo. Once de las veinte abrían en la ficha equivocada, y
+// varias eran de las que asustan: «se ha comido un puñado de pastillas» abría
+// «cómo enseñarle a tragar las pastillas», «se ha quemado con agua caliente»
+// abría alimentación selectiva, «le ha picado una avispa y se hincha» abría las
+// urgencias del abdomen, y «se le ponen los labios morados» abría cómo
+// responder a los familiares que niegan el diagnóstico. Las fichas existían
+// todas: lo que faltaba era la frase con la que se busca. Y una no daba NINGÚN
+// resultado —«no para de parpadear y hacer ruiditos»— aunque EM lleva desde la
+// ronda 8 publicando tics y Tourette.
+for (const [q, titulo] of [
+  ['se ha comido un punado de pastillas', 'Asegurar la casa'],
+  ['se ha quemado con agua caliente', 'Asegurar la casa'],
+  ['le ha picado una avispa y se hincha', 'diabetes, asma o alergia grave'],
+  ['se le ponen los labios morados', 'Convulsiones'],
+  ['lleva tres dias sin cagar', 'Estreñimiento'],
+  ['no puede hacer pis', 'Le duele un testículo'],
+  ['le sale sangre por el culete', 'Estreñimiento'],
+  ['no para de parpadear y hacer ruiditos', 'tics'],
+  ['tiene unas manchas raras en la piel', 'alergias, asma y atopia'],
+  ['tiene mucha caspa y se rasca la cabeza', 'alergias, asma y atopia'],
+  ['se muerde las unas hasta sangrar', 'Se arranca el pelo'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Síntomas del cuerpo: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
