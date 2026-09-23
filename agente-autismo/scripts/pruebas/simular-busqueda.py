@@ -14,6 +14,14 @@ def norm(s):
     s=''.join(c for c in s if unicodedata.category(c)!='Mn')
     return re.sub(r'[^a-z0-9 ]',' ', s)
 
+def dentro_como_palabra(aguja, pajar):
+    if not aguja or not pajar: return False
+    i = pajar.find(aguja)
+    if i < 0: return False
+    antes = pajar[i-1] if i else ''
+    despues = pajar[i+len(aguja)] if i+len(aguja) < len(pajar) else ''
+    return not (antes.isalnum() or despues.isalnum())
+
 def tokenizar(s):
     return [t for t in norm(s).split() if len(t)>=3 and t not in VACIAS]
 
@@ -30,7 +38,9 @@ def buscar(q, extra=None):
     for frase,cods in sin.items():
         nf=norm(frase).strip(); nf=re.sub(r'\s+',' ',nf)
         tf=tokenizar(nf); peso=0
-        if nf and (nf in q or q in nf): peso=30
+        # Por palabra entera, igual que web/app.js: una consulta de tres
+        # letras no puede casar dentro de otra palabra.
+        if dentro_como_palabra(nf,q) or dentro_como_palabra(q,nf): peso=30
         elif tf:
             com=sum(1 for t in tf if t in tokens)
             if com==len(tf): peso=24

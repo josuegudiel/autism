@@ -234,6 +234,17 @@ function mdRender(md, ctaUrgencia = "") {
   return out.join("");
 }
 
+/** ¿Aparece `aguja` dentro de `pajar` como palabra entera? Sin esto, una
+ *  consulta corta casa dentro de cualquier palabra que la contenga. */
+function dentroComoPalabra(aguja, pajar) {
+  if (!aguja || !pajar) return false;
+  const i = pajar.indexOf(aguja);
+  if (i < 0) return false;
+  const antes = i === 0 ? "" : pajar[i - 1];
+  const despues = pajar[i + aguja.length] || "";
+  return !/[a-z0-9]/.test(antes) && !/[a-z0-9]/.test(despues);
+}
+
 /* ---------- Buscador de la biblioteca ---------- */
 let _indice = null;
 async function cargarIndice() {
@@ -274,7 +285,15 @@ function buscarTemas(consulta, indice) {
     const nf = normalize(frase);
     const tf = tokenizar(nf);
     let peso = 0;
-    if (q.includes(nf) || nf.includes(q)) peso = 30;          // la frase completa aparece
+    // Por PALABRA, no por trozo de palabra. Con `includes` a secas, una
+    // consulta de tres letras casaba dentro de cualquier sinonimo que la
+    // contuviera: "aba" estaba dentro de "trabajo", "caballos" y "acaban de
+    // diagnosticarlo" —33 sinonimos— y empujaba a sus fichas, asi que buscar
+    // "ABA" abria "lo acosan o lo han despedido en el trabajo" en vez de la
+    // ficha del ABA. Lo mismo "sol" dentro de "solo", "pan" dentro de "pantalla"
+    // y "ados" dentro de "cuidados paliativos". Sobre las 201 consultas de
+    // prueba escritas como las escribe una familia, el cambio no mueve ni una.
+    if (dentroComoPalabra(nf, q) || dentroComoPalabra(q, nf)) peso = 30;
     else if (tf.length) {
       const comunes = tf.filter((t) => tokens.includes(t)).length;
       if (comunes === tf.length) peso = 24;                   // están todas sus palabras

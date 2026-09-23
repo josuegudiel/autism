@@ -3051,6 +3051,25 @@ check('El orden dentro de un sinónimo pesa: la primera ficha es el destino',
 check('Y el simulador de búsqueda usa la misma regla que la app',
   /min\(i,6\)\*0\.5/.test(fs.readFileSync(new URL('../../scripts/pruebas/simular-busqueda.py', import.meta.url), 'utf8')));
 
+// Y la otra regla del mismo sitio: el sinónimo casa por PALABRA, no por trozo
+// de palabra. Con `includes` a secas, una consulta de tres letras casaba dentro
+// de cualquier sinónimo que la contuviera —"aba" está dentro de "trabajo", de
+// "caballos" y de "acaban de diagnosticarlo", 33 sinónimos— y empujaba a sus
+// fichas: buscar «ABA» abría "lo acosan o lo han despedido en el trabajo".
+check('El sinónimo casa por palabra entera, no por trozo de palabra',
+  /function dentroComoPalabra/.test(appSrc)
+  && /dentroComoPalabra\(nf, q\) \|\| dentroComoPalabra\(q, nf\)/.test(appSrc));
+for (const [q, titulo] of [
+  ['aba', 'El debate sobre el ABA'],
+  ['ados', 'Diagnóstico diferencial'],
+  ['denver', 'Intervención temprana'],
+  ['camuflaje', 'niñas/mujeres'],
+  ['tgd', 'Criterios diagnósticos'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Buscar la sigla «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
