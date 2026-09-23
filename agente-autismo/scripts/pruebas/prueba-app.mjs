@@ -3108,6 +3108,76 @@ for (const util of ['simular-busqueda.py', 'coherencia-cifras.py', 'vinetas-geme
     !/\/(home|Users)\/[a-z]/i.test(fs.readFileSync(ruta, 'utf8')));
 }
 
+// 62. Ronda 51. Cuatro fichas, y tres de las cuatro venían marcadas como no
+// publicables por chocar con una ficha YA PUBLICADA. Como casi siempre, la
+// equivocada era la publicada: JV mandaba pedir cita ante la desesperanza de un
+// hermano, NA daba por pendiente de un decreto algo que el Supremo ya había
+// resuelto, y JX/PH/NA mandaban a buscar en JX un trámite que no estaba allí.
+// `fichaDe` ya está definida arriba (sección 50): se reutiliza.
+for (const [codigo, marca] of [['RN', /reducci[óo]n de jornada|excedencia|preaviso/i],
+                               ['RO', /hermano|cuidador/i],
+                               ['RP', /aparcamiento|estacionamiento|girasol/i],
+                               ['RQ', /colecho|cama/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 51: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+// Comprobadas una a una contra la app con comprobar-consultas.mjs ANTES de
+// escribirlas aquí, que es la regla que costó una vuelta de suite aprender.
+for (const [q, titulo] of [
+  ['reducir jornada para cuidarlo', 'Necesito trabajar menos horas'],
+  ['la empresa no me contesta a la reduccion', 'Necesito trabajar menos horas'],
+  ['excedencia para cuidar a mi hijo', 'Necesito trabajar menos horas'],
+  ['mi hija mayor cuida de su hermano', 'Mi hija mayor hace de cuidadora'],
+  ['hermano cuidador', 'Mi hija mayor hace de cuidadora'],
+  ['tarjeta de aparcamiento', 'tarjeta de aparcamiento'],
+  ['cordon de girasol', 'tarjeta de aparcamiento'],
+  ['no podemos hacer cola', 'tarjeta de aparcamiento'],
+  ['duerme en nuestra cama', 'Duerme en nuestra cama'],
+  ['colecho', 'Duerme en nuestra cama'],
+  ['no quiere dormir solo', 'Duerme en nuestra cama'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 51: buscar «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
+// La corrección que más importa de la ronda: un hermano que dice que no quiere
+// vivir no es un cambio que se observa durante semanas. JV lo metía en la misma
+// lista que el sueño y el apetito, y remataba con «consulta con pediatría»,
+// mientras IC (🟢 verificada) y NL ya publicaban que eso es urgencia hoy.
+const jv51 = fichaDe('JV');
+check('JV saca la desesperanza de la lista de «cambios sostenidos (semanas)»',
+  /cambios sostenidos \(semanas\) en sueño, apetito, rendimiento escolar, aislamiento o agresividad/.test(jv51)
+  && !/semanas\)[^\n]*desesperanza/.test(jv51));
+check('Y la pone donde estaba en IC y en NL: urgencia hoy',
+  /Si el hermano dice que quiere morirse/.test(jv51) && /urgencia hoy/.test(jv51));
+check('Y no deja al lector con dos plazos contrarios para la misma frase',
+  /es urgencia hoy/.test(fichaDe('NL')) && /urgencia hoy/.test(jv51));
+
+// NA daba por pendiente de un real decreto la compatibilidad con la
+// escolarización, y el Supremo ya la había resuelto en abril de 2026.
+const na51 = fichaDe('NA');
+check('NA publica ya la STS 362/2026 sobre la CUME y la escolarización',
+  /362\/2026/.test(na51) && /escolarizad/.test(na51));
+check('Y deja claro que eso no depende del proyecto de decreto',
+  /no depende del proyecto de real decreto/.test(na51));
+
+// Y las tres fichas que mandaban a JX a buscar un trámite que JX no tiene.
+for (const codigo of ['JX', 'PH', 'NA']) {
+  check(`${codigo} manda el trámite a RN, no a JX`,
+    /RN\. Necesito trabajar menos horas/.test(fichaDe(codigo)));
+}
+// Enlaces de vuelta: una ficha nueva a la que nadie enlaza no la encuentra nadie.
+for (const [desde, hacia, re] of [['JV', 'RO', /RO\. Mi hija mayor hace de cuidadora/],
+                                  ['BM', 'RO', /RO\. Mi hija mayor hace de cuidadora/],
+                                  ['HN', 'RO', /RO\. Mi hija mayor hace de cuidadora/],
+                                  ['W', 'RQ', /RQ\. Duerme en nuestra cama/],
+                                  ['QG', 'RQ', /RQ\. Duerme en nuestra cama/],
+                                  ['LP', 'RP', /RP\. ¿Nos dan la tarjeta de aparcamiento/]]) {
+  check(`${desde} enlaza de vuelta a ${hacia}`, re.test(fichaDe(desde)));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

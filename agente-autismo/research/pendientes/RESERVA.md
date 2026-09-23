@@ -2,17 +2,17 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas, o sea unas ocho rondas.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas, de las que la ronda 51 ya cubrió tres (los números 14, 16 y 28): quedan 27 encargables, o sea unas siete rondas.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
 El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuelo, ni qué fichas se rechazaron, ni que NI está bloqueada. Así que volvió a proponer cosas que no se pueden encargar tal cual. Van marcadas abajo, y el aviso está aquí arriba porque leerlo después de encargar no sirve de nada:
 
 - **nº 1** — NO INVESTIGAR. Es **NI**, terminada y esperando la decisión del usuario (ve *NI está bloqueada a propósito* en ESTADO-CADENA.md). El detector no podía saberlo: solo lee el índice de lo publicado, y NI no está publicada.
-- **nº 14** — OJO: se solapa con **RO**, que está en la ronda 51 en vuelo. Si RO se publica, esto queda cubierto; si RO se rechaza, recupérala de aquí.
-- **nº 16** — OJO: se solapa con **RN**, que está en la ronda 51 en vuelo — RN ya pide "qué escrito, a quién, qué plazo tiene para contestar, qué pasa si calla". Mira RN antes de encargarla.
+- **nº 14** — ✅ YA CUBIERTA: se publicó como **RO** en la ronda 51.
+- **nº 16** — ✅ YA CUBIERTA: se publicó como **RN** en la ronda 51.
 - **nº 24** — OJO: es la tercera vez que asoma la lectura fácil. **RM** se rechazó en la ronda 50 por quedarse en un resumen de IH, IQ, KZ, JA y GO (`research/pendientes/RM.md`). Esta propuesta la acota a hospital, banco y juzgado, que es más concreto: si se encarga, es por esa acotación, y si al terminar vuelve a ser un resumen de esas cinco, tampoco se publica.
-- **nº 28** — OJO: se solapa con **RQ**, que está en la ronda 51 en vuelo (colecho). Si RQ se publica, esto queda cubierto.
+- **nº 28** — ✅ YA CUBIERTA: se publicó como **RQ** en la ronda 51.
 
 **Y la regla de siempre:** antes de encargar un tema, `grep` su asunto en `research/biblioteca-autismo.md`. "Salir de casa cuando ya usa pañal fuera" parecía un hueco y ya era RH.
 
@@ -72,9 +72,9 @@ La prevención que se cae sola cuando toda la agenda sanitaria gira alrededor de
 
 Al padre le dan fecha de quirófano y descubre que nadie más sabe dar la medicación, calmar una crisis ni con qué frase se le dice al hijo que mamá no va a estar quince días. HUECO REAL: 'NK. Si me pasa algo a mí esta noche' es la más cercana pero está planteada como emergencia imprevista de una noche y como hoja de datos; 'HN' planifica el relevo cuando los padres envejecen, a años vista; 'EE. Respiro' es un servicio programado de descanso, no una sustitución forzosa; 'GD' trata el duelo y la muerte, no la ausencia temporal; 'QE' trata cuidar a la vez de hijo y padres. CONTENIDO, dos cosas distintas: la continuidad práctica del cuidado (quién sustituye, qué se deja escrito, qué servicios se activan de urgencia) y cómo se prepara y se explica la ausencia y el reencuentro. AVISO: aquí hay más guía práctica de asociaciones que investigación; ser honesto y no inventar evidencia de eficacia.
 
-### 14. ¿Puedo dejar a su hermano a cargo de él una hora? Cuánto se le puede pedir a un hijo no autista ⚠️
+### 14. ¿Puedo dejar a su hermano a cargo de él una hora? Cuánto se le puede pedir a un hijo no autista ✅
 
-> OJO: se solapa con **RO**, que está en la ronda 51 en vuelo. Si RO se publica, esto queda cubierto; si RO se rechaza, recupérala de aquí.
+> YA CUBIERTA por **RO. Mi hija mayor hace de cuidadora de su hermano autista** (ronda 51, publicada). No la encargues: si crees que queda algo fuera, dilo en una línea y acota el encargo a eso.
 
 Decisión muy concreta y repetidísima: dejar al de 13 con el hermano autista de 9 para bajar a la farmacia, o pedirle que lo vigile en el parque o que lo acompañe al baño en un centro comercial. Cae exacto en el hueco entre tres fichas: 'MJ. ¿Puedo dejarlo solo en casa?' habla del hijo autista solo, 'NH. Dejar a tu hijo con otra persona' habla de niñera y abuelos adultos, y 'BM'/'JV' hablan del bienestar del hermano pero no del encargo de cuidado. CONTENIDO: es a la vez seguridad (¿sabe qué hacer si hay una crisis, una convulsión, un atragantamiento?, ¿puede llamar?) y justicia familiar (la literatura de young carers documenta sobrecarga, renuncias escolares y culpa). AVISO: dar criterios de decisión y un guion de instrucciones por escrito, NO una edad mágica: no existe un umbral de edad con respaldo, y las normas legales sobre dejar menores a cargo de menores varían por país (no entrar en ninguno, hay 15 fichas para eso).
 
@@ -82,9 +82,9 @@ Decisión muy concreta y repetidísima: dejar al de 13 con el hermano autista de
 
 La herramienta con más rendimiento de toda la lista: funciona igual en el colegio, el hospital, el trabajo, el campamento y el banco, y en todos los países hispanohablantes (todos ratificaron la CDPD). HUECO REAL: el índice tiene las APLICACIONES sueltas ('FH' exámenes, 'PD' matrícula, 'RF' servicio privado que te rechaza, 'AH' derechos escolares, 'PC' cupo de empleo, 'RL' discriminación laboral) pero ninguna ficha explica el CONCEPTO jurídico ni cómo se redacta la solicitud. 'FZ' es el modelo social como filosofía, no como norma. 'HZ' e 'IB' son abogar y reclamar en genérico, no el estándar legal ni la plantilla. CONTENIDO: el argumento exacto cuando le dicen 'no podemos', 'no hay presupuesto' o 'no tenemos personal': la denegación de ajustes razonables es discriminación por definición (CDPD art. 2 y 5; Observaciones Generales nº2 y nº6), la carga de justificar la 'carga desproporcionada' es de quien dice que no, y hay que pedirlo individualizado y por escrito. AVISO AL REDACTOR: no confundir ajuste razonable (individual, exigible ya) con accesibilidad universal (colectiva, con plazos); es el error más común en la divulgación en español.
 
-### 16. Que quede constancia: pedirlo por escrito, el registro, los plazos y qué significa que no te contesten ⚠️
+### 16. Que quede constancia: pedirlo por escrito, el registro, los plazos y qué significa que no te contesten ✅
 
-> OJO: se solapa con **RN**, que está en la ronda 51 en vuelo — RN ya pide "qué escrito, a quién, qué plazo tiene para contestar, qué pasa si calla". Mira RN antes de encargarla.
+> YA CUBIERTA por **RN. Necesito trabajar menos horas o parar un tiempo para cuidarlo** (ronda 51, publicada). No la encargues: si crees que queda algo fuera, dilo en una línea y acota el encargo a eso.
 
 La habilidad transversal que decide si gana o pierde cualquier reclamación posterior, y que nadie le explica hasta que ya ha perdido dos años en conversaciones de pasillo. Es la ficha PREVIA a todas las de reclamar. HUECO REAL: 'IB' es qué hacer si no se respetan los derechos (el conflicto ya estalló), 'PI' es cuando ya reclamaste dos veces y toca abogado, 'MR' y 'PD' son reclamaciones concretas, 'MB' es la comunicación diaria con el colegio (cuaderno, mensajes) y 'NF' es a quién ENTREGAR el informe, no cómo PEDIR y conservar documentación. CONTENIDO: convertir una reunión en acta o en correo de confirmación, registrar una solicitud y quedarse con el sello, pedir copia íntegra del expediente escolar y de la historia clínica, la diferencia entre queja, solicitud y recurso, los plazos que corren en tu contra, y qué hacer cuando simplemente no responden. AVISO: el sentido del silencio administrativo varía muchísimo entre países (en unos se entiende a favor y en otros en contra); enseñar el principio y mandar a la ficha de país, sin dar un plazo único. FRONTERA con la ficha de ajuste razonable: allí va QUÉ se puede exigir, aquí CÓMO se pide y se conserva.
 
@@ -134,9 +134,9 @@ El padre al que una clínica le vende un paquete de 40 sesiones de neurofeedback
 
 No es un problema menor: perder el sistema de comunicación deja al hijo sin poder avisar de dolor o de un maltrato, y la literatura de CAA insiste en el acceso permanente y documenta el abandono de sistemas por fallos logísticos. HUECO REAL: las fichas cercanas eligen y enseñan el sistema pero no cubren su fragilidad diaria: 'HB. Elegir un sistema de CAA', 'KB. Modelar la CAA', 'KC. Comunicación total', 'CQ. Tecnología de apoyo y apps', 'LF. Cómo saber si una app es buena' e 'IX. Pasaporte de comunicación'. CONTENIDO: el sábado en que el comunicador cae al suelo, el lunes en que el colegio dice que la tablet se queda en la mochila y el mes que tarda la reparación; qué copia de baja tecnología hay que tener hecha de antemano (tablero, tarjetas, fotos impresas), cómo se protege y se asegura el aparato, cómo se reponen los auriculares o el objeto de apego, y quién responde si se rompe en el colegio o en el transporte.
 
-### 28. Llevamos seis años durmiendo con él en medio: colecho, compartir cuarto y cómo cambiarlo sin guerra ⚠️
+### 28. Llevamos seis años durmiendo con él en medio: colecho, compartir cuarto y cómo cambiarlo sin guerra ✅
 
-> OJO: se solapa con **RQ**, que está en la ronda 51 en vuelo (colecho). Si RQ se publica, esto queda cubierto.
+> YA CUBIERTA por **RQ. Duerme en nuestra cama y no quiere dormir solo** (ronda 51, publicada). No la encargues: si crees que queda algo fuera, dilo en una línea y acota el encargo a eso.
 
 Sirve al que lleva seis años durmiendo con el hijo en medio, al que tiene dos hermanos en un cuarto y uno se despierta a las tres, y al que quiere recuperar su cama y no sabe por dónde empezar. HUECO REAL: las fichas de sueño no lo tocan: 'W. Sueño' e 'IF. La hora de dormir' trabajan rutina y ambiente, 'EN' los trastornos del sueño específicos, 'QK' el retraso de fase del adolescente, 'PQ' los turnos de noche de los padres y 'QT' la fuga de la cama; 'JV' reparte tiempo entre hermanos, no camas. Respaldo específico: prevalencia de colecho en autismo y protocolos conductuales de retirada gradual de la presencia del adulto (camping out, desvanecimiento). AVISO DE CIFRAS: las de colecho varían muchísimo (de ~15% a más del 60%) según cómo se defina y en qué país se mida, y en buena parte de Latinoamérica el colecho es la norma cultural y no un problema; la ficha debe partir de si a esa familia le va mal, no de una cifra.
 

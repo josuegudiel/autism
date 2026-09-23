@@ -9,58 +9,52 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 51, RELANZADA y viva (23/09, 05:2x UTC).** Códigos **RN, RO, RP, RQ**,
-con los cuatro encargos de abajo ya acotados y metidos en el `args`.
+**Ninguna. La 51 se publicó entera** (RN, RO, RP, RQ). Para la 52, encarga desde
+`research/pendientes/RESERVA.md`, **leyendo primero los avisos de su cabecera**.
 
-- `runId` del workflow de investigación: **`wf_33871957-781`**
-  (`scripts/workflows/investigar-temas.mjs`).
-- **Si esta sesión muere, NO la relances a ciegas**: mira primero
-  `/root/.claude/projects/-home-user-autism/8095f1f6-d7c0-5388-99b3-464bfb1e7510/subagents/workflows/wf_33871957-781/journal.jsonl`
-  para ver por qué fase iba, y reanuda con
-  `Workflow({scriptPath: "/home/user/autism/agente-autismo/scripts/workflows/investigar-temas.mjs", resumeFromRunId: "wf_33871957-781", args: {...}})`.
-  **El `args` hay que volver a pasarlo entero**: un `resumeFromRunId` a secas
-  revienta con `TypeError: undefined is not an object (evaluating 'E.temas')`.
-- **En paralelo va `detectar-huecos.mjs`**, runId **`wf_4b127578-5a2`**, para
-  rellenar la reserva. Su índice de entrada es un `.txt` con un título por línea,
-  que se genera así (448 líneas, una por ficha; el `grep -E` quita las cabeceras
-  "Ronda N", que si no cuela 465):
+**Lo que enseñó la 51, que es lo que conviene llevar a la siguiente:** tres de
+las cuatro fichas volvieron con `publicable=false`, y **ninguna de las tres lo
+estaba de verdad**. En las tres el bloqueo era un choque con una ficha ya
+publicada, y en las tres **la equivocada era la publicada** —el patrón que este
+archivo lleva anotando desde la ronda 38—:
 
-      grep "^### " research/biblioteca-autismo.md | sed 's/^### //; s/ — .*$//' \
-        | grep -E "^[A-Z]{1,2}\. " > indice-titulos.txt
+- **RO ← JV.** JV metía «comentarios de desesperanza» de un hermano en la lista
+  de «cambios sostenidos (semanas) → consulta con pediatría». IC (🟢 verificada)
+  y NL ya publicaban que eso es **urgencia hoy**. Una familia que leyera las dos
+  se encontraba dos plazos contrarios para la misma frase de su hija. Corregida
+  JV: la desesperanza sube a un punto 🚨 propio y la lista de semanas se queda
+  con sueño, apetito, notas, aislamiento y agresividad.
+- **RN ← NA.** RN traía una **STS 362/2026, de 14 de abril** (la escolarización
+  en centro ordinario no excluye por sí sola la CUME) y el corrector la retiró
+  por no poder comprobarla. **Existe**: se confirmó con dos notas del CGPJ, y
+  ahora está en el bloque CUME de NA, que hasta hoy daba esa compatibilidad por
+  pendiente de un real decreto que sigue en proyecto.
+- **RP.** El choque de normas (RD 1056/2014 remite al anexo II del RD 1971/1999,
+  derogado por el RD 888/2022) **ya lo había resuelto el propio corrector** en el
+  texto: `publicable=false` era una bandera caduca. Comprobado a mano antes de
+  publicar.
 
-- **El presupuesto de WebSearch estaba fresco otra vez** al empezar este turno
-  (el de la sesión anterior se había agotado a 200/200). La ronda gasta ~120
-  (4 investigadores x 15 + 4 verificadores x 15); las cuatro lentes no gastan.
+**Y tres trampas que costaron tiempo y conviene no repetir:**
 
-Los cuatro encargos, tal como se mandaron:
-
-- **RN — permisos, excedencia y reducción de jornada para cuidar**, acotada al
-  **TRÁMITE** (qué escrito, con cuánta antelación, a quién, qué plazo tiene la
-  empresa para contestar, qué pasa si calla, qué cambia con convenio o con
-  contrato temporal, qué se cobra y qué pasa con la cotización). **JX, PH y NA
-  ya publican lo de al lado**: si al terminar es un resumen de JX y PH, no se
-  publica. Es el mismo riesgo que tumbó a RM.
-- **RO — el hermano que hace de cuidador hoy** (no el relevo de mañana, que es
-  HN): qué está medido, qué es razonable pedirle a cada edad y qué no lo es
-  nunca, cómo se detecta que está pagando un precio, y qué se le debe a cambio.
-- **RP — tarjeta de aparcamiento, acceso preferente, acompañante y distintivos
-  de discapacidad no visible**: con el aviso que más falta hace, que la tarjeta
-  suele exigir movilidad reducida y muchos niños autistas no la tienen.
-- **RQ — duerme en nuestra cama**: empezando por que el colecho no es un
-  problema por sí mismo, y qué descartar en médico antes de tratarlo como hábito
-  (W ya publica el sueño en general: no reescribirla).
-
-**Y la reserva ya está rellenada**: `detectar-huecos.mjs` terminó y dejó 31
-entradas en `research/pendientes/RESERVA.md`. Para la **52** se encarga de ahí,
-**después de leer los avisos de su cabecera**: cuatro de las 31 chocan con la
-ronda 51 que está en vuelo (los números 14, 16 y 28) o con una ficha ya
-rechazada (el 24, que es la lectura fácil de RM por tercera vez), y el número 1
-es NI y no se toca.
+1. **La cabecera de RN salió «limpia» y no lo estaba.** Decía «✅ cubierto
+   (Ronda 51, fuentes verificadas; **ver la nota de edición del final antes de
+   publicar**)» —y esa nota ya la había borrado el propio script—. El `MARCA` del
+   publicador no casa con «antes de publicar» ni con «nota de edición»: **están
+   añadidos ya en `publicar51.py`, cópialo de ahí y no de una ronda anterior.**
+   Es la misma forma del fallo de la ronda 38.
+2. **`BLOQUEO` casa con palabras corrientes.** En RP saltó «se queda
+   **bloqueado** sin poder avanzar», que describe a un niño que se paraliza. La
+   suite solo mira **cabeceras**, así que el cuerpo se revisa a mano: el
+   publicador ahora lo imprime en vez de abortar.
+3. **`fichaDe` ya existía en la suite** (sección 50). Declararla otra vez la tira
+   entera con `SyntaxError`. Antes de correrla, pasa el detector de duplicados
+   —y ojo, un `const añosEnConflicto` aparece como duplicado de `a` si el patrón
+   no admite la ñ.
 
 ## Ya publicado
 
-Rondas 29 a 50.
-Biblioteca en **448 temas / 226 verificados / 222 síntesis / 4.516 fuentes**.
+Rondas 29 a 51.
+Biblioteca en **452 temas / 226 verificados / 226 síntesis / 4.596 fuentes**.
 Suite **824/824** (23/09). Reserva: **31 entradas**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448

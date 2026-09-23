@@ -5260,5 +5260,155 @@
  "m chat": [
   "BW",
   "LT"
+ ],
+ "reducir jornada para cuidarlo": [
+  "RN",
+  "JX"
+ ],
+ "reduccion de jornada por hijo con discapacidad": [
+  "RN",
+  "JX"
+ ],
+ "quiero trabajar menos horas para cuidarlo": [
+  "RN",
+  "JX"
+ ],
+ "como pido la reduccion de jornada": [
+  "RN",
+  "JX"
+ ],
+ "excedencia para cuidar a mi hijo": [
+  "RN",
+  "JX"
+ ],
+ "pedir excedencia por cuidado de hijo": [
+  "RN",
+  "JX"
+ ],
+ "adaptacion de jornada 34.8": [
+  "RN",
+  "JX"
+ ],
+ "la empresa no me contesta a la reduccion": [
+  "RN",
+  "NA"
+ ],
+ "cuanto preaviso para reducir jornada": [
+  "RN"
+ ],
+ "que escrito presento en la empresa": [
+  "RN",
+  "NA"
+ ],
+ "me deniegan la reduccion de jornada": [
+  "RN",
+  "NA"
+ ],
+ "permiso parental 8 semanas": [
+  "RN",
+  "JX"
+ ],
+ "que pasa con mi cotizacion si reduzco jornada": [
+  "RN",
+  "PH"
+ ],
+ "mi hija mayor cuida de su hermano": [
+  "RO",
+  "JV"
+ ],
+ "mi hijo cuida de su hermano autista": [
+  "RO",
+  "JV"
+ ],
+ "mi hija hace de madre de su hermano": [
+  "RO",
+  "JV"
+ ],
+ "hermano cuidador": [
+  "RO",
+  "JV",
+  "HN"
+ ],
+ "le pido demasiado a su hermana": [
+  "RO",
+  "JV"
+ ],
+ "mi otro hijo se encarga de el": [
+  "RO",
+  "JV"
+ ],
+ "cuanto le puedo pedir a su hermano": [
+  "RO",
+  "JV"
+ ],
+ "su hermana esta pagando el precio": [
+  "RO",
+  "JV"
+ ],
+ "tarjeta de aparcamiento": [
+  "RP"
+ ],
+ "tarjeta de estacionamiento para discapacidad": [
+  "RP"
+ ],
+ "nos dan la tarjeta de aparcamiento por autismo": [
+  "RP"
+ ],
+ "cordon de girasol": [
+  "RP"
+ ],
+ "distintivo de discapacidad no visible": [
+  "RP"
+ ],
+ "entrada gratis para el acompanante": [
+  "RP"
+ ],
+ "no podemos hacer cola": [
+  "RP"
+ ],
+ "atencion preferente sin cola": [
+  "RP"
+ ],
+ "acceso preferente parques de atracciones": [
+  "RP"
+ ],
+ "me han denegado la tarjeta de aparcamiento": [
+  "RP"
+ ],
+ "movilidad reducida y autismo": [
+  "RP",
+  "LP"
+ ],
+ "duerme en nuestra cama": [
+  "RQ",
+  "W"
+ ],
+ "colecho": [
+  "RQ",
+  "W"
+ ],
+ "no quiere dormir solo": [
+  "RQ",
+  "W"
+ ],
+ "duerme con nosotros": [
+  "RQ",
+  "W"
+ ],
+ "llevamos anos durmiendo con el": [
+  "RQ",
+  "W"
+ ],
+ "como le paso a su cama": [
+  "RQ",
+  "W"
+ ],
+ "se pasa a nuestra cama de madrugada": [
+  "RQ",
+  "W"
+ ],
+ "ronca y hace pausas al dormir": [
+  "RQ",
+  "QG"
  ]
 }
