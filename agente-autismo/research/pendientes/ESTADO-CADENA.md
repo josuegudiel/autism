@@ -329,6 +329,12 @@ LÍMITE DURO: 4 temas por ronda.
   escribe veinte consultas con las palabras de una familia y mira la primera
   respuesta. Es la comprobación que más fallos por hora ha dado de todas las de
   esta sesión, y no cuesta ninguna búsqueda web.
+  **Y sirve para lo otro:** la cuarta tanda, toda de síntomas del cuerpo, dejó
+  ver **huecos de contenido**, no solo de sinónimos. Hoy no hay ficha propia
+  para: **la piel** (picor generalizado, manchas, eccema), **los moretones sin
+  golpe**, **el acné** y **la depilación** en la adolescencia. Se resolvieron
+  mandando a KG, JR, DA e IO, que es lo más cercano, pero **son candidatos para
+  `detectar-huecos.mjs`**.
 - **Y una regla del buscador que cambió con ello:** el **orden en que un sinónimo
   lista sus fichas decide el desempate**. Antes todas recibían el mismo empuje y
   ganaba el título alfabéticamente menor —por eso «quiere morirse», mapeado a G,

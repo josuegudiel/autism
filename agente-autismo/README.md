@@ -36,7 +36,13 @@ Todo el conocimiento vive en un solo archivo de texto. Para añadir o corregir u
    Regenera los JSON que lee la app y avisa si a algún tema le falta el mensaje clave o las fuentes.
 3. Sube los cambios. Ya está: la app muestra el tema nuevo.
 
-Para mejorar el buscador, edita **`scripts/sinonimos.json`**: traduce cómo habla una familia («no duerme») a los códigos de los temas (`["W", "EN"]`). No hace falta saber programar.
+Para mejorar el buscador, edita **`scripts/sinonimos.json`**: traduce cómo habla una familia («no duerme») a los códigos de los temas (`["W", "EN"]`). No hace falta saber programar. **El orden importa: la primera ficha de la lista es el destino principal**, y es la que se abrirá primero si varias empatan. Antes de dar por buena una frase nueva, pruébala:
+
+```bash
+python3 scripts/pruebas/simular-busqueda.py "quiere morirse"
+```
+
+Y de vez en cuando, escribe veinte consultas con las palabras de una familia y mira la primera respuesta de cada una: es la comprobación que más fallos ha encontrado en este proyecto.
 
 ---
 

@@ -4398,9 +4398,7 @@
   "KS"
  ],
  "dice que quiere morirse": [
-  "G",
-  "IC",
-  "FP"
+  "G"
  ],
  "dice que se quiere matar": [
   "G",
@@ -4836,5 +4834,274 @@
  "tiene terrores nocturnos": [
   "W",
   "IF"
+ ],
+ "le cuesta concentrarse": [
+  "U",
+  "IM",
+  "GR"
+ ],
+ "le diagnosticaron tdah tambien": [
+  "U",
+  "GR"
+ ],
+ "toma metilfenidato": [
+  "U",
+  "F"
+ ],
+ "se me trepa por todos lados": [
+  "IM",
+  "LH"
+ ],
+ "mi nene no me hace caso": [
+  "IH",
+  "IM"
+ ],
+ "dejo de hacer todo lo que le gustaba": [
+  "IC",
+  "DO",
+  "AN"
+ ],
+ "tiene ataques de panico": [
+  "AY",
+  "ID",
+  "R"
+ ],
+ "le da mucha ansiedad": [
+  "AY",
+  "ID",
+  "R"
+ ],
+ "le tiemblan las manos": [
+  "NJ",
+  "AY"
+ ],
+ "perdio peso de golpe": [
+  "QW",
+  "LU"
+ ],
+ "le huele mal la orina": [
+  "RA",
+  "JR"
+ ],
+ "le pica todo el cuerpo": [
+  "KG",
+  "MN"
+ ],
+ "tiene manchas en la piel": [
+  "KG",
+  "JR"
+ ],
+ "le salen moretones sin golpearse": [
+  "JR",
+  "ME"
+ ],
+ "se cansa muchisimo": [
+  "RB",
+  "AN"
+ ],
+ "le duelen las piernas por la noche": [
+  "RB",
+  "W"
+ ],
+ "camina raro": [
+  "LY",
+  "DP"
+ ],
+ "se le doblan los tobillos": [
+  "DP",
+  "LY"
+ ],
+ "es muy flexible se disloca": [
+  "DP"
+ ],
+ "tiene el corazon acelerado": [
+  "DP",
+  "AY"
+ ],
+ "le cuesta tragar": [
+  "LG",
+  "RC"
+ ],
+ "tiene mal aliento y caries": [
+  "KF",
+  "EO"
+ ],
+ "le crujen las articulaciones": [
+  "DP"
+ ],
+ "no le ha venido la regla todavia": [
+  "QZ",
+  "DA"
+ ],
+ "tiene mucho acne": [
+  "DA",
+  "I"
+ ],
+ "le huelen mucho los pies": [
+  "IO",
+  "DB"
+ ],
+ "quiere depilarse": [
+  "DA",
+  "IO"
+ ],
+ "la seno dice que molesta": [
+  "GR",
+  "IA",
+  "LW"
+ ],
+ "la maestra dice que molesta": [
+  "GR",
+  "IA",
+  "LW"
+ ],
+ "en el jardin no lo quieren": [
+  "PW",
+  "RF"
+ ],
+ "lo echaron del kinder": [
+  "PW",
+  "RF"
+ ],
+ "necesito una sombra en el aula": [
+  "JP"
+ ],
+ "acompanante terapeutico": [
+  "JP"
+ ],
+ "cud como se tramita": [
+  "LP",
+  "FV"
+ ],
+ "certificado unico de discapacidad": [
+  "LP",
+  "FV"
+ ],
+ "prestaciones basicas ley 24901": [
+  "FV",
+  "LP"
+ ],
+ "que es el pei": [
+  "IA",
+  "H"
+ ],
+ "que es el piar": [
+  "IA",
+  "FW"
+ ],
+ "tengo miedo de que se pierda": [
+  "AE",
+  "PF"
+ ],
+ "compre una pulsera con gps": [
+  "PF",
+  "AE"
+ ],
+ "le pongo rastreador": [
+  "PF",
+  "AE"
+ ],
+ "puede quedarse con su hermano": [
+  "MJ",
+  "JV"
+ ],
+ "como le dejo dinero": [
+  "CL",
+  "JH"
+ ],
+ "mi hijo autista quiere votar": [
+  "LQ",
+  "QD"
+ ],
+ "quiere vivir solo": [
+  "CM",
+  "LB"
+ ],
+ "le estafaron por internet": [
+  "JH",
+  "DV"
+ ],
+ "se enamoro y no le corresponden": [
+  "HX",
+  "S"
+ ],
+ "nadie lo invita a nada": [
+  "AC",
+  "DE"
+ ],
+ "pasa todo el dia jugando online": [
+  "DU",
+  "KV"
+ ],
+ "adaptaciones en el examen": [
+  "FI",
+  "IA"
+ ],
+ "le dan mas tiempo en selectividad": [
+  "FI"
+ ],
+ "no aprueba pero sabe la materia": [
+  "RE",
+  "DG"
+ ],
+ "trabaja y lo tratan mal": [
+  "RL"
+ ],
+ "le hacen bromas en el trabajo": [
+  "RL"
+ ],
+ "esta quemado del trabajo": [
+  "AN"
+ ],
+ "lo dejo solo en casa una hora": [
+  "MJ"
+ ],
+ "tgd": [
+  "BY",
+  "A"
+ ],
+ "trastorno generalizado del desarrollo": [
+  "BY",
+  "A"
+ ],
+ "analisis conductual aplicado": [
+  "FE",
+  "L"
+ ],
+ "denver": [
+  "X"
+ ],
+ "esdm": [
+  "X"
+ ],
+ "modelo denver": [
+  "X"
+ ],
+ "camuflaje": [
+  "C",
+  "RE",
+  "AN"
+ ],
+ "enmascaramiento": [
+  "C",
+  "RE",
+  "AN"
+ ],
+ "masking": [
+  "C",
+  "RE",
+  "AN"
+ ],
+ "disimula para encajar": [
+  "C",
+  "RE",
+  "AN"
+ ],
+ "pica": [
+  "AE"
+ ],
+ "come cosas que no son comida": [
+  "AE",
+  "P"
  ]
 }

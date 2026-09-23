@@ -2954,7 +2954,7 @@ check('La lista de pares revisados está escrita, no en la cabeza de nadie',
 // Todas tienen ficha, y buena. Lo que faltaba era la frase con la que se busca.
 for (const [q, titulo] of [
   ['quiere morirse', 'Salud mental y seguridad'],
-  ['dice que quiere morirse', 'Salud mental y seguridad'],
+  ['dice que quiere morirse', 'Plan de crisis'],
   ['mi hija de 14 se autolesiona', 'Autolesión'],
   ['convulsion que hago', 'Convulsiones: qué hacer en el momento'],
   ['se queda mirando al vacio', 'Epilepsia'],
@@ -2998,6 +2998,32 @@ for (const [q, titulo] of [
   ['tengo que pagar todo privado', 'pobreza'],
   ['rompe cosas cuando se enfada', 'Agresión hacia otros'],
   ['vomita en el autobus escolar', 'Transporte escolar'],
+  // Cuarta tanda (23/09): el cuerpo, que es donde más se confundía.
+  ['le cuesta concentrarse', 'TDAH'],
+  ['toma metilfenidato', 'TDAH'],
+  ['es muy flexible se disloca', 'hipermovilidad'],
+  ['se le doblan los tobillos', 'hipermovilidad'],
+  ['tiene el corazon acelerado', 'hipermovilidad'],
+  ['le cuesta tragar', 'Se atraganta al comer'],
+  ['se cansa muchisimo', 'dolor crónico'],
+  ['tiene ataques de panico', 'ansiedad'],
+  ['no le ha venido la regla todavia', 'Le está cambiando el cuerpo demasiado pronto'],
+  ['le huelen mucho los pies', 'Higiene sensorial'],
+  ['se me trepa por todos lados', 'Asegurar la casa'],
+  // Quinta tanda (23/09): cómo se dice esto en América y la vida adulta.
+  ['la seno dice que molesta', 'Apoyar en el aula'],
+  ['lo echaron del kinder', 'La guardería dice que no puede'],
+  ['necesito una sombra en el aula', 'Auxiliares y apoyos personales'],
+  ['cud como se tramita', 'certificado o valoración de discapacidad'],
+  ['prestaciones basicas ley 24901', 'Autismo en Argentina'],
+  ['que es el pei', 'Reuniones escolares'],
+  ['compre una pulsera con gps', 'Le pongo un GPS'],
+  ['como le dejo dinero', 'Planificación financiera'],
+  ['quiere vivir solo', 'Vivienda y vida independiente'],
+  ['le dan mas tiempo en selectividad', 'Universidad'],
+  ['le hacen bromas en el trabajo', 'lo acosan o lo han despedido'],
+  ['esta quemado del trabajo', 'Burnout autista'],
+  ['lo dejo solo en casa una hora', 'dejarlo solo en casa'],
 ]) {
   const rr = await buscarHondo(q);
   const cabeza = rr.slice(0, 220);
