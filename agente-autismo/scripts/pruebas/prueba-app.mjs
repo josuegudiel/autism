@@ -2765,6 +2765,28 @@ check('Ninguna fuente nueva se cita con dos años distintos',
 check('Y los casos conocidos siguen siendo los mismos, no han crecido',
   AÑOS_OK.size === 7, String(AÑOS_OK.size));
 
+// 54. Las referencias cruzadas. La biblioteca se sostiene sobre 1.496 remisiones
+// del tipo "ve **DO. Catatonia en el autismo**", y una que apunte a un código
+// que no existe manda a una familia a una pantalla de error justo cuando está
+// siguiendo un rastro de urgencia. Hoy no hay ninguna: esto es para que siga así.
+const codigosReales = new Set([...libMd.matchAll(/^### ([A-Z]{1,2})\. /gm)].map((m) => m[1]));
+const remisiones = [...libMd.matchAll(/\*\*([A-Z]{1,2})\.\s*([^*]{4,160}?)\*\*/g)];
+const rotas = [...new Set(remisiones.map((m) => m[1]).filter((c) => !codigosReales.has(c)))];
+check('Ninguna remisión apunta a una ficha que no existe',
+  rotas.length === 0, rotas.join(','));
+check('Y hay remisiones de sobra: la biblioteca está cosida, no es una lista suelta',
+  remisiones.length > 1200 && codigosReales.size > 400,
+  remisiones.length + ' remisiones entre ' + codigosReales.size + ' fichas');
+// Las mismas, pero abriendo de verdad las diez más citadas en la app.
+const masCitadas = [...remisiones.reduce((m, r) => m.set(r[1], (m.get(r[1]) || 0) + 1), new Map())]
+  .sort((a, b) => b[1] - a[1]).slice(0, 10).map((x) => x[0]);
+for (const cod of masCitadas) {
+  await ir('#tema/' + cod);
+  const tx = await texto();
+  check(`La ficha más citada ${cod} abre de verdad`, !/No encuentro ese tema/.test(tx) && tx.length > 400,
+    tx.slice(0, 80));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
