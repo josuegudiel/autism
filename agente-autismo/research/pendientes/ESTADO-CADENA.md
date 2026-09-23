@@ -285,6 +285,21 @@ LÍMITE DURO: 4 temas por ronda.
   prueba que las vigila lleva las siete en una lista blanca comentada; al
   corregir una etiqueta, quítala de esa lista.
 
+- **`scripts/pruebas/vinetas-gemelas.py` (nuevo, 23/09).** Busca viñetas casi
+  idénticas en fichas distintas: un hecho mantenido en dos sitios se
+  desincroniza, y eso es exactamente lo que produjo las cuatro contradicciones
+  de las rondas 48-50 (LW contra BJ, EZ contra RG, FW contra RF, NA contra RL).
+  De 4.644 viñetas salen **6 pares** por encima de 0,72, y cuatro son
+  repeticiones deliberadas: un bloque 🚨 tiene que ser autosuficiente en la ficha
+  donde aterriza el padre, así que se repite a propósito. Los otros dos sí eran
+  la misma lista de seguridad desincronizada y ya están alineados: **QS** se
+  dejaba "no ve bien" fuera de sus señales de fallo neurológico —en una ficha que
+  se titula, precisamente, "el casco y las revisiones de salud (ojos, oídos,
+  cuello, dientes)"— y **MO** no avisaba del sangrado abundante tras un DIU, que
+  NW sí trae. **Pásalo al publicar una ronda**, junto con `coherencia-cifras.py`:
+  uno busca cifras que no cuadran y el otro, texto duplicado que se va a separar.
+  La suite fija el techo en 8 pares.
+
 ## El PR #2
 
 Head `861a83b` (ronda 41). Borrador, sin comentarios ni reviews; todos los runs

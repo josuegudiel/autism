@@ -2846,6 +2846,53 @@ for (const [origen, destino] of [['LP', 'RJ'], ['MX', 'RJ'], ['LQ', 'RK'], ['LB'
   check(`${origen} apunta ya a ${destino}`, new RegExp('\\*\\*' + destino + '\\.').test(fichaDe(origen)));
 }
 
+// 57. Viñetas gemelas. Un hecho mantenido en dos sitios se desincroniza, y eso
+// es literalmente lo que produjo las contradicciones de las rondas 48 a 50: LW
+// contra BJ sobre la pérdida de habilidades, EZ contra RG sobre el estudio de
+// Doherty, FW contra RF sobre la Ley 1618, NA contra RL sobre los plazos de
+// despido. `scripts/pruebas/vinetas-gemelas.py` busca los pares casi idénticos;
+// aquí se fija el techo para que no crezcan sin que nadie mire.
+const PALABRAS_MIN = 12;
+const CONVENCION = /los colores indican|el color dice|marca lo que proponemos|no cuánta prisa corre|aviso de alcance|transparencia:/i;
+const limpia = (t) => t.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`>#]/g, ' ')
+  .toLowerCase().replace(/[^0-9a-záéíóúüñ ]/g, ' ').split(/\s+/).filter((w) => w.length > 3);
+const todas = [];
+for (const [cod, md] of Object.entries(temasCuerpo)) {
+  for (const l of vinetasDe(md)) {
+    if (CONVENCION.test(l)) continue;
+    const ps = new Set(limpia(l));
+    if (ps.size >= PALABRAS_MIN) todas.push([cod, ps]);
+  }
+}
+let gemelas = 0;
+const frecuencia = new Map();
+for (const [, ps] of todas) for (const p of ps) frecuencia.set(p, (frecuencia.get(p) || 0) + 1);
+const indice = new Map();
+todas.forEach(([, ps], i) => {
+  const raras = [...ps].filter((p) => (frecuencia.get(p) || 0) <= 40).slice(0, 14);
+  for (const p of raras) { if (!indice.has(p)) indice.set(p, []); indice.get(p).push(i); }
+});
+const paresVistos = new Set();
+for (const lista of indice.values()) {
+  for (let a = 0; a < lista.length; a++) for (let b = a + 1; b < lista.length; b++) {
+    const i = lista[a], j = lista[b], clave = i + ':' + j;
+    if (paresVistos.has(clave)) continue;
+    paresVistos.add(clave);
+    if (todas[i][0] === todas[j][0]) continue;
+    const si = todas[i][1], sj = todas[j][1];
+    let comunes = 0;
+    for (const p of si) if (sj.has(p)) comunes++;
+    if (comunes / (si.size + sj.size - comunes) >= 0.72) gemelas++;
+  }
+}
+check('Las viñetas casi idénticas entre fichas siguen siendo las contadas',
+  gemelas <= 8, gemelas + ' pares (eran 6 el 23/09: bloques de urgencia repetidos a propósito)');
+// Y las dos que sí eran una lista de seguridad desincronizada, alineadas:
+check('QS no se deja "no ve bien" fuera de sus señales de fallo neurológico',
+  /no ve bien, no camina igual/.test(fichaDe('QS')) && /no ve bien, no camina igual/.test(fichaDe('QC')));
+check('MO avisa del sangrado abundante tras un DIU, igual que NW',
+  /sangrado abundante en los días o semanas siguientes/.test(fichaDe('MO')));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
