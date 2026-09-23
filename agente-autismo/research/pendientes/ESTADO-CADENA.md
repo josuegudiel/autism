@@ -193,6 +193,20 @@ LÍMITE DURO: 4 temas por ronda.
   ruido más grande ya está filtrada:** si las dos ventanas contienen las dos
   cifras, las fichas están de acuerdo y el par se descarta (así bajó de 257 a
   215).
+  **Revisión completa el 23/09, y esto cambia cómo se usa.** Hasta ese día el
+  script imprimía sus 18 primeros pares y nadie sabía cuántos había detrás:
+  eran **159**. Revisados los **46 pares de fichas distintos**, **ninguno era
+  una contradicción nueva**. Las tres clases de ruido que quedaban ya no salen
+  —el redondeo deliberado ("1 de cada 4 (25 %)" frente a 25,2 %), las etiquetas
+  de intervalo de confianza ("IC 95 %" no es una afirmación) y el vocabulario de
+  método, que emparejaba la sensibilidad de un cribado de autismo con la de la
+  autotoma del VPH— y los 114 pares restantes van escritos **con su motivo** en
+  `REVISADOS`, dentro del propio script, y se imprimen aparte. Hoy sale **PARES
+  NUEVOS: 0**, así que lo que aparezca ahí mañana es nuevo de verdad y hay que
+  mirarlo. **Si tocas una ficha que está en `REVISADOS`, quita su línea y vuelve
+  a mirar el par:** con O y HQ pasó exactamente eso —se arregló O, se dejó HQ, y
+  HQ siguió rondas asustando a los 12 meses con lo que O explica que es normal
+  hasta los 18—.
 
 
 - **Las notas "Antes de publicar"**: auditadas las seis que pedían trabajo en
