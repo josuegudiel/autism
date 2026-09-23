@@ -39,6 +39,19 @@ choque merece leerse entero, porque **no era "la publicada está mal"**:
   contradicen, antes de decidir cuál está mal comprueba si están hablando de dos
   cosas distintas. Aquí ninguna mentía.
 
+**Y lo que dio más de sí cuando se acabó el presupuesto de búsqueda:** dos
+tandas de veinte consultas escritas con las palabras de una familia, una de
+síntomas del cuerpo y otra de colegio y derechos. **En las dos, once de veinte
+abrían en la ficha equivocada**, y la ficha existía siempre: EM publica los tics
+desde la ronda 8 y «no para de parpadear y hacer ruiditos» no devolvía *nada*;
+DE publica el acoso escolar y «le pegan y el colegio dice que son cosas de
+niños» abría en mutismo selectivo; «lo han expulsado tres días» abría en
+estreñimiento. **Esa tasa de uno de cada dos se ha repetido en las dos tandas y
+en las de rondas anteriores: no es que el buscador esté roto en un sitio, es que
+cada área sin probar tiene lo suyo.** Cuando no haya presupuesto para investigar,
+esto es lo que más rinde: veinte consultas nuevas de un área que nadie haya
+probado, y mirar la primera respuesta de cada una.
+
 Y una tercera, de fontanería: **el servidor de pruebas se cae solo** (dio
 `ERR_CONNECTION_REFUSED` a mitad de la ronda). Levántalo antes de cualquier
 comprobación con navegador, como dice el procedimiento.

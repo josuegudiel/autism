@@ -3272,6 +3272,31 @@ for (const [q, titulo] of [
   check(`Síntomas del cuerpo: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 65. Tercera tanda de veinte, esta vez de colegio, derechos y dinero. Mismo
+// resultado que la de síntomas: once de veinte abrían mal. La ficha existía
+// siempre —DE publica el acoso escolar desde la ronda 6, MV las expulsiones,
+// PB las ayudas, HN el relevo— y lo que fallaba era la frase:
+//   «lo han expulsado tres días»                    -> estreñimiento
+//   «le pegan y el colegio dice que son cosas de niños» -> mutismo selectivo
+//   «no tiene ningún amigo en clase»                -> lo sujetan o lo encierran
+//   «la nueva profesora no sabe nada de él»         -> trastorno límite de la personalidad
+//   «cuánto dinero nos corresponde»                 -> tarjeta de aparcamiento
+for (const [q, titulo] of [
+  ['lo han expulsado tres dias', 'expulsiones'],
+  ['la profesora lo castiga sin recreo', 'recreo'],
+  ['le quitan el movil como castigo', 'expulsiones'],
+  ['le pegan y el colegio dice que son cosas de ninos', 'Acoso escolar'],
+  ['no tiene ningun amigo en clase', 'Amistades'],
+  ['el colegio dice que no tiene recursos', 'no necesita apoyos'],
+  ['la nueva profesora no sabe nada de el', 'informe del diagnóstico'],
+  ['cuanto dinero nos corresponde', 'Ayudas económicas'],
+  ['no se que poner en la solicitud de la ayuda', 'Ayudas económicas'],
+  ['quien se queda con el cuando yo falte', 'planificar el relevo'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Colegio y derechos: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

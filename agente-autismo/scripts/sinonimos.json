@@ -5598,5 +5598,97 @@
  "le tiembla la mano": [
   "LJ",
   "NN"
+ ],
+ "lo han expulsado tres dias": [
+  "MV"
+ ],
+ "lo han expulsado del colegio": [
+  "MV"
+ ],
+ "le han puesto un parte": [
+  "MV"
+ ],
+ "me llaman para que vaya a recogerlo": [
+  "MV"
+ ],
+ "la profesora lo castiga sin recreo": [
+  "GS",
+  "MV"
+ ],
+ "lo dejan sin recreo": [
+  "GS",
+  "MV"
+ ],
+ "le quitan el movil como castigo": [
+  "MV",
+  "KR"
+ ],
+ "le pegan y el colegio dice que son cosas de ninos": [
+  "DE"
+ ],
+ "le pegan en el colegio": [
+  "DE"
+ ],
+ "se rien de el en clase": [
+  "DE"
+ ],
+ "lo acosan en el colegio": [
+  "DE"
+ ],
+ "cosas de ninos": [
+  "DE"
+ ],
+ "no tiene ningun amigo en clase": [
+  "BO",
+  "HR"
+ ],
+ "nadie quiere jugar con el": [
+  "HR",
+  "BO"
+ ],
+ "no le invitan a los cumpleanos": [
+  "BO",
+  "HR"
+ ],
+ "el colegio dice que no tiene recursos": [
+  "RE",
+  "FH"
+ ],
+ "dicen que no hay recursos": [
+  "RE",
+  "FH"
+ ],
+ "no le dan apoyo en el aula": [
+  "RE",
+  "FH"
+ ],
+ "la nueva profesora no sabe nada de el": [
+  "NF",
+  "RE"
+ ],
+ "cada ano empezamos de cero con el profesor": [
+  "NF",
+  "RE"
+ ],
+ "cuanto dinero nos corresponde": [
+  "PB"
+ ],
+ "que ayudas economicas hay": [
+  "PB"
+ ],
+ "no se que poner en la solicitud de la ayuda": [
+  "PB"
+ ],
+ "como pido la ayuda por hijo con discapacidad": [
+  "PB"
+ ],
+ "quien se queda con el cuando yo falte": [
+  "HN"
+ ],
+ "que pasara con el cuando yo no este": [
+  "HN"
+ ],
+ "quien lo cuidara cuando nos muramos": [
+  "HN"
  ]
 }
