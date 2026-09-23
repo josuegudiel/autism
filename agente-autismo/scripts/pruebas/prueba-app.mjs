@@ -2909,6 +2909,23 @@ check('Y O y HQ cuentan el mismo hito con la misma horquilla',
   /entre los 12 y los 18 meses/.test(hq) && /entre los 12 y los 18 meses/.test(o));
 check('HQ manda a O, que es donde está el desarrollo del matiz', /\*\*O\. /.test(hq));
 
+// 59. El detector de cifras incoherentes, atado. Hasta hoy imprimía sus 18
+// primeros pares y nadie sabía cuántos había detrás: eran 159. Se revisaron los
+// 46 pares de fichas distintos y ninguno era una contradicción nueva —el estudio
+// de fugas y sus subcifras, McElhanon contra Wang en lo digestivo (que A, AA y
+// ME ya reconcilian por escrito), la recurrencia en hermanos de 2011 contra la
+// de 2024, la heredabilidad del 80% contra el 20% de recurrencia, la alexitimia
+// en autismo contra la de población general—. Van todos escritos con su motivo
+// en el propio script, así que lo que salga a partir de ahora es nuevo.
+const coh = fs.readFileSync(new URL('../../scripts/pruebas/coherencia-cifras.py', import.meta.url), 'utf8');
+check('El detector de cifras distingue los pares ya revisados de los nuevos',
+  /PARES NUEVOS, para mirar/.test(coh) && /REVISADOS = \{/.test(coh));
+check('Y no cuenta como contradicción un redondeo ni una etiqueta de intervalo',
+  /Redondeo, no contradiccion/.test(coh) && /no es una afirmacion: es la etiqueta del intervalo/.test(coh));
+const revisados = (coh.match(/\('[A-Z]{1,2}','[A-Z]{1,2}'\)/g) || []).length;
+check('La lista de pares revisados está escrita, no en la cabeza de nadie',
+  revisados >= 60, revisados + ' pares anotados');
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
