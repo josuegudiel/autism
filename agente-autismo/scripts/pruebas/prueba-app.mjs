@@ -2246,6 +2246,8 @@ check('Crisis: la respuesta del asistente ofrece también un canal por escrito',
 // la tarjeta afirma. Un enlace que no sostiene la afirmación es peor que ninguno:
 // da la apariencia de estar comprobado.
 const detJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/banderas-rojas.json', import.meta.url), 'utf8'));
+const eviJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/evidencia.json', import.meta.url), 'utf8'));
+const tarjetasEvi = eviJSON.secciones.flatMap((s2) => s2.items || s2.tarjetas || []);
 check('Detector: ninguna tarjeta se queda sin fuente, y todas van por https',
   detJSON.casos.every((c) => c.fuentes.length >= 1 && c.fuentes.every((f) => /^https:\/\//.test(f.url) && f.label)),
   detJSON.casos.filter((c) => !c.fuentes.length).map((c) => c.id).join(','));
@@ -2281,19 +2283,33 @@ const FIRMAS = [
   [/\bCBS\b/i, ['cbsnews.com']],
 ];
 const desajustes = [];
-for (const c of detJSON.casos) {
-  for (const f of c.fuentes) {
+const conFuentes = [
+  ...detJSON.casos.map((c) => [c.id, c.fuentes]),
+  ...tarjetasEvi.map((t) => ['evidencia/' + t.titulo, t.fuentes || []]),
+];
+// Los repositorios que alojan el trabajo de cualquiera —PubMed, PMC, doi.org—
+// no dicen nada sobre quién firma, así que no se les aplica la regla: una
+// revisión Cochrane leída en PMC sigue siendo de Cochrane. Lo que se caza es
+// citar a un organismo y enlazar la web de OTRO organismo.
+const REPOSITORIOS = ['pubmed.ncbi.nlm.nih.gov', 'pmc.ncbi.nlm.nih.gov', 'ncbi.nlm.nih.gov', 'doi.org'];
+for (const [quien, fuentes] of conFuentes) {
+  for (const f of fuentes) {
     const host = new URL(f.url).hostname.replace(/^www\./, '');
+    if (REPOSITORIOS.includes(host)) continue;
     for (const [firma, dominios] of FIRMAS) {
       if (!firma.test(f.label)) continue;
       if (!dominios.some((d) => host === d || host.endsWith('.' + d))) {
-        desajustes.push(c.id + ': «' + f.label + '» → ' + host);
+        desajustes.push(quien + ': «' + f.label + '» → ' + host);
       }
     }
   }
 }
-check('Detector: quien firma cada fuente coincide con el dominio que la aloja',
+check('Detector y Centro de evidencia: quien firma cada fuente coincide con el dominio que la aloja',
   desajustes.length === 0, desajustes.join(' · '));
+check('Centro de evidencia: ninguna tarjeta se queda sin fuente, y todas van por https',
+  tarjetasEvi.every((t) => (t.fuentes || []).length >= 1
+    && t.fuentes.every((f) => /^https:\/\//.test(f.url) && f.label)),
+  tarjetasEvi.filter((t) => !(t.fuentes || []).length).map((t) => t.titulo).join(','));
 
 // Y las cuatro tarjetas que se corrigieron, por si alguien las revierte.
 const caso = (id) => detJSON.casos.find((c) => c.id === id);
@@ -2319,7 +2335,6 @@ check('Detector: el ozono apoya su riesgo en la norma que lo define como gas tó
 // viejas dentro de una frase histórica («pasó de 15 a 35») son legítimas y no se
 // tocan: lo que se comprueba es que la afirmación en presente sea la verdadera.
 const estadoMd = fs.readFileSync(new URL('../../ESTADO.md', import.meta.url), 'utf8');
-const eviJSON = JSON.parse(fs.readFileSync(new URL('../../web/content/evidencia.json', import.meta.url), 'utf8'));
 const nSecciones = eviJSON.secciones.length;
 const nTarjetas = eviJSON.secciones.reduce((a, s2) => a + (s2.items || s2.tarjetas || []).length, 0);
 const nEnlacesEvi = eviJSON.secciones.reduce(
