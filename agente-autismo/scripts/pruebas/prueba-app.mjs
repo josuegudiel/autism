@@ -3441,6 +3441,33 @@ for (const [a, b, marca, quees] of [
     linea ? linea.slice(0, 120) : 'no encuentro la viñeta en ' + a);
 }
 
+// 71. La memoria de la cadena, atada a sí misma. El 23/09 `ESTADO-CADENA.md`
+// decía a la vez «la ronda 51 está corriendo» —llevaba horas publicada— y
+// «26 encargables» frente a los que dijera `RESERVA.md`. Es la misma avería que
+// esta suite persigue en la biblioteca (un hecho en dos sitios, corregido en
+// uno), pero en el archivo que el vigía manda leer y creer antes de nada: un
+// turno siguiente habría ido a buscar el runId de una ronda terminada.
+// Las herramientas del repo no miraban los archivos de memoria. Ahora sí.
+const cadena71 = fs.readFileSync(new URL('../../research/pendientes/ESTADO-CADENA.md', import.meta.url), 'utf8');
+const reserva71 = fs.readFileSync(new URL('../../research/pendientes/RESERVA.md', import.meta.url), 'utf8');
+const nCadena = (cadena71.match(/\*\*(\d+) encargables de \d+\*\*/) || [])[1];
+const nReserva = (reserva71.match(/quedan (\d+) encargables/) || [])[1];
+check('La memoria y la reserva cuentan los mismos temas encargables',
+  !!nCadena && nCadena === nReserva, `ESTADO-CADENA dice ${nCadena}, RESERVA dice ${nReserva}`);
+
+// Y la que habría cazado el error de verdad: si la memoria declara una ronda
+// viva con sus códigos, esos códigos NO pueden estar ya publicados.
+// El patrón real que se escribe: «**Ronda 51, RELANZADA y viva (…).** Códigos
+// **RN, RO, RP, RQ**», todo seguido y en la misma línea. La primera versión de
+// esta prueba exigía un salto de línea entre una cosa y otra y por eso NO habría
+// cazado el fallo que la motivó: comprobado contra el texto real de 982ad38.
+const vivos = [...cadena71.matchAll(/Ronda \d+[^\n]{0,80}?\b(?:viva|corriendo)\b[^]{0,300}?Códigos \*\*([A-Z][A-Z, *]*)\*\*/g)]
+  .flatMap((m) => m[1].split(/[^A-Z]+/).filter((c) => c.length === 2));
+const yaPublicados = vivos.filter((c) => new RegExp('^### ' + c + '\\. ', 'm').test(libMd));
+check('La memoria no da por viva una ronda cuyos temas ya están publicados',
+  yaPublicados.length === 0,
+  yaPublicados.length ? 'dice viva pero ya están en la biblioteca: ' + yaPublicados.join(', ') : '');
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
