@@ -9,8 +9,29 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna. La 51 se publicó entera** (RN, RO, RP, RQ). Para la 52, encarga desde
-`research/pendientes/RESERVA.md`, **leyendo primero los avisos de su cabecera**.
+**Ronda 52, viva** (23/09, ~07:15 UTC). Códigos **RR** (urgencias del abdomen:
+el hijo que no localiza el dolor) y **RS** (se ha tragado una pila de botón, un
+imán o una moneda). `runId` **`wf_b30a571a-343`**; se reanuda como la 51, **con
+el `args` entero**.
+
+**Son DOS y no cuatro a propósito.** El presupuesto de WebSearch son 200 por
+sesión, compartidas con todos los subagentes; la 51 se llevó unas 120. Otra
+ronda de cuatro (4×15 investigando + 4×15 verificando = 120) se habría quedado
+sin presupuesto a mitad de la verificación, que es exactamente lo que paró la 51
+la sesión anterior. Dos temas son 60 y caben. **Cuando el presupuesto venga
+fresco, vuelve a cuatro; cuando no sepas cuánto queda, dos.**
+
+**Y RS nace con una hipoteca que hay que mirar al depurarla:** **LH ya publica el
+aviso entero** de la pila de botón y el imán (quemadura esofágica en dos horas,
+ir sin esperar aunque parezca estar bien), y **ND lo repite**. El encargo lo dice
+y acota RS a lo que LH no tiene —qué pasa al llegar al hospital, por qué no se
+provoca el vómito, uno contra dos imanes, el objeto romo que sí puede esperar, el
+tricobezoar, y el caso tardío del niño con pica al que nadie ha pedido una
+radiografía—. **Si vuelve siendo el aviso de LH otra vez, no se publica**, como
+RM.
+
+Cuando terminen, la 53 se encarga desde `research/pendientes/RESERVA.md`,
+**leyendo primero los avisos de su cabecera**.
 
 **Lo que enseñó la 51, que es lo que conviene llevar a la siguiente:** tres de
 las cuatro fichas volvieron con `publicable=false`, y **ninguna de las tres lo
