@@ -2461,6 +2461,26 @@ const qbRef = await pag.$$eval('.tema-cuerpo .punto',
 check('QB: la viñeta que solo cita "el bloque 🚨" no se pinta como urgencia',
   qbRef >= 1, qbUrg + ' urgentes, ' + qbRef + ' remisiones);');
 
+// Y la otra mitad de la regla que la biblioteca repite ficha tras ficha ("el
+// bloque 🚨 va arriba, siempre visible, nunca plegado"): la app pinta en el
+// orden del documento, así que "arriba" se decide en el markdown. LQ tenía su
+// única urgencia —que en una urgencia vital la atención médica no espera a
+// ningún trámite judicial, y que hay que actuar hoy si alguien está haciendo
+// firmar créditos a tu hijo— en la viñeta 9 de 13, detrás de nueve párrafos
+// sobre el artículo 12 de la Convención de la ONU.
+const urgenciaTardia = [];
+for (const [cod, md] of Object.entries(temasCuerpo)) {
+  const v = vinetasDe(md).map((l) => l.trim());
+  const idx = v.map((l, i) => (l.includes('🚨') && l.indexOf('🚨') <= 12 ? i : -1)).filter((i) => i >= 0);
+  if (idx.length && Math.min(...idx) > 0) urgenciaTardia.push(cod + ':' + Math.min(...idx) + '/' + v.length);
+}
+check('Toda ficha con bloque de urgencia lo pone en su primera viñeta',
+  urgenciaTardia.length === 0, urgenciaTardia.join(' · '));
+await ir('#tema/LQ');
+const primeraLQ = await pag.$$eval('.tema-cuerpo .punto', (ns) => ns[0].className);
+check('LQ abre ya con su urgencia, no con el artículo 12 de la Convención',
+  /urgente/.test(primeraLQ), primeraLQ);
+
 // LG las tiene de las dos clases: el atragantamiento en curso (🚨 + 🟢) y
 // viñetas normales con su nivel.
 await ir('#tema/LG');
