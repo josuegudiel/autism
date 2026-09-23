@@ -9,51 +9,53 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 50** — runId `wf_45e753fd-bd4` (tarea w3qifsn6w), lanzada el 23/09.
-Códigos **RJ, RK, RL, RM**: el adulto que no llega al baremo pero no aguanta un
-trabajo; el hijo adulto que no quiere certificado, terapia ni servicios; el
-acoso o el despido por discapacidad en el trabajo; y la lectura fácil y la
-accesibilidad cognitiva de lo que se firma.
+**Ronda 51** — runId `wf_924a2fac-bfb` (tarea wq8abzbhe), lanzada el 23/09.
+Códigos **RN, RO, RP, RQ**: permisos, excedencia y reducción de jornada para
+cuidar (acotada al TRÁMITE, porque JX, PH y NA ya publican lo de al lado); el
+hermano que hace de cuidador hoy; la tarjeta de aparcamiento y los distintivos
+de discapacidad no visible; y el niño que duerme en la cama de los padres.
 
-Las rondas 48 (RB, RC, RD, RE) y 49 (RF, RG, RH, RI) están enteras publicadas.
+Las rondas 48, 49 y 50 están publicadas. De la 50 salieron **RJ, RK y RL**; la
+cuarta, **RM (lectura fácil), no se publicó** y el código queda reservado para
+ella: al depurarla se quedó en un resumen de IH, IQ, KZ, JA y GO, que ya
+publican lo mismo. El borrador corregido y lo que le falta están en
+`research/pendientes/RM.md`. **Es el segundo rechazo por solapamiento de la
+cadena (el primero fue MY en la 28), y los dos se detectaron en el corrector, no
+antes: acota los encargos por escrito y nombra las fichas que NO son suyas.**
 
-**Lo que enseñó la 49, que es lo mismo que enseñó la 48 y conviene ya dar por
-ley de la casa:** las dos fichas marcadas `publicable: false` lo estaban por un
-choque con una ficha **ya publicada**, y en los dos casos **la equivocada era la
-vieja**:
+**Lo que enseñó la 50:**
 
-1. **RF contra FW (Colombia).** RF decía que la Ley Estatutaria 1618 de 2013
-   obliga a las entidades públicas *y privadas*; FW la resumía como deber de las
-   públicas. Con el texto delante: su **artículo 14** pone el deber de diseñar,
-   implementar y financiar los ajustes razonables sobre las entidades públicas
-   **y privadas encargadas de prestar servicios públicos**. Ni una ni otra
-   estaban completas, porque "servicio público" no es "negocio abierto al
-   público": para un gimnasio o un campamento privados hay que mirarlo caso por
-   caso. Las dos fichas lo dicen ya con esa letra.
-2. **RG contra EZ (el estudio de Doherty).** EZ publicaba "más de 350 adultos
-   autistas (muestra de ~500)" y "no haber buscado atención ante una condición
-   potencialmente grave". El estudio (BMJ Open 2022, 12:e056904) son **507
-   adultos autistas y 157 no autistas**, y lo que midió es que **uno de cada
-   tres no pudo acceder** a atención ante una condición **potencialmente
-   mortal**. Corregida EZ, que además ya no repite el dato: enlaza a RG.
-
-**El tercer motivo de retención vuelve a ser el mismo falso positivo de la 48:**
-"el código RF/RG/RH no existe en el índice". Claro que no: se está creando. Tres
-de las cuatro fichas se renumeraron solas. **No retengas nada por eso.**
+1. **El corrector ya edita la biblioteca por su cuenta, y esta vez lo hizo.** El
+   de RL entró en **NA** y sustituyó "no hemos verificado ningún plazo en ningún
+   país" por los tres que sí verificó (España 20 días hábiles, art. 59.3 ET;
+   México dos meses, art. 518 LFT; Chile 60 días, art. 489 del Código del
+   Trabajo), acotando lo que sigue sin saberse. **Mira `git status` antes de
+   publicar una ronda**: puede haber cambios en el árbol que no hiciste tú.
+2. **Y deja referencias a fichas que todavía no existen.** Esa misma edición
+   apuntaba a **RL**, así que la suite se puso roja hasta publicar la ronda. No
+   es un error: es el orden en que pasan las cosas. Publica primero y comprueba
+   después.
+3. **`pendiente de ` sin `\b` casa dentro de "inde-pendiente de".** RJ dice "el
+   TEA se recoge como categoría propia e **independiente de** la discapacidad
+   intelectual" y habría puesto la suite en rojo al publicarla. Es el segundo
+   patrón de bloqueo con el mismo fallo en dos días (el primero fue `EN ESPERA`
+   dentro de "no admit-en espera"). **Si vuelves a tocar `BLOQUEO`, pon `\b`.**
 
 ## Ya publicado
 
-Rondas 29 a 49.
-Biblioteca en **445 temas / 226 verificados / 219 síntesis / 4.453 fuentes**.
-Suite **675/675**. Reserva: **11 entradas** (la 0, "dice que se quiere morir",
+Rondas 29 a 50.
+Biblioteca en **448 temas / 226 verificados / 222 síntesis / 4.516 fuentes**.
+Suite **718/718**. Reserva: **8 entradas** (la 0, "dice que se quiere morir",
 sigue sin investigarse: terminada como NI y esperando decisión).
 
-Ronda 50 en vuelo: códigos **RJ, RK, RL, RM** (QO sigue libre a propósito, como
-PO; confírmalo con grep). Para la **51**, candidatas por orden de la reserva:
-**permisos, excedencia y reducción de jornada para cuidar** (ojo: roza PH y JX,
-acótala por escrito), **el hermano que hace de cuidador**, **tarjeta de
-aparcamiento y distintivos de discapacidad no visible** y **duerme en nuestra
-cama** (ojo: roza W). **Cuando queden menos de 4 investigables, lanza antes
+Ronda 51 en vuelo: códigos **RN, RO, RP, RQ** (QO sigue libre a propósito, como
+PO; confírmalo con grep). Para la **52**, candidatas por orden de la reserva:
+**RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
+`research/pendientes/RM.md`), **salir de casa cuando ya usa pañal fuera** —no,
+esa ya es RH: mira la reserva antes de encargar—, y lo que quede de las ocho
+entradas. **Con ocho entradas quedan dos rondas: lanza ya
+`scripts/workflows/detectar-huecos.mjs`** antes de la 52 para rellenar la
+reserva, que es la instrucción de abajo y toca ahora. **Cuando queden menos de 4 investigables, lanza antes
 `scripts/workflows/detectar-huecos.mjs`.**
 
 **NO investigues** "de cinco a ocho pide la tablet" (rechazada como NG por

@@ -205,10 +205,15 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 48: RD (pedir plaza) va junto a CM y MC, que describen esos mismos
     # recursos, y no en familia: quien busca residencia busca en vida adulta.
     "RD": "adultez",
+    # Ronda 50: RJ (el grado bajo y el empleo que no aguanta) caia en terapias
+    # por la palabra "apoyo"; es vida adulta, como RK.
+    "RJ": "adultez",
     # Derechos y recursos por pais.
     "MR": "derechos", "PB": "derechos", "PN": "derechos", "LX": "derechos",
     # Ronda 49: RF es una reclamacion con plazos por pais, no ocio.
     "RF": "derechos",
+    # Ronda 50: RL (acoso o despido por discapacidad) es una reclamacion laboral.
+    "RL": "derechos",
 }
 
 # Excepciones al orden de CATEGORIAS. El "primera que coincide gana" resuelve

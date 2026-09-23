@@ -721,7 +721,7 @@ const cabeceras = [...lib35.matchAll(/^### [A-Z]{1,2}\. .*$/gm)].map((m) => m[0]
 // diciendo 'pendiente de resolver una contradicción con FU' que ya se había
 // resuelto en la 35. Y no vale con buscar 'pendiente' a secas: lo lleva dentro
 // 'vida independiente', que es el título de CM.
-const BLOQUEO = /[⏳⏸]|\bEN ESPERA\b|retenida|NO PUBLICABLE|no publicar hasta|pendiente de |pendiente:|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
+const BLOQUEO = /[⏳⏸]|\bEN ESPERA\b|retenida|NO PUBLICABLE|no publicar hasta|\bpendiente de |\bpendiente:|bloquea la publicaci|bloquead|ve \*Pendiente editorial\*/i;
 const sucias = cabeceras.filter((h) => BLOQUEO.test(h));
 check('Ninguna ficha publicada arrastra una marca de estado sin resolver',
   sucias.length === 0, sucias.slice(0, 2).join(' | ').slice(0, 150));
@@ -2785,6 +2785,65 @@ for (const cod of masCitadas) {
   const tx = await texto();
   check(`La ficha más citada ${cod} abre de verdad`, !/No encuentro ese tema/.test(tx) && tx.length > 400,
     tx.slice(0, 80));
+}
+
+// 55. Lo que de verdad tiene que estar sin conexión. El service worker ya se
+// comprobaba a fondo —versión, 404, stale-while-revalidate—, pero nadie miraba
+// si lo que promete precachear acaba en la caché. El archivo que no puede
+// faltar es `ayuda-urgente.json`: una parte del público al que sirve esta app
+// vive donde los datos móviles se acaban, y los teléfonos de emergencia son
+// justo lo que no se puede dejar para cuando haya cobertura.
+await ir('#ayuda');
+const enCache = await pag.evaluate(async (rutas) => {
+  const out = {};
+  for (const r of rutas) {
+    const url = new URL(r, location.href).href;
+    out[r] = !!(await caches.match(url));
+  }
+  return out;
+}, ['content/ayuda-urgente.json', 'index.html', 'styles.css', 'app.js',
+    'content/banderas-rojas.json', 'content/evidencia.json', 'content/biblioteca-indice.json']);
+check('Los teléfonos de ayuda están precacheados: funcionan sin conexión',
+  enCache['content/ayuda-urgente.json'] === true, JSON.stringify(enCache));
+check('Y con ellos el resto del armazón de la app',
+  Object.values(enCache).every(Boolean), JSON.stringify(enCache));
+// Y que la lista del sw no se quede atrás respecto de lo que la app pide.
+check('sw.js sigue declarando en ASSETS los teléfonos de ayuda',
+  /\.\/content\/ayuda-urgente\.json/.test(swSrc));
+
+// 56. Ronda 50: RJ (grado bajo y sin empleo), RK (el adulto que dice que no) y
+// RL (acoso o despido por discapacidad). La cuarta, RM (lectura fácil), no se
+// publica: al depurarla se quedó en un resumen de IH, IQ, KZ, JA y GO, que ya
+// publican lo mismo. El borrador y lo que le falta están en research/pendientes/RM.md.
+for (const [codigo, marca] of [['RJ', /grado|baremo|empleo/i], ['RK', /certificado|adulto/i],
+                               ['RL', /despido|acoso/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 50: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re50] of [['le han dado un grado bajo', /grado|baremo/i],
+                         ['no quiere el certificado', /certificado/i],
+                         ['lo han despedido por su discapacidad', /despido|despedid/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 50: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re50.test(rr), rr.slice(0, 160));
+}
+await ir('#tema/RM');
+check('RM no está en la app: se quedó en un resumen de cinco fichas que ya existen',
+  /No encuentro ese tema/.test(await texto()));
+
+// NA (el despido de quien cuida) llevaba publicado "no hemos verificado ningún
+// plazo en ningún país". Con RL verificados los de España, México y Chile, esa
+// frase ya no era cierta: la ronda la corrigió y acotó lo que sigue sin saberse.
+const na = fichaDe('NA');
+check('NA da ya los plazos de despido que RL verificó, en vez de decir que no hay ninguno',
+  /20 días hábiles/.test(na) && /art\. 518/.test(na) && /489 del Código del Trabajo/.test(na)
+  && !/ni ningún plazo en días para impugnar un despido o una sanción laboral en ningún país/.test(na));
+check('Y NA manda a RL para el detalle', /\*\*RL\./.test(na));
+
+for (const [origen, destino] of [['LP', 'RJ'], ['MX', 'RJ'], ['LQ', 'RK'], ['LB', 'RK'],
+                                 ['QU', 'RK'], ['JX', 'RL'], ['T', 'RL']]) {
+  check(`${origen} apunta ya a ${destino}`, new RegExp('\\*\\*' + destino + '\\.').test(fichaDe(origen)));
 }
 
 await nav.close();
