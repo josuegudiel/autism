@@ -298,6 +298,16 @@ LÍMITE DURO: 4 temas por ronda.
   **Abre la sesión siguiente por aquí**: dos búsquedas resuelven las dos. La
   prueba que las vigila lleva las siete en una lista blanca comentada; al
   corregir una etiqueta, quítala de esa lista.
+  **Y no gastes el turno intentándolo por WebFetch**: probado el 23/09, el proxy
+  de salida bloquea `pmc.ncbi.nlm.nih.gov` y `link.springer.com` (EGRESS_BLOCKED),
+  así que la única vía es WebSearch con presupuesto fresco. Dos detalles ya
+  localizados para no repetir el grep: el año baila **dentro de una misma ficha
+  vecina** —línea 431 dice "una revisión 2018" y la etiqueta "Schoen 2018",
+  mientras 774 y 3604 dicen 2019 del mismo PMC—, y en el segundo caso la ficha
+  de la línea 720 enlaza el Springer como "Hume et al. 2021" mientras la 4069 lo
+  enlaza como "Steinbrenner et al. (2020)" **teniendo al lado, en esa misma
+  línea de fuentes, el PDF del informe del NCAEP**: si son dos documentos, la
+  4069 está citando dos veces el informe y ninguna el artículo.
 
 - **`scripts/pruebas/vinetas-gemelas.py` (nuevo, 23/09).** Busca viñetas casi
   idénticas en fichas distintas: un hecho mantenido en dos sitios se
@@ -345,6 +355,18 @@ LÍMITE DURO: 4 temas por ronda.
   venían escribiendo las listas sin que sirviera de nada. Está en `web/app.js` y
   replicado en `scripts/pruebas/simular-busqueda.py`: **si tocas uno, toca el
   otro**, que si no el simulador deja de simular.
+- **Y el simulador NO es la app.** Reimplementa `buscarTemas()`, que puntúa
+  sobre el índice —título, claves, mensaje clave—, pero la app hace ADEMÁS una
+  búsqueda dentro del CUERPO de las fichas (`biblioteca-busqueda.json`), y eso
+  cambia el orden. El 23/09, tres de setenta y siete consultas asertadas daban
+  primera respuesta distinta en uno y en otro, y en las tres la de la app era
+  mejor: «corregí» una expectativa que estaba bien y puse la suite en rojo.
+  Itera con el simulador, que es instantáneo y no necesita navegador, pero
+  **comprueba contra la app antes de asertar**, con
+  `scripts/pruebas/comprobar-consultas.mjs` (un TSV de `consulta<TAB>trozo del
+  título`, o consultas sueltas para ver solo qué abre cada una). Cuando falla
+  dice en qué puesto quedó lo que esperabas, que es el dato que distingue
+  «el sinónimo está mal» de «solo le falta empuje».
 
 ## El PR #2
 

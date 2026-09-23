@@ -9,9 +9,12 @@ ronda nueva se tropiece con ellas.
 
 Uso: coherencia.py [--todas]
 """
-import re, sys, unicodedata, collections
+import os, re, sys, unicodedata, collections
 
-LIB='/home/user/autism/agente-autismo/research/biblioteca-autismo.md'
+# Deducida de donde vive este fichero: escrita a mano solo funcionaba en la
+# maquina donde se escribio.
+_RAIZ=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+LIB=os.path.join(_RAIZ, 'research', 'biblioteca-autismo.md')
 VACIAS=set('de la el los las en y a que con por para un una del al se su sus lo es son como mas o ni sin sobre entre cada'.split())
 # Palabras del andamiaje de la ficha: aparecen en todas y no dicen de que va la
 # afirmacion, pero dentro de una ventana son "raras" y emparejaban cualquier cosa.

@@ -42,7 +42,14 @@ Para mejorar el buscador, edita **`scripts/sinonimos.json`**: traduce cómo habl
 python3 scripts/pruebas/simular-busqueda.py "quiere morirse"
 ```
 
-Y de vez en cuando, escribe veinte consultas con las palabras de una familia y mira la primera respuesta de cada una: es la comprobación que más fallos ha encontrado en este proyecto.
+Eso es instantáneo y no necesita navegador, pero **el simulador no es la app**: reproduce la puntuación sobre el índice (título, claves, mensaje), y la app busca además dentro del cuerpo de las fichas, lo que a veces cambia el orden. Así que antes de dar una frase por buena de verdad, compruébala contra la app:
+
+```bash
+python3 -m http.server 8098 --bind 127.0.0.1 &
+node scripts/pruebas/comprobar-consultas.mjs "quiere morirse" "se escapa de casa"
+```
+
+Y de vez en cuando, escribe veinte consultas con las palabras de una familia y mira la primera respuesta de cada una: es la comprobación que más fallos ha encontrado en este proyecto. Para eso, pásale al mismo comando un fichero con `consulta<TAB>trozo del título que debe abrir` por línea; te dirá cuáles no aterrizan donde esperabas y en qué puesto quedó lo que esperabas.
 
 ---
 

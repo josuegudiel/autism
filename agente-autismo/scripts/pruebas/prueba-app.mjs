@@ -3070,6 +3070,41 @@ for (const [q, titulo] of [
   check(`Buscar la sigla «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 61. La herramienta que faltaba, y la razón por la que faltaba. El simulador
+// puntúa sobre el índice; la app busca ADEMÁS dentro del cuerpo de las fichas,
+// así que el orden puede no coincidir. Tres de las consultas asertadas arriba
+// se «corrigieron» según el simulador y pusieron la suite en rojo: en las tres
+// la app tenía razón. Que la herramienta y el aviso sigan ahí es lo único que
+// impide repetirlo, porque el error no se nota hasta la vuelta siguiente.
+const comprobador = new URL('../../scripts/pruebas/comprobar-consultas.mjs', import.meta.url);
+check('Existe la herramienta para comprobar consultas contra la app', fs.existsSync(comprobador));
+const compSrc = fs.readFileSync(comprobador, 'utf8');
+check('Y mira el título de la primera tarjeta, no un trozo suelto de la caja',
+  /#res-bib \.tema-card h4/.test(compSrc));
+check('Y avisa por escrito de que el simulador no es la app',
+  /simulador.*no es la app|no es la app|NO es la app/i.test(compSrc));
+const simSrc = fs.readFileSync(new URL('../../scripts/pruebas/simular-busqueda.py', import.meta.url), 'utf8');
+check('El simulador lleva el aviso en su propia cabecera',
+  /no es la app/i.test(simSrc) && /comprobar-consultas/.test(simSrc));
+const readme = fs.readFileSync(new URL('../../README.md', import.meta.url), 'utf8');
+check('El README manda comprobar contra la app antes de dar una frase por buena',
+  /comprobar-consultas\.mjs/.test(readme) && /el simulador no es la app/i.test(readme));
+const cadena = fs.readFileSync(new URL('../../research/pendientes/ESTADO-CADENA.md', import.meta.url), 'utf8');
+check('Y la memoria de la cadena guarda por qué, no solo el qué',
+  /simulador NO es la app/.test(cadena) && /comprobar-consultas/.test(cadena));
+
+// Y que las herramientas se puedan ejecutar donde dice el README. Dos de ellas
+// llevaban la raíz del repo escrita a mano —la ruta de la máquina donde se
+// escribieron—, así que el comando que el README le da a quien quiera colaborar
+// fallaba en cualquier otro sitio. Se deduce del propio fichero.
+for (const util of ['simular-busqueda.py', 'coherencia-cifras.py', 'vinetas-gemelas.py',
+                    'comprobar-consultas.mjs']) {
+  const ruta = new URL('../../scripts/pruebas/' + util, import.meta.url);
+  if (!fs.existsSync(ruta)) continue;
+  check(`${util} no lleva una ruta absoluta de nadie escrita a mano`,
+    !/\/(home|Users)\/[a-z]/i.test(fs.readFileSync(ruta, 'utf8')));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

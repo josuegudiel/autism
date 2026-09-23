@@ -16,11 +16,15 @@ sensorial) y "se me trepa por todos lados" (app: Hiperactividad; aqui:
 Asegurar la casa).
 
 Uselo para iterar rapido -es instantaneo y no necesita navegador-, pero
-**antes de asertar una consulta en la suite, compruebala contra la app**.
+**antes de asertar una consulta en la suite, compruebala contra la app** con
+scripts/pruebas/comprobar-consultas.mjs, que abre la app de verdad en un
+navegador y dice con que titulo aterriza cada consulta.
 """
-import json, re, unicodedata, sys
+import json, os, re, unicodedata, sys
 
-REPO='/home/user/autism/agente-autismo'
+# La raiz del repo se deduce de donde vive este fichero: escrita a mano solo
+# funcionaba en la maquina donde se escribio, y el README manda ejecutarlo.
+REPO=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 VACIAS=set()
 
 def norm(s):
