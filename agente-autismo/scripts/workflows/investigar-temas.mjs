@@ -1,11 +1,11 @@
 export const meta = {
   name: 'investigar-temas-tea',
-  description: 'Investiga temas nuevos para la biblioteca de autismo, los verifica en fuente y los somete a tres críticas adversariales',
+  description: 'Investiga temas nuevos para la biblioteca de autismo, los verifica en fuente y los somete a cuatro críticas adversariales',
   whenToUse: 'Rondas de ampliación de la biblioteca, 4 temas como máximo por ronda',
   phases: [
     { title: 'Investigar', detail: 'un investigador por tema' },
     { title: 'Verificar', detail: 'comprueba cada fuente y borra lo que no se sostiene' },
-    { title: 'Criticar', detail: 'tres lentes por ficha: seguridad, semáforos y solapamiento' },
+    { title: 'Criticar', detail: 'cuatro lentes por ficha: seguridad, semáforos, solapamiento y contradicciones' },
     { title: 'Corregir', detail: 'aplica lo que las críticas confirman' },
   ],
 }
@@ -18,8 +18,9 @@ export const meta = {
 //
 // LIMITE DURO: 4 temas por ronda. El presupuesto de WebSearch de la sesion son
 // 200 llamadas COMPARTIDAS. 4 investigadores x 15 + 4 verificadores x 15 = 120.
-// Las tres criticas NO gastan busquedas a proposito: revisan coherencia interna,
-// seguridad y solapamiento, que se comprueban leyendo, no buscando.
+// Las cuatro criticas NO gastan busquedas a proposito: revisan coherencia interna,
+// seguridad, solapamiento y contradicciones con lo ya publicado, que se comprueban
+// leyendo la biblioteca, no buscando en la web.
 
 const E = typeof args === 'string' ? JSON.parse(args) : args
 const TEMAS = (E.temas || []).slice(0, 4)
@@ -27,6 +28,7 @@ const CODIGOS = E.codigos
 const RONDA = E.ronda
 const INDICE = E.indice
 const BUSQUEDAS = E.busquedas || 15
+const RESPALDO = E.modelo_respaldo || null
 
 const REGLAS = `
 REGLAS INNEGOCIABLES
@@ -166,7 +168,74 @@ que ojea la lista ve el color antes que la frase.
 - ¿Enlaza con las fichas hermanas que le corresponden?
 - ¿Falta algo importante que un padre buscaria en este tema y no esta?`,
   },
+  {
+    // Esta lente nacio de un fallo real de la ronda 28: la ficha MY daba 30 dias
+    // donde JX, ya publicada, daba 15, y el verificador de fuentes se puso del
+    // lado equivocado porque trabajaba con normativa anterior a 2023. La lente
+    // de encaje caza que dos fichas hablen DE LO MISMO; ninguna cazaba que
+    // dijeran COSAS DISTINTAS. Para una familia, eso es peor que el duplicado:
+    // dos numeros contrarios en la misma app no dejan ninguno en pie.
+    clave: 'contradiccion',
+    prompt: `Tu lente: CONTRADICCIONES CON LO QUE YA ESTA PUBLICADO.
+
+No buscas duplicados (de eso se encarga otro critico). Buscas que esta ficha
+diga algo DISTINTO de lo que la biblioteca ya afirma en otra ficha: otro plazo,
+otra cifra, otra edad, otro umbral, otro criterio de urgencia, otro nombre para
+la misma figura legal o clinica.
+
+COMO TRABAJAR (esto SI exige abrir archivos, y no gasta ninguna busqueda web):
+1. Lista las 3-6 fichas ya publicadas mas cercanas a este tema. El indice de
+   temas te da los titulos y sus codigos.
+2. Abrelas de verdad: usa Grep sobre research/biblioteca-autismo.md con el
+   codigo ("### JX." por ejemplo) y lee el bloque entero, no el titulo.
+3. Compara afirmacion por afirmacion las que un padre usaria para decidir:
+   plazos, edades, porcentajes, "cuantos dias", "a partir de que edad", "cuando
+   es urgencia".
+
+QUE REPORTAR:
+- Cada choque concreto, citando LAS DOS versiones y su codigo de ficha. Formato:
+  "esta ficha dice X; la ficha AB ya publicada dice Y".
+- Di cual de las dos crees que esta bien y por que, si tienes base para
+  saberlo. Si no la tienes, dilo: "no se cual es correcta" es una respuesta
+  util, y marca el problema como grave para que lo resuelva un humano.
+- IMPORTANTE: no des por hecho que la ficha nueva tiene razon porque es mas
+  reciente. Tampoco que la publicada la tiene por estar publicada. Lo que
+  decide es la norma o el estudio, no el orden de llegada.
+- Un matiz no es una contradiccion: que una ficha de el caso general y otra una
+  excepcion nombrada como tal esta bien. Reportalo solo si un padre que lea las
+  dos se quedaria sin saber a cual hacer caso.
+
+Si no hay ningun choque, devuelve la lista vacia. No inventes contradicciones
+para parecer riguroso.`,
+  },
 ]
+
+// La ronda 38 murio tres veces seguidas con 529 y 500 del servidor, siempre en
+// los mismos agentes y sin gastar un solo token. agent() ya reintenta por dentro,
+// pero cuando se rinde devuelve null, y en pipeline() una etapa que devuelve null
+// tira el item entero: cuatro fichas perdidas por un fallo de minutos. Aqui se
+// espera y se vuelve a intentar, que sale mucho mas barato que reanudar a mano.
+//
+// modelo_respaldo: si se pasa en los args, el ULTIMO intento usa ese modelo. Sirve
+// para cuando el modelo de la sesion esta saturado y otro no. No se usa por
+// defecto: cambiar de modelo a mitad de una ronda es una decision, no un apano
+// automatico, y hay que dejarlo escrito en el commit.
+const ESPERAS = [60000, 150000, 300000]
+
+async function conAguante(etiqueta, hacer) {
+  for (let i = 0; i <= ESPERAS.length; i++) {
+    const ultimo = i === ESPERAS.length
+    const r = await hacer(ultimo ? RESPALDO : null)
+    if (r) return r
+    if (ultimo) {
+      log(`${etiqueta}: agotados los reintentos, el item se cae`)
+      return null
+    }
+    log(`${etiqueta}: el agente murio; espero ${ESPERAS[i] / 1000}s y reintento (${i + 1}/${ESPERAS.length})`)
+    await new Promise((r2) => setTimeout(r2, ESPERAS[i]))
+  }
+  return null
+}
 
 log(`Ronda ${RONDA}: ${TEMAS.length} temas · ${BUSQUEDAS} busquedas por agente de investigacion`)
 
@@ -174,7 +243,7 @@ const fichas = await pipeline(
   TEMAS.map((t, i) => ({ ...t, codigo: CODIGOS[i] })),
 
   // --- 1. investigar ---
-  (t) => agent(`Eres investigador de una biblioteca sobre autismo en español
+  (t) => conAguante(`investigar:${t.codigo}`, (m) => agent(`Eres investigador de una biblioteca sobre autismo en español
 para padres. Escribe una ficha nueva sobre este tema.
 
 TEMA: ${t.titulo}
@@ -197,12 +266,13 @@ COMO TRABAJAR:
 
 Empieza el markdown por la linea "### ${t.codigo}. ".`, {
       label: `investigar:${t.codigo}`, phase: 'Investigar', schema: ESQ_FICHA,
-    }),
+      ...(m ? { model: m } : {}),
+    })),
 
   // --- 2. verificar en fuente ---
   (ficha, t) => {
     if (!ficha || !ficha.markdown) return null
-    return agent(`Eres el filtro de fuentes. Otro agente ha escrito esta ficha.
+    return conAguante(`verificar:${t.codigo}`, (m) => agent(`Eres el filtro de fuentes. Otro agente ha escrito esta ficha.
 Tu trabajo no es mejorarla: es DEPURARLA. Deja solo lo que puedas confirmar.
 
 FICHA PROPUESTA (tema: ${t.titulo}):
@@ -228,23 +298,25 @@ QUE COMPROBAR:
 corta: eso es exito. "publicable": true solo si lo que queda esta confirmado y
 la ficha sigue siendo util.`, {
       label: `verificar:${t.codigo}`, phase: 'Verificar', schema: ESQ_VERIF,
-    }).then((v) => ({ ...(v || {}), codigo: t.codigo, titulo: ficha.titulo || t.titulo }))
+      ...(m ? { model: m } : {}),
+    })).then((v) => ({ ...(v || {}), codigo: t.codigo, titulo: ficha.titulo || t.titulo }))
       .catch(() => ({ codigo: t.codigo, titulo: t.titulo, publicable: false,
                       markdown_final: ficha.markdown, fuentes_confirmadas: 0,
                       informe: 'SIN VERIFICAR: el verificador fallo.' }))
   },
 
-  // --- 3. tres criticas adversariales, sin gastar busquedas ---
+  // --- 3. cuatro criticas adversariales, sin gastar busquedas ---
   (verif, t) => {
     if (!verif || !verif.markdown_final) return null
     return parallel(LENTES.map((l) => () =>
-      agent(`Eres un critico adversarial. Esta ficha va a publicarse en una
+      conAguante(`criticar:${t.codigo}/${l.clave}`, (m) => agent(`Eres un critico adversarial. Esta ficha va a publicarse en una
 biblioteca sobre autismo que usan padres reales. Tu trabajo es encontrar lo que
 esta mal ANTES de que se publique.
 
 ${l.prompt}
 
-NO USES BUSQUEDAS WEB. Todo lo que tienes que revisar se comprueba leyendo.
+NO USES BUSQUEDAS WEB. Todo lo que tienes que revisar se comprueba leyendo
+archivos del repositorio, que SI puedes abrir con Read y Grep.
 Otro agente ya ha verificado las fuentes; no repitas ese trabajo.
 ${INDICE ? `\nINDICE DE LOS TEMAS QUE YA EXISTEN: ${INDICE}\n(leelo con Read si tu lente lo necesita)` : ''}
 
@@ -257,31 +329,40 @@ Para cada problema: cita el texto exacto, di por que esta mal y como se arregla.
 Se concreto. Si la ficha esta bien en tu lente, devuelve la lista vacia: no
 inventes problemas para parecer riguroso.`, {
         label: `criticar:${t.codigo}/${l.clave}`, phase: 'Criticar', schema: ESQ_CRITICA,
-      })
+        ...(m ? { model: m } : {}),
+      }))
     // Se etiqueta cada critica con su lente ANTES de filtrar: si un critico
     // muere, filtrar primero desplazaria los indices y las criticas quedarian
     // atribuidas a la lente equivocada.
     )).then((cs) => ({
       verif,
       criticas: cs.map((c, i) => (c ? { ...c, lente: LENTES[i].clave } : null)).filter(Boolean),
+      // Una lente que muere NO es una lente que no ha encontrado nada. Sin este
+      // contador, una ficha sin criticar se publicaba diciendo "las cuatro lentes
+      // no encontraron nada", que es justo lo contrario de lo que paso.
+      muertas: cs.filter((c) => !c).length,
     }))
   },
 
   // --- 4. aplicar lo que las criticas confirman ---
   (paso, t) => {
     if (!paso || !paso.verif) return null
-    const { verif, criticas } = paso
+    const { verif, criticas, muertas } = paso
     const todos = criticas.flatMap((c) =>
       (c.problemas || []).map((p) => ({ lente: c.lente, ...p })))
     if (!todos.length) {
-      return { codigo: t.codigo, titulo: verif.titulo, publicable: verif.publicable,
+      return { codigo: t.codigo, titulo: verif.titulo,
+               publicable: muertas ? false : verif.publicable,
                markdown_final: verif.markdown_final, informe: verif.informe,
                fuentes_confirmadas: verif.fuentes_confirmadas || 0,
                fuentes_eliminadas: verif.fuentes_eliminadas || 0,
                afirmaciones_eliminadas: verif.afirmaciones_eliminadas || 0,
-               criticas_total: 0, criticas_aplicadas: 'ninguna: las tres lentes no encontraron nada' }
+               criticas_total: 0,
+               criticas_aplicadas: muertas
+                 ? `NO PUBLICABLE: murieron ${muertas} de ${LENTES.length} lentes, la ficha no esta criticada`
+                 : 'ninguna: las cuatro lentes no encontraron nada' }
     }
-    return agent(`Eres el editor final. Tres criticos han revisado esta ficha con
+    return conAguante(`corregir:${t.codigo}`, (m) => agent(`Eres el editor final. Cuatro criticos han revisado esta ficha con
 lentes distintas. Aplica lo que sea correcto y rechaza lo que no.
 
 FICHA ACTUAL (tema: ${t.titulo}):
@@ -304,14 +385,24 @@ REGLAS PARA EDITAR:
   cuales rechazaste y por que.
 - Si un critico dice que la ficha se solapa con otra existente y tiene razon,
   ponlo en "cambios" y marca publicable=false: mejor no publicar un duplicado.
+- Si la lente de contradiccion señala un choque con una ficha YA PUBLICADA y no
+  puedes resolver cual de las dos es correcta sin buscar (y no puedes buscar),
+  marca publicable=false y explica el choque en "cambios" citando las dos
+  versiones y el codigo de la otra ficha. Publicar dos cifras contrarias es
+  peor que publicar una sola: la familia se queda sin saber a cual hacer caso.
+  Si SI puedes resolverlo con lo que ya esta escrito en las dos fichas, corrige
+  la que este mal —puede ser esta— y digalo en "cambios".
 
 Devuelve la ficha entera y ya corregida en "markdown_final", con el mismo
 formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /
 **Fuentes:** / > **Para la app:**).`, {
       label: `corregir:${t.codigo}`, phase: 'Corregir', schema: ESQ_FINAL,
-    }).then((fin) => ({
+      ...(m ? { model: m } : {}),
+    })).then((fin) => ({
       codigo: t.codigo, titulo: verif.titulo,
-      publicable: fin ? fin.publicable : verif.publicable,
+      // Si una lente murio, la ficha no ha pasado las cuatro criticas, aunque las
+      // otras tres hayan encontrado cosas y el editor las haya aplicado.
+      publicable: muertas ? false : (fin ? fin.publicable : verif.publicable),
       markdown_final: (fin && fin.markdown_final) || verif.markdown_final,
       informe: verif.informe,
       fuentes_confirmadas: verif.fuentes_confirmadas || 0,
@@ -319,9 +410,11 @@ formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /
       afirmaciones_eliminadas: verif.afirmaciones_eliminadas || 0,
       criticas_total: todos.length,
       criticas_graves: todos.filter((p) => p.gravedad === 'grave').length,
-      criticas_aplicadas: (fin && fin.cambios) || 'el editor final fallo; se publica la version verificada',
+      criticas_muertas: muertas,
+      criticas_aplicadas: (muertas ? `NO PUBLICABLE: murieron ${muertas} de ${LENTES.length} lentes. ` : '')
+        + ((fin && fin.cambios) || 'el editor final fallo; se publica la version verificada'),
     })).catch(() => ({
-      codigo: t.codigo, titulo: verif.titulo, publicable: verif.publicable,
+      codigo: t.codigo, titulo: verif.titulo, publicable: muertas ? false : verif.publicable,
       markdown_final: verif.markdown_final, informe: verif.informe,
       fuentes_confirmadas: verif.fuentes_confirmadas || 0,
       fuentes_eliminadas: verif.fuentes_eliminadas || 0,

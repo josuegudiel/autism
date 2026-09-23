@@ -1,6 +1,17 @@
 # Brújula TEA — app de iPhone (SwiftUI)
 
-Biblioteca offline de 308 temas sobre autismo, en español. Sin backend, sin
+> ⚠️ **Este target NO compila hoy.** `Vistas/DetectorView.swift` se quedó en
+> cuatro líneas sueltas y `Vistas/AyudaView.swift` solo conserva el
+> `enum Telefono`: las dos vistas que `RootView` monta en las pestañas
+> «Detector» y «Ayuda» no existen como tipos, así que Xcode ni siquiera
+> llega a construir. Todo lo que sigue describe el proyecto tal como se
+> pensó; antes de nada hay que reescribir esos dos ficheros.
+>
+> ⚠️ **La app nativa no tiene rastreador.** El «Seguimiento de mi hijo» que
+> promete el README del proyecto existe **solo en la web**: en `ios/` no hay
+> IndexedDB, ni SwiftData, ni Core Data.
+
+Biblioteca offline de 454 temas sobre autismo, en español. Sin backend, sin
 cuentas y sin red: todo el contenido viaja dentro de la app.
 
 - **Mínimo:** iOS 17 · Xcode 15 · Swift 5.9
@@ -31,8 +42,8 @@ Los tres archivos de datos van en el **bundle**, sin subcarpeta ni renombrado:
 
 | Archivo | Tamaño aprox. | Cuándo se carga |
 |---|---|---|
-| `biblioteca-indice.json` | ~295 KB | al arrancar la app |
-| `biblioteca-cuerpo.json` | ~1,6 MB | al abrir el primer tema |
+| `biblioteca-indice.json` | ~362 KB | al arrancar la app |
+| `biblioteca-cuerpo.json` | ~2,3 MB | al abrir el primer tema |
 | `ayuda-urgente.json` | pequeño | al abrir la pestaña Ayuda |
 
 Pasos:
@@ -80,8 +91,8 @@ BrujulaTEA/
   Vistas/InicioView.swift          buscador destacado, chips, rejilla
   Vistas/BibliotecaView.swift      búsqueda, categorías y todos los temas
   Vistas/TemaDetalleView.swift     título, cuerpo, fuentes, relacionados
-  Vistas/DetectorView.swift        terapias y productos, con desambiguación
-  Vistas/AyudaView.swift           teléfonos de crisis, alarma y qué hacer
+  Vistas/DetectorView.swift        INCOMPLETO: solo quedan 4 líneas sueltas
+  Vistas/AyudaView.swift           INCOMPLETO: solo queda el enum Telefono
   Vistas/Componentes.swift         tarjetas, badges, leyenda, markdown
   Info.plist
 ```
@@ -124,6 +135,9 @@ como punto de color + etiqueta: *Evidencia sólida*, *Evidencia limitada*,
 
 ## Qué falta para publicar
 
+- **Reescribir `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift`**: sin
+  esos dos tipos el proyecto no compila. Es lo primero, y no es cosmético:
+  serían las pestañas «Detector» y «Ayuda» de una app de salud.
 - Icono de app y pantalla de carga (`Assets.xcassets`).
 - Revisión en un Mac: el código se escribió sin Xcode delante.
 - Opcional: `SFSafariViewController` si prefieres abrir las fuentes dentro de

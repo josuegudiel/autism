@@ -10,15 +10,26 @@
   --card: #ffffff;
   --card-press: #e9e9ee;
 
-  /* Texto */
+  /* Texto. La opacidad de --label-2 no es cosa de estilo: con 0.6 el descargo
+     sanitario, el resumen de cada tema y las etiquetas del rastreador se quedan
+     en 3,30:1 sobre el fondo y 3,44:1 sobre tarjeta, y a 12-15px eso no se lee
+     al sol ni con presbicia. Con 0.8 son 5,56:1 y 5,97:1, que es justo donde ya
+     estaba el modo oscuro (6,36:1 y 5,95:1): los dos modos se leen igual. */
   --label: #000000;
-  --label-2: rgba(60, 60, 67, 0.6);
-  --label-3: rgba(60, 60, 67, 0.3);
+  --label-2: rgba(60, 60, 67, 0.8);
+  --label-3: rgba(60, 60, 67, 0.55);
   --separator: rgba(60, 60, 67, 0.18);
+  /* El borde es lo único que dibuja un campo de formulario: dentro de una
+     tarjeta blanca su fondo también es blanco. Por eso tiene token propio y no
+     comparte el de las separaciones, que han de seguir siendo hilos finos. */
+  --campo-borde: rgba(60, 60, 67, 0.58);
 
   /* Acento */
   --accent: #0f7a62;
   --accent-bg: rgba(15, 122, 98, 0.1);
+  /* Texto que va encima del acento. En oscuro el acento es un verde claro y el
+     blanco de siempre daba 2,29:1: el botón se veía, pero no se leía. */
+  --on-accent: #ffffff;
 
   /* Niveles de evidencia */
   --ev-alta: #1c7a43;
@@ -27,6 +38,8 @@
   --ev-media-bg: rgba(138, 90, 0, 0.12);
   --ev-evitar: #c02a1b;
   --ev-evitar-bg: rgba(192, 42, 27, 0.1);
+  /* Texto legible ENCIMA de --ev-evitar en relleno (el CTA de urgencia). */
+  --on-evitar: #ffffff;
   --ev-vivida: #5a5a63;
   --ev-vivida-bg: rgba(90, 90, 99, 0.12);
 
@@ -47,14 +60,18 @@
     --label-2: rgba(235, 235, 245, 0.6);
     --label-3: rgba(235, 235, 245, 0.3);
     --separator: rgba(84, 84, 88, 0.65);
+    --campo-borde: rgba(200, 200, 205, 0.45);
     --accent: #3fbf9f;
     --accent-bg: rgba(63, 191, 159, 0.16);
+    --on-accent: #062a22;
     --ev-alta: #4cd07d;
     --ev-alta-bg: rgba(76, 208, 125, 0.16);
     --ev-media: #eab355;
     --ev-media-bg: rgba(234, 179, 85, 0.16);
     --ev-evitar: #ff6b5c;
     --ev-evitar-bg: rgba(255, 107, 92, 0.16);
+    /* En oscuro --ev-evitar es un coral claro: encima va texto oscuro. */
+    --on-evitar: #2a0906;
     --ev-vivida: #a0a0a8;
     --ev-vivida-bg: rgba(160, 160, 168, 0.16);
   }
@@ -125,7 +142,7 @@ section + section { margin-top: 4px; }
 .btn {
   appearance: none; border: 0; cursor: pointer;
   font-family: inherit; font-size: 17px; font-weight: 600;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   border-radius: var(--r-field); padding: 12px 18px;
   letter-spacing: -0.01em;
 }
@@ -139,7 +156,7 @@ section + section { margin-top: 4px; }
 
 input, select, textarea {
   font-family: inherit; font-size: 17px; color: var(--label);
-  background: var(--card); border: 1px solid var(--separator);
+  background: var(--card); border: 1px solid var(--campo-borde);
   border-radius: var(--r-field); padding: 11px 12px; width: 100%;
 }
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
@@ -242,6 +259,19 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--label-2)
   padding: 14px 16px; margin-bottom: 8px;
 }
 .tema-cuerpo .punto p { margin: 0; }
+.tema-cuerpo .punto.urgente {
+  border-left: 4px solid var(--ev-evitar); background: var(--ev-evitar-bg);
+}
+.tema-cuerpo .cta-ayuda {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: var(--ev-evitar); color: var(--on-evitar); font-weight: 600; font-size: 15px;
+  border-radius: var(--r-card); padding: 13px 16px; margin: 0 0 14px;
+}
+.tema-cuerpo .cta-ayuda svg { width: 18px; height: 18px; flex: none; }
+details.leyenda { margin: 0 0 14px; font-size: 14px; color: var(--label-2); }
+details.leyenda summary { cursor: pointer; padding: 4px 0; color: var(--accent); font-weight: 600; }
+details.leyenda .claves { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+details.leyenda p { margin: 0; font-size: 14px; }
 .tema-cuerpo .punto .badge { margin-top: 9px; }
 .tema-cuerpo blockquote {
   margin: 0 0 14px; padding: 13px 16px;
@@ -269,6 +299,9 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--label-2)
 .tel svg { align-self: center; }
 .tel svg { width: 20px; height: 20px; flex: none; }
 .pais .desc { font-size: 15px; color: var(--label-2); margin: 0; }
+.pais .escrito { font-size: 14px; color: var(--label-2); margin: 10px 0 0;
+  border-left: 3px solid var(--accent); padding-left: 10px; }
+.pais .escrito strong { color: var(--accent); }
 .pais .emg { font-size: 13px; color: var(--label-2); margin: 8px 0 0; }
 
 .aviso {
@@ -312,7 +345,7 @@ ul.checks li:last-child { border-bottom: 0; border-radius: 0 0 var(--r-card) var
 .chat-log { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
 .msg { max-width: 85%; padding: 10px 14px; border-radius: 18px; font-size: 16px; }
 .msg.bot { background: var(--card); align-self: flex-start; border-bottom-left-radius: 5px; }
-.msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 5px; }
+.msg.user { background: var(--accent); color: var(--on-accent); align-self: flex-end; border-bottom-right-radius: 5px; }
 .chat-form { display: flex; gap: 8px; }
 .chat-form input { flex: 1; }
 .demo-note { font-size: 13px; color: var(--label-2); background: var(--card);
@@ -334,13 +367,23 @@ ul.checks li:last-child { border-bottom: 0; border-radius: 0 0 var(--r-card) var
   color: var(--label-2); font-size: 10px; font-weight: 500; letter-spacing: -0.005em;
 }
 .tabbar a svg { width: 23px; height: 23px; }
-.tabbar a.active { color: var(--accent); }
+/* La pestaña actual no puede distinguirse solo por el color: quien no ve el
+   verde necesita otra señal, y el peso de la letra la da sin ocupar sitio. */
+.tabbar a.active { color: var(--accent); font-weight: 600; }
 .tabbar a:active { opacity: 0.6; }
 
 /* ------------------------------------------------------------- varios */
 .empty { text-align: center; color: var(--label-2); padding: 36px 16px; font-size: 15px; }
+/* Texto que solo existe para el lector de pantalla: la región de anuncios no
+   ocupa sitio en pantalla, pero tiene que estar en el DOM para poder hablar. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
 .disclaimer {
-  font-size: 12px; color: var(--label-2); text-align: center;
+  /* Es el aviso sanitario y sale debajo de todas las pantallas: a 12px no se
+     lee de noche ni con el móvil al sol, por mucho que el contraste ya cumpla. */
+  font-size: 13px; color: var(--label-2); text-align: center;
   padding: 20px var(--gutter) 8px; max-width: 640px; margin: 0 auto; line-height: 1.4;
 }
 .sources { display: flex; flex-direction: column; }

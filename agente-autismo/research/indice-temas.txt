@@ -358,3 +358,98 @@ MR. Me han denegado la terapia: cómo reclamar paso a paso
 MT. Toda la casa gira alrededor de evitar la crisis: la acomodación familiar 
 MU. Me piden firmar una adaptación curricular significativa: ¿le cierra puertas a los 18? 
 MV. Me llaman para que vaya a recogerlo: expulsiones, partes y exclusión encubierta 
+MW. Lleva meses sin poder ir a clase: atención educativa en casa o en el hospital 
+MX. Mi hijo empieza a trabajar: ¿pierde la pensión por discapacidad y la cobertura médica? 
+MZ. ¿Y cuando termine el colegio o el instituto, qué? Empezar a planificar la vida adulta desde los 13-14 años 
+NA. Me castigan en el trabajo por cuidar a mi hijo: represalias, despido y discriminación por asociación
+NB. Necesitamos ayuda en casa: cuidadora, ayuda a domicilio o asistente personal
+NC. Se cancela el plan y se hunde: enseñarle a llevar lo imprevisto
+ND. Va a tener un hermanito: cómo contárselo y preparar la casa para el bebé
+NE. Nos vamos a vivir a otro país: ¿vale el diagnóstico allí y nos pueden denegar la residencia?
+NF. ¿A quién tengo que dar el informe del diagnóstico? Expediente escolar, historia clínica y los datos de tu hijo
+NH. Dejar a tu hijo con otra persona: la niñera o canguro, los abuelos y la primera noche fuera de casa
+NJ. Desde que toma risperidona o aripiprazol no para quieto, hace muecas o se le tuerce el cuello
+NK. Si me pasa algo a mí esta noche: qué tiene que saber quien se quede con mi hijo
+NL. Pega o muerde a su hermano o a su hermana: proteger a los dos en la misma casa
+NM. Me han dado algo «para cuando se ponga muy mal»: el calmante de rescate, cuándo se da y cuándo pasa a ser sujeción química
+NN. Desde que toma Keppra (levetiracetam) u otro antiepiléptico está irritable o más lento: ¿es el fármaco o es el autismo?
+NP. Ya pesa más que tú y a ti te duele la espalda: ducharlo, moverlo y subirlo al coche sin lesionarte
+NQ. Habla en casa y no dice ni una palabra en el colegio: mutismo selectivo
+NT. ¿Hace falta una resonancia cerebral tras el diagnóstico de autismo?
+NR. En el colegio dicen que "aquí nadie puede medicar": la dosis diaria, el rescate y el plan de urgencia del centro
+NS. Ha engordado mucho con la risperidona o el aripiprazol: qué se puede hacer además de pesarlo cada mes
+NT. ¿Hace falta una resonancia cerebral tras el diagnóstico de autismo?
+NU. ¿En qué se diferencian el informe del médico, el certificado de discapacidad y el dictamen del colegio? Cada papel abre una ventanilla distinta
+NV. Te dicen que «no es epilepsia»: ataques, tics que aparecieron de golpe y desmayos
+NW. ¿Tengo que llevarla al ginecólogo? La primera cita y la anticoncepción, decididas con ella
+NX. Cuando se acaba la atención temprana: el paso al colegio y quién decide si sigue teniendo apoyo
+NY. Se le acaba el pediatra: pasar al médico de adultos sin perder el seguimiento
+NZ. Tiene parálisis cerebral y además autismo: dos diagnósticos que nadie mira juntos
+PA. Se niega a ir al psicólogo: qué puede decidir él y qué decides tú
+PB. Ayudas económicas por un hijo con autismo: prestaciones, becas, deducciones en la renta y descuentos (y en qué mes se piden)
+PC. Lleva meses mandando currículos y no le llaman: el cupo de discapacidad, las plazas reservadas y los exámenes adaptados
+PD. Nos han dado un colegio que dice que no puede atenderle: plazos de matrícula, plazas reservadas y cómo reclamar
+PE. Me niegan un seguro por su discapacidad: acceso, qué pueden negarte y quién responde si tu hijo causa un daño
+PF. ¿Le pongo un GPS? Localizadores y relojes para un hijo que se escapa
+PG. Ir solo en autobús: enseñar un trayecto paso a paso
+PH. Dejar el trabajo o reducir jornada para cuidar: qué le pasa a tu jubilación
+PI. Ya reclamé y me han vuelto a decir que no: ¿necesito un abogado? Justicia gratuita, plazos y qué esperar de un pleito
+PJ. Lo hago todo yo: repartir el cuidado y la carga mental entre los dos padres
+PK. Vivimos lejos de todo: pueblo, distancia y horas de coche hasta la terapia
+PL. Este fin de semana dormimos en casa de los abuelos: la piscina sin vallar y una casa que nadie ha adaptado
+PM. Ya le han cambiado dos antiepilépticos y sigue con convulsiones: epilepsia farmacorresistente y qué es eso de la muerte súbita (SUDEP)
+PN. He denunciado y ahora mi hijo tiene que declarar: de la denuncia al juicio cuando la víctima es él
+PP. Sospecho que le tratan mal en el centro de día, el piso tutelado o el respiro: qué preguntar antes de firmar y cómo saber qué pasa ahí dentro
+PQ. Llevo meses sin dormir porque se levanta a las tres: turnos de noche y cuándo pedir cita para ti
+PR. Dieta sin gluten o sin leche: qué descartar antes (celiaquía, alergia a la leche, estreñimiento)
+PS. Le pusieron trastorno límite de la personalidad (TLP) antes de saber que era autista: cómo pedir que revisen un diagnóstico psiquiátrico equivocado
+PT. No se deja poner el audífono, el parche, la férula ni la CPAP: cómo conseguir que tolere un aparato recetado
+PU. Entró en una cuenta ajena, guardó unas fotos o no para de escribirle a alguien: delitos que puede estar cometiendo sin saberlo
+PV. El calendario del año antes de los 18: qué se revisa, qué se cae y qué hay que pedir con tiempo
+PW. La guardería dice que no puede con él y todavía no tiene 3 años: qué se puede pedir cuando todavía no hay circuito escolar
+PX. Solo quiere a mamá: no se queda con nadie más
+PY. El chequeo del adulto que no pide nadie: colon, mama, tensión y colesterol
+PZ. El dentista dice que hay que dormirlo: sedación, anestesia general y si puede llevar brackets
+QA. Cada uno va por su lado: el médico, el colegio y los servicios sociales no se hablan entre ellos (y la secretaria acabas siendo tú)
+QB. Nos separamos y mi hijo tiene discapacidad: quién decide las terapias y la pensión que no se acaba a los 18
+QC. Se le ha roto un diente o se le ha salido de un golpe: traumatismo dental
+QD. Ya es mayor de edad y no puedo ni moverle la cuenta del banco: hacer trámites por él sin llegar a la tutela
+QE. Cuido a mi hijo autista y ahora también a mis padres: cómo repartir cuando tienes que cuidar de los dos
+QF. No deja tirar nada: colecciones, cajas vacías y cuándo pasa a ser acumulación
+QG. Ronca y deja de respirar al dormir: ¿le operamos las amígdalas? Y qué pasa si no basta
+QH. Nació muy prematuro y ahora sospechamos autismo: ¿es la prematuridad o es autismo?
+QI. Quiero que trabaje este verano antes de acabar el instituto: prácticas, empleo de verano y voluntariado a los 15-18
+QJ. Tengo pareja nueva: cómo se la presento a mi hijo y cómo es convivir con los hijos de los dos
+QK. No se duerme hasta las tres y por la mañana no hay quien lo levante: el reloj interno del adolescente (retraso de fase del sueño)
+QL. Tiene un cáncer o una enfermedad grave: ingresos largos, quimioterapia y cuidados paliativos
+QM. Los vecinos se quejan del ruido y nos quieren echar: la comunidad, el alquiler y el casero
+QN. Nos mudamos de comunidad o de provincia: ¿me vale el certificado de discapacidad y pierdo la lista de espera?
+QP. ¿Esta reacción al medicamento es para ir a urgencias hoy? Sarpullido con fiebre, rigidez y otras señales que no esperan a la próxima cita
+QQ. Llamar al 112 o al 911 en plena crisis, o cuando ya ha venido la policía: qué decir y qué llevar preparado
+QR. En el colegio lo sujetan o lo encierran solo en un cuarto: contención y aislamiento en el centro educativo
+QS. Se golpea la cabeza: el casco y las revisiones de salud (ojos, oídos, cuello, dientes)
+QT. Se escapa de la cama por la noche o se tira del carro: camas de seguridad, arneses y dónde está la línea con la sujeción
+QU. Lleva meses sin salir de su cuarto: el adolescente o el joven adulto autista que se encierra en casa
+QV. Mi hija toma valproato (Depakine) y ya tiene la regla: qué hay que revisar ahora, aunque no haya novio ni planes de embarazo
+QW. No gana peso ni crece: la curva plana, el medicamento que le quita el hambre y cuándo se plantea un suplemento o una sonda
+QX. Le doy vitaminas, hierbas, melatonina o CBD además de su medicación: ¿se pueden mezclar?
+QY. Lleva dos años con melatonina: ¿es malo tanto tiempo?, la pubertad, la hora a la que se da y cómo se deja
+QZ. Le está cambiando el cuerpo demasiado pronto, o está más lento y ha engordado: pubertad precoz, tiroides y cuándo pedir un análisis
+RA. Le duele un testículo, no le baja la piel del pene o se hace pis con dolor: qué es urgente ahora y qué puede esperar
+RB. Le duele todo y está agotado: dolor crónico, fibromialgia y fatiga persistente en el niño, el adolescente y el adulto autista
+RC. Se le cae la baba todo el día: qué hay que mirar primero y qué se puede hacer de verdad
+RD. Pedir plaza en una residencia, un piso tutelado o un centro de día: cuándo hay que pedirla, la lista de espera y cuánto paga la familia
+RE. Saca buenas notas, así que el colegio dice que no necesita apoyos: cómo demostrar que sí
+RF. El campamento, la academia o el gimnasio dicen que "no pueden con él": cuando te rechaza un servicio privado
+RG. No puede llamar por teléfono: pedir cita, contestar y qué hacer en una urgencia
+RH. Sigue con pañal y ya no cabe en el cambiador de bebés: dónde cambiarlo cuando salís de casa
+RI. Si no estoy yo encima se queda parado o se va a la tablet: enseñarle a ocupar su tiempo y a estar un rato solo (contigo en casa)
+RJ. Le han dado un grado bajo y no aguanta un trabajo: el adulto autista que se queda sin pensión y sin empleo
+RK. Ya es adulto y no quiere el certificado, ni terapia, ni servicios: hasta dónde llegas tú
+RL. A mi hijo adulto lo acosan o lo han despedido por su discapacidad: qué se puede reclamar en el trabajo
+RN. Necesito trabajar menos horas o parar un tiempo para cuidarlo: qué escribo, cuándo lo entrego y qué hago si la empresa calla (reducción de jornada, adaptación y excedencia)
+RO. Mi hija mayor hace de cuidadora de su hermano autista: qué se le puede pedir y qué se le debe a cambio
+RP. ¿Nos dan la tarjeta de aparcamiento por ser autista? Estacionamiento, atención preferente, entrada del acompañante y el cordón de girasol
+RQ. Duerme en nuestra cama y no quiere dormir solo: qué hay que mirar antes de tratarlo como un hábito (colecho)
+RR. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otras urgencias del abdomen
+RS. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo
