@@ -2726,6 +2726,45 @@ check('La clave va antes del cuerpo y plegada, sin empujar la urgencia fuera de 
   /DETAILS\.leyenda ARTICLE\.tema-cuerpo/.test(ordenRB)
   && (await pag.$$eval('details.leyenda', (ns) => ns.every((n) => !n.open))), ordenRB.slice(0, 120));
 
+// 53. La misma fuente citada de dos maneras. 3.822 URLs distintas sostienen la
+// biblioteca y 279 aparecen con más de una etiqueta, lo cual es normal: la
+// redacción cambia según la ficha. Lo que no es normal es que cambien el AÑO o
+// el PRIMER AUTOR, porque entonces una de las dos citas está mal y el lector no
+// tiene forma de saber cuál.
+const etiquetasPorUrl = new Map();
+for (const m of libMd.matchAll(/\[([^\]]{3,200})\]\((https?:\/\/[^\s)]+)\)/g)) {
+  if (!etiquetasPorUrl.has(m[2])) etiquetasPorUrl.set(m[2], new Set());
+  etiquetasPorUrl.get(m[2]).add(m[1].trim());
+}
+// Casos ya mirados y que NO son un error: el año de vigilancia frente al de
+// publicación (CDC ADDM 2022 publicado en MMWR 2025; cohorte PECARN 2016-2021
+// publicada en 2025), el número de una ley que parece un año (Ley 1996 de 2019
+// de Colombia) y una ley que cita la que modifica (Ley 6/2022 sobre el RDL
+// 1/2013).
+const AÑOS_OK = new Set([
+  'https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm',
+  'https://pubmed.ncbi.nlm.nih.gov/41330306/',
+  'https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=99712',
+  'https://www.boe.es/buscar/doc.php?id=BOE-A-2022-5140',
+  'https://www.aemps.gob.es/medicamentosUsoHumano/informesPublicos/docs/2025/IPT-400-Slenyto-melatonina.pdf',
+  // PENDIENTES DE COMPROBAR EN FUENTE (23/09: presupuesto de WebSearch agotado).
+  // Están anotados en research/pendientes/ESTADO-CADENA.md; al resolverlos, se
+  // corrige la etiqueta y se quita de aquí la línea.
+  'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6590432/',   // Schoen 2018 vs 2019
+  'https://link.springer.com/article/10.1007/s10803-020-04844-2', // Hume 2021 vs Steinbrenner 2020
+]);
+const añosEnConflicto = [];
+for (const [url, etiquetas] of etiquetasPorUrl) {
+  if (etiquetas.size < 2 || AÑOS_OK.has(url)) continue;
+  const años = new Set();
+  for (const e of etiquetas) for (const a of e.matchAll(/\b(?:19|20)\d{2}\b/g)) años.add(a[0]);
+  if (años.size > 1) añosEnConflicto.push(url + ' → ' + [...años].join('/'));
+}
+check('Ninguna fuente nueva se cita con dos años distintos',
+  añosEnConflicto.length === 0, añosEnConflicto.slice(0, 4).join(' · '));
+check('Y los casos conocidos siguen siendo los mismos, no han crecido',
+  AÑOS_OK.size === 7, String(AÑOS_OK.size));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

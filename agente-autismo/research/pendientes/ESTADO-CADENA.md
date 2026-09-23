@@ -263,6 +263,26 @@ LÍMITE DURO: 4 temas por ronda.
   medir `rgba(192,42,27,0.1)` como rojo sólido daba 3,59:1 en una viñeta que
   tiene 16:1 y me mandó a arreglar algo que no estaba roto.
 
+- **Dos fuentes citadas con dos años distintos, sin resolver (23/09).** De las
+  3.822 URLs de la biblioteca, 279 aparecen con más de una etiqueta —normal, la
+  redacción cambia— y **siete** cambian además el año. Cinco son benignas (el
+  año de vigilancia frente al de publicación en el ADDM del CDC y en la cohorte
+  PECARN, el número de la Ley 1996 de 2019 de Colombia, la Ley 6/2022 citando el
+  RDL 1/2013 que modifica, y el IPT de Slenyto de 2025 que sustituye al de
+  2021). **Las otras dos hay que comprobarlas en fuente y no pude: el
+  presupuesto de WebSearch de la sesión se agotó (200/200).**
+  1. `PMC6590432` se cita como **"Schoen et al., 2019"** y como **"Schoen 2018"**
+     (revisión sistemática de la integración sensorial de Ayres).
+  2. `link.springer.com/…/s10803-020-04844-2` se cita como **"Hume et al. 2021
+     (J Autism Dev Disord)"** y como **"Steinbrenner et al. (2020), revisión de
+     tercera generación"**. Ahí no cambia solo el año: cambia el primer autor.
+     Ojo, porque el informe del NCAEP (Steinbrenner) y el artículo de JADD
+     (Hume) **son dos documentos distintos**, y si lo son, una de las dos fichas
+     está enlazando al que no es.
+  **Abre la sesión siguiente por aquí**: dos búsquedas resuelven las dos. La
+  prueba que las vigila lleva las siete en una lista blanca comentada; al
+  corregir una etiqueta, quítala de esa lista.
+
 ## El PR #2
 
 Head `861a83b` (ronda 41). Borrador, sin comentarios ni reviews; todos los runs
