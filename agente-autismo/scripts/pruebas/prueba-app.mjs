@@ -2607,6 +2607,51 @@ for (const esquema of ['light', 'dark']) {
 }
 await pag.emulateMedia({ colorScheme: 'light' });
 
+// 49. Ronda 49: RF (un servicio privado lo rechaza), RG (no puede llamar por
+// teléfono), RH (dónde cambiarlo fuera de casa) y RI (enseñarle a ocupar su
+// tiempo).
+for (const [codigo, marca] of [['RF', /campamento|academia|gimnasio/i], ['RG', /teléfono|llamar/i],
+                               ['RH', /pañal|cambiador/i], ['RI', /tablet|tiempo/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 49: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const [q, re49] of [['no puede llamar por telefono', /teléfono/i],
+                         ['sigue con panal', /pañal|cambiador/i],
+                         ['no sabe jugar solo', /tablet|tiempo|solo/i],
+                         ['no pueden con el', /campamento|academia|gimnasio/i]]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 49: «${q}» encuentra su tema`, !/Sin resultados/i.test(rr) && re49.test(rr), rr.slice(0, 160));
+}
+
+// Lo que la ronda destapó, que otra vez estaba en fichas ya publicadas:
+// (a) FW resumía la Ley 1618 de Colombia como un deber de las entidades
+// PÚBLICAS. Su artículo 14 pone el deber de diseñar, implementar y financiar
+// los ajustes razonables sobre las entidades públicas Y PRIVADAS encargadas de
+// prestar servicios públicos. Ni una lectura ni la otra: la letra exacta, con
+// el matiz de que "servicio público" no es "negocio abierto al público".
+const fw = fichaDe('FW');
+check('FW ya no deja la Ley 1618 en un deber solo de las entidades públicas',
+  /públicas y privadas/.test(fw) && /artículo 14/.test(fw) && /servicios públicos/.test(fw));
+check('Y RF y FW cuentan la misma ley con la misma letra',
+  /artículo 14/.test(fichaDe('RF')) && /servicio público/.test(fichaDe('RF')));
+
+// (b) EZ publicaba "más de 350 adultos autistas (muestra de ~500)" del estudio
+// de Doherty (BMJ Open 2022), que son 507 autistas y 157 no autistas; y decía
+// "no haber buscado atención" donde el estudio dice no haber podido acceder.
+const ez = fichaDe('EZ');
+check('EZ da ya el denominador real del estudio de Doherty',
+  /507 adultos autistas y 157 no autistas/.test(ez) && !/más de 350 adultos autistas/.test(ez));
+check('EZ dice "no pudo acceder", que es lo que midió el estudio',
+  /no pudo acceder/.test(ez) && /potencialmente mortal/.test(ez));
+
+// (c) Referencias inversas de la ronda.
+for (const [origen, destino] of [['GV', 'RF'], ['PW', 'RF'], ['PY', 'RG'], ['EZ', 'RG'],
+                                 ['EQ', 'RH'], ['NP', 'RH'], ['MJ', 'RI'], ['DH', 'RI']]) {
+  check(`${origen} apunta ya a ${destino}`, new RegExp('\\*\\*' + destino + '\\.').test(fichaDe(origen)));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

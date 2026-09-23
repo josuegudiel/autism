@@ -187,12 +187,17 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 47: QX (lo que compras sin receta y choca con lo recetado) caia en
     # terapias por la palabra "medicacion"; es la hermana de LV y QP.
     "QX": "salud",
+    # Ronda 49: RG (no puede llamar por telefono) y RH (donde cambiarlo fuera de
+    # casa) son de salud; RG caia en el cajon por defecto y RH en familia.
+    "RG": "salud", "RH": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",
     # PH (dejar el trabajo o reducir jornada para cuidar) caia tambien en
     # terapias, por "terapia" dentro del texto: es vida familiar, como NB y HN.
     "PH": "familia",
+    # Ronda 49: RI (ensenarle a ocupar su tiempo) es vida diaria, no un concepto.
+    "RI": "familia",
     # Escuela y aprendizaje.
     "MU": "escuela", "MW": "escuela",
     # Adolescencia y vida adulta.
@@ -202,6 +207,8 @@ CATEGORIA_POR_CODIGO = {
     "RD": "adultez",
     # Derechos y recursos por pais.
     "MR": "derechos", "PB": "derechos", "PN": "derechos", "LX": "derechos",
+    # Ronda 49: RF es una reclamacion con plazos por pais, no ocio.
+    "RF": "derechos",
 }
 
 # Excepciones al orden de CATEGORIAS. El "primera que coincide gana" resuelve
