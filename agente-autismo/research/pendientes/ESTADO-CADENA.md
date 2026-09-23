@@ -238,6 +238,31 @@ LÍMITE DURO: 4 temas por ronda.
   que ser del ministerio de salud del país; `fuenteSecundaria` es para cuando el
   dato viene de dos sitios (el horario del CAS, el WhatsApp de Bogotá).
 
+- **Las notas "Para la app" también encargan cosas a la APP, y nadie las miraba
+  (23/09).** Se auditaron las 438 y tres estaban sin hacer, las tres con efecto
+  sobre una pantalla de urgencia:
+  1. *"Los bloques 🚨 no llevan color"* lo dice la leyenda de 53 fichas, pero 64
+     de las 153 viñetas de urgencia traían además un marcador de color y el
+     renderizador pintaba la píldora igual: un atragantamiento salía con un
+     "Evidencia limitada" amarillo debajo. **Arreglado en el renderizador, no en
+     las 64 viñetas**, que es donde vive la regla. Con un matiz: la sirena solo
+     manda si **encabeza** la viñeta; hay cinco que la nombran por dentro para
+     remitir a otro bloque y esas conservan su nivel.
+  2. *"El bloque 🚨 va arriba"*: 50 de las 51 fichas con urgencia lo tenían en su
+     primera viñeta. **LQ** la tenía en la 9 de 13, detrás del artículo 12 de la
+     Convención. Subida, y hay prueba que lo exige a las 51.
+  3. *"Acceso directo a la pantalla de Teléfonos de ayuda"*: el único enlace
+     estaba en el descargo del final, detrás de las fuentes. Ahora se cuela justo
+     detrás del bloque de urgencia, y **solo** en las fichas que lo tienen.
+- **El contraste se mide, no se supone (23/09).** El estilo de urgencia que se
+  añadió ese mismo día se coló con un enlace de **2,8:1 en modo oscuro**, porque
+  `--ev-evitar` es un rojo oscuro en claro y un coral claro en oscuro: la paleta
+  lo usa como color de TEXTO. Hay ya un token `--on-evitar` para lo que va
+  ENCIMA del relleno, y la suite mide el contraste en el navegador y en los dos
+  esquemas. **Al medir, compón los fondos con alfa sobre lo que tienen debajo**:
+  medir `rgba(192,42,27,0.1)` como rojo sólido daba 3,59:1 en una viñeta que
+  tiene 16:1 y me mandó a arreglar algo que no estaba roto.
+
 ## El PR #2
 
 Head `861a83b` (ronda 41). Borrador, sin comentarios ni reviews; todos los runs
