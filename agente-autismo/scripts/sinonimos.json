@@ -5103,5 +5103,142 @@
  "come cosas que no son comida": [
   "AE",
   "P"
+ ],
+ "no quiere vestirse por la manana": [
+  "IE",
+  "DC"
+ ],
+ "llora cuando apago la tele": [
+  "IZ",
+  "AI"
+ ],
+ "no quiere ir a casa de la abuela": [
+  "DN",
+  "CO"
+ ],
+ "se enfada cuando gana otro": [
+  "AB",
+  "IL"
+ ],
+ "no sabe perder": [
+  "AB",
+  "IL"
+ ],
+ "interrumpe todo el rato": [
+  "FM",
+  "AC"
+ ],
+ "habla sin parar del mismo tema": [
+  "BI",
+  "FM"
+ ],
+ "se lo toma todo al pie de la letra": [
+  "DJ",
+  "IH"
+ ],
+ "no sabe cuando parar de hablar": [
+  "FM",
+  "AC"
+ ],
+ "le cuesta esperar su turno": [
+  "IY",
+  "AC"
+ ],
+ "no mira cuando le hablo": [
+  "CP"
+ ],
+ "repite preguntas que ya sabe": [
+  "BG",
+  "IH"
+ ],
+ "pregunta lo mismo mil veces": [
+  "BG",
+  "IH"
+ ],
+ "necesita saber el plan del dia": [
+  "IU",
+  "AV"
+ ],
+ "se pone nervioso si no sabe que toca": [
+  "IU",
+  "AV",
+  "ID"
+ ],
+ "odia los cambios de ultima hora": [
+  "AV",
+  "IS",
+  "HF"
+ ],
+ "no quiere probar comida nueva": [
+  "P",
+  "LU"
+ ],
+ "solo come blanco": [
+  "P",
+  "LU"
+ ],
+ "escupe la comida": [
+  "P",
+  "LU"
+ ],
+ "tarda muchisimo en comer": [
+  "P",
+  "LG"
+ ],
+ "se llena la boca de comida": [
+  "LG",
+  "P"
+ ],
+ "no bebe agua": [
+  "P",
+  "QW"
+ ],
+ "no quiere ducharse": [
+  "IO",
+  "DB"
+ ],
+ "le molesta el agua en la cabeza": [
+  "IO",
+  "DB"
+ ],
+ "odia la ropa nueva": [
+  "DC"
+ ],
+ "solo quiere una camiseta": [
+  "DC"
+ ],
+ "no soporta las costuras": [
+  "DC"
+ ],
+ "se quita la ropa en casa": [
+  "DC",
+  "S"
+ ],
+ "no quiere ponerse el abrigo": [
+  "DC",
+  "FR"
+ ],
+ "en invierno va en manga corta": [
+  "FR"
+ ],
+ "no siente el frio": [
+  "FR"
+ ],
+ "se quema y no avisa": [
+  "FR",
+  "CY",
+  "LH"
+ ],
+ "no se queja nunca de nada": [
+  "CY",
+  "JR"
+ ],
+ "no sabe decir si le duele": [
+  "CY",
+  "JR"
+ ],
+ "como se si le duele algo": [
+  "CY",
+  "JR"
  ]
 }

@@ -3024,6 +3024,17 @@ for (const [q, titulo] of [
   ['le hacen bromas en el trabajo', 'lo acosan o lo han despedido'],
   ['esta quemado del trabajo', 'Burnout autista'],
   ['lo dejo solo en casa una hora', 'dejarlo solo en casa'],
+  // Sexta tanda (23/09): el día a día, que es lo que más se teclea.
+  ['llora cuando apago la tele', 'Apagar la tablet'],
+  ['habla sin parar del mismo tema', 'Intereses intensos'],
+  ['le cuesta esperar su turno', 'Enseñar a esperar'],
+  ['no mira cuando le hablo', 'Contacto visual'],
+  ['necesita saber el plan del dia', 'Transiciones y apoyos visuales'],
+  ['no soporta las costuras', 'Ropa y vestirse'],
+  ['en invierno va en manga corta', 'Termorregulación'],
+  ['no sabe decir si le duele', 'dolor y su expresión'],
+  ['se llena la boca de comida', 'Se atraganta al comer'],
+  ['no quiere ducharse', 'Cortar las uñas'],
 ]) {
   const rr = await buscarHondo(q);
   const cabeza = rr.slice(0, 220);
