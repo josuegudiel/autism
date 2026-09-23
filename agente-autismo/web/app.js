@@ -140,14 +140,23 @@ const badge = (clase, texto) => `<span class="badge ${clase}">${esc(texto)}</spa
 /* Emojis de estado que la biblioteca usa en su texto y que no deben verse en la app. */
 const EMOJI_ESTADO = /[\u2705\u26A0\uFE0F\u25FD\u2714\u2B50\u274C\u23F3\u2B1C]/g;
 
+/* La sirena marca urgencia, no nivel de prueba: la viñeta se destaca y se
+   queda sin píldora de evidencia. El emoji sí se conserva a la vista. */
+const URGENCIA = "\u{1F6A8}";
+
 /** Separa el marcador de nivel y limpia los emojis de estado del texto. */
 function extraerNivel(texto) {
   let t = texto, nivel = null;
+  // Solo cuenta como urgencia si la sirena ENCABEZA la viñeta. Cinco viñetas
+  // de la biblioteca la nombran por dentro para remitir a otro bloque ('eso es
+  // el cuarto bloque 🚨'), y esas no son urgencias: son referencias cruzadas, y
+  // sí llevan su nivel de evidencia.
+  const urgente = t.slice(0, 12).includes(URGENCIA);
   for (const marca of Object.keys(NIVELES)) {
     if (t.includes(marca)) { nivel = NIVELES[marca]; t = t.split(marca).join(""); }
   }
   t = t.replace(EMOJI_ESTADO, "").replace(/\s{2,}/g, " ");
-  return { texto: t.replace(/\s+([.,;:])/g, "$1").trim(), nivel };
+  return { texto: t.replace(/\s+([.,;:])/g, "$1").trim(), nivel, urgente };
 }
 
 /* ---------- Mini-render de markdown (negritas, enlaces, listas, citas) ---------- */
@@ -166,9 +175,15 @@ function mdRender(md) {
     const l = linea.trim();
     if (!l) continue;
     if (l.startsWith("- ")) {
-      const { texto, nivel } = extraerNivel(l.slice(2));
-      out.push(`<div class="punto"><p>${mdInline(texto)}</p>${
-        nivel ? badge(nivel.clase, nivel.texto) : ""}</div>`);
+      const { texto, nivel, urgente } = extraerNivel(l.slice(2));
+      // Una viñeta de urgencia NO lleva píldora de evidencia. La biblioteca lo
+      // dice en su propia leyenda —"los bloques 🚨 no llevan color: ante esas
+      // señales se actúa igual"—, pero 64 de las 153 viñetas 🚨 traían además un
+      // marcador de color, así que la app pintaba "Evidencia limitada" al lado
+      // de un atragantamiento o de una anafilaxia. Un badge de calidad de prueba
+      // junto a una urgencia se lee como "esto puede esperar".
+      out.push(`<div class="punto${urgente ? " urgente" : ""}"><p>${mdInline(texto)}</p>${
+        nivel && !urgente ? badge(nivel.clase, nivel.texto) : ""}</div>`);
     } else if (l.startsWith(">")) {
       const { texto } = extraerNivel(l.replace(/^>\s*/, ""));
       out.push(`<blockquote>${mdInline(texto)}</blockquote>`);

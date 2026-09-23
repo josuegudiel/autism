@@ -2421,6 +2421,69 @@ for (const [origen, destino] of [['AP', 'RB'], ['AN', 'RB'], ['CY', 'RB'],
 check('AP avisa de que con malestar posesfuerzo no se aplica el aumento progresivo',
   /malestar posesfuerzo/.test(fichaDe('AP')) && /no se aplica/.test(fichaDe('AP')));
 
+// 46. La sirena y la píldora de evidencia no pueden convivir. La biblioteca lo
+// dice en su propia leyenda —"los bloques 🚨 no llevan color: ante esas señales
+// se actúa igual"—, pero 64 de las 153 viñetas de urgencia traían además un
+// marcador de color, así que la app pintaba "Evidencia limitada" al lado de un
+// atragantamiento, de una anafilaxia o de un síndrome neuroléptico maligno. Un
+// badge de calidad de prueba junto a una urgencia se lee como "esto puede
+// esperar", que es lo contrario de lo que dice el texto.
+const MARCAS_NIVEL = ['🟢', '🟡', '🔴', '⚪'];
+const vinetasDe = (md) => textoDe(md).split('\n').filter((l) => l.trim().startsWith('- '));
+let urgentesConColor = 0, urgentesTotal = 0;
+for (const md of Object.values(temasCuerpo)) {
+  for (const l of vinetasDe(md)) {
+    if (!l.includes('🚨')) continue;
+    urgentesTotal++;
+    if (MARCAS_NIVEL.some((m) => l.includes(m))) urgentesConColor++;
+  }
+}
+check('La biblioteca sigue teniendo viñetas de urgencia con marcador de color',
+  urgentesConColor > 0 && urgentesTotal > urgentesConColor,
+  urgentesConColor + ' de ' + urgentesTotal);
+
+// La sirena solo manda cuando ENCABEZA la viñeta. Hay cinco viñetas que la
+// nombran por dentro para remitir a otro bloque ("eso es el cuarto bloque 🚨"):
+// esas no son urgencias, son referencias cruzadas, y conservan su nivel.
+const remiten = [];
+for (const [cod, md] of Object.entries(temasCuerpo)) {
+  for (const l of vinetasDe(md)) {
+    const i = l.indexOf('🚨');
+    if (i > 12) remiten.push(cod);
+  }
+}
+check('Las viñetas que solo remiten a otro bloque de urgencia siguen siendo pocas y conocidas',
+  remiten.length <= 8, remiten.join(','));
+await ir('#tema/QB');
+const qbUrg = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
+const qbRef = await pag.$$eval('.tema-cuerpo .punto',
+  (ns) => ns.filter((n) => !n.classList.contains('urgente') && n.textContent.includes('bloque 🚨')).length);
+check('QB: la viñeta que solo cita "el bloque 🚨" no se pinta como urgencia',
+  qbRef >= 1, qbUrg + ' urgentes, ' + qbRef + ' remisiones);');
+
+// LG las tiene de las dos clases: el atragantamiento en curso (🚨 + 🟢) y
+// viñetas normales con su nivel.
+await ir('#tema/LG');
+const urgLG = await pag.$$eval('.tema-cuerpo .punto.urgente',
+  (ns) => ns.map((n) => ({ t: n.textContent.slice(0, 50), b: n.querySelectorAll('.badge').length })));
+const puntosLG = await pag.$$eval('.tema-cuerpo .punto',
+  (ns) => ns.filter((n) => !n.classList.contains('urgente')).map((n) => n.querySelectorAll('.badge').length));
+check('Las viñetas de urgencia se pintan como urgencia, no como una viñeta más',
+  urgLG.length >= 2, JSON.stringify(urgLG).slice(0, 200));
+check('Ninguna viñeta de urgencia lleva píldora de nivel de evidencia',
+  urgLG.every((u) => u.b === 0), JSON.stringify(urgLG).slice(0, 200));
+check('Las viñetas normales sí conservan su píldora',
+  puntosLG.filter((n) => n > 0).length >= 3, puntosLG.join(','));
+const tLG = await texto();
+check('La sirena sigue viéndose en el texto de la viñeta', tLG.includes('🚨'));
+
+// Y en una ficha donde la urgencia es de medicación, por si el estilo se pierde.
+await ir('#tema/NM');
+const urgNM = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
+const badgesNM = await pag.$$eval('.tema-cuerpo .punto.urgente .badge', (ns) => ns.length);
+check('NM también pinta sus urgencias como urgencias y sin píldora',
+  urgNM >= 2 && badgesNM === 0, urgNM + ' urgentes, ' + badgesNM + ' badges');
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
