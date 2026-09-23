@@ -2125,7 +2125,11 @@ for (const md of Object.values(temasCuerpo)) {
     if (MARCAS.filter((m) => l.includes(m)).length > 1) dobles++;
   }
 }
-check('las viñetas con más de un marcador siguen siendo las contadas', dobles <= 27, String(dobles));
+// 28 desde la ronda 51: la viñeta de RP sobre la Ley 21.768 de Chile es 🟡 y
+// explica en su nota que subiría a 🟢 si alguien confirma el texto oficial en
+// bcn.cl/leychile. El segundo marcador está DENTRO de la explicación, que es la
+// convención honesta de la casa, no una mezcla de dos niveles en la misma viñeta.
+check('las viñetas con más de un marcador siguen siendo las contadas', dobles <= 28, String(dobles));
 
 
 // 41. Ayuda urgente, país por país. Es la pantalla donde una errata cuesta más
@@ -2469,8 +2473,12 @@ for (const [cod, md] of Object.entries(temasCuerpo)) {
     if (i > 12) remiten.push(cod);
   }
 }
+// 10 desde la ronda 51: RQ suma dos remisiones a su propio bloque de urgencia
+// («eso es el bloque 🚨 de arriba y QG», y la de las crisis epilépticas
+// nocturnas, que manda la cifra a Q). Son referencias cruzadas, no urgencias:
+// comprobadas una a una antes de subir el número.
 check('Las viñetas que solo remiten a otro bloque de urgencia siguen siendo pocas y conocidas',
-  remiten.length <= 8, remiten.join(','));
+  remiten.length <= 10, remiten.join(','));
 await ir('#tema/QB');
 const qbUrg = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
 const qbRef = await pag.$$eval('.tema-cuerpo .punto',

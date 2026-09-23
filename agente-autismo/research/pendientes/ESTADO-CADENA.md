@@ -46,7 +46,17 @@ archivo lleva anotando desde la ronda 38—:
    **bloqueado** sin poder avanzar», que describe a un niño que se paraliza. La
    suite solo mira **cabeceras**, así que el cuerpo se revisa a mano: el
    publicador ahora lo imprime en vez de abortar.
-3. **`fichaDe` ya existía en la suite** (sección 50). Declararla otra vez la tira
+3. **La urgencia nueva de JV entró en la viñeta 7 de 10, y la suite lo cazó.**
+   No es cosmético: `web/app.js` inyecta el enlace a los teléfonos de crisis
+   **solo si la PRIMERA viñeta es urgente**, así que el aviso que acababa de
+   escribir se quedaba sin los teléfonos justo en la ficha donde hacen falta.
+   **Cuando muevas una urgencia a una ficha vieja, va la primera, siempre.**
+   De paso, otros dos umbrales subieron con su porqué escrito al lado (viñetas
+   con doble marcador 27→28 por la Ley 21.768 de RP, que es 🟡 y explica cuándo
+   subiría a 🟢; remisiones a un bloque de urgencia ajeno 8→10 por las dos de
+   RQ). Los umbrales se suben **después** de mirar una a una las nuevas, nunca
+   para que pase la suite.
+4. **`fichaDe` ya existía en la suite** (sección 50). Declararla otra vez la tira
    entera con `SyntaxError`. Antes de correrla, pasa el detector de duplicados
    —y ojo, un `const añosEnConflicto` aparece como duplicado de `a` si el patrón
    no admite la ñ.
