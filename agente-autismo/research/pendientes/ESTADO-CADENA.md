@@ -111,6 +111,16 @@ Sale basura («número emergencias», «esperes cita», «antes ninguna cosa rie
 porque en muchas fichas ese titular es la ACCIÓN, no el síntoma: 47 de 58
 "fallos" eran ruido. Las frases del pánico hay que escribirlas a mano.
 
+- **Y este archivo tiene la misma enfermedad que vigila.** El 23/09, tras unas
+  quince ediciones en una sesión, decía a la vez «la ronda 51 está corriendo»
+  (llevaba horas publicada), «para la 52, mira lo que devuelva
+  detectar-huecos» (la 52 también estaba publicada) y «27 encargables» donde
+  `RESERVA.md` decía 26. **El mismo hecho en dos sitios, corregido en uno.**
+  Nadie lo habría notado: el vigía manda leer este archivo y creerle.
+  **Al cerrar una ronda, releer la sección «Ronda en curso» entera**, no solo
+  añadir debajo; y comprobar que el recuento de la reserva coincide con el de
+  `RESERVA.md`, que es el que manda.
+
 - **Las dos viñetas gemelas exactas, ya atadas (sección 70).** De los ocho pares
   que encuentra `vinetas-gemelas.py`, seis son la convención de la casa —cada
   ficha lleva sus propios teléfonos y su propio bloque 🚨 porque tiene que
@@ -167,7 +177,7 @@ comprobación con navegador, como dice el procedimiento.
 
 Rondas 29 a 52.
 Biblioteca en **454 temas / 226 verificados / 228 síntesis / 4.635 fuentes**.
-Suite **949/949** (23/09). Reserva: **27 encargables de 31**, en
+Suite **949/949** (23/09). Reserva: **26 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -175,11 +185,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-Ronda 51 **ya no está parada: está corriendo** (arriba, con su runId). QO sigue
-libre a propósito, como PO; confírmalo con grep antes de asignar un código.
+**Las rondas 51 y 52 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS).
+QO sigue libre a propósito, como PO; confírmalo con grep antes de asignar un
+código. Los siguientes libres son **RT** en adelante.
 
-Para la **52**, mira primero lo que devuelva `detectar-huecos.mjs`, que está
-corriendo ahora mismo para rellenar la reserva. Candidata que ya viene de antes:
+Para la **53**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+los avisos de su cabecera**. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
 `research/pendientes/RM.md`). Y un aviso que ya costó una equivocación: **"salir
 de casa cuando ya usa pañal fuera" NO es un hueco, es RH** —mira la reserva
