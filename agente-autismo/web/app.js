@@ -168,9 +168,13 @@ function mdInline(t) {
     .replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
 }
 
-/** Cada viñeta se convierte en una tarjeta con su badge de evidencia. */
-function mdRender(md) {
+/** Cada viñeta se convierte en una tarjeta con su badge de evidencia.
+ *  `ctaUrgencia`, si viene, se cuela justo detrás del bloque de urgencia que
+ *  abre la ficha: ahí es donde hace falta el teléfono, no al final detrás de
+ *  veintiséis viñetas y de la lista de fuentes. */
+function mdRender(md, ctaUrgencia = "") {
   const out = [];
+  const tipos = [];
   for (const linea of String(md || "").split("\n")) {
     const l = linea.trim();
     if (!l) continue;
@@ -184,12 +188,23 @@ function mdRender(md) {
       // junto a una urgencia se lee como "esto puede esperar".
       out.push(`<div class="punto${urgente ? " urgente" : ""}"><p>${mdInline(texto)}</p>${
         nivel && !urgente ? badge(nivel.clase, nivel.texto) : ""}</div>`);
+      tipos.push(urgente ? "urgente" : "punto");
     } else if (l.startsWith(">")) {
       const { texto } = extraerNivel(l.replace(/^>\s*/, ""));
       out.push(`<blockquote>${mdInline(texto)}</blockquote>`);
+      tipos.push("cita");
     } else {
       const { texto, nivel } = extraerNivel(l);
       out.push(`<p>${mdInline(texto)}${nivel ? " " + badge(nivel.clase, nivel.texto) : ""}</p>`);
+      tipos.push("parrafo");
+    }
+  }
+  if (ctaUrgencia) {
+    const primero = tipos.findIndex((t) => t === "urgente" || t === "punto");
+    if (primero >= 0 && tipos[primero] === "urgente") {
+      let fin = primero;
+      while (tipos[fin + 1] === "urgente") fin++;
+      out.splice(fin + 1, 0, ctaUrgencia);
     }
   }
   return out.join("");
@@ -527,7 +542,8 @@ async function renderTema(codigo) {
     <p class="estado">${verificado
       ? badge("verificado", "Fuentes comprobadas")
       : badge("vivida", "Síntesis con fuentes")}</p>
-    <article class="tema-cuerpo">${mdRender(tema.cuerpo)}</article>
+    <article class="tema-cuerpo">${mdRender(tema.cuerpo,
+      `<a class="cta-ayuda" href="#ayuda">${ICONOS.telefono}<span>Teléfonos de ayuda y emergencias de tu país</span></a>`)}</article>
     ${tema.fuentes && tema.fuentes.length ? `
       <h3 class="sec">Fuentes · ${tema.fuentes.length}</h3>
       <div class="lista fuentes">${tema.fuentes.map((f) => f.url ? `

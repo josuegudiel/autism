@@ -2481,6 +2481,24 @@ const primeraLQ = await pag.$$eval('.tema-cuerpo .punto', (ns) => ns[0].classNam
 check('LQ abre ya con su urgencia, no con el artículo 12 de la Convención',
   /urgente/.test(primeraLQ), primeraLQ);
 
+// Y el teléfono, donde hace falta. RB abre con cinco bloques de urgencia —una de
+// ellas quirúrgica, con reloj— y el único acceso a la pantalla de teléfonos
+// estaba al final de la ficha, detrás de 26 viñetas y de la lista de fuentes.
+// Ahora el enlace se cuela justo detrás del bloque de urgencia que abre.
+for (const cod of ['RB', 'LQ', 'NM']) {
+  await ir('#tema/' + cod);
+  const orden = await pag.$$eval('.tema-cuerpo > *',
+    (ns) => ns.map((n) => (n.classList.contains('cta-ayuda') ? 'CTA'
+      : n.classList.contains('urgente') ? 'U'
+      : n.classList.contains('punto') ? 'p' : '·')).join(''));
+  check(`${cod}: el enlace a los teléfonos va pegado al bloque de urgencia`,
+    /U+CTA/.test(orden) && orden.indexOf('CTA') === orden.lastIndexOf('CTA'), orden.slice(0, 60));
+}
+// Una ficha sin bloque de urgencia no lo lleva: el aviso vale porque es raro.
+await ir('#tema/BZ');
+const ctaBZ = await pag.$$eval('.tema-cuerpo .cta-ayuda', (ns) => ns.length);
+check('Una ficha sin urgencias no se llena de avisos que no vienen a cuento', ctaBZ === 0, String(ctaBZ));
+
 // LG las tiene de las dos clases: el atragantamiento en curso (🚨 + 🟢) y
 // viñetas normales con su nivel.
 await ir('#tema/LG');

@@ -258,6 +258,12 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--label-2)
 .tema-cuerpo .punto.urgente {
   border-left: 4px solid var(--ev-evitar); background: var(--ev-evitar-bg);
 }
+.tema-cuerpo .cta-ayuda {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: var(--ev-evitar); color: #ffffff; font-weight: 600; font-size: 15px;
+  border-radius: var(--r-card); padding: 13px 16px; margin: 0 0 14px;
+}
+.tema-cuerpo .cta-ayuda svg { width: 18px; height: 18px; flex: none; }
 .tema-cuerpo .punto .badge { margin-top: 9px; }
 .tema-cuerpo blockquote {
   margin: 0 0 14px; padding: 13px 16px;
