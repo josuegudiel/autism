@@ -2701,6 +2701,31 @@ const swift = fs.readFileSync(new URL('../../ios/BrujulaTEA/Modelos/Modelos.swif
 check('Y el target de iOS dice lo mismo que la web',
   !/Experiencia vivida/.test(swift) && /Criterio nuestro, sin estudios/.test(swift));
 
+// 52. La clave de colores. Las cuatro píldoras llevaban desde siempre sin
+// explicación en ninguna pantalla: solo 53 de las 445 fichas traen dentro la
+// línea de leyenda, y en las otras 392 el lector veía "Evidencia limitada" o
+// "Criterio nuestro, sin estudios" sin saber a qué se refiere —ni, sobre todo,
+// que el color habla de la prueba y no de la prisa, que es la confusión que más
+// daño hace al lado de un bloque de urgencia.
+await ir('#tema/RB');
+const leyenda = await pag.$$eval('details.leyenda', (ns) => ns.map((n) => ({
+  resumen: n.querySelector('summary')?.textContent || '',
+  claves: [...n.querySelectorAll('.badge')].map((b) => b.textContent),
+  texto: n.querySelector('p')?.textContent || '',
+})));
+check('La ficha trae una clave de colores', leyenda.length === 1, JSON.stringify(leyenda).slice(0, 200));
+check('La clave dice que el color es evidencia y no prisa',
+  /no cuánta prisa corre/.test(leyenda[0]?.texto || '') && /urgencia no llevan color/.test(leyenda[0]?.texto || ''),
+  (leyenda[0]?.texto || '').slice(0, 120));
+check('La clave solo lista los niveles que esa ficha usa',
+  (leyenda[0]?.claves || []).length >= 2 && (leyenda[0]?.claves || []).length <= 4,
+  (leyenda[0]?.claves || []).join(' · '));
+// Y va plegada, para no empujar hacia abajo el bloque de urgencia.
+const ordenRB = await pag.$$eval('#view > *', (ns) => ns.map((n) => n.tagName + (n.className ? '.' + String(n.className).split(' ')[0] : '')).join(' '));
+check('La clave va antes del cuerpo y plegada, sin empujar la urgencia fuera de pantalla',
+  /DETAILS\.leyenda ARTICLE\.tema-cuerpo/.test(ordenRB)
+  && (await pag.$$eval('details.leyenda', (ns) => ns.every((n) => !n.open))), ordenRB.slice(0, 120));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

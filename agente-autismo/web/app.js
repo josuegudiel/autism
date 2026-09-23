@@ -164,6 +164,25 @@ function extraerNivel(texto) {
   return { texto: t.replace(/\s+([.,;:])/g, "$1").trim(), nivel, urgente };
 }
 
+/** Clave de colores de la ficha. Hasta ahora las cuatro píldoras aparecían sin
+ *  explicación en ningún sitio: solo 53 de las 445 fichas llevan dentro la línea
+ *  de leyenda, y en las otras 392 el lector veía "Evidencia limitada" o
+ *  "Criterio nuestro" sin saber a qué se refiere ni, sobre todo, que el color
+ *  habla de la prueba y no de la prisa. Se muestran solo los niveles que esa
+ *  ficha usa de verdad. */
+function leyendaNiveles(cuerpo) {
+  const md = String(cuerpo || "");
+  const usados = Object.keys(NIVELES).filter((m) => md.includes(m));
+  if (!usados.length) return "";
+  return `<details class="leyenda"><summary>Qué significan los colores</summary>
+    <div class="claves">${usados.map((m) => {
+      const n = NIVELES[m];
+      return `<span class="clave">${badge(n.clase, n.texto)}</span>`;
+    }).join("")}</div>
+    <p>El color dice <strong>cuánta evidencia hay detrás del punto</strong>, no cuánta prisa corre.
+    Los bloques de urgencia no llevan color: ante esas señales se actúa igual.</p></details>`;
+}
+
 /* ---------- Mini-render de markdown (negritas, enlaces, listas, citas) ---------- */
 function mdInline(t) {
   return esc(t)
@@ -547,6 +566,7 @@ async function renderTema(codigo) {
     <p class="estado">${verificado
       ? badge("verificado", "Fuentes comprobadas")
       : badge("vivida", "Síntesis con fuentes")}</p>
+    ${leyendaNiveles(tema.cuerpo)}
     <article class="tema-cuerpo">${mdRender(tema.cuerpo,
       `<a class="cta-ayuda" href="#ayuda">${ICONOS.telefono}<span>Teléfonos de ayuda y emergencias de tu país</span></a>`)}</article>
     ${tema.fuentes && tema.fuentes.length ? `

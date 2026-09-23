@@ -268,6 +268,10 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--label-2)
   border-radius: var(--r-card); padding: 13px 16px; margin: 0 0 14px;
 }
 .tema-cuerpo .cta-ayuda svg { width: 18px; height: 18px; flex: none; }
+details.leyenda { margin: 0 0 14px; font-size: 14px; color: var(--label-2); }
+details.leyenda summary { cursor: pointer; padding: 4px 0; color: var(--accent); font-weight: 600; }
+details.leyenda .claves { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+details.leyenda p { margin: 0; font-size: 14px; }
 .tema-cuerpo .punto .badge { margin-top: 9px; }
 .tema-cuerpo blockquote {
   margin: 0 0 14px; padding: 13px 16px;
