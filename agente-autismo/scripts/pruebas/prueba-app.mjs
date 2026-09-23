@@ -3323,6 +3323,38 @@ for (const [q, titulo] of [
   check(`Adolescencia y vida adulta: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 67. La auditoría de alcance, y lo que encontró al final del hilo. En vez de
+// otra tanda de veinte a mano, se probaron LAS 454 fichas con las palabras de su
+// propio título: 428 salían las primeras y ninguna daba cero resultados. De las
+// 26 que no, casi todas eran artefacto de la consulta generada (quitar «no» y
+// «qué» la deja ambigua y gana la ficha paraguas, que suele ser lo correcto).
+// Pero tirando de dos de ellas con las palabras que escribiría un padre salió
+// lo más grave de la sesión: las convulsiones y el agua, que están entre las
+// primeras causas de muerte evitable, no se alcanzaban.
+//   «se está convulsionando ahora»          -> cuido a mi hijo y a mis padres
+//   «le ha dado una convulsión»             -> pubertad precoz
+//   «no sabe nadar y nos vamos a la piscina» -> separación o divorcio
+//   «se tira al agua sin mirar»             -> alimentación selectiva
+// De tres formas de escribir una convulsión en curso, solo una llegaba a JQ.
+for (const [q, titulo] of [
+  ['le ha dado una convulsion', 'Convulsiones: qué hacer'],
+  ['se esta convulsionando ahora', 'Convulsiones: qué hacer'],
+  ['se esta convulsionando', 'Convulsiones: qué hacer'],
+  ['le esta dando un ataque', 'Convulsiones: qué hacer'],
+  ['se ha puesto rigido y temblando', 'Convulsiones: qué hacer'],
+  ['que hago si le da una convulsion', 'Convulsiones: qué hacer'],
+  ['primera convulsion', 'Convulsiones: qué hacer'],
+  ['no sabe nadar y nos vamos a la piscina', 'Natación y seguridad en el agua'],
+  ['no sabe nadar', 'Natación y seguridad en el agua'],
+  ['se tira al agua sin mirar', 'Natación y seguridad en el agua'],
+  ['le atrae el agua', 'Natación y seguridad en el agua'],
+  ['nos vamos a la playa', 'Natación y seguridad en el agua'],
+  ['no le afecta el frio', 'Termorregulación'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Urgencia alcanzable: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

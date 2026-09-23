@@ -2534,8 +2534,7 @@
   "AP"
  ],
  "clases de natacion": [
-  "AE",
-  "AP"
+  "JD"
  ],
  "cama elastica en casa": [
   "AP"
@@ -5786,5 +5785,80 @@
  "se quiere ir a vivir con su novia": [
   "CM",
   "HX"
+ ],
+ "le ha dado una convulsion": [
+  "JQ",
+  "Q"
+ ],
+ "se esta convulsionando ahora": [
+  "JQ"
+ ],
+ "se esta convulsionando": [
+  "JQ"
+ ],
+ "esta convulsionando": [
+  "JQ"
+ ],
+ "le esta dando un ataque": [
+  "JQ",
+  "Q"
+ ],
+ "le ha dado un ataque": [
+  "JQ",
+  "Q"
+ ],
+ "se ha puesto rigido y temblando": [
+  "JQ",
+  "Q"
+ ],
+ "convulsion que hago ahora": [
+  "JQ"
+ ],
+ "se queda tieso y tiembla": [
+  "JQ",
+  "Q"
+ ],
+ "ha tenido una crisis epileptica": [
+  "JQ",
+  "Q"
+ ],
+ "primera convulsion": [
+  "JQ",
+  "Q"
+ ],
+ "no sabe nadar y nos vamos a la piscina": [
+  "JD",
+  "AE"
+ ],
+ "no sabe nadar": [
+  "JD"
+ ],
+ "se tira al agua sin mirar": [
+  "JD",
+  "AE"
+ ],
+ "se mete en el agua sin miedo": [
+  "JD",
+  "AE"
+ ],
+ "le atrae el agua": [
+  "JD",
+  "AE"
+ ],
+ "nos vamos a la piscina": [
+  "JD"
+ ],
+ "nos vamos a la playa": [
+  "JD",
+  "AE"
+ ],
+ "no le afecta el frio": [
+  "FR"
+ ],
+ "no tiene frio nunca": [
+  "FR"
+ ],
+ "no suda": [
+  "FR"
  ]
 }

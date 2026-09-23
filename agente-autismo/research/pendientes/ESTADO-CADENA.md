@@ -55,6 +55,33 @@ tiene lo suyo, y van unas ochenta frases probadas de un espacio sin fondo.** Cua
 esto es lo que más rinde: veinte consultas nuevas de un área que nadie haya
 probado, y mirar la primera respuesta de cada una.
 
+**Y la auditoría de alcance, que es lo que hay que hacer en vez de una cuarta
+tanda a mano.** Las tandas de veinte encuentran mucho pero no tienen fondo: no
+dicen cuánto queda. Así que se probaron **las 454 fichas con las palabras de su
+propio título** (`scripts/pruebas/alcance-fichas.tsv`, regenerable con el
+generador de abajo) contra la app: **428 salen las primeras y ninguna da cero
+resultados.** Eso sí es una propiedad acotada y medible, y conviene repetirla
+después de cada ronda.
+
+De las 26 que no salían primeras, **casi todas son artefacto del generador**:
+quitar «no» y «qué» deja la consulta ambigua y gana la ficha paraguas, que
+normalmente es lo correcto (A sobre AF, D sobre la de comunicación no verbal, Q
+sobre JQ). **Pero tirar de dos de ellas con las palabras de un padre dio lo más
+grave de toda la sesión:**
+
+- **«se está convulsionando ahora»** abría «cuido a mi hijo y también a mis
+  padres». **«le ha dado una convulsión»** abría pubertad precoz. De tres formas
+  de escribir una convulsión en curso, **solo una llegaba a JQ**.
+- **«no sabe nadar y nos vamos a la piscina»** abría separación o divorcio, y
+  **«se tira al agua sin mirar»** abría alimentación selectiva. El ahogamiento
+  es de las primeras causas de muerte evitable en niños autistas y JD existe
+  desde hace muchas rondas.
+
+Las dos están arregladas y asertadas (sección 67). **La lección: el buscador
+falla más justo donde menos se puede permitir, porque las urgencias se escriben
+con frases cortas y desesperadas que nadie había probado.** Cuando pruebes
+consultas, empieza por las urgencias.
+
 Y una tercera, de fontanería: **el servidor de pruebas se cae solo** (dio
 `ERR_CONNECTION_REFUSED` a mitad de la ronda). Levántalo antes de cualquier
 comprobación con navegador, como dice el procedimiento.
