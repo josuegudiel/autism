@@ -2943,6 +2943,47 @@ const revisados = (coh.match(/\('[A-Z]{1,2}','[A-Z]{1,2}'\)/g) || []).length;
 check('La lista de pares revisados está escrita, no en la cabeza de nadie',
   revisados >= 60, revisados + ' pares anotados');
 
+// 60. La puerta de entrada. Probé cuarenta consultas escritas como las escribe
+// una familia —no como las escribiría quien conoce la biblioteca— y dieciséis
+// aterrizaban en la ficha equivocada. Las peores no eran las raras:
+//   «quiere morirse»               -> dolor crónico
+//   «alguien le ha tocado»         -> cuentas ajenas en internet
+//   «convulsión qué hago»          -> lista de espera del diagnóstico
+//   «se queda mirando al vacío»    -> el niño que no juega con otros
+//   «la profesora dice que es vago»-> sedación en el dentista
+// Todas tienen ficha, y buena. Lo que faltaba era la frase con la que se busca.
+for (const [q, titulo] of [
+  ['quiere morirse', 'Salud mental y seguridad'],
+  ['dice que quiere morirse', 'Salud mental y seguridad'],
+  ['mi hija de 14 se autolesiona', 'Autolesión'],
+  ['convulsion que hago', 'Convulsiones: qué hacer en el momento'],
+  ['se queda mirando al vacio', 'Epilepsia'],
+  ['alguien le ha tocado', 'Seguridad personal y prevención del abuso'],
+  ['le pegan en clase', 'Acoso escolar'],
+  ['se escapa de casa', 'fugas y pica'],
+  ['se tira del pelo', 'Se arranca el pelo'],
+  ['la profesora dice que es vago', 'Saca buenas notas'],
+  ['tiene la regla y no lo lleva bien', 'La regla le hace sufrir'],
+  ['se toca en publico', 'Educación sexual'],
+  ['la policia lo paro en la calle', 'sistema de justicia'],
+  ['le rechinan los dientes', 'Salud dental y bruxismo'],
+  ['no encuentra trabajo', 'Entrevistas de trabajo'],
+]) {
+  const rr = await buscarHondo(q);
+  const cabeza = rr.slice(0, 220);
+  check(`Buscar «${q}» abre con «${titulo}»`, cabeza.includes(titulo), cabeza.slice(0, 150));
+}
+
+// Y la regla que lo hace posible: el orden en que un sinónimo lista sus fichas
+// decide el desempate. Antes todas recibían el mismo empuje y ganaba el título
+// alfabéticamente menor, así que «quiere morirse» —mapeado a G, IC, FP y KS—
+// aterrizaba en «Autolesión» en vez de en «Salud mental y seguridad».
+const appSrc = fs.readFileSync(new URL('../../web/app.js', import.meta.url), 'utf8');
+check('El orden dentro de un sinónimo pesa: la primera ficha es el destino',
+  /codigos\.forEach\(\(c, i\)/.test(appSrc) && /peso - Math\.min\(i, 6\) \* 0\.5/.test(appSrc));
+check('Y el simulador de búsqueda usa la misma regla que la app',
+  /min\(i,6\)\*0\.5/.test(fs.readFileSync(new URL('../../scripts/pruebas/simular-busqueda.py', import.meta.url), 'utf8')));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

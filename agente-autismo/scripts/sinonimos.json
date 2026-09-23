@@ -4390,5 +4390,177 @@
  ],
  "no dijo en la empresa que es autista": [
   "RL"
+ ],
+ "quiere morirse": [
+  "G",
+  "IC",
+  "FP",
+  "KS"
+ ],
+ "dice que quiere morirse": [
+  "G",
+  "IC",
+  "FP"
+ ],
+ "dice que se quiere matar": [
+  "G",
+  "IC",
+  "FP"
+ ],
+ "no quiere vivir": [
+  "G",
+  "IC",
+  "FP"
+ ],
+ "dice que estariamos mejor sin el": [
+  "G",
+  "IC",
+  "FP"
+ ],
+ "se autolesiona": [
+  "KS",
+  "G"
+ ],
+ "mi hija se autolesiona": [
+  "KS",
+  "G"
+ ],
+ "se corta": [
+  "KS",
+  "G"
+ ],
+ "se hace cortes": [
+  "KS",
+  "G"
+ ],
+ "convulsion que hago": [
+  "JQ",
+  "Q"
+ ],
+ "le esta dando una convulsion": [
+  "JQ",
+  "Q"
+ ],
+ "que hago si convulsiona": [
+  "JQ",
+  "Q"
+ ],
+ "se queda mirando al vacio": [
+  "Q",
+  "DO",
+  "JQ"
+ ],
+ "se queda como congelado": [
+  "DO",
+  "Q"
+ ],
+ "alguien le ha tocado": [
+  "EF",
+  "LL",
+  "QJ"
+ ],
+ "creo que abusaron de el": [
+  "EF",
+  "LL"
+ ],
+ "sospecho que le hacen dano": [
+  "LL",
+  "EF"
+ ],
+ "le pegan en clase": [
+  "DE",
+  "LL"
+ ],
+ "le hacen bullying": [
+  "DE"
+ ],
+ "se escapa de casa": [
+  "AE"
+ ],
+ "se me escapa en la calle": [
+  "AE"
+ ],
+ "se pierde en la calle": [
+  "AE"
+ ],
+ "se hace caca encima": [
+  "EP",
+  "AT"
+ ],
+ "se hace pis encima": [
+  "AT",
+  "EQ"
+ ],
+ "se lo hace encima con seis anos": [
+  "EP",
+  "AT"
+ ],
+ "se tira del pelo": [
+  "MN",
+  "KS"
+ ],
+ "se arranca las cejas": [
+  "MN"
+ ],
+ "la profesora dice que es vago": [
+  "RE",
+  "LW",
+  "BZ"
+ ],
+ "dicen que no se esfuerza": [
+  "RE",
+  "LW"
+ ],
+ "dicen que podria si quisiera": [
+  "RE",
+  "BZ"
+ ],
+ "mi mujer y yo discutimos por el nino": [
+  "DM",
+  "N"
+ ],
+ "mi marido y yo discutimos por el nino": [
+  "DM",
+  "N"
+ ],
+ "la pareja se resiente": [
+  "DM"
+ ],
+ "no encuentra trabajo": [
+  "FK",
+  "T",
+  "PC"
+ ],
+ "no le llaman de ningun trabajo": [
+  "PC",
+  "FK"
+ ],
+ "tiene la regla y no lo lleva bien": [
+  "MO",
+  "DA"
+ ],
+ "le viene la regla y lo pasa fatal": [
+  "MO",
+  "DA"
+ ],
+ "se toca en publico": [
+  "S",
+  "HY"
+ ],
+ "se masturba delante de la gente": [
+  "S",
+  "HY"
+ ],
+ "la policia lo paro en la calle": [
+  "CJ"
+ ],
+ "la policia lo ha parado": [
+  "CJ"
+ ],
+ "le rechinan los dientes": [
+  "EO"
+ ],
+ "aprieta los dientes por la noche": [
+  "EO"
  ]
 }

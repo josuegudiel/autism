@@ -36,7 +36,10 @@ def buscar(q, extra=None):
             if com==len(tf): peso=24
             elif com>=2: peso=14
         if peso:
-            for c in cods: imp[c]=max(imp.get(c,0),peso)
+            # El orden dentro del sinonimo decide el desempate: la primera ficha
+            # es el destino principal (mismo descuento que web/app.js).
+            for i,c in enumerate(cods):
+                imp[c]=max(imp.get(c,0), peso - min(i,6)*0.5)
     res=[]
     for t in TEMAS:
         titulo=norm(t['titulo']); mensaje=norm(t.get('mensaje') or '')

@@ -280,7 +280,16 @@ function buscarTemas(consulta, indice) {
       if (comunes === tf.length) peso = 24;                   // están todas sus palabras
       else if (comunes >= 2) peso = 14;                       // coinciden dos o más
     }
-    if (peso) for (const c of codigos) impulso[c] = Math.max(impulso[c] || 0, peso);
+    // El ORDEN en que un sinónimo lista sus fichas importa: la primera es el
+    // destino principal. Hasta ahora todas recibían el mismo empuje y el
+    // desempate lo decidía el orden alfabético del título, así que "quiere
+    // morirse" —mapeado a G, IC, FP y KS— aterrizaba en "Autolesión" en vez de
+    // en "Salud mental y seguridad", solo porque la A va antes que la S. El
+    // descuento es pequeño a propósito: ordena dentro del sinónimo sin alterar
+    // el peso frente a las otras señales.
+    if (peso) codigos.forEach((c, i) => {
+      impulso[c] = Math.max(impulso[c] || 0, peso - Math.min(i, 6) * 0.5);
+    });
   }
 
   // Sin palabras útiles y sin sinónimo que encaje, no hay nada que buscar.
