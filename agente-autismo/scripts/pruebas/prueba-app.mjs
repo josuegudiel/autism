@@ -2499,6 +2499,33 @@ await ir('#tema/BZ');
 const ctaBZ = await pag.$$eval('.tema-cuerpo .cta-ayuda', (ns) => ns.length);
 check('Una ficha sin urgencias no se llena de avisos que no vienen a cuento', ctaBZ === 0, String(ctaBZ));
 
+// 47. La cuarta copia de los teléfonos: 58 fichas de la biblioteca escriben el
+// número de emergencias dentro del texto ("112 en España, 911 en México y en
+// buena parte de América"). Están bien hoy, y la forma de que sigan estándolo
+// es atarlas a la pantalla de ayuda, que es la fuente.
+const PERMITIDOS = {};
+for (const pais of ayudaJSON.paises) {
+  const clave = clavePais(pais.pais);
+  const nums = new Set();
+  for (const m of (pais.emergencias + ' ' + pais.linea).matchAll(/\d{3,}/g)) nums.add(m[0]);
+  PERMITIDOS[clave] = nums;
+}
+PERMITIDOS['la Unión Europea'] = new Set(['112']);
+PERMITIDOS['la UE'] = new Set(['112']);
+PERMITIDOS['EE. UU.'] = PERMITIDOS['Estados Unidos'];
+const sinLimpiar = libMd.replace(/\*\*/g, '');
+const numeroMal = [];
+const PAISES_RE = /(\d{3})\s+en\s+(España|la Unión Europea|la UE|México|Argentina|Chile|Colombia|Perú|Estados Unidos|EE\. UU\.)/g;
+for (const m of sinLimpiar.matchAll(PAISES_RE)) {
+  const permitidos = PERMITIDOS[m[2]];
+  if (permitidos && !permitidos.has(m[1])) numeroMal.push(m[0]);
+}
+check('Los números de emergencias escritos dentro de las fichas coinciden con la pantalla de ayuda',
+  numeroMal.length === 0, [...new Set(numeroMal)].join(' · '));
+check('Y el 131 de Chile, que la biblioteca escribe con otra forma, también',
+  !/1(?!31)\d\d\s+para la ambulancia en Chile/.test(sinLimpiar)
+  && /131 para la ambulancia en Chile/.test(sinLimpiar));
+
 // LG las tiene de las dos clases: el atragantamiento en curso (🚨 + 🟢) y
 // viñetas normales con su nivel.
 await ir('#tema/LG');
