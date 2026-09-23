@@ -2893,6 +2893,22 @@ check('QS no se deja "no ve bien" fuera de sus señales de fallo neurológico',
 check('MO avisa del sangrado abundante tras un DIU, igual que NW',
   /sangrado abundante en los días o semanas siguientes/.test(fichaDe('MO')));
 
+// 58. El hito de señalar, que es el que más sustos falsos da. O ya traía la
+// reconciliación escrita —señalar aparece entre los 12 y los 18 meses, así que
+// a los 14 todavía puede estar llegando; lo que sí es señal a los 12 meses es no
+// hacer NINGÚN gesto, y a los 18, no señalar nada— pero HQ seguía publicando
+// "no señala ni usa gestos para pedir/mostrar hacia los 12 meses" a secas. Una
+// madre que leyera HQ con un hijo de 12 meses que dice adiós con la mano pero
+// todavía no señala se llevaba un susto que la propia biblioteca desmiente dos
+// fichas más allá.
+const hq = fichaDe('HQ'), o = fichaDe('O');
+check('HQ ya distingue "ningún gesto a los 12 meses" de "no señalar a los 18"',
+  /no hace ningún gesto/i.test(hq) && /no señala nada\*\* hacia los 18 meses/.test(hq)
+  && !/no señala ni usa gestos para pedir\/mostrar hacia los 12 meses/.test(hq));
+check('Y O y HQ cuentan el mismo hito con la misma horquilla',
+  /entre los 12 y los 18 meses/.test(hq) && /entre los 12 y los 18 meses/.test(o));
+check('HQ manda a O, que es donde está el desarrollo del matiz', /\*\*O\. /.test(hq));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
