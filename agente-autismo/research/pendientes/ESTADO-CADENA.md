@@ -314,6 +314,32 @@ LÍMITE DURO: 4 temas por ronda.
   uno busca cifras que no cuadran y el otro, texto duplicado que se va a separar.
   La suite fija el techo en 8 pares.
 
+- **La puerta de entrada estaba peor que el contenido (23/09).** Escribí ochenta
+  consultas como las escribe una familia —no como las escribiría quien conoce la
+  biblioteca— y **cuarenta aterrizaban en la ficha equivocada**. Todas tenían
+  ficha, y buena: lo que faltaba era la frase. Las peores:
+  «quiere morirse» → dolor crónico · «alguien le ha tocado» → cuentas ajenas en
+  internet · «convulsión qué hago» → lista de espera · «se queda mirando al
+  vacío» → el niño que no juega · «la profesora dice que es vago» → sedación en
+  el dentista · «mi hija de 14 se autolesiona» → valproato y la regla · «le
+  huele el aliento fatal» → la regla · «se queja de la tripa» → los vecinos se
+  quejan del ruido.
+  **86 entradas nuevas en `sinonimos.json`** y **31 de esas consultas quedan como
+  prueba**, con el título que tienen que abrir. **Haz esto en cada ronda**:
+  escribe veinte consultas con las palabras de una familia y mira la primera
+  respuesta. Es la comprobación que más fallos por hora ha dado de todas las de
+  esta sesión, y no cuesta ninguna búsqueda web.
+- **Y una regla del buscador que cambió con ello:** el **orden en que un sinónimo
+  lista sus fichas decide el desempate**. Antes todas recibían el mismo empuje y
+  ganaba el título alfabéticamente menor —por eso «quiere morirse», mapeado a G,
+  IC, FP y KS, abría en «Autolesión» en vez de en «Salud mental y seguridad»—.
+  El descuento por posición es pequeño (0,5 por puesto, hasta seis) para ordenar
+  dentro del sinónimo sin alterar el peso frente a las demás señales. **La
+  primera ficha de cada lista es ahora el destino principal**, que es como se
+  venían escribiendo las listas sin que sirviera de nada. Está en `web/app.js` y
+  replicado en `scripts/pruebas/simular-busqueda.py`: **si tocas uno, toca el
+  otro**, que si no el simulador deja de simular.
+
 ## El PR #2
 
 Head `861a83b` (ronda 41). Borrador, sin comentarios ni reviews; todos los runs

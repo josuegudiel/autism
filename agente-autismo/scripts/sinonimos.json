@@ -4562,5 +4562,169 @@
  ],
  "aprieta los dientes por la noche": [
   "EO"
+ ],
+ "me han dicho que espere a ver": [
+  "O",
+  "X",
+  "LT"
+ ],
+ "que es el ados": [
+  "BW",
+  "LT"
+ ],
+ "copia lo que dicen en la tele": [
+  "BG"
+ ],
+ "repite lo que oye": [
+  "BG"
+ ],
+ "mueve las manos todo el rato": [
+  "BH"
+ ],
+ "aletea con las manos": [
+  "BH"
+ ],
+ "se balancea todo el rato": [
+  "BH"
+ ],
+ "solo quiere ver el mismo video": [
+  "AI",
+  "BI"
+ ],
+ "se enfada si cambiamos de ruta": [
+  "AV",
+  "IS",
+  "HF"
+ ],
+ "no soporta que cambie el plan": [
+  "AV",
+  "IS",
+  "HF"
+ ],
+ "en el cumple se puso a llorar": [
+  "CO",
+  "IG",
+  "HF"
+ ],
+ "en las fiestas lo pasa mal": [
+  "CO",
+  "IG"
+ ],
+ "vomita cuando se pone nervioso": [
+  "AA",
+  "AB"
+ ],
+ "le huele el aliento fatal": [
+  "KF",
+  "EO"
+ ],
+ "tiene la piel fatal de rascarse": [
+  "MN",
+  "DB"
+ ],
+ "se rasca hasta hacerse heridas": [
+  "MN",
+  "KS"
+ ],
+ "se queja de la tripa siempre": [
+  "AA",
+  "EP",
+  "JR"
+ ],
+ "le duele la barriga a menudo": [
+  "AA",
+  "EP"
+ ],
+ "le duele la cabeza a menudo": [
+  "ER"
+ ],
+ "tiene migrañas": [
+  "ER"
+ ],
+ "quiere estar todo el dia en pantallas": [
+  "AI",
+  "DU",
+  "KV"
+ ],
+ "juega al mismo videojuego sin parar": [
+  "DU",
+  "KV",
+  "AI"
+ ],
+ "habla con desconocidos en internet": [
+  "DV"
+ ],
+ "le han hecho un comentario racista": [
+  "CH",
+  "DE"
+ ],
+ "en el cole no le dan apoyo": [
+  "JP",
+  "RE",
+  "MR"
+ ],
+ "quiero cambiarlo de colegio": [
+  "FG",
+  "DF",
+  "PD"
+ ],
+ "el psicologo privado es carisimo": [
+  "KN",
+  "MS",
+  "M"
+ ],
+ "no podemos pagar la terapia": [
+  "KN",
+  "M",
+  "MS"
+ ],
+ "la abuela dice que es culpa mia": [
+  "DN"
+ ],
+ "dicen que es culpa de como lo educo": [
+  "DN",
+  "N"
+ ],
+ "mi otro hijo se siente desplazado": [
+  "JV"
+ ],
+ "sus hermanos se quejan": [
+  "JV",
+  "BM"
+ ],
+ "soy autista y acabo de enterarme": [
+  "CT"
+ ],
+ "me han diagnosticado de adulta": [
+  "CT"
+ ],
+ "mi hijo dice que es chica": [
+  "AO",
+  "CK"
+ ],
+ "dice que no se siente nino ni nina": [
+  "AO",
+  "CK"
+ ],
+ "quiere tener novia": [
+  "HX",
+  "S"
+ ],
+ "se va a ir de casa": [
+  "CM",
+  "LB"
+ ],
+ "tiene dos anos y no dice nada": [
+  "O",
+  "X",
+  "HQ"
+ ],
+ "no dice ni mama ni papa": [
+  "O",
+  "HQ"
+ ],
+ "mi familia no lo acepta": [
+  "DN",
+  "N"
  ]
 }

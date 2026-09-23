@@ -2968,6 +2968,23 @@ for (const [q, titulo] of [
   ['la policia lo paro en la calle', 'sistema de justicia'],
   ['le rechinan los dientes', 'Salud dental y bruxismo'],
   ['no encuentra trabajo', 'Entrevistas de trabajo'],
+  // Segunda tanda de cuarenta consultas (23/09): otras veinticuatro fallaban.
+  ['que es el ados', 'Diagnóstico diferencial'],
+  ['copia lo que dicen en la tele', 'Ecolalia'],
+  ['mueve las manos todo el rato', 'Stimming'],
+  ['se enfada si cambiamos de ruta', 'Transiciones y apoyos visuales'],
+  ['le huele el aliento fatal', 'higiene bucal'],
+  ['se queja de la tripa siempre', 'Problemas digestivos'],
+  ['le duele la cabeza a menudo', 'migraña'],
+  ['juega al mismo videojuego sin parar', 'uso problemático de videojuegos'],
+  ['habla con desconocidos en internet', 'vida online'],
+  ['quiero cambiarlo de colegio', 'Elegir colegio'],
+  ['el psicologo privado es carisimo', 'pobreza'],
+  ['la abuela dice que es culpa mia', 'abuelos y familia extensa'],
+  ['mi otro hijo se siente desplazado', 'repartir el tiempo'],
+  ['soy autista y acabo de enterarme', 'diagnóstico en la adultez'],
+  ['mi hijo dice que es chica', 'diversidad de género'],
+  ['tiene la piel fatal de rascarse', 'Se arranca el pelo'],
 ]) {
   const rr = await buscarHondo(q);
   const cabeza = rr.slice(0, 220);
