@@ -2764,12 +2764,15 @@ const AÑOS_OK = new Set([
   'https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=99712',
   'https://www.boe.es/buscar/doc.php?id=BOE-A-2022-5140',
   'https://www.aemps.gob.es/medicamentosUsoHumano/informesPublicos/docs/2025/IPT-400-Slenyto-melatonina.pdf',
-  // PENDIENTES DE COMPROBAR EN FUENTE (23/09: presupuesto de WebSearch agotado).
-  // Están anotados en research/pendientes/ESTADO-CADENA.md; al resolverlos, se
-  // corrige la etiqueta y se quita de aquí la línea.
-  'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6590432/',   // Schoen 2018 vs 2019
-  'https://link.springer.com/article/10.1007/s10803-020-04844-2', // Hume 2021 vs Steinbrenner 2020
 ]);
+// Los dos que quedaban pendientes se comprobaron en fuente el 23/09 y eran
+// errores de verdad, así que ya no están aquí: se corrigió la etiqueta.
+//   PMC6590432 -> Schoen et al. 2019 (Autism Research 12:6-19; el epub de
+//     diciembre de 2018 es de donde salía el "2018").
+//   s10803-020-04844-2 -> Hume et al. 2021. Steinbrenner et al. 2020 es el
+//     INFORME del NCAEP, que es otro documento; la ficha que lo citaba así ya
+//     enlazaba el informe aparte en PDF, o sea que lo citaba dos veces y al
+//     artículo ninguna.
 const añosEnConflicto = [];
 for (const [url, etiquetas] of etiquetasPorUrl) {
   if (etiquetas.size < 2 || AÑOS_OK.has(url)) continue;
@@ -2780,7 +2783,7 @@ for (const [url, etiquetas] of etiquetasPorUrl) {
 check('Ninguna fuente nueva se cita con dos años distintos',
   añosEnConflicto.length === 0, añosEnConflicto.slice(0, 4).join(' · '));
 check('Y los casos conocidos siguen siendo los mismos, no han crecido',
-  AÑOS_OK.size === 7, String(AÑOS_OK.size));
+  AÑOS_OK.size === 5, String(AÑOS_OK.size));
 
 // 54. Las referencias cruzadas. La biblioteca se sostiene sobre 1.496 remisiones
 // del tipo "ve **DO. Catatonia en el autismo**", y una que apunte a un código

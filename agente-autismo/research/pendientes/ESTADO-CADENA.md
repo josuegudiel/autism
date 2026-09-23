@@ -279,35 +279,29 @@ LÍMITE DURO: 4 temas por ronda.
   medir `rgba(192,42,27,0.1)` como rojo sólido daba 3,59:1 en una viñeta que
   tiene 16:1 y me mandó a arreglar algo que no estaba roto.
 
-- **Dos fuentes citadas con dos años distintos, sin resolver (23/09).** De las
+- **Dos fuentes citadas con dos años distintos: resueltas (23/09).** De las
   3.822 URLs de la biblioteca, 279 aparecen con más de una etiqueta —normal, la
-  redacción cambia— y **siete** cambian además el año. Cinco son benignas (el
+  redacción cambia— y siete cambiaban además el año. Cinco eran benignas (el
   año de vigilancia frente al de publicación en el ADDM del CDC y en la cohorte
   PECARN, el número de la Ley 1996 de 2019 de Colombia, la Ley 6/2022 citando el
   RDL 1/2013 que modifica, y el IPT de Slenyto de 2025 que sustituye al de
-  2021). **Las otras dos hay que comprobarlas en fuente y no pude: el
-  presupuesto de WebSearch de la sesión se agotó (200/200).**
-  1. `PMC6590432` se cita como **"Schoen et al., 2019"** y como **"Schoen 2018"**
-     (revisión sistemática de la integración sensorial de Ayres).
-  2. `link.springer.com/…/s10803-020-04844-2` se cita como **"Hume et al. 2021
-     (J Autism Dev Disord)"** y como **"Steinbrenner et al. (2020), revisión de
-     tercera generación"**. Ahí no cambia solo el año: cambia el primer autor.
-     Ojo, porque el informe del NCAEP (Steinbrenner) y el artículo de JADD
-     (Hume) **son dos documentos distintos**, y si lo son, una de las dos fichas
-     está enlazando al que no es.
-  **Abre la sesión siguiente por aquí**: dos búsquedas resuelven las dos. La
-  prueba que las vigila lleva las siete en una lista blanca comentada; al
-  corregir una etiqueta, quítala de esa lista.
-  **Y no gastes el turno intentándolo por WebFetch**: probado el 23/09, el proxy
-  de salida bloquea `pmc.ncbi.nlm.nih.gov` y `link.springer.com` (EGRESS_BLOCKED),
-  así que la única vía es WebSearch con presupuesto fresco. Dos detalles ya
-  localizados para no repetir el grep: el año baila **dentro de una misma ficha
-  vecina** —línea 431 dice "una revisión 2018" y la etiqueta "Schoen 2018",
-  mientras 774 y 3604 dicen 2019 del mismo PMC—, y en el segundo caso la ficha
-  de la línea 720 enlaza el Springer como "Hume et al. 2021" mientras la 4069 lo
-  enlaza como "Steinbrenner et al. (2020)" **teniendo al lado, en esa misma
-  línea de fuentes, el PDF del informe del NCAEP**: si son dos documentos, la
-  4069 está citando dos veces el informe y ninguna el artículo.
+  2021). **Las otras dos eran errores de verdad y ya están corregidas:**
+  1. `PMC6590432` se citaba como "Schoen et al., 2019" y como "Schoen 2018". Es
+     **Schoen et al. 2019**, *Autism Research* 12:6-19. El "2018" venía del epub
+     de diciembre de 2018. Corregida la etiqueta y también el cuerpo, que decía
+     "una revisión 2018".
+  2. `link.springer.com/…/s10803-020-04844-2` se citaba como "Hume et al. 2021"
+     y como "Steinbrenner et al. (2020)". Es **Hume et al. 2021** (JADD, 15/01/2021).
+     **Steinbrenner et al. 2020 es el INFORME del NCAEP, que es otro documento**,
+     y la ficha que lo citaba mal ya enlazaba ese informe aparte en PDF: o sea
+     que citaba dos veces el informe y ninguna el artículo. Corregida.
+  La lista blanca de la prueba baja de siete a cinco, y la comprobación que
+  cuenta su tamaño va con ella. **Si vuelve a aparecer un par en conflicto, es
+  nuevo: míralo, no lo añadas a la lista sin comprobarlo en fuente.**
+  Para la próxima: **el proxy de salida bloquea `pmc.ncbi.nlm.nih.gov` y
+  `link.springer.com`** (EGRESS_BLOCKED), así que WebFetch no sirve para estas
+  dos; se resolvieron con WebSearch, que devuelve autor y año en el propio
+  resultado sin necesidad de abrir el artículo.
 
 - **`scripts/pruebas/vinetas-gemelas.py` (nuevo, 23/09).** Busca viñetas casi
   idénticas en fichas distintas: un hecho mantenido en dos sitios se
