@@ -133,7 +133,12 @@ const NIVELES = {
   "🟢": { clase: "alta", texto: "Evidencia sólida" },
   "🟡": { clase: "media", texto: "Evidencia limitada" },
   "🔴": { clase: "evitar", texto: "Desaconsejado" },
-  "⚪": { clase: "vivida", texto: "Experiencia vivida" },
+  // La biblioteca dice en su propia leyenda, doce veces, qué es ⚪: "lo que
+  // proponemos nosotros sin estudio detrás". Llamarlo "Experiencia vivida"
+  // le prestaba el peso de una categoría que en autismo significa otra cosa
+  // —el testimonio de personas autistas y de sus familias—, y son 369
+  // viñetas. Se dice lo que es.
+  "⚪": { clase: "vivida", texto: "Criterio nuestro, sin estudios" },
 };
 const badge = (clase, texto) => `<span class="badge ${clase}">${esc(texto)}</span>`;
 

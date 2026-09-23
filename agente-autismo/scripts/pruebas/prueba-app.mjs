@@ -2680,6 +2680,27 @@ for (const [cod, md] of Object.entries(temasCuerpo)) {
 check('Toda viñeta «Desaconsejado» habla de algo que no hay que hacer o creer',
   rojasRaras.length <= 12, [...new Set(rojasRaras)].join(','));
 
+// 51. La etiqueta de ⚪. La biblioteca lo explica en su leyenda, doce veces:
+// "⚪ marca lo que proponemos nosotros sin estudio detrás". La app lo pintaba
+// como "Experiencia vivida", que en autismo significa otra cosa —el testimonio
+// de personas autistas y de sus familias, que es una categoría de evidencia
+// reconocida y reivindicada—. Son 369 viñetas presentadas con un peso que no
+// tienen.
+const leyendasBlanco = [...libMd.matchAll(/⚪ marca ([^.]{5,160})\./g)].map((m) => m[1]);
+check('La biblioteca sigue explicando ⚪ como criterio propio sin estudio detrás',
+  leyendasBlanco.length >= 10
+  && leyendasBlanco.filter((t) => /proponemos nosotros|no tiene ningún estudio/.test(t)).length
+     >= leyendasBlanco.length - 1,
+  leyendasBlanco.slice(0, 2).join(' | '));
+await ir('#tema/DD');
+const badges = await pag.$$eval('.tema-cuerpo .badge', (ns) => [...new Set(ns.map((n) => n.textContent))]);
+check('La app no llama "Experiencia vivida" a lo que la biblioteca llama criterio propio',
+  !badges.includes('Experiencia vivida') && badges.some((b) => /Criterio nuestro/.test(b)),
+  badges.join(' · '));
+const swift = fs.readFileSync(new URL('../../ios/BrujulaTEA/Modelos/Modelos.swift', import.meta.url), 'utf8');
+check('Y el target de iOS dice lo mismo que la web',
+  !/Experiencia vivida/.test(swift) && /Criterio nuestro, sin estudios/.test(swift));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

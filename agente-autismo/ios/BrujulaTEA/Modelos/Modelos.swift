@@ -413,7 +413,7 @@ enum NivelEvidencia: String, CaseIterable, Identifiable, Hashable, Sendable {
         case .solida: return "Evidencia sólida"
         case .limitada: return "Evidencia limitada"
         case .desaconsejado: return "Desaconsejado"
-        case .vivencial: return "Experiencia vivida"
+        case .vivencial: return "Criterio nuestro, sin estudios"
         }
     }
 
@@ -422,7 +422,7 @@ enum NivelEvidencia: String, CaseIterable, Identifiable, Hashable, Sendable {
         case .solida: return "Respaldado por estudios consistentes."
         case .limitada: return "Poca evidencia o todavía en debate."
         case .desaconsejado: return "La evidencia desaconseja hacerlo."
-        case .vivencial: return "Testimonio de personas autistas o familias."
+        case .vivencial: return "Lo que proponemos nosotros: no hay estudio detrás."
         }
     }
 
