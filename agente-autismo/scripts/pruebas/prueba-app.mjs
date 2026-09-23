@@ -3422,6 +3422,25 @@ for (const [q, titulo] of [
 // Nota: «lleva todo el día vomitando» abre en RR (abdomen) y no en JR, y se deja
 // así: el vómito que no para apunta a obstrucción, que es lo que corre prisa.
 
+// 70. Las viñetas gemelas de verdad. `vinetas-gemelas.py` encuentra ocho pares
+// por encima de 0,72, y casi todos son la convención de la casa: cada ficha
+// lleva sus propios teléfonos y su propio bloque de urgencia, porque una ficha
+// tiene que funcionar sola. Pero DOS pares están a 1,00 —idénticos carácter por
+// carácter— y esos son los peligrosos: no porque se repitan, sino porque el día
+// que alguien corrija uno y no el otro, la biblioteca dará dos consejos
+// distintos sobre lo mismo y nadie se enterará. Es exactamente la deriva que ya
+// pasó con JV (urgencia) y con NA (jurisprudencia) en esta misma sesión.
+// Aquí se atan: si tocas uno, la suite te obliga a tocar el otro.
+for (const [a, b, marca, quees] of [
+  ['QC', 'QS', 'fallo neurológico', 'la señal de que un golpe en la cabeza necesita urgencias'],
+  ['MO', 'NW', 'DIU o un implante', 'la infección tras colocar un DIU o un implante'],
+]) {
+  const linea = (textoDe(temasCuerpo[a]).split('\n').find((l) => l.includes(marca)) || '').trim();
+  check(`${a} y ${b} siguen diciendo lo mismo, palabra por palabra, sobre ${quees}`,
+    linea.length > 60 && textoDe(temasCuerpo[b]).includes(linea),
+    linea ? linea.slice(0, 120) : 'no encuentro la viñeta en ' + a);
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

@@ -111,6 +111,16 @@ Sale basura («número emergencias», «esperes cita», «antes ninguna cosa rie
 porque en muchas fichas ese titular es la ACCIÓN, no el síntoma: 47 de 58
 "fallos" eran ruido. Las frases del pánico hay que escribirlas a mano.
 
+- **Las dos viñetas gemelas exactas, ya atadas (sección 70).** De los ocho pares
+  que encuentra `vinetas-gemelas.py`, seis son la convención de la casa —cada
+  ficha lleva sus propios teléfonos y su propio bloque 🚨 porque tiene que
+  funcionar sola—. **Dos están a 1,00, idénticos carácter por carácter:** la
+  señal de fallo neurológico tras un golpe en la cabeza (**QC** y **QS**) y la
+  infección tras colocar un DIU o un implante (**MO** y **NW**). Hoy coinciden;
+  el riesgo es el día que alguien corrija uno y no el otro. La suite lo ata: si
+  tocas uno, te obliga a tocar el otro. **Es la misma deriva que en esta sesión
+  ya había pasado de verdad con JV y con NA**, así que no es hipotética.
+
 ## Lo que hay que decidir sobre el buscador en urgencias
 
 **Medido, no opinado.** Dos tandas de frases de urgencia, la segunda escrita a
