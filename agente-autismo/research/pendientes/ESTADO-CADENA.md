@@ -39,16 +39,19 @@ choque merece leerse entero, porque **no era "la publicada está mal"**:
   contradicen, antes de decidir cuál está mal comprueba si están hablando de dos
   cosas distintas. Aquí ninguna mentía.
 
-**Y lo que dio más de sí cuando se acabó el presupuesto de búsqueda:** dos
-tandas de veinte consultas escritas con las palabras de una familia, una de
-síntomas del cuerpo y otra de colegio y derechos. **En las dos, once de veinte
-abrían en la ficha equivocada**, y la ficha existía siempre: EM publica los tics
-desde la ronda 8 y «no para de parpadear y hacer ruiditos» no devolvía *nada*;
-DE publica el acoso escolar y «le pegan y el colegio dice que son cosas de
-niños» abría en mutismo selectivo; «lo han expulsado tres días» abría en
-estreñimiento. **Esa tasa de uno de cada dos se ha repetido en las dos tandas y
-en las de rondas anteriores: no es que el buscador esté roto en un sitio, es que
-cada área sin probar tiene lo suyo.** Cuando no haya presupuesto para investigar,
+**Y lo que dio más de sí cuando se acabó el presupuesto de búsqueda:** TRES
+tandas de veinte consultas escritas con las palabras de una familia —síntomas
+del cuerpo; colegio, derechos y dinero; adolescencia y vida adulta—. **En las
+tres, once o doce de veinte abrían en la ficha equivocada**, y la ficha existía
+siempre: EM publica los tics desde la ronda 8 y «no para de parpadear y hacer
+ruiditos» no devolvía *nada*; DT publica el uso de sustancias desde la ronda 7 y
+«fuma porros» tampoco devolvía nada; DE publica el acoso escolar y «le pegan y
+el colegio dice que son cosas de niños» abría en mutismo selectivo; «lo han
+expulsado tres días» abría en estreñimiento; «ha visto porno» abría en «se
+cancela el plan y se hunde». **Tres muestras de veinte, en áreas que no se
+tocan, las tres a uno de cada dos: eso ya no es mala suerte, es la propiedad
+medida del buscador. No está roto en un sitio concreto; cada área sin probar
+tiene lo suyo, y van unas ochenta frases probadas de un espacio sin fondo.** Cuando no haya presupuesto para investigar,
 esto es lo que más rinde: veinte consultas nuevas de un área que nadie haya
 probado, y mirar la primera respuesta de cada una.
 
