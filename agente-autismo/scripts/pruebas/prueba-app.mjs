@@ -2954,7 +2954,7 @@ check('La lista de pares revisados está escrita, no en la cabeza de nadie',
 // Todas tienen ficha, y buena. Lo que faltaba era la frase con la que se busca.
 for (const [q, titulo] of [
   ['quiere morirse', 'Salud mental y seguridad'],
-  ['dice que quiere morirse', 'Plan de crisis'],
+  ['dice que quiere morirse', 'Salud mental y seguridad'],
   ['mi hija de 14 se autolesiona', 'Autolesión'],
   ['convulsion que hago', 'Convulsiones: qué hacer en el momento'],
   ['se queda mirando al vacio', 'Epilepsia'],
@@ -3008,8 +3008,8 @@ for (const [q, titulo] of [
   ['se cansa muchisimo', 'dolor crónico'],
   ['tiene ataques de panico', 'ansiedad'],
   ['no le ha venido la regla todavia', 'Le está cambiando el cuerpo demasiado pronto'],
-  ['le huelen mucho los pies', 'Higiene sensorial'],
-  ['se me trepa por todos lados', 'Asegurar la casa'],
+  ['le huelen mucho los pies', 'Cortar las uñas'],
+  ['se me trepa por todos lados', 'Hiperactividad'],
   // Quinta tanda (23/09): cómo se dice esto en América y la vida adulta.
   ['la seno dice que molesta', 'Apoyar en el aula'],
   ['lo echaron del kinder', 'La guardería dice que no puede'],

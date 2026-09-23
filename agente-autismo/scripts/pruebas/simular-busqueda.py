@@ -3,7 +3,21 @@
 entrada de sinonimos ANTES de anadirla. Sirve sobre todo para cazar el
 secuestro por subcadena: nf.includes(q) da 30 puntos a cualquier consulta que
 sea subcadena de la frase, asi que "tiene tdah y autismo" -> A le roba la
-consulta "tdah" a U, cuyo titulo solo suma 28."""
+consulta "tdah" a U, cuyo titulo solo suma 28.
+
+AVISO IMPORTANTE (23/09): esto NO es la app. Reimplementa `buscarTemas()`,
+que puntua sobre el indice -titulo, claves, mensaje-, pero la app hace ademas
+una busqueda dentro del CUERPO de las fichas (biblioteca-busqueda.json) que
+cambia el orden. En tres de setenta y siete consultas probadas, la app y este
+simulador daban primeras respuestas distintas, y en las tres la de la app era
+mejor: "dice que quiere morirse" (app: Salud mental y seguridad; aqui: Plan de
+crisis), "le huelen mucho los pies" (app: Cortar las unas; aqui: Higiene
+sensorial) y "se me trepa por todos lados" (app: Hiperactividad; aqui:
+Asegurar la casa).
+
+Uselo para iterar rapido -es instantaneo y no necesita navegador-, pero
+**antes de asertar una consulta en la suite, compruebala contra la app**.
+"""
 import json, re, unicodedata, sys
 
 REPO='/home/user/autism/agente-autismo'
