@@ -1458,7 +1458,8 @@
   "MO"
  ],
  "sangra mucho": [
-  "MO"
+  "KS",
+  "LH"
  ],
  "dolor de regla": [
   "MO"
@@ -5860,5 +5861,81 @@
  ],
  "no suda": [
   "FR"
+ ],
+ "no puede respirar": [
+  "LG",
+  "MI"
+ ],
+ "no respira": [
+  "LG",
+  "MI"
+ ],
+ "se esta ahogando": [
+  "LG",
+  "MI"
+ ],
+ "se ahoga": [
+  "LG",
+  "MI"
+ ],
+ "le cuesta mucho respirar": [
+  "MI",
+  "LG"
+ ],
+ "se esta poniendo morado": [
+  "LG",
+  "JQ"
+ ],
+ "se ha desmayado": [
+  "NV",
+  "JQ"
+ ],
+ "se ha desmayado de repente": [
+  "NV",
+  "JQ"
+ ],
+ "no responde": [
+  "NV",
+  "JQ"
+ ],
+ "no reacciona": [
+  "NV",
+  "JQ"
+ ],
+ "se ha quedado inconsciente": [
+  "NV",
+  "JQ"
+ ],
+ "perdio el conocimiento": [
+  "NV",
+  "JQ"
+ ],
+ "le sale mucha sangre": [
+  "KS",
+  "LH"
+ ],
+ "se ha hecho un corte profundo": [
+  "KS",
+  "LH"
+ ],
+ "se ha cortado y sangra": [
+  "KS",
+  "LH"
+ ],
+ "no para de sangrar": [
+  "KS",
+  "LH"
+ ],
+ "se ha intoxicado": [
+  "LH",
+  "QP"
+ ],
+ "se ha envenenado": [
+  "LH",
+  "QP"
+ ],
+ "ha tragado un producto de limpieza": [
+  "LH",
+  "QP"
  ]
 }

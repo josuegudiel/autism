@@ -82,6 +82,35 @@ falla más justo donde menos se puede permitir, porque las urgencias se escriben
 con frases cortas y desesperadas que nadie había probado.** Cuando pruebes
 consultas, empieza por las urgencias.
 
+**Y al hacerlo salió algo peor todavía (sección 68): las frases del pánico**,
+las de tres palabras que se teclean con una mano mientras se sujeta al niño con
+la otra. De quince, nueve fallaban y **dos no devolvían absolutamente nada**:
+
+    «no puede respirar»             -> PDA: evitación patológica de demandas
+    «se está ahogando»              -> SIN RESULTADOS
+    «se ha intoxicado»              -> SIN RESULTADOS
+    «se ha desmayado»               -> ¿le pongo un GPS?
+    «no reacciona»                  -> misofonía
+    «se ha hecho un corte profundo» -> higiene sensorial: cortes de PELO
+    «le sale mucha sangre»          -> estreñimiento
+
+Arregladas y asertadas. **Dos avisos para quien siga:**
+1. **QQ no es la ficha de las urgencias médicas.** Está escrita para la crisis
+   conductual y la policía («no es una agresión», «pedid que lo giren de lado»).
+   Mandar ahí un ahogo sería darle a un padre el guion equivocado. La vía aérea
+   va a **LG** (que trae las maniobras) y a **MI** (asma y alergia grave).
+2. **Dos se dejan como están, a propósito.** «No puede respirar» abre en MI y no
+   en LG: el asma es causa más frecuente de ahogo que el atragantamiento, y LG
+   sale segunda. Y «no responde» abre en la ficha de audición, que en español es
+   la lectura habitual —«no responde cuando le llamo»—; para la urgencia están
+   «no reacciona» y «se ha quedado inconsciente», que sí llevan a NV.
+
+**Lo que NO funcionó, para no repetirlo:** generar automáticamente la consulta
+desde el titular en negrita de cada bloque 🚨 de las 62 fichas que tienen uno.
+Sale basura («número emergencias», «esperes cita», «antes ninguna cosa riesgo»)
+porque en muchas fichas ese titular es la ACCIÓN, no el síntoma: 47 de 58
+"fallos" eran ruido. Las frases del pánico hay que escribirlas a mano.
+
 Y una tercera, de fontanería: **el servidor de pruebas se cae solo** (dio
 `ERR_CONNECTION_REFUSED` a mitad de la ronda). Levántalo antes de cualquier
 comprobación con navegador, como dice el procedimiento.

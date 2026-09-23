@@ -31,6 +31,15 @@ ya existía. **Estas dos no tienen ficha:**
   su propia lista de descarte), ni la queja crónica de piernas en un niño
   hipermóvil. **RB** publica el dolor crónico y **EK** la hipermovilidad, pero
   ninguna entra en la cojera aguda.
+- **Una herida que sangra: el corte profundo, la caída, la quemadura que se
+  hace ahora.** La biblioteca tiene la casa segura (**LH**), la autolesión
+  (**KS**, que sí dice cuándo una lesión necesita atención médica) y el
+  traumatismo dental (**QC**), pero **no hay ninguna ficha de "se ha hecho una
+  herida y sangra"**: ni qué se hace mientras llegáis, ni cuándo hace falta
+  sutura, ni cómo se cura después a un niño que no tolera que le toquen. Las
+  consultas «le sale mucha sangre», «no para de sangrar» y «se ha hecho un corte
+  profundo» se han mandado a KS y LH de momento, que es lo más cerca que hay,
+  pero no contestan la pregunta.
 - **Se niega a tomar la medicación.** No es lo mismo que no saber tragarla, y
   esa diferencia es justo la que la biblioteca no cubre: **MG** publica la
   mecánica entera —qué se puede partir o triturar, cómo preguntarlo en la

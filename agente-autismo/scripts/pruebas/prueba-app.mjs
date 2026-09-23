@@ -3355,6 +3355,43 @@ for (const [q, titulo] of [
   check(`Urgencia alcanzable: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 68. Y entonces se probaron las frases del pánico: las que se teclean con una
+// mano mientras se sujeta al niño con la otra. Es lo peor que ha salido en toda
+// la sesión, y confirma la regla de la sección 67 —el buscador falla más donde
+// menos se puede permitir—, porque nadie había probado frases de tres palabras:
+//   «no puede respirar»          -> PDA: evitación patológica de demandas
+//   «se está ahogando»           -> SIN RESULTADOS
+//   «se ha intoxicado»           -> SIN RESULTADOS
+//   «se ha desmayado»            -> ¿le pongo un GPS?
+//   «no reacciona»               -> misofonía
+//   «se ha hecho un corte profundo» -> higiene sensorial: cortes de PELO
+//   «le sale mucha sangre»       -> estreñimiento
+// Dos de las quince no devolvían absolutamente nada.
+for (const [q, titulo] of [
+  ['no puede respirar', 'diabetes, asma o alergia grave'],
+  ['no respira', 'Se atraganta al comer'],
+  ['se esta ahogando', 'Se atraganta al comer'],
+  ['se esta poniendo morado', 'Se atraganta al comer'],
+  ['le cuesta mucho respirar', 'diabetes, asma o alergia grave'],
+  ['se ha desmayado', 'no es epilepsia'],
+  ['no reacciona', 'no es epilepsia'],
+  ['se ha quedado inconsciente', 'no es epilepsia'],
+  ['le sale mucha sangre', 'Autolesión'],
+  ['se ha hecho un corte profundo', 'Autolesión'],
+  ['no para de sangrar', 'Autolesión'],
+  ['se ha intoxicado', 'Asegurar la casa'],
+  ['ha tragado un producto de limpieza', 'Asegurar la casa'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Frase de pánico: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+// Dos que se dejan como están a propósito, y conviene que quede escrito por qué:
+// «no puede respirar» abre en MI (asma y alergia grave) y no en LG, y está bien:
+// el asma es causa más frecuente de ahogo que el atragantamiento, y LG sale 2ª.
+// Y «no responde» abre en la ficha de audición, que en español es la lectura
+// habitual —«no responde cuando le llamo»—; para la otra, «no reacciona» y «se
+// ha quedado inconsciente» sí llevan a NV.
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
