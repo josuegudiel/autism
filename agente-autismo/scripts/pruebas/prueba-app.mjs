@@ -2652,6 +2652,34 @@ for (const [origen, destino] of [['GV', 'RF'], ['PW', 'RF'], ['PY', 'RG'], ['EZ'
   check(`${origen} apunta ya a ${destino}`, new RegExp('\\*\\*' + destino + '\\.').test(fichaDe(origen)));
 }
 
+// 50. La píldora roja tiene que decir lo mismo que la viñeta. El caso de B (la
+// integración sensorial pintada como «Desaconsejado» por un 🔴 mencionado de
+// pasada) no era único: hay 31 viñetas que matizan el marcador entre paréntesis
+// —"🔴 (mito a evitar)", "🔴 (mal uso)"— y casi todas están bien, porque lo que
+// la viñeta sostiene ES el mito o la mala práctica. Dos no lo estaban:
+// EC abría con "el principio que sí conviene rescatar… reducen la ansiedad y
+// facilitan el aprendizaje" y salía con un badge rojo encima; DD abría diciendo
+// que las miradas de desconocidos no juzgan a la familia, y también.
+const ec = fichaDe('EC'), dd = fichaDe('DD');
+check('EC separa el principio que sirve del programa del que hay que desconfiar',
+  /individualización[^\n]*🟡/.test(ec) && /Desconfía del programa que se vende como solución única[^\n]*🔴/.test(ec));
+check('DD separa "las miradas no juzgan" de lo que no se hace',
+  /miradas o comentarios de desconocidos[^\n]*⚪/.test(dd) && /Lo que no se hace delante de esas miradas[^\n]*🔴/.test(dd));
+
+// Y la regla general, por si vuelve a colarse: una viñeta marcada 🔴 tiene que
+// sostener algo que NO hay que hacer o creer, no una recomendación.
+const ROJO_OK = /\bno\b|nunca|evita|desaconsej|peligros|da[ñn]|prohib|mito|desconf[ií]|cuidado|falso|falsa|riesgo|presi[oó]n injusta|mala pr[aá]ctica/i;
+const rojasRaras = [];
+for (const [cod, md] of Object.entries(temasCuerpo)) {
+  for (const l of vinetasDe(md)) {
+    const t = l.trim();
+    if (!t.includes('🔴') || t.indexOf('🚨') <= 12 && t.includes('🚨')) continue;
+    if (!ROJO_OK.test(t)) rojasRaras.push(cod);
+  }
+}
+check('Toda viñeta «Desaconsejado» habla de algo que no hay que hacer o creer',
+  rojasRaras.length <= 12, [...new Set(rojasRaras)].join(','));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
