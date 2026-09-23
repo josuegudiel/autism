@@ -50,15 +50,24 @@ Los cuatro encargos, tal como se mandaron:
   problema por sí mismo, y qué descartar en médico antes de tratarlo como hábito
   (W ya publica el sueño en general: no reescribirla).
 
-**Y la reserva**: `detectar-huecos.mjs` ya está corriendo (arriba el runId), así
-que para la 52 mira lo que devuelva antes de encargar nada.
+**Y la reserva ya está rellenada**: `detectar-huecos.mjs` terminó y dejó 31
+entradas en `research/pendientes/RESERVA.md`. Para la **52** se encarga de ahí,
+**después de leer los avisos de su cabecera**: cuatro de las 31 chocan con la
+ronda 51 que está en vuelo (los números 14, 16 y 28) o con una ficha ya
+rechazada (el 24, que es la lectura fácil de RM por tercera vez), y el número 1
+es NI y no se toca.
 
 ## Ya publicado
 
 Rondas 29 a 50.
 Biblioteca en **448 temas / 226 verificados / 222 síntesis / 4.516 fuentes**.
-Suite **718/718**. Reserva: **8 entradas** (la 0, "dice que se quiere morir",
-sigue sin investigarse: terminada como NI y esperando decisión).
+Suite **824/824** (23/09). Reserva: **31 entradas**, en
+`research/pendientes/RESERVA.md` (unas ocho rondas). La generó
+`detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
+publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
+arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
+no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
+"dice que quiere morirse", que es **NI** y no se investiga.
 
 Ronda 51 **ya no está parada: está corriendo** (arriba, con su runId). QO sigue
 libre a propósito, como PO; confírmalo con grep antes de asignar un código.
