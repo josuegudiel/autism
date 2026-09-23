@@ -5690,5 +5690,101 @@
  ],
  "quien lo cuidara cuando nos muramos": [
   "HN"
+ ],
+ "ha visto porno": [
+  "S",
+  "HY"
+ ],
+ "ve pornografia": [
+  "S",
+  "HY"
+ ],
+ "le gusta un chico y no sabe como acercarse": [
+  "HX",
+  "BO"
+ ],
+ "le gusta una chica": [
+  "HX",
+  "BO"
+ ],
+ "quiere ligar": [
+  "HX",
+  "S"
+ ],
+ "no entiende que es un abuso": [
+  "HY",
+  "S"
+ ],
+ "no sabe decir que no": [
+  "HY",
+  "S"
+ ],
+ "se ha echado un novio mucho mayor": [
+  "HY",
+  "HX"
+ ],
+ "le lleva muchos anos su pareja": [
+  "HY",
+  "HX"
+ ],
+ "le ha venido la regla y no se cambia": [
+  "DA"
+ ],
+ "no se cambia la compresa": [
+  "DA"
+ ],
+ "le huele el sudor y no se ducha": [
+  "DB",
+  "IO"
+ ],
+ "le huele el sobaco": [
+  "DB",
+  "IO"
+ ],
+ "no se ducha": [
+  "DB",
+  "IO"
+ ],
+ "se afeita por primera vez": [
+  "DB",
+  "I"
+ ],
+ "le sale barba": [
+  "DB",
+  "I"
+ ],
+ "ha empezado a beber": [
+  "DT"
+ ],
+ "fuma porros": [
+  "DT",
+  "AJ"
+ ],
+ "fuma marihuana": [
+  "DT",
+  "AJ"
+ ],
+ "se droga": [
+  "DT"
+ ],
+ "consume drogas": [
+  "DT"
+ ],
+ "se pasa el dia encerrado en su cuarto": [
+  "QU"
+ ],
+ "no sale de su habitacion": [
+  "QU"
+ ],
+ "se niega a tomar las pastillas": [
+  "MG"
+ ],
+ "quiere vivir con su pareja": [
+  "CM",
+  "HX"
+ ],
+ "se quiere ir a vivir con su novia": [
+  "CM",
+  "HX"
  ]
 }

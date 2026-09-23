@@ -3297,6 +3297,32 @@ for (const [q, titulo] of [
   check(`Colegio y derechos: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 66. Tercera tanda de veinte, de adolescencia, sexualidad y vida adulta. Doce
+// de veinte abrían mal, o sea la misma proporción que las dos anteriores en
+// áreas que no se tocan. Y otra vez la ficha existía siempre:
+//   «ha visto porno»                          -> se cancela el plan y se hunde
+//   «le gusta un chico y no sé cómo acercarse» -> cómo saber si una app es buena
+//   «ha empezado a beber»                     -> mutismo selectivo
+//   «fuma porros»                             -> SIN RESULTADOS (y AJ publica cannabis)
+//   «se afeita por primera vez»               -> ¿tengo que llevarla al ginecólogo?
+//   «quiere vivir con su pareja»              -> salud mental y seguridad
+for (const [q, titulo] of [
+  ['ha visto porno', 'Educación sexual'],
+  ['le gusta un chico y no sabe como acercarse', 'Citas y relaciones'],
+  ['no entiende que es un abuso', 'consentimiento'],
+  ['le ha venido la regla y no se cambia', 'Pubertad y menstruación'],
+  ['le huele el sudor y no se ducha', 'Higiene sensorial'],
+  ['se afeita por primera vez', 'Higiene sensorial'],
+  ['se pasa el dia encerrado en su cuarto', 'sin salir de su cuarto'],
+  ['ha empezado a beber', 'sustancias y adicciones'],
+  ['fuma porros', 'sustancias y adicciones'],
+  ['quiere vivir con su pareja', 'Vivienda y vida independiente'],
+  ['se ha echado un novio mucho mayor', 'consentimiento'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Adolescencia y vida adulta: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

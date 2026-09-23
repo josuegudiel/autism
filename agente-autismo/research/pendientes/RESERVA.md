@@ -31,6 +31,14 @@ ya existía. **Estas dos no tienen ficha:**
   su propia lista de descarte), ni la queja crónica de piernas en un niño
   hipermóvil. **RB** publica el dolor crónico y **EK** la hipermovilidad, pero
   ninguna entra en la cojera aguda.
+- **Se niega a tomar la medicación.** No es lo mismo que no saber tragarla, y
+  esa diferencia es justo la que la biblioteca no cubre: **MG** publica la
+  mecánica entera —qué se puede partir o triturar, cómo preguntarlo en la
+  farmacia, cómo se enseña a tragar— pero no hay nada para el adolescente que
+  entiende perfectamente lo que es y no quiere tomarla. Un grep de «se niega a
+  tomar», «rechaza el tratamiento» y «rechaza la medicación» no devuelve ninguna
+  ficha. **RK** cubre al adulto que rechaza servicios, que es otra edad y otro
+  marco legal.
 - **Le tiembla la mano.** Hoy se reparte entre la disgrafía y fichas de
   medicación. El temblor como efecto de un fármaco está en **LJ** y **NN**, pero
   disperso: no hay un sitio al que llegue un padre que solo ve que le tiembla la
