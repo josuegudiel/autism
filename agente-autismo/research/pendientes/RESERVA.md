@@ -25,9 +25,11 @@ con las palabras de una familia y mirar la primera respuesta. Once de las veinte
 abrían en la ficha equivocada; nueve se arreglaron con sinónimos porque la ficha
 ya existía. **Estas dos no tienen ficha:**
 
-- **Se ha roto algo: la fractura (28/09).** Lo señala la propia **RU** al publicarse: «el golpe en la cabeza vive en **QS** y la fractura no existe todavía en el índice — esta ficha solo enruta». Comprobado: `grep fractura research/indice-temas.txt` no devuelve nada. Hoy la fractura se reparte entre **MM** (hueso poco denso, golpe flojo), **RT** (la cojera que puede serlo) y **RU** (la herida que la acompaña), y ninguna contesta «creo que se ha roto el brazo»: ni cómo inmovilizar sin forzar, ni qué se hace mientras llegáis, ni la radiografía en un niño que no tolera estar quieto.
+- **Los cuidados del yeso, día a día (28/09).** Lo señala **RV** al publicarse: mojado, picor, un borde que roza, mal olor, qué hacer si se afloja. **PT** cubre audífono, parche, CPAP, corsé, sensor de glucosa y férula dental, pero **no el yeso de una fractura**, y RV se para en el momento agudo. Decidir si se añade a RV con la fuente de AEPap que ya cita o si «yeso de fractura» entra en la lista de aparatos de PT.
 
-- **Se golpea la cabeza contra la cuna o se mece para dormirse (28/09).** Sale
+- **Se ha roto algo: la fractura (28/09).** ✅ PUBLICADO como **RV** en la ronda 54. Lo señala la propia **RU** al publicarse: «el golpe en la cabeza vive en **QS** y la fractura no existe todavía en el índice — esta ficha solo enruta». Comprobado: `grep fractura research/indice-temas.txt` no devuelve nada. Hoy la fractura se reparte entre **MM** (hueso poco denso, golpe flojo), **RT** (la cojera que puede serlo) y **RU** (la herida que la acompaña), y ninguna contesta «creo que se ha roto el brazo»: ni cómo inmovilizar sin forzar, ni qué se hace mientras llegáis, ni la radiografía en un niño que no tolera estar quieto.
+
+- **Se golpea la cabeza contra la cuna o se mece para dormirse (28/09).** ✅ PUBLICADO como **RW** en la ronda 54. Sale
   de la tanda de veinte consultas de la noche. «Se golpea la cabeza contra la
   cuna para dormirse» abre hoy en la ficha del casco y las revisiones, que está
   escrita para la autolesión. **El trastorno de movimientos rítmicos del sueño

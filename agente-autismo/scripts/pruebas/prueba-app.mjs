@@ -3621,6 +3621,82 @@ check('La nota de RT cuenta lo que pasó y no lo que pedía',
   !/BLOQUEANTE/.test(rt53) && /Integración hecha en la ronda 53/.test(rt53)
   && /no se recortó nada, a propósito/.test(rt53));
 
+// 74. Ronda 54. RV (la fractura) y RW (mecerse o darse cabezazos para dormirse).
+// RV volvió `publicable=false` y esta vez el flag NO era un falso positivo, al
+// contrario que seis de los siete de las rondas 51 y 52: el editor había leído
+// MM línea a línea y MM publicaba por su cuenta casi todo el primer auxilio de
+// la fractura. Publicar RV tal cual habría dejado DOS listas de urgencia de
+// fractura en la misma biblioteca. Se recortó MM en el mismo commit.
+for (const [codigo, marca] of [['RV', /fractura|hueso roto|roto un hueso/i],
+                               ['RW', /mece|cabezazos|rítmic/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 54: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+for (const cod of ['RV', 'RW']) {
+  await ir('#tema/' + cod);
+  const orden = await pag.$$eval('.tema-cuerpo > *',
+    (ns) => ns.map((n) => (n.classList.contains('cta-ayuda') ? 'CTA'
+      : n.classList.contains('urgente') ? 'U'
+      : n.classList.contains('punto') ? 'p' : '·')).join(''));
+  check(`Ronda 54: en ${cod} el teléfono va pegado al bloque de urgencia`,
+    /UCTA/.test(orden) && orden.indexOf('CTA') === orden.lastIndexOf('CTA'), orden.slice(0, 60));
+}
+// Comprobadas contra la app antes de asertarlas: 11 consultas, 0 discrepancias.
+for (const [q, titulo] of [
+  ['creo que se ha roto un hueso', 'Creo que se ha roto un hueso'],
+  ['se ha roto el brazo', 'Creo que se ha roto un hueso'],
+  ['se ha roto la pierna', 'Creo que se ha roto un hueso'],
+  ['fractura', 'Creo que se ha roto un hueso'],
+  ['se ha caido y no mueve el brazo', 'Creo que se ha roto un hueso'],
+  ['se golpea la cabeza contra la cuna', 'Se mece o se da cabezazos'],
+  ['se mece para dormirse', 'Se mece o se da cabezazos'],
+  ['se balancea para dormirse', 'Se mece o se da cabezazos'],
+  ['se da cabezazos en la cama', 'Se mece o se da cabezazos'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 54: buscar «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
+// Y LA QUE IMPORTA DE VERDAD, que es de orden y no de presencia. RW se tituló
+// primero «Se golpea la cabeza contra la cuna o se mece para dormirse», y con ese
+// título la consulta pelada «se golpea la cabeza» abría RW POR DELANTE de QS: un
+// golpe puntual en la cabeza aterrizaba en la ficha que dice que es benigno y que
+// lo que toca es asegurar la cuna. Primero probé a poner RW DETRÁS de QS dentro
+// de la clave, y no sirvió de nada — algo que este mismo archivo ya explicaba
+// treinta líneas más arriba (sección 45): **el orden de los códigos dentro de una
+// clave no lo lee nadie**, `buscarTemas()` reparte el mismo impulso a todos y el
+// empate lo gana el título alfabéticamente menor. O sea que mandaba el título, y
+// la única palanca real era retitular. Lo hizo falta leerlo para saberlo; estaba
+// escrito. Aquí no vale comprobar que QS
+// «aparece»: las dos salen en los primeros 220 caracteres. Hay que comprobar que
+// QS va ANTES.
+for (const q of ['se golpea la cabeza', 'se ha dado un golpe en la cabeza']) {
+  const rr = await buscarHondo(q);
+  const iQS = rr.indexOf('el casco y las revisiones');
+  const iRW = rr.indexOf('Se mece o se da cabezazos');
+  check(`Ronda 54: «${q}» abre en QS y NO en la ficha del sueño`,
+    iQS !== -1 && (iRW === -1 || iQS < iRW), `QS en ${iQS}, RW en ${iRW}`);
+}
+
+// El recorte de MM, que era el bloqueo de RV: se va la lista paralela y se queda
+// lo suyo. Las dos mitades se comprueban, porque borrar de más aquí sería perder
+// un aviso de fractura y borrar de menos dejaría las dos listas.
+const mm54 = fichaDe('MM');
+check('MM ya no publica su propia lista de señales de fractura',
+  !/^\s*- hueso asomando por la piel;/m.test(mm54) && /que \*\*RV\*\* publica/.test(mm54), mm54.slice(0, 80));
+check('MM conserva lo suyo: hipocalcemia, adolescente que restringe y la señal de RT',
+  /sin lácteos: convulsión/.test(mm54) && /ha perdido peso o restringe la comida/.test(mm54)
+  && /deja de apoyar una pierna, de usar un brazo o de caminar como caminaba/.test(mm54));
+check('Y la nota de RV cuenta el recorte en vez de encargarlo',
+  !/BLOQUEANTE/.test(fichaDe('RV')) && /Solape con MM, resuelto en la ronda 54/.test(fichaDe('RV')));
+// Enlaces de vuelta de la ronda.
+for (const [cod, nuevo] of [['RU','RV'],['QS','RV'],['RT','RV'],['PT','RV'],['MK','RV'],
+                            ['EN','RW'],['KS','RW'],['BH','RW'],['W','RW'],['IF','RW']]) {
+  check(`Ronda 54: ${cod} enlaza de vuelta a ${nuevo}`, new RegExp('\\*\\*' + nuevo + '\\.').test(fichaDe(cod)));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

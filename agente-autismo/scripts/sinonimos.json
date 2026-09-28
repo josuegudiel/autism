@@ -1386,6 +1386,7 @@
   "MM"
  ],
  "fractura": [
+  "RV",
   "MM"
  ],
  "huesos debiles": [
@@ -6196,5 +6197,80 @@
  ],
  "sangra y no para": [
   "RU"
+ ],
+ "creo que se ha roto un hueso": [
+  "RV"
+ ],
+ "se ha roto un hueso": [
+  "RV"
+ ],
+ "se ha roto el brazo": [
+  "RV"
+ ],
+ "se ha roto la pierna": [
+  "RV"
+ ],
+ "se ha roto la muneca": [
+  "RV"
+ ],
+ "no puede mover el brazo despues de caerse": [
+  "RV"
+ ],
+ "se ha caido y no mueve el brazo": [
+  "RV"
+ ],
+ "tiene el brazo torcido": [
+  "RV"
+ ],
+ "hueso roto": [
+  "RV"
+ ],
+ "le han puesto una escayola": [
+  "RV"
+ ],
+ "le han puesto un yeso": [
+  "RV"
+ ],
+ "escayola": [
+  "RV"
+ ],
+ "yeso": [
+  "RV"
+ ],
+ "se golpea la cabeza contra la cuna": [
+  "RW"
+ ],
+ "se da cabezazos en la cama": [
+  "RW"
+ ],
+ "se mece para dormirse": [
+  "RW"
+ ],
+ "se mece para dormir": [
+  "RW"
+ ],
+ "se balancea para dormirse": [
+  "RW"
+ ],
+ "mueve la cabeza de lado a lado al dormirse": [
+  "RW"
+ ],
+ "se golpea la cabeza para dormirse": [
+  "RW"
+ ],
+ "se da cabezazos para dormirse": [
+  "RW"
+ ],
+ "se ha dado un golpe en la cabeza": [
+  "QS"
+ ],
+ "se ha dado un golpe en la cabeza y no se que hacer": [
+  "QS"
+ ],
+ "se ha golpeado la cabeza al caerse": [
+  "QS"
+ ],
+ "se ha dado un cabezazo contra el suelo": [
+  "QS"
  ]
 }

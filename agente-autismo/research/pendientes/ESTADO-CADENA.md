@@ -9,31 +9,42 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 54, lanzada y viva (28/09).** runId `wf_46a0d711-dff`, script
-`scripts/workflows/investigar-temas.mjs`. Códigos **RV, RW**. Otra vez dos temas
-y no cuatro: la 53 gastó unas 62 búsquedas de las 200 de la sesión, así que
-quedarían ~138 y cuatro temas cuestan ~120 — demasiado justo. Los siguientes
-libres tras esta son **RX** en adelante; QO y PO siguen libres a propósito.
+**Ninguna. La 54 se publicó entera** (RV, RW; runId `wf_46a0d711-dff`). Los
+siguientes códigos libres son **RX** en adelante; QO y PO siguen libres a
+propósito. Para la 55, encarga desde `research/pendientes/RESERVA.md` **leyendo
+primero los avisos de su cabecera**.
 
-Los dos salen otra vez de los «Huecos nuevos» de la reserva, no de la lista
-numerada, así que **el recuento de encargables no cambia**:
+**Lo que enseñó la 54:**
 
-- **RV — creo que se ha roto un hueso.** Lo señala la propia RU al publicarse:
-  «la fractura no existe todavía en el índice — esta ficha solo enruta».
-  Comprobado: ni en el índice ni como inmovilización (los «férula» de la
-  biblioteca son dentales y la tolerancia al aparato, que es PT).
-- **RW — se golpea la cabeza contra la cuna o se mece para dormirse.** La
-  consulta abre hoy en la ficha del casco, escrita para la autolesión, donde el
-  consejo es el contrario. Puede salir corta, o resultar un punto de EN: se le
-  ha dicho al editor que lo diga en vez de estirarla.
+- **RV volvió `publicable=false` y esta vez el flag tenía razón.** No era un
+  falso positivo como los seis de las rondas 51 y 52: el editor había leído MM
+  línea a línea y MM publicaba por su cuenta casi todo el primer auxilio agudo
+  de la fractura —no enderezarlo, no darle de comer, hueso asomando, miembro
+  torcido, dedos morados—. Publicar RV tal cual habría dejado **dos listas de
+  urgencia de fractura** en la misma biblioteca, que es exactamente la avería
+  que este proyecto persigue. **Se resolvió recortando MM en el mismo commit**,
+  como manda el procedimiento: RV es la dueña de la fractura aguda, MM conserva
+  lo suyo (golpe de baja energía, densidad ósea, hipocalcemia del niño sin
+  lácteos, el adolescente que restringe la comida) y una línea que manda aquí.
+- **El arreglo de la cabecera, ahora en el script.** RV llegaba con «✅ cubierto
+  (fuentes verificadas)», **sin ronda**, y en la 53 a RU le pasó lo mismo por
+  otra vía. `publicar54.py` garantiza la ronda y **aborta** si no queda. Cópialo
+  en vez de `publicar53.py`.
+- **El título de RW hubo que cambiarlo por seguridad, no por estilo.** Venía
+  como «Se golpea la cabeza contra la cuna o se mece para dormirse…», y con ese
+  título la consulta **«se golpea la cabeza» abría RW por delante de QS**: un
+  golpe puntual en la cabeza aterrizaba en una ficha que dice que es benigno y
+  que lo que toca es asegurar la cuna. Quitar RW de las claves genéricas no
+  bastó —mandaba el título—, así que se retituló a **«Se mece o se da cabezazos
+  para dormirse…»** y QS recuperó el primer puesto. Las frases con cuna, cama o
+  dormirse llegan a RW por clave propia.
+- **Y un hueco encontrado de paso:** «se ha dado un golpe en la cabeza» abría en
+  *Termorregulación*. Ahora va a QS.
 
-**Si esta ronda terminó y nadie la publicó, publícala** con el procedimiento de
-abajo. Si el turno murió con ella en vuelo, mira «¿Sigue viva la ronda?» y
-reanuda con los MISMOS args.
-
-**Lo que dejó la 53 sin hacer, para una ronda de limpieza:** los doce enlaces
-inversos que pedía RT y no se pusieron (CY, LD, AU, KE, LU, P, LL, QR, QQ, MV,
-NQ, PP).
+**Lo que queda sin hacer, para una ronda de limpieza:** los doce enlaces
+inversos que pedía RT en la 53 (CY, LD, AU, KE, LU, P, LL, QR, QQ, MV, NQ, PP),
+y los cuidados del yeso día a día, que no están ni en RV ni en PT (está en la
+reserva).
 
 **Lo que enseñó la 53, que es sobre todo cómo me equivoqué yo:**
 
@@ -228,8 +239,8 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 53.
-Biblioteca en **456 temas / 226 verificados / 230 síntesis / 4.675 fuentes**.
+Rondas 29 a 54.
+Biblioteca en **458 temas / 226 verificados / 232 síntesis / 4.706 fuentes**.
 Suite **1.000/1.000** (28/09, medido en corrida limpia, no calculado). Reserva:
 **26 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó

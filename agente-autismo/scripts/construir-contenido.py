@@ -193,6 +193,10 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 53: RT (cojera aguda) y RU (herida que sangra) son de salud. RU
     # caeria si no en familia, por "casa" y "quemadura" dentro del texto.
     "RT": "salud", "RU": "salud",
+    # Ronda 54: RV (fractura) y RW (movimientos ritmicos del sueño) son de
+    # salud. RW caeria en conducta por "se golpea la cabeza", que es justo la
+    # lectura equivocada que la ficha viene a corregir.
+    "RV": "salud", "RW": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

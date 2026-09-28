@@ -455,3 +455,5 @@ RR. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otra
 RS. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo
 RT. Ha empezado a cojear: la pierna o la cadera que duele de repente
 RU. Se ha hecho una herida y sangra: el corte, la caída y la quemadura de ahora
+RV. Creo que se ha roto un hueso: la fractura
+RW. Se mece o se da cabezazos para dormirse: ¿es autolesión o es cómo se duerme?
