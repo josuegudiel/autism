@@ -1458,6 +1458,7 @@
   "MO"
  ],
  "sangra mucho": [
+  "RU",
   "KS",
   "LH"
  ],
@@ -4900,10 +4901,12 @@
   "AN"
  ],
  "le duelen las piernas por la noche": [
+  "RT",
   "RB",
   "W"
  ],
  "camina raro": [
+  "RT",
   "LY",
   "DP"
  ],
@@ -5515,12 +5518,15 @@
   "MI"
  ],
  "se ha quemado con agua caliente": [
+  "RU",
   "LH"
  ],
  "se ha quemado": [
+  "RU",
   "LH"
  ],
  "quemadura": [
+  "RU",
   "LH"
  ],
  "se le ponen los labios morados": [
@@ -5911,18 +5917,20 @@
   "JQ"
  ],
  "le sale mucha sangre": [
-  "KS",
-  "LH"
+  "RU"
  ],
  "se ha hecho un corte profundo": [
+  "RU",
   "KS",
   "LH"
  ],
  "se ha cortado y sangra": [
+  "RU",
   "KS",
   "LH"
  ],
  "no para de sangrar": [
+  "RU",
   "KS",
   "LH"
  ],
@@ -6118,5 +6126,75 @@
  "se va de casa mientras dormimos": [
   "QT",
   "AE"
+ ],
+ "cojea": [
+  "RT"
+ ],
+ "ha empezado a cojear": [
+  "RT"
+ ],
+ "cojera": [
+  "RT"
+ ],
+ "se queja de la pierna": [
+  "RT"
+ ],
+ "le duele la pierna": [
+  "RT"
+ ],
+ "le duele la cadera": [
+  "RT"
+ ],
+ "le duele la rodilla": [
+  "RT"
+ ],
+ "no quiere andar": [
+  "RT"
+ ],
+ "no apoya el pie": [
+  "RT"
+ ],
+ "arrastra la pierna": [
+  "RT"
+ ],
+ "se ha quedado sin andar": [
+  "RT"
+ ],
+ "ha dejado de andar": [
+  "RT"
+ ],
+ "le duele la ingle": [
+  "RT"
+ ],
+ "se ha hecho una herida": [
+  "RU"
+ ],
+ "se ha caido y sangra": [
+  "RU"
+ ],
+ "le hace falta puntos": [
+  "RU"
+ ],
+ "necesita puntos": [
+  "RU"
+ ],
+ "herida infectada": [
+  "RU",
+  "MN"
+ ],
+ "se le ha infectado la herida": [
+  "RU"
+ ],
+ "vacuna del tetanos": [
+  "RU"
+ ],
+ "se ha clavado algo": [
+  "RU"
+ ],
+ "se ha hecho un corte": [
+  "RU"
+ ],
+ "sangra y no para": [
+  "RU"
  ]
 }

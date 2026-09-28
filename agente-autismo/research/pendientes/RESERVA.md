@@ -25,6 +25,8 @@ con las palabras de una familia y mirar la primera respuesta. Once de las veinte
 abrían en la ficha equivocada; nueve se arreglaron con sinónimos porque la ficha
 ya existía. **Estas dos no tienen ficha:**
 
+- **Se ha roto algo: la fractura (28/09).** Lo señala la propia **RU** al publicarse: «el golpe en la cabeza vive en **QS** y la fractura no existe todavía en el índice — esta ficha solo enruta». Comprobado: `grep fractura research/indice-temas.txt` no devuelve nada. Hoy la fractura se reparte entre **MM** (hueso poco denso, golpe flojo), **RT** (la cojera que puede serlo) y **RU** (la herida que la acompaña), y ninguna contesta «creo que se ha roto el brazo»: ni cómo inmovilizar sin forzar, ni qué se hace mientras llegáis, ni la radiografía en un niño que no tolera estar quieto.
+
 - **Se golpea la cabeza contra la cuna o se mece para dormirse (28/09).** Sale
   de la tanda de veinte consultas de la noche. «Se golpea la cabeza contra la
   cuna para dormirse» abre hoy en la ficha del casco y las revisiones, que está
@@ -36,15 +38,14 @@ ya existía. **Estas dos no tienen ficha:**
   niños pequeños, y lo que toca es asegurar la cuna y esperar, no un casco ni un
   plan conductual. Ficha corta, o punto nuevo dentro de EN.
 
-- **Ha empezado a cojear, o se queja de una pierna o una cadera.** 🚀 EN VUELO
-  como **RT** en la ronda 53 (28/09). La consulta
+- **Ha empezado a cojear, o se queja de una pierna o una cadera.** ✅ PUBLICADO como **RT** en la ronda 53 (28/09). La consulta
   aterriza hoy en «se arranca el pelo». No hay ficha de dolor
   musculoesquelético: ni la cojera que aparece de golpe (que en pediatría tiene
   su propia lista de descarte), ni la queja crónica de piernas en un niño
   hipermóvil. **RB** publica el dolor crónico y **EK** la hipermovilidad, pero
   ninguna entra en la cojera aguda.
 - **Una herida que sangra: el corte profundo, la caída, la quemadura que se
-  hace ahora.** 🚀 EN VUELO como **RU** en la ronda 53 (28/09).
+  hace ahora.** ✅ PUBLICADO como **RU** en la ronda 53 (28/09).
   La biblioteca tiene la casa segura (**LH**), la autolesión
   (**KS**, que sí dice cuándo una lesión necesita atención médica) y el
   traumatismo dental (**QC**), pero **no hay ninguna ficha de "se ha hecho una

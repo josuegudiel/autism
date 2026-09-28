@@ -190,6 +190,9 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 49: RG (no puede llamar por telefono) y RH (donde cambiarlo fuera de
     # casa) son de salud; RG caia en el cajon por defecto y RH en familia.
     "RG": "salud", "RH": "salud",
+    # Ronda 53: RT (cojera aguda) y RU (herida que sangra) son de salud. RU
+    # caeria si no en familia, por "casa" y "quemadura" dentro del texto.
+    "RT": "salud", "RU": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

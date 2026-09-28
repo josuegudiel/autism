@@ -9,31 +9,41 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 53, lanzada y viva (28/09).** runId `wf_947219b1-982`, script
-`scripts/workflows/investigar-temas.mjs`. Códigos **RT, RU**. Dos temas, no
-cuatro, porque el presupuesto de búsqueda se había gastado el 23/09 y al volver
-solo se sabía que **no** estaba agotado, no cuánto quedaba: una búsqueda de
-prueba respondió y ahí se paró la medición. 2×15 + 2×15 ≈ 60 llamadas.
+**Ninguna. La 53 se publicó entera** (RT, RU; runId `wf_947219b1-982`). Para la
+54, encarga desde `research/pendientes/RESERVA.md`, **leyendo primero los avisos
+de su cabecera**. Los siguientes códigos libres son **RV** en adelante; QO y PO
+siguen libres a propósito, confírmalo con grep antes de asignar.
 
-Los dos temas **no salen de la lista numerada de la reserva**, sino de sus
-«Huecos nuevos, encontrados probando consultas»; el recuento de encargables de
-la lista numerada **no cambia** por esta ronda:
+**Lo que enseñó la 53, que es sobre todo cómo me equivoqué yo:**
 
-- **RT — ha empezado a cojear.** La consulta abría en «se arranca el pelo». RB
-  (dolor crónico) y EK (hipermovilidad) no entran en la cojera aguda, que tiene
-  su propia lista de descarte.
-- **RU — se ha hecho una herida y sangra.** «Le sale mucha sangre» y «se ha
-  hecho un corte profundo» se mandaron a KS y LH porque era lo más cerca que
-  había, y no contestan la pregunta.
-
-Comprobado antes de encargar: RT y RU libres, QO y PO siguen libres, y ninguno
-de los dos asuntos estaba ya publicado (los únicos «cojera» de la biblioteca son
-señales de lesión tras una sujeción, y los «torniquete»/«hemorragia» son
-extracciones de sangre, amigdalectomía y embarazo ectópico).
-
-**Si esta ronda terminó y nadie la publicó, publícala** siguiendo el
-procedimiento de abajo. Si el turno se murió con ella en vuelo, mira «¿Sigue
-viva la ronda?» y reanuda con los MISMOS args.
+- **El verificador se ganó el sueldo en RT.** La ficha atribuía la revisión de
+  cojera pediátrica de *American Family Physician* (2023) a «Naranje»: es de
+  **Morancie y Helton**; Naranje firmó la versión anterior que esta actualiza.
+  Además decía que «en cerca de la mitad de los casos el primer síntoma es dolor
+  de rodilla» (lo confirmado es **26 % rodilla y 35 % muslo**) y que «entre el
+  20 % y el 50 % no se diagnostican en la primera visita», cifra que no existía
+  en ninguna fuente y se borró, dejándolo en cualitativo. Once fuentes y once
+  afirmaciones fuera en RT; diez y dieciséis en RU.
+- **Mi comprobación de frases de bloqueo estaba rota y casi me manda a cazar un
+  fantasma.** `grep -E '[⏳⏸]|…'` en un locale de bytes casa trozos de OTROS
+  caracteres multibyte, así que «encontraba» bloqueos en cualquier línea con 🚨
+  o con tildes. **Se comprueba con el MISMO regex que la suite, en node**, no
+  con grep. Con el bueno, las dos fichas estaban limpias.
+- **La cabecera de RU perdió su ronda al limpiarla.** `MARCA` casó con
+  «depurada» y se llevó por delante el trozo bueno, dejando «✅ cubierto
+  (revisada en seguridad, lectura…)» **sin «Ronda 53»**. Es exactamente el fallo
+  de la ronda 38 (se tiró el trozo bueno y se conservó el malo), y por eso el
+  procedimiento manda **releer la cabecera entera al final**. Restaurada a mano.
+- **En MM no se recortó lo que el editor pedía, a propósito.** Pedía quitar de
+  MM «deja de apoyar una pierna… o de caminar como caminaba» por duplicarse con
+  RT. Es una señal de **sospecha de fractura** que MM publica por derecho: borrar
+  un aviso de fractura para evitar un solape sale más caro que el solape. Se
+  ataron: la señal se queda y ahora dice, dentro de la propia línea, que la
+  cojera nueva se mira en RT.
+- **De los 19 enlaces inversos que pedía RT se pusieron 7** (MM, RB, DP, LY, JR,
+  ME, RR) y de RU cinco (LH, KS, QS, QC, MN). Faltan CY, LD, AU, KE, LU, P, LL,
+  QR, QQ, MV, NQ y PP: quedan para una ronda de limpieza, y está escrito dentro
+  de la propia nota de RT para que no se pierda.
 
 **Lo que enseñó la 52:** otra vez las dos fichas volvieron con
 `publicable=false`, y otra vez ninguna lo estaba de verdad. Pero el segundo
@@ -197,8 +207,8 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 52.
-Biblioteca en **454 temas / 226 verificados / 228 síntesis / 4.635 fuentes**.
+Rondas 29 a 53.
+Biblioteca en **456 temas / 226 verificados / 230 síntesis / 4.675 fuentes**.
 Suite **949/949** (23/09). Reserva: **26 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448

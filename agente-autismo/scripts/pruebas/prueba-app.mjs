@@ -3537,6 +3537,81 @@ for (const [q, titulo] of [
   check(`La noche: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
 }
 
+// 73. Ronda 53. Dos fichas que salieron de consultas medidas, no del detector de
+// huecos: «ha empezado a cojear» abría en «se arranca el pelo» y «le sale mucha
+// sangre» en KS/LH, que era lo más cerca que había y no contestaba la pregunta.
+// Las dos volvieron publicables y con las cuatro lentes vivas, y aun así el
+// verificador tuvo que tirar 21 fuentes y 27 afirmaciones entre las dos. En RT,
+// tres de ellas eran graves: la revisión de cojera de American Family Physician
+// (2023) estaba atribuida a «Naranje» y es de **Morancie y Helton**; «en cerca de
+// la mitad de los casos el primer síntoma es dolor de rodilla» era falso (26 %
+// rodilla, 35 % muslo); y un «entre el 20 % y el 50 % no se diagnostican en la
+// primera visita» que no existía en ninguna fuente y se borró.
+for (const [codigo, marca] of [['RT', /cojera|cojear|cadera/i],
+                               ['RU', /herida|sangra|quemadura/i]]) {
+  await ir('#tema/' + codigo);
+  const tx = await texto();
+  check(`Ronda 53: el tema ${codigo} se abre con contenido y fuentes`,
+    marca.test(tx) && tx.length > 600 && /Fuentes · \d+/.test(tx), tx.slice(0, 140));
+}
+// El editor de RT ordenó los cuatro bloques 🚨 seguidos a propósito, porque el
+// bucle de mdRender() mete el teléfono de ayuda detrás del ÚLTIMO urgente. Si
+// alguien intercala una viñeta normal entre medias, el teléfono sube y deja de
+// estar al final del bloque de alarma. Medido: RT da «UUUUCTA».
+for (const cod of ['RT', 'RU']) {
+  await ir('#tema/' + cod);
+  const orden = await pag.$$eval('.tema-cuerpo > *',
+    (ns) => ns.map((n) => (n.classList.contains('cta-ayuda') ? 'CTA'
+      : n.classList.contains('urgente') ? 'U'
+      : n.classList.contains('punto') ? 'p' : '·')).join(''));
+  check(`Ronda 53: en ${cod} el teléfono va pegado al bloque de urgencia`,
+    /UCTA/.test(orden) && orden.indexOf('CTA') === orden.lastIndexOf('CTA'), orden.slice(0, 60));
+}
+// Comprobadas contra la app antes de asertarlas. Las cinco primeras son el hueco
+// medido que motivó la ronda: «cojea» no existía como clave y llevaba a QQ.
+for (const [q, titulo] of [
+  ['cojea', 'Ha empezado a cojear'],
+  ['ha empezado a cojear', 'Ha empezado a cojear'],
+  ['cojera', 'Ha empezado a cojear'],
+  ['se queja de la pierna', 'Ha empezado a cojear'],
+  ['no apoya el pie', 'Ha empezado a cojear'],
+  ['le sale mucha sangre', 'Se ha hecho una herida y sangra'],
+  ['no para de sangrar', 'Se ha hecho una herida y sangra'],
+  ['se ha hecho un corte profundo', 'Se ha hecho una herida y sangra'],
+  ['se ha quemado con agua caliente', 'Se ha hecho una herida y sangra'],
+  ['necesita puntos', 'Se ha hecho una herida y sangra'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 53: buscar «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
+// Las correcciones a fichas viejas que trajo la ronda, una prueba cada una.
+// (a) El editor de RT pedía BORRAR de MM «deja de apoyar una pierna… o de
+// caminar como caminaba» por duplicarse con RT. No se borró, a propósito: es una
+// señal de sospecha de FRACTURA que MM publica por derecho, y quitar un aviso de
+// fractura para evitar un solape sale más caro que el solape. Se ataron las dos.
+const mm53 = fichaDe('MM');
+check('MM conserva su señal de fractura y ahora remite a RT en la misma línea',
+  /deja de apoyar una pierna, de usar un brazo o de caminar como caminaba/.test(mm53)
+  && /cojera nueva\*\*, la lista de descarte entera está en \*\*RT\*\*/.test(mm53));
+// (b) «sobresombra diagnóstica» aparecía UNA vez en IC frente a 17
+// «ensombrecimiento diagnóstico» en el resto de la biblioteca.
+check('IC usa el mismo término que el resto de la biblioteca',
+  /\(ensombrecimiento diagnóstico\)/.test(fichaDe('IC')) && !/sobresombra/.test(fichaDe('IC')));
+// (c) Los enlaces de vuelta: sin ellos las fichas nuevas existen y no se llega
+// a ellas desde donde la familia ya está leyendo.
+for (const [cod, nuevo] of [['MM','RT'],['RB','RT'],['DP','RT'],['LY','RT'],['JR','RT'],['ME','RT'],['RR','RT'],
+                            ['LH','RU'],['KS','RU'],['QS','RU'],['QC','RU'],['MN','RU']]) {
+  check(`Ronda 53: ${cod} enlaza de vuelta a ${nuevo}`, new RegExp('\\*\\*' + nuevo + '\\.').test(fichaDe(cod)));
+}
+// (d) Y la nota de RT ya no encarga lo que se hizo: decía «BLOQUEANTE — no se
+// publica sin esto» y ahora dice qué se hizo y qué NO (7 enlaces inversos de los
+// 19 que pedía, y el recorte de MM que se decidió no hacer).
+const rt53 = fichaDe('RT');
+check('La nota de RT cuenta lo que pasó y no lo que pedía',
+  !/BLOQUEANTE/.test(rt53) && /Integración hecha en la ronda 53/.test(rt53)
+  && /no se recortó nada, a propósito/.test(rt53));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

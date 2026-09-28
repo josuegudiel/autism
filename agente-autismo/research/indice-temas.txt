@@ -453,3 +453,5 @@ RP. ¿Nos dan la tarjeta de aparcamiento por ser autista? Estacionamiento, atenc
 RQ. Duerme en nuestra cama y no quiere dormir solo: qué hay que mirar antes de tratarlo como un hábito (colecho)
 RR. Le duele la barriga y no sabe decir dónde: apendicitis, obstrucción y otras urgencias del abdomen
 RS. Se ha tragado una pila de botón, un imán o una moneda: qué hay que hacer ahora mismo
+RT. Ha empezado a cojear: la pierna o la cadera que duele de repente
+RU. Se ha hecho una herida y sangra: el corte, la caída y la quemadura de ahora
