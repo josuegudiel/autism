@@ -22,7 +22,13 @@
     <span class="brand-tag">basado en evidencia</span>
   </header>
 
-  <main id="view" class="view" tabindex="-1" aria-live="polite"><!-- las vistas se renderizan aquí --></main>
+  <main id="view" class="view" tabindex="-1"><!-- las vistas se renderizan aquí --></main>
+
+  <!-- Región viva mínima. El <main> entero era aria-live, así que al entrar en la
+       biblioteca el lector de pantalla intentaba leer los 360 temas de un tirón y
+       no había manera de pararlo. Aquí solo se escribe el resumen de lo que acaba
+       de cambiar; del cambio de pantalla avisa el foco, que route() mueve al <main>. -->
+  <p id="anuncio" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 
   <footer class="disclaimer">
     Informa y orienta; <strong>no diagnostica ni sustituye</strong> a un profesional de la salud.

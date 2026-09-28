@@ -1,64 +1,81 @@
 {
-  "_nota": "Líneas de ayuda verificadas con fuentes oficiales (ministerios de salud) en julio de 2026. Revisa periódicamente que sigan vigentes. Si añades un país, comprueba el número en la web del ministerio de salud de ese país, nunca de oídas.",
+  "_nota": "Líneas de ayuda verificadas con fuentes oficiales (ministerios de salud) en septiembre de 2026. Revisa periódicamente que sigan vigentes. Si añades un país, comprueba el número en la web del ministerio de salud de ese país, nunca de oídas. Comprueba también el HORARIO: no todas las líneas son de 24 h, y una línea que no contesta de madrugada anunciada como 24 h es peor que no ponerla. El campo \"escrito\" solo se rellena con canales de texto (chat, WhatsApp, SMS) publicados por el propio organismo que atiende la línea; si no consta, se deja vacío en vez de suponerlo.",
   "titulo": "Si necesitas ayuda ahora",
   "intro": "Si tú o alguien de tu familia está en peligro inmediato, llama al número de emergencias de tu país. Pedir ayuda no es un fracaso: es lo más valiente y lo más útil que puedes hacer.",
+  "notaEscrito": "Hablar por teléfono puede ser imposible en plena crisis, y para muchas personas autistas lo es siempre. Donde el servicio ofrece chat, WhatsApp o mensaje de texto, lo verás aquí marcado como «Por escrito»: responde el mismo equipo que atiende el teléfono, y sirve igual.",
   "avisoCuidador": "Cuidar agota. Si te sientes desbordado, con angustia constante o con pensamientos de hacerte daño, esto también va por ti: mereces apoyo.",
   "paises": [
     {
       "pais": "España",
       "linea": "024",
       "descripcion": "Línea de atención a la conducta suicida. Gratuita, confidencial, 24 h todos los días. Atiende también a familiares.",
+      "escrito": "Chat en la web del 024 (sanidad.gob.es/linea024); uno de cada cinco contactos entra por ahí, no por teléfono. En lengua de signos, videointerpretación gratuita y 24 h en linea024.svisual.org.",
       "emergencias": "112",
-      "fuente": "https://www.sanidad.gob.es/linea024/home.htm"
+      "fuente": "https://www.sanidad.gob.es/linea024/home.htm",
+      "fuenteSecundaria": "https://linea024.svisual.org/"
     },
     {
       "pais": "México",
       "linea": "800 911 2000",
       "descripcion": "Línea de la Vida (CONASAMA, Secretaría de Salud). Salud mental y adicciones, gratuita, 24 h los 365 días.",
+      "escrito": "La Línea de la Vida atiende solo por teléfono. Si estás en Ciudad de México y no puedes llamar: Chat de Confianza del Consejo Ciudadano, WhatsApp 55 5533 5533, 24 h, con psicólogos (no es un bot).",
       "emergencias": "911",
-      "fuente": "https://www.gob.mx/conasama/articulos/linea-de-la-vida-800-911-2000"
+      "fuente": "https://www.gob.mx/conasama/articulos/linea-de-la-vida-800-911-2000",
+      "fuenteSecundaria": "https://www.consejociudadanomx.org/"
     },
     {
       "pais": "Argentina",
-      "linea": "135 (área de Buenos Aires) · 0800 345 1435 (todo el país)",
-      "descripcion": "Centro de Asistencia al Suicida. Gratuita y confidencial, 24 h.",
-      "emergencias": "911",
-      "fuente": "https://www.asistenciaalsuicida.org.ar/"
+      "linea": "0800 999 0091 (todo el país, 24 h)",
+      "descripcion": "Línea Nacional de Orientación y Apoyo en la Urgencia de Salud Mental (Ministerio de Salud). Gratuita y confidencial, 24 h los 365 días; atiende también a familiares y a quien no sabe cómo actuar. El Centro de Asistencia al Suicida (135 desde Buenos Aires · 0800 345 1435 desde todo el país) atiende de 8 a 24 h, no de madrugada.",
+      "escrito": "",
+      "emergencias": "911 · 107 (SAME)",
+      "fuente": "https://www.argentina.gob.ar/noticias/la-linea-nacional-de-orientacion-y-apoyo-en-la-urgencia-de-salud-mental-funciona-las-24",
+      "fuenteSecundaria": "https://www.asistenciaalsuicida.org.ar/horarios-de-atencion"
     },
     {
       "pais": "Chile",
       "linea": "*4141",
-      "descripcion": "Línea de Prevención del Suicidio (MINSAL). Gratuita desde cualquier celular, 24 h. También Salud Responde: 600 360 7777.",
+      "descripcion": "Línea de Prevención del Suicidio (MINSAL). Gratuita desde cualquier celular, 24 h. También Salud Responde: 600 360 7777, opción 2.",
+      "escrito": "",
       "emergencias": "131 (SAMU)",
-      "fuente": "https://portalsaluddigital.minsal.cl/telemedicina-sincronica/4141-linea-prevencion-del-suicidio/"
+      "fuente": "https://portalsaluddigital.minsal.cl/telemedicina-sincronica/4141-linea-prevencion-del-suicidio/",
+      "fuenteSecundaria": "https://saludresponde.minsal.cl/salud-mental-y-prevencion-del-suicidio/"
     },
     {
       "pais": "Colombia",
       "linea": "192 opción 4 (todo el país) · 106 (Bogotá, Medellín, Cali, Cartagena y Barranquilla)",
       "descripcion": "Orientación en salud mental e intervención en crisis del Ministerio de Salud. Gratuita, 24 h.",
+      "escrito": "En Bogotá, la Línea 106 atiende también por WhatsApp en el 300 754 8933 y por correo en linea106@saludcapital.gov.co.",
       "emergencias": "123",
-      "fuente": "https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx"
+      "fuente": "https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx",
+      "fuenteSecundaria": "https://www.saludcapital.gov.co/Paginas2/Quienes_Somos_linea106.aspx"
     },
     {
       "pais": "Perú",
       "linea": "113 opción 5",
-      "descripcion": "Línea de salud mental del MINSA. Gratuita, 24 h.",
+      "descripcion": "Línea de salud mental del MINSA. Gratuita desde celular, fijo o teléfono público, 24 h los 365 días. La opción 5 es la de tristeza, ansiedad, descontrol emocional o pensamientos suicidas.",
+      "escrito": "La misma central (Infosalud) atiende por WhatsApp y Telegram en el 955 557 000 y el 952 842 623, y por correo en infosalud@minsa.gob.pe.",
       "emergencias": "106 (SAMU)",
-      "fuente": "https://www.gob.pe/institucion/minsa/campa%C3%B1as/1105-linea-113-salud"
+      "fuente": "https://www.gob.pe/institucion/minsa/campa%C3%B1as/1105-linea-113-salud",
+      "fuenteSecundaria": "https://www.gob.pe/555-recibir-informacion-y-orientacion-en-salud-linea-113-salud"
     },
     {
       "pais": "Estados Unidos (en español)",
       "linea": "988",
-      "descripcion": "Línea de Prevención del Suicidio y Crisis. Atención en español, gratuita, 24 h. También por chat.",
+      "descripcion": "Línea de Prevención del Suicidio y Crisis. Gratuita y confidencial, 24 h. Para que te atienda alguien en español: marca 988 y pulsa 2.",
+      "escrito": "Envía la palabra AYUDA al 988 por mensaje de texto, o entra al chat en español en 988lifeline.org/es. Te responde una persona en español, igual que por teléfono.",
       "emergencias": "911",
-      "fuente": "https://988lifeline.org/help-yourself/en-espanol/"
+      "fuente": "https://988lifeline.org/help-yourself/en-espanol/",
+      "fuenteSecundaria": "https://988lifeline.org/interpretation-services/servicios-en-espanol/"
     },
     {
       "pais": "Otros países",
       "linea": "Número de emergencias local",
       "descripcion": "Si tu país no está en la lista, llama al número de emergencias local o acude al servicio de urgencias más cercano. También puedes buscar la línea de tu país en el directorio internacional findahelpline.com.",
+      "escrito": "El directorio findahelpline.com/es cubre más de 175 países y deja filtrar por forma de contacto, así que puedes quedarte solo con las líneas que atienden por chat o por mensaje.",
       "emergencias": "",
-      "fuente": "https://findahelpline.com/es"
+      "fuente": "https://findahelpline.com/es",
+      "fuenteSecundaria": ""
     }
   ],
   "senalesDeAlarma": [
@@ -73,6 +90,7 @@
     "Acompaña sin juzgar y no dejes sola a la persona si el riesgo es inmediato.",
     "Retira del alcance medicamentos y objetos peligrosos.",
     "Llama a la línea de ayuda de tu país o acude a urgencias.",
+    "Si hablar por teléfono no es una opción —para ti o para quien está en crisis—, usa el canal por escrito de tu país: atiende el mismo equipo y cuenta igual.",
     "Busca después seguimiento profesional: hay tratamientos que funcionan."
   ]
 }

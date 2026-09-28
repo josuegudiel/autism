@@ -4,6 +4,9 @@ name: Publicar la app en GitHub Pages
 # Para activarlo una sola vez:
 #   Settings -> Pages -> Build and deployment -> Source: "GitHub Actions"
 # A partir de ahí, cada push actualiza la web publicada.
+#
+# Antes de publicar nada se pasa la suite de pruebas. Es una app de salud: es
+# preferible no publicar a publicar una versión que dejó de avisar de algo.
 
 on:
   push:
@@ -11,6 +14,16 @@ on:
     paths:
       - "agente-autismo/web/**"
       - "agente-autismo/herramientas/**"
+      - "agente-autismo/scripts/pruebas/**"
+      - ".github/workflows/publicar.yml"
+  # También en los pull requests, aunque ahí no se publique: así un cambio se
+  # valida ANTES de entrar en main, que es cuando todavía sale barato.
+  pull_request:
+    branches: [main]
+    paths:
+      - "agente-autismo/web/**"
+      - "agente-autismo/herramientas/**"
+      - "agente-autismo/scripts/pruebas/**"
       - ".github/workflows/publicar.yml"
   workflow_dispatch: # permite lanzarlo a mano desde la pestaña Actions
 
@@ -20,11 +33,49 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  # Por rama, no global: así un pull request en marcha no cancela el despliegue
+  # de main ni al revés.
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar Playwright y su Chromium
+        # Se instala primero el paquete y luego se usa SU propio CLI para bajar
+        # el navegador. Si se hiciera con `npx playwright`, npx podría traerse
+        # otra versión y bajar un Chromium que el paquete instalado no sabe usar.
+        run: |
+          npm install -g playwright
+          playwright install --with-deps chromium
+
+      - name: Pasar la suite contra la app servida
+        working-directory: agente-autismo
+        # El servidor y las pruebas van en el MISMO paso a propósito: un proceso
+        # de fondo arrancado en un paso anterior no tiene garantizado seguir vivo
+        # en el siguiente.
+        run: |
+          python3 -m http.server 8098 --bind 127.0.0.1 &
+          SERVIDOR=$!
+          trap 'kill $SERVIDOR' EXIT
+          for _ in $(seq 1 30); do
+            curl -sf -o /dev/null http://127.0.0.1:8098/web/index.html && break
+            sleep 1
+          done
+          curl -sf -o /dev/null http://127.0.0.1:8098/web/index.html
+          node scripts/pruebas/prueba-app.mjs
+
   construir:
+    needs: pruebas
+    # En un pull request se pasan las pruebas pero no se publica nada.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +84,21 @@ jobs:
         run: |
           mkdir -p sitio
           cp -R agente-autismo/web/. sitio/
+          # La versión de la caché del service worker se estampa aquí, no a
+          # mano: mientras el nombre no cambie, el navegador de una familia que
+          # ya tiene la app abierta sigue sirviendo la versión vieja y la
+          # corrección publicada no le llega nunca. Se sustituye sobre la copia
+          # de sitio/, no sobre el repositorio, para que en local siga diciendo
+          # "desarrollo" y sw.js siga siendo JavaScript válido sin sustituir.
+          sed -i "s|^const VERSION = \"desarrollo\";|const VERSION = \"$GITHUB_SHA\";|" sitio/sw.js
+          # Si alguien reescribe esa línea, el sed deja de casar y el despliegue
+          # volvería en silencio al problema de siempre. Mejor que falle aquí.
+          grep -q "^const VERSION = \"$GITHUB_SHA\";$" sitio/sw.js || {
+            echo "ERROR: no se pudo estampar la version de la cache en sw.js;" >&2
+            echo "¿cambió la linea 'const VERSION = \"desarrollo\";'?" >&2
+            exit 1
+          }
+          echo "Cache del service worker: brujula-tea-$GITHUB_SHA"
           # El simulador de iPhone, accesible en /simulador/
           mkdir -p sitio/simulador
           cp agente-autismo/herramientas/simulador-iphone.html sitio/simulador/index.html
@@ -55,6 +121,7 @@ jobs:
 
   desplegar:
     needs: construir
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
