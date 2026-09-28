@@ -3491,7 +3491,20 @@ check('La memoria no da por viva una ronda cuyos temas ya están publicados',
 //  - «se despierta a las tres de la madrugada» abre PQ, que es la ficha del padre
 //    que lleva meses sin dormir. Es literalmente esa situación; W sale segunda.
 // Las veinte se comprobaron contra la app con `comprobar-consultas.mjs` ANTES de
-// escribirse aquí, que es la regla de la casa.
+// escribirse aquí, que es la regla de la casa — y aun así esta sección entró en
+// rojo dos veces. Las dos merecen quedar escritas:
+//  - **Comprobar con `comprobar-consultas.mjs` es necesario y NO es suficiente.**
+//    Ese script compara contra el TÍTULO DE LA PRIMERA RESPUESTA; esta suite
+//    compara contra `rr.slice(0, 220)`, que empieza por el nombre de la
+//    categoría y corta los títulos largos. Son dos superficies distintas, así
+//    que una consulta puede abrir la ficha correcta y fallar igual aquí. Es la
+//    misma trampa que «el simulador no es la app», un piso más arriba.
+//  - **Añadir sinónimos rompe consultas vecinas.** El emparejamiento es por
+//    subcadena en los dos sentidos, así que una consulta corta hereda el impulso
+//    de cualquier clave que la contenga. Al añadir «se escapa de casa por la
+//    noche» → QT, la consulta ya asertada «se escapa de casa» (sin noche, o sea
+//    AE) empezó a abrir la ficha de la cama. La cazó esta suite, no yo. Si tocas
+//    `sinonimos.json`, la suite entera es obligatoria, no opcional.
 for (const [q, titulo] of [
   ['no duerme en toda la noche', 'Sueño'],
   ['se despierta a las tres de la madrugada y ya no se duerme', 'Llevo meses sin dormir'],
@@ -3504,11 +3517,17 @@ for (const [q, titulo] of [
   ['deja de respirar mientras duerme', 'operamos las amígdalas'],
   ['le doy melatonina y ya no le hace nada', 'Lleva dos años con melatonina'],
   ['se levanta a las cinco de la manana todos los dias', 'Sueño'],
-  ['duerme de dia y esta despierto de noche', 'retraso de fase'],
+  // Ojo con el trozo que se elige: QK se titula «No se duerme hasta las tres y
+  // por la mañana no hay quien lo levante: el reloj interno del adolescente
+  // (retraso de fase del sueño)». «Retraso de fase» va al FINAL del título y se
+  // sale de los 220 caracteres que mira esta comprobación, que además empiezan
+  // por el nombre de la categoría. Con esa consulta fallaba y con «se duerme en
+  // clase» pasaba, por pura posición. Se ancla por el principio del título.
+  ['duerme de dia y esta despierto de noche', 'No se duerme hasta las tres'],
   ['se hace pis en la cama con diez anos', 'Enuresis'],
   ['rechina los dientes por la noche', 'Salud dental y bruxismo'],
   ['no quiere apagar la luz para dormir', 'Sueño'],
-  ['se duerme en clase', 'retraso de fase'],
+  ['se duerme en clase', 'No se duerme hasta las tres'],
   ['se despierta llorando y no me reconoce', 'Trastornos del sueño específicos'],
   ['llevo semanas sin dormir y no puedo mas', 'Bienestar de cuidadores'],
   ['se escapa de casa por la noche mientras dormimos', 'Se escapa de la cama'],
