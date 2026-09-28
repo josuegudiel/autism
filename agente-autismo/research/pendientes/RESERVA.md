@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28) y la 52 otras dos (2 y 3): quedan 26 encargables, o sea unas seis rondas.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28) y la 52 otras dos (2 y 3), y el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG: quedan 25 encargables.** De esos, dos están EN VUELO en la ronda 55 (nº 5 como **RX** y nº 6 como **RY**); cuando se publiquen quedarán 23. La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -85,7 +85,9 @@ Patrón que casi nunca se enseña y que acaba en apéndice perforado: el hijo qu
 
 Sirve en el minuto exacto en que el padre ve que falta la pila del mando. Es de las pocas fichas donde la diferencia entre leerla y no leerla se mide en horas. HUECO REAL: 'AE. Seguridad: wandering y pica' trata la pica como conducta a prevenir y entender, no el protocolo una vez tragado; 'LH. Asegurar la casa' es prevención y se para antes del hospital; 'LG. Se atraganta al comer' es masticación y deglución, o sea vía aérea, no ingestión de cuerpo extraño; 'QP' son reacciones a medicamentos. CONTENIDO: la pila de botón quema el esófago en 2 horas y dos imanes separados atrapan asas de intestino y lo perforan; qué puede esperar y qué no; por qué nunca se provoca el vómito; el tricobezoar del pelo tragado durante años; y el caso tardío, el niño con pica con semanas de dolor o vómitos al que nadie ha pedido una radiografía. Evidencia sólida disponible: guías de endoscopia pediátrica NASPGHAN/ESPGHAN y series de perforación por cuerpo extraño en adolescentes autistas.
 
-### 4. Va por la tercera neumonía del año: la comida y la saliva que se le van al pulmón sin que se atragante
+### 4. Va por la tercera neumonía del año: la comida y la saliva que se le van al pulmón sin que se atragante ⛔
+
+> **NO ENCARGAR TAL CUAL: ya está en LG.** Comprobado el 28/09 antes de encargarlo. **LG. Se atraganta al comer** publica la aspiración silenciosa con su fuente (Arvedson 1994: 186 niños, aspiración en el 26 %, silenciosa en el 94 % de esos), el patrón de neumonías o bronquitis de repetición como señal de alarma principal, los ruidos húmedos después de comer, y la frase que es el núcleo del tema: «no tose, luego traga bien» es una conclusión falsa. El detector solo lee títulos y no podía verlo. Si algún día se encarga, tendría que ser por el ángulo que LG NO cubre —la neumonía de repetición como motivo de consulta y qué pruebas pedir— y sabiendo que el núcleo docente ya está publicado.
 
 Conecta un dato que ya está en la biblioteca (mortalidad) con el mecanismo que nadie explica, y es de las principales causas de muerte evitable. HUECO REAL: 'LG. Se atraganta al comer' está escrita alrededor del episodio visible en la mesa, y aquí lo característico es justo lo contrario, que no se atraganta (aspiración silenciosa); 'RC. Se le cae la baba' cubre la saliva que sale, no la que baja; 'QW. No gana peso ni crece' llega a la sonda por la vía nutricional; 'AL. Salud física y esperanza de vida' da el dato de mortalidad sin el mecanismo. CONTENIDO: señales de sospecha (voz húmeda después de beber, comidas eternas, fiebres repetidas sin foco, babeo), qué prueba pedir (videofluoroscopia o estudio endoscópico de la deglución) y qué viene después (espesantes, postura, texturas, cuándo se plantea otra vía). AVISO DE CIFRAS: las cifras de mortalidad respiratoria proceden de registros de discapacidad intelectual (LeDeR y equivalentes), no de cohortes autistas; hay que atribuirlas así explícitamente.
 

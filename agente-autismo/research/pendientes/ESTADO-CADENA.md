@@ -9,10 +9,32 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna. La 54 se publicó entera** (RV, RW; runId `wf_46a0d711-dff`). Los
-siguientes códigos libres son **RX** en adelante; QO y PO siguen libres a
-propósito. Para la 55, encarga desde `research/pendientes/RESERVA.md` **leyendo
-primero los avisos de su cabecera**.
+**Ronda 55, lanzada y viva (28/09).** runId `wf_c42aeb3c-ba1`. Códigos **RX, RY**. Dos temas: quedaban ~75 búsquedas de las 200 (la 53 gastó ~62 y la
+54 otras ~62) y dos cuestan ~60. Los siguientes libres son **RZ** en adelante;
+QO y PO siguen libres a propósito.
+
+**Estos dos SÍ salen de la lista numerada** (nº 5 y nº 6), al revés que los de
+la 53 y la 54: por eso el recuento baja a 23 cuando se publiquen.
+
+- **RX — el hospital decide distinto porque tiene discapacidad** (no reanimar,
+  UCI, listas de trasplante). Hueco comprobado: los únicos «trasplante» de la
+  biblioteca son el fecal como pseudociencia. Muy dependiente del país; se le ha
+  dicho al editor que no invente derechos y que diga de qué país es cada fuente.
+- **RY — cambios de conducta que son síntomas psiquiátricos en quien no habla.**
+  Acotado a propósito: **IC ya publica la depresión** y no hay que repetirla; lo
+  de RY es la persona que no puede contarlo y el orden de descarte que evita el
+  error caro (tratar como conducta lo que es dolor). Se le ha dicho que si al
+  final cabe dentro de IC, lo diga en vez de estirar la ficha.
+
+**Y un tema que se cayó antes de encargarse, que es la parte útil:** el nº 4
+(«va por la tercera neumonía del año», aspiración silenciosa) **ya está en LG**,
+con la fuente de Arvedson 1994 y la frase que es el núcleo del asunto —«no tose,
+luego traga bien» es una conclusión falsa—. El detector solo lee títulos y no
+podía verlo; lo cazó el grep que el procedimiento manda hacer **antes** de
+encargar. Marcado ⛔ en la reserva, y por eso los encargables bajan de 26 a 25.
+
+**Si esta ronda terminó y nadie la publicó, publícala.** Si el turno murió con
+ella en vuelo, mira «¿Sigue viva la ronda?» y reanuda con los MISMOS args.
 
 **Lo que enseñó la 54:**
 
@@ -242,7 +264,7 @@ comprobación con navegador, como dice el procedimiento.
 Rondas 29 a 54.
 Biblioteca en **458 temas / 226 verificados / 232 síntesis / 4.706 fuentes**.
 Suite **1.054/1.054** (28/09, medido en corrida limpia, no calculado). Reserva:
-**26 encargables de 31**, en
+**25 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva

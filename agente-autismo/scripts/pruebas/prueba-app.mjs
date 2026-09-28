@@ -3479,7 +3479,11 @@ check('La memoria y la reserva cuentan los mismos temas encargables',
 // **RN, RO, RP, RQ**», todo seguido y en la misma línea. La primera versión de
 // esta prueba exigía un salto de línea entre una cosa y otra y por eso NO habría
 // cazado el fallo que la motivó: comprobado contra el texto real de 982ad38.
-const vivos = [...cadena71.matchAll(/Ronda \d+[^\n]{0,80}?\b(?:viva|corriendo)\b[^]{0,300}?Códigos \*\*([A-Z][A-Z, *]*)\*\*/g)]
+// El espacio tras «Códigos» pasa a \s+ el 28/09: al escribir la ronda 55 partí
+// la línea justo ahí y el regex dejó de ver la ronda viva, o sea que esta prueba
+// habría PASADO EN VACÍO otra vez —el mismo fallo que tuvo su primera versión—.
+// Un guardia no puede depender de dónde parta la línea quien escribe la memoria.
+const vivos = [...cadena71.matchAll(/Ronda \d+[^\n]{0,80}?\b(?:viva|corriendo)\b[^]{0,300}?Códigos\s+\*\*([A-Z][A-Z, *]*)\*\*/g)]
   .flatMap((m) => m[1].split(/[^A-Z]+/).filter((c) => c.length === 2));
 const yaPublicados = vivos.filter((c) => new RegExp('^### ' + c + '\\. ', 'm').test(libMd));
 check('La memoria no da por viva una ronda cuyos temas ya están publicados',
