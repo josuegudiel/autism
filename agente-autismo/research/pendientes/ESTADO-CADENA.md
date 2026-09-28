@@ -4,7 +4,19 @@ Este archivo es la memoria de la cadena de investigación. El vigía horario
 (cron) no repite el procedimiento: dice que se lea esto. **Actualízalo al
 final de cada ronda, antes del commit**, y así el vigía nunca queda obsoleto.
 
-El usuario pidió encadenar rondas hasta agotar los créditos. Si nada necesita
+> ## ⛔ LA CADENA ESTÁ PARADA POR EL USUARIO (28/09, 18:20 UTC)
+>
+> El usuario escribió «**Detén el loop y la investigación**». La cadena de
+> rondas **no se reanuda sola**: el cron del vigía horario
+> (`trig_01EnBfvLkQpCacFrHYCeZy8d`) queda **deshabilitado, no borrado**, así
+> que su historial se conserva y vuelve a andar con `update_trigger
+> enabled=true` el día que el usuario lo pida. **No lo reactives por tu
+> cuenta, no lances una ronda 56 y no sustituyas el cron por `send_later`.**
+> Lo de abajo sigue siendo válido como memoria de lo hecho y como
+> procedimiento para cuando se reanude.
+
+El encargo original era encadenar rondas hasta agotar los créditos; **ese
+encargo está revocado** mientras esté el aviso de arriba. Si nada necesita
 acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
