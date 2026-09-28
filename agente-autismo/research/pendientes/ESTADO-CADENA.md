@@ -9,10 +9,31 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna. La 53 se publicó entera** (RT, RU; runId `wf_947219b1-982`). Para la
-54, encarga desde `research/pendientes/RESERVA.md`, **leyendo primero los avisos
-de su cabecera**. Los siguientes códigos libres son **RV** en adelante; QO y PO
-siguen libres a propósito, confírmalo con grep antes de asignar.
+**Ronda 54, lanzada y viva (28/09).** runId `wf_46a0d711-dff`, script
+`scripts/workflows/investigar-temas.mjs`. Códigos **RV, RW**. Otra vez dos temas
+y no cuatro: la 53 gastó unas 62 búsquedas de las 200 de la sesión, así que
+quedarían ~138 y cuatro temas cuestan ~120 — demasiado justo. Los siguientes
+libres tras esta son **RX** en adelante; QO y PO siguen libres a propósito.
+
+Los dos salen otra vez de los «Huecos nuevos» de la reserva, no de la lista
+numerada, así que **el recuento de encargables no cambia**:
+
+- **RV — creo que se ha roto un hueso.** Lo señala la propia RU al publicarse:
+  «la fractura no existe todavía en el índice — esta ficha solo enruta».
+  Comprobado: ni en el índice ni como inmovilización (los «férula» de la
+  biblioteca son dentales y la tolerancia al aparato, que es PT).
+- **RW — se golpea la cabeza contra la cuna o se mece para dormirse.** La
+  consulta abre hoy en la ficha del casco, escrita para la autolesión, donde el
+  consejo es el contrario. Puede salir corta, o resultar un punto de EN: se le
+  ha dicho al editor que lo diga en vez de estirarla.
+
+**Si esta ronda terminó y nadie la publicó, publícala** con el procedimiento de
+abajo. Si el turno murió con ella en vuelo, mira «¿Sigue viva la ronda?» y
+reanuda con los MISMOS args.
+
+**Lo que dejó la 53 sin hacer, para una ronda de limpieza:** los doce enlaces
+inversos que pedía RT y no se pusieron (CY, LD, AU, KE, LU, P, LL, QR, QQ, MV,
+NQ, PP).
 
 **Lo que enseñó la 53, que es sobre todo cómo me equivoqué yo:**
 
