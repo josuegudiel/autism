@@ -9,9 +9,31 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ninguna. La 52 se publicó entera** (RR, RS). Para la 53, encarga desde
-`research/pendientes/RESERVA.md`, **leyendo primero los avisos de su cabecera**,
-y **con dos temas si no sabes cuánto presupuesto de búsqueda queda**.
+**Ronda 53, lanzada y viva (28/09).** runId `wf_947219b1-982`, script
+`scripts/workflows/investigar-temas.mjs`. Códigos **RT, RU**. Dos temas, no
+cuatro, porque el presupuesto de búsqueda se había gastado el 23/09 y al volver
+solo se sabía que **no** estaba agotado, no cuánto quedaba: una búsqueda de
+prueba respondió y ahí se paró la medición. 2×15 + 2×15 ≈ 60 llamadas.
+
+Los dos temas **no salen de la lista numerada de la reserva**, sino de sus
+«Huecos nuevos, encontrados probando consultas»; el recuento de encargables de
+la lista numerada **no cambia** por esta ronda:
+
+- **RT — ha empezado a cojear.** La consulta abría en «se arranca el pelo». RB
+  (dolor crónico) y EK (hipermovilidad) no entran en la cojera aguda, que tiene
+  su propia lista de descarte.
+- **RU — se ha hecho una herida y sangra.** «Le sale mucha sangre» y «se ha
+  hecho un corte profundo» se mandaron a KS y LH porque era lo más cerca que
+  había, y no contestan la pregunta.
+
+Comprobado antes de encargar: RT y RU libres, QO y PO siguen libres, y ninguno
+de los dos asuntos estaba ya publicado (los únicos «cojera» de la biblioteca son
+señales de lesión tras una sujeción, y los «torniquete»/«hemorragia» son
+extracciones de sangre, amigdalectomía y embarazo ectópico).
+
+**Si esta ronda terminó y nadie la publicó, publícala** siguiendo el
+procedimiento de abajo. Si el turno se murió con ella en vuelo, mira «¿Sigue
+viva la ronda?» y reanuda con los MISMOS args.
 
 **Lo que enseñó la 52:** otra vez las dos fichas volvieron con
 `publicable=false`, y otra vez ninguna lo estaba de verdad. Pero el segundo
