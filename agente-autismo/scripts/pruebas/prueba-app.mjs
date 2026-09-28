@@ -2482,8 +2482,17 @@ for (const [cod, md] of Object.entries(temasCuerpo)) {
 // caracteres dentro para mandar de vuelta arriba en cuanto sí hay señal («si hay
 // calor, rojez o fiebre, no es esto: es el bloque 🚨 de arriba, y es hoy»). Es
 // una referencia cruzada, no una urgencia enterrada.
+// 16 desde la ronda 54: RV aporta TRES de golpe, y tres de golpe obligan a
+// mirarlas una a una en vez de subir el número y seguir. Las tres apuntan HACIA
+// ARRIBA, al bloque de urgencia de la propia ficha, que en RV son ocho viñetas
+// 🚨 seguidas al principio: (1) «esto, si va a más, está en el bloque 🚨 de
+// arriba»; (2) «por qué el bloque 🚨 habla de calmantes y no de dedos azules»,
+// que explica el criterio del propio bloque —el aviso precoz del síndrome
+// compartimental llega horas antes que el cambio de color—; y (3) «las señales
+// por las que hay que llamar con el yeso ya puesto están arriba, en el bloque
+// 🚨». Ninguna entierra una urgencia: las urgencias de RV están todas arriba.
 check('Las viñetas que solo remiten a otro bloque de urgencia siguen siendo pocas y conocidas',
-  remiten.length <= 13, remiten.join(','));
+  remiten.length <= 16, remiten.join(','));
 await ir('#tema/QB');
 const qbUrg = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
 const qbRef = await pag.$$eval('.tema-cuerpo .punto',
