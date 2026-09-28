@@ -3468,6 +3468,56 @@ check('La memoria no da por viva una ronda cuyos temas ya están publicados',
   yaPublicados.length === 0,
   yaPublicados.length ? 'dice viva pero ya están en la biblioteca: ' + yaPublicados.join(', ') : '');
 
+// 72. La noche, que era el área grande que nadie había probado. Las tandas
+// anteriores fueron síntomas del cuerpo, colegio/derechos/dinero, adolescencia y
+// urgencias; el sueño se había quedado fuera, y es donde estas familias pasan
+// las peores horas. Veinte consultas escritas como se teclean a las tres de la
+// madrugada. **Otra vez la mitad abría mal, y otra vez la ficha existía siempre:**
+//   «deja de respirar mientras duerme»   -> Lleva dos años con melatonina
+//   «se levanta dormido y anda por la casa» -> Cuando el hijo adulto vive en casa
+//   «se despierta gritando de repente»   -> Condiciones co-ocurrentes (el paraguas)
+//   «se hace pis en la cama con diez años» -> colecho
+//   «solo se duerme si estoy con él»     -> retraso de fase del adolescente
+//   «se levanta a las cinco de la mañana» -> La rutina de la mañana
+// La peor es la primera, y es la de siempre: la apnea del sueño, que es lo único
+// de esta lista que mata, abría en una ficha de cuánto tiempo se puede dar
+// melatonina. QG existe y no salía ni segunda. Y EQ (enuresis) se publicó en la
+// ronda 8: «moja la cama» era clave y «se hace pis en la cama» no, así que la
+// frase literal de un padre aterrizaba en el colecho porque compartía «cama».
+// Dos cosas que solo se ven mirando el contenido y no el título:
+//  - «se escapa de casa por la noche» abre QT (camas seguras) y no AE (fugas), y
+//    se deja así a propósito: QT es la que empieza con «LA CAMA ESTÁ VACÍA Y NO
+//    ESTÁ EN CASA», manda llamar ya y buscar primero en el agua. AE sale segunda.
+//  - «se despierta a las tres de la madrugada» abre PQ, que es la ficha del padre
+//    que lleva meses sin dormir. Es literalmente esa situación; W sale segunda.
+// Las veinte se comprobaron contra la app con `comprobar-consultas.mjs` ANTES de
+// escribirse aquí, que es la regla de la casa.
+for (const [q, titulo] of [
+  ['no duerme en toda la noche', 'Sueño'],
+  ['se despierta a las tres de la madrugada y ya no se duerme', 'Llevo meses sin dormir'],
+  ['tarda dos horas en dormirse', 'La hora de dormir'],
+  ['solo se duerme si estoy con el', 'colecho'],
+  ['se pasa a nuestra cama todas las noches', 'colecho'],
+  ['se despierta gritando de repente', 'Trastornos del sueño específicos'],
+  ['se levanta dormido y anda por la casa', 'Trastornos del sueño específicos'],
+  ['ronca mucho por las noches', 'Trastornos del sueño específicos'],
+  ['deja de respirar mientras duerme', 'operamos las amígdalas'],
+  ['le doy melatonina y ya no le hace nada', 'Lleva dos años con melatonina'],
+  ['se levanta a las cinco de la manana todos los dias', 'Sueño'],
+  ['duerme de dia y esta despierto de noche', 'retraso de fase'],
+  ['se hace pis en la cama con diez anos', 'Enuresis'],
+  ['rechina los dientes por la noche', 'Salud dental y bruxismo'],
+  ['no quiere apagar la luz para dormir', 'Sueño'],
+  ['se duerme en clase', 'retraso de fase'],
+  ['se despierta llorando y no me reconoce', 'Trastornos del sueño específicos'],
+  ['llevo semanas sin dormir y no puedo mas', 'Bienestar de cuidadores'],
+  ['se escapa de casa por la noche mientras dormimos', 'Se escapa de la cama'],
+  ['sale de casa de noche y no nos enteramos', 'Se escapa de la cama'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`La noche: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

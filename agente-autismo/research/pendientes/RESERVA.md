@@ -25,14 +25,27 @@ con las palabras de una familia y mirar la primera respuesta. Once de las veinte
 abrían en la ficha equivocada; nueve se arreglaron con sinónimos porque la ficha
 ya existía. **Estas dos no tienen ficha:**
 
-- **Ha empezado a cojear, o se queja de una pierna o una cadera.** La consulta
+- **Se golpea la cabeza contra la cuna o se mece para dormirse (28/09).** Sale
+  de la tanda de veinte consultas de la noche. «Se golpea la cabeza contra la
+  cuna para dormirse» abre hoy en la ficha del casco y las revisiones, que está
+  escrita para la autolesión. **El trastorno de movimientos rítmicos del sueño
+  —golpearse la cabeza o mecerse al dormirse— no está en la biblioteca:** un
+  grep de «movimientos rítmicos», «jactatio» y «mecerse para dormir» no devuelve
+  nada, y **EN** cubre apnea, piernas inquietas, terrores y sonambulismo, pero no
+  esto. Importa porque el consejo es el contrario: es benigno, frecuente en
+  niños pequeños, y lo que toca es asegurar la cuna y esperar, no un casco ni un
+  plan conductual. Ficha corta, o punto nuevo dentro de EN.
+
+- **Ha empezado a cojear, o se queja de una pierna o una cadera.** 🚀 EN VUELO
+  como **RT** en la ronda 53 (28/09). La consulta
   aterriza hoy en «se arranca el pelo». No hay ficha de dolor
   musculoesquelético: ni la cojera que aparece de golpe (que en pediatría tiene
   su propia lista de descarte), ni la queja crónica de piernas en un niño
   hipermóvil. **RB** publica el dolor crónico y **EK** la hipermovilidad, pero
   ninguna entra en la cojera aguda.
 - **Una herida que sangra: el corte profundo, la caída, la quemadura que se
-  hace ahora.** La biblioteca tiene la casa segura (**LH**), la autolesión
+  hace ahora.** 🚀 EN VUELO como **RU** en la ronda 53 (28/09).
+  La biblioteca tiene la casa segura (**LH**), la autolesión
   (**KS**, que sí dice cuándo una lesión necesita atención médica) y el
   traumatismo dental (**QC**), pero **no hay ninguna ficha de "se ha hecho una
   herida y sangra"**: ni qué se hace mientras llegáis, ni cuándo hace falta

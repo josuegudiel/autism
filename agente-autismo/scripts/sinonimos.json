@@ -6015,5 +6015,116 @@
  "golpe de calor": [
   "FR",
   "JR"
+ ],
+ "deja de respirar mientras duerme": [
+  "QG",
+  "EN"
+ ],
+ "se queda sin respirar cuando duerme": [
+  "QG",
+  "EN"
+ ],
+ "hace pausas al respirar durmiendo": [
+  "QG",
+  "EN"
+ ],
+ "para de respirar por la noche": [
+  "QG",
+  "EN"
+ ],
+ "se levanta dormido y anda por la casa": [
+  "EN",
+  "QT",
+  "AE"
+ ],
+ "sonambulismo": [
+  "EN",
+  "QT"
+ ],
+ "es sonambulo": [
+  "EN",
+  "QT"
+ ],
+ "anda dormido por la noche": [
+  "EN",
+  "QT",
+  "AE"
+ ],
+ "se despierta gritando": [
+  "EN",
+  "W"
+ ],
+ "se despierta gritando de repente": [
+  "EN",
+  "W"
+ ],
+ "se despierta llorando y no me reconoce": [
+  "EN",
+  "W"
+ ],
+ "se hace pis en la cama": [
+  "EQ"
+ ],
+ "se hace pis en la cama por la noche": [
+  "EQ"
+ ],
+ "sigue mojando la cama": [
+  "EQ"
+ ],
+ "enuresis": [
+  "EQ"
+ ],
+ "solo se duerme si estoy con el": [
+  "RQ",
+  "IF",
+  "W"
+ ],
+ "solo se duerme conmigo": [
+  "RQ",
+  "IF",
+  "W"
+ ],
+ "no se duerme si no estoy": [
+  "RQ",
+  "IF",
+  "W"
+ ],
+ "le doy melatonina y ya no le hace nada": [
+  "QY",
+  "QK"
+ ],
+ "se levanta a las cinco de la manana": [
+  "W",
+  "IF"
+ ],
+ "se despierta muy temprano todos los dias": [
+  "W",
+  "IF"
+ ],
+ "se despierta a las tres de la madrugada y ya no se duerme": [
+  "W",
+  "EN",
+  "PQ"
+ ],
+ "se despierta de noche y no vuelve a dormirse": [
+  "W",
+  "EN",
+  "PQ"
+ ],
+ "se escapa de casa por la noche": [
+  "QT",
+  "AE"
+ ],
+ "se escapa de casa mientras dormimos": [
+  "QT",
+  "AE"
+ ],
+ "sale de casa de noche y no nos enteramos": [
+  "QT",
+  "AE"
+ ],
+ "se va de casa mientras dormimos": [
+  "QT",
+  "AE"
  ]
 }
