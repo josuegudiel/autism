@@ -209,7 +209,8 @@ comprobación con navegador, como dice el procedimiento.
 
 Rondas 29 a 53.
 Biblioteca en **456 temas / 226 verificados / 230 síntesis / 4.675 fuentes**.
-Suite **949/949** (23/09). Reserva: **26 encargables de 31**, en
+Suite **1.000/1.000** (28/09, medido en corrida limpia, no calculado). Reserva:
+**26 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
