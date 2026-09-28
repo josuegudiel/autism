@@ -2473,14 +2473,17 @@ for (const [cod, md] of Object.entries(temasCuerpo)) {
     if (i > 12) remiten.push(cod);
   }
 }
-// 12 desde la ronda 52. Las diez de antes, más una de RR y otra de RS: las dos
-// son la viñeta del CASO TARDÍO —lo tragado hace semanas—, que se distingue a
-// propósito del bloque de urgencia de arriba («la sospecha *reciente* de pila o
-// imán no es este punto»). Son referencias cruzadas, no urgencias: comprobadas
-// una a una antes de subir el número, que es la única forma de que este límite
-// siga sirviendo para algo.
+// 13 desde la ronda 53. Las diez de antes, una de RR y otra de RS —la viñeta del
+// CASO TARDÍO, lo tragado hace semanas, que se distingue a propósito del bloque
+// de urgencia de arriba— y ahora una de RT. La de RT se miró antes de subir el
+// número, que es la única forma de que este límite siga sirviendo para algo: es
+// la viñeta de «cuándo pedir consulta SI NO hay ninguna señal de los bloques de
+// arriba», o sea el carril explícitamente NO urgente, y el 🚨 aparece a 1.006
+// caracteres dentro para mandar de vuelta arriba en cuanto sí hay señal («si hay
+// calor, rojez o fiebre, no es esto: es el bloque 🚨 de arriba, y es hoy»). Es
+// una referencia cruzada, no una urgencia enterrada.
 check('Las viñetas que solo remiten a otro bloque de urgencia siguen siendo pocas y conocidas',
-  remiten.length <= 12, remiten.join(','));
+  remiten.length <= 13, remiten.join(','));
 await ir('#tema/QB');
 const qbUrg = await pag.$$eval('.tema-cuerpo .punto.urgente', (ns) => ns.length);
 const qbRef = await pag.$$eval('.tema-cuerpo .punto',
@@ -3257,7 +3260,10 @@ for (const [desde, re] of [['JR', /RR\. Le duele la barriga/], ['EP', /RR\. Le d
 // ronda 8 publicando tics y Tourette.
 for (const [q, titulo] of [
   ['se ha comido un punado de pastillas', 'Asegurar la casa'],
-  ['se ha quemado con agua caliente', 'Asegurar la casa'],
+  // Ronda 53: dejo de abrir LH. RU es ahora la dueña de la quemadura de ahora
+  // (los 20 minutos de agua, qué no se pone encima, cuándo es urgencia); LH
+  // sigue siendo la prevención y sale segunda.
+  ['se ha quemado con agua caliente', 'Se ha hecho una herida y sangra'],
   ['le ha picado una avispa y se hincha', 'diabetes, asma o alergia grave'],
   ['se le ponen los labios morados', 'Convulsiones'],
   ['lleva tres dias sin cagar', 'Estreñimiento'],
@@ -3376,9 +3382,12 @@ for (const [q, titulo] of [
   ['se ha desmayado', 'no es epilepsia'],
   ['no reacciona', 'no es epilepsia'],
   ['se ha quedado inconsciente', 'no es epilepsia'],
-  ['le sale mucha sangre', 'Autolesión'],
-  ['se ha hecho un corte profundo', 'Autolesión'],
-  ['no para de sangrar', 'Autolesión'],
+  // Ronda 53: estas tres se mandaban a KS «de momento, que es lo más cerca que
+  // hay», y la propia reserva decía que no contestaban la pregunta. Ya existe
+  // la ficha que la contesta: RU. KS se queda con la autolesión, que es lo suyo.
+  ['le sale mucha sangre', 'Se ha hecho una herida y sangra'],
+  ['se ha hecho un corte profundo', 'Se ha hecho una herida y sangra'],
+  ['no para de sangrar', 'Se ha hecho una herida y sangra'],
   ['se ha intoxicado', 'Asegurar la casa'],
   ['ha tragado un producto de limpieza', 'Asegurar la casa'],
 ]) {
