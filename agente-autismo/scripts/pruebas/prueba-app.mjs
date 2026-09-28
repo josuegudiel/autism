@@ -3892,10 +3892,20 @@ for (const cod of ['LM', 'PV', 'RE']) {
   check(`Ronda 55: ${cod} conserva la franja que sí está sostenida`,
     /adolescencia y la adultez temprana|adolescencia y adultez temprana|la adolescencia y la adultez/.test(fichaDe(cod)));
 }
-// Y el único sitio donde la frase sobrevive es la nota de DO, a propósito: la
-// corrección queda registrada en vez de desaparecer sin rastro.
-check('Ronda 55: la frase retirada solo sobrevive como registro dentro de la nota de DO',
-  (libMd.match(/15 y los 20/g) || []).length === 1 && /15 y los 20/.test(DO));
+// La frase retirada sobrevive a propósito, para que la corrección quede
+// registrada en vez de desaparecer sin rastro, pero SOLO dentro de notas «Para
+// la app» —hoy la de DO y la de RY—, nunca en una viñeta que lea una familia.
+// La primera versión de esta comprobación exigía UNA sola aparición y se puso
+// en rojo en CI: había dos, las dos correctas, porque la nota de RY también
+// registra la corrección. El número no era el invariante; el SITIO sí lo es.
+{
+  const lineasConLaFrase = libMd.split('\n').filter((l) => /15 y los 20/.test(l));
+  check('Ronda 55: la frase retirada solo sobrevive dentro de notas "Para la app", nunca en una viñeta',
+    lineasConLaFrase.length > 0 && lineasConLaFrase.every((l) => l.startsWith('> **Para la app:')),
+    lineasConLaFrase.map((l) => l.slice(0, 40)).join(' | '));
+  check('Ronda 55: y DO es una de ellas, que es donde toca registrar la corrección',
+    /15 y los 20/.test(DO) && /Para la app/.test(DO));
+}
 
 // ME llevaba un ⚪ que decía "no hemos verificado la normativa de ningún país"
 // sobre pedir copia de la historia clínica. Dejó de ser cierto cuando NF
