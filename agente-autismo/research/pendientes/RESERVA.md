@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28) y la 52 otras dos (2 y 3), y el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG: quedan 25 encargables.** De esos, dos están EN VUELO en la ronda 55 (nº 5 como **RX** y nº 6 como **RY**); cuando se publiquen quedarán 23. La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, y la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**): quedan 23 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -19,6 +19,22 @@ El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuel
 **Y la regla de siempre:** antes de encargar un tema, `grep` su asunto en `research/biblioteca-autismo.md`. "Salir de casa cuando ya usa pañal fuera" parecía un hueco y ya era RH.
 
 ## Huecos nuevos, encontrados probando consultas (23/09)
+
+**Deuda que deja la ronda 55 (28/09), anotada aquí para que no se pierda:**
+
+- **Los tres enlaces inversos de RX que se descartaron con motivo** —HZ (lo
+  cubre IB), MR (es el circuito de una terapia denegada) y PA (lo que decide él
+  en consulta, no una decisión médica grave)—. No son deuda: son decisiones. Se
+  anotan para que nadie los vuelva a "descubrir" como olvido.
+- **La cifra de LM que se retiró sin sustituto.** El «inicio entre los 15 y los
+  20 años, media en torno a los 18» no se pudo atribuir a ninguna fuente y se
+  quitó de LM, PV y RE. Si alguna vez aparece la fuente, el sitio donde ponerla
+  es DO, no las tres.
+- **`WebFetch` está bloqueado por el proxy de salida** para nature.com,
+  frontiersin.org, pubmed y PMC (`EGRESS_BLOCKED`, 28/09). Mientras siga así,
+  verificar significa `WebSearch` y exigir confirmación doble, que es más lento
+  y cubre menos. Si vuelve a funcionar, conviene releer de primera mano las dos
+  fuentes que la 55 publicó solo con búsqueda: Moore 2022 y Ghaziuddin 2021.
 
 No vienen del detector, sino de escribir veinte consultas de síntomas del cuerpo
 con las palabras de una familia y mirar la primera respuesta. Once de las veinte
@@ -91,11 +107,11 @@ Sirve en el minuto exacto en que el padre ve que falta la pila del mando. Es de 
 
 Conecta un dato que ya está en la biblioteca (mortalidad) con el mecanismo que nadie explica, y es de las principales causas de muerte evitable. HUECO REAL: 'LG. Se atraganta al comer' está escrita alrededor del episodio visible en la mesa, y aquí lo característico es justo lo contrario, que no se atraganta (aspiración silenciosa); 'RC. Se le cae la baba' cubre la saliva que sale, no la que baja; 'QW. No gana peso ni crece' llega a la sonda por la vía nutricional; 'AL. Salud física y esperanza de vida' da el dato de mortalidad sin el mecanismo. CONTENIDO: señales de sospecha (voz húmeda después de beber, comidas eternas, fiebres repetidas sin foco, babeo), qué prueba pedir (videofluoroscopia o estudio endoscópico de la deglución) y qué viene después (espesantes, postura, texturas, cuándo se plantea otra vía). AVISO DE CIFRAS: las cifras de mortalidad respiratoria proceden de registros de discapacidad intelectual (LeDeR y equivalentes), no de cohortes autistas; hay que atribuirlas así explícitamente.
 
-### 5. El hospital decide distinto porque tiene discapacidad: órdenes de no reanimar, UCI y listas de trasplante
+### 5. El hospital decide distinto porque tiene discapacidad: órdenes de no reanimar, UCI y listas de trasplante — ✅ PUBLICADO en la ronda 55 como **RX**
 
 Situación real y documentada, y de las pocas donde lo que está en juego es si lo tratan o no. HUECO REAL: 'LE. COVID y lo aprendido' toca el triaje de pandemia pero es una ficha histórica de mascarillas y confinamientos; 'LD. Barreras en urgencias' es acceso y entorno, no la decisión de limitar el tratamiento; 'QL. Tiene un cáncer o enfermedad grave' cubre ingresos largos y paliativos desde el acompañamiento, no desde la discriminación en la decisión; 'PE. Me niegan un seguro' es el ámbito asegurador; 'AL' da el dato de mortalidad sin este mecanismo. CONTENIDO: encontrarse una orden de no reanimar que nadie consultó, o que le digan que 'por su calidad de vida' no entra en UCI, ni en lista de trasplante, ni recibe el mismo tratamiento oncológico; qué es legítimo (decisión individual, hablada, revisable) y qué no lo es nunca (la discapacidad o el autismo como motivo por sí mismos); qué preguntar, cómo pedir revisión y dónde reclamar. Material documentado: alertas de NHS England sobre DNACPR en discapacidad intelectual y autismo, revisiones LeDeR, casos de denegación de trasplante. OJO: escribirla en principios y en qué pedir, sin anclarla a ningún país.
 
-### 6. ¿Está deprimido o angustiado si no habla? Los cambios de conducta que en realidad son síntomas psiquiátricos
+### 6. ¿Está deprimido o angustiado si no habla? Los cambios de conducta que en realidad son síntomas psiquiátricos — ✅ PUBLICADO en la ronda 55 como **RY**
 
 Es la ficha de traducción que necesitan el padre y el psiquiatra que lo ve 15 minutos. HUECO REAL: 'IC. Depresión' e 'ID. Ansiedad' asumen un interlocutor que puede reportar su estado interno; 'AF. Discapacidad intelectual co-ocurrente' es la condición, no cómo se diagnostica salud mental dentro de ella; 'ME. El médico dice que es por el autismo' persigue la causa médica (dolor, estreñimiento, muela) y esta ficha es el paso siguiente, cuando lo médico ya está descartado; 'KQ. Evaluación funcional de la conducta' busca la función conductual, que es otra pregunta. CONTENIDO: la depresión se presenta como pérdida de habilidades ya adquiridas, dejar de usar la CAA, incontinencia nueva, aumento de autolesión, llanto sin causa o enlentecimiento, no como 'me siento triste'; equivalentes conductuales, herramientas validadas para este perfil y cómo llevar un registro de línea de base que demuestre que algo ha cambiado. Respaldo: manuales diagnósticos adaptados (DM-ID-2), el concepto de ensombrecimiento diagnóstico y escalas validadas para discapacidad intelectual.
 

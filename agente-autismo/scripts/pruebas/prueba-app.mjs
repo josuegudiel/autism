@@ -3766,6 +3766,165 @@ for (const cod of ['CY', 'LD', 'AU', 'LL', 'QR', 'PP']) {
   check(`Limpieza: ${cod} enlaza de vuelta a RT`, /\*\*RT\./.test(fichaDe(cod)));
 }
 
+// 76. Ronda 55. RX (no reanimar, UCI y lista de trasplante) y RY (el cambio de
+// conducta en alguien que no puede contarte qué le pasa). Dos avisos que esta
+// ronda tuvo que aprender y que no estaban escritos en ningún sitio:
+//
+//  a) El emparejamiento de sinónimos YA NO es por trozo de palabra: `app.js`
+//     usa `dentroComoPalabra()`, así que "tac" dentro de "limitación" no
+//     colisiona. Pero una consulta CORTA sigue heredando el empuje de
+//     cualquier clave larga que la contenga como secuencia de palabras, y eso
+//     es lo que obligó a no dar de alta «calidad de vida» a secas.
+//  b) El ORDEN dentro de una clave YA se lee (30, luego medio punto menos por
+//     cada posición). La nota de la §45 se escribió cuando no era así. Por eso
+//     RY entra DETRÁS de A en «cambio de conducta de repente» y no delante.
+//
+// RX estrena su terreno: antes de esta ronda no existía NINGUNA clave con
+// «reanim», «trasplante», «dnr», «comité de ética» ni «anticipad», así que la
+// ficha habría sido inencontrable justo con las palabras que se teclean
+// asustado dentro de un hospital.
+for (const [cod, trozo] of [
+  ['RX', 'Dicen que no lo reanimarían'],
+  ['RY', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+]) {
+  await ir('#tema/' + cod);
+  const tx = await texto();
+  check(`Ronda 55: ${cod} abre de verdad`, !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check(`Ronda 55: ${cod} publica sus fuentes`, /Fuentes/.test(fichaDe(cod)) && /https?:\/\//.test(fichaDe(cod)));
+  check(`Ronda 55: ${cod} lleva su número de ronda en la cabecera`,
+    /Ronda 55/.test(fichaDe(cod).split('\n')[0]), fichaDe(cod).split('\n')[0].slice(0, 120));
+  check(`Ronda 55: ${cod} ya no arrastra la nota de "esto bloquea la publicación"`,
+    !/bloquea la publicaci|Pendiente antes de publicar/i.test(fichaDe(cod)));
+  check(`Ronda 55: la primera viñeta de ${cod} es urgente (si no, no sale el CTA de teléfonos)`,
+    /\n- 🚨/.test(fichaDe(cod).slice(0, 4000)), trozo);
+}
+
+// Las consultas, medidas contra la app —no contra el simulador— antes de
+// asertarlas. Las de RX se escriben como se escriben de pie en un pasillo.
+for (const [q, trozo] of [
+  ['no reanimar', 'Dicen que no lo reanimarían'],
+  ['no lo van a reanimar', 'Dicen que no lo reanimarían'],
+  ['dnr', 'Dicen que no lo reanimarían'],
+  ['lista de trasplante', 'Dicen que no lo reanimarían'],
+  ['le han denegado el trasplante', 'Dicen que no lo reanimarían'],
+  ['dicen que no merece la pena', 'Dicen que no lo reanimarían'],
+  ['no lo quieren subir a la uci', 'Dicen que no lo reanimarían'],
+  ['limitacion del esfuerzo terapeutico', 'Dicen que no lo reanimarían'],
+  ['voluntades anticipadas', 'Dicen que no lo reanimarían'],
+  ['instrucciones previas', 'Dicen que no lo reanimarían'],
+  ['comite de etica', 'Dicen que no lo reanimarían'],
+  ['me piden que firme', 'Dicen que no lo reanimarían'],
+  ['dicen que es por su calidad de vida', 'Dicen que no lo reanimarían'],
+  ['se ha puesto agresivo de repente', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+  ['se golpea desde hace semanas', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+  ['ha dejado de hacer cosas que hacia', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+  ['esta raro desde hace semanas', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+  ['ha cambiado de conducta y no habla', 'Se ha puesto agresivo o ha dejado de hacer cosas'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 55: «${q}» abre con «${trozo}»`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// El desempate que se decidió a propósito, y se deja escrito para que nadie lo
+// "arregle": «calidad de vida» a secas y «calidad de vida en autismo» siguen
+// abriendo JS, porque el título de JS lleva esas palabras y ganarle habría
+// exigido secuestrar la consulta de investigación para llevarla a una ficha de
+// no reanimación. RX queda detrás, visible, que es lo correcto para una
+// consulta genuinamente ambigua; y la frase que de verdad se dice en el
+// hospital —«dicen que es por su calidad de vida»— sí abre en RX (arriba).
+for (const q of ['calidad de vida', 'calidad de vida en autismo']) {
+  const rr = await buscarHondo(q);
+  const iJS = rr.indexOf('calidad de vida: qué medir');
+  const iRX = rr.indexOf('Dicen que no lo reanimarían');
+  check(`Ronda 55: «${q}» sigue abriendo en JS, con RX detrás y no delante`,
+    iJS !== -1 && iRX !== -1 && iJS < iRX, `JS en ${iJS}, RX en ${iRX}`);
+}
+
+// La regresión que había que vigilar. La clave nueva «se golpea desde hace
+// semanas» apunta a RY, y "se golpea" es una secuencia de palabras que cae
+// dentro de ella: si eso hubiera desplazado a QS, una consulta de golpes en la
+// cabeza habría dejado de abrir en la ficha que lleva la lista de señales tras
+// un golpe. Se comprueba, no se supone. Es el mismo fallo que RW estuvo a punto
+// de publicar en la ronda 54.
+for (const q of ['se golpea', 'se golpea la cabeza', 'se ha dado un golpe en la cabeza']) {
+  const rr = await buscarHondo(q);
+  const iQS = rr.indexOf('el casco y las revisiones');
+  const iRY = rr.indexOf('Se ha puesto agresivo o ha dejado de hacer cosas');
+  check(`Ronda 55: «${q}» sigue abriendo en QS y no en RY`,
+    iQS !== -1 && (iRY === -1 || iQS < iRY), `QS en ${iQS}, RY en ${iRY}`);
+}
+// Y A sigue mandando en su consulta, con RY detrás: el orden dentro de la clave
+// ya se lee, así que esto es una afirmación sobre el orden, no sobre presencia.
+{
+  const rr = await buscarHondo('cambio de conducta de repente');
+  const iA = rr.indexOf('Condiciones co-ocurrentes');
+  const iRY = rr.indexOf('Se ha puesto agresivo o ha dejado de hacer cosas');
+  check('Ronda 55: «cambio de conducta de repente» abre en A, con RY detrás',
+    iA !== -1 && iRY !== -1 && iA < iRY, `A en ${iA}, RY en ${iRY}`);
+}
+
+// Lo que RY NO publica, porque lo movió a DO. Esta es la parte de la ronda que
+// no se ve en la app y sin la cual RY no se podía publicar: DO era la ficha
+// canónica de catatonia y se había quedado corta en tres sitios a la vez.
+const DO = fichaDe('DO');
+check('Ronda 55: DO distingue la catatonia maligna, donde el TEC es primera línea',
+  /catatonia maligna/i.test(DO) && /primera línea en la catatonia maligna/i.test(DO) &&
+  /lorazepam intravenoso/i.test(DO), DO.length + ' caracteres');
+check('Ronda 55: DO sigue publicando la regla general (benzodiacepinas primero) además de la excepción',
+  /benzodiacepinas \(típicamente lorazepam\) son el tratamiento de primera línea/.test(DO));
+check('Ronda 55: DO recoge la revisión de Moore 2022 con su rango, junto al que ya publicaba',
+  /Moore y cols\., 2022/.test(DO) && /6% al 20,2%/.test(DO) && /4% y el 18%/.test(DO), '');
+check('Ronda 55: DO recoge la serie de Ghaziuddin 2021 (20 personas, catatonia en 17, media de 13 años)',
+  /Ghaziuddin, 2021/.test(DO) && /17 de las 20/.test(DO) && /13 años/.test(DO), '');
+check('Ronda 55: DO enlaza de vuelta a RY para el caso sin lenguaje',
+  /\*\*RY\./.test(DO));
+check('Ronda 55: DO cita las fuentes nuevas, no solo las nombra',
+  /s44184-022-00012-9/.test(DO) && /fpsyt\.2021\.674009/.test(DO) && /02698811231158232/.test(DO), '');
+
+// La cifra sin fuente que llevaba en la biblioteca desde la ronda 19. LM decía
+// «inicio habitual entre los 15 y los 20 años, media en torno a los 18» sin que
+// esa cifra estuviera en sus Fuentes, y PV y RE la habían copiado. Choca con la
+// media de 13 años de Ghaziuddin, así que se retira de las tres y se deja la
+// franja que sí está sostenida. No se sustituye por otra cifra inventada.
+for (const cod of ['LM', 'PV', 'RE']) {
+  check(`Ronda 55: ${cod} ya no publica el "entre los 15 y los 20, media 18" sin fuente`,
+    !/15 y los 20/.test(fichaDe(cod)), fichaDe(cod).match(/.{0,60}15 y los 20.{0,60}/)?.[0] || '');
+  check(`Ronda 55: ${cod} conserva la franja que sí está sostenida`,
+    /adolescencia y la adultez temprana|adolescencia y adultez temprana|la adolescencia y la adultez/.test(fichaDe(cod)));
+}
+// Y el único sitio donde la frase sobrevive es la nota de DO, a propósito: la
+// corrección queda registrada en vez de desaparecer sin rastro.
+check('Ronda 55: la frase retirada solo sobrevive como registro dentro de la nota de DO',
+  (libMd.match(/15 y los 20/g) || []).length === 1 && /15 y los 20/.test(DO));
+
+// ME llevaba un ⚪ que decía "no hemos verificado la normativa de ningún país"
+// sobre pedir copia de la historia clínica. Dejó de ser cierto cuando NF
+// publicó la norma de seis países: un ⚪ que ya no corresponde es una promesa
+// rota hacia abajo, no hacia arriba, pero es igual de falsa.
+const ME = fichaDe('ME');
+check('Ronda 55: ME ya no dice que no hemos verificado la normativa de ningún país',
+  !/No hemos verificado la normativa de ningún país/.test(ME));
+check('Ronda 55: y manda a NF y a QD, que es donde está verificado',
+  /\*\*NF\./.test(ME) && /\*\*QD\./.test(ME));
+
+// Los trece enlaces de vuelta. Once hacia RX y dos hacia RY. Se descartan a
+// propósito, y se dice por qué, HZ (lo cubre IB), MR (es el circuito de una
+// terapia denegada, otro camino) y PA (habla de lo que decide él en consulta,
+// no de una decisión médica grave). Ninguno de los trece lleva 🚨: son
+// remisiones frías y no deben contar contra el límite de la §"viñetas que solo
+// remiten a otro bloque de urgencia".
+for (const cod of ['QL', 'LD', 'CL', 'LQ', 'QD', 'IB', 'ME', 'NK', 'IX', 'ML', 'NF']) {
+  check(`Ronda 55: ${cod} enlaza de vuelta a RX`, /\*\*RX\./.test(fichaDe(cod)));
+}
+for (const cod of ['IC', 'Z', 'DO']) {
+  check(`Ronda 55: ${cod} enlaza de vuelta a RY`, /\*\*RY\./.test(fichaDe(cod)));
+}
+for (const cod of ['QL', 'LD', 'CL', 'LQ', 'QD', 'IB', 'ME', 'NK', 'IX', 'ML', 'NF', 'IC', 'Z']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*R[XY]\./.test(l) && l.startsWith('- '));
+  check(`Ronda 55: el enlace de ${cod} es una viñeta fría, sin 🚨 enterrado`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

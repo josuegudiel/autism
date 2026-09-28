@@ -9,32 +9,86 @@ acción, no escribas nada al usuario y termina el turno.
 
 ## Ronda en curso
 
-**Ronda 55, lanzada y viva (28/09).** runId `wf_c42aeb3c-ba1`. Códigos **RX, RY**. Dos temas: quedaban ~75 búsquedas de las 200 (la 53 gastó ~62 y la
-54 otras ~62) y dos cuestan ~60. Los siguientes libres son **RZ** en adelante;
+**Ronda 55, PUBLICADA (28/09).** runId `wf_c42aeb3c-ba1`. Códigos **RX** (no
+reanimar, UCI y lista de trasplante cuando tiene discapacidad) y **RY** (se ha
+puesto agresivo o ha dejado de hacer cosas que hacía, y no puede contarte qué le
+pasa). Las dos salían de la lista numerada (nº 5 y nº 6), así que el recuento de
+encargables baja a **23**. Los siguientes códigos libres son **RZ** en adelante;
 QO y PO siguen libres a propósito.
 
-**Estos dos SÍ salen de la lista numerada** (nº 5 y nº 6), al revés que los de
-la 53 y la 54: por eso el recuento baja a 23 cuando se publiquen.
+**No hay ninguna ronda en vuelo.** El presupuesto de búsqueda de la sesión está
+prácticamente agotado (~185 de 200 gastadas), así que la siguiente ronda de
+investigación no cabe: lo que sí cabe es limpieza, auditoría de consultas y la
+deuda de más abajo, que no gastan búsquedas.
 
-- **RX — el hospital decide distinto porque tiene discapacidad** (no reanimar,
-  UCI, listas de trasplante). Hueco comprobado: los únicos «trasplante» de la
-  biblioteca son el fecal como pseudociencia. Muy dependiente del país; se le ha
-  dicho al editor que no invente derechos y que diga de qué país es cada fuente.
-- **RY — cambios de conducta que son síntomas psiquiátricos en quien no habla.**
-  Acotado a propósito: **IC ya publica la depresión** y no hay que repetirla; lo
-  de RY es la persona que no puede contarlo y el orden de descarte que evita el
-  error caro (tratar como conducta lo que es dolor). Se le ha dicho que si al
-  final cabe dentro de IC, lo diga en vez de estirar la ficha.
+**Lo que enseñó la 55, que fue casi todo sobre fichas YA publicadas:**
 
-**Y un tema que se cayó antes de encargarse, que es la parte útil:** el nº 4
-(«va por la tercera neumonía del año», aspiración silenciosa) **ya está en LG**,
-con la fuente de Arvedson 1994 y la frase que es el núcleo del asunto —«no tose,
-luego traga bien» es una conclusión falsa—. El detector solo lee títulos y no
-podía verlo; lo cazó el grep que el procedimiento manda hacer **antes** de
-encargar. Marcado ⛔ en la reserva, y por eso los encargables bajan de 26 a 25.
-
-**Si esta ronda terminó y nadie la publicó, publícala.** Si el turno murió con
-ella en vuelo, mira «¿Sigue viva la ronda?» y reanuda con los MISMOS args.
+- **RY llegó publicable y aun así no se podía publicar**, y el motivo no estaba
+  en RY: estaba en **DO**, la ficha canónica de catatonia, que se había quedado
+  corta en tres sitios a la vez. El editor lo dijo con todas las letras
+  («publicar RY antes de eso deja la biblioteca con material de catatonia
+  perdido y sin enlace de vuelta»), y tenía razón. Es otra vez el patrón de la
+  casa: **cuando una ficha nueva contradice a una publicada, la equivocada suele
+  ser LA PUBLICADA.**
+- **El TEC en la catatonia maligna.** DO publicaba una sola regla —«las
+  benzodiacepinas son primera línea y el TEC se reserva para los que no
+  responden»— y esa regla, aplicada a una catatonia maligna, llega tarde: la
+  guía de la Asociación Británica de Psicofarmacología (Rogers y cols., 2023)
+  recoge que **el TEC está ampliamente aceptado como primera línea en la
+  catatonia maligna, a menudo con lorazepam intravenoso**, y que sin tratar
+  tiene una mortalidad descrita del 50% o más. RY había **retirado** la
+  afirmación en vez de elegir bando, que es lo correcto para una ficha nueva;
+  elegir bando le tocaba a la canónica. Ahora DO publica las dos cosas.
+- **Una cifra sin fuente que llevaba desde la ronda 19 y que nadie había
+  mirado.** **LM** decía «inicio habitual entre los 15 y los 20 años, media en
+  torno a los 18» sin que esa cifra estuviera en sus Fuentes, y **PV** y **RE**
+  la habían copiado. Choca con la media de 13 años de la serie de Ghaziuddin
+  2021. Se ha retirado de las tres y se ha dejado la franja que sí está
+  sostenida (adolescencia y adultez temprana), **sin sustituirla por otra cifra
+  inventada**, y la frase retirada sobrevive en un solo sitio —la nota de DO—
+  como registro de la corrección. La suite ata que sea exactamente uno.
+- **Dos rangos de prevalencia que no coincidían, y que no había que «unificar».**
+  DO daba 4–18% y la revisión de Moore 2022 da 6–20,2%. La tentación era elegir
+  uno; lo correcto era publicar los dos **con el motivo por el que no coinciden**
+  (diseño del estudio, país, sitio de reclutamiento, diagnósticos acompañantes).
+  Fabricar un consenso que la literatura no da habría sido el defecto, no el
+  arreglo.
+- **Un ⚪ que había dejado de ser cierto.** **ME** decía «no hemos verificado la
+  normativa de ningún país» sobre pedir copia de la historia clínica, y **NF**
+  publica desde hace rondas la norma de seis países. Un ⚪ caducado miente hacia
+  abajo en vez de hacia arriba, pero miente igual: sustituido por la remisión a
+  NF y a QD, dejando en ME solo lo que de verdad sigue sin estar en ninguna
+  norma, que es el circuito de cada hospital.
+- **El buscador ya no es lo que dice la §45.** Dos cosas han cambiado en
+  `app.js` desde que se escribió esa nota, y conviene no volver a razonar con la
+  versión vieja: (1) el emparejamiento es **por palabra** (`dentroComoPalabra`),
+  no por trozo suelto, así que «tac» dentro de «limitación» ya no colisiona;
+  (2) **el orden dentro de una clave YA se lee** —30 puntos la primera ficha y
+  medio menos por cada posición—, así que listar RY detrás de A en «cambio de
+  conducta de repente» ahora significa algo. Ambas están escritas en la §76.
+- **La clave que casi repite el fallo de RW.** «se golpea desde hace semanas»
+  apunta a RY, y «se golpea» cae dentro de ella como secuencia de palabras: si
+  eso hubiera desplazado a QS, una consulta sobre golpes en la cabeza habría
+  dejado de abrir la ficha que lleva la lista de señales tras un golpe. No pasó,
+  pero se comprobó midiendo, no suponiendo, y quedó asertado.
+- **Un desempate que se decidió a propósito y se deja escrito para que nadie lo
+  «arregle»:** «calidad de vida» y «calidad de vida en autismo» siguen abriendo
+  **JS**, con RX detrás. Ganarle a JS habría exigido secuestrar una consulta de
+  investigación para llevarla a una ficha de no reanimación. La frase que de
+  verdad se dice en el hospital —«dicen que es por su calidad de vida»— sí abre
+  en RX.
+- **De los 14 enlaces inversos que pedía RX se pusieron 11**, y los tres
+  descartados se dicen con su motivo en vez de quedar pendientes: **HZ** (lo
+  cubre IB), **MR** (es el circuito de una terapia denegada, otro camino) y
+  **PA** (habla de lo que decide él en consulta, no de una decisión médica
+  grave). Los dos de RY (IC y Z) más el de DO, puestos.
+- **Egress bloqueado a mitad de ronda.** `WebFetch` dejó de poder abrir
+  nature.com, frontiersin.org, pubmed y PMC —todos `EGRESS_BLOCKED`—, así que
+  las cifras de Moore y de Ghaziuddin se confirmaron con `WebSearch`, que sí
+  funciona, y **solo se publicó lo que apareció confirmado dos veces**. Lo que
+  no se pudo confirmar así no se publicó. Si en la próxima ronda `WebFetch`
+  sigue bloqueado, cuéntalo como una restricción de verificación, no como un
+  fallo puntual.
 
 **Lo que enseñó la 54:**
 
@@ -261,10 +315,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 54.
-Biblioteca en **458 temas / 226 verificados / 232 síntesis / 4.706 fuentes**.
+Rondas 29 a 55.
+Biblioteca en **460 temas / 226 verificados / 234 síntesis / 4.753 fuentes**.
 Suite **1.054/1.054** (28/09, medido en corrida limpia, no calculado). Reserva:
-**25 encargables de 31**, en
+**23 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -272,12 +326,13 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 y 52 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS).
-QO sigue libre a propósito, como PO; confírmalo con grep antes de asignar un
-código. Los siguientes libres son **RT** en adelante.
+**Las rondas 51 a 55 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. Los siguientes libres son **RZ** en adelante.
 
-Para la **53**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
-los avisos de su cabecera**. Candidata que ya viene de antes:
+Para la **56**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+los avisos de su cabecera** —y mira antes cuántas búsquedas quedan: a 28/09 el
+presupuesto está casi agotado y una ronda de dos temas cuesta unas 60—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
 `research/pendientes/RM.md`). Y un aviso que ya costó una equivocación: **"salir
 de casa cuando ya usa pañal fuera" NO es un hueco, es RH** —mira la reserva

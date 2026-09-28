@@ -197,6 +197,12 @@ CATEGORIA_POR_CODIGO = {
     # salud. RW caeria en conducta por "se golpea la cabeza", que es justo la
     # lectura equivocada que la ficha viene a corregir.
     "RV": "salud", "RW": "salud",
+    # Ronda 55: RX (no reanimar, UCI y trasplante) es de derechos, no de salud:
+    # lo que la ficha ensena es a preguntar y a reclamar, no a tratar. RY
+    # (cambio de conducta en quien no puede contarlo) es de salud, y caeria en
+    # conducta por "agresivo" y "se golpea", que es justo la lectura que la
+    # ficha viene a corregir: el primer carril es el cuerpo, no la conducta.
+    "RX": "derechos", "RY": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",
