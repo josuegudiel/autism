@@ -3706,6 +3706,62 @@ for (const [cod, nuevo] of [['RU','RV'],['QS','RV'],['RT','RV'],['PT','RV'],['MK
   check(`Ronda 54: ${cod} enlaza de vuelta a ${nuevo}`, new RegExp('\\*\\*' + nuevo + '\\.').test(fichaDe(cod)));
 }
 
+// 75. Las primeras semanas después del diagnóstico, que era la otra área grande
+// sin probar. Veinte consultas de lo que escribe una familia a la que acaban de
+// decírselo. **Fue la peor tanda de todas: unas catorce de veinte abrían mal**,
+// y las fichas existían todas. Lo más grave, por orden:
+//   «acaban de decirme que mi hijo es autista» -> Catálogo ampliado de pseudociencia
+//   «que terapia empiezo primero»              -> Sulforafano y otras terapias en investigación
+//   «y ahora que hago»                         -> Convulsiones: qué hacer en el momento
+//   «cuanto se tarda en que le den cita»       -> Autismo y percepción del tiempo (por «tiempo»)
+//   «me han dado el diagnostico y ningun papel»-> la pensión del adulto autista
+// La primera es la consulta más común que existe en este tema y llevaba a una
+// familia recién diagnosticada al catálogo de pseudociencia. BT («Primeros pasos
+// tras el diagnóstico») lleva ahí desde el principio y no la alcanzaba nadie.
+//
+// Y una que se arregló usando el mecanismo que documenta la sección 45 en vez de
+// a ciegas: «es culpa mía» abría en *El papel de abuelos*. La clave que ya
+// existía (K genética, BK prenatal, N cuidadores) estaba bien pensada, pero
+// empataba con una coincidencia de cuerpo en la ficha de abuelos y **el empate lo
+// gana el título alfabéticamente menor**. Se le añadió KK —«Duelo por el
+// diagnóstico», y «Duelo…» < «El papel…»— y pasó a primera. El mecanismo se usó
+// a propósito, no por prueba y error.
+for (const [q, titulo] of [
+  ['acaban de decirme que mi hijo es autista', 'Primeros pasos tras el diagnóstico'],
+  ['me han dicho que tiene autismo y no se que hacer', 'Primeros pasos tras el diagnóstico'],
+  ['y ahora que hago', 'Primeros pasos tras el diagnóstico'],
+  ['que terapia empiezo primero', 'Primeros pasos tras el diagnóstico'],
+  ['cuanto se tarda en que le den cita', 'El proceso de diagnóstico a fondo'],
+  ['me han dado el diagnostico y ningun papel', 'Entender un informe diagnóstico'],
+  ['me han dicho que es grado 1', 'niveles de apoyo'],
+  ['me han dicho que es leve', 'niveles de apoyo'],
+  ['se puede curar el autismo', 'Responder a familiares'],
+  ['se le va a quitar con el tiempo', 'Responder a familiares'],
+  ['por que le ha pasado esto', 'Duelo por el diagnóstico'],
+  ['es culpa mia', 'Duelo por el diagnóstico'],
+  ['que hemos hecho mal', 'Duelo por el diagnóstico'],
+  ['no estoy de acuerdo con el diagnostico', 'Cuando los padres no están de acuerdo'],
+  ['se lo digo en el colegio', 'se diferencian el informe'],
+  ['a quien se lo cuento', 'Divulgar el diagnóstico'],
+  ['ha sido por las vacunas', 'Vacunas y autismo'],
+  ['va a poder hablar algun dia', 'Cuando el habla llega tarde'],
+  ['va a poder vivir solo', 'Vivienda y vida independiente'],
+  ['cuantas horas de terapia necesita', 'horas de terapia son demasiadas'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Tras el diagnóstico: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
+}
+
+// Y los enlaces de vuelta a RT que la ronda 53 dejó a medias. El editor pedía
+// diecinueve; se pusieron siete entonces y seis ahora, y los seis restantes
+// (KE, LU, P, QQ, MV, NQ) se descartan a propósito en vez de quedar pendientes:
+// son fichas a las que RT enlaza, no sitios desde donde un lector necesite RT.
+// Las seis de ahora sí lo son —y CY, LL, QR y PP ya hablaban de cojera sin dar
+// la lista de descarte—.
+for (const cod of ['CY', 'LD', 'AU', 'LL', 'QR', 'PP']) {
+  check(`Limpieza: ${cod} enlaza de vuelta a RT`, /\*\*RT\./.test(fichaDe(cod)));
+}
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
