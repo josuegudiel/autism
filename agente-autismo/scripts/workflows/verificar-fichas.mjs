@@ -16,6 +16,12 @@ export const meta = {
 const E = typeof args === 'string' ? JSON.parse(args) : args
 const FICHAS = E.fichas
 const BUSQUEDAS = E.busquedas || 15
+// El limite de arriba estaba escrito pero no se aplicaba: se podian mandar
+// diez fichas y agotar las busquedas a mitad, con los ultimos agentes
+// "verificando" sin poder buscar nada.
+if (!Array.isArray(FICHAS) || FICHAS.length === 0 || FICHAS.length > 4) {
+  throw new Error(`verificar-fichas: entre 1 y 4 fichas por tanda (llegaron ${Array.isArray(FICHAS) ? FICHAS.length : 0})`)
+}
 
 const ESQUEMA = {
   type: 'object',

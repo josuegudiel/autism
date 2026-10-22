@@ -1,6 +1,6 @@
 # Brújula TEA — Estado del proyecto (documento de continuidad)
 
-> **Para retomar en una nueva sesión:** lee este archivo y `README.md`. Resume TODO lo hecho, las decisiones y lo pendiente, para que no se pierda información entre sesiones. Última actualización: 2026-06-21.
+> **Para retomar en una nueva sesión:** lee este archivo y `README.md`. Resume TODO lo hecho, las decisiones y lo pendiente, para que no se pierda información entre sesiones. Última actualización: 2026-09-20.
 
 ---
 
@@ -11,15 +11,15 @@
 3. **Seguimiento personalizado** del niño ("¿qué le funciona a mi hijo?"), datos **solo en el dispositivo**.
 4. **Asistente de IA** que cita fuentes y **nunca** recomienda algo peligroso.
 
-**Contexto/origen:** el creador es padre/madre de un niño de ~4 años con sospecha de autismo. Llegó aquí tras investigar un informe de pseudociencia (EpicGen Labs / test de cabello "epigenético") que casi compra; al descubrir el fraude, decidió construir la herramienta de confianza que le hubiera gustado tener. **No piensa cobrar**; busca ONG/donantes/filantropía para sostenerlo.
+**Contexto/origen:** el creador es padre/madre de un niño pequeño en proceso de valoración. Llegó aquí tras investigar un informe de pseudociencia (EpicGen Labs / test de cabello "epigenético") que casi compra; al descubrir el fraude, decidió construir la herramienta de confianza que le hubiera gustado tener. **No piensa cobrar**; busca ONG/donantes/filantropía para sostenerlo.
 
 ---
 
 ## 2. Estado actual — MVP construido y verificado ✅
 Las 4 piezas están **funcionando y probadas en navegador** (capturas verificadas a 375px):
-- 📚 Centro de evidencia: 16 tarjetas, niveles + 18 fuentes enlazadas.
-- 🚩 Detector: 9 fichas (quelación, MMS, test de cabello, células madre, vacunas, etc.); "quelación" → 🔴 Evítalo.
-- 📈 Rastreador: registro persistente en IndexedDB (sobrevive recarga), gráfica + historial, **solo local**.
+- 📚 Centro de evidencia: 15 tarjetas en 4 secciones, niveles + 18 enlaces a fuentes.
+- 🚩 Detector: 15 fichas (quelación, MMS, test de cabello, células madre, vacunas, ozonoterapia, comunicación facilitada, etc.); "quelación" → 🔴 Evítalo.
+- 📈 Rastreador: registro persistente en IndexedDB (sobrevive recarga), gráfica + historial, **solo local** y **solo en la web** (la app nativa de `ios/` no lo tiene).
 - 💬 Asistente: chat en **modo demo** (responde con fuentes); IA real de Claude **aún NO conectada**.
 Es PWA instalable (manifest + service worker, funciona offline para el contenido).
 
@@ -41,13 +41,13 @@ api/package.json
 shared/knowledge-base.json   evidencia + reglas de seguridad (base del agente)
 serve.py              servidor local (python3 serve.py → :8099)
 README.md             cómo correr/publicar/activar IA
-PROYECTO.md           este documento de estado
+PROYECTO.md           este documento de estado (rastreado por git: SÍ se publica)
 ```
-**Privacidad:** `Report-*.pdf` (informe del niño) y `.claude/settings.local.json` están en `.gitignore` (no se publican). Git inicializado; **aún sin commit** (esperando al usuario).
+**Privacidad:** el `.gitignore` de la raíz ignora los PDF (incluido el informe del niño), `.claude/` y las claves. Nombra también `PROYECTO.md`, pero **no sirve de nada**: el fichero ya estaba rastreado cuando se añadió el patrón, y git no ignora lo que ya sigue (`git check-ignore -v` solo lo reconoce con `--no-index`). Este documento es público: no escribas aquí nombres, edades, direcciones ni rutas de tu ordenador. Comprueba cualquier archivo con `git check-ignore -v <ruta>` antes de subirlo. Ojo: el `.gitignore` **no** filtra lo que se sube por la web de GitHub.
 
 ## 5. Cómo correr
 ```bash
-cd "/Users/macbookpro/Desktop/DIEGO ALVARADO"
+cd "<carpeta local del proyecto>"
 python3 serve.py      # → http://127.0.0.1:8099
 ```
 (El preview de Claude Code NO puede servirlo: macOS bloquea el acceso del sandbox a la carpeta Escritorio; se verificó copiando a /tmp.)
