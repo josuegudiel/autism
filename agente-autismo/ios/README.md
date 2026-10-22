@@ -4,12 +4,16 @@ Proyecto nativo en SwiftUI de la misma biblioteca que usa la web. Todo el
 contenido va **dentro de la app**: funciona sin conexión y sin ningún coste
 de servidor.
 
-> ⚠️ **Estado: el target de iOS NO compila.** No es «falta probarlo»:
-> `Vistas/DetectorView.swift` se quedó en cuatro líneas sueltas y
-> `Vistas/AyudaView.swift` solo conserva el `enum Telefono`, así que las dos
-> vistas que `RootView` monta en las pestañas «Detector» y «Ayuda» no existen
-> como tipos. Hay que reescribirlas antes de abrir Xcode. El resto del código
-> se redactó en Linux, sin compilador delante, así que espera más avisos.
+> ⚠️ **Estado: reescrito, pendiente de compilar en un Mac.** `Vistas/DetectorView.swift`
+> y `Vistas/AyudaView.swift` se habían quedado sin sus vistas y el target no
+> compilaba. El 22/10 se reescribieron a partir de las APIs que ya existen en
+> `Datos/Biblioteca.swift` y `Modelos/Modelos.swift`, **en Linux y sin
+> compilador de Swift delante**: lo más probable es que Xcode pida algún
+> retoque. El Detector de iOS, a propósito, **no pinta veredicto de color**:
+> el que calcula `Biblioteca.nivel(de:)` cuenta semáforos y decía «Con
+> respaldo» a «las vacunas causan autismo»; abre la ficha en su lugar. Que
+> lea los veredictos explícitos de `banderas-rojas.json`, como la web, queda
+> pendiente.
 >
 > ⚠️ **Aquí no hay rastreador.** El «Seguimiento de mi hijo» del proyecto
 > existe **solo en la web**: en `ios/` no hay IndexedDB, ni SwiftData, ni

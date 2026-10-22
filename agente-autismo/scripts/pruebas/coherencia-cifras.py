@@ -136,6 +136,12 @@ def main():
         ('KH','PB'), ('IQ','PW'), ('IM','QX'), ('IM','LI'), ('I','NY'), ('ET','I'),
         ('FU','RJ'), ('FI','PJ'), ('EV','EW'), ('DX','EA'), ('DV','HY'), ('CX','DR'),
         ('BQ','EM'), ('BF','HX'), ('MR','RL'), ('DM','GE'), ('S','EF'),
+        # --- Revisados el 22/10 (auditoria). QY da el 96 % de la MUESTRA que tenia
+        # TEA en el estudio de 104 semanas; RW da el 89 % de RESPUESTA en otra serie
+        # (britanica, 2023). Medidas distintas que comparten 'melatonina de
+        # liberacion prolongada'. Y MP da 7 veces para autistas; RY da 15 para
+        # discapacidad intelectual y 7 para autistas: la misma cifra de STOMP.
+        ('QY','RW'), ('MP','RY'),
     }
     vistos=set(); salida=[]
     for i in range(len(afirm)):

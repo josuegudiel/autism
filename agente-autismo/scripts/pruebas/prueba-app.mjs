@@ -11,7 +11,7 @@
 // Playwright suele estar instalado de forma global, y los módulos ESM no leen
 // NODE_PATH. Lo resolvemos a mano para no depender de un node_modules local.
 import { createRequire } from 'node:module';
-import { execSync } from 'node:child_process';
+import { execSync, spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
@@ -100,9 +100,14 @@ const buscarHondo = async (q) => {
   await ir('#biblioteca');
   await pag.fill('#q-bib', q);
   await pag.click('#f-bib button[type=submit]');
-  // Las palabras del cuerpo se bajan al buscar, no al entrar: hay que darle
-  // tiempo a esa petición y al repintado que viene detrás.
-  await pag.waitForTimeout(1800);
+  // Las palabras del cuerpo se bajan al buscar, no al entrar: hay que esperar a
+  // esa petición y al repintado que viene detrás. Se espera a que estén (con
+  // tope de 5 s) en vez de 1,8 s fijos: la suite hace unas 470 búsquedas y esa
+  // espera fija era más de la mitad de sus 20 minutos. Una vez cargadas, la
+  // app repinta en el mismo tic en que llegan, así que basta un respiro corto.
+  await pag.waitForFunction(() => typeof _busqueda !== 'undefined' && _busqueda !== null,
+    null, { timeout: 5000 }).catch(() => {});
+  await pag.waitForTimeout(80);
   return await pag.textContent('#res-bib');
 };
 for (const q of ['ozono', 'secretina', 'mercurio']) {
@@ -297,6 +302,10 @@ check('el service worker revalida por detrás: la copia vieja se reemplaza sola'
   swr.primera.includes('COPIA VIEJA') && !swr.segunda.includes('COPIA VIEJA'), JSON.stringify(swr));
 
 // Y con todo eso, sin conexión la app tiene que seguir abriendo.
+// OJO (auditoría del 22/10): `setOffline` no llega al service worker en este
+// Chromium, así que esto comprueba que el worker sirve la navegación, no que la
+// app funcione sin red. La prueba sin red DE VERDAD, apagando el servidor, está
+// en la sección 77, apartado i).
 await pag.context().setOffline(true);
 await pag.reload({ waitUntil: 'load' });
 await pag.waitForTimeout(900);
@@ -1624,8 +1633,8 @@ check('ningún caso del Detector repite id', new Set(idsDet).size === idsDet.len
 const sinFuente = detSrc.casos.filter((c) => !Array.isArray(c.fuentes) || c.fuentes.length === 0);
 check('todo veredicto del Detector viene con al menos una fuente',
   sinFuente.length === 0, sinFuente.map((c) => c.id).join(' '));
-const veredictosRaros = detSrc.casos.filter((c) => !['ok', 'media', 'evitar'].includes(c.veredicto));
-check('todos los veredictos son ok, media o evitar',
+const veredictosRaros = detSrc.casos.filter((c) => !['ok', 'media', 'evitar', 'mito'].includes(c.veredicto));
+check('todos los veredictos son ok, media, evitar o mito',
   veredictosRaros.length === 0, veredictosRaros.map((c) => c.id).join(' '));
 // Un alias en dos casos distintos es un empate que el detector resuelve solo, y
 // nadie se entera: la familia recibe el veredicto del otro producto.
@@ -1647,9 +1656,13 @@ for (const [q, esperado] of [['gcmaf', /Evítalo/],
                              ['quieren hacerle un exorcismo', /Evítalo/],
                              ['bano ionico de pies', /Evítalo/],
                              ['suplementos de metilacion', /Evítalo/],
-                             ['intestino permeable', /Evítalo/],
-                             ['dicen que el wifi causa autismo', /Evítalo/],
-                             ['tome paracetamol en el embarazo', /Evítalo/],
+                             // Los mitos sobre la causa se dicen «Es un mito», no
+                             // «Evítalo»: estas tres pedían el rojo de «Evítalo»
+                             // y protegían en verde la etiqueta que se leía como
+                             // «evita el paracetamol» (auditoría del 22/10).
+                             ['intestino permeable', /Es un mito/],
+                             ['dicen que el wifi causa autismo', /Es un mito/],
+                             ['tome paracetamol en el embarazo', /Es un mito/],
                              ['aceites esenciales', /Cautela/],
                              ['cbd para el autismo', /Cautela/],
                              ['leucovorina', /Cautela/],
@@ -3933,6 +3946,536 @@ for (const cod of ['QL', 'LD', 'CL', 'LQ', 'QD', 'IB', 'ME', 'NK', 'IX', 'ML', '
   const linea = fichaDe(cod).split('\n').find((l) => /\*\*R[XY]\./.test(l) && l.startsWith('- '));
   check(`Ronda 55: el enlace de ${cod} es una viñeta fría, sin 🚨 enterrado`,
     !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+
+// 77. Auditoría del 22/10. Cada comprobación de aquí falla con el árbol de
+// antes de la auditoría y pasa con el de después: se escribió para demostrar
+// el arreglo, no para acompañarlo.
+
+// a) Fuentes con paréntesis dentro de la URL. La expresión cortaba la URL en el
+// primer ")", y 41 fuentes —Lancet, JAACAP, Cell, las revistas de Elsevier, que
+// llevan «S0890-8567(17)30152-1» en la ruta— se publicaban rotas. Y el trozo
+// que sobraba se colaba como una «fuente sin enlace» más: 44 entradas basura
+// del tipo «Loomes 2017 (metaanálisis)30152-1/abstract)».
+{
+  const conParentesis = Object.entries(temasCuerpo).flatMap(([c, tm]) =>
+    (tm.fuentes || []).filter((f) => f.url && f.url.includes('(')).map((f) => [c, f.url]));
+  const cortadas = conParentesis.filter(([, u]) => u.split('(').length !== u.split(')').length);
+  check('Auditoría: ninguna fuente publicada lleva la URL cortada en un paréntesis',
+    conParentesis.length >= 30 && cortadas.length === 0,
+    conParentesis.length + ' con paréntesis; cortadas: ' + cortadas.slice(0, 3).join(' | '));
+  const basura = Object.entries(temasCuerpo).flatMap(([c, tm]) => (tm.fuentes || [])
+    .filter((f) => !f.url && (/\/(abstract|fulltext|full|pdf|text)\)$/.test(f.label) || /\)\)$/.test(f.label)))
+    .map((f) => c + ': ' + f.label));
+  check('Auditoría: y ninguna «fuente sin enlace» es el resto de una URL cortada',
+    basura.length === 0, basura.slice(0, 3).join(' | '));
+}
+await ir('#tema/C');
+{
+  const hrefs = await pag.$$eval('.lista.fuentes a.fila', (as) => as.map((a) => a.getAttribute('href')));
+  check('Auditoría: en la app, la fuente de Loomes 2017 (JAACAP) lleva a la URL entera',
+    hrefs.includes('https://www.jaacap.org/article/S0890-8567(17)30152-1/abstract'),
+    hrefs.filter((h) => h.includes('jaacap')).join(' '));
+  const md = await pag.evaluate(() =>
+    mdInline('ve [Loomes](https://www.jaacap.org/article/S0890-8567(17)30152-1/abstract).'));
+  check('Auditoría: y un enlace con paréntesis dentro del texto de una ficha sale entero',
+    md.includes('href="https://www.jaacap.org/article/S0890-8567(17)30152-1/abstract"') && md.endsWith('</a>.'), md);
+}
+
+// b) Las remisiones a otras fichas se pueden pulsar. Son más de 3.700 en la
+// biblioteca («ve **QQ. Llamar al 112…**», «(**QS**, **RV**)») y eran negrita
+// sin más: la familia leía «está en QQ» y no tenía cómo ir.
+await ir('#tema/RY');
+{
+  const rem = await pag.$$eval('.tema-cuerpo a.remision', (as) => as.map((a) => a.getAttribute('href')));
+  check('Auditoría: las remisiones de una ficha son enlaces (RY → DO, QS, QQ…)',
+    rem.length >= 10 && rem.includes('#tema/DO') && rem.includes('#tema/QS') && rem.includes('#tema/QQ'),
+    rem.length + ': ' + rem.slice(0, 8).join(' '));
+  check('Auditoría: y ninguna lleva a una ficha que no existe',
+    rem.every((h) => /^#tema\/[A-Z]{1,2}$/.test(h) && codigosReales.has(h.slice(6))),
+    rem.filter((h) => !codigosReales.has(h.slice(6))).join(' '));
+  // «También te puede servir» eran los cuatro primeros temas de la categoría,
+  // siempre los mismos. Ahora van las fichas que este tema cita.
+  const rel = await pag.$$eval('a.tema-card', (as) => as.map((a) => a.getAttribute('href')));
+  check('Auditoría: «También te puede servir» ofrece las fichas que el tema cita',
+    rel.length === 4 && rel.includes('#tema/DO') && rel.includes('#tema/QQ'), rel.join(' '));
+  await pag.click('.tema-cuerpo a.remision[href="#tema/DO"]');
+  await pag.waitForTimeout(900);
+  const tDO = await texto();
+  check('Auditoría: pulsar la remisión abre la ficha citada',
+    /Catatonia en el autismo/.test(tDO) && /catatonia maligna/i.test(tDO), tDO.slice(0, 80));
+  const relDO = await pag.$$eval('a.tema-card', (as) => as.map((a) => a.getAttribute('href')));
+  check('Auditoría: y dos fichas de la misma categoría ya no ofrecen los mismos cuatro temas',
+    relDO.join() !== rel.join(), relDO.join(' ') + ' / ' + rel.join(' '));
+}
+// «**DI** (CI ≤70)» es discapacidad intelectual, no la ficha DI de arte y
+// música: esa negrita no se enlaza.
+await ir('#tema/AF');
+{
+  const di = await pag.$$eval('.tema-cuerpo a.remision', (as) => as.filter((a) => a.textContent.trim() === 'DI').length);
+  const negritaDI = await pag.$$eval('.tema-cuerpo strong', (ss) => ss.filter((s) => s.textContent.trim() === 'DI').length);
+  check('Auditoría: «**DI**» (discapacidad intelectual) no se convierte en enlace a la ficha DI',
+    di === 0 && negritaDI >= 1, `${di} enlaces, ${negritaDI} negritas`);
+}
+
+// c) Abrir un tema baja SOLO ese tema. Antes bajaba el cuerpo entero de la
+// biblioteca —5 MB, 1,6 MB comprimidos—: con datos móviles lentos, decenas de
+// segundos de «Cargando…», también para leer qué hacer en una convulsión.
+{
+  const pt = await nav.newPage({ viewport: { width: 393, height: 852 } });
+  const pedidas = [];
+  pt.on('request', (r) => pedidas.push(new URL(r.url()).pathname));
+  await pt.goto(B + '#tema/JQ', { waitUntil: 'load' });
+  await pt.waitForTimeout(1200);
+  const tJQ = (await pt.textContent('#view')) || '';
+  check('Auditoría: abrir un tema baja solo su fichero, no la biblioteca entera',
+    pedidas.some((p) => p.endsWith('/content/temas/JQ.json'))
+    && !pedidas.some((p) => p.endsWith('/biblioteca-cuerpo.json')) && /Convulsiones/.test(tJQ),
+    pedidas.filter((p) => p.includes('/content/')).join(' '));
+  pedidas.length = 0;
+  await pt.goto(B + '#tema/ZZ', { waitUntil: 'load' });
+  await pt.waitForTimeout(900);
+  const tZZ = (await pt.textContent('#view')) || '';
+  check('Auditoría: un código que no existe no pide nada a la red y lo dice',
+    /No encuentro ese tema/.test(tZZ)
+    && !pedidas.some((p) => p.includes('/content/temas/') || p.endsWith('/biblioteca-cuerpo.json')),
+    pedidas.filter((p) => p.includes('/content/')).join(' '));
+  await pt.close();
+}
+{
+  const idxJ = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+  const sueltos = fs.readdirSync(new URL('../../web/content/temas/', import.meta.url)).filter((n) => n.endsWith('.json'));
+  check('Auditoría: hay un fichero por tema, ni uno más ni uno menos',
+    sueltos.length === idxJ.temas.length && idxJ.temas.every((t) => sueltos.includes(t.codigo + '.json')),
+    sueltos.length + ' ficheros, ' + idxJ.temas.length + ' temas');
+  const iguales = idxJ.temas.every((t) => JSON.stringify(JSON.parse(fs.readFileSync(
+    new URL('../../web/content/temas/' + t.codigo + '.json', import.meta.url), 'utf8'))) === JSON.stringify(temasCuerpo[t.codigo]));
+  check('Auditoría: y cada fichero suelto dice exactamente lo mismo que el cuerpo entero', iguales);
+  check('Auditoría: el índice dice cuánto pesa guardar la biblioteca para usarla sin conexión',
+    idxJ.descargaSinConexionKB > 500 && idxJ.descargaSinConexionKB < 10000, String(idxJ.descargaSinConexionKB));
+}
+
+// d) El detector. Sus dos manejadores de clic colgaban de <main>, que no se
+// repinta nunca: cada visita sumaba otros dos. Y los seis chips de sugerencia
+// no los atendía ninguno: pulsarlos no hacía nada.
+for (let i = 0; i < 3; i++) { await ir('#detector'); await ir('#inicio'); }
+await ir('#detector');
+{
+  const cdp = await pag.context().newCDPSession(pag);
+  const { result: vista } = await cdp.send('Runtime.evaluate', { expression: 'document.getElementById("view")' });
+  const { listeners } = await cdp.send('DOMDebugger.getEventListeners', { objectId: vista.objectId });
+  await cdp.detach();
+  const clics = listeners.filter((l) => l.type === 'click').length;
+  check('Auditoría: visitar el detector no deja manejadores colgados de <main>', clics === 0, clics + ' manejadores de clic');
+  await pag.click('#chips-det button[data-id]');
+  await pag.waitForTimeout(300);
+  const r = (await pag.textContent('#result')) || '';
+  check('Auditoría: los chips de sugerencia del detector abren su ficha',
+    /Evítalo|Cautela|Tiene evidencia/.test(r), r.slice(0, 120));
+}
+
+// e) La fecha del seguimiento es la del reloj del teléfono, no la de Greenwich.
+// En México, desde las seis de la tarde, proponía el día de mañana; en España,
+// entre las doce y las dos de la noche, `max` era todavía ayer y el navegador
+// se negaba a guardar el registro de hoy.
+for (const [zona, instante, esperado] of [
+  ['America/Mexico_City', '2026-03-10T03:30:00Z', '2026-03-09'],   // 21:30 del 9 allí
+  ['Europe/Madrid', '2026-03-09T23:30:00Z', '2026-03-10'],         // 00:30 del 10 allí
+]) {
+  const ctx = await nav.newContext({ timezoneId: zona });
+  const p = await ctx.newPage();
+  await p.clock.setFixedTime(new Date(instante));
+  await p.goto(B + '#rastreador', { waitUntil: 'load' });
+  await p.waitForTimeout(900);
+  const f = await p.$eval('#fecha', (el) => ({ valor: el.value, max: el.max })).catch(() => ({}));
+  check(`Auditoría: en ${zona} el seguimiento propone la fecha de hoy allí (${esperado})`,
+    f.valor === esperado && f.max === esperado, JSON.stringify(f));
+  await ctx.close();
+}
+
+// f) Los números de emergencias de la pantalla de Ayuda se pueden pulsar: eran
+// los únicos que había que teclear a mano, y son los que se marcan con más prisa.
+await ir('#ayuda');
+{
+  const emg = await pag.$$eval('.pais .emg a.tel-emg', (as) => as.map((a) => a.getAttribute('href')));
+  check('Auditoría: los números de emergencias se pueden pulsar (112, 911, 107, 131…)',
+    ['tel:112', 'tel:911', 'tel:107', 'tel:131', 'tel:123'].every((h) => emg.includes(h))
+    && emg.every((h) => /^tel:\d{3,4}$/.test(h)), emg.join(' '));
+}
+
+// g) El asistente de demostración: un disparador tiene que empezar palabra.
+// «ados» saltaba dentro de «preocupados» y la pregunta por el lenguaje recibía
+// la respuesta del diagnóstico.
+{
+  const r = await preguntar('estamos preocupados porque casi no dice palabras');
+  check('Auditoría: el asistente no confunde «preocupados» con el ADOS',
+    !/se diagnostica de forma clínica/.test(r), r.slice(-160));
+  const r2 = await preguntar('¿qué es el ADOS?');
+  check('Auditoría: y «ADOS» como palabra sigue llevando al diagnóstico',
+    /se diagnostica de forma clínica/.test(r2), r2.slice(-160));
+}
+
+// h) La hoja de estilos usaba una variable que no define (--txt-2): las fuentes
+// sin enlace salían con el verde de los enlaces, que es lo que querían evitar.
+{
+  const css = fs.readFileSync(new URL('../../web/styles.css', import.meta.url), 'utf8');
+  const usadas = new Set([...css.matchAll(/var\((--[a-z0-9-]+)/g)].map((m) => m[1]));
+  const definidas = new Set([...css.matchAll(/(--[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
+  const sinDefinir = [...usadas].filter((v) => !definidas.has(v));
+  check('Auditoría: la hoja de estilos no usa ninguna variable que no defina', sinDefinir.length === 0, sinDefinir.join(','));
+}
+
+// i) Sin conexión, DE VERDAD. `context.setOffline(true)` no llega al service
+// worker en este Chromium: la página cree estar sin red, pero lo que pide a
+// través del worker sigue llegando al servidor (comprobado: un fichero
+// inexistente devolvía 404, no un fallo de red). Así que aquí se levanta un
+// servidor propio y se APAGA: a partir de ahí, nada llega a ninguna parte.
+{
+  const PUERTO_SR = 8111;
+  const raiz = decodeURIComponent(new URL('../..', import.meta.url).pathname);
+  const srv = spawn('python3', ['-m', 'http.server', String(PUERTO_SR), '--bind', '127.0.0.1'],
+    { cwd: raiz, stdio: 'ignore' });
+  const BS = `http://localhost:${PUERTO_SR}/web/index.html`;
+  for (let k = 0; k < 40; k++) {
+    try { await fetch(BS); break; } catch { await new Promise((r) => setTimeout(r, 150)); }
+  }
+  const ctx = await nav.newContext({ viewport: { width: 393, height: 852 } });
+  const p = await ctx.newPage();
+  const txt = async () => ((await p.textContent('#view', { timeout: 3000 }).catch(() => '')) || '');
+  await p.goto(BS + '#inicio', { waitUntil: 'load' });
+  await p.evaluate(() => navigator.serviceWorker.ready);
+  await p.reload({ waitUntil: 'load' });
+  await p.waitForTimeout(600);
+
+  // Con red: la oferta de «Usar sin conexión», que dice lo que pesa antes de pulsar.
+  const oferta = (await p.textContent('#sin-conexion').catch(() => '')) || '';
+  check('Auditoría: Inicio ofrece guardar la biblioteca y dice lo que pesa antes de pulsar',
+    /Usar sin conexión/.test(oferta) && /\d+,\d MB/.test(oferta), oferta.slice(0, 160));
+  // Se abre un tema con red, para que quede guardado.
+  await p.evaluate(() => { location.hash = '#tema/JQ'; });
+  await p.waitForTimeout(900);
+
+  srv.kill();
+  await new Promise((r) => setTimeout(r, 400));
+  const apagado = await fetch(BS).then(() => false).catch(() => true);
+  check('Auditoría: (montaje) el servidor de la prueba sin conexión está apagado de verdad', apagado);
+
+  await p.reload({ waitUntil: 'load' }).catch(() => {});
+  await p.waitForTimeout(800);
+  const t0 = await txt();
+  check('Auditoría: sin red, un tema que ya se abrió se sigue leyendo', /Convulsiones/.test(t0), t0.slice(0, 100));
+
+  // Abrir la app desde un enlace con «?algo» detrás: antes salía la pantalla de
+  // error del navegador aunque la app entera estuviera guardada.
+  await p.goto(BS.replace('index.html', 'index.html?desde=enlace') + '#inicio', { waitUntil: 'load' }).catch(() => {});
+  await p.waitForTimeout(800);
+  const t1 = await txt();
+  check('Auditoría: sin red, la app abre aunque la dirección traiga «?algo» detrás',
+    /Qué te preocupa/.test(t1), t1.slice(0, 80));
+
+  // Un tema que nunca se abrió no está en el teléfono: se dice, y se ofrecen los
+  // teléfonos, que sí funcionan sin conexión.
+  await p.evaluate(() => { location.hash = '#tema/QS'; });
+  await p.waitForTimeout(900);
+  const t2 = await txt();
+  const ctaOff = await p.$('#view a.cta-ayuda[href="#ayuda"]');
+  check('Auditoría: sin red, un tema no guardado lo dice y ofrece los teléfonos',
+    /Sin conexión/.test(t2) && !!ctaOff, t2.slice(0, 120));
+  await p.evaluate(() => { location.hash = '#ayuda'; });
+  await p.waitForTimeout(800);
+  const t3 = await txt();
+  check('Auditoría: sin red, los teléfonos de ayuda se ven', /024/.test(t3) && /112/.test(t3), t3.slice(0, 80));
+  await ctx.close();
+}
+
+// Y «Usar sin conexión» de verdad: con la biblioteca guardada a propósito, sin
+// red se lee un tema que nunca se abrió.
+{
+  const PUERTO_SR = 8112;
+  const raiz = decodeURIComponent(new URL('../..', import.meta.url).pathname);
+  const srv = spawn('python3', ['-m', 'http.server', String(PUERTO_SR), '--bind', '127.0.0.1'],
+    { cwd: raiz, stdio: 'ignore' });
+  const BS = `http://localhost:${PUERTO_SR}/web/index.html`;
+  for (let k = 0; k < 40; k++) {
+    try { await fetch(BS); break; } catch { await new Promise((r) => setTimeout(r, 150)); }
+  }
+  const ctx = await nav.newContext({ viewport: { width: 393, height: 852 } });
+  const p = await ctx.newPage();
+  await p.goto(BS + '#inicio', { waitUntil: 'load' });
+  await p.evaluate(() => navigator.serviceWorker.ready);
+  await p.reload({ waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  await p.click('#guardar-todo');
+  await p.waitForFunction(() => /guardada/i.test(document.getElementById('sin-conexion')?.textContent || ''),
+    null, { timeout: 60000 }).catch(() => {});
+  const guardada = (await p.textContent('#sin-conexion').catch(() => '')) || '';
+  check('Auditoría: al pulsar «Guardar la biblioteca», queda guardada', /guardada/i.test(guardada), guardada.slice(0, 120));
+  srv.kill();
+  await new Promise((r) => setTimeout(r, 400));
+  await p.reload({ waitUntil: 'load' }).catch(() => {});
+  await p.waitForTimeout(600);
+  await p.evaluate(() => { location.hash = '#tema/RV'; });
+  await p.waitForTimeout(1200);
+  const t = (await p.textContent('#view').catch(() => '')) || '';
+  check('Auditoría: con la biblioteca guardada, un tema que nunca se abrió se lee sin red',
+    /fractura/i.test(t) && !/Sin conexión/.test(t), t.slice(0, 120));
+  await ctx.close();
+}
+
+// j) Una versión nueva de la app ya no se lleva por delante lo guardado. Antes,
+// al activarse, borraba la caché vieja entera, temas guardados incluidos.
+{
+  const ctx = await nav.newContext();
+  const p = await ctx.newPage();
+  // Una página del mismo origen que NO registra el service worker, para
+  // preparar la caché «de la versión anterior» antes de que llegue el nuevo.
+  await p.goto(B.replace('index.html', 'content/fuentes.json'), { waitUntil: 'load' });
+  const url = new URL('content/temas/A.json', B).href;
+  await p.evaluate(async (u) => {
+    const c = await caches.open('brujula-tea-version-vieja');
+    await c.put(u, new Response('{"codigo":"A","origen":"cache-vieja"}', { headers: { 'content-type': 'application/json' } }));
+  }, url);
+  await p.goto(B + '#inicio', { waitUntil: 'load' });
+  await p.evaluate(() => navigator.serviceWorker.ready);
+  await p.waitForFunction(async () => !(await caches.keys()).includes('brujula-tea-version-vieja'),
+    null, { timeout: 10000 }).catch(() => {});
+  const tras = await p.evaluate(async (u) => {
+    const claves = await caches.keys();
+    const nueva = claves.find((k) => k.startsWith('brujula-tea-') && k !== 'brujula-tea-version-vieja');
+    const r = nueva && await (await caches.open(nueva)).match(u);
+    return { claves, conservado: r ? await r.text() : null };
+  }, url);
+  check('Auditoría: al activarse una versión nueva, los temas guardados pasan a la caché nueva',
+    !!tras.conservado && tras.conservado.includes('cache-vieja') && !tras.claves.includes('brujula-tea-version-vieja'),
+    JSON.stringify(tras));
+  await ctx.close();
+}
+
+// k) La carrera entre pantallas. route() no llevaba la cuenta de cuál era la
+// última pantalla pedida: una que tardaba en cargar pintaba encima de la que
+// la familia ya tenía delante. Se reproduce frenando a propósito los teléfonos
+// de ayuda y volviendo a Inicio antes de que lleguen.
+{
+  const p = await nav.newPage({ viewport: { width: 393, height: 852 } });
+  await p.route('**/content/ayuda-urgente.json', async (r) => {
+    await new Promise((ok) => setTimeout(ok, 1500));
+    await r.continue();
+  });
+  await p.goto(B + '#inicio', { waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  await p.evaluate(() => { location.hash = '#ayuda'; });
+  await p.waitForTimeout(100);
+  await p.evaluate(() => { location.hash = '#inicio'; });
+  await p.waitForTimeout(2500);
+  const t = (await p.textContent('#view')) || '';
+  check('Auditoría: una pantalla que llega tarde no pisa la que la familia ya está viendo',
+    /Qué te preocupa/.test(t) && !/Señales de alarma/.test(t), t.slice(0, 80));
+  await p.close();
+}
+
+// l) Las fuentes escritas como «Autor, año, título — https://…», sin enlace
+// markdown, se publicaban como texto: LL —violencia contra niños con
+// discapacidad—, LO y LP anunciaban 36 fuentes y ninguna se podía pulsar.
+for (const cod of ['LL', 'LO', 'LP']) {
+  const fs_ = temasCuerpo[cod].fuentes || [];
+  const conUrlEnTexto = fs_.filter((f) => !f.url && /https?:\/\//.test(f.label));
+  check(`Auditoría: las fuentes de ${cod} se pueden pulsar (${fs_.filter((f) => f.url).length} de ${fs_.length})`,
+    fs_.filter((f) => f.url).length >= fs_.length - 1 && conUrlEnTexto.length === 0,
+    conUrlEnTexto.map((f) => f.label.slice(0, 60)).join(' | '));
+}
+{
+  const conUrlEnTexto = Object.entries(temasCuerpo).flatMap(([c, tm]) =>
+    (tm.fuentes || []).filter((f) => !f.url && /https?:\/\//.test(f.label)).map((f) => c));
+  check('Auditoría: ninguna fuente de la biblioteca lleva su URL escondida en el texto',
+    conUrlEnTexto.length === 0, conUrlEnTexto.slice(0, 10).join(','));
+}
+
+// m) Los mitos sobre la causa del autismo llevan su propio veredicto. Con
+// «Evítalo» encima, buscar «vacunas» o «paracetamol embarazo» enseñaba un
+// «Evítalo» rojo al lado de la palabra: se leía como «evita las vacunas».
+for (const q of ['vacunas', 'triple virica', 'paracetamol embarazo']) {
+  const r = await detectar(q);
+  check(`Auditoría: «${q}» en el Detector dice «Es un mito», nunca «Evítalo»`,
+    /Es un mito/.test(r) && !/Evítalo/.test(r), r.slice(0, 140));
+}
+{
+  const r = await detectar('quelación');
+  check('Auditoría: y lo que sí hay que evitar sigue diciendo «Evítalo»', /Evítalo/.test(r), r.slice(0, 100));
+  const mitos = detSrc.casos.filter((c) => c.veredicto === 'mito').map((c) => c.id).sort().join(',');
+  check('Auditoría: los mitos son exactamente los cuatro sobre la causa',
+    mitos === 'intestino-permeable,mitos-ambientales,paracetamol-embarazo,vacunas', mitos);
+}
+
+// n) El simulador publicado aceptaba «?base=» sin validar. Con
+// «?base=javascript:…» ejecutaba código en el mismo origen que la app —y que
+// los registros del niño guardados en el navegador—; con una URL de fuera
+// enmarcaba cualquier página bajo nuestra dirección.
+{
+  const p = await nav.newPage();
+  const sim = B.replace('web/index.html', 'herramientas/simulador-iphone.html');
+  for (const base of ['javascript:window.top.__colado=1//', 'https://example.com/']) {
+    await p.goto(sim + '?base=' + encodeURIComponent(base), { waitUntil: 'load' });
+    await p.waitForTimeout(700);
+    const r = await p.evaluate(() => ({
+      colado: window.__colado === 1,
+      src: document.getElementById('marco').getAttribute('src') || '',
+    }));
+    check(`Auditoría: el simulador no acepta «?base=${base.slice(0, 22)}…»`,
+      !r.colado && r.src.startsWith('../web/index.html'), JSON.stringify(r));
+  }
+  await p.close();
+}
+
+// o) Borrar un registro suelto pide confirmación: la ✕ está pegada al registro y
+// se tocaba sin querer. Si la familia dice que no, el registro sigue ahí.
+{
+  const ctx = await nav.newContext();
+  const p = await ctx.newPage();
+  await p.goto(B + '#rastreador', { waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  await p.fill('#interv', 'prueba de borrado');
+  await p.click('#f-track button[type=submit]');
+  await p.waitForTimeout(800);
+  let respuesta = 'dismiss', preguntado = '';
+  p.on('dialog', (dlg) => { preguntado = dlg.message(); return respuesta === 'dismiss' ? dlg.dismiss() : dlg.accept(); });
+  await p.click('[data-del]');
+  await p.waitForTimeout(600);
+  const sigue = await p.$$eval('[data-del]', (b) => b.length);
+  check('Auditoría: borrar un registro suelto pregunta antes, y si se dice que no, no borra',
+    /¿Borrar el registro del/.test(preguntado) && sigue === 1, `«${preguntado}» · quedan ${sigue}`);
+  respuesta = 'accept';
+  await p.click('[data-del]');
+  await p.waitForTimeout(800);
+  const queda = await p.$$eval('[data-del]', (b) => b.length);
+  check('Auditoría: y si se confirma, lo borra', queda === 0, `quedan ${queda}`);
+  await ctx.close();
+}
+
+// p) «Sin resultados» en la biblioteca ofrece el Detector, con la consulta ya
+// escrita: lo que no es un tema puede ser el nombre comercial de una terapia.
+{
+  const rr = await buscarHondo('xqzplm');
+  const enlace = await pag.$eval('#res-bib a[href^="#detector/"]', (a) => a.getAttribute('href')).catch(() => '');
+  check('Auditoría: «sin resultados» enlaza al Detector con la consulta',
+    /Sin resultados/.test(rr) && enlace === '#detector/xqzplm', enlace);
+  await ir('#detector/' + encodeURIComponent('quelación'));
+  const r = (await pag.textContent('#result')) || '';
+  const valor = await pag.$eval('#q', (i) => i.value);
+  check('Auditoría: y el Detector abre con ella escrita y respondida',
+    valor === 'quelación' && /Evítalo/.test(r), valor + ' · ' + r.slice(0, 60));
+}
+
+// q) Política de contenido, e iconos que iOS y Android saben usar.
+{
+  const html = fs.readFileSync(new URL('../../web/index.html', import.meta.url), 'utf8');
+  check('Auditoría: la app declara una política de contenido que solo deja ejecutar su propio código',
+    /http-equiv="Content-Security-Policy"/.test(html) && /script-src 'self'/.test(html) && /object-src 'none'/.test(html));
+  check('Auditoría: el icono de la pantalla de inicio de iOS es un PNG (iOS no acepta SVG)',
+    /rel="apple-touch-icon" href="assets\/icon-180\.png"/.test(html)
+    && fs.existsSync(new URL('../../web/assets/icon-180.png', import.meta.url)));
+  const man = JSON.parse(fs.readFileSync(new URL('../../web/manifest.webmanifest', import.meta.url), 'utf8'));
+  const png = man.icons.filter((i) => i.type === 'image/png');
+  check('Auditoría: el manifiesto trae iconos PNG de 192 y 512, y uno enmascarable',
+    png.some((i) => i.sizes === '192x192') && png.some((i) => i.sizes === '512x512' && i.purpose === 'any')
+    && png.some((i) => i.purpose === 'maskable')
+    && png.every((i) => fs.existsSync(new URL('../../web/' + i.src, import.meta.url))),
+    png.map((i) => i.src + ' ' + i.sizes + ' ' + i.purpose).join(' | '));
+}
+
+// r) Las 16 fichas que cerraban una ronda publicaban, pegadas al final, la
+// cabecera de la ronda siguiente y sus notas internas de método («Nota técnica:
+// algunas fuentes primarias devuelven 403…»). Y los «---» salían como texto.
+{
+  const conCabecera = Object.entries(temasCuerpo).filter(([, tm]) => tm.cuerpo.split('\n').some((l) => l.startsWith('#')));
+  check('Auditoría: ninguna ficha publica un encabezado de sección de la biblioteca',
+    conCabecera.length === 0, conCabecera.map(([c]) => c).join(','));
+  await ir('#tema/AZ');
+  const tAZ = await texto();
+  check('Auditoría: AZ ya no termina con las notas internas de la ronda 4',
+    !/Nota técnica|nuevos dominios|devuelven 403/.test(tAZ), tAZ.slice(-160));
+  const guiones = await pag.$$eval('.tema-cuerpo p', (ps) => ps.filter((p) => /^\s*-{3,}\s*$/.test(p.textContent)).length);
+  check('Auditoría: los separadores «---» no se pintan como texto', guiones === 0, String(guiones));
+}
+
+// s) Las sub-viñetas van dentro de su viñeta. Eran 430 en 47 fichas pintadas
+// como tarjetas sueltas, sin saber a qué punto pertenecían.
+await ir('#tema/ME');
+{
+  const anidadas = await pag.$$eval('.tema-cuerpo .punto ul.sub li', (li) => li.length);
+  const sueltaNF = await pag.$$eval('.tema-cuerpo > .punto > p', (ps) =>
+    ps.filter((p) => /Cómo se pide una copia del informe/.test(p.textContent)).length);
+  check('Auditoría: las sub-viñetas se pintan dentro de su viñeta, no como tarjetas sueltas',
+    anidadas >= 2 && sueltaNF === 0, `${anidadas} anidadas, ${sueltaNF} sueltas`);
+}
+
+// t) Los semáforos de la tarjeta cuentan lo que se publica, no la nota interna.
+{
+  const idxJ = JSON.parse(fs.readFileSync(new URL('../../web/content/biblioteca-indice.json', import.meta.url), 'utf8'));
+  const mal = idxJ.temas.filter((t) => {
+    const c = (temasCuerpo[t.codigo] || {}).cuerpo || '';
+    const n = (m) => c.split(m).length - 1;
+    return t.semaforos.verde !== n('🟢') || t.semaforos.amarillo !== n('🟡') || t.semaforos.rojo !== n('🔴');
+  });
+  check('Auditoría: los semáforos de cada tarjeta coinciden con la ficha publicada',
+    mal.length === 0, mal.slice(0, 8).map((t) => t.codigo).join(','));
+}
+
+// u) Robustez del seguimiento. Un doble toque en «Guardar» creaba dos registros
+// iguales; «Borrar todos mis datos» borraba uno a uno y podía quedarse a medias.
+{
+  const ctx = await nav.newContext();
+  const p = await ctx.newPage();
+  p.on('dialog', (dlg) => dlg.accept());
+  await p.goto(B + '#rastreador', { waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  await p.fill('#interv', 'doble toque');
+  await p.evaluate(() => {
+    const b = document.querySelector('#f-track button[type=submit]');
+    b.click(); b.click();
+  });
+  await p.waitForTimeout(1200);
+  const n = await p.$$eval('[data-del]', (b) => b.length);
+  check('Auditoría: un doble toque en «Guardar» crea un solo registro', n === 1, `${n} registros`);
+  await p.fill('#interv', 'otro');
+  await p.click('#f-track button[type=submit]');
+  await p.waitForTimeout(900);
+  await p.click('#wipe');
+  await p.waitForTimeout(900);
+  const quedan = await p.evaluate(() => new Promise((ok) => {
+    const r = indexedDB.open('brujula-tea');
+    r.onsuccess = () => {
+      const q = r.result.transaction('registros', 'readonly').objectStore('registros').count();
+      q.onsuccess = () => { ok(q.result); r.result.close(); };
+    };
+  }));
+  check('Auditoría: «Borrar todos mis datos» deja la base vacía', quedan === 0, `${quedan} en la base`);
+  await ctx.close();
+}
+
+// v) El asistente de demostración: «pelo» tenía que ser palabra entera. Con un
+// prefijo, «juega con la pelota» recibía la respuesta del test de cabello.
+{
+  // Se compara con el texto EXACTO de la respuesta del test de cabello, no con
+  // la palabra «cabello»: el mensaje de bienvenida y la respuesta genérica la
+  // nombran como tema sugerido, y buscar la palabra daba la prueba por fallida
+  // dos veces sin que la app fallara.
+  const demoJ = JSON.parse(fs.readFileSync(new URL('../../web/content/asistente-demo.json', import.meta.url), 'utf8'));
+  const deCabello = demoJ.respuestas.find((r) => (r.disparadores || []).includes('pelo$')).texto.slice(0, 60);
+  const ultima = () => pag.$$eval('#log .msg.bot', (ms) => (ms.length ? ms[ms.length - 1].textContent : ''));
+  await preguntar('juega con la pelota todo el día');
+  const r1 = await ultima();
+  check('Auditoría: «pelota» no dispara la respuesta del test de cabello',
+    !r1.includes(deCabello), r1.slice(0, 140));
+  await preguntar('me ofrecen un test de pelo');
+  const r2 = await ultima();
+  check('Auditoría: y «test de pelo» sí', r2.includes(deCabello), r2.slice(0, 140));
+}
+
+// w) Un enlace de fuente que no es http(s) no se pinta como enlace.
+{
+  const h = await pag.evaluate(() => fuenteHTML({ url: 'javascript:alert(1)', label: 'trampa' }));
+  check('Auditoría: una fuente con «javascript:» no se convierte en enlace',
+    !/href=/.test(h) && /trampa/.test(h), h);
 }
 
 await nav.close();

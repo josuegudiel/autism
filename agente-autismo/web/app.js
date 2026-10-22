@@ -9,21 +9,31 @@ const esc = (s) => String(s == null ? "" : s)
   .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 
-const _cache = {};
-async function getJSON(path) {
-  if (_cache[path]) return _cache[path];
-  const res = await fetch(path, { cache: "no-cache" });
-  if (!res.ok) throw new Error("No se pudo cargar " + path);
-  const data = await res.json();
-  _cache[path] = data;
-  return data;
+/* Se guarda la PROMESA, no el dato: dos pantallas que piden el mismo fichero
+   a la vez comparten una sola descarga. Si falla, se olvida, para que el
+   siguiente intento vuelva a pedirlo. */
+const _cache = Object.create(null);
+function getJSON(path) {
+  if (!_cache[path]) {
+    _cache[path] = fetch(path, { cache: "no-cache" }).then((res) => {
+      if (!res.ok) throw new Error("No se pudo cargar " + path);
+      return res.json();
+    }).catch((e) => { delete _cache[path]; throw e; });
+  }
+  return _cache[path];
 }
+
+/* Solo se enlaza lo que es http(s). Las fuentes vienen de ficheros del propio
+   proyecto, pero un «javascript:» colado en uno de ellos sería código
+   ejecutándose en la app; la política de contenido ya lo para, y esto lo para
+   antes. */
+const urlSegura = (u) => /^https?:\/\//i.test(String(u || ""));
 
 /* Una fuente puede estar citada sin enlace: el verificador confirmó que el
    trabajo existe pero no llegó a ver su dirección, y aquí no se inventan URLs.
    Esas se muestran como texto, no como un enlace que no lleva a ninguna parte. */
 function fuenteHTML(f) {
-  return f.url
+  return urlSegura(f.url)
     ? `<a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.label)}</a>`
     : `<span class="sin-enlace">${esc(f.label)}</span>`;
 }
@@ -184,45 +194,96 @@ function leyendaNiveles(cuerpo) {
 }
 
 /* ---------- Mini-render de markdown (negritas, enlaces, listas, citas) ---------- */
-function mdInline(t) {
-  return esc(t)
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+/* La URL admite UN nivel de paréntesis dentro. Con `[^\s)]+` se cortaba en el
+   primero, y 41 fuentes de la biblioteca —las de Lancet, JAACAP, Cell y las
+   revistas de Elsevier, que llevan «S0890-8567(17)30152-1» en la ruta— salían
+   como enlaces rotos: la familia que pulsaba para comprobar llegaba a un 404. */
+const ENLACE_MD = /\[([^\]]+)\]\((https?:\/\/(?:[^\s()]|\([^\s()]*\))+)\)/g;
+
+/* Códigos que en negrita suelta NO son una remisión: «**DI** (CI ≤70)» es
+   discapacidad intelectual, no la ficha DI de arte y música. Con «DI. Título»
+   sí es la ficha, y ese caso no pasa por aquí. */
+const NO_ES_REMISION = new Set(["DI", "NO", "SI", "YA", "OK"]);
+
+/** Convierte en enlace las remisiones a otras fichas: «ve **DO. Catatonia en
+ *  el autismo**» o «(**QS**, **RV**)». Son más de 3.700 en la biblioteca y hasta
+ *  ahora eran negrita sin más: la familia leía «está en QQ» y no podía ir.
+ *  Solo se enlaza un código que existe de verdad en el índice. */
+function enlazarRemisiones(html, codigos) {
+  if (!codigos || !codigos.size) return html;
+  // Lo que ya es un enlace se deja como está: un enlace dentro de otro no vale.
+  return html.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/).map((trozo, i) => (i % 2 ? trozo :
+    trozo.replace(/<strong>([A-Z]{1,2})(\.\s[^<]*)?<\/strong>/g, (todo, cod, resto) => {
+      if (!codigos.has(cod)) return todo;
+      if (!resto && NO_ES_REMISION.has(cod)) return todo;
+      return `<a class="remision" href="#tema/${cod}">${todo}</a>`;
+    }))).join("");
+}
+
+function mdInline(t, codigos) {
+  return enlazarRemisiones(esc(t)
+    .replace(ENLACE_MD, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+    .replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>"), codigos);
 }
 
 /** Cada viñeta se convierte en una tarjeta con su badge de evidencia.
  *  `ctaUrgencia`, si viene, se cuela justo detrás del bloque de urgencia que
  *  abre la ficha: ahí es donde hace falta el teléfono, no al final detrás de
  *  veintiséis viñetas y de la lista de fuentes. */
-function mdRender(md, ctaUrgencia = "") {
+function mdRender(md, ctaUrgencia = "", codigos = null) {
   const out = [];
   const tipos = [];
+  // La viñeta abierta: se escribe al cerrarla, para poder meterle dentro sus
+  // sub-viñetas. Antes cada «  - » se pintaba como una tarjeta más, suelta, y
+  // las 430 sub-viñetas de 47 fichas —listas de lo que hay que llevar, de qué
+  // pedir, de señales— perdían a qué punto pertenecían.
+  let punto = null;
+  const pildora = (nivel, urgente) => (nivel && !urgente ? badge(nivel.clase, nivel.texto) : "");
+  const cerrar = () => {
+    if (!punto) return;
+    const subs = punto.subs.length
+      ? `<ul class="sub">${punto.subs.map((s) =>
+          `<li>${mdInline(s.texto, codigos)}${s.nivel && !punto.urgente ? " " + pildora(s.nivel, false) : ""}</li>`).join("")}</ul>`
+      : "";
+    // Una viñeta de urgencia NO lleva píldora de evidencia. La biblioteca lo
+    // dice en su propia leyenda —"los bloques 🚨 no llevan color: ante esas
+    // señales se actúa igual"—, pero 64 de las 153 viñetas 🚨 traían además un
+    // marcador de color, así que la app pintaba "Evidencia limitada" al lado
+    // de un atragantamiento o de una anafilaxia. Un badge de calidad de prueba
+    // junto a una urgencia se lee como "esto puede esperar".
+    out.push(`<div class="punto${punto.urgente ? " urgente" : ""}"><p>${mdInline(punto.texto, codigos)}</p>${
+      pildora(punto.nivel, punto.urgente)}${subs}</div>`);
+    tipos.push(punto.urgente ? "urgente" : "punto");
+    punto = null;
+  };
   for (const linea of String(md || "").split("\n")) {
     const l = linea.trim();
     if (!l) continue;
+    // «---» separa bloques en la biblioteca; pintado, era un párrafo con tres guiones.
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(l)) continue;
+    if (punto && /^\s{2,}[-*]\s/.test(linea)) {
+      punto.subs.push(extraerNivel(l.replace(/^[-*]\s+/, "")));
+      continue;
+    }
     if (l.startsWith("- ")) {
+      cerrar();
       const { texto, nivel, urgente } = extraerNivel(l.slice(2));
-      // Una viñeta de urgencia NO lleva píldora de evidencia. La biblioteca lo
-      // dice en su propia leyenda —"los bloques 🚨 no llevan color: ante esas
-      // señales se actúa igual"—, pero 64 de las 153 viñetas 🚨 traían además un
-      // marcador de color, así que la app pintaba "Evidencia limitada" al lado
-      // de un atragantamiento o de una anafilaxia. Un badge de calidad de prueba
-      // junto a una urgencia se lee como "esto puede esperar".
-      out.push(`<div class="punto${urgente ? " urgente" : ""}"><p>${mdInline(texto)}</p>${
-        nivel && !urgente ? badge(nivel.clase, nivel.texto) : ""}</div>`);
-      tipos.push(urgente ? "urgente" : "punto");
-    } else if (l.startsWith(">")) {
+      punto = { texto, nivel, urgente, subs: [] };
+      continue;
+    }
+    cerrar();
+    if (l.startsWith(">")) {
       const { texto } = extraerNivel(l.replace(/^>\s*/, ""));
-      out.push(`<blockquote>${mdInline(texto)}</blockquote>`);
+      out.push(`<blockquote>${mdInline(texto, codigos)}</blockquote>`);
       tipos.push("cita");
     } else {
       const { texto, nivel } = extraerNivel(l);
-      out.push(`<p>${mdInline(texto)}${nivel ? " " + badge(nivel.clase, nivel.texto) : ""}</p>`);
+      out.push(`<p>${mdInline(texto, codigos)}${nivel ? " " + badge(nivel.clase, nivel.texto) : ""}</p>`);
       tipos.push("parrafo");
     }
   }
+  cerrar();
   if (ctaUrgencia) {
     const primero = tipos.findIndex((t) => t === "urgente" || t === "punto");
     if (primero >= 0 && tipos[primero] === "urgente") {
@@ -353,7 +414,16 @@ function buscarTemas(consulta, indice) {
 }
 
 /* ---------- router ---------- */
+/* Cada cambio de pantalla lleva un número, y una pantalla que termina de
+   cargar cuando ya no es la última pedida no pinta nada. Sin esto, tocar
+   «Biblioteca» y enseguida «Ayuda» con mala cobertura dejaba que la biblioteca,
+   al llegar tarde, pisara la pantalla de teléfonos que la familia ya tenía
+   delante. Cada render guarda su número al empezar y lo comprueba después de
+   cada espera. */
+let _ruta = 0;
+
 async function route() {
+  const mia = ++_ruta;
   const bruto = location.hash.replace("#", "") || "inicio";
   // Rutas con parámetro: #tema/BA  ·  #biblioteca/salud
   const [raiz, param] = bruto.split("/");
@@ -363,8 +433,8 @@ async function route() {
     setActiveTab("biblioteca");
     view.scrollIntoView({ block: "start" });
     try { await renderTema(decodeURIComponent(param)); }
-    catch (e) { errorBox("Ocurrió un error: " + e.message); }
-    view.focus({ preventScroll: true });
+    catch (e) { if (mia === _ruta) errorBox("Ocurrió un error: " + e.message); }
+    if (mia === _ruta) view.focus({ preventScroll: true });
     return;
   }
 
@@ -383,15 +453,15 @@ async function route() {
     if (tab === "inicio") await renderInicio();
     else if (tab === "biblioteca") await renderBiblioteca(param ? decodeURIComponent(param) : "");
     else if (tab === "evidencia") await renderEvidencia();
-    else if (tab === "detector") await renderDetector();
+    else if (tab === "detector") await renderDetector(param ? decodeURIComponent(param) : "");
     else if (tab === "rastreador") await renderRastreador();
     else if (tab === "asistente") await renderAsistente();
     else if (tab === "fuentes") await renderFuentes();
     else if (tab === "ayuda") await renderAyuda();
   } catch (e) {
-    errorBox("Ocurrió un error: " + e.message);
+    if (mia === _ruta) errorBox("Ocurrió un error: " + e.message);
   }
-  view.focus({ preventScroll: true });
+  if (mia === _ruta) view.focus({ preventScroll: true });
 }
 window.addEventListener("hashchange", route);
 window.addEventListener("DOMContentLoaded", () => { pintarTabbar(); route(); });
@@ -411,8 +481,10 @@ function campoBusqueda(id, valor, marcador) {
 }
 
 async function renderInicio() {
+  const mia = _ruta;
   loading();
   const idx = await cargarIndice();
+  if (mia !== _ruta) return;
   view.innerHTML = `
     <h1 class="page">¿Qué te preocupa?</h1>
     <h2 class="page-sub">Escríbelo con tus palabras. ${idx.totalTemas} temas sobre autismo,
@@ -467,12 +539,68 @@ async function renderInicio() {
       <span class="txt"><span class="titulo" style="font-weight:600">Ayuda urgente</span>
         <span class="sub">Teléfonos por país si hay riesgo o crisis</span></span>
       <span class="chevron">${ICONOS.chevron}</span></a>
+
+    <div class="card sin-conexion" id="sin-conexion" hidden></div>
   `;
+  pintarSinConexion(idx);
   const ir = (q) => { if (q.trim()) location.hash = "#biblioteca/" + encodeURIComponent(q.trim()); };
   document.getElementById("f-inicio").addEventListener("submit", (e) => {
     e.preventDefault(); ir(document.getElementById("q-inicio").value);
   });
   view.querySelectorAll(".chips button").forEach((b) => b.onclick = () => ir(b.dataset.q));
+}
+
+/* ---------- Usar sin conexión ---------- */
+/* La biblioteca entera solo se baja si la familia lo pide, y sabiendo antes lo
+   que pesa: es la mitad de una foto de móvil, pero para quien paga los datos
+   por megas no es lo mismo pagarlo sin saberlo. */
+async function bibliotecaGuardada() {
+  if (!("caches" in window)) return false;
+  try { return !!(await caches.match(new URL(CUERPO_ENTERO, location.href).href)); }
+  catch (_) { return false; }
+}
+
+async function pintarSinConexion(idx) {
+  const caja = document.getElementById("sin-conexion");
+  // Sin service worker no hay dónde guardarla: mejor no ofrecer lo que no se puede dar.
+  if (!caja || !("serviceWorker" in navigator) || !("caches" in window)) return;
+  const mb = idx.descargaSinConexionKB
+    ? (idx.descargaSinConexionKB / 1024).toFixed(1).replace(".", ",") + " MB" : "";
+  const guardada = await bibliotecaGuardada();
+  if (!caja.isConnected) return;   // la familia ya se fue de Inicio
+  if (guardada) {
+    caja.innerHTML = `<h4>Biblioteca guardada en este teléfono</h4>
+      <p>Los ${esc(idx.totalTemas)} temas se pueden leer sin conexión.</p>`;
+    caja.hidden = false;
+    return;
+  }
+  caja.innerHTML = `<h4>Usar sin conexión</h4>
+    <p>Guarda los ${esc(idx.totalTemas)} temas en este teléfono para leerlos sin internet${
+      mb ? ` (es una descarga de unos ${esc(mb)})` : ""}. Los teléfonos de ayuda ya funcionan sin conexión.</p>
+    <button class="btn ghost" type="button" id="guardar-todo">Guardar la biblioteca</button>
+    <p class="nf" id="guardar-estado" role="status"></p>`;
+  caja.hidden = false;
+  const boton = document.getElementById("guardar-todo");
+  const estado = document.getElementById("guardar-estado");
+  boton.onclick = async () => {
+    boton.disabled = true;
+    estado.textContent = "Guardando…";
+    try {
+      // Que haya un service worker al mando: es él quien la guarda al pasar.
+      // Con tope de espera: si el registro falló, `ready` no resuelve nunca y
+      // el botón se quedaría en «Guardando…» para siempre.
+      await Promise.race([navigator.serviceWorker.ready,
+        new Promise((_, no) => setTimeout(() => no(new Error("sin service worker")), 8000))]);
+      _cuerpos = await getJSON(CUERPO_ENTERO);
+      if (!(await bibliotecaGuardada())) throw new Error("no se guardó");
+      caja.innerHTML = `<h4>Biblioteca guardada en este teléfono</h4>
+        <p>Los ${esc(idx.totalTemas)} temas se pueden leer sin conexión.</p>`;
+      anunciar("Biblioteca guardada para usarla sin conexión");
+    } catch (_) {
+      boton.disabled = false;
+      estado.textContent = "No se ha podido guardar. Comprueba la conexión y vuelve a intentarlo.";
+    }
+  };
 }
 
 /* ---------- Biblioteca (buscar y explorar los temas) ---------- */
@@ -494,8 +622,10 @@ function tarjetaTema(tema) {
 }
 
 async function renderBiblioteca(param) {
+  const mia = _ruta;
   loading();
   const idx = await cargarIndice();
+  if (mia !== _ruta) return;
   const cat = (idx.categorias || []).find((c) => c.clave === normalize(param || ""));
   const consulta = cat ? "" : (param || "");
 
@@ -531,10 +661,14 @@ async function renderBiblioteca(param) {
       // Mientras las palabras del cuerpo vienen de camino no se puede decir que
       // no hay nada: decirlo y desdecirse medio segundo después asusta para nada.
       if (esperando) { caja.innerHTML = `<div class="empty">Buscando…</div>`; return ""; }
+      // Lo que no está en la biblioteca puede estar en el Detector: un producto,
+      // una terapia con nombre comercial. Antes este «sin resultados» no lo decía.
       caja.innerHTML = `<h3 class="sec">Sin resultados</h3><div class="card">
         <h4>No encontré nada para «${esc(q)}»</h4>
         <p>Prueba con otras palabras —por ejemplo «duerme» en vez de «insomnio»—
-        o explora por categorías.</p></div>` + chipsCat;
+        o explora por categorías.</p>
+        <p>¿Es el nombre de una terapia, un producto o una prueba?
+        <a href="#detector/${encodeURIComponent(q)}">Compruébalo en el Detector</a>.</p></div>` + chipsCat;
       return `Sin resultados para ${q}`;
     }
     caja.innerHTML = `<h3 class="sec" style="margin-top:8px">${res.length} resultado${
@@ -570,21 +704,79 @@ async function renderBiblioteca(param) {
 }
 
 /* ---------- Un tema de la biblioteca ---------- */
+/* Cada tema se baja SOLO: content/temas/XX.json, unos 3 KB comprimidos de
+   mediana. Antes, abrir cualquier tema por primera vez bajaba el cuerpo entero
+   de la biblioteca —5 MB, 1,6 MB comprimidos—: con datos móviles lentos eran
+   decenas de segundos mirando «Cargando…», también para leer qué hacer durante
+   una convulsión. El cuerpo entero sigue existiendo para quien lo pide a
+   propósito («Usar sin conexión», en Inicio), y si ya está en memoria se usa. */
 let _cuerpos = null;
+const _temasSueltos = Object.create(null);
+const CUERPO_ENTERO = "content/biblioteca-cuerpo.json";
+
+async function cuerpoDe(cod) {
+  if (_cuerpos && _cuerpos[cod]) return _cuerpos[cod];
+  if (_temasSueltos[cod]) return _temasSueltos[cod];
+  try {
+    return (_temasSueltos[cod] = await getJSON(`content/temas/${encodeURIComponent(cod)}.json`));
+  } catch (e) {
+    // Sin red y sin ese tema guardado. Si la familia guardó la biblioteca
+    // entera para usarla sin conexión, el service worker la sirve desde ahí.
+    try { _cuerpos = _cuerpos || await getJSON(CUERPO_ENTERO); }
+    catch (_) { throw e; }
+    return _cuerpos[cod] || null;
+  }
+}
+
 async function renderTema(codigo) {
+  const mia = _ruta;
   loading();
   const idx = await cargarIndice();
-  _cuerpos = _cuerpos || await getJSON("content/biblioteca-cuerpo.json");
+  if (mia !== _ruta) return;
   const cod = String(codigo || "").toUpperCase();
-  const tema = _cuerpos[cod];
+  // El índice dice qué temas existen: un código que no está no se pide a la
+  // red, y sobre todo no dispara la descarga de la biblioteca entera.
+  if (!(idx.temas || []).some((t) => t.codigo === cod)) {
+    view.innerHTML = `<div class="callout warn">No encuentro ese tema.
+      <a href="#biblioteca">Volver a la biblioteca</a>.</div>`;
+    return;
+  }
+  let tema, sinRed = false;
+  try { tema = await cuerpoDe(cod); } catch (_) { sinRed = true; }
+  if (mia !== _ruta) return;
+  if (sinRed) {
+    view.innerHTML = `<div class="callout warn"><strong>Sin conexión.</strong> Este tema todavía no
+      está guardado en el teléfono. Se guarda solo la primera vez que lo abres con internet, o
+      todos a la vez con «Usar sin conexión», en <a href="#inicio">Inicio</a>.</div>
+      <a class="cta-ayuda" href="#ayuda">${ICONOS.telefono}<span>Los teléfonos de ayuda y emergencias sí
+      funcionan sin conexión</span></a>`;
+    return;
+  }
   if (!tema) {
     view.innerHTML = `<div class="callout warn">No encuentro ese tema.
       <a href="#biblioteca">Volver a la biblioteca</a>.</div>`;
     return;
   }
-  const meta = (idx.temas || []).find((t) => t.codigo === cod) || {};
-  const relacionados = (idx.temas || [])
-    .filter((t) => t.categoria === meta.categoria && t.codigo !== cod).slice(0, 4);
+  const temasIdx = idx.temas || [];
+  const meta = temasIdx.find((t) => t.codigo === cod) || {};
+  const codigos = new Set(temasIdx.map((t) => t.codigo));
+  // «También te puede servir» eran los cuatro primeros temas de la misma
+  // categoría, siempre los mismos: los 101 temas de salud ofrecían los mismos
+  // cuatro, vinieran de una convulsión o de la regla. Ahora van primero las
+  // fichas que este tema cita de verdad, en el orden en que las cita —que es
+  // el orden editorial, con las urgencias delante—, y solo si faltan se
+  // completa con la categoría.
+  const porCodigo = new Map(temasIdx.map((t) => [t.codigo, t]));
+  const citados = [];
+  for (const m of String(tema.cuerpo || "").matchAll(/\*\*([A-Z]{1,2})(?:\.\s[^*]*)?\*\*/g)) {
+    const c = m[1];
+    if (c !== cod && porCodigo.has(c) && !citados.includes(c) && !NO_ES_REMISION.has(c)) citados.push(c);
+  }
+  const relacionados = citados.slice(0, 4).map((c) => porCodigo.get(c));
+  for (const t of temasIdx) {
+    if (relacionados.length >= 4) break;
+    if (t.categoria === meta.categoria && t.codigo !== cod && !relacionados.includes(t)) relacionados.push(t);
+  }
 
   const verificado = /VERIFICADO/.test(tema.estado || "");
   view.innerHTML = `
@@ -596,10 +788,11 @@ async function renderTema(codigo) {
       : badge("vivida", "Síntesis con fuentes")}</p>
     ${leyendaNiveles(tema.cuerpo)}
     <article class="tema-cuerpo">${mdRender(tema.cuerpo,
-      `<a class="cta-ayuda" href="#ayuda">${ICONOS.telefono}<span>Teléfonos de ayuda y emergencias de tu país</span></a>`)}</article>
+      `<a class="cta-ayuda" href="#ayuda">${ICONOS.telefono}<span>Teléfonos de ayuda y emergencias de tu país</span></a>`,
+      codigos)}</article>
     ${tema.fuentes && tema.fuentes.length ? `
       <h3 class="sec">Fuentes · ${tema.fuentes.length}</h3>
-      <div class="lista fuentes">${tema.fuentes.map((f) => f.url ? `
+      <div class="lista fuentes">${tema.fuentes.map((f) => urlSegura(f.url) ? `
         <a class="fila" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">
           <span class="txt"><span class="titulo">${esc(f.label)}</span></span>
           <span class="ext">${ICONOS.externo}</span></a>` : `
@@ -614,9 +807,20 @@ async function renderTema(codigo) {
 }
 
 /* ---------- Ayuda urgente ---------- */
+/* «911 · 107 (SAME)» → dos enlaces de llamada. El número de emergencias era el
+   único de la pantalla que había que teclear a mano, y es el que se marca con
+   más prisa. Solo se enlazan números cortos de emergencia (3 a 4 cifras); el
+   resto del texto se queda como estaba. */
+function telefonosPulsables(texto) {
+  return esc(texto).replace(/(^|[^\d])(\d{3,4})(?!\d)/g,
+    (todo, antes, num) => `${antes}<a class="tel-emg" href="tel:${num}"><strong>${num}</strong></a>`);
+}
+
 async function renderAyuda() {
+  const mia = _ruta;
   loading();
   const d = await getJSON("content/ayuda-urgente.json");
+  if (mia !== _ruta) return;
   // El número principal se convierte en enlace de llamada cuando es marcable.
   const tel = (linea) => {
     const m = String(linea).match(/[\d*][\d\s*]{2,}/);
@@ -635,7 +839,7 @@ async function renderAyuda() {
           : `<div class="tel">${ICONOS.telefono}<span>${esc(p.linea)}</span></div>`}
         <p class="desc">${esc(p.descripcion)}</p>
         ${p.escrito ? `<p class="escrito"><strong>Por escrito:</strong> ${esc(p.escrito)}</p>` : ""}
-        ${p.emergencias ? `<p class="emg">Emergencias: <strong>${esc(p.emergencias)}</strong></p>` : ""}
+        ${p.emergencias ? `<p class="emg">Emergencias: ${telefonosPulsables(p.emergencias)}</p>` : ""}
       </article>`;
     }).join("")}
     <h3 class="sec">Señales de alarma</h3>
@@ -649,8 +853,10 @@ async function renderAyuda() {
 
 /* ---------- Evidencia ---------- */
 async function renderEvidencia() {
+  const mia = _ruta;
   loading();
   const data = await getJSON("content/evidencia.json");
+  if (mia !== _ruta) return;
   const lg = data.leyenda;
   const legend = ["alta", "media", "evitar"].map(
     (k) => badge(k, lg[k].texto)
@@ -688,10 +894,12 @@ function lvlLabel(l) {
 
 /* ---------- Detector ---------- */
 let _detector = null;
-async function renderDetector() {
+async function renderDetector(inicial = "") {
+  const mia = _ruta;
   loading();
   _detector = _detector || await getJSON("content/banderas-rojas.json");
   try { await cargarIndice(); } catch (_) {}   // para poder sugerir temas relacionados
+  if (mia !== _ruta) return;
   // Solo unas pocas sugerencias: un muro de 15 chips abruma en un móvil.
   const _todos = _detector.casos;
   const chips = _todos.slice(0, 6).map(
@@ -708,7 +916,7 @@ async function renderDetector() {
           placeholder="p. ej. quelación, test de cabello" /></div>
       <button class="btn" id="go" type="submit">Revisar</button>
     </form>
-    <div class="chips">${chips}</div>
+    <div class="chips" id="chips-det">${chips}</div>
     <div id="result"></div>
   `;
   const input = document.getElementById("q");
@@ -733,22 +941,29 @@ async function renderDetector() {
           <span class="txt"><span class="titulo">${esc(c.nombre)}</span></span>
           <span class="chevron">${ICONOS.chevron}</span></a>`).join("")}</div>`;
   };
-  view.addEventListener("click", (e) => {
-    const f = e.target.closest("[data-ficha]");
-    if (!f) return;
-    e.preventDefault();
-    const c = _detector.casos.find((x) => x.id === f.dataset.ficha);
-    if (c) { input.value = c.nombre; run(c.nombre); }
-  });
-  // Los chips sugeridos y los de "¿buscabas otra cosa?" (que se crean después).
-  view.addEventListener("click", (e) => {
-    const b = e.target.closest(".suggest button[data-id]");
-    if (!b) return;
-    const c = _detector.casos.find((x) => x.id === b.dataset.id);
+  // Un solo manejador por pantalla, colgado de un elemento que se repinta con
+  // ella. Antes eran dos colgados de <main>, que no se repinta nunca: cada
+  // visita al detector sumaba otros dos, ninguno se quitaba, y el veredicto se
+  // calculaba y se anunciaba tantas veces como visitas llevara la familia. Y
+  // los seis chips de sugerencia de arriba no los atendía ninguno de los dos
+  // —uno miraba «[data-ficha]» y el otro solo «.suggest»—, así que pulsarlos
+  // no hacía nada.
+  const abrir = (id) => {
+    const c = _detector.casos.find((x) => x.id === id);
     if (!c) return;
     input.value = c.nombre;
     run(c.nombre);
-  });
+  };
+  // «#detector/consulta»: llega ya escrita desde un «sin resultados» de la biblioteca.
+  if (inicial) { input.value = inicial; run(inicial); }
+  for (const zona of [document.getElementById("chips-det"), result]) {
+    zona.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-ficha], button[data-id]");
+      if (!el || !zona.contains(el)) return;
+      e.preventDefault();
+      abrir(el.dataset.ficha || el.dataset.id);
+    });
+  }
 }
 
 /**
@@ -799,11 +1014,17 @@ function buscarFichas(text) {
   return salida.sort((a, b) => b.puntos - a.puntos);
 }
 
+/* «Es un mito» es un veredicto aparte, no un «Evítalo». Las cuatro fichas de
+   mitos sobre la causa del autismo —vacunas, paracetamol en el embarazo, wifi
+   y antenas, intestino permeable— salían con un «Evítalo» rojo encima, y quien
+   buscaba «vacunas» o «paracetamol embarazo» leía «Evítalo» al lado de la
+   palabra: justo lo contrario de lo que la ficha dice. */
 function fichaHTML(hit) {
   const v = hit.veredicto;
   const clase = v === "ok" ? "alta" : v === "media" ? "media" : "evitar";
   const titulo = v === "ok" ? "Tiene evidencia"
-    : v === "media" ? "Cautela: evidencia incierta" : "Evítalo";
+    : v === "media" ? "Cautela: evidencia incierta"
+    : v === "mito" ? "Es un mito" : "Evítalo";
   return `
     <article class="card">
       <div class="verdict ${clase}"><span class="dot"></span>${esc(titulo)}</div>
@@ -881,7 +1102,21 @@ function detectorResult(text) {
 /* ---------- Rastreador (IndexedDB local) ---------- */
 const DB_NAME = "brujula-tea";
 const STORE = "registros";
+/* Una sola conexión para toda la sesión. Antes cada lectura y cada escritura
+   abría una nueva y ninguna se cerraba; y sin `onversionchange`, el día que
+   cambie el esquema una pestaña vieja abierta bloquearía la actualización de
+   la nueva. Si abrir falla, se olvida, para reintentar la próxima vez. */
+let _db = null;
 function openDB() {
+  if (!_db) {
+    _db = abrirDB().then((db) => {
+      db.onversionchange = () => { db.close(); _db = null; };
+      return db;
+    }).catch((e) => { _db = null; throw e; });
+  }
+  return _db;
+}
+function abrirDB() {
   return new Promise((resolve, reject) => {
     /* Cuando el navegador bloquea el almacenamiento ni siquiera existe
        indexedDB, y el fallo llegaría como un «no se puede leer open de
@@ -906,7 +1141,9 @@ async function dbAll() {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE, "readonly").objectStore(STORE).getAll();
-    tx.onsuccess = () => resolve(tx.result.sort((a, b) => (a.fecha < b.fecha ? 1 : -1)));
+    // Del más reciente al más antiguo; dos del mismo día, por cuándo se escribieron.
+    tx.onsuccess = () => resolve(tx.result.sort((a, b) =>
+      (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : (b.creado || 0) - (a.creado || 0))));
     tx.onerror = () => reject(tx.error);
   });
 }
@@ -923,6 +1160,19 @@ async function dbAdd(entry) {
     tx.onabort = tx.onerror = () => reject(tx.error || req.error);
   });
 }
+/* Borrar todo en UNA transacción: o se borra todo o no se borra nada. Antes se
+   borraba registro a registro, y un fallo a mitad dejaba parte de los datos del
+   niño en el dispositivo después de que la familia pidiera borrarlos. */
+async function dbClear() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, "readwrite");
+    tx.objectStore(STORE).clear();
+    tx.oncomplete = () => resolve();
+    tx.onabort = tx.onerror = () => reject(tx.error);
+  });
+}
+
 async function dbDelete(id) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
@@ -1023,7 +1273,17 @@ function avisoDB(titulo, err) {
 }
 
 const MOODS = ["😟", "😐", "🙂", "😀", "🤩"];
+
+/* La fecha de HOY en el reloj del teléfono. `toISOString()` da la de Greenwich:
+   en México, a partir de las seis de la tarde, el formulario proponía ya el día
+   de mañana; y en España, entre las doce y las dos de la noche, `max` era
+   todavía ayer y el navegador se negaba a guardar el registro de hoy. */
+function hoyLocal(d = new Date()) {
+  const dos = (n) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
+}
 async function renderRastreador() {
+  const mia = _ruta;
   loading();
   let entries = [];
   /* Un error de lectura no es una lista vacía: si nos lo tragamos, la familia
@@ -1035,7 +1295,8 @@ async function renderRastreador() {
   // conservar el almacén. Sirve para avisar a la familia, no para decidir.
   let persistente = null;
   try { persistente = await navigator.storage.persisted(); } catch (_) {}
-  const today = new Date().toISOString().slice(0, 10);
+  if (mia !== _ruta) return;
+  const today = hoyLocal();
   view.innerHTML = `
     <h1 class="page">Seguimiento de mi hijo</h1>
     <h2 class="page-sub">Registra qué intervención hiciste y cómo estuvo el día. <strong>Todo se guarda solo en este dispositivo.</strong></h2>
@@ -1088,11 +1349,15 @@ async function renderRastreador() {
       creado: Date.now()
     };
     if (!entry.fecha) return;
+    // Un doble toque en «Guardar» creaba dos registros iguales: el botón se
+    // bloquea mientras dura la escritura.
+    const boton = e.submitter || document.querySelector("#f-track button[type=submit]");
+    if (boton) { if (boton.disabled) return; boton.disabled = true; }
     /* Si la escritura falla no repintamos: el formulario se queda con lo que la
        familia escribió, para que pueda reintentarlo sin volver a teclearlo, y el
        aviso dice sin rodeos que ese registro NO está guardado. */
     try { await dbAdd(entry); }
-    catch (err) { return avisoDB("Este registro no se ha guardado.", err); }
+    catch (err) { if (boton) boton.disabled = false; return avisoDB("Este registro no se ha guardado.", err); }
     // Guardar es el momento de pedir que el navegador no desaloje el almacén:
     // ahora sí hay algo que perder.
     await pedirPersistencia();
@@ -1106,7 +1371,7 @@ async function renderRastreador() {
     if (!confirm("¿Borrar TODOS los registros de este dispositivo? No se puede deshacer.")) return;
     /* Si el borrado se queda a medias repintamos antes de avisar, para que el
        historial muestre lo que de verdad sigue en el dispositivo. */
-    try { for (const en of entries) await dbDelete(en.id); }
+    try { await dbClear(); }
     catch (err) { await renderRastreador(); return avisoDB("No hemos podido borrar todos tus registros.", err); }
     renderRastreador();
   };
@@ -1147,6 +1412,10 @@ function paintList(entries, fallo) {
     </article>`).join("");
   el.querySelectorAll("[data-del]").forEach((b) =>
     b.onclick = async () => {
+      // La ✕ está pegada al registro y se toca sin querer al hacer scroll. Sin
+      // esta pregunta el día se borraba al instante y sin forma de recuperarlo.
+      const e = entries.find((x) => x.id === Number(b.dataset.del));
+      if (!confirm(`¿Borrar el registro del ${e ? e.fecha : "día elegido"}? No se puede deshacer.`)) return;
       try { await dbDelete(Number(b.dataset.del)); }
       catch (err) { await renderRastreador(); return avisoDB("No hemos podido borrar ese registro.", err); }
       renderRastreador();
@@ -1156,8 +1425,10 @@ function paintList(entries, fallo) {
 /* ---------- Asistente (modo demo; listo para conectar Claude) ---------- */
 let _demo = null;
 async function renderAsistente() {
+  const mia = _ruta;
   loading();
   _demo = _demo || await getJSON("content/asistente-demo.json");
+  if (mia !== _ruta) return;
   view.innerHTML = `
     <h1 class="page">Asistente</h1>
     <div class="demo-note"><strong>Modo demostración.</strong> Responde a temas frecuentes con fuentes.
@@ -1197,11 +1468,21 @@ function pushMsg(log, who, text, fuentes) {
   log.scrollTop = log.scrollHeight;
 }
 
-/* Coincidencia simple por disparadores. Sustituible por fetch('/api/chat') al activar Claude. */
+/* Coincidencia simple por disparadores. Sustituible por fetch('/api/chat') al activar Claude.
+   El disparador tiene que EMPEZAR una palabra, aunque puede acabar dentro de
+   ella: los hay que son raíces a propósito («quelac», «desintox», «suicid»).
+   Con un `includes` a secas, «ados» saltaba dentro de «preocupados» y «pact»
+   dentro de «impacto», y una pregunta sobre el lenguaje recibía la respuesta
+   del diagnóstico. */
 function demoReply(text) {
-  const q = normalize(text);
+  const q = " " + limpiaConsulta(text);
   for (const r of _demo.respuestas) {
-    if ((r.disparadores || []).some((d) => q.includes(normalize(d))))
+    if ((r.disparadores || []).some((d) => {
+      // Un «$» al final pide palabra ENTERA: «pelo$» no salta con «pelota».
+      const entera = String(d).endsWith("$");
+      const dd = limpiaConsulta(d);
+      return dd && (entera ? (q + " ").includes(" " + dd + " ") : q.includes(" " + dd));
+    }))
       return { texto: r.texto, fuentes: r.fuentes || [] };
   }
   return { texto: _demo.fallback, fuentes: [] };
@@ -1209,8 +1490,10 @@ function demoReply(text) {
 
 /* ---------- Fuentes ---------- */
 async function renderFuentes() {
+  const mia = _ruta;
   loading();
   const data = await getJSON("content/fuentes.json");
+  if (mia !== _ruta) return;
   const grupos = data.grupos.map((g) => `
     <section>
       <h3 class="sec">${esc(g.titulo)}</h3>

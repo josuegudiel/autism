@@ -7,7 +7,7 @@ Es una **PWA estática** (se instala como app, funciona sin conexión para el co
 
 > ⚠️ Esta app **informa y orienta; no diagnostica ni sustituye** a un profesional de la salud.
 
-**Estado:** app funcional con **buscador sobre 460 temas** (226 verificados) y **4.753 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
+**Estado:** app funcional con **buscador sobre 460 temas** (226 verificados) y **4.715 fuentes**, generados desde la biblioteca de investigación ([`research/biblioteca-autismo.md`](research/biblioteca-autismo.md)). Lo hecho y lo pendiente está en **[ESTADO.md](ESTADO.md)**. Proyecto **sin ánimo de lucro** y **gratuito**.
 
 <!-- Las tres cifras de arriba son las que sirve `web/content/biblioteca-indice.json`
      (`totalTemas`, `verificados`, `totalFuentes`). Si vuelves a ejecutar el conversor,
@@ -134,7 +134,10 @@ web/                      PWA estática (esto es lo que se publica)
   manifest.webmanifest  sw.js
   assets/    icon.svg  icon-maskable.svg
   content/   biblioteca-indice.json   generado: buscador (362 KB)
-             biblioteca-cuerpo.json   generado: contenido de los temas (2,3 MB)
+             biblioteca-cuerpo.json   generado: contenido de todos los temas (~5 MB; para
+                                       «Usar sin conexión», la app de iOS y la suite)
+             temas/XX.json            generado: un fichero por tema, lo que baja la web
+                                       al abrir un tema (unos 3 KB comprimidos)
              ayuda-urgente.json       teléfonos de crisis por país
              evidencia.json  banderas-rojas.json  fuentes.json  asistente-demo.json
 shared/

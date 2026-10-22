@@ -405,5 +405,25 @@ ul.checks li:last-child { border-bottom: 0; border-radius: 0 0 var(--r-card) var
 /* Fuente citada sin enlace: el trabajo está confirmado pero no se publica una
    URL que nadie ha visto. Se muestra como texto, con el mismo aire que un
    enlace pero sin el color ni el cursor que prometen que se puede pulsar. */
-.sources .sin-enlace { color: var(--txt-2); text-decoration: none; }
-.lista .fila.sin-enlace { color: var(--txt-2); cursor: default; }
+/* La variable era --txt-2, que no existe en esta hoja: el color caía al del
+   padre y en la lista de fuentes la regla de arriba lo pintaba con el verde de
+   los enlaces, justo lo que este bloque quería evitar. */
+.sources .sin-enlace { color: var(--label-2); text-decoration: none; }
+.lista .fila.sin-enlace { color: var(--label-2); cursor: default; }
+.fuentes .fila.sin-enlace .titulo { color: var(--label-2); }
+
+/* Sub-viñetas: van DENTRO de la tarjeta de su viñeta, no sueltas. */
+.tema-cuerpo .punto ul.sub { margin: 4px 0 2px; padding-left: 20px; }
+.tema-cuerpo .punto ul.sub li { margin: 0 0 8px; font-size: 15px; line-height: 1.45; }
+.tema-cuerpo .punto ul.sub li .badge { vertical-align: middle; margin-top: 0; }
+
+/* Remisión a otra ficha dentro del texto: se lee como la negrita que era, con
+   el subrayado que dice que se puede pulsar. El color del texto no cambia a
+   propósito: muchas viven dentro de un bloque de urgencia, con su fondo propio,
+   y el verde de los enlaces no tiene ahí el contraste que hace falta. */
+.tema-cuerpo a.remision { color: inherit; text-decoration: underline;
+  text-decoration-color: var(--accent); text-decoration-thickness: 2px;
+  text-underline-offset: 2px; }
+
+/* Números de emergencia pulsables en la pantalla de Ayuda. */
+.pais .emg a.tel-emg { color: var(--ev-evitar); text-decoration: none; }

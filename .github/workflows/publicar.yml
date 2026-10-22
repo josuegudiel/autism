@@ -15,6 +15,11 @@ on:
       - "agente-autismo/web/**"
       - "agente-autismo/herramientas/**"
       - "agente-autismo/scripts/pruebas/**"
+      # La fuente del contenido: si cambia la biblioteca, los sinónimos o el
+      # constructor sin regenerar web/content, la app publicaría lo de antes.
+      - "agente-autismo/research/biblioteca-autismo.md"
+      - "agente-autismo/scripts/construir-contenido.py"
+      - "agente-autismo/scripts/sinonimos.json"
       - ".github/workflows/publicar.yml"
   # También en los pull requests, aunque ahí no se publique: así un cambio se
   # valida ANTES de entrar en main, que es cuando todavía sale barato.
@@ -24,6 +29,11 @@ on:
       - "agente-autismo/web/**"
       - "agente-autismo/herramientas/**"
       - "agente-autismo/scripts/pruebas/**"
+      # La fuente del contenido: si cambia la biblioteca, los sinónimos o el
+      # constructor sin regenerar web/content, la app publicaría lo de antes.
+      - "agente-autismo/research/biblioteca-autismo.md"
+      - "agente-autismo/scripts/construir-contenido.py"
+      - "agente-autismo/scripts/sinonimos.json"
       - ".github/workflows/publicar.yml"
   workflow_dispatch: # permite lanzarlo a mano desde la pestaña Actions
 
@@ -36,24 +46,50 @@ concurrency:
   # Por rama, no global: así un pull request en marcha no cancela el despliegue
   # de main ni al revés.
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # En un pull request, una ejecución vieja se cancela: ya no sirve de nada. En
+  # main NO: cancelar un despliegue de Pages a medias puede dejarlo atascado, y
+  # GitHub recomienda dejar terminar el que está en curso (el siguiente espera).
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   pruebas:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # v5: las v4 corren sobre Node 20, que GitHub ya da por retirado y que
+      # cada ejecución avisaba en el registro.
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "22"
+
+      - name: El contenido publicado está regenerado
+        # web/content/*.json SALE de la biblioteca: si alguien cambia la
+        # biblioteca, los sinónimos o el constructor y se olvida de regenerar,
+        # la app sigue enseñando lo de antes y ninguna prueba lo ve, porque las
+        # pruebas leen los mismos JSON viejos. El constructor es determinista
+        # (mismos bytes en dos corridas y con cualquier semilla de hash), así
+        # que cualquier diferencia es un olvido.
+        working-directory: agente-autismo
+        run: |
+          python3 scripts/construir-contenido.py > /dev/null
+          # `git status` y no `git diff`: un tema nuevo es un fichero nuevo en
+          # web/content/temas/, y `git diff` no ve los ficheros sin rastrear.
+          if [ -n "$(git status --porcelain -- web/content)" ]; then
+            echo "::error::web/content no corresponde a la biblioteca. Ejecuta 'python3 scripts/construir-contenido.py' y sube el resultado." >&2
+            git status --short -- web/content | head -20 >&2
+            exit 1
+          fi
 
       - name: Instalar Playwright y su Chromium
         # Se instala primero el paquete y luego se usa SU propio CLI para bajar
         # el navegador. Si se hiciera con `npx playwright`, npx podría traerse
         # otra versión y bajar un Chromium que el paquete instalado no sabe usar.
+        # Versión fija: sin ella cada ejecución traía la última, y una versión
+        # nueva de Playwright podía poner la suite en rojo sin que nadie hubiera
+        # cambiado nada. Es la misma que se usa en local.
         run: |
-          npm install -g playwright
+          npm install -g playwright@1.56.1
           playwright install --with-deps chromium
 
       - name: Pasar la suite contra la app servida
@@ -78,7 +114,7 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Preparar el sitio
         run: |

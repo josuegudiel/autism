@@ -24,8 +24,8 @@ const ASSETS = [
   "./content/ayuda-urgente.json",
   "./content/biblioteca-indice.json"
 ];
-// Ni el cuerpo completo de la biblioteca (≈2,4 MB) ni las palabras del cuerpo
-// para buscar (biblioteca-busqueda.json, ≈350 KB) se precachean: los guarda el
+// Ni el cuerpo completo de la biblioteca (≈5 MB) ni las palabras del cuerpo
+// para buscar (biblioteca-busqueda.json, ≈500 KB) se precachean: los guarda el
 // `fetch` de aquí abajo la primera vez que se abre un tema o se busca, para no
 // cobrarle la primera visita a quien entra con datos móviles. No los añadas a
 // ASSETS sin medir antes lo que tarda esa primera pantalla.
@@ -35,11 +35,30 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const nueva = await caches.open(CACHE);
+    for (const k of await caches.keys()) {
+      if (k === CACHE) continue;
+      // Lo que la familia ya abrió —o guardó a propósito con «Usar sin
+      // conexión»— no puede desaparecer con cada despliegue. Antes se borraba
+      // la caché vieja entera, y con ella los temas guardados: tras cada
+      // publicación la biblioteca dejaba de funcionar sin red hasta volver a
+      // abrirla con cobertura. Se pasa a la caché nueva tal cual; la primera
+      // vez que se pida, el stale-while-revalidate de abajo la renueva. Lo que
+      // ya trae la instalación nueva (recién bajado) no se pisa.
+      if (k.startsWith("brujula-tea-")) {
+        const vieja = await caches.open(k);
+        for (const req of await vieja.keys()) {
+          if (!new URL(req.url).pathname.includes("/content/")) continue;
+          if (await nueva.match(req)) continue;
+          const res = await vieja.match(req);
+          if (res) await nueva.put(req, res);
+        }
+      }
+      await caches.delete(k);
+    }
+    await self.clients.claim();
+  })());
 });
 
 // Antes de guardar nada: que la respuesta sea buena y sea nuestra. Hasta ahora
@@ -84,7 +103,16 @@ self.addEventListener("fetch", (event) => {
       // Sin copia no hay nada que servir: toca esperar a la red de todas formas,
       // así que esperar también a que se guarde cuesta poco y asegura que la
       // próxima visita, esa sí, abra sin red.
-      return actualiza.catch(() => cached);
+      //
+      // Si además NO hay red y lo que se pide es una página —abrir la app desde
+      // un enlace con «?algo» detrás, o desde el icono de la pantalla de inicio
+      // con una dirección que no es exactamente la guardada—, se sirve la app
+      // guardada en vez del error del navegador. Antes, sin cobertura, ese caso
+      // dejaba la pantalla del dinosaurio aunque la app entera estuviera dentro.
+      return actualiza.catch(() =>
+        req.mode === "navigate"
+          ? caches.match("./index.html").then((app) => app || Response.error())
+          : Response.error());
     })
   );
 });

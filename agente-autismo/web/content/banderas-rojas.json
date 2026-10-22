@@ -1,5 +1,5 @@
 {
- "intro": "Escribe o elige una terapia, producto o afirmación. Te decimos qué dice la evidencia y por qué. Verde = razonable; amarillo = incertidumbre/cautela; rojo = desacreditado o peligroso.",
+ "intro": "Escribe o elige una terapia, producto o afirmación. Te decimos qué dice la evidencia y por qué. Verde = razonable; amarillo = incertidumbre/cautela; rojo = desacreditado o peligroso, o un mito sobre la causa del autismo.",
  "casos": [
   {
    "id": "quelacion",
@@ -337,7 +337,7 @@
     "timerosal",
     "wakefield"
    ],
-   "veredicto": "evitar",
+   "veredicto": "mito",
    "resumen": "Mito desacreditado en estudios de millones de niños.",
    "porque": "El estudio original (Wakefield 1998) fue retractado por fraude. Estudios posteriores en millones de niños (Hviid 2019, n=657.461; meta-análisis Taylor 2014; Cochrane 2020) no hallan asociación. Tras retirar el timerosal, las tasas siguieron subiendo.",
    "fuentes": [
@@ -643,7 +643,7 @@
     "radiacion del movil",
     "radiación del móvil"
    ],
-   "veredicto": "evitar",
+   "veredicto": "mito",
    "resumen": "Los grandes estudios no lo respaldan.",
    "porque": "Es comprensible buscar una causa, pero no hay evidencia de que el wifi, las antenas, el flúor del agua o las ecografías del embarazo causen autismo. La OMS no encuentra efectos por los campos electromagnéticos a los niveles cotidianos, y el estudio SEED sobre ecografías prenatales no halló asociación con el autismo. Perseguir estos mitos resta tiempo y energía a lo que sí ayuda.",
    "fuentes": [
@@ -762,7 +762,7 @@
     "parasitos causan autismo",
     "parásitos causan autismo"
    ],
-   "veredicto": "evitar",
+   "veredicto": "mito",
    "resumen": "Investigar el eje intestino-cerebro no es lo mismo que curarlo con dietas.",
    "porque": "La ciencia sí investiga el sistema inmune y el eje intestino-cerebro como parte del rompecabezas, pero eso es muy distinto de afirmar que un «intestino permeable» causa el autismo o que se cura con dietas y suplementos. Si hay molestias digestivas, merecen tratarse por sí mismas con un pediatra o un gastroenterólogo — no como vía para cambiar el autismo.",
    "fuentes": [
@@ -783,7 +783,7 @@
     "paracetamol en el embarazo",
     "tome paracetamol embarazada"
    ],
-   "veredicto": "evitar",
+   "veredicto": "mito",
    "resumen": "El estudio que comparó hermanos, con 2,5 millones de niños, no lo encontró.",
    "porque": "Es normal alarmarse con los titulares. La evidencia de mayor calidad —incluido un estudio con casi 2,5 millones de niños que comparó hermanos entre sí, que es como se controla lo que la familia comparte— no encontró que el paracetamol del embarazo cause autismo. Las sociedades médicas lo siguen recomendando como el analgésico más seguro en el embarazo cuando se usa según indicación. Si ya lo tomaste, no hiciste nada malo.",
    "fuentes": [

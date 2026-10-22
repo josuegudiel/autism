@@ -1,11 +1,15 @@
 # Brújula TEA — app de iPhone (SwiftUI)
 
-> ⚠️ **Este target NO compila hoy.** `Vistas/DetectorView.swift` se quedó en
-> cuatro líneas sueltas y `Vistas/AyudaView.swift` solo conserva el
-> `enum Telefono`: las dos vistas que `RootView` monta en las pestañas
-> «Detector» y «Ayuda» no existen como tipos, así que Xcode ni siquiera
-> llega a construir. Todo lo que sigue describe el proyecto tal como se
-> pensó; antes de nada hay que reescribir esos dos ficheros.
+> ⚠️ **Estado: reescrito, pendiente de compilar en un Mac.** `Vistas/DetectorView.swift`
+> y `Vistas/AyudaView.swift` se habían quedado sin sus vistas y el target no
+> compilaba. El 22/10 se reescribieron a partir de las APIs que ya existen en
+> `Datos/Biblioteca.swift` y `Modelos/Modelos.swift`, **en Linux y sin
+> compilador de Swift delante**: lo más probable es que Xcode pida algún
+> retoque. El Detector de iOS, a propósito, **no pinta veredicto de color**:
+> el que calcula `Biblioteca.nivel(de:)` cuenta semáforos y decía «Con
+> respaldo» a «las vacunas causan autismo»; abre la ficha en su lugar. Que
+> lea los veredictos explícitos de `banderas-rojas.json`, como la web, queda
+> pendiente.
 >
 > ⚠️ **La app nativa no tiene rastreador.** El «Seguimiento de mi hijo» que
 > promete el README del proyecto existe **solo en la web**: en `ios/` no hay
@@ -42,8 +46,8 @@ Los tres archivos de datos van en el **bundle**, sin subcarpeta ni renombrado:
 
 | Archivo | Tamaño aprox. | Cuándo se carga |
 |---|---|---|
-| `biblioteca-indice.json` | ~362 KB | al arrancar la app |
-| `biblioteca-cuerpo.json` | ~2,3 MB | al abrir el primer tema |
+| `biblioteca-indice.json` | ~600 KB | al arrancar la app |
+| `biblioteca-cuerpo.json` | ~5 MB | al abrir el primer tema |
 | `ayuda-urgente.json` | pequeño | al abrir la pestaña Ayuda |
 
 Pasos:
@@ -91,8 +95,8 @@ BrujulaTEA/
   Vistas/InicioView.swift          buscador destacado, chips, rejilla
   Vistas/BibliotecaView.swift      búsqueda, categorías y todos los temas
   Vistas/TemaDetalleView.swift     título, cuerpo, fuentes, relacionados
-  Vistas/DetectorView.swift        INCOMPLETO: solo quedan 4 líneas sueltas
-  Vistas/AyudaView.swift           INCOMPLETO: solo queda el enum Telefono
+  Vistas/DetectorView.swift        detector: busca en la categoría de pseudociencias
+  Vistas/AyudaView.swift           teléfonos de crisis y emergencias (pulsables)
   Vistas/Componentes.swift         tarjetas, badges, leyenda, markdown
   Info.plist
 ```
@@ -135,9 +139,11 @@ como punto de color + etiqueta: *Evidencia sólida*, *Evidencia limitada*,
 
 ## Qué falta para publicar
 
-- **Reescribir `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift`**: sin
-  esos dos tipos el proyecto no compila. Es lo primero, y no es cosmético:
-  serían las pestañas «Detector» y «Ayuda» de una app de salud.
+- **Compilar en un Mac.** `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift`
+  se reescribieron el 22/10 sin compilador; lo primero es abrirlo en Xcode y
+  corregir lo que pida.
+- **Que el Detector lea `banderas-rojas.json`**, con sus veredictos explícitos
+  (incluido «Es un mito»), en vez de buscar en la categoría de pseudociencias.
 - Icono de app y pantalla de carga (`Assets.xcassets`).
 - Revisión en un Mac: el código se escribió sin Xcode delante.
 - Opcional: `SFSafariViewController` si prefieres abrir las fuentes dentro de

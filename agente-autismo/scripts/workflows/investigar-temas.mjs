@@ -402,7 +402,10 @@ formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /
       codigo: t.codigo, titulo: verif.titulo,
       // Si una lente murio, la ficha no ha pasado las cuatro criticas, aunque las
       // otras tres hayan encontrado cosas y el editor las haya aplicado.
-      publicable: muertas ? false : (fin ? fin.publicable : verif.publicable),
+      // Y si el EDITOR murio (agent() devuelve null), las criticas no se han
+      // aplicado: antes se devolvia la version verificada con publicable=true y
+      // con los problemas graves dentro. Solo se salva si no habia ninguna critica.
+      publicable: muertas ? false : (fin ? fin.publicable : (todos.length === 0 && verif.publicable)),
       markdown_final: (fin && fin.markdown_final) || verif.markdown_final,
       informe: verif.informe,
       fuentes_confirmadas: verif.fuentes_confirmadas || 0,
@@ -412,15 +415,21 @@ formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /
       criticas_graves: todos.filter((p) => p.gravedad === 'grave').length,
       criticas_muertas: muertas,
       criticas_aplicadas: (muertas ? `NO PUBLICABLE: murieron ${muertas} de ${LENTES.length} lentes. ` : '')
-        + ((fin && fin.cambios) || 'el editor final fallo; se publica la version verificada'),
+        + ((fin && fin.cambios) || (todos.length
+          ? `NO PUBLICABLE: el editor final fallo y quedan ${todos.length} criticas sin aplicar.`
+          : 'el editor final fallo, pero las lentes no encontraron nada: se publica la version verificada')),
     })).catch(() => ({
-      codigo: t.codigo, titulo: verif.titulo, publicable: muertas ? false : verif.publicable,
+      codigo: t.codigo, titulo: verif.titulo,
+      publicable: muertas ? false : (todos.length === 0 && verif.publicable),
       markdown_final: verif.markdown_final, informe: verif.informe,
       fuentes_confirmadas: verif.fuentes_confirmadas || 0,
       fuentes_eliminadas: verif.fuentes_eliminadas || 0,
       afirmaciones_eliminadas: verif.afirmaciones_eliminadas || 0,
       criticas_total: todos.length, criticas_graves: todos.filter((p) => p.gravedad === 'grave').length,
-      criticas_aplicadas: 'el editor final fallo; se publica la version verificada',
+      criticas_muertas: muertas,
+      criticas_aplicadas: todos.length
+        ? `NO PUBLICABLE: el editor final fallo y quedan ${todos.length} criticas sin aplicar.`
+        : 'el editor final fallo, pero las lentes no encontraron nada: se publica la version verificada',
     }))
   }
 )
