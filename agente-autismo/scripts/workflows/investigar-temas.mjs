@@ -57,7 +57,8 @@ FORMATO EXACTO DE LA FICHA (markdown, español neutro):
   🟢 evidencia solida (metanalisis, revisiones sistematicas, guias clinicas)
   🟡 evidencia limitada o consenso profesional sin ensayos
   🔴 desaconsejado o dañino
-  ⚪ experiencia vivida de familias, sin respaldo de estudios
+  ⚪ criterio nuestro: lo que proponemos sin estudio detras (la app lo rotula
+     "Criterio nuestro, sin estudios"; NO es testimonio de familias)
 - Entre 5 y 8 puntos.
 - Si el tema toca salud: PRIMERO un punto de urgencias (lo que exige ir a
   urgencias hoy), DESPUES uno de "cuando consultar". Nunca al final.
@@ -148,7 +149,7 @@ que ojea la lista ve el color antes que la frase.
 - ¿Algun punto mezcla una recomendacion y una advertencia bajo un solo color?
   Hay que partirlo en dos puntos.
 - ¿Algun 🟢 apoyado en un solo estudio pequeño, en una pagina divulgativa o en
-  consenso sin estudios? Debe bajar a 🟡, o a ⚪ si es experiencia de familias.
+  consenso sin estudios? Debe bajar a 🟡, o a ⚪ si es criterio nuestro sin estudio detras.
 - ¿El "Mensaje clave" dice de verdad lo que el padre necesita saber primero, en
   lenguaje llano, sin jerga y sin cifras que no entienda?
 - ¿Hay parrafos tan largos que en un movil nadie los va a leer?

@@ -4,22 +4,33 @@ Este archivo es la memoria de la cadena de investigación. El vigía horario
 (cron) no repite el procedimiento: dice que se lea esto. **Actualízalo al
 final de cada ronda, antes del commit**, y así el vigía nunca queda obsoleto.
 
-> ## ⛔ LA CADENA ESTÁ PARADA POR EL USUARIO (28/09, 18:20 UTC)
+> ## ▶️ LA CADENA SE REANUDÓ POR PETICIÓN DEL USUARIO (29/10)
 >
-> El usuario escribió «**Detén el loop y la investigación**». La cadena de
-> rondas **no se reanuda sola**: el cron del vigía horario
-> (`trig_01EnBfvLkQpCacFrHYCeZy8d`) queda **deshabilitado, no borrado**, así
-> que su historial se conserva y vuelve a andar con `update_trigger
-> enabled=true` el día que el usuario lo pida. **No lo reactives por tu
-> cuenta, no lances una ronda 56 y no sustituyas el cron por `send_later`.**
-> Lo de abajo sigue siendo válido como memoria de lo hecho y como
-> procedimiento para cuando se reanude.
+> El 28/09 el usuario escribió «Detén el loop y la investigación», y el 29/10
+> escribió «**Continúa la investigación**». La investigación vuelve a correr;
+> **el loop no**: el cron del vigía horario (`trig_01EnBfvLkQpCacFrHYCeZy8d`)
+> sigue **deshabilitado** porque el usuario reanudó la investigación, no el
+> vigía. No lo reactives sin que lo pida; se le ha preguntado.
+>
+> **Desde la ronda 56, un tema por ronda**: la guía de tamaño de la sesión pide
+> no pasar de unos 10 agentes por workflow, y cada tema son 7 (investigar,
+> verificar, cuatro lentes, editor). Dos temas eran 14.
+>
+> Entre medias hubo una auditoría completa (22/10): `AUDITORIA-2026-10.md`. Lo
+> que toca a la cadena: el constructor ahora **valida antes de escribir** y para
+> si una ficha trae un encabezado dentro, un código repetido o un cuerpo vacío;
+> cada ficha se publica también suelta en `web/content/temas/XX.json` (lo hace el
+> constructor); y CI falla si `web/content` no está regenerado.
 
-El encargo original era encadenar rondas hasta agotar los créditos; **ese
-encargo está revocado** mientras esté el aviso de arriba. Si nada necesita
-acción, no escribas nada al usuario y termina el turno.
+El encargo original era encadenar rondas hasta agotar los créditos, y vuelve a
+estar vigente. Si nada necesita acción, no escribas nada al usuario y termina
+el turno.
 
 ## Ronda en curso
+
+**Ronda 56, lanzada y viva (29/10).** runId `wf_45c9eb53-ee2`. Códigos **RZ**
+(no pide agua o bebe sin parar: calor, deshidratación e hiponatremia; nº 7 de
+la reserva). El siguiente, en la 57, es el nº 8 (el postoperatorio en casa).
 
 **Ronda 55, PUBLICADA (28/09).** runId `wf_c42aeb3c-ba1`. Códigos **RX** (no
 reanimar, UCI y lista de trasplante cuando tiene discapacidad) y **RY** (se ha
@@ -28,10 +39,10 @@ pasa). Las dos salían de la lista numerada (nº 5 y nº 6), así que el recuent
 encargables baja a **23**. Los siguientes códigos libres son **RZ** en adelante;
 QO y PO siguen libres a propósito.
 
-**No hay ninguna ronda en vuelo.** El presupuesto de búsqueda de la sesión está
-prácticamente agotado (~185 de 200 gastadas), así que la siguiente ronda de
-investigación no cabe: lo que sí cabe es limpieza, auditoría de consultas y la
-deuda de más abajo, que no gastan búsquedas.
+El 29/10 la búsqueda web volvía a responder (el presupuesto de septiembre no
+sigue contando). `WebFetch` sigue bloqueado por la red de la sesión
+(pmc.ncbi.nlm.nih.gov no resuelve): la verificación es por búsqueda, como en
+las rondas anteriores.
 
 **Lo que enseñó la 55, que fue casi todo sobre fichas YA publicadas:**
 
