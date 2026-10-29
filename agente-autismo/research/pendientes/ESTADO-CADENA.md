@@ -28,9 +28,45 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 56, lanzada y viva (29/10).** runId `wf_45c9eb53-ee2`. Códigos **RZ**
-(no pide agua o bebe sin parar: calor, deshidratación e hiponatremia; nº 7 de
-la reserva). El siguiente, en la 57, es el nº 8 (el postoperatorio en casa).
+**Ronda 57, viva pero a medias (30/10).** runId `wf_caf8bb56-df7`. Códigos **SA**
+(ya está operado y en casa: el postoperatorio cuando no dice que le duele y no
+entiende el reposo; nº 8 de la reserva). Investigar, verificar y las cuatro
+lentes terminaron; **el editor (`corregir:SA`) falló cuatro veces por el límite
+de uso de cinco horas** («resets 3:50am UTC»), así que el workflow devolvió SA
+con `publicable: false` y sin las críticas aplicadas. **No es un rechazo: no se
+publica tal cual.** Se reanuda con `resumeFromRunId: 'wf_caf8bb56-df7'` y los
+mismos `args` (los seis agentes hechos se reproducen de caché y solo corre el
+editor). El siguiente, en la 58, es el nº 9 (quieren sujetarlo entre tres para
+sacarle sangre).
+
+**Ronda 56, PUBLICADA (29/10).** runId `wf_45c9eb53-ee2`. Código **RZ** (no
+pide agua nunca, o bebe sin parar: golpe de calor, deshidratación y el peligro
+de beber demasiado; nº 7 de la reserva, que baja a **22** encargables). Cinco
+bloques 🚨, 17 fuentes confirmadas y 10 eliminadas por el verificador, 37
+críticas de las cuatro lentes (8 graves), ninguna muerta. Enlaces inversos desde
+FR, BF, LJ, QP, NJ, RC, EQ, GX, JR y LI; RZ va primera en «no bebe agua» y
+«golpe de calor», y tiene sinónimos propios («bebe del inodoro», «bebe sin
+parar», «desmopresina»…).
+
+**Lo que enseñó la 56:**
+
+- **El editor tocó una ficha publicada antes de la integración.** Corrigió dos
+  frases de **FR** directamente en `biblioteca-autismo.md` (FR daba «piel
+  caliente sin sudor» como señal del golpe de calor; la hoja de los CDC que cita
+  RZ dice piel «seca o húmeda»: que sude no lo descarta). La corrección es buena
+  y se queda, pero **el procedimiento no contaba con que el workflow escribiera
+  en la biblioteca**: antes de `publicar.py`, mira `git diff` de la biblioteca y
+  lee lo que haya cambiado fuera de la ficha nueva.
+- **Esta vez las publicadas tenían razón en tres de cuatro choques.** RZ mandaba
+  «cita esta semana» ante sed y orina muy aumentadas, y QP, NS, LJ y QW dicen el
+  mismo día (urgencias hoy con antipsicótico o con cualquier señal de
+  cetoacidosis); también llevaba en coche al niño inconsciente, contra la regla
+  de QR, QP y NJ. El editor copió el criterio publicado en lugar de inventar uno
+  tercero. El patrón de la casa no es «la publicada se equivoca», es **«una de
+  las dos se equivoca, y hay que mirar cuál»**.
+- **Una fuente de los CDC que nunca se vio en cdc.gov** (calor y medicamentos)
+  salió y la sustituyó la guía del Departamento de Salud de Nueva York, que sí
+  apareció literal. Ninguna URL entró sin haberse visto en una búsqueda.
 
 **Ronda 55, PUBLICADA (28/09).** runId `wf_c42aeb3c-ba1`. Códigos **RX** (no
 reanimar, UCI y lista de trasplante cuando tiene discapacidad) y **RY** (se ha
@@ -338,10 +374,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 55.
-Biblioteca en **460 temas / 226 verificados / 234 síntesis / 4.715 fuentes**.
-Suite **1.192/1.192** (22/10, tras la auditoría de octubre; medido en corrida limpia, no calculado). Reserva:
-**23 encargables de 31**, en
+Rondas 29 a 56.
+Biblioteca en **461 temas / 226 verificados / 235 síntesis / 4.732 fuentes**.
+Suite **1.240/1.240** (30/10, con la ronda 56; medido en corrida limpia, no calculado). Reserva:
+**22 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -349,13 +385,14 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 55 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. Los siguientes libres son **RZ** en adelante.
+**Las rondas 51 a 56 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SA** está en vuelo (ronda 57); los siguientes libres
+son **SB** en adelante.
 
-Para la **56**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
-los avisos de su cabecera** —y mira antes cuántas búsquedas quedan: a 28/09 el
-presupuesto está casi agotado y una ronda de dos temas cuesta unas 60—. Candidata que ya viene de antes:
+Para la **58**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
+29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
 `research/pendientes/RM.md`). Y un aviso que ya costó una equivocación: **"salir
 de casa cuando ya usa pañal fuera" NO es un hueco, es RH** —mira la reserva

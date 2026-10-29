@@ -210,7 +210,9 @@ CATEGORIA_POR_CODIGO = {
     # (cambio de conducta en quien no puede contarlo) es de salud, y caeria en
     # conducta por "agresivo" y "se golpea", que es justo la lectura que la
     # ficha viene a corregir: el primer carril es el cuerpo, no la conducta.
-    "RX": "derechos", "RY": "salud",
+    # Ronda 56: RZ (no bebe o bebe sin parar, calor, sodio) es de salud; por
+    # "bebe del inodoro" o "a escondidas" podria caer en conducta.
+    "RX": "derechos", "RY": "salud", "RZ": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

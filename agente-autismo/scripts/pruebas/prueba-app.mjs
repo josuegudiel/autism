@@ -3445,7 +3445,11 @@ for (const [q, titulo] of [
   ['lleva todo el dia vomitando', 'Le duele la barriga'],
   ['no ha orinado en todo el dia', 'Le duele un testículo'],
   ['se ha tragado un juguete', 'tragado una pila'],
-  ['le ha dado un golpe de calor', 'Termorregulación'],
+  // Hasta la ronda 56 esta abría en FR, que era la mejor que había: explica por
+  // qué su cuerpo avisa distinto, pero no qué hacer. RZ lleva el bloque 🚨 del
+  // golpe de calor (llamar, al fresco, no darle de beber), y es lo que necesita
+  // quien teclea esto. Cambia el destino, no la intención de la prueba.
+  ['le ha dado un golpe de calor', 'No pide agua nunca'],
 ]) {
   const rr = await buscarHondo(q);
   check(`Urgencia, 2ª tanda: «${q}» abre con «${titulo}»`, rr.slice(0, 220).includes(titulo), rr.slice(0, 140));
@@ -4477,6 +4481,97 @@ await ir('#tema/ME');
   check('Auditoría: una fuente con «javascript:» no se convierte en enlace',
     !/href=/.test(h) && /trampa/.test(h), h);
 }
+
+// 78. Ronda 56. RZ: no pide agua nunca, o bebe sin parar (golpe de calor,
+// deshidratación y el sodio que baja por beber de más). Lo que esta ronda tuvo
+// que decidir y que se ata aquí para que nadie lo deshaga:
+//
+//  a) Tres de los cuatro choques con fichas publicadas los ganaron LAS
+//     PUBLICADAS. RZ mandaba «cita esta semana» ante sed y orina muy
+//     aumentadas; QP, NS, LJ y QW dicen el mismo día, y urgencias hoy con
+//     cualquier señal de cetoacidosis o si toma un antipsicótico. Y llevaba en
+//     coche al niño que no responde, contra la regla de QR, QP y NJ.
+//  b) El cuarto lo ganó RZ: FR daba «piel caliente sin sudor» como señal del
+//     golpe de calor, y la hoja de los CDC dice piel seca O HÚMEDA. Con la
+//     frase vieja, un padre que ve sudar a su hijo descartaba lo que no debía.
+//  c) El buscador: «no bebe agua» y «golpe de calor» abrían en P, QW, FR y JR,
+//     que no dicen qué hacer. Las altas se midieron sobre las 2.001 consultas
+//     conocidas (claves de sinónimos y consultas de esta suite) y ninguna
+//     cambió de destino; luego, contra la app.
+{
+  await ir('#tema/RZ');
+  const tx = await texto();
+  const RZ = fichaDe('RZ');
+  check('Ronda 56: RZ abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 56: RZ publica sus fuentes', /Fuentes/.test(RZ) && /https?:\/\//.test(RZ));
+  check('Ronda 56: RZ lleva su número de ronda en la cabecera',
+    /Ronda 56/.test(RZ.split('\n')[0]), RZ.split('\n')[0].slice(0, 120));
+  check('Ronda 56: RZ no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(RZ));
+  // Los cinco bloques 🚨 van primero, sin píldora de color: la app pinta en el
+  // orden del archivo y el CTA de teléfonos sale solo si la primera es urgente.
+  const vinetas = RZ.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 56: las cinco primeras viñetas de RZ son 🚨',
+    vinetas.slice(0, 5).every((l) => l.startsWith('- 🚨')), vinetas.slice(0, 5).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 56: y ninguna de las cinco lleva píldora de semáforo',
+    vinetas.slice(0, 5).every((l) => !/[🟢🟡🔴⚪]/u.test(l)));
+  // a) Lo que RZ tomó de las publicadas.
+  check('Ronda 56: sed y orina de golpe se miran HOY, no «esta semana» (QP, NS, LJ, QW)',
+    /HOY, NO ESTA SEMANA/.test(RZ) && /cetoacidosis/.test(RZ) && !/no es urgencia/i.test(RZ));
+  check('Ronda 56: al que no responde no se le mete en el coche (regla de QR, QP y NJ)',
+    (RZ.match(/no lo metas en el coche/g) || []).length >= 2);
+  check('Ronda 56: con golpe de calor no se le da de beber, y al que bebió de más no se le da más agua',
+    /no le des de beber/.test(RZ) && /No le des más agua/.test(RZ));
+  check('Ronda 56: al que bebe de más no se le quita el agua por su cuenta antes del médico',
+    /no le limites la cantidad/.test(RZ) && /no le quites el agua por tu cuenta/.test(RZ));
+  check('Ronda 56: el calor se activa por el calor real, nunca por junio-agosto',
+    /nunca por los meses de junio a agosto/.test(RZ) && !/en verano/.test(RZ.split('\n')[0]));
+  // El índice la pone en salud: por «a escondidas» o «del inodoro» habría caído
+  // en conducta, que es justo la lectura que la ficha corrige.
+  const rzIdx = idxJson.temas.find((x) => x.codigo === 'RZ');
+  check('Ronda 56: RZ está en la categoría de salud', !!rzIdx && rzIdx.categoria === 'salud', rzIdx && rzIdx.categoria);
+}
+
+// b) FR, corregida: que sude no descarta el golpe de calor.
+{
+  const FR = fichaDe('FR');
+  check('Ronda 56: FR ya no da «piel caliente sin sudor» ni «sudoración ausente» como señal',
+    !/piel caliente sin sudor/.test(FR) && !/sudoración ausente/.test(FR));
+  check('Ronda 56: FR dice que sudar no descarta el golpe de calor',
+    /que sude no lo descarta/.test(FR) && /con o sin sudor/.test(FR));
+}
+
+// c) Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['no bebe agua', 'mi hijo no bebe agua', 'golpe de calor', 'le ha dado un golpe de calor',
+                 'bebe mucha agua', 'bebe muchisima agua', 'bebe agua del grifo', 'bebe del inodoro',
+                 'se bebe el agua del inodoro', 'bebe sin parar', 'no pide agua', 'desmopresina',
+                 'bebe agua a escondidas', 'no quiere beber agua', 'hiponatremia', 'ola de calor',
+                 'lo deje en el coche con calor', 'deshidratacion']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 56: «${q}» abre en RZ`, rr.slice(0, 300).includes('No pide agua nunca'), rr.slice(0, 150));
+}
+// Las que NO debían moverse: «bebe» es también «bebé» sin tilde, y RZ entra en
+// claves con «agua». Comprobado, no supuesto.
+for (const [q, trozo] of [
+  ['senales de autismo en un bebe', 'Señales de autismo en bebés'],
+  ['mi bebe de diez meses no me mira', 'Señales de autismo en bebés'],
+  ['no come nada', 'Come poquísimas cosas'],
+  ['le atrae el agua', 'Natación y seguridad en el agua'],
+  ['termorregulacion', 'Termorregulación y señales corporales'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 56: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los diez enlaces de vuelta que pedía la nota de RZ. Son remisiones frías:
+// ninguno lleva 🚨, para no contar contra el tope de viñetas que solo remiten.
+for (const cod of ['FR', 'BF', 'LJ', 'QP', 'NJ', 'RC', 'EQ', 'GX', 'JR', 'LI']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*RZ\./.test(l) && l.startsWith('- '));
+  check(`Ronda 56: ${cod} enlaza de vuelta a RZ con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 56: la reserva marca el nº 7 como publicado en RZ',
+  /### 7\. [^\n]*PUBLICADO en la ronda 56 como \*\*RZ\*\*/.test(reserva71));
 
 await nav.close();
 console.log('\n' + (errores.length

@@ -5196,6 +5196,7 @@
     "P"
   ],
   "no bebe agua": [
+    "RZ",
     "P",
     "QW"
   ],
@@ -6020,10 +6021,12 @@
     "RS"
   ],
   "le ha dado un golpe de calor": [
+    "RZ",
     "FR",
     "JR"
   ],
   "golpe de calor": [
+    "RZ",
     "FR",
     "JR"
   ],
@@ -6439,5 +6442,42 @@
   ],
   "ha cambiado de conducta y no habla": [
     "RY"
+  ],
+  "bebe mucha agua": [
+    "RZ"
+  ],
+  "bebe agua del grifo": [
+    "RZ"
+  ],
+  "bebe del inodoro": [
+    "RZ"
+  ],
+  "bebe sin parar": [
+    "RZ"
+  ],
+  "no pide agua": [
+    "RZ"
+  ],
+  "desmopresina": [
+    "RZ"
+  ],
+  "bebe agua a escondidas": [
+    "RZ"
+  ],
+  "no quiere beber agua": [
+    "RZ",
+    "P"
+  ],
+  "hiponatremia": [
+    "RZ"
+  ],
+  "ola de calor": [
+    "RZ",
+    "GX",
+    "FR"
+  ],
+  "lo deje en el coche con calor": [
+    "RZ",
+    "LI"
   ]
 }
