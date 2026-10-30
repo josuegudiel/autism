@@ -4660,6 +4660,98 @@ for (const cod of ['CZ', 'QG', 'JR', 'ME', 'RU', 'RV']) {
 check('Ronda 57: la reserva marca el nº 8 como publicado en SA',
   /### 8\. [^\n]*PUBLICADO en la ronda 57 como \*\*SA\*\*/.test(reserva71));
 
+// 80. Ronda 58. SB: quieren sujetarlo entre varios para sacarle sangre o
+// ponerle una vía. Lo que esta ronda decidió:
+//
+//  a) La reserva pedía también el dentista, y el grep previo encontró que PZ
+//     ya lo publicaba entero; MK tenía la imagen. SB se acota a agujas y
+//     enlaza a las dos en vez de repetirlas.
+//  b) La urgencia no se aplaza, y quien decide si lo es es el equipo (como en
+//     MK). Lo que se puede pedir incluso entonces va dentro del primer 🚨.
+//  c) HI y HH daban «30-60 minutos» para cualquier crema anestésica. Con EMLA
+//     es al menos una hora: la familia que la pone media hora y ve que no
+//     funciona concluye que no sirve. Se corrigieron en la misma ronda.
+{
+  await ir('#tema/SB');
+  const tx = await texto();
+  const SB = fichaDe('SB');
+  check('Ronda 58: SB abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 58: SB publica sus fuentes', /Fuentes/.test(SB) && /https?:\/\//.test(SB));
+  check('Ronda 58: SB lleva su número de ronda en la cabecera',
+    /Ronda 58/.test(SB.split('\n')[0]), SB.split('\n')[0].slice(0, 120));
+  check('Ronda 58: SB no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SB));
+  const vinetas = SB.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 58: las dos primeras viñetas de SB son 🚨 y sin píldora de color',
+    vinetas.slice(0, 2).every((l) => l.startsWith('- 🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 2).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 58: la urgencia no se aplaza y la decide el equipo (como en MK)',
+    /no pidas aplazar/.test(vinetas[0]) && /Quien decide si es urgente es el equipo/.test(vinetas[0]) && /\*\*MK\*\*/.test(vinetas[0]));
+  check('Ronda 58: aplazar no es cancelar: no se va sin la nueva fecha',
+    /Aplazar no es cancelar/.test(SB) && /nueva fecha/.test(SB));
+  check('Ronda 58: el punto rojo es sujetarlo entre varios cuando la prueba puede esperar',
+    vinetas.some((l) => l.includes('🔴') && /sujetarlo entre varios/.test(l) && /puede esperar/.test(l)));
+  check('Ronda 58: la plantilla del «plan para pinchazos» lleva la frase de no sujetar salvo urgencia',
+    /plan para pinchazos/.test(SB) && /No sujetar entre varios salvo/.test(SB));
+  check('Ronda 58: nada de sedantes en casa para aguantar un pinchazo',
+    /No le des en casa ningún sedante/.test(SB));
+  check('Ronda 58: SB remite al dentista (PZ) y a la imagen (MK) en vez de repetirlos',
+    /\*\*PZ\b/.test(SB) && /\*\*MK\b/.test(SB));
+  const enVinetas = SB.split('\n').filter((l) => !l.startsWith('>')).join('\n');
+  check('Ronda 58: SB ya no necesita la frase puente de los «30-60 minutos»',
+    !/30-60/.test(enVinetas));
+  const sbIdx = idxJson.temas.find((x) => x.codigo === 'SB');
+  check('Ronda 58: SB está en la categoría de salud', !!sbIdx && sbIdx.categoria === 'salud', sbIdx && sbIdx.categoria);
+}
+// c) La corrección de la crema en las dos fichas publicadas.
+for (const cod of ['HI', 'HH']) {
+  const f = fichaDe(cod);
+  check(`Ronda 58: ${cod} ya no da «30-60 minutos» para cualquier crema`, !/30.60 minutos/.test(f));
+  check(`Ronda 58: ${cod} dice que con EMLA es al menos una hora, y remite a SB`,
+    /al menos una hora/.test(f) && /\*\*SB\*\*/.test(f));
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['sacar sangre', 'lo sujetan para sacarle sangre', 'lo agarraron entre varias enfermeras',
+                 'lo amarraron para el analisis', 'no se deja sacar sangre', 'ponerle una via',
+                 'canalizar la via', 'le pincharon muchas veces', 'quieren sujetarlo para el analisis']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 58: «${q}» abre en SB`, rr.slice(0, 300).includes('Quieren sujetarlo entre varios'), rr.slice(0, 150));
+}
+// Dos que se dejan con las dos fichas arriba, cada una en su orden: el miedo a
+// las agujas se trabaja antes (HI) y la crema que no funcionó se mira en SB.
+for (const [q, primero, segundo] of [
+  ['miedo a las agujas', 'Análisis de sangre y procedimientos médicos', 'Quieren sujetarlo entre varios'],
+  ['crema anestesica', 'Quieren sujetarlo entre varios', 'Análisis de sangre y procedimientos médicos'],
+]) {
+  const rr = await buscarHondo(q);
+  const i1 = rr.indexOf(primero), i2 = rr.indexOf(segundo);
+  check(`Ronda 58: «${q}» abre en «${primero.slice(0, 24)}…», con la otra detrás`,
+    i1 !== -1 && i2 !== -1 && i1 < i2, `${i1} / ${i2}`);
+}
+// «lo sujetaron entre varios» NO se tocó: con SB en la clave, SB le quitaba el
+// primer puesto a QR (el colegio), y en pasado es casi siempre eso.
+for (const [q, trozo] of [
+  ['lo sujetaron entre varios', 'En el colegio lo sujetan'],
+  ['le sujetan en el cole', 'En el colegio lo sujetan'],
+  ['vacunas', 'Vacunas y autismo'],
+  ['analisis de sangre', 'Análisis de sangre y procedimientos'],
+  ['una prueba de sangre para el autismo', 'Biomarcadores'],
+  ['le sale mucha sangre', 'Se ha hecho una herida'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 58: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los ocho enlaces de vuelta, fríos.
+for (const cod of ['HI', 'HH', 'LD', 'FQ', 'MK', 'QL', 'QR', 'PZ']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SB\./.test(l) && l.startsWith('- '));
+  check(`Ronda 58: ${cod} enlaza de vuelta a SB con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 58: la reserva marca el nº 9 como publicado en SB',
+  /### 9\. [^\n]*PUBLICADO en la ronda 58 como \*\*SB\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

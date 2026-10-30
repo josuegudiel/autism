@@ -214,7 +214,9 @@ CATEGORIA_POR_CODIGO = {
     # "bebe del inodoro" o "a escondidas" podria caer en conducta.
     "RX": "derechos", "RY": "salud", "RZ": "salud",
     # Ronda 57: SA (el postoperatorio en casa) es de salud, junto a CZ y QG.
-    "SA": "salud",
+    # Ronda 58: SB (sujetarlo para un pinchazo) es de salud, junto a HI; por
+    # "sujetarlo" podria caer en conducta, que es justo lo que no es.
+    "SA": "salud", "SB": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

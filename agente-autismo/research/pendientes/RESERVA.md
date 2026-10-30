@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) y la 57 el nº 8 (**SA**): quedan 21 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) y la 58 el nº 9 (**SB**): quedan 20 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -123,9 +123,9 @@ FUSIÓN de dos propuestas (hidratación y calor) que compartían el núcleo ente
 
 Los 10 días donde se tuerce todo, y la biblioteca se para justo antes. HUECO REAL: 'CZ. Hospitalización, cirugía y anestesia' está planteada explícitamente como preparación, es decir, termina donde esta empieza; 'CY. Autismo, dolor y su expresión' es el marco conceptual del dolor, no el manejo de un postoperatorio; 'PZ. El dentista dice que hay que dormirlo' y 'MK. Le tienen que hacer una resonancia' son decisiones previas sobre sedación; 'QG. Le operamos las amígdalas' es la decisión quirúrgica. CONTENIDO: cómo saber si le duele cuando no lo verbaliza y por qué se le infradosifica la analgesia justo por eso, el vendaje y los puntos que se toca y se arranca, el delirio de despertar y la confusión de las primeras horas, la vía o el drenaje que no tolera, el estreñimiento por opioides, y cómo se negocia el reposo con alguien que necesita moverse para regularse. Respaldo: escalas observacionales de dolor en personas no verbales y literatura de delirio de emergencia en niños con trastornos del neurodesarrollo.
 
-### 9. Quieren sujetarlo entre tres para sacarle sangre o empastarle una muela: qué puedes pedir en su lugar
+### 9. Quieren sujetarlo entre tres para sacarle sangre o empastarle una muela: qué puedes pedir en su lugar — ✅ PUBLICADO en la ronda 58 como **SB** (acotado a agujas)
 
-> **ENCARGADO ACOTADO en la ronda 58 como SB (30/10).** El grep previo encontró que la sujeción en el dentista ya está en **PZ** (inmovilización protectora, óxido nitroso, sedación) y la de las pruebas de imagen en **MK**. SB se limita a agujas (sangre, vía, inyecciones y vacunas) y empieza donde **HI** termina.
+> **PUBLICADO ACOTADO en la ronda 58 como SB (30/10).** El grep previo encontró que la sujeción en el dentista ya está en **PZ** (inmovilización protectora, óxido nitroso, sedación) y la de las pruebas de imagen en **MK**. SB se limita a agujas (sangre, vía, inyecciones y vacunas) y empieza donde **HI** termina.
 
 Momento concreto y frecuente: le piden al padre que ayude a sujetar y no sabe si eso es normal ni qué alternativas existen. HUECO REAL: 'FQ. Contención y restricción' y 'QR. En el colegio lo sujetan' están escritas para la crisis conductual y el ámbito educativo, donde la lógica y las alternativas son otras; 'HI. Análisis de sangre y procedimientos médicos' y 'AG. Visitas médicas y dentales adaptadas' preparan la visita pero no dicen qué hacer cuando la preparación falla y alguien propone sujetar; 'NM. El calmante de rescate' es sujeción química conductual; 'AR. Trauma' no entra en el trauma médico iatrogénico. CONTENIDO: alternativas que se pueden pedir (anestésico tópico, óxido nitroso, cita larga, desensibilización previa, sedación consciente, aplazar) y el criterio para distinguir la sujeción puntual acordada y avisada de la que se convierte en un trauma médico que arruina todas las consultas siguientes. Respaldo: guías de clinical holding en pediatría y odontopediatría. FRONTERA: que no reescriba FQ; el eje es el procedimiento sanitario, no la conducta.
 

@@ -28,14 +28,45 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 58, lanzada y viva (30/10).** runId `wf_54870979-65b`. Códigos **SB**
-(quieren sujetarlo entre varios para sacarle sangre o ponerle una vía: qué
-puedes pedir en su lugar; nº 9 de la reserva, **acotado**: el grep previo
-encontró que **PZ** ya cubre la sujeción en el dentista —inmovilización
-protectora, óxido nitroso, sedación— y **MK** la de las pruebas de imagen, así
-que SB se limita a agujas —sangre, vía, inyecciones y vacunas— y empieza donde
-**HI** termina). El siguiente, en la 59, es el nº 10 (ducharlo cuando ya es
-adolescente).
+**Ronda 59, lanzada y viva (30/10).** runId `wf_e41d1271-f02`. Códigos **SC**
+(ducharlo cuando ya es adolescente: intimidad, pedirle permiso, quién lo hace y
+cómo se protege de un abuso; nº 10 de la reserva; el grep previo solo encontró
+una viñeta ⚪ en **NP**). El siguiente, en la 60, es el nº 11 (foros, chats y
+captación de un adolescente autista).
+
+**Ronda 58, PUBLICADA (30/10).** runId `wf_54870979-65b`. Código **SB** (quieren
+sujetarlo entre varios para sacarle sangre o ponerle una vía: qué puedes pedir
+en su lugar; nº 9 de la reserva **acotado a agujas**, porque **PZ** ya cubría la
+sujeción en el dentista y **MK** la de las pruebas de imagen; la reserva baja a
+**20** encargables). Dos bloques 🚨 (lo que no puede esperar, y la autolesión
+después de una sujeción), 16 fuentes confirmadas y 2 eliminadas, 31 críticas (3
+graves), ninguna muerta. Ocho enlaces inversos (HI, HH, LD, FQ, MK, QL, QR, PZ).
+
+**Lo que enseñó la 58:**
+
+- **Otra vez la publicada estaba corta, y se corrigió en la misma ronda.**
+  **HI** y **HH** daban «30-60 minutos» para cualquier crema anestésica; con
+  EMLA son al menos 60 (Great Ormond Street) y con el gel de tetracaína, 45
+  (Children's Health Ireland). Una familia que pone EMLA 30 minutos y ve que
+  no funciona concluye que la crema no sirve. Se corrigieron las dos y se quitó
+  de SB la frase puente que lo aclaraba.
+- **Un 🚨 en mitad de una viñeta cuenta como remisión de urgencia**, y la
+  suite tiene un tope de 16. SB decía «es el segundo bloque 🚨 de arriba» en
+  una viñeta ⚪ y fue la 17.ª: CI se habría puesto en rojo. Se escribe «el
+  segundo bloque de urgencia de arriba», sin el emoji (lo mismo hizo el editor
+  de RZ). Antes de correr la suite: `grep` de 🚨 más allá del carácter 12 en
+  la ficha nueva.
+- **Acotar antes de encargar ahorró una ficha duplicada.** El nº 9 de la reserva
+  pedía también el dentista; el grep encontró que PZ ya lo publicaba entero
+  (AAPD, óxido nitroso, inmovilización protectora).
+- **Cinco cosas para que las mire un humano** (nota «Para la app» de SB): (1)
+  llevar a **HI** el metanálisis de Jin y cols. 2024 sobre el Buzzy; (2) matizar
+  en **PZ** que «una sola anestesia» es una ventaja práctica, no un menor riesgo
+  demostrado; (3) confirmar en Sahyoun 2023 con qué se acostumbraba al niño en
+  casa antes de la sedación nasal; (4) citar la guía del Royal College of
+  Nursing (2019) en el punto 🔴 si el verificador confirma que deja la
+  sujeción como último recurso; (5) preguntar si alguna analítica se puede
+  hacer con pinchazo en el dedo o a domicilio.
 
 **Ronda 57, PUBLICADA (30/10).** runId `wf_caf8bb56-df7`. Código **SA** (ya
 está operado y en casa: el postoperatorio cuando no dice que le duele y no
@@ -401,10 +432,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 57.
-Biblioteca en **462 temas / 226 verificados / 236 síntesis / 4.748 fuentes**.
-Suite **1.280/1.280** (30/10, con la ronda 57; medido en corrida limpia, no calculado). Reserva:
-**21 encargables de 31**, en
+Rondas 29 a 58.
+Biblioteca en **463 temas / 226 verificados / 237 síntesis / 4.763 fuentes**.
+Suite **1.323/1.323** (30/10, con la ronda 58; medido en corrida limpia, no calculado). Reserva:
+**20 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -412,12 +443,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 57 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SB** está en vuelo (ronda 58); los siguientes libres
-son **SC** en adelante.
+**Las rondas 51 a 58 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SC** está en vuelo (ronda 59); los siguientes libres
+son **SD** en adelante.
 
-Para la **59**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **60**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en

@@ -605,6 +605,7 @@
     "HI"
   ],
   "sacar sangre": [
+    "SB",
     "HI"
   ],
   "operacion cirugia": [
@@ -6516,5 +6517,38 @@
   ],
   "le duele despues de la operacion": [
     "SA"
+  ],
+  "lo sujetan para sacarle sangre": [
+    "SB"
+  ],
+  "lo agarraron entre varias enfermeras": [
+    "SB"
+  ],
+  "lo amarraron para el analisis": [
+    "SB"
+  ],
+  "no se deja sacar sangre": [
+    "SB",
+    "HI"
+  ],
+  "ponerle una via": [
+    "SB"
+  ],
+  "canalizar la via": [
+    "SB"
+  ],
+  "le pincharon muchas veces": [
+    "SB"
+  ],
+  "miedo a las agujas": [
+    "HI",
+    "SB"
+  ],
+  "quieren sujetarlo para el analisis": [
+    "SB"
+  ],
+  "crema anestesica": [
+    "SB",
+    "HI"
   ]
 }
