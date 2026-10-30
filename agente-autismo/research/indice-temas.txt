@@ -460,3 +460,4 @@ RW. Se mece o se da cabezazos para dormirse: ¿es autolesión o es cómo se duer
 RX. Dicen que no lo reanimarían ni lo subirían a la UCI: orden de no reanimar, UCI y lista de trasplante cuando tiene discapacidad
 RY. Se ha puesto agresivo o ha dejado de hacer cosas que hacía, y no puede contarte qué le pasa
 RZ. No pide agua nunca, o bebe sin parar: golpe de calor, deshidratación y el peligro de beber demasiado
+SA. Ya está operado y en casa: el postoperatorio cuando no dice que le duele y no entiende el reposo

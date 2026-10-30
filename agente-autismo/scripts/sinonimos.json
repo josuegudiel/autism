@@ -2155,7 +2155,8 @@
     "QG"
   ],
   "sangra despues de la operacion": [
-    "QG"
+    "QG",
+    "SA"
   ],
   "nacio prematuro": [
     "QH"
@@ -6479,5 +6480,41 @@
   "lo deje en el coche con calor": [
     "RZ",
     "LI"
+  ],
+  "despues de la operacion": [
+    "SA"
+  ],
+  "le han operado": [
+    "SA"
+  ],
+  "ya esta operado": [
+    "SA"
+  ],
+  "postoperatorio": [
+    "SA"
+  ],
+  "despues de operar": [
+    "SA"
+  ],
+  "reposo despues de operar": [
+    "SA"
+  ],
+  "no se esta quieto despues de operar": [
+    "SA"
+  ],
+  "se arranca los puntos": [
+    "SA"
+  ],
+  "se quita los puntos": [
+    "SA"
+  ],
+  "se arranca el vendaje": [
+    "SA"
+  ],
+  "calmante despues de operar": [
+    "SA"
+  ],
+  "le duele despues de la operacion": [
+    "SA"
   ]
 }

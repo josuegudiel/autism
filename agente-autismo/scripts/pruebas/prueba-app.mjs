@@ -4573,6 +4573,93 @@ for (const cod of ['FR', 'BF', 'LJ', 'QP', 'NJ', 'RC', 'EQ', 'GX', 'JR', 'LI']) 
 check('Ronda 56: la reserva marca el nº 7 como publicado en RZ',
   /### 7\. [^\n]*PUBLICADO en la ronda 56 como \*\*RZ\*\*/.test(reserva71));
 
+// 79. Ronda 57. SA: ya está operado y en casa (el postoperatorio cuando no dice
+// que le duele y no entiende el reposo). Lo que esta ronda decidió y se ata
+// aquí:
+//
+//  a) Los choques con QG, RV, MN y RU se resolvieron con lo que esas fichas ya
+//     publican. La sangre tras operar amígdalas es urgencias aunque pare sola
+//     (QG); con yeso o un miembro operado, la agitación y el calmante que no
+//     alcanza son urgencias antes de que cambie el color de los dedos (RV).
+//  b) El primer bloque 🚨 ya no depende de que tome un opioide: un niño recién
+//     operado que cuesta despertar es emergencia tome lo que tome.
+//  c) Codeína y tramadol: ni una dosis en menores de 12 o tras amígdalas, con
+//     la misma restricción de la FDA que publica QG.
+{
+  await ir('#tema/SA');
+  const tx = await texto();
+  const SA = fichaDe('SA');
+  check('Ronda 57: SA abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 57: SA publica sus fuentes', /Fuentes/.test(SA) && /https?:\/\//.test(SA));
+  check('Ronda 57: SA lleva su número de ronda en la cabecera',
+    /Ronda 57/.test(SA.split('\n')[0]), SA.split('\n')[0].slice(0, 120));
+  check('Ronda 57: SA no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SA));
+  const vinetas = SA.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 57: las cinco primeras viñetas de SA son 🚨',
+    vinetas.slice(0, 5).every((l) => l.startsWith('- 🚨')), vinetas.slice(0, 5).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 57: y ninguna de las cinco lleva píldora de semáforo',
+    vinetas.slice(0, 5).every((l) => !/[🟢🟡🔴⚪]/u.test(l)));
+  check('Ronda 57: el primer 🚨 vale tome lo que tome, no solo con opioide',
+    /tome lo que tome/.test(vinetas[0]));
+  check('Ronda 57: el primer 🚨 lleva el hueco para apuntar el número del país',
+    /\[ _+ \]/.test(vinetas[0]));
+  check('Ronda 57: la sangre tras operar amígdalas es urgencias aunque pare sola (como QG)',
+    /dos semanas siguientes/.test(vinetas[2]) && /aunque pare sola/.test(vinetas[2]) && /\*\*QG\*\*/.test(vinetas[2]));
+  check('Ronda 57: con yeso o un miembro operado no se espera al color de los dedos (como RV)',
+    /no esperes al color/.test(SA) && /\*\*RV\*\*/.test(SA));
+  const rojo = vinetas.find((l) => l.includes('🔴')) || '';
+  const iRojo = SA.indexOf(rojo);
+  const bloqueRojo = SA.slice(iRojo, SA.indexOf('\n- ', iRojo + 1));
+  check('Ronda 57: codeína y tramadol, ni una dosis (en el punto rojo)',
+    /codeína/.test(bloqueRojo) && /tramadol/.test(bloqueRojo) && /ni una dosis/.test(bloqueRojo), bloqueRojo.slice(0, 120));
+  check('Ronda 57: el reposo se organiza con una lista por escrito', /lista por escrito/.test(SA));
+  const saIdx = idxJson.temas.find((x) => x.codigo === 'SA');
+  check('Ronda 57: SA está en la categoría de salud', !!saIdx && saIdx.categoria === 'salud', saIdx && saIdx.categoria);
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['le han operado', 'ya esta operado', 'postoperatorio', 'despues de operar',
+                 'reposo despues de operar', 'no se esta quieto despues de operar', 'se arranca los puntos',
+                 'se quita los puntos', 'se arranca el vendaje', 'calmante despues de operar',
+                 'le duele despues de la operacion', 'mi hijo ya esta operado y no para quieto']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 57: «${q}» abre en SA`, rr.slice(0, 300).includes('Ya está operado y en casa'), rr.slice(0, 150));
+}
+// «sangra despues de la operacion» sigue abriendo en QG, con SA detrás: la
+// amígdala es la operación que más sangra en casa y QG es su ficha. Y el
+// desempate que se decidió a propósito, como el de «calidad de vida» en la
+// ronda 55: «despues de la operacion» a secas cae dentro de esa clave larga y
+// hereda su empuje, así que abre en QG con SA justo detrás. Ganarle exigiría
+// quitarle a QG la clave que la hace encontrable cuando sangra, que es peor.
+for (const q of ['sangra despues de la operacion', 'despues de la operacion']) {
+  const rr = await buscarHondo(q);
+  const iQG = rr.indexOf('Ronca y deja de respirar');
+  const iSA = rr.indexOf('Ya está operado y en casa');
+  check(`Ronda 57: «${q}» abre en QG, con SA detrás`,
+    iQG !== -1 && iSA !== -1 && iQG < iSA, `QG en ${iQG}, SA en ${iSA}`);
+}
+for (const [q, trozo] of [
+  ['operacion de amigdalas', 'Ronca y deja de respirar'],
+  ['necesita puntos', 'Se ha hecho una herida'],
+  ['le hace falta puntos', 'Se ha hecho una herida'],
+  ['le van a poner anestesia', 'El dentista dice que hay que dormirlo'],
+  ['operacion cirugia', 'Hospitalización, cirugía y anestesia'],
+  ['le quieren operar el pie', 'Camina de puntillas'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 57: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los seis enlaces de vuelta, fríos.
+for (const cod of ['CZ', 'QG', 'JR', 'ME', 'RU', 'RV']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SA\./.test(l) && l.startsWith('- '));
+  check(`Ronda 57: ${cod} enlaza de vuelta a SA con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 57: la reserva marca el nº 8 como publicado en SA',
+  /### 8\. [^\n]*PUBLICADO en la ronda 57 como \*\*SA\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
