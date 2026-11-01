@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) y la 58 el nº 9 (**SB**): quedan 20 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) la 58 el nº 9 (**SB**) y la 59 el nº 10 (**SC**): quedan 19 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -17,6 +17,10 @@ El detector **solo ve lo que está publicado**: no sabe qué ronda está en vuel
 - **nº 3** — ✅ YA CUBIERTA: se publicó como **RS** en la ronda 52.
 
 **Y la regla de siempre:** antes de encargar un tema, `grep` su asunto en `research/biblioteca-autismo.md`. "Salir de casa cuando ya usa pañal fuera" parecía un hueco y ya era RH.
+
+## Hueco nuevo que dejó la ronda 59 (01/11), fuera de la numeración
+
+**La pubertad del chico: erecciones, poluciones nocturnas, masturbación y lo público y lo privado.** El editor de SC lo señaló: **DA** solo trata la regla, **S** es educación sexual en general y **SC** solo toca la erección durante el aseo. Antes de encargarlo, `grep` de «polución», «masturb» y «erección» en la biblioteca; si se encarga, que remita a SC, S, DA y EF y no los repita.
 
 ## Huecos nuevos, encontrados probando consultas (23/09)
 
@@ -129,7 +133,7 @@ Los 10 días donde se tuerce todo, y la biblioteca se para justo antes. HUECO RE
 
 Momento concreto y frecuente: le piden al padre que ayude a sujetar y no sabe si eso es normal ni qué alternativas existen. HUECO REAL: 'FQ. Contención y restricción' y 'QR. En el colegio lo sujetan' están escritas para la crisis conductual y el ámbito educativo, donde la lógica y las alternativas son otras; 'HI. Análisis de sangre y procedimientos médicos' y 'AG. Visitas médicas y dentales adaptadas' preparan la visita pero no dicen qué hacer cuando la preparación falla y alguien propone sujetar; 'NM. El calmante de rescate' es sujeción química conductual; 'AR. Trauma' no entra en el trauma médico iatrogénico. CONTENIDO: alternativas que se pueden pedir (anestésico tópico, óxido nitroso, cita larga, desensibilización previa, sedación consciente, aplazar) y el criterio para distinguir la sujeción puntual acordada y avisada de la que se convierte en un trauma médico que arruina todas las consultas siguientes. Respaldo: guías de clinical holding en pediatría y odontopediatría. FRONTERA: que no reescriba FQ; el eje es el procedimiento sanitario, no la conducta.
 
-### 10. Ducharlo cuando ya es adolescente: intimidad, pedirle permiso, quién lo hace y cómo se protege de un abuso
+### 10. Ducharlo cuando ya es adolescente: intimidad, pedirle permiso, quién lo hace y cómo se protege de un abuso — ✅ PUBLICADO en la ronda 59 como **SC**
 
 El día en que el hijo al que lavabas a los 5 años tiene 14, vello púbico, regla o erecciones, y nadie ha dicho qué se hace. HUECO REAL: 'NP' solo trata de no lesionarte la espalda al ducharlo y moverlo; 'DB' va de las batallas sensoriales de higiene en la infancia; 'RH' de dónde cambiarlo fuera de casa; 'EF. Seguridad personal y prevención del abuso' enseña al hijo a protegerse pero no regula al cuidador; 'S' y 'DA' son educación sexual y menstruación, no el aseo asistido diario. CONTENIDO: quién lo asea (¿el padre a la hija?, ¿el hermano?, ¿la cuidadora?), cómo se pide permiso y se avisa paso a paso a alguien que no habla, cómo se le enseña a hacer cada vez más partes solo, y por qué este es justo el contexto de mayor riesgo de abuso (muchos adultos con acceso al cuerpo, límites físicos borrosos). Respaldo bueno: protocolos de intimate care de servicios educativos y de protección infantil, y literatura de safeguarding de menores con discapacidad.
 

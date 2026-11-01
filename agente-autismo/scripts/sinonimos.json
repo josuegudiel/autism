@@ -2332,7 +2332,8 @@
     "NP"
   ],
   "ducharlo siendo grande": [
-    "NP"
+    "NP",
+    "SC"
   ],
   "subirlo al coche": [
     "NP"
@@ -6550,5 +6551,44 @@
   "crema anestesica": [
     "SB",
     "HI"
+  ],
+  "lo sigo duchando yo": [
+    "SC"
+  ],
+  "ducharla": [
+    "SC"
+  ],
+  "bañarlo": [
+    "SC"
+  ],
+  "bañarla": [
+    "SC"
+  ],
+  "asearlo": [
+    "SC"
+  ],
+  "aseo intimo": [
+    "SC"
+  ],
+  "higiene intima adolescente": [
+    "SC"
+  ],
+  "intimidad al ducharlo": [
+    "SC"
+  ],
+  "quien lo ducha en el respiro": [
+    "SC"
+  ],
+  "lo ducha un monitor": [
+    "SC"
+  ],
+  "ereccion en la ducha": [
+    "SC"
+  ],
+  "le cambio la compresa": [
+    "SC"
+  ],
+  "necesita ayuda para ducharse": [
+    "SC"
   ]
 }

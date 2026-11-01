@@ -4752,6 +4752,100 @@ for (const cod of ['HI', 'HH', 'LD', 'FQ', 'MK', 'QL', 'QR', 'PZ']) {
 check('Ronda 58: la reserva marca el nº 9 como publicado en SB',
   /### 9\. [^\n]*PUBLICADO en la ronda 58 como \*\*SB\*\*/.test(reserva71));
 
+// 81. Ronda 59. SC: ya tiene 14 años y lo sigo duchando yo (intimidad,
+// permiso, quién lo asea y cómo protegerlo de un abuso). Lo que se decidió:
+//
+//  a) Las urgencias que se ven al ducharlo (parafimosis, testículo, sangre,
+//     marcas) van arriba y salen de RA, LL y PP, que tienen sus fuentes; SC
+//     no las reescribe con criterio propio.
+//  b) No hay una regla única de «siempre dos adultos»: las guías británicas
+//     no coinciden. Se pide por escrito qué hace el centro y por qué.
+//  c) Dos publicadas corregidas en la misma ronda: el mensaje clave de RA
+//     decía «de hoy» para el prepucio que no vuelve mientras su 🚨 decía
+//     «ahora»; RH decía que no habíamos verificado lo del auxiliar técnico
+//     educativo, y SC encontró la unidad de competencia del INCUAL.
+{
+  await ir('#tema/SC');
+  const tx = await texto();
+  const SC = fichaDe('SC');
+  check('Ronda 59: SC abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 59: SC publica sus fuentes', /Fuentes/.test(SC) && /https?:\/\//.test(SC));
+  check('Ronda 59: SC lleva su número de ronda en la cabecera',
+    /Ronda 59/.test(SC.split('\n')[0]), SC.split('\n')[0].slice(0, 120));
+  check('Ronda 59: SC no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SC));
+  const vinetas = SC.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 59: las cuatro primeras viñetas de SC son 🚨 y sin píldora de color',
+    vinetas.slice(0, 4).every((l) => l.startsWith('- 🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 4).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 59: la parafimosis es urgencias ahora y no se tira más (como RA)',
+    /urgencias ahora/.test(vinetas[0]) && /No tires más/.test(vinetas[0]) && /\*\*RA\b/.test(vinetas[0]));
+  check('Ronda 59: el testículo es urgencias ahora, aunque no se queje (como RA)',
+    /testículo/.test(vinetas[1]) && /urgencias ahora/.test(vinetas[1]));
+  check('Ronda 59: haberlo duchado nunca es motivo para no ir',
+    /si ya lo duchaste, ve igual/.test(SC));
+  check('Ronda 59: ante una erección o la regla, ni comentarios ni castigos',
+    /ni comentarios, ni risas, ni castigos/.test(SC));
+  check('Ronda 59: no hay una regla única de dos adultos: se pide por escrito qué hace el centro',
+    /no hay una regla única de «siempre dos adultos»/.test(SC) && /por escrito/.test(SC));
+  check('Ronda 59: un hermano menor de edad no le lava las partes íntimas',
+    /menor de edad no le lava/.test(SC));
+  check('Ronda 59: para quien entra en casa, el certificado de antecedentes (como NB y NH)',
+    /certificado de antecedentes/.test(SC) && /\*\*NB\*\*/.test(SC) && /\*\*NH\*\*/.test(SC));
+  check('Ronda 59: ningún 🚨 en mitad de una viñeta de SC',
+    SC.split('\n').filter((l) => /^ *- /.test(l)).every((l) => !l.slice(12).includes('🚨')));
+  const scIdx = idxJson.temas.find((x) => x.codigo === 'SC');
+  check('Ronda 59: SC está en la categoría de familia', !!scIdx && scIdx.categoria === 'familia', scIdx && scIdx.categoria);
+}
+// c) Las dos correcciones.
+{
+  const RA = fichaDe('RA');
+  check('Ronda 59: el mensaje clave de RA ya no dice que el prepucio que no vuelve es «de hoy»',
+    !/cuatro excepciones que sí son de hoy/.test(RA) && /que es urgencias \*\*ahora\*\*, como la torsión/.test(RA));
+  const RH = fichaDe('RH');
+  check('Ronda 59: RH recoge la unidad de competencia del INCUAL, con su alcance, y remite a SC',
+    /INCUAL/.test(RH) && /no el contrato de cada auxiliar/.test(RH) && /\*\*SC\*\*/.test(RH)
+    && !/ni si los auxiliares técnicos educativos tienen esta función reconocida/.test(RH));
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['lo sigo duchando yo', 'ya tiene 14 años y lo sigo duchando', 'ducharla', 'bañarlo', 'bañarla',
+                 'asearlo', 'aseo intimo', 'higiene intima adolescente', 'necesita ayuda para ducharse',
+                 'intimidad al ducharlo', 'quien lo ducha en el respiro', 'lo ducha un monitor',
+                 'ereccion en la ducha', 'le cambio la compresa']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 59: «${q}» abre en SC`, rr.slice(0, 300).includes('Ya tiene 14 años y lo sigo duchando yo'), rr.slice(0, 150));
+}
+// «ducharlo siendo grande» sigue en NP —su título lo dice con esas palabras y
+// es la ficha de la espalda—, con SC justo detrás.
+{
+  const rr = await buscarHondo('ducharlo siendo grande');
+  const iNP = rr.indexOf('Ya pesa más que tú'), iSC = rr.indexOf('Ya tiene 14 años y lo sigo duchando yo');
+  check('Ronda 59: «ducharlo siendo grande» abre en NP, con SC detrás', iNP !== -1 && iSC !== -1 && iNP < iSC, `${iNP} / ${iSC}`);
+}
+// La que estuvo a punto de moverse: la clave propuesta «no se ducha solo»
+// contenía «no se ducha» y se la quitaba a DB. Se dio de alta «necesita ayuda
+// para ducharse» en su lugar.
+for (const [q, trozo] of [
+  ['no se ducha', 'Higiene sensorial'],
+  ['no quiere ducharse', 'Cortar las uñas, lavarse el pelo'],
+  ['le huele el sudor y no se ducha', 'Higiene sensorial'],
+  ['no se cambia la compresa', 'Pubertad y menstruación'],
+  ['ahogarse en la bañera', 'Asegurar la casa'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 59: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los doce enlaces de vuelta, fríos.
+for (const cod of ['NP', 'RH', 'RA', 'LL', 'PP', 'EF', 'S', 'DA', 'EE', 'NB', 'NH', 'RO']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SC\./.test(l) && l.startsWith('- '));
+  check(`Ronda 59: ${cod} enlaza de vuelta a SC con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 59: la reserva marca el nº 10 como publicado en SC',
+  /### 10\. [^\n]*PUBLICADO en la ronda 59 como \*\*SC\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

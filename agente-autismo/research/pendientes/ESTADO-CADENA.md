@@ -28,11 +28,37 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 59, lanzada y viva (30/10).** runId `wf_e41d1271-f02`. Códigos **SC**
-(ducharlo cuando ya es adolescente: intimidad, pedirle permiso, quién lo hace y
-cómo se protege de un abuso; nº 10 de la reserva; el grep previo solo encontró
-una viñeta ⚪ en **NP**). El siguiente, en la 60, es el nº 11 (foros, chats y
-captación de un adolescente autista).
+**Ronda 60, lanzada y viva (01/11).** runId `wf_8e39f676-ba8`. Códigos **SD**
+(pasa el día en foros y chats y ha cambiado: captación, sectas y manipulación
+de un adolescente autista; nº 11 de la reserva; el grep previo encontró que
+**DV** cubre los riesgos en internet en general y **PU** la sextorsión, que se
+queda allí). El siguiente, en la 61, es el nº 12 (las vacunas del adolescente y
+del adulto).
+
+**Ronda 59, PUBLICADA (01/11).** runId `wf_e41d1271-f02`. Código **SC** (ya
+tiene 14 años y lo sigo duchando yo: cómo respetar su intimidad y protegerlo de
+abusos; nº 10 de la reserva, que baja a **19** encargables). Cuatro bloques 🚨
+(parafimosis, testículo, urgencias hoy por lo que se ve al ducharlo, y lesiones
+que se miran el mismo día), 17 fuentes confirmadas y 6 eliminadas, 40 críticas
+(4 graves), ninguna muerta. Doce enlaces inversos (NP, RH, RA, LL, PP, EF, S,
+DA, EE, NB, NH, RO).
+
+**Lo que enseñó la 59:**
+
+- **El editor volvió a quedarse sin cuota** (segunda vez en tres rondas) y se
+  reanudó desde la caché dos días después. Lo que lo provoca es tener dos
+  workflows a la vez: **desde la 60, la siguiente ronda se lanza cuando la
+  anterior ya ha terminado**, mientras se publica, no mientras investiga.
+- **Dos fichas publicadas corregidas en la misma ronda.** El mensaje clave de
+  **RA** decía que el prepucio que no vuelve era «de hoy» mientras su propio
+  bloque 🚨 decía «urgencias ahora»: ahora dice «ahora». Y **RH** decía que no
+  habíamos verificado si el auxiliar técnico educativo tiene reconocida la
+  higiene; SC encontró la unidad de competencia del INCUAL, y RH la recoge con
+  su alcance (describe la cualificación, no el contrato de cada auxiliar).
+- **Otra vez un 🚨 en mitad de una viñeta** («es el 🚨 del testículo, arriba»),
+  cazado esta vez antes de la suite con el `grep` que dejó escrito la 58.
+- **Hueco nuevo:** la pubertad del chico (erecciones, poluciones,
+  masturbación). Está anotado en `RESERVA.md`, fuera de la numeración.
 
 **Ronda 58, PUBLICADA (30/10).** runId `wf_54870979-65b`. Código **SB** (quieren
 sujetarlo entre varios para sacarle sangre o ponerle una vía: qué puedes pedir
@@ -432,10 +458,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 58.
-Biblioteca en **463 temas / 226 verificados / 237 síntesis / 4.763 fuentes**.
-Suite **1.323/1.323** (30/10, con la ronda 58; medido en corrida limpia, no calculado). Reserva:
-**20 encargables de 31**, en
+Rondas 29 a 59.
+Biblioteca en **464 temas / 226 verificados / 238 síntesis / 4.780 fuentes**.
+Suite **1.372/1.372** (01/11, con la ronda 59; medido en corrida limpia, no calculado). Reserva:
+**19 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -443,12 +469,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 58 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA, SB). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SC** está en vuelo (ronda 59); los siguientes libres
-son **SD** en adelante.
+**Las rondas 51 a 59 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB, SC). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SD** está en vuelo (ronda 60); los siguientes libres
+son **SE** en adelante.
 
-Para la **60**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **61**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en

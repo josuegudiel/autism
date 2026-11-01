@@ -15,7 +15,7 @@
 > promete el README del proyecto existe **solo en la web**: en `ios/` no hay
 > IndexedDB, ni SwiftData, ni Core Data.
 
-Biblioteca offline de 463 temas sobre autismo, en español. Sin backend, sin
+Biblioteca offline de 464 temas sobre autismo, en español. Sin backend, sin
 cuentas y sin red: todo el contenido viaja dentro de la app.
 
 - **Mínimo:** iOS 17 · Xcode 15 · Swift 5.9
