@@ -1,6 +1,21 @@
 # Brújula TEA — app de iPhone (SwiftUI)
 
-Biblioteca offline de 308 temas sobre autismo, en español. Sin backend, sin
+> ⚠️ **Estado: reescrito, pendiente de compilar en un Mac.** `Vistas/DetectorView.swift`
+> y `Vistas/AyudaView.swift` se habían quedado sin sus vistas y el target no
+> compilaba. El 22/10 se reescribieron a partir de las APIs que ya existen en
+> `Datos/Biblioteca.swift` y `Modelos/Modelos.swift`, **en Linux y sin
+> compilador de Swift delante**: lo más probable es que Xcode pida algún
+> retoque. El Detector de iOS, a propósito, **no pinta veredicto de color**:
+> el que calcula `Biblioteca.nivel(de:)` cuenta semáforos y decía «Con
+> respaldo» a «las vacunas causan autismo»; abre la ficha en su lugar. Que
+> lea los veredictos explícitos de `banderas-rojas.json`, como la web, queda
+> pendiente.
+>
+> ⚠️ **La app nativa no tiene rastreador.** El «Seguimiento de mi hijo» que
+> promete el README del proyecto existe **solo en la web**: en `ios/` no hay
+> IndexedDB, ni SwiftData, ni Core Data.
+
+Biblioteca offline de 465 temas sobre autismo, en español. Sin backend, sin
 cuentas y sin red: todo el contenido viaja dentro de la app.
 
 - **Mínimo:** iOS 17 · Xcode 15 · Swift 5.9
@@ -31,8 +46,8 @@ Los tres archivos de datos van en el **bundle**, sin subcarpeta ni renombrado:
 
 | Archivo | Tamaño aprox. | Cuándo se carga |
 |---|---|---|
-| `biblioteca-indice.json` | ~295 KB | al arrancar la app |
-| `biblioteca-cuerpo.json` | ~1,6 MB | al abrir el primer tema |
+| `biblioteca-indice.json` | ~600 KB | al arrancar la app |
+| `biblioteca-cuerpo.json` | ~5 MB | al abrir el primer tema |
 | `ayuda-urgente.json` | pequeño | al abrir la pestaña Ayuda |
 
 Pasos:
@@ -80,8 +95,8 @@ BrujulaTEA/
   Vistas/InicioView.swift          buscador destacado, chips, rejilla
   Vistas/BibliotecaView.swift      búsqueda, categorías y todos los temas
   Vistas/TemaDetalleView.swift     título, cuerpo, fuentes, relacionados
-  Vistas/DetectorView.swift        terapias y productos, con desambiguación
-  Vistas/AyudaView.swift           teléfonos de crisis, alarma y qué hacer
+  Vistas/DetectorView.swift        detector: busca en la categoría de pseudociencias
+  Vistas/AyudaView.swift           teléfonos de crisis y emergencias (pulsables)
   Vistas/Componentes.swift         tarjetas, badges, leyenda, markdown
   Info.plist
 ```
@@ -124,6 +139,11 @@ como punto de color + etiqueta: *Evidencia sólida*, *Evidencia limitada*,
 
 ## Qué falta para publicar
 
+- **Compilar en un Mac.** `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift`
+  se reescribieron el 22/10 sin compilador; lo primero es abrirlo en Xcode y
+  corregir lo que pida.
+- **Que el Detector lea `banderas-rojas.json`**, con sus veredictos explícitos
+  (incluido «Es un mito»), en vez de buscar en la categoría de pseudociencias.
 - Icono de app y pantalla de carga (`Assets.xcassets`).
 - Revisión en un Mac: el código se escribió sin Xcode delante.
 - Opcional: `SFSafariViewController` si prefieres abrir las fuentes dentro de

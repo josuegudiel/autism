@@ -8,11 +8,13 @@ Uso:
 Genera:
     web/content/biblioteca-indice.json    índice ligero para buscar (títulos, resumen, palabras clave)
     web/content/biblioteca-cuerpo.json    contenido completo de cada tema (se carga al abrir uno)
+    web/content/biblioteca-busqueda.json  palabra del cuerpo -> temas (se carga solo al buscar)
 
 No hace falta instalar nada: solo Python 3.
 Si añades o editas un tema en la biblioteca, vuelve a ejecutar este script.
 """
 
+import gzip
 import html
 import json
 import os
@@ -24,6 +26,13 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BIBLIOTECA = os.path.join(RAIZ, "research", "biblioteca-autismo.md")
 SALIDA = os.path.join(RAIZ, "web", "content")
 SINONIMOS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sinonimos.json")
+# Un fichero por tema. La app abre un tema bajando SOLO el suyo (unos 3 KB
+# comprimidos de mediana) en vez del cuerpo entero de la biblioteca (unos 1,6 MB
+# comprimidos, 5 MB sin comprimir), que era lo que pagaba antes quien abria
+# cualquier tema por primera vez, con datos moviles, y a veces para leer que
+# hacer durante una convulsion. biblioteca-cuerpo.json se sigue generando: lo
+# usan la descarga para usar la app sin conexion, la app de iOS y la suite.
+TEMAS_DIR = os.path.join(SALIDA, "temas")
 
 # --- Categorías: se asignan por palabras del título. La primera que coincide gana. ---
 CATEGORIAS = [
@@ -55,6 +64,7 @@ CATEGORIAS = [
         "conducta", "meltdown", "rabieta", "shutdown", "stimming", "agresión",
         "regulación emocional", "crisis", "contención", "catatonia", "autolesión",
         "transiciones y apoyos", "intereses intensos", "pda", "burnout",
+        "acumulación",
     ]),
     ("sensorial", "Mundo sensorial", [
         "sensorial", "interocepción", "misofonía", "procesamiento auditivo",
@@ -69,6 +79,8 @@ CATEGORIAS = [
         "alimentación", "conducta alimentaria", "pubertad", "menstruación", "esfínteres",
         "motricidad", "neurobiología", "genétic", "x frágil", "rett", "esclerosis tuberosa",
         "síndrome de down", "discapacidad intelectual", "sustancias",
+        "paliativos", "quimioterapia", "enfermedad grave",
+        "urgencias", "medicamento",
     ]),
     ("escuela", "Escuela y aprendizaje", [
         "escuela", "escolar", "colegio", "aula", "recreo", "comedor", "excursion",
@@ -76,20 +88,33 @@ CATEGORIAS = [
         "discalculia", "disgrafía", "funciones ejecutivas", "memoria", "juego",
         "educación en casa", "doble excepcionalidad", "acoso", "reuniones escolares",
         "percepción del tiempo", "reconocimiento de caras",
+        # MV ("expulsiones, partes y exclusión encubierta") no lleva ninguna
+        # palabra de esta lista y caia en el cajon por defecto.
+        "expulsiones", "exclusión encubierta",
     ]),
     ("familia", "Familia y vida diaria", [
         "familia", "cuidador", "hermanos", "abuelos", "pareja", "divorcio", "duelo",
         "respiro", "crianza", "explicar el autismo", "estigma", "viajes", "salir:",
         "campamento", "transporte", "emergencias", "baño", "cocinar", "dinero",
         "organización y tareas", "habilidades de vida", "amistades", "amistad",
+        "cuido",
+        "vecinos",
     ]),
     ("adultez", "Adolescencia y vida adulta", [
         "adolescencia", "adultez", "adulto", "empleo", "trabajo", "entrevistas",
         "vivienda", "conducir", "envejecimiento", "sexualidad", "citas y relaciones",
         "maternidad", "embarazo", "planificación financiera", "justicia", "coaching",
         "independencia", "menopausia",
+        # La ficha de la cuenta del banco (QD) caia en "Comprender el autismo", que
+        # es el cajon por defecto, y arrastraba ahi a LQ y a PV. Los patrones van
+        # ajustados a proposito: "tutela" a secas se llevaria PP (piso tutelado) y
+        # "los 18" se llevaria MU y QB, que no son de vida adulta.
+        "mayor de edad", "mayoría de edad", "incapacitar", "antes de los 18",
     ]),
     ("derechos", "Derechos y recursos por país", [
+        # LP (el certificado) y QN (la mudanza entre comunidades) caian en el cajon
+        # por defecto. "certificado" a secas se llevaria NU, que esta bien en escuela.
+        "valoración de discapacidad", "me vale el certificado",
         "derechos y recursos", "panorama", "en méxico", "en españa", "en argentina",
         "en colombia", "en chile", "en perú", "en brasil", "centroamérica",
         "puerto rico", "costa rica", "honduras", "ee. uu.", "encontrar recursos",
@@ -124,8 +149,130 @@ def normalizar(texto):
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
 
 
-def categoria_de(titulo):
+# Asignacion a mano, por codigo. "Comprender el autismo" es el cajon por defecto
+# del conversor y habia acabado con 113 de las 429 fichas dentro: "Convulsiones:
+# que hacer en el momento" y "No se traga las pastillas" vivian en la misma
+# categoria que "Historia del concepto de autismo". Los titulos de esta
+# biblioteca estan escritos como habla una familia ("Se le rompen los huesos con
+# poco"), y ningun patron de palabras los alcanza; para esos, la unica opcion
+# honesta es decir a mano donde va cada uno. Lo que se queda en "comprender" es
+# lo que de verdad es conceptual o de identidad.
+# Al anadir una ficha nueva: si el patron no la coloca sola, metela aqui.
+CATEGORIA_POR_CODIGO = {
+    # Salud y condiciones asociadas: la ficha trata un problema medico.
+    "JQ": "salud", "KE": "salud", "KF": "salud", "LG": "salud", "LJ": "salud",
+    "LK": "salud", "LM": "salud", "LU": "salud", "LY": "salud", "LZ": "salud",
+    "ME": "salud", "MG": "salud", "MH": "salud", "MI": "salud", "MK": "salud",
+    "MM": "salud", "MN": "salud", "MO": "salud", "MP": "salud", "NJ": "salud",
+    "NM": "salud", "NN": "salud", "NS": "salud", "NW": "salud", "PT": "salud",
+    "PZ": "salud", "QG": "salud", "QH": "salud", "IQ": "salud", "LE": "salud",
+    "LR": "salud", "U": "salud",
+    # Diagnostico y primeros pasos.
+    "HQ": "diagnostico", "JK": "diagnostico", "JN": "diagnostico", "KA": "diagnostico",
+    # Terapias e intervenciones: el "como se ensena" y el "como se evalua".
+    "IH": "terapias", "II": "terapias", "IU": "terapias", "IV": "terapias",
+    "IY": "terapias", "JA": "terapias", "JF": "terapias", "JT": "terapias",
+    "KT": "terapias", "KU": "terapias", "LF": "terapias", "ML": "terapias",
+    "PA": "terapias",
+    # Conducta y emociones.
+    "IL": "conducta", "IM": "conducta", "NC": "conducta",
+    # Mundo sensorial.
+    "IN": "sensorial", "JU": "sensorial",
+    # Familia y vida diaria: la casa, el dia a dia y la seguridad cotidiana.
+    "AE": "familia", "AI": "familia", "DV": "familia", "EF": "familia",
+    "IE": "familia", "IF": "familia", "IG": "familia", "IJ": "familia",
+    "IO": "familia", "IW": "familia", "JB": "familia", "JC": "familia",
+    "JD": "familia", "JI": "familia", "JJ": "familia", "JZ": "familia",
+    "KM": "familia", "KN": "familia", "LI": "familia", "MJ": "familia",
+    "ND": "familia", "NK": "familia", "NL": "familia", "NP": "familia",
+    "PF": "familia", "PJ": "familia", "PK": "familia", "PQ": "familia",
+    "PX": "familia", "S": "familia",
+    # Ronda 46: QT (camas, alarmas y arneses en casa) caia en el cajon por
+    # defecto; es equipamiento de casa y seguridad nocturna. Y QV (valproato y
+    # la regla) caia en adultez por "la regla", pero es farmacologia: va donde
+    # ya esta NW, su ficha hermana.
+    "QT": "familia", "QV": "salud",
+    # Ronda 47: QX (lo que compras sin receta y choca con lo recetado) caia en
+    # terapias por la palabra "medicacion"; es la hermana de LV y QP.
+    "QX": "salud",
+    # Ronda 49: RG (no puede llamar por telefono) y RH (donde cambiarlo fuera de
+    # casa) son de salud; RG caia en el cajon por defecto y RH en familia.
+    "RG": "salud", "RH": "salud",
+    # Ronda 53: RT (cojera aguda) y RU (herida que sangra) son de salud. RU
+    # caeria si no en familia, por "casa" y "quemadura" dentro del texto.
+    "RT": "salud", "RU": "salud",
+    # Ronda 54: RV (fractura) y RW (movimientos ritmicos del sueño) son de
+    # salud. RW caeria en conducta por "se golpea la cabeza", que es justo la
+    # lectura equivocada que la ficha viene a corregir.
+    "RV": "salud", "RW": "salud",
+    # Ronda 55: RX (no reanimar, UCI y trasplante) es de derechos, no de salud:
+    # lo que la ficha ensena es a preguntar y a reclamar, no a tratar. RY
+    # (cambio de conducta en quien no puede contarlo) es de salud, y caeria en
+    # conducta por "agresivo" y "se golpea", que es justo la lectura que la
+    # ficha viene a corregir: el primer carril es el cuerpo, no la conducta.
+    # Ronda 56: RZ (no bebe o bebe sin parar, calor, sodio) es de salud; por
+    # "bebe del inodoro" o "a escondidas" podria caer en conducta.
+    "RX": "derechos", "RY": "salud", "RZ": "salud",
+    # Ronda 57: SA (el postoperatorio en casa) es de salud, junto a CZ y QG.
+    # Ronda 58: SB (sujetarlo para un pinchazo) es de salud, junto a HI; por
+    # "sujetarlo" podria caer en conducta, que es justo lo que no es.
+    # Ronda 59: SC (ducharlo cuando ya es adolescente) es de familia, junto a
+    # NP e IO; por "abuso" o "erección" podria caer en otra parte.
+    # Ronda 60: SD (la captacion de un adolescente por internet) va con PU, QU
+    # y CJ, en adolescencia; por "amenaza" o "delito" podria caer en derechos.
+    "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez",
+    # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
+    # es un problema medico y su ficha hermana NJ ya esta en salud.
+    "RC": "salud",
+    # PH (dejar el trabajo o reducir jornada para cuidar) caia tambien en
+    # terapias, por "terapia" dentro del texto: es vida familiar, como NB y HN.
+    "PH": "familia",
+    # Ronda 49: RI (ensenarle a ocupar su tiempo) es vida diaria, no un concepto.
+    "RI": "familia",
+    # Escuela y aprendizaje.
+    "MU": "escuela", "MW": "escuela",
+    # Adolescencia y vida adulta.
+    "KJ": "adultez", "PG": "adultez", "PU": "adultez",
+    # Ronda 48: RD (pedir plaza) va junto a CM y MC, que describen esos mismos
+    # recursos, y no en familia: quien busca residencia busca en vida adulta.
+    "RD": "adultez",
+    # Ronda 50: RJ (el grado bajo y el empleo que no aguanta) caia en terapias
+    # por la palabra "apoyo"; es vida adulta, como RK.
+    "RJ": "adultez",
+    # Derechos y recursos por pais.
+    "MR": "derechos", "PB": "derechos", "PN": "derechos", "LX": "derechos",
+    # Ronda 49: RF es una reclamacion con plazos por pais, no ocio.
+    "RF": "derechos",
+    # Ronda 50: RL (acoso o despido por discapacidad) es una reclamacion laboral.
+    "RL": "derechos",
+}
+
+# Excepciones al orden de CATEGORIAS. El "primera que coincide gana" resuelve
+# bien casi todo, pero a veces una palabra generica de una categoria anterior
+# se lleva una ficha que el padre buscaria en otra. Aqui solo van frases largas
+# del titulo, nunca palabras sueltas, para que no arrastren fichas ajenas.
+# Comprueba siempre en seco a quien mueve una frase antes de anadirla.
+EXCEPCIONES = [
+    # QR es la hermana escolar de LL, pero "contencion" (conducta) va antes que
+    # "colegio" (escuela) y se la llevaba a Conducta y emociones.
+    ("en el colegio lo sujetan", "escuela"),
+]
+
+
+def categoria_de(titulo, codigo=None):
+    if codigo and codigo in CATEGORIA_POR_CODIGO:
+        clave = CATEGORIA_POR_CODIGO[codigo]
+        for c, nombre, _ in CATEGORIAS:
+            if c == clave:
+                return c, nombre
+        raise SystemExit("CATEGORIA_POR_CODIGO: %s apunta a la categoria "
+                         "inexistente %r" % (codigo, clave))
     t = normalizar(titulo)
+    for frase, clave in EXCEPCIONES:
+        if normalizar(frase) in t:
+            for c, nombre, _ in CATEGORIAS:
+                if c == clave:
+                    return c, nombre
     for clave, nombre, patrones in CATEGORIAS:
         for p in patrones:
             if normalizar(p) in t:
@@ -141,6 +288,18 @@ def ronda_de(estado, codigo):
     return 1 if len(codigo) == 1 else 0
 
 
+# Un enlace markdown cuya URL admite UN nivel de parentesis dentro. Con
+# `[^\s)]+` la URL se cortaba en el primer ")" y 41 fuentes —las de Lancet,
+# JAACAP, Cell y demas revistas de Elsevier, que llevan "S0890-8567(17)30152-1"
+# en la ruta— se publicaban rotas: llevaban a un 404. La app usa la misma
+# expresion (ENLACE_MD en web/app.js) para los enlaces del cuerpo.
+ENLACE_MD = re.compile(r"\[([^\]]+)\]\((https?://(?:[^\s()]|\([^\s()]*\))+)\)")
+# Una URL escrita a pelo dentro del texto, con el mismo nivel de parentesis.
+URL_SUELTA = re.compile(r"https?://(?:[^\s<>()]|\([^\s<>()]*\))+")
+# Lo mismo para quitar el enlace y dejar su texto, sea cual sea la URL.
+ENLACE_MD_CUALQUIERA = re.compile(r"\[([^\]]+)\]\((?:[^\s()]|\([^\s()]*\))*\)")
+
+
 def extraer_enlaces(texto):
     """Devuelve [{'label':..., 'url':...}] de las fuentes de un tema.
 
@@ -152,7 +311,7 @@ def extraer_enlaces(texto):
     """
     fuentes = []
     vistos = set()
-    for m in re.finditer(r"\[([^\]]+)\]\((https?://[^\s)]+)\)", texto):
+    for m in ENLACE_MD.finditer(texto):
         label, url = m.group(1).strip(), m.group(2).strip()
         if url not in vistos:
             vistos.add(url)
@@ -165,8 +324,21 @@ def extraer_enlaces(texto):
     m = re.search(r"^\*\*Fuentes\*?\*?[^:\n]*:?\*?\*?\s*(.+)$", texto, flags=re.M)
     if m:
         for trozo in m.group(1).split(" · "):
-            plano = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", trozo)
+            plano = ENLACE_MD_CUALQUIERA.sub(r"\1", trozo)
             plano = re.sub(r"[*_`]", "", plano).strip(" .;")
+            # "Autor, año, titulo — https://..." sin enlace markdown. Antes el
+            # trozo entero se publicaba como fuente SIN enlace, con la URL
+            # dentro del texto: LL, LO y LP anunciaban 36 fuentes y ninguna se
+            # podia pulsar. Se toma la primera URL y el texto que la precede.
+            suelta = None if ENLACE_MD.search(trozo) else URL_SUELTA.search(plano)
+            if suelta:
+                url = suelta.group(0).rstrip(".,;:")
+                etiqueta = plano[:suelta.start()].strip(" —–-:,;(")
+                if len(etiqueta) > 5 and url not in vistos:
+                    vistos.add(url)
+                    vistos.add(etiqueta)
+                    fuentes.append({"label": etiqueta, "url": url})
+                continue
             if len(plano) > 15 and not plano.startswith("http") and plano not in vistos:
                 vistos.add(plano)
                 fuentes.append({"label": plano, "url": ""})
@@ -175,7 +347,7 @@ def extraer_enlaces(texto):
 
 def limpiar_markdown(texto):
     """Quita marcas markdown para generar texto plano buscable."""
-    texto = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", texto)  # enlaces -> su texto
+    texto = ENLACE_MD_CUALQUIERA.sub(r"\1", texto)  # enlaces -> su texto
     texto = texto.replace("**", "").replace("*", "").replace("`", "")
     texto = re.sub(r"^[>\-\s]+", "", texto, flags=re.MULTILINE)
     return texto
@@ -190,6 +362,33 @@ def palabras_clave(*textos):
     return sorted(palabras)
 
 
+# Una palabra que sale en muchos temas ya no dice a cuál ir: solo alarga la lista
+# de resultados. Las que de verdad faltaban ("ozono", "secretina", "mercurio")
+# aparecen en uno o dos temas, así que el tope no se lleva por delante nada útil.
+TOPE_TEMAS = 24
+
+
+def indice_del_cuerpo(dominios, indice):
+    """Palabra del cuerpo -> códigos de los temas donde aparece.
+
+    El buscador solo veía título, mensaje y claves, así que un nombre que vive
+    dentro del texto no lo encontraba nadie: a una familia a la que le ofrecen
+    ozonoterapia, escribir "ozono" le devolvía cero resultados. Esto va en un
+    fichero aparte, y no en el índice, porque el índice se precachea en la primera
+    visita y estas palabras solo hacen falta cuando alguien busca de verdad.
+    """
+    ya_puntuan = {t["codigo"]: set(t["claves"]) for t in indice}
+    postings = {}
+    for d in dominios:
+        for p in set(re.findall(r"[a-z0-9]{3,}", normalizar(d["_texto"]))):
+            # Lo que ya puntúa por título, mensaje o sinónimos no se repite aquí.
+            if p in VACIAS or p.isdigit() or p in ya_puntuan.get(d["codigo"], ()):
+                continue
+            postings.setdefault(p, []).append(d["codigo"])
+    return {p: " ".join(sorted(codigos)) for p, codigos in sorted(postings.items())
+            if len(codigos) <= TOPE_TEMAS}
+
+
 def parsear(md):
     """Corta el markdown en dominios y extrae los campos de cada uno."""
     # Cada dominio empieza por '### CÓDIGO. ' al principio de una línea.
@@ -200,7 +399,13 @@ def parsear(md):
     for parte in partes[1:]:
         lineas = parte.split("\n")
         cabecera = lineas[0].strip()
-        cuerpo = "\n".join(lineas[1:]).strip()
+        cuerpo = "\n".join(lineas[1:])
+        # Un tema termina donde empieza una seccion de nivel superior («## Ronda
+        # 4 — nuevos dominios…»). Sin este corte, esa cabecera y las notas
+        # internas de metodo que la siguen se pegaban al final del ultimo tema
+        # de cada ronda: 16 fichas publicaban a las familias, como texto suelto,
+        # cosas como «Nota tecnica: algunas fuentes primarias devuelven 403».
+        cuerpo = re.split(r"^#{1,2} ", cuerpo, maxsplit=1, flags=re.MULTILINE)[0].strip()
 
         m = re.match(r"^([A-Z]{1,2})\.\s+(.*)$", cabecera)
         if not m:
@@ -248,13 +453,16 @@ def parsear(md):
         cuerpo_publico = re.sub(r"\n?>\s*\*\*Para la app:?\*\*:?.*?(?=\n\n|\Z)", "",
                                 cuerpo, flags=re.DOTALL).strip()
 
+        # Sobre lo que se PUBLICA, no sobre el cuerpo con la nota interna «Para
+        # la app»: 52 tarjetas anunciaban marcas que la ficha publicada no tiene
+        # (AJ prometia «2 a evitar» y no lleva ninguna).
         semaforos = {
-            "verde": cuerpo.count("🟢"),
-            "amarillo": cuerpo.count("🟡"),
-            "rojo": cuerpo.count("🔴"),
-            "vivencial": cuerpo.count("⚪"),
+            "verde": cuerpo_publico.count("🟢"),
+            "amarillo": cuerpo_publico.count("🟡"),
+            "rojo": cuerpo_publico.count("🔴"),
+            "vivencial": cuerpo_publico.count("⚪"),
         }
-        cat_clave, cat_nombre = categoria_de(titulo)
+        cat_clave, cat_nombre = categoria_de(titulo, codigo)
 
         dominios.append({
             "codigo": codigo,
@@ -275,6 +483,42 @@ def parsear(md):
     return dominios, avisos
 
 
+def escribir_json(ruta, datos):
+    """Escribe a un temporal y lo pone en su sitio de una vez: si el proceso
+    muere a mitad, el JSON anterior sigue entero en vez de quedar truncado."""
+    temporal = ruta + ".tmp"
+    with open(temporal, "w", encoding="utf-8") as f:
+        json.dump(datos, f, ensure_ascii=False, separators=(",", ":"))
+    os.replace(temporal, ruta)
+
+
+def validar(dominios):
+    """Para ANTES de escribir nada si la biblioteca trae un fallo que el
+    corte en temas no ve. Hasta ahora el constructor no fallaba nunca: una
+    cabecera mal escrita («### R1.», «###RX.») no partia, y el tema entero se
+    pegaba al cuerpo del anterior; un codigo repetido pisaba al primero en
+    biblioteca-cuerpo.json y dejaba dos entradas en el indice. En los dos
+    casos se sobrescribian los JSON y la app publicaba el error en silencio."""
+    errores = []
+    vistos = {}
+    for d in dominios:
+        if d["codigo"] in vistos:
+            errores.append(f"el codigo {d['codigo']} se repite («{vistos[d['codigo']][:50]}» y «{d['titulo'][:50]}»)")
+        vistos[d["codigo"]] = d["titulo"]
+        for linea in d["cuerpo"].split("\n"):
+            if linea.startswith("#"):
+                errores.append(f"{d['codigo']}: su cuerpo contiene un encabezado («{linea[:60]}»): "
+                               "¿una cabecera de tema mal escrita que se ha pegado aqui?")
+                break
+        if len(d["cuerpo"]) < 200:
+            errores.append(f"{d['codigo']}: cuerpo casi vacio ({len(d['cuerpo'])} caracteres)")
+    if errores:
+        print("\n❌ La biblioteca tiene fallos que el constructor no puede publicar:", file=sys.stderr)
+        for e in errores:
+            print("   - " + e, file=sys.stderr)
+        sys.exit("No se ha escrito nada. Corrige la biblioteca y vuelve a ejecutar.")
+
+
 def main():
     if not os.path.exists(BIBLIOTECA):
         sys.exit(f"No encuentro la biblioteca en {BIBLIOTECA}")
@@ -287,6 +531,7 @@ def main():
 
     if not dominios:
         sys.exit("No se encontró ningún tema. ¿Cambió el formato de la biblioteca?")
+    validar(dominios)
 
     # Sinónimos: lo que escribe una familia -> códigos de tema.
     # Se descartan las claves que empiezan por "_" (son notas de documentación,
@@ -339,17 +584,37 @@ def main():
         "temas": indice,
     }
 
+    palabras = indice_del_cuerpo(dominios, indice)
+
+    # Lo que cuesta, comprimido, guardar la biblioteca entera para usarla sin
+    # conexion: la app se lo dice a la familia ANTES de que pulse. Se mide con
+    # gzip, que es como lo sirve GitHub Pages; mtime=0 para que sea determinista.
+    cuerpo_bytes = json.dumps(cuerpos, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    meta["descargaSinConexionKB"] = len(gzip.compress(cuerpo_bytes, 6, mtime=0)) // 1024
+
     ruta_indice = os.path.join(SALIDA, "biblioteca-indice.json")
     ruta_cuerpo = os.path.join(SALIDA, "biblioteca-cuerpo.json")
-    with open(ruta_indice, "w", encoding="utf-8") as f:
-        json.dump(meta, f, ensure_ascii=False, separators=(",", ":"))
-    with open(ruta_cuerpo, "w", encoding="utf-8") as f:
-        json.dump(cuerpos, f, ensure_ascii=False, separators=(",", ":"))
+    ruta_busqueda = os.path.join(SALIDA, "biblioteca-busqueda.json")
+    escribir_json(ruta_indice, meta)
+    escribir_json(ruta_cuerpo, cuerpos)
+
+    os.makedirs(TEMAS_DIR, exist_ok=True)
+    for codigo, cuerpo in cuerpos.items():
+        escribir_json(os.path.join(TEMAS_DIR, codigo + ".json"), cuerpo)
+    # Un tema que desaparece de la biblioteca no puede seguir publicado suelto.
+    for nombre in sorted(os.listdir(TEMAS_DIR)):
+        if nombre.endswith(".json") and nombre[:-5] not in cuerpos:
+            os.remove(os.path.join(TEMAS_DIR, nombre))
+    escribir_json(ruta_busqueda, {"generado": "scripts/construir-contenido.py", "palabras": palabras})
 
     print(f"✅ {len(indice)} temas ({meta['verificados']} verificados), "
           f"{meta['totalFuentes']} fuentes, {len(categorias)} categorías.")
     print(f"   {ruta_indice}  ({os.path.getsize(ruta_indice)//1024} KB)")
-    print(f"   {ruta_cuerpo}  ({os.path.getsize(ruta_cuerpo)//1024} KB)")
+    print(f"   {ruta_cuerpo}  ({os.path.getsize(ruta_cuerpo)//1024} KB; "
+          f"{meta['descargaSinConexionKB']} KB comprimido)")
+    print(f"   {TEMAS_DIR}/  ({len(cuerpos)} ficheros, uno por tema)")
+    print(f"   {ruta_busqueda}  ({os.path.getsize(ruta_busqueda)//1024} KB, "
+          f"{len(palabras)} palabras del cuerpo)")
     for c in categorias:
         print(f"     · {c['nombre']}: {c['n']}")
     if avisos:
