@@ -393,6 +393,11 @@ REGLAS PARA EDITAR:
   peor que publicar una sola: la familia se queda sin saber a cual hacer caso.
   Si SI puedes resolverlo con lo que ya esta escrito en las dos fichas, corrige
   la que este mal —puede ser esta— y digalo en "cambios".
+- El emoji 🚨 va SOLO al principio de una viñeta urgente (en sus 12 primeros
+  caracteres). Para remitir a un bloque urgente desde otra viñeta escribe «el
+  bloque de urgencia de arriba», sin el emoji: un 🚨 en mitad de una viñeta
+  cuenta como una remision de urgencia mas, y la suite tiene un tope. Se colo
+  en las rondas 58, 59 y 60.
 
 Devuelve la ficha entera y ya corregida en "markdown_final", con el mismo
 formato (### CODIGO. Titulo — estado / Mensaje clave / puntos con semaforo /

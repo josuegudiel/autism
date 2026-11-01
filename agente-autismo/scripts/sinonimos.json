@@ -6590,5 +6590,42 @@
   ],
   "necesita ayuda para ducharse": [
     "SC"
+  ],
+  "se esta radicalizando": [
+    "SD"
+  ],
+  "ideas extremistas": [
+    "SD"
+  ],
+  "lavado de cerebro": [
+    "SD"
+  ],
+  "secta": [
+    "SD"
+  ],
+  "le ha captado una secta": [
+    "SD"
+  ],
+  "764": [
+    "SD"
+  ],
+  "le piden que se autolesione": [
+    "SD",
+    "KS"
+  ],
+  "chats raros": [
+    "SD"
+  ],
+  "pasa el dia en foros": [
+    "SD"
+  ],
+  "un amigo de internet le manipula": [
+    "SD",
+    "LA"
+  ],
+  "le piden dinero por una foto": [
+    "PU",
+    "SD",
+    "MD"
   ]
 }

@@ -28,12 +28,38 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 60, lanzada y viva (01/11).** runId `wf_8e39f676-ba8`. Códigos **SD**
-(pasa el día en foros y chats y ha cambiado: captación, sectas y manipulación
-de un adolescente autista; nº 11 de la reserva; el grep previo encontró que
-**DV** cubre los riesgos en internet en general y **PU** la sextorsión, que se
-queda allí). El siguiente, en la 61, es el nº 12 (las vacunas del adolescente y
-del adulto).
+**Ronda 61, lanzada y viva (01/11).** runId `wf_b1e6fec5-15f`. Códigos **SE**
+(las vacunas que se van quedando por el camino: VPH, gripe y el calendario del
+adolescente y del adulto; nº 12 de la reserva; el grep previo solo encontró la
+vacuna del VPH mencionada de pasada en la ficha de la primera consulta
+ginecológica). Lanzada cuando la 60 ya había terminado, como dice la 59. El
+siguiente, en la 62, es el nº 13 (si caigo yo: quién se ocupa de él).
+
+**Ronda 60, PUBLICADA (01/11).** runId `wf_8e39f676-ba8`. Código **SD** (pasa el
+día en foros y chats y ha cambiado: ¿le están captando? Ideas extremistas,
+sectas y redes que le empujan a hacerse daño; nº 11 de la reserva, que baja a
+**18** encargables). Cuatro bloques 🚨 (riesgo de suicidio, presión para
+hacerse daño o chantaje, cómo guardar pruebas sin reenviar imágenes de menores,
+y amenaza o plan contra otra persona), 11 fuentes confirmadas y 4 eliminadas, 34
+críticas (7 graves), ninguna muerta. Cinco enlaces inversos (DV, PU, LA, CJ, QU).
+
+**Lo que enseñó la 60:**
+
+- **SD toca el terreno de NI y no lo decide.** Su primer bloque copia el
+  criterio que ya publica **PA** (urgencias hoy aunque no haya plan ni medios);
+  queda anotado en *NI está bloqueada a propósito* que, si el usuario elige B,
+  SD entra en la lista de avisos que hay que reescribir.
+- **La sextorsión se quedó donde estaba**, como pedía el encargo: SD remite a
+  **MD** (la ruta verificada) y a **PU**, y en el buscador «le piden dinero por
+  una foto» abre en PU, con SD y MD detrás.
+- **Cinco 🚨 en mitad de viñetas** que el editor no vio («los bloques 🚨 de
+  arriba», «primer bloque 🚨»…): cazados con el `grep` antes de la suite y
+  reescritos como «bloque de urgencia». Es la tercera ronda seguida, así que
+  la regla va ya en el prompt del editor (`investigar-temas.mjs`, «REGLAS PARA
+  EDITAR»); la 61 se lanzó antes del cambio y todavía no la lleva.
+- **Un enlace inverso mal colocado en PU**: había caído entre sus puntos
+  urgentes y el 🔴 (el mensaje clave de PU manda a «los cuatro primeros
+  puntos»). Se movió al final de la lista.
 
 **Ronda 59, PUBLICADA (01/11).** runId `wf_e41d1271-f02`. Código **SC** (ya
 tiene 14 años y lo sigo duchando yo: cómo respetar su intimidad y protegerlo de
@@ -458,10 +484,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 59.
-Biblioteca en **464 temas / 226 verificados / 238 síntesis / 4.780 fuentes**.
-Suite **1.372/1.372** (01/11, con la ronda 59; medido en corrida limpia, no calculado). Reserva:
-**19 encargables de 31**, en
+Rondas 29 a 60.
+Biblioteca en **465 temas / 226 verificados / 239 síntesis / 4.794 fuentes**.
+Suite **1.409/1.409** (01/11, con la ronda 60; medido en corrida limpia, no calculado). Reserva:
+**18 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -469,12 +495,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 59 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA, SB, SC). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SD** está en vuelo (ronda 60); los siguientes libres
-son **SE** en adelante.
+**Las rondas 51 a 60 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SE** está en vuelo (ronda 61); los siguientes libres
+son **SF** en adelante.
 
-Para la **61**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **62**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
@@ -499,6 +525,11 @@ Terminada y verificada en `research/pendientes/NI.md`. Seis fichas publicadas
 morirse; NI escalona según plan, método y acceso. El usuario elige entre
 unificar en urgencias (A) o hacer NI canónica y reescribir los seis avisos (B).
 **No la publiques ni elijas tú.**
+
+Las fichas nuevas que tocan el tema **copian el criterio vigente** (el de **PA**:
+urgencias hoy aunque no haya plan ni medios), sin decidir nada sobre NI: **SD**
+(ronda 60) lo lleva en su primer bloque 🚨. Si el usuario elige B, SD entra en
+la lista de avisos que hay que reescribir, junto a los seis y a PA.
 
 ## ¿Sigue viva la ronda?
 

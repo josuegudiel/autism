@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) la 58 el nº 9 (**SB**) y la 59 el nº 10 (**SC**): quedan 19 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) la 58 el nº 9 (**SB**) la 59 el nº 10 (**SC**) y la 60 el nº 11 (**SD**): quedan 18 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -137,7 +137,7 @@ Momento concreto y frecuente: le piden al padre que ayude a sujetar y no sabe si
 
 El día en que el hijo al que lavabas a los 5 años tiene 14, vello púbico, regla o erecciones, y nadie ha dicho qué se hace. HUECO REAL: 'NP' solo trata de no lesionarte la espalda al ducharlo y moverlo; 'DB' va de las batallas sensoriales de higiene en la infancia; 'RH' de dónde cambiarlo fuera de casa; 'EF. Seguridad personal y prevención del abuso' enseña al hijo a protegerse pero no regula al cuidador; 'S' y 'DA' son educación sexual y menstruación, no el aseo asistido diario. CONTENIDO: quién lo asea (¿el padre a la hija?, ¿el hermano?, ¿la cuidadora?), cómo se pide permiso y se avisa paso a paso a alguien que no habla, cómo se le enseña a hacer cada vez más partes solo, y por qué este es justo el contexto de mayor riesgo de abuso (muchos adultos con acceso al cuerpo, límites físicos borrosos). Respaldo bueno: protocolos de intimate care de servicios educativos y de protección infantil, y literatura de safeguarding de menores con discapacidad.
 
-### 11. Pasa el día en foros y chats y ha cambiado: captación, sectas y manipulación de un adolescente autista
+### 11. Pasa el día en foros y chats y ha cambiado: captación, sectas y manipulación de un adolescente autista — ✅ PUBLICADO en la ronda 60 como **SD**
 
 Riesgo real con literatura propia y con una consecuencia jurídica dura: el joven acaba investigado por algo que hizo empujado por otros, sin comprender el marco legal ni social. HUECO REAL: 'DV' es seguridad y beneficios de redes sociales en general; 'EF' es prevención del abuso sexual y físico, sobre todo en menores; 'JH' son estafas económicas en la adultez; 'PU' son delitos que comete sin saberlo, pero por desconocimiento propio, no por manipulación de un tercero; 'DU' es uso problemático de videojuegos e internet; 'CJ' es el sistema de justicia en general. CONTENIDO: por qué la necesidad de pertenencia, el interés intenso, la credulidad literal y el aislamiento hacen captable a algunos chicos, qué señales mirar, cómo hablarlo sin romper la confianza, y qué hacer si ya hay algo denunciable. Respaldo: trabajos de Al-Attar, Faccini y Allely. AVISO DE CIFRAS: los datos de sobrerrepresentación autista en estos contextos son muy inestables, de muestras pequeñas y sesgadas; citarlos con mucha prudencia y no convertir una vulnerabilidad en una asociación causal.
 

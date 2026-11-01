@@ -218,7 +218,9 @@ CATEGORIA_POR_CODIGO = {
     # "sujetarlo" podria caer en conducta, que es justo lo que no es.
     # Ronda 59: SC (ducharlo cuando ya es adolescente) es de familia, junto a
     # NP e IO; por "abuso" o "erección" podria caer en otra parte.
-    "SA": "salud", "SB": "salud", "SC": "familia",
+    # Ronda 60: SD (la captacion de un adolescente por internet) va con PU, QU
+    # y CJ, en adolescencia; por "amenaza" o "delito" podria caer en derechos.
+    "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

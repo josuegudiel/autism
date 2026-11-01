@@ -22,9 +22,9 @@ Este documento explica **qué está hecho** y **qué falta**, para quien retome 
 - **README** con cómo correr, publicar y "encender" la IA real.
 
 ### La biblioteca de investigación (`research/biblioteca-autismo.md`)
-Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **464 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (4.780 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
+Un respaldo documental grande y citado que **ya alimenta el contenido de la app**: **465 temas** cubiertos dominio por dominio, cada uno con hallazgos, **fuentes enlazadas** (4.794 en total), etiquetas de fiabilidad y una nota **"Para la app"**.
 - **226 temas verificados** con verificación adversarial de 3 votos (marcados ✅✅).
-- **238 temas en "síntesis desde fuentes canónicas"** (marcados ⚠️) — redactados desde fuentes establecidas cuando el motor de verificación estaba limitado; **pendientes de re-verificar**.
+- **239 temas en "síntesis desde fuentes canónicas"** (marcados ⚠️) — redactados desde fuentes establecidas cuando el motor de verificación estaba limitado; **pendientes de re-verificar**.
 
 _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor las imprime al terminar.)_
 
@@ -34,10 +34,10 @@ _(Las tres cifras salen de `web/content/biblioteca-indice.json`; el conversor la
 
 | Prioridad | Tarea | Notas |
 |---|---|---|
-| 🟡 **Media** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 464 temas en 12 categorías. El Detector pasó de 15 a **35 fichas** y el Centro de evidencia de 4 secciones y 15 tarjetas a **7 y 24**, los dos el 22/09 y los dos volcando lo que la biblioteca ya tenía verificado (entre ello las nueve de **CS**, la ficha que se escribió justo para alimentar el Detector). Lo que sigue corto son las fichas de detector frente a los 464 temas, pero ya no es el cuello de botella que era. |
+| 🟡 **Media** | **Que el Detector y el Centro de evidencia alcancen a la biblioteca** | El volcado al buscador ya está hecho: 465 temas en 12 categorías. El Detector pasó de 15 a **35 fichas** y el Centro de evidencia de 4 secciones y 15 tarjetas a **7 y 24**, los dos el 22/09 y los dos volcando lo que la biblioteca ya tenía verificado (entre ello las nueve de **CS**, la ficha que se escribió justo para alimentar el Detector). Lo que sigue corto son las fichas de detector frente a los 465 temas, pero ya no es el cuello de botella que era. |
 | 🔴 **Alta** | **Compilar el target de iOS en un Mac** | `Vistas/DetectorView.swift` y `Vistas/AyudaView.swift` se reescribieron el 22/10, pero sin compilador de Swift: falta abrirlo en Xcode y corregir lo que pida. Ver `ios/README.md`. |
 | 🟠 **Alta** | **Activar la IA real de Claude** | El asistente está en modo demo. Ver README → "Encender la IA real" (poner `ANTHROPIC_API_KEY` en el servidor + cambiar el stub por la llamada real). |
-| 🟡 **Media** | **Re-verificar los 238 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 464 − 226 = 238, y ese número lo da el propio índice. |
+| 🟡 **Media** | **Re-verificar los 239 temas de síntesis** | Subirlos de "síntesis" a "verificado 3 votos" (ya se hizo con Sueño, Intervención temprana, Pantallas y Cannabis/CBD). Son 465 − 226 = 239, y ese número lo da el propio índice. |
 | 🟢 **Hecho** | **Publicar la app** | `.github/workflows/publicar.yml` pasa la suite de pruebas y, solo si está en verde, publica `web/` en GitHub Pages. Salta cuando el push toca `web/`, `herramientas/`, `scripts/pruebas/`, el propio workflow **o la fuente del contenido** (la biblioteca, los sinónimos o el constructor); un cambio solo de documentación **no** redespliega. Antes de las pruebas comprueba que `web/content` está regenerado: si alguien cambia la biblioteca y olvida ejecutar el constructor, falla en vez de publicar lo de antes. La versión de la caché la estampa el despliegue, para que una corrección llegue también a quien ya tiene la app abierta. |
 | 🟢 **Baja** | **Pulido**: iconos/branding definitivos, revisión de textos | Los iconos actuales son de marcador de posición (SVG, y desde el 22/10 también PNG para que iOS y Android los usen al instalar la app). El pase de accesibilidad ya se hizo: contrastes medidos en navegador, región viva acotada, foco al navegar y nombres accesibles en campos, gráfica y botones de borrado. |
 | 🟢 **Baja** | **Materiales para ONG/donantes** | Pitch + datos de impacto (empleo, seguridad, acceso en LatAm) que ya están en la biblioteca. |

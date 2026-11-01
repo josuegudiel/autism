@@ -4846,6 +4846,86 @@ for (const cod of ['NP', 'RH', 'RA', 'LL', 'PP', 'EF', 'S', 'DA', 'EE', 'NB', 'N
 check('Ronda 59: la reserva marca el nº 10 como publicado en SC',
   /### 10\. [^\n]*PUBLICADO en la ronda 59 como \*\*SC\*\*/.test(reserva71));
 
+// 82. Ronda 60. SD: pasa el día en foros y chats y ha cambiado (captación,
+// ideas extremistas, sectas y redes que le empujan a hacerse daño). Lo que se
+// decidió:
+//
+//  a) El primer bloque copia el criterio de PA (urgencias hoy aunque no haya
+//     plan ni medios). No decide nada sobre NI, que sigue esperando al dueño:
+//     si elige escalonar, SD está en la lista de avisos que hay que reescribir.
+//  b) La sextorsión se queda en PU y MD, como pedía el encargo: SD remite.
+//  c) Ser autista no hace a nadie peligroso: la ficha lo dice con la revisión
+//     de 2026 y no convierte una vulnerabilidad en una asociación causal.
+{
+  await ir('#tema/SD');
+  const tx = await texto();
+  const SD = fichaDe('SD');
+  check('Ronda 60: SD abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 60: SD publica sus fuentes', /Fuentes/.test(SD) && /https?:\/\//.test(SD));
+  check('Ronda 60: SD lleva su número de ronda en la cabecera',
+    /Ronda 60/.test(SD.split('\n')[0]), SD.split('\n')[0].slice(0, 120));
+  check('Ronda 60: SD no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SD));
+  const vinetas = SD.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 60: las cuatro primeras viñetas de SD son 🚨 y sin píldora de color',
+    vinetas.slice(0, 4).every((l) => l.startsWith('- 🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 4).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 60: el primer bloque es el criterio de PA, no uno nuevo',
+    /aunque no tenga plan ni medios/.test(vinetas[0]) && /\*\*PA\*\*/.test(SD.slice(SD.indexOf(vinetas[0]), SD.indexOf(vinetas[1]))));
+  check('Ronda 60: si le chantajean o le presionan, él es la víctima',
+    /él es la víctima/.test(vinetas[1]));
+  check('Ronda 60: las imágenes de un menor no se reenvían a nadie, y la ruta es la de PU',
+    /no los reenvíes a nadie/.test(SD) && /\*\*PU\*\*/.test(SD));
+  check('Ronda 60: la sextorsión remite a MD y PU, no se reescribe aquí',
+    /sextorsión/.test(SD) && /\*\*MD\*\*/.test(SD));
+  check('Ronda 60: ser autista no hace a nadie peligroso, dicho con la revisión de 2026',
+    /Ser autista no hace a nadie peligroso/.test(SD) && /no hay pruebas de que el autismo cause extremismo/.test(SD));
+  check('Ronda 60: las cifras de Prevent avisan de que una derivación no es una radicalización',
+    /Que lo deriven no quiere decir que esté radicalizado/.test(SD));
+  check('Ronda 60: ningún 🚨 en mitad de una viñeta de SD',
+    SD.split('\n').filter((l) => /^ *- /.test(l)).every((l) => !l.slice(12).includes('🚨')));
+  const sdIdx = idxJson.temas.find((x) => x.codigo === 'SD');
+  check('Ronda 60: SD está en adolescencia y vida adulta, con PU, QU y CJ',
+    !!sdIdx && sdIdx.categoria === 'adultez', sdIdx && sdIdx.categoria);
+}
+// a) Lo que no se decidió: NI sigue sin publicar.
+check('Ronda 60: NI sigue sin publicar (la decisión del umbral es del dueño)',
+  !/^### NI\. /m.test(libMd));
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['se esta radicalizando', 'ideas extremistas', 'lavado de cerebro', 'secta',
+                 'le ha captado una secta', '764', 'le piden que se autolesione', 'chats raros',
+                 'pasa el dia en foros', 'un amigo de internet le manipula', 'mi hijo esta en un grupo extremista']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 60: «${q}» abre en SD`, rr.slice(0, 300).includes('Pasa el día en foros y chats'), rr.slice(0, 150));
+}
+// La sextorsión se queda en PU, como pedía el encargo: SD entra detrás.
+for (const [q, trozo] of [
+  ['le piden dinero por una foto', 'Entró en una cuenta ajena'],
+  ['le he encontrado fotos en el movil', 'Entró en una cuenta ajena'],
+  ['se autolesiona', 'Autolesión'],
+  ['publicar fotos', 'Publicar fotos, informes'],
+  ['redes sociales', 'Autismo y vida online'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 60: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los cinco enlaces de vuelta, fríos; el de PU, fuera de sus puntos urgentes.
+for (const cod of ['DV', 'PU', 'LA', 'CJ', 'QU']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SD\./.test(l) && l.startsWith('- '));
+  check(`Ronda 60: ${cod} enlaza de vuelta a SD con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+{
+  const vPU = fichaDe('PU').split('\n').filter((l) => l.startsWith('- '));
+  const iSD = vPU.findIndex((l) => /\*\*SD\./.test(l));
+  check('Ronda 60: el enlace de PU a SD no se mete entre sus cuatro primeros puntos ni antes del 🔴',
+    iSD > vPU.findIndex((l) => l.includes('🔴')) && iSD >= 4, `posición ${iSD + 1}`);
+}
+check('Ronda 60: la reserva marca el nº 11 como publicado en SD',
+  /### 11\. [^\n]*PUBLICADO en la ronda 60 como \*\*SD\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')
