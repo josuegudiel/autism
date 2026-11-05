@@ -4926,6 +4926,85 @@ for (const cod of ['DV', 'PU', 'LA', 'CJ', 'QU']) {
 check('Ronda 60: la reserva marca el nº 11 como publicado en SD',
   /### 11\. [^\n]*PUBLICADO en la ronda 60 como \*\*SD\*\*/.test(reserva71));
 
+// 83. Ronda 61. SE: ¿le falta alguna vacuna? Papiloma (VPH), gripe y refuerzos
+// del adolescente y del adulto. Lo que se decidió:
+//
+//  a) Sin calendario de ningún país: los esquemas cambian de un país y de un
+//     año a otro. La ficha enseña qué preguntar y a quién.
+//  b) La categoría va forzada a salud: con «vacunas» en el título caía en
+//     pseudociencia, justo lo contrario de lo que dice.
+//  c) Las urgencias (no se despierta, anafilaxia, gripe con señales de
+//     alarma) salen de QP, MI, JQ y la CDC, y no se lleva en coche al que no
+//     responde, como en el resto de la biblioteca.
+{
+  await ir('#tema/SE');
+  const tx = await texto();
+  const SE = fichaDe('SE');
+  check('Ronda 61: SE abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 61: SE publica sus fuentes', /Fuentes/.test(SE) && /https?:\/\//.test(SE));
+  check('Ronda 61: SE lleva su número de ronda en la cabecera',
+    /Ronda 61/.test(SE.split('\n')[0]), SE.split('\n')[0].slice(0, 120));
+  check('Ronda 61: SE no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SE));
+  const vinetas = SE.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 61: las tres primeras viñetas de SE son 🚨 y sin píldora de color',
+    vinetas.slice(0, 3).every((l) => l.startsWith('- 🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 3).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 61: al que no se despierta no se le lleva en coche',
+    /no lo lleves tú en coche/.test(vinetas[0]));
+  check('Ronda 61: la anafilaxia: tumbarlo y llamar aunque mejore (como MI y QP)',
+    /túmbalo/.test(SE) && /aunque mejore/.test(SE) && /\*\*MI\. /.test(SE) && /\*\*QP\. /.test(SE));
+  check('Ronda 61: nada de aspirina con la gripe, en un punto rojo',
+    vinetas.some((l) => l.includes('🔴') && /No le des aspirina/.test(l) && /Reye/.test(l)));
+  check('Ronda 61: SE no sigue el calendario de ningún país ni da dosis',
+    /no sigue ningún calendario/.test(SE) && /Esta ficha no da dosis/.test(SE));
+  check('Ronda 61: la vacuna del VPH no sustituye al cribado',
+    /No sustituye al cribado/.test(SE) && /\*\*NW\. /.test(SE));
+  check('Ronda 61: el mito, en una línea y remitido a BC',
+    /Las vacunas no causan autismo/.test(SE) && /\*\*BC\. /.test(SE));
+  check('Ronda 61: la campaña de la gripe depende del hemisferio, no de una fecha fija',
+    /hemisferio/.test(SE));
+  check('Ronda 61: ningún 🚨 en mitad de una viñeta de SE',
+    SE.split('\n').filter((l) => /^ *- /.test(l)).every((l) => !l.slice(12).includes('🚨')));
+  const seIdx = idxJson.temas.find((x) => x.codigo === 'SE');
+  check('Ronda 61: SE está en salud, no en pseudociencia', !!seIdx && seIdx.categoria === 'salud', seIdx && seIdx.categoria);
+}
+// NW remite ya a SE para la vacuna del VPH, y HH queda para el pinchazo.
+{
+  const NW = fichaDe('NW');
+  check('Ronda 61: NW remite a SE si le falta la vacuna del VPH',
+    /\*\*SE\. /.test(NW) && /SE \(vacuna del VPH\) y HH \(el pinchazo\)/.test(NW) && !/HH \(vacuna del VPH\)/.test(NW));
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['vph', 'papiloma', 'vacuna del papiloma', 'vacuna de la gripe', 'cartilla de vacunas',
+                 'carne de vacunacion', 'que vacunas le tocan', 'le falta alguna vacuna', 'calendario vacunal',
+                 'calendario de vacunas', 'le faltan vacunas']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 61: «${q}» abre en SE`, rr.slice(0, 300).includes('¿Le falta alguna vacuna?'), rr.slice(0, 150));
+}
+// Las que no debían moverse. «vacuna del tetanos» se quedó sin SE a propósito:
+// con SE en la clave le quitaba el primer puesto a RU, y quien lo teclea suele
+// venir de una herida, que es donde está cuándo hace falta.
+for (const [q, trozo] of [
+  ['vacunas', 'Vacunas y autismo'],
+  ['las vacunas causan autismo', 'Vacunas y autismo'],
+  ['vacuna del tetanos', 'Se ha hecho una herida'],
+  ['vacuna del tétanos después de una herida', 'Se ha hecho una herida'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 61: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los ocho enlaces de vuelta, fríos.
+for (const cod of ['NY', 'PY', 'PV', 'HH', 'BC', 'LC', 'IX', 'RU']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SE\./.test(l) && l.startsWith('- '));
+  check(`Ronda 61: ${cod} enlaza de vuelta a SE con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 61: la reserva marca el nº 12 como publicado en SE',
+  /### 12\. [^\n]*PUBLICADO en la ronda 61 como \*\*SE\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

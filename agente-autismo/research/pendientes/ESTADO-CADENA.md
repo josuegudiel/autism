@@ -28,12 +28,33 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 61, lanzada y viva (01/11).** runId `wf_b1e6fec5-15f`. Códigos **SE**
-(las vacunas que se van quedando por el camino: VPH, gripe y el calendario del
-adolescente y del adulto; nº 12 de la reserva; el grep previo solo encontró la
-vacuna del VPH mencionada de pasada en la ficha de la primera consulta
-ginecológica). Lanzada cuando la 60 ya había terminado, como dice la 59. El
-siguiente, en la 62, es el nº 13 (si caigo yo: quién se ocupa de él).
+**Ronda 62, lanzada y viva (05/11).** runId `wf_9d13353a-083`. Códigos **SF**
+(si caigo yo: quién se ocupa de él si me operan, me ingresan o caigo enfermo
+mucho tiempo; nº 13 de la reserva; el grep previo encontró que **NK** cubre la
+emergencia de una noche y la hoja de datos, no la ausencia que se ve venir y
+dura semanas). Es la primera ronda lanzada con la regla del 🚨 en el prompt del
+editor desde el principio. El siguiente, en la 63, es el nº 15 (me dicen que «no
+hay recursos»: el ajuste razonable por escrito); el nº 14 ya está cubierto (RO).
+
+**Ronda 61, PUBLICADA (05/11).** runId `wf_b1e6fec5-15f`. Código **SE** (¿le
+falta alguna vacuna? Papiloma (VPH), gripe y refuerzos del adolescente y del
+adulto; nº 12 de la reserva, que baja a **17** encargables). Tres bloques 🚨
+(no se despierta, labios azulados o convulsión larga; anafilaxia tras una
+vacuna; gripe con señales de alarma), 19 fuentes confirmadas y 7 eliminadas, 38
+críticas (5 graves), ninguna muerta. Ocho enlaces inversos (NY, PY, PV, HH, BC,
+LC, IX, RU) y la viñeta del VPH de **NW** remite ya a SE.
+
+**Lo que enseñó la 61:**
+
+- **Tercera vez que el editor se queda sin cuota** (01/11), y la primera que
+  la reanudación se hace cuatro días después: el usuario escribió «Try again»
+  el 05/11. La caché aguantó y solo corrió el editor (15 minutos).
+- **La regla del 🚨 en el prompt del editor funcionó**: el editor de la 61
+  corrió con ella (se reanudó después del cambio) y SE salió sin ningún 🚨 en
+  mitad de una viñeta. La 59 y la 60 tuvieron que arreglarse a mano.
+- **Una categoría que habría dicho lo contrario de la ficha**: con la palabra
+  «vacunas» en el título, el clasificador mandaba SE a «Pseudociencia y
+  desinformación». Va forzada a salud.
 
 **Ronda 60, PUBLICADA (01/11).** runId `wf_8e39f676-ba8`. Código **SD** (pasa el
 día en foros y chats y ha cambiado: ¿le están captando? Ideas extremistas,
@@ -484,10 +505,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 60.
-Biblioteca en **465 temas / 226 verificados / 239 síntesis / 4.794 fuentes**.
-Suite **1.409/1.409** (01/11, con la ronda 60; medido en corrida limpia, no calculado). Reserva:
-**18 encargables de 31**, en
+Rondas 29 a 61.
+Biblioteca en **466 temas / 226 verificados / 240 síntesis / 4.813 fuentes**.
+Suite **1.448/1.448** (05/11, con la ronda 61; medido en corrida limpia, no calculado). Reserva:
+**17 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -495,12 +516,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 60 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SE** está en vuelo (ronda 61); los siguientes libres
-son **SF** en adelante.
+**Las rondas 51 a 61 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD, SE). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SF** está en vuelo (ronda 62); los siguientes libres
+son **SG** en adelante.
 
-Para la **62**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **63**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en

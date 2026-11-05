@@ -328,7 +328,8 @@
   ],
   "vacunas": [
     "BC",
-    "HH"
+    "HH",
+    "SE"
   ],
   "paracetamol embarazo": [
     "EI"
@@ -6627,5 +6628,38 @@
     "PU",
     "SD",
     "MD"
+  ],
+  "vph": [
+    "SE"
+  ],
+  "papiloma": [
+    "SE"
+  ],
+  "vacuna del papiloma": [
+    "SE"
+  ],
+  "vacuna de la gripe": [
+    "SE"
+  ],
+  "cartilla de vacunas": [
+    "SE"
+  ],
+  "carne de vacunacion": [
+    "SE"
+  ],
+  "calendario de vacunas": [
+    "SE"
+  ],
+  "que vacunas le tocan": [
+    "SE"
+  ],
+  "le faltan vacunas": [
+    "SE"
+  ],
+  "le falta alguna vacuna": [
+    "SE"
+  ],
+  "calendario vacunal": [
+    "SE"
   ]
 }

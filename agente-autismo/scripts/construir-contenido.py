@@ -220,7 +220,9 @@ CATEGORIA_POR_CODIGO = {
     # NP e IO; por "abuso" o "erección" podria caer en otra parte.
     # Ronda 60: SD (la captacion de un adolescente por internet) va con PU, QU
     # y CJ, en adolescencia; por "amenaza" o "delito" podria caer en derechos.
-    "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez",
+    # Ronda 61: SE (las vacunas de despues de la infancia) es de salud: con la
+    # palabra "vacunas" caia en pseudociencia, justo lo contrario de lo que dice.
+    "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez", "SE": "salud",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",
