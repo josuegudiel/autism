@@ -222,7 +222,10 @@ CATEGORIA_POR_CODIGO = {
     # y CJ, en adolescencia; por "amenaza" o "delito" podria caer en derechos.
     # Ronda 61: SE (las vacunas de despues de la infancia) es de salud: con la
     # palabra "vacunas" caia en pseudociencia, justo lo contrario de lo que dice.
+    # Ronda 62: SF (si caigo yo) va con NK y PX, en familia; con su titulo
+    # caia en "Comprender el autismo".
     "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez", "SE": "salud",
+    "SF": "familia",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",

@@ -2308,7 +2308,8 @@
     "NK"
   ],
   "me tienen que ingresar y no hay nadie": [
-    "NK"
+    "NK",
+    "SF"
   ],
   "carpeta de emergencia": [
     "NK"
@@ -6661,5 +6662,35 @@
   ],
   "calendario vacunal": [
     "SE"
+  ],
+  "si caigo yo quien cuida a mi hijo": [
+    "SF"
+  ],
+  "me van a operar": [
+    "SF"
+  ],
+  "me tienen que operar": [
+    "SF"
+  ],
+  "me van a ingresar": [
+    "SF"
+  ],
+  "voy a estar en el hospital": [
+    "SF"
+  ],
+  "voy a estar ingresada semanas": [
+    "SF"
+  ],
+  "quien cuida a mi hijo si me operan": [
+    "SF"
+  ],
+  "me operan y no se con quien dejarlo": [
+    "SF"
+  ],
+  "como le explico que me voy al hospital": [
+    "SF"
+  ],
+  "como explicarle que mama va al hospital": [
+    "SF"
   ]
 }

@@ -5005,6 +5005,101 @@ for (const cod of ['NY', 'PY', 'PV', 'HH', 'BC', 'LC', 'IX', 'RU']) {
 check('Ronda 61: la reserva marca el nº 12 como publicado en SE',
   /### 12\. [^\n]*PUBLICADO en la ronda 61 como \*\*SE\*\*/.test(reserva71));
 
+// 84. Ronda 62. SF: si caigo yo (me van a operar o ingresar unas semanas,
+// quién cuida de mi hijo y cómo se lo explico). Lo que se decidió:
+//
+//  a) Lo imprevisto se queda en NK: SF es lo que se ve venir con semanas, y
+//     NK lo dice ahora en su mensaje clave.
+//  b) NK metía «que deje de beber», «vómitos que no paran» y «un golpe fuerte
+//     en la cabeza» en la consulta del mismo día; RZ, PX y QS los dan como
+//     urgencias hoy. Se corrigió en la misma ronda.
+//  c) NA decía que en Colombia no había una figura concreta que pedir; SF
+//     verificó la licencia por grave calamidad doméstica.
+{
+  await ir('#tema/SF');
+  const tx = await texto();
+  const SF = fichaDe('SF');
+  check('Ronda 62: SF abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 62: SF publica sus fuentes', /Fuentes/.test(SF) && /https?:\/\//.test(SF));
+  check('Ronda 62: SF lleva su número de ronda en la cabecera',
+    /Ronda 62/.test(SF.split('\n')[0]), SF.split('\n')[0].slice(0, 120));
+  check('Ronda 62: SF no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SF));
+  const vinetas = SF.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 62: las dos primeras viñetas de SF son 🚨 y sin píldora de color',
+    vinetas.slice(0, 2).every((l) => l.startsWith('- 🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 2).map((l) => l.slice(0, 14)).join(' | '));
+  check('Ronda 62: quien se queda llama a emergencias sin esperar a localizarte ni pedir permiso',
+    /sin esperar a localizarte/.test(vinetas[0]) && /no hace falta tu permiso/.test(SF));
+  check('Ronda 62: ante la duda entre los dos bloques, el de arriba',
+    /Si dudas entre este bloque y el de arriba, es el de arriba/.test(vinetas[1]));
+  // El bloque entero, con sus subviñetas: la remisión a DO va en una de ellas,
+  // no en la línea que abre el bloque (la primera versión miraba solo esa).
+  const bloque2 = SF.slice(SF.indexOf(vinetas[1]), SF.indexOf(vinetas[2]));
+  check('Ronda 62: la pérdida de habilidades no es «que te eche de menos»: es hoy (DO)',
+    /Pierde habilidades que ya tenía/.test(bloque2) && /\*\*DO\b/.test(bloque2), bloque2.length + ' caracteres');
+  check('Ronda 62: SF no indica fármacos ni dosis', /Esta ficha no indica fármacos ni dosis/.test(SF));
+  check('Ronda 62: no irse a escondidas ni inventar una fecha de vuelta',
+    /no te vayas sin despedirte/.test(SF) && /no inventes una fecha/.test(SF));
+  check('Ronda 62: la guarda voluntaria, como último recurso y verificada solo en dos sitios',
+    /guarda voluntaria/.test(SF) && /último recurso/.test(SF));
+  check('Ronda 62: la medicación del alta, bajo llave', /bajo llave/.test(SF));
+  check('Ronda 62: ningún 🚨 en mitad de una viñeta de SF',
+    SF.split('\n').filter((l) => /^ *- /.test(l)).every((l) => !l.slice(12).includes('🚨')));
+  const sfIdx = idxJson.temas.find((x) => x.codigo === 'SF');
+  check('Ronda 62: SF está en familia, con NK y PX', !!sfIdx && sfIdx.categoria === 'familia', sfIdx && sfIdx.categoria);
+}
+// b) y c) Las dos correcciones.
+{
+  const NK = fichaDe('NK');
+  check('Ronda 62: NK ya no mete «que deje de beber» ni el golpe en la cabeza en la consulta del mismo día',
+    !/Tampoco esperan: que deje de beber/.test(NK) && /que ya no son consulta sino urgencias hoy/.test(NK)
+    && /\*\*RZ\*\*/.test(NK) && /\*\*QS\*\*/.test(NK));
+  check('Ronda 62: el mensaje clave de NK manda a SF si la ausencia se ve venir',
+    /\*\*SF\. /.test(NK.split('\n').find((l) => l.startsWith('**Mensaje clave:**')) || ''));
+  const NA = fichaDe('NA');
+  check('Ronda 62: NA recoge la licencia por grave calamidad doméstica de Colombia y remite a SF',
+    /grave calamidad doméstica/.test(NA) && /\(ve \*\*SF\*\*\)/.test(NA));
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['si caigo yo quien cuida a mi hijo', 'me van a operar', 'me tienen que operar', 'me van a ingresar',
+                 'voy a estar en el hospital', 'voy a estar ingresada semanas', 'quien cuida a mi hijo si me operan',
+                 'me operan y no se con quien dejarlo', 'como le explico que me voy al hospital',
+                 'como explicarle que mama va al hospital']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 62: «${q}» abre en SF`, rr.slice(0, 300).includes('Si caigo yo'), rr.slice(0, 150));
+}
+// «me tienen que ingresar y no hay nadie»: las dos fichas arriba. En la app
+// abre en SF —es un ingreso que se ve venir— con NK justo detrás; el
+// simulador las daba al revés, y por eso se mide contra la app.
+{
+  const rr = await buscarHondo('me tienen que ingresar y no hay nadie');
+  const iSF = rr.indexOf('Si caigo yo'), iNK = rr.indexOf('Si me pasa algo a mí esta noche');
+  check('Ronda 62: «me tienen que ingresar y no hay nadie» abre en SF, con NK detrás',
+    iSF !== -1 && iNK !== -1 && iSF < iNK, `${iSF} / ${iNK}`);
+}
+// Lo imprevisto sigue en NK.
+for (const [q, trozo] of [
+  ['si me pasa algo', 'Si me pasa algo a mí esta noche'],
+  ['quien se queda con mi hijo si me pasa algo', 'Si me pasa algo a mí esta noche'],
+  ['esta ingresado', 'Tiene un cáncer o una enfermedad grave'],
+  ['le quieren operar el pie', 'Camina de puntillas'],
+  ['operacion cirugia', 'Hospitalización, cirugía y anestesia'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 62: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los enlaces de vuelta, fríos.
+for (const cod of ['NH', 'JW', 'EE', 'HN', 'QE', 'PX']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SF\./.test(l) && l.startsWith('- '));
+  check(`Ronda 62: ${cod} enlaza de vuelta a SF con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 62: la reserva marca el nº 13 como publicado en SF',
+  /### 13\. [^\n]*PUBLICADO en la ronda 62 como \*\*SF\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

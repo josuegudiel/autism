@@ -28,13 +28,35 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 62, lanzada y viva (05/11).** runId `wf_9d13353a-083`. Códigos **SF**
-(si caigo yo: quién se ocupa de él si me operan, me ingresan o caigo enfermo
-mucho tiempo; nº 13 de la reserva; el grep previo encontró que **NK** cubre la
-emergencia de una noche y la hoja de datos, no la ausencia que se ve venir y
-dura semanas). Es la primera ronda lanzada con la regla del 🚨 en el prompt del
-editor desde el principio. El siguiente, en la 63, es el nº 15 (me dicen que «no
-hay recursos»: el ajuste razonable por escrito); el nº 14 ya está cubierto (RO).
+**Ronda 63, lanzada y viva (05/11; reanudada el 08/11).** runId `wf_c2bcc29a-2fb`. Códigos **SG**
+(me dicen que «no hay recursos»: qué es un ajuste razonable y cómo se pide por
+escrito; nº 15 de la reserva; el concepto sale en muchas fichas —AH, FH, PD,
+RF, PC, RL— pero ninguna explica la norma ni la solicitud). El siguiente, en la
+64, es el nº 17 (45 minutos a la semana frente a 25 horas); el nº 16 ya está
+cubierto (RN). El 05/11 el verificador se quedó sin cuota cuatro veces y la
+ronda devolvió `fichas: []`; se reanudó el 08/11 desde la caché (el investigador
+ya estaba hecho).
+
+**Ronda 62, PUBLICADA (05/11).** runId `wf_9d13353a-083`. Código **SF** (si caigo
+yo: me van a operar o ingresar unas semanas, quién cuida de mi hijo y cómo se lo
+explico; nº 13 de la reserva, que baja a **16** encargables). Dos bloques 🚨
+(emergencias que no esperan a localizarte; urgencias hoy), 12 fuentes
+confirmadas y 7 eliminadas, 32 críticas (6 graves), ninguna muerta. Enlaces
+inversos desde el mensaje clave de NK y desde NH, JW, EE, HN, QE y PX.
+
+**Lo que enseñó la 62:**
+
+- **La primera ronda con la regla del 🚨 desde el principio** salió limpia:
+  ningún 🚨 en mitad de una viñeta, sin arreglos a mano.
+- **Dos publicadas corregidas en la misma ronda.** **NK** metía «que deje de
+  beber», «vómitos que no paran» y «un golpe fuerte en la cabeza» en su viñeta
+  de consulta del mismo día, cuando **RZ**, **PX** y **QS** los dan como
+  urgencias hoy; ahora los separa de los signos menores, que sí son del mismo
+  día (**JR**). Y **NA** decía que en Colombia no había una figura concreta que
+  pedir; ahora recoge la licencia por grave calamidad doméstica (art. 57.6.c
+  CST, tras la Ley 2466 de 2025), que SF verificó.
+- **Otra categoría que se iba a otro sitio**: con su título, SF caía en
+  «Comprender el autismo». Va forzada a familia, con NK y PX.
 
 **Ronda 61, PUBLICADA (05/11).** runId `wf_b1e6fec5-15f`. Código **SE** (¿le
 falta alguna vacuna? Papiloma (VPH), gripe y refuerzos del adolescente y del
@@ -505,10 +527,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 61.
-Biblioteca en **466 temas / 226 verificados / 240 síntesis / 4.813 fuentes**.
-Suite **1.448/1.448** (05/11, con la ronda 61; medido en corrida limpia, no calculado). Reserva:
-**17 encargables de 31**, en
+Rondas 29 a 62.
+Biblioteca en **467 temas / 226 verificados / 241 síntesis / 4.825 fuentes**.
+Suite **1.488/1.488** (08/11, con la ronda 62; medido en corrida limpia, no calculado). Reserva:
+**16 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -516,12 +538,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 61 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD, SE). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SF** está en vuelo (ronda 62); los siguientes libres
-son **SG** en adelante.
+**Las rondas 51 a 62 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD, SE, SF). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SG** está en vuelo (ronda 63); los siguientes libres
+son **SH** en adelante.
 
-Para la **63**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **64**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en
@@ -565,6 +587,16 @@ date -u; ls -lat --time-style=full-iso $D | head -5
   `Workflow({scriptPath, resumeFromRunId, args})` y los MISMOS args; lo completado
   replica desde caché.
 - Terminó y no se publicó: publícala y lanza la siguiente.
+
+**Cuando una ronda para por el límite de uso** («You've hit your 5-hour limit ·
+resets HH:MM (UTC)» en `failures`), **no esperes a que el usuario lo diga**: el
+08/11 pidió que, cada vez que pase, se revise cada cierto tiempo hasta que el
+contador se reinicie. Cómo: programa con `send_later` (claude-code-remote) un
+aviso a la hora de reinicio que da el error, más cinco minutos, con el mensaje
+de reanudar esa ronda (`resumeFromRunId` y los mismos `args`). Si al despertar
+el límite sigue puesto, otro aviso a la nueva hora. Pasó en las rondas 57, 59,
+61 y 63; en la 61 y la 63 la ronda se quedó parada días hasta que el usuario
+escribió.
 
 **Cómo se muere una ronda:** límite de sesión (rondas 34 y 37) o 529/500 del
 servidor en cadena (ronda 38, cuatro intentos). En `pipeline()`, una etapa que

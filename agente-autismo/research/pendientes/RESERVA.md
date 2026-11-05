@@ -2,7 +2,7 @@
 
 Generada por `scripts/workflows/detectar-huecos.mjs` el 23/09/2026 (runId `wf_4b127578-5a2`), con tres lentes —salud, vida diaria, derechos— sobre el índice de las 448 fichas publicadas.
 
-**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) la 58 el nº 9 (**SB**) la 59 el nº 10 (**SC**) la 60 el nº 11 (**SD**) y la 61 el nº 12 (**SE**): quedan 17 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
+**Son 31 entradas. La ronda 51 cubrió tres (14, 16, 28), la 52 otras dos (2 y 3), el 28/09 el nº 4 se marcó NO ENCARGABLE por estar ya en LG, la ronda 55 publicó el nº 5 (**RX**) y el nº 6 (**RY**), la 56 el nº 7 (**RZ**) la 57 el nº 8 (**SA**) la 58 el nº 9 (**SB**) la 59 el nº 10 (**SC**) la 60 el nº 11 (**SD**) la 61 el nº 12 (**SE**) y la 62 el nº 13 (**SF**): quedan 16 encargables.** La reserva anterior estaba en 8. Cuando baje de 4 investigables, vuelve a lanzar el detector.
 
 ## Antes de encargar nada, lee esto
 
@@ -145,7 +145,7 @@ Riesgo real con literatura propia y con una consecuencia jurídica dura: el jove
 
 La prevención que se cae sola cuando toda la agenda sanitaria gira alrededor del autismo. HUECO REAL: 'HH. Lograr una visita de vacunación sin trauma' es puro manejo del momento de la aguja y está centrada en la infancia; 'BC. Vacunas y autismo' desmonta el mito causal, que es otra conversación; 'NY. Se le acaba el pediatra' es la transición asistencial en general; 'PY. El chequeo del adulto que no pide nadie' enumera cribados (colon, mama, tensión, colesterol) pero no inmunización. CONTENIDO: qué vacunas tocan después de la infancia, por qué el VPH importa especialmente en alguien a quien le va a costar muchísimo hacerse cribados ginecológicos en el futuro, y qué pasa al salir de pediatría, cuando ya nadie llama por teléfono para recordarlo. AVISO DE CIFRAS: los datos de cobertura vacunal más baja en personas con discapacidad vienen sobre todo de EE. UU. y Reino Unido y varían mucho. FRONTERA IMPORTANTE: escribirla sin anclarla a un calendario nacional (los esquemas cambian por país y hay 15 fichas de países que ya cubren eso); enseñar qué preguntar y a quién.
 
-### 13. Si caigo yo: quién se ocupa de él si me operan, me ingresan o caigo enfermo mucho tiempo
+### 13. Si caigo yo: quién se ocupa de él si me operan, me ingresan o caigo enfermo mucho tiempo — ✅ PUBLICADO en la ronda 62 como **SF**
 
 Al padre le dan fecha de quirófano y descubre que nadie más sabe dar la medicación, calmar una crisis ni con qué frase se le dice al hijo que mamá no va a estar quince días. HUECO REAL: 'NK. Si me pasa algo a mí esta noche' es la más cercana pero está planteada como emergencia imprevista de una noche y como hoja de datos; 'HN' planifica el relevo cuando los padres envejecen, a años vista; 'EE. Respiro' es un servicio programado de descanso, no una sustitución forzosa; 'GD' trata el duelo y la muerte, no la ausencia temporal; 'QE' trata cuidar a la vez de hijo y padres. CONTENIDO, dos cosas distintas: la continuidad práctica del cuidado (quién sustituye, qué se deja escrito, qué servicios se activan de urgencia) y cómo se prepara y se explica la ausencia y el reencuentro. AVISO: aquí hay más guía práctica de asociaciones que investigación; ser honesto y no inventar evidencia de eficacia.
 
