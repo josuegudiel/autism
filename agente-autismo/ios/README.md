@@ -4,9 +4,20 @@ Proyecto nativo en SwiftUI de la misma biblioteca que usa la web. Todo el
 contenido va **dentro de la app**: funciona sin conexión y sin ningún coste
 de servidor.
 
-> ⚠️ **Estado: código escrito, sin compilar todavía.** Se redactó en un
-> entorno Linux, donde no hay Xcode. Antes de darlo por bueno hay que
-> abrirlo en un Mac y corregir lo que el compilador señale.
+> ⚠️ **Estado: reescrito, pendiente de compilar en un Mac.** `Vistas/DetectorView.swift`
+> y `Vistas/AyudaView.swift` se habían quedado sin sus vistas y el target no
+> compilaba. El 22/10 se reescribieron a partir de las APIs que ya existen en
+> `Datos/Biblioteca.swift` y `Modelos/Modelos.swift`, **en Linux y sin
+> compilador de Swift delante**: lo más probable es que Xcode pida algún
+> retoque. El Detector de iOS, a propósito, **no pinta veredicto de color**:
+> el que calcula `Biblioteca.nivel(de:)` cuenta semáforos y decía «Con
+> respaldo» a «las vacunas causan autismo»; abre la ficha en su lugar. Que
+> lea los veredictos explícitos de `banderas-rojas.json`, como la web, queda
+> pendiente.
+>
+> ⚠️ **Aquí no hay rastreador.** El «Seguimiento de mi hijo» del proyecto
+> existe **solo en la web**: en `ios/` no hay IndexedDB, ni SwiftData, ni
+> Core Data.
 
 ## Qué necesitas
 
@@ -40,12 +51,12 @@ BrujulaTEA/
   Modelos/Modelos.swift        tipos Codable de los JSON
   Datos/Biblioteca.swift       carga, caché y motor de búsqueda
   Diseno/Tema.swift            colores, tipografía y espaciado
-  Vistas/RootView.swift        las cinco pestañas
+  Vistas/RootView.swift        las cuatro pestañas: Inicio, Biblioteca, Detector, Ayuda
   Vistas/InicioView.swift      buscador y categorías
   Vistas/BibliotecaView.swift  lista y filtros
   Vistas/TemaDetalleView.swift ficha de un tema
-  Vistas/DetectorView.swift    detector de pseudociencia
-  Vistas/AyudaView.swift       teléfonos de crisis
+  Vistas/DetectorView.swift    INCOMPLETO: perdió la declaración de la vista
+  Vistas/AyudaView.swift       INCOMPLETO: solo conserva el enum Telefono
   Vistas/Componentes.swift     tarjetas y badges reutilizables
   Utilidades/MarkdownLigero.swift  convierte el texto de la biblioteca
   Info.plist

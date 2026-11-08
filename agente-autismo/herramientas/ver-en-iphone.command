@@ -80,5 +80,8 @@ case "$SERVIDOR" in
   python3) python3 -m http.server "$PUERTO" --bind 127.0.0.1 ;;
   ruby)    ruby -run -e httpd . -p "$PUERTO" -b 127.0.0.1 ;;
   php)     php -S "127.0.0.1:$PUERTO" ;;
-  npx)     npx --yes serve -l "$PUERTO" . ;;
+  # Solo en 127.0.0.1, como los otros tres: «serve» escucha por defecto en
+  # todas las interfaces y publicaba la carpeta ENTERA (research/, notas,
+  # scripts) a cualquiera de la misma red wifi.
+  npx)     npx --yes serve -l "tcp://127.0.0.1:$PUERTO" . ;;
 esac

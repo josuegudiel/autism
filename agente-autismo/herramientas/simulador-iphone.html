@@ -135,7 +135,24 @@
 <script>
   const params = new URLSearchParams(location.search);
   // Por defecto la app está en ../web/ respecto a esta carpeta.
-  const BASE = params.get("base") || "../web/index.html";
+  //
+  // «?base=» solo puede apuntar a una página http(s) de ESTE mismo origen. Sin
+  // esta comprobación, un enlace con «?base=javascript:…» ejecutaba código en el
+  // origen publicado, que es el mismo de la app y de los registros del niño
+  // guardados en el navegador; y con «?base=https://otro-sitio» el simulador
+  // enmarcaba cualquier página bajo nuestra dirección.
+  function baseSegura(pedida) {
+    const porDefecto = "../web/index.html";
+    if (!pedida) return porDefecto;
+    try {
+      const u = new URL(pedida, location.href);
+      if ((u.protocol === "http:" || u.protocol === "https:") && u.origin === location.origin) {
+        return u.pathname + u.search;
+      }
+    } catch (_) {}
+    return porDefecto;
+  }
+  const BASE = baseSegura(params.get("base"));
   const marco = document.getElementById("marco");
   const iphone = document.getElementById("iphone");
   const selRuta = document.getElementById("ruta");

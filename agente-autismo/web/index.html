@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Política de contenido: solo se ejecuta el código de esta app y solo se
+       piden datos a este mismo sitio. La app pinta con innerHTML texto que sale
+       de la biblioteca; si algún día se colara ahí un <script> o un onerror=,
+       esto impide que se ejecute. Los estilos en línea (style="…") se permiten
+       porque la app los usa. Si el asistente pasa a llamar a una API en OTRO
+       dominio, hay que añadirlo a connect-src. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
   <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -11,7 +19,9 @@
   <title>Brújula TEA — Guía confiable para familias</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/icon.svg" />
+  <!-- iOS no acepta SVG aquí: con él, «Añadir a pantalla de inicio» ponía una
+       captura de la página en vez del icono. -->
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -22,7 +32,13 @@
     <span class="brand-tag">basado en evidencia</span>
   </header>
 
-  <main id="view" class="view" tabindex="-1" aria-live="polite"><!-- las vistas se renderizan aquí --></main>
+  <main id="view" class="view" tabindex="-1"><!-- las vistas se renderizan aquí --></main>
+
+  <!-- Región viva mínima. El <main> entero era aria-live, así que al entrar en la
+       biblioteca el lector de pantalla intentaba leer los 360 temas de un tirón y
+       no había manera de pararlo. Aquí solo se escribe el resumen de lo que acaba
+       de cambiar; del cambio de pantalla avisa el foco, que route() mueve al <main>. -->
+  <p id="anuncio" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 
   <footer class="disclaimer">
     Informa y orienta; <strong>no diagnostica ni sustituye</strong> a un profesional de la salud.
