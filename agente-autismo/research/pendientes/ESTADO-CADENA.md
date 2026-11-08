@@ -28,14 +28,34 @@ el turno.
 
 ## Ronda en curso
 
-**Ronda 63, lanzada y viva (05/11; reanudada el 08/11).** runId `wf_c2bcc29a-2fb`. Códigos **SG**
-(me dicen que «no hay recursos»: qué es un ajuste razonable y cómo se pide por
-escrito; nº 15 de la reserva; el concepto sale en muchas fichas —AH, FH, PD,
-RF, PC, RL— pero ninguna explica la norma ni la solicitud). El siguiente, en la
-64, es el nº 17 (45 minutos a la semana frente a 25 horas); el nº 16 ya está
-cubierto (RN). El 05/11 el verificador se quedó sin cuota cuatro veces y la
-ronda devolvió `fichas: []`; se reanudó el 08/11 desde la caché (el investigador
-ya estaba hecho).
+**Ronda 64, lanzada y viva (08/11).** runId `wf_267ecac4-c71`. Códigos **SH**
+(le dan 45 minutos a la semana y he leído que hacen falta 25 horas: qué dice de
+verdad la evidencia y cómo pedir más; nº 17 de la reserva, **acotado**: el grep
+previo encontró que **MS** ya publica el metaanálisis de Sandbank 2024 y su
+consejo de sostenibilidad, así que SH solo trae el origen de las «25 horas»
+(National Research Council, 2001), la controversia del reanálisis de Frazier
+2025 y el suelo del servicio: cómo pedir más cuando dan muy poco). El
+siguiente, en la 65, es el nº 18 (hasta qué edad puede seguir escolarizado).
+
+**Ronda 63, PUBLICADA (08/11).** runId `wf_c2bcc29a-2fb`. Código **SG** (me
+dicen que «no hay recursos»: qué es un ajuste razonable y cómo se pide por
+escrito; nº 15 de la reserva, que baja a **15** encargables). Tres bloques 🚨
+(la atención médica va antes que el ajuste; si lo que falta es seguridad, no se
+deja allí sin plan; lo que nunca se acepta como alternativa), 9 fuentes
+confirmadas y 3 eliminadas, 29 críticas (4 graves), ninguna muerta. Diez enlaces
+inversos (AH, FH, PD, RF, RL, PC, FZ, IB, RN, PW). El verificador se quedó sin
+cuota el 05/11 y la ronda se reanudó el 08/11.
+
+**Lo que enseñó la 63:**
+
+- **La regla del límite se estrenó** (la pidió el usuario el 08/11): la ronda se
+  reanudó en cuanto se vio, y queda escrito cómo programar el aviso al reinicio.
+- **Distinguir ajuste razonable de accesibilidad** era el aviso central del
+  encargo, y SG lo hace con la Observación General nº 2 del Comité de la ONU
+  y su investigación sobre España (2018).
+- **EE. UU. y Puerto Rico van aparte**: EE. UU. no ratificó la Convención (el
+  Senado la rechazó en 2012), así que allí se pide con la ADA y la Sección 504,
+  y SG remite a GN, AH, PW y GY.
 
 **Ronda 62, PUBLICADA (05/11).** runId `wf_9d13353a-083`. Código **SF** (si caigo
 yo: me van a operar o ingresar unas semanas, quién cuida de mi hijo y cómo se lo
@@ -527,10 +547,10 @@ comprobación con navegador, como dice el procedimiento.
 
 ## Ya publicado
 
-Rondas 29 a 62.
-Biblioteca en **467 temas / 226 verificados / 241 síntesis / 4.825 fuentes**.
-Suite **1.488/1.488** (08/11, con la ronda 62; medido en corrida limpia, no calculado). Reserva:
-**16 encargables de 31**, en
+Rondas 29 a 63.
+Biblioteca en **468 temas / 226 verificados / 242 síntesis / 4.834 fuentes**.
+Suite **1.526/1.526** (08/11, con la ronda 63; medido en corrida limpia, no calculado). Reserva:
+**15 encargables de 31**, en
 `research/pendientes/RESERVA.md` (unas ocho rondas). La generó
 `detectar-huecos.mjs` el 23/09 con tres lentes sobre el índice de las 448
 publicadas, y **ese fichero se lee ENTERO antes de encargar una ronda**: lleva
@@ -538,12 +558,12 @@ arriba los cruces que el detector no podía ver, porque solo mira lo publicado y
 no sabe qué hay en vuelo ni qué está bloqueado. De hecho volvió a proponer
 "dice que quiere morirse", que es **NI** y no se investiga.
 
-**Las rondas 51 a 62 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
-RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD, SE, SF). QO sigue libre a propósito, como PO; confírmalo con grep
-antes de asignar un código. **SG** está en vuelo (ronda 63); los siguientes libres
-son **SH** en adelante.
+**Las rondas 51 a 63 están publicadas y en verde** (RN, RO, RP, RQ, RR, RS, RT,
+RU, RV, RW, RX, RY, RZ, SA, SB, SC, SD, SE, SF, SG). QO sigue libre a propósito, como PO; confírmalo con grep
+antes de asignar un código. **SH** está en vuelo (ronda 64); los siguientes libres
+son **SI** en adelante.
 
-Para la **64**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
+Para la **65**, encarga desde `research/pendientes/RESERVA.md` y **lee primero
 los avisos de su cabecera** —un tema por ronda; la búsqueda web respondía el
 29/10 y un tema cuesta unas 15 búsquedas—. Candidata que ya viene de antes:
 **RM otra vez** (lectura fácil, reencargada y acotada; el borrador está en

@@ -5100,6 +5100,80 @@ for (const cod of ['NH', 'JW', 'EE', 'HN', 'QE', 'PX']) {
 check('Ronda 62: la reserva marca el nº 13 como publicado en SF',
   /### 13\. [^\n]*PUBLICADO en la ronda 62 como \*\*SF\*\*/.test(reserva71));
 
+// 85. Ronda 63. SG: me dicen que «no hay recursos» (qué es un ajuste
+// razonable y cómo se pide por escrito). Lo que se decidió:
+//
+//  a) El concepto y la plantilla valen en cualquier sitio; la vía de cada
+//     caso, con sus plazos, se queda en su ficha (PD, PW, RF, RL, LD...).
+//  b) Ajuste razonable no es accesibilidad: el aviso central del encargo.
+//  c) Lo que va antes que cualquier ajuste —la atención médica, la seguridad
+//     y lo que nunca se acepta como alternativa— va arriba, en tres bloques.
+//     Aquí el 🚨 va dentro de la negrita («- **🚨 …»), y sigue en los 12
+//     primeros caracteres, que es lo que mira extraerNivel().
+{
+  await ir('#tema/SG');
+  const tx = await texto();
+  const SG = fichaDe('SG');
+  check('Ronda 63: SG abre de verdad', !/No encuentro ese tema/.test(tx) && tx.length > 1200, tx.slice(0, 90));
+  check('Ronda 63: SG publica sus fuentes', /Fuentes/.test(SG) && /https?:\/\//.test(SG));
+  check('Ronda 63: SG lleva su número de ronda en la cabecera',
+    /Ronda 63/.test(SG.split('\n')[0]), SG.split('\n')[0].slice(0, 120));
+  check('Ronda 63: SG no arrastra notas de bloqueo',
+    !/bloquea la publicaci|Pendiente antes de publicar|NO PUBLICABLE/i.test(SG));
+  const vinetas = SG.split('\n').filter((l) => l.startsWith('- '));
+  check('Ronda 63: las tres primeras viñetas de SG son urgentes (🚨 en sus 12 primeros caracteres) y sin color',
+    vinetas.slice(0, 3).every((l) => l.slice(0, 12).includes('🚨') && !/[🟢🟡🔴⚪]/u.test(l)),
+    vinetas.slice(0, 3).map((l) => l.slice(0, 16)).join(' | '));
+  check('Ronda 63: la atención médica va antes que el ajuste',
+    /La atención médica va antes que el ajuste/.test(vinetas[0]));
+  check('Ronda 63: si lo que falta es seguridad, no se deja allí sin un plan',
+    /no lo dejes allí sin un plan/.test(vinetas[1]));
+  check('Ronda 63: lo que nunca se acepta como alternativa (sujetarlo, encerrarlo) remite a FQ y QR',
+    /Lo que nunca se acepta/.test(vinetas[2]) && /\*\*FQ\*\*/.test(vinetas[2]) && /\*\*QR\*\*/.test(vinetas[2]));
+  check('Ronda 63: negar un ajuste es discriminación, con la Convención (art. 2) y la OG nº 6',
+    /la denegación de ajustes razonables/.test(SG) && /Observación General nº 6/.test(SG));
+  check('Ronda 63: ajuste razonable no es accesibilidad universal (OG nº 2)',
+    /No lo confundas con la accesibilidad universal/.test(SG) && /Observación General nº 2/.test(SG));
+  check('Ronda 63: la carga desproporcionada la justifica quien dice que no',
+    /quien dice que no tiene que justificarlo/.test(SG));
+  check('Ronda 63: EE. UU. no ratificó la Convención y va con la ADA y la 504 (GN)',
+    /rechazó ratificarla en 2012/.test(SG) && /\*\*GN\*\*/.test(SG));
+  check('Ronda 63: la plantilla está y se acepta lo provisional sin renunciar',
+    /La plantilla, para copiar/.test(SG) && /sin renunciar a mi solicitud/.test(SG));
+  check('Ronda 63: ningún 🚨 en mitad de una viñeta de SG',
+    SG.split('\n').filter((l) => /^ *- /.test(l)).every((l) => !l.includes('🚨') || l.indexOf('🚨') < 12));
+  const sgIdx = idxJson.temas.find((x) => x.codigo === 'SG');
+  check('Ronda 63: SG está en derechos', !!sgIdx && sgIdx.categoria === 'derechos', sgIdx && sgIdx.categoria);
+}
+
+// Las consultas, medidas contra la app antes de asertarlas.
+for (const q of ['ajuste razonable', 'ajustes razonables', 'no hay presupuesto', 'no tenemos personal',
+                 'carga desproporcionada', 'como pido un ajuste razonable', 'carta para pedir un ajuste',
+                 'se niegan a hacer adaptaciones', 'accesibilidad universal']) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 63: «${q}» abre en SG`, rr.slice(0, 300).includes('qué es un ajuste razonable'), rr.slice(0, 150));
+}
+// Las que no se tocaron a propósito. «dicen que no hay recursos» y «el colegio
+// dice que no tiene recursos» son claves de RE y FH, y la §65 asierta la
+// segunda: con SG en ellas, SG le quitaba el primer puesto a RE.
+for (const [q, trozo] of [
+  ['el colegio dice que no tiene recursos', 'no necesita apoyos'],
+  ['dicen que no hay recursos', 'no necesita apoyos'],
+  ['adaptaciones escolares', 'Escuela: inclusión, adaptaciones y derechos'],
+]) {
+  const rr = await buscarHondo(q);
+  check(`Ronda 63: «${q}» sigue abriendo donde abría`, rr.slice(0, 300).includes(trozo), rr.slice(0, 150));
+}
+
+// Los diez enlaces de vuelta, fríos.
+for (const cod of ['AH', 'FH', 'PD', 'RF', 'RL', 'PC', 'FZ', 'IB', 'RN', 'PW']) {
+  const linea = fichaDe(cod).split('\n').find((l) => /\*\*SG\./.test(l) && l.startsWith('- '));
+  check(`Ronda 63: ${cod} enlaza de vuelta a SG con una viñeta fría`,
+    !!linea && !linea.includes('🚨'), (linea || '(sin viñeta)').slice(0, 110));
+}
+check('Ronda 63: la reserva marca el nº 15 como publicado en SG',
+  /### 15\. [^\n]*PUBLICADO en la ronda 63 como \*\*SG\*\*/.test(reserva71));
+
 await nav.close();
 console.log('\n' + (errores.length
   ? '❌ ' + errores.length + ' problema(s):\n' + errores.join('\n')

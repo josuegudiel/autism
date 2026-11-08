@@ -225,7 +225,8 @@ CATEGORIA_POR_CODIGO = {
     # Ronda 62: SF (si caigo yo) va con NK y PX, en familia; con su titulo
     # caia en "Comprender el autismo".
     "SA": "salud", "SB": "salud", "SC": "familia", "SD": "adultez", "SE": "salud",
-    "SF": "familia",
+    # Ronda 63: SG (el ajuste razonable y como se pide) es de derechos.
+    "SF": "familia", "SG": "derechos",
     # Ronda 48: RC (el babeo) caia en terapias por las opciones de tratamiento;
     # es un problema medico y su ficha hermana NJ ya esta en salud.
     "RC": "salud",
